@@ -103,9 +103,9 @@ it('回合上限按平局结束', () => {
   expect(trace.finalState.round).toBe(100);
 });
 
-it('旧策略挑战按临场应变完成，忽略冻结的自定战术', () => {
+it.each(['combat_auto_rules_v3', undefined])('旧策略挑战（%s）按临场应变完成，忽略冻结的自定战术', (version) => {
   const input = compileRankingBattle([player('a'), player('b')], 5);
-  input.versions.autoPolicyVersion = 'combat_auto_rules_v3';
+  input.versions.autoPolicyVersion = version;
   input.autoStrategies = {
     a: { version: 1, rules: [{ conditions: [], action: { type: 'defend' }, target: 'best' }] },
   };

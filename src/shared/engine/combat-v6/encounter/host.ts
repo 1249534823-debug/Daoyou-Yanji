@@ -1,5 +1,8 @@
 import { playerAppearances } from '../../../combat-v6/unit-appearance';
-import { automaticCommands } from '../../../combat-v6/auto';
+import {
+  AUTO_POLICY_VERSION,
+  automaticCommands,
+} from '../../../combat-v6/auto';
 import {
   controlledUnits,
   validateCommandGroup,
@@ -122,7 +125,11 @@ export class CombatV6PveHostSession {
   ) {
     const compiled = encounter;
     this.playerId = compiled.playerId;
-    this.playerAutoStrategy = compiled.playerAutoStrategy;
+    this.playerAutoStrategy =
+      restored &&
+      restored.state.versions.autoPolicyVersion !== AUTO_POLICY_VERSION
+        ? undefined
+        : compiled.playerAutoStrategy;
     this.initialUnits = clone(compiled.battleInput.units);
     this.skills = clone(compiled.battleInput.skills ?? []);
     this.statusDefs = clone(compiled.battleInput.statusDefs ?? []);

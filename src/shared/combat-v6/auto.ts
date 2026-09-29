@@ -50,8 +50,9 @@ export function automaticCommands(
     ownerId,
     options.statusDefs ?? [],
   );
+  // Frozen rules from an older policy cannot be replayed under this selector.
+  // Keep the battle playable with the ordinary utility fallback.
   const strategies =
-    state.versions.autoPolicyVersion &&
     state.versions.autoPolicyVersion !== AUTO_POLICY_VERSION
       ? undefined
       : options.strategies;

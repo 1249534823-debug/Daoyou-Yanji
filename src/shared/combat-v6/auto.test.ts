@@ -86,7 +86,7 @@ function fixture(
   };
   return createBattle({
     seed: 42,
-    versions: COMBAT_V6_PHASE_6D_VERSIONS,
+    versions: { ...COMBAT_V6_PHASE_6D_VERSIONS, autoPolicyVersion: AUTO_POLICY_VERSION },
     ruleset: daoyouRulesetV6,
     skills: definitions,
     statusDefs: [
@@ -516,14 +516,14 @@ describe('当前场次托管', () => {
     battle.unit('pet').flags.downed = true;
     expect(chooseWithStrategy(battle, strategy, defs).type).toBe('skill');
   });
-  it('旧自动策略版本忽略冻结战术，改用临场应变', () => {
+  it.each(['combat_auto_rules_v3', undefined])('旧自动策略版本（%s）忽略冻结战术，改用临场应变', (version) => {
     const battle = fixture(['strike']);
     const strategy: AutoStrategy = {
       version: 1,
       rules: [{ conditions: [], action: { type: 'defend' }, target: 'best' }],
     };
     expect(chooseWithStrategy(battle, strategy).type).toBe('defend');
-    battle.state.versions.autoPolicyVersion = 'combat_auto_rules_v3';
+    battle.state.versions.autoPolicyVersion = version;
     expect(chooseWithStrategy(battle, strategy)).toEqual(chooseWithStrategy(battle, { version: 1, rules: [] }));
     expect(chooseWithStrategy(battle, strategy).type).not.toBe('defend');
   });
