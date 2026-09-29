@@ -168,7 +168,7 @@ async function request(
     data?: View;
   };
   if (!response.ok || !payload.success || !payload.data)
-    throw new Error(payload.error ?? '自动战术请求失败');
+    throw new Error(payload.error ?? `暂时无法${method === 'GET' ? '读取' : '保存'}自动战术，请稍后重试。`);
   return payload.data;
 }
 
