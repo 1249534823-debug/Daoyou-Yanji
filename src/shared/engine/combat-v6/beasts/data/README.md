@@ -42,7 +42,7 @@
 | `spellHit` | `costMp`、`coefficient`、`powerBase`、`powerPerLevel` | 单体法术攻击，附加威力为基础值加技能等级乘每级值 |
 | `physicalHit` | `costMp`、`coefficient` | 单体物理攻击 |
 | `barrier` | `costMp`、`barrierId`、`kind`、`name`、`powerBase`、`powerPerLevel`、`duration` | 自身护盾，护盾值为基础值加技能等级乘每级值 |
-| `counter` | `chance`、`coefficient` | 受到物理伤害后概率反扑，复用钩子抑制规则 |
+| `counter` | `chance`、`coefficient` | 受到物理伤害后概率反击，复用钩子抑制规则 |
 | `critical` | `kind`、`chance` | 提高物理或法术暴击概率 |
 | `regeneration` | `resource`、`levelDivisor` | 回合末恢复等级除以指定整数的气血或法力，向下取整 |
 | `spellBoost` | `factor` | 法术伤害倍率 |
@@ -50,19 +50,19 @@
 | `miracle` | `immune` | 回合末净化或异常免疫 |
 | `concentration` | `physicalFactor`、`dodgeBonus` | 控制免疫、物伤代价与躲避 |
 | `ghost` | `delay` | 延迟复起、拒绝气血恢复和常规异常免疫 |
-| `exorcism` | `factor` | 对魂生物法增伤并阻止其复起 |
-| `denial` | `ghostDamageFactor`、`spellFactor` | 拒绝增益、异常免疫、魂生伤害及法抗倍率 |
+| `exorcism` | `factor` | 对灵魂体物法增伤并阻止其复起 |
+| `denial` | `ghostDamageFactor`、`spellFactor` | 拒绝增益、异常免疫、灵魂体伤害及法抗倍率 |
 | `eternity` | `factor`、`maxExtra` | 合格增益延长倍率与额外回合上限 |
 | `stealth` | `minDuration`、`maxDuration`、`physicalFactor` | 首次出战隐身状态、禁法与物伤代价 |
 | `perception` | `dodgeBonus` | 看破隐身，可增加面板躲避 |
 | `spellRepeat` | `chance`、`factor` | 直接伤害法术整次追加，原目标、无额外费用、不递归 |
-| `spellFluctuation` | `min`、`max`、`suppressReflection` | 替换法术波动区间，可免灵息反震 |
+| `spellFluctuation` | `min`、`max`、`suppressReflection` | 替换法术波动区间，可免灵法反震 |
 | `groupSpell` | `costMp`、`coefficient`、`powerBase`、`powerPerLevel`、`levelsPerTarget`、`maxTargets` | 按技能等级增加目标数的群法 |
 | `parry` | `factor` | 每回合首次物理命中减伤 |
 | `defenseTraining` | `perLevel`、`spellFactor` | 加物防并降低自身法伤 |
-| `strengthTraining` | `perLevel`、`versusDefenseFactor` | 加物攻、忽略避锋，对坚韧技能目标承担伤害代价 |
+| `strengthTraining` | `perLevel`、`versusDefenseFactor` | 加物攻、忽略招架，对铁骨技能目标承担伤害代价 |
 | `wisdom` | `factor` | 仅法术法力消耗倍率 |
-| `sneakAttack` | `factor` | 物理增伤且不触发物理反扑／反震 |
+| `sneakAttack` | `factor` | 物理增伤且不触发物理反击／反震 |
 | `spellResistance` | `takenFactor`、`physicalFactor` | 所受法伤倍率与自身物伤代价 |
 | `lifesteal` | `ratio` | 直接物理命中后按实际扣血精确恢复 |
 | `reflection` | `kind`、`chance`、`ratio` | 对应类型受击后按实际扣血概率反震固定伤害 |
@@ -76,7 +76,7 @@
 
 `families` 的每一项用 `normal`／`advanced` 指定普通与高级技能。两者同时占有格位时，仅高级效果激活，个体的两个格位事实不变。当前支持互不交叉的二级配对，不支持循环、三级链或一个技能归属多个配对。
 
-`book: true` 自动产生 `book.<技能ID>`、按技能族品级命名的`传承灵印`或`上品传承灵印`，保持原物品 ID、堆叠上限及列表顺序；不再另写可用技能 ID 清单。连击说明根据配置中的机制类型识别，并读取编译后的概率。打书耗材、随机替换格位与事务仍沿用原实现。
+`book: true` 自动产生 `book.<技能ID>`；高级技能和四种 `groupSpell` 由上品传承灵印承载，其余由普通传承灵印承载。灵印品级与技能是否有高级版本分别判定，保持原物品 ID、堆叠上限及列表顺序；不再另写可用技能 ID 清单。连击说明根据配置中的机制类型识别，并读取编译后的概率。打书耗材、随机替换格位与事务仍沿用原实现。
 
 ## 3. 培养与面板：progression.json
 

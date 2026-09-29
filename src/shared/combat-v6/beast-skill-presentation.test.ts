@@ -36,7 +36,7 @@ it('冲突说明保留在描述，冲突技能仍按自身等级展示', () => {
   expect(beastSkillPresentation('beast.advanced-divine-revival')).toMatchObject(
     {
       style: 'advanced',
-      description: expect.stringContaining('持有魂生或闭灵时不生效'),
+      description: expect.stringContaining('持有灵魂体或绝灵时不生效'),
     },
   );
 });

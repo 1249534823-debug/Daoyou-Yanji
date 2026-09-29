@@ -43,7 +43,7 @@ export function BeastSkillTile({ skillId }: { skillId: string }) {
         {skill.name}
         {unavailable ? '（已失效）' : ''}
       </p>
-      <p>{skill.description}</p>
+      <p className="whitespace-pre-line">{skill.description}</p>
     </InkTooltip>
   );
 }

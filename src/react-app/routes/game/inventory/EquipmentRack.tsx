@@ -54,8 +54,8 @@ export function EquipmentAction({
       ? result.diagnostics.find((d) => d.severity === 'error')?.message
       : undefined;
   return (
-    <div className="space-y-2">
-      {reason ? <p className="text-ink-secondary text-xs">{reason}</p> : null}
+    <>
+      {reason ? <p className="text-ink-secondary basis-full text-xs">{reason}</p> : null}
       <InkButton disabled={pending || !result || !result.ok} onClick={onEquip}>
         {item.equipped
           ? '卸下'
@@ -64,10 +64,10 @@ export function EquipmentAction({
                   (entry.instanceData as DaoEquipmentInstanceV1).slot ===
                   equipment.slot,
               )
-            ? '替换当前道装'
+            ? '替换'
             : '装备'}
       </InkButton>
-    </div>
+    </>
   );
 }
 

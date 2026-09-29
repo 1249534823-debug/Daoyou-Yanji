@@ -36,7 +36,6 @@ export function ItemSlot({
   onQuickAction,
   quickOnTouch,
   children,
-  comparisonItem,
   quantityLabel = '持有',
   guideAnchor,
 }: {
@@ -50,7 +49,6 @@ export function ItemSlot({
   onQuickAction?: () => void;
   quickOnTouch?: boolean;
   children?: (close: () => void) => ReactNode;
-  comparisonItem?: DisplayItem;
   quantityLabel?: '持有' | '库存' | '奖励' | '投入' | '产出';
   guideAnchor?: string;
 }) {
@@ -180,7 +178,7 @@ export function ItemSlot({
         onPointerEnter={(e) => {
           if (e.pointerType === 'mouse' && item) {
             cancel();
-            timer.current = setTimeout(show, 200);
+            timer.current = setTimeout(show, 350);
           }
         }}
         onPointerLeave={(e) => {
@@ -289,12 +287,12 @@ export function ItemSlot({
             close();
           }
         }}
-        className="bg-bgpaper text-ink border-ink/30 fixed inset-auto m-0 w-80 overflow-y-auto overscroll-contain border p-4 text-sm leading-6 [overflow-wrap:anywhere] shadow-xl"
+        className="bg-bgpaper text-ink border-ink/30 fixed inset-auto m-0 w-80 overflow-y-auto overscroll-contain border p-3 text-sm leading-6 [overflow-wrap:anywhere] shadow-xl"
       >
         {open && item && presentation ? (
           <ItemPreview
             item={item}
-            comparisonItem={comparisonItem}
+            options={{ hideQuantity: true }}
             quantityLabel={quantityLabel}
             close={close}
             actions={children?.(() => setOpen(false))}

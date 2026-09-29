@@ -415,16 +415,6 @@ export default function InventoryV6() {
                     ? () => toggleSelection(entry.id)
                     : undefined,
                 quickOnTouch: selecting,
-                comparisonItem:
-                  entry &&
-                  !entry.equipped &&
-                  itemDefinition(entry.definitionId).kind === 'equipment'
-                    ? equipped.find(
-                        (item) =>
-                          (item.instanceData as DaoEquipmentInstanceV1).slot ===
-                          (entry.instanceData as DaoEquipmentInstanceV1).slot,
-                      )
-                    : undefined,
                 children:
                   entry && !selecting
                     ? (close) => (
@@ -543,84 +533,113 @@ function ItemActions({
       isQiRestoreTalisman(consumable) ||
       isAttributeResetTalisman(consumable) ||
       isSectMeridianResetTalisman(consumable));
+  const maxUseQuantity = Math.min(item.quantity, 99);
   return (
-    <div className="space-y-4 text-sm">
-      <div className="flex flex-wrap gap-3">
-        {item.location === 'bag' && directUse ? (
-          <InkButton
-            disabled={
-              pending ||
-              (consumable.spec.kind === 'pill' &&
-                (!Number.isInteger(useQuantity) ||
-                  useQuantity < 1 ||
-                  useQuantity > Math.min(item.quantity, 99)))
-            }
-            onClick={() =>
-              void act({
-                action: 'use',
-                ...ref,
-                quantity: consumable.spec.kind === 'pill' ? useQuantity : 1,
-              })
-            }
-          >
-            {consumable.spec.kind === 'pill' ? '服用' : '使用'}
-          </InkButton>
-        ) : null}
-        {item.location === 'bag' && consumable && actionHref && !directUse ? (
-          <InkButton disabled={pending} onClick={() => navigate(actionHref)}>
-            {beastFood
-              ? '前往喂养灵兽'
-              : (getTalismanActionLabel(consumable) ?? '前往使用')}
-          </InkButton>
-        ) : null}
-        {item.location === 'bag' && definition.kind === 'equipment' ? (
-          <EquipmentAction
-            item={item}
-            equipped={equipped}
-            level={level}
-            pending={pending}
-            onEquip={() =>
-              void act({
-                action: 'equip',
-                ...ref,
-                equipped: !item.equipped,
-              })
-            }
-          />
-        ) : null}
-        <InkButton
-          disabled={pending || item.equipped}
-          onClick={() =>
-            void act({
-              action: 'transfer',
-              ...ref,
-              location: item.location === 'bag' ? 'storage' : 'bag',
-            })
-          }
-        >
-          {item.location === 'bag' ? '存入洞府储藏室' : '取入储物袋'}
-        </InkButton>
-      </div>
+    <div className="flex flex-wrap items-center gap-x-1 gap-y-1 text-sm">
       {item.location === 'bag' &&
       directUse &&
       consumable.spec.kind === 'pill' &&
       item.quantity > 1 ? (
-        <div className="flex items-center gap-3">
-          <label htmlFor={`use-quantity-${item.id}`}>服用数量</label>
+        <div
+          role="group"
+          aria-label={`服用数量，最多${maxUseQuantity}颗`}
+          className="border-ink/20 flex h-8 items-center border"
+        >
+          <button
+            type="button"
+            aria-label="减少服用数量"
+            disabled={pending || useQuantity <= 1}
+            onClick={() => setUseQuantity((value) => Math.max(1, value - 1))}
+            className="disabled:text-ink-secondary/50 h-full w-8 cursor-pointer disabled:cursor-default"
+          >
+            −
+          </button>
           <input
-            id={`use-quantity-${item.id}`}
+            aria-label="服用数量"
             type="number"
             min={1}
-            max={Math.min(item.quantity, 99)}
+            max={maxUseQuantity}
             value={useQuantity}
-            className="border-ink/20 w-20 border bg-transparent p-2 font-mono"
+            disabled={pending}
+            className="border-ink/20 h-full w-9 [appearance:textfield] border-x bg-transparent text-center font-mono [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
             onChange={(e) => setUseQuantity(Number(e.target.value))}
           />
-          <span className="text-ink-secondary">
-            最多 {Math.min(item.quantity, 99)} 颗
-          </span>
+          <button
+            type="button"
+            aria-label="增加服用数量"
+            disabled={pending || useQuantity >= maxUseQuantity}
+            onClick={() =>
+              setUseQuantity((value) => Math.min(maxUseQuantity, value + 1))
+            }
+            className="disabled:text-ink-secondary/50 h-full w-8 cursor-pointer disabled:cursor-default"
+          >
+            +
+          </button>
+          <button
+            type="button"
+            aria-label={`设为最多${maxUseQuantity}颗`}
+            disabled={pending || useQuantity === maxUseQuantity}
+            onClick={() => setUseQuantity(maxUseQuantity)}
+            className="border-ink/20 disabled:text-ink-secondary/50 h-full cursor-pointer border-l px-1.5 disabled:cursor-default"
+          >
+            最多
+          </button>
         </div>
       ) : null}
+      {item.location === 'bag' && directUse ? (
+        <InkButton
+          disabled={
+            pending ||
+            (consumable.spec.kind === 'pill' &&
+              (!Number.isInteger(useQuantity) ||
+                useQuantity < 1 ||
+                useQuantity > maxUseQuantity))
+          }
+          onClick={() =>
+            void act({
+              action: 'use',
+              ...ref,
+              quantity: consumable.spec.kind === 'pill' ? useQuantity : 1,
+            })
+          }
+        >
+          {consumable.spec.kind === 'pill' ? '服用' : '使用'}
+        </InkButton>
+      ) : null}
+      {item.location === 'bag' && consumable && actionHref && !directUse ? (
+        <InkButton disabled={pending} onClick={() => navigate(actionHref)}>
+          {beastFood
+            ? '前往喂养灵兽'
+            : (getTalismanActionLabel(consumable) ?? '前往使用')}
+        </InkButton>
+      ) : null}
+      {item.location === 'bag' && definition.kind === 'equipment' ? (
+        <EquipmentAction
+          item={item}
+          equipped={equipped}
+          level={level}
+          pending={pending}
+          onEquip={() =>
+            void act({
+              action: 'equip',
+              ...ref,
+              equipped: !item.equipped,
+            })
+          }
+        />
+      ) : null}
+      <InkButton
+        disabled={pending || item.equipped}
+        onClick={() =>
+          void act({
+            action: 'transfer',
+            ...ref,
+            location: item.location === 'bag' ? 'storage' : 'bag',
+          })
+        }
+      >
+        {item.location === 'bag' ? '存入' : '取出'}
+      </InkButton>
     </div>
   );
 }
