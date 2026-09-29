@@ -1,8 +1,5 @@
 import { playerAppearances } from '../../../combat-v6/unit-appearance';
-import {
-  AUTO_POLICY_VERSION,
-  automaticCommands,
-} from '../../../combat-v6/auto';
+import { automaticCommands } from '../../../combat-v6/auto';
 import {
   controlledUnits,
   validateCommandGroup,
@@ -124,11 +121,6 @@ export class CombatV6PveHostSession {
     unitAppearances?: CombatV6ReplayTimeline['unitAppearances'],
   ) {
     const compiled = encounter;
-    if (
-      restored &&
-      restored.state.versions.autoPolicyVersion !== AUTO_POLICY_VERSION
-    )
-      throw new Error('自动策略版本不匹配，请先结束旧版本战局再切换');
     this.playerId = compiled.playerId;
     this.playerAutoStrategy = compiled.playerAutoStrategy;
     this.initialUnits = clone(compiled.battleInput.units);
