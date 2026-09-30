@@ -10,7 +10,10 @@ import {
 import { getCultivatorPreHeavenFates } from '@server/lib/services/cultivator/CultivatorProfileRepository';
 import { ELEMENT_PREFIX_MAP } from '@shared/config/alchemyConfig';
 import type { ResourceOperationSettlement } from '@shared/engine/resource/types';
-import type { AlchemyBagMaterial } from '@shared/inventory/alchemy';
+import {
+  alchemyMaterialDoseProblem,
+  type AlchemyBagMaterial,
+} from '@shared/inventory/alchemy';
 import {
   calculateAlchemyCost,
   calculateHighestMaterialRank,
@@ -183,6 +186,8 @@ function buildPreparedMaterials(
   materialRows: MaterialRow[],
   materialQuantities?: Record<string, number>,
 ): PreparedAlchemyMaterial[] {
+  const problem = alchemyMaterialDoseProblem(materialRows, materialQuantities);
+  if (problem) throw new AlchemyServiceError(problem, 400);
   return materialRows.map((material, index) =>
     buildPreparedMaterial(material, index, materialQuantities),
   );

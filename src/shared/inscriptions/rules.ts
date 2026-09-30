@@ -1,3 +1,4 @@
+import { MAX_CRAFT_MATERIAL_QUANTITY } from '../config/itemQuantity';
 import { DAO_FORMATION_INSCRIPTIONS_V1 } from '../engine/combat-v6/equipment/content';
 import { daoFormationMaxLevel } from '../engine/combat-v6/equipment/inscriptions';
 import {
@@ -7,6 +8,7 @@ import {
   type ItemGrant,
 } from '../inventory';
 import { InventoryEquipmentSchema } from '../inventory/equipment';
+import { inventoryStackIdentity } from '../inventory/stack-key';
 import {
   INSCRIPTION_MAX_LEVEL,
   inscriptionItemId,
@@ -130,17 +132,29 @@ export function prepareInscriptionDraw(
 ) {
   if (refs.length < 1 || refs.length > 4)
     throw new InventoryRuleError('请选择一至四种材料');
-  const afterMaterials = consume(items, refs);
+  const totals = new Map<string, number>();
   const totalTenths = refs.reduce((sum, ref) => {
     const item = resolve(items, ref);
     const problem = inscriptionMaterialProblem(item);
     if (problem) throw new InventoryRuleError(problem);
+    const facts = MaterialFactsSchema.parse(item.instanceData);
+    const key = inventoryStackIdentity('material.v1', facts)!;
+    const total = (totals.get(key) ?? 0) + ref.quantity;
+    if (
+      !Number.isInteger(ref.quantity) ||
+      ref.quantity < 1 ||
+      total > MAX_CRAFT_MATERIAL_QUANTITY
+    )
+      throw new InventoryRuleError(
+        `每种材料每次最多投入 ${MAX_CRAFT_MATERIAL_QUANTITY} 份`,
+      );
+    totals.set(key, total);
     return (
       sum +
-      inscriptionMaterialTenths(MaterialFactsSchema.parse(item.instanceData)) *
-        ref.quantity
+      inscriptionMaterialTenths(facts) * ref.quantity
     );
   }, 0);
+  const afterMaterials = consume(items, refs);
   const preview = previewInscriptionDraw(totalTenths);
   return { preview, afterMaterials };
 }
