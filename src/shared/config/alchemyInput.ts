@@ -1,6 +1,6 @@
 import { MAX_CRAFT_MATERIAL_QUANTITY } from './itemQuantity';
 
-/** Migrated verbatim from the old creation input limits. */
+/** 单炉材料种类与单个材料格的投入量。 */
 export const ALCHEMY_INPUT_CONSTRAINTS = {
   minMaterialKinds: 1,
   maxMaterialKinds: 6,

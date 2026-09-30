@@ -14,11 +14,9 @@ import {
   type PreparedAlchemyMaterial,
 } from '@server/lib/services/AlchemyRecipeRules';
 import { getCultivatorPreHeavenFates } from '@server/lib/services/cultivator/CultivatorProfileRepository';
+import { ALCHEMY_MAX_DOSE } from '@shared/config/alchemyInput';
 import type { ResourceOperationSettlement } from '@shared/engine/resource/types';
-import {
-  alchemyMaterialDoseProblem,
-  type AlchemyBagMaterial,
-} from '@shared/inventory/alchemy';
+import type { AlchemyBagMaterial } from '@shared/inventory/alchemy';
 import {
   calculateAlchemyCost,
   calculateHighestMaterialRank,
@@ -215,6 +213,8 @@ function normalizeDose(
   materialQuantities?: Record<string, number>,
 ): number {
   const requested = materialQuantities?.[material.id] ?? 1;
+  if (requested > ALCHEMY_MAX_DOSE)
+    throw new AlchemyServiceError(`每个材料格最多投入 ${ALCHEMY_MAX_DOSE} 份。`, 400);
   if (
     !Number.isInteger(requested) ||
     requested < 1 ||
@@ -432,8 +432,6 @@ function buildPreparedMaterials(
   materialRows: MaterialRow[],
   materialQuantities?: Record<string, number>,
 ): PreparedAlchemyMaterial[] {
-  const problem = alchemyMaterialDoseProblem(materialRows, materialQuantities);
-  if (problem) throw new AlchemyServiceError(problem, 400);
   return materialRows.map((material, index) =>
     buildPreparedMaterial(material, index, materialQuantities),
   );

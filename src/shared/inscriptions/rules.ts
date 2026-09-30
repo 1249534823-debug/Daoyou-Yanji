@@ -8,7 +8,6 @@ import {
   type ItemGrant,
 } from '../inventory';
 import { InventoryEquipmentSchema } from '../inventory/equipment';
-import { inventoryStackIdentity } from '../inventory/stack-key';
 import {
   INSCRIPTION_MAX_LEVEL,
   inscriptionItemId,
@@ -132,29 +131,22 @@ export function prepareInscriptionDraw(
 ) {
   if (refs.length < 1 || refs.length > 4)
     throw new InventoryRuleError('请选择一至四种材料');
-  const totals = new Map<string, number>();
+  const afterMaterials = consume(items, refs);
   const totalTenths = refs.reduce((sum, ref) => {
     const item = resolve(items, ref);
     const problem = inscriptionMaterialProblem(item);
     if (problem) throw new InventoryRuleError(problem);
     const facts = MaterialFactsSchema.parse(item.instanceData);
-    const key = inventoryStackIdentity('material.v1', facts)!;
-    const total = (totals.get(key) ?? 0) + ref.quantity;
     if (
       !Number.isInteger(ref.quantity) ||
       ref.quantity < 1 ||
-      total > MAX_CRAFT_MATERIAL_QUANTITY
+      ref.quantity > MAX_CRAFT_MATERIAL_QUANTITY
     )
       throw new InventoryRuleError(
-        `每种材料每次最多投入 ${MAX_CRAFT_MATERIAL_QUANTITY} 份`,
+        `每个材料格最多投入 ${MAX_CRAFT_MATERIAL_QUANTITY} 份`,
       );
-    totals.set(key, total);
-    return (
-      sum +
-      inscriptionMaterialTenths(facts) * ref.quantity
-    );
+    return sum + inscriptionMaterialTenths(facts) * ref.quantity;
   }, 0);
-  const afterMaterials = consume(items, refs);
   const preview = previewInscriptionDraw(totalTenths);
   return { preview, afterMaterials };
 }

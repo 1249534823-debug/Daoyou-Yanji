@@ -10,6 +10,7 @@ import { InkButton } from '@app/components/ui/InkButton';
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
 import { InkQuantityInput } from '@app/components/ui/InkQuantityInput';
 import { useCraftStorage } from '@app/lib/resources/craftStorage';
+import { MAX_CRAFT_MATERIAL_QUANTITY } from '@shared/config/itemQuantity';
 import type { InscriptionRequest } from '@shared/contracts/inscriptions';
 import type { InventoryView } from '@shared/contracts/inventory';
 import { daoFormationInscriptionOf } from '@shared/engine/combat-v6/equipment/content';
@@ -260,8 +261,8 @@ export function InscriptionRoom({ ownerId }: { ownerId: string }) {
         return;
       }
       const quantity = (materials[index]?.quantity ?? 0) + 1;
-      if (quantity > item.quantity) {
-        setSelectionError('该材料数量不足');
+      if (quantity > Math.min(item.quantity, MAX_CRAFT_MATERIAL_QUANTITY)) {
+        setSelectionError(`每个材料格最多投入 ${MAX_CRAFT_MATERIAL_QUANTITY} 份`);
         return;
       }
       setMaterials((old) =>
@@ -673,9 +674,10 @@ export function InscriptionRoom({ ownerId }: { ownerId: string }) {
                                     <span>投入数量</span>
                                     <InkQuantityInput
                                       label={`第${index + 1}格投入数量`}
-                                      max={
-                                        byId.get(materials[index]!.id)!.quantity
-                                      }
+                                      max={Math.min(
+                                        byId.get(materials[index]!.id)!.quantity,
+                                        MAX_CRAFT_MATERIAL_QUANTITY,
+                                      )}
                                       value={materials[index]!.quantity}
                                       disabled={session.locked}
                                       onChange={(value) => {
