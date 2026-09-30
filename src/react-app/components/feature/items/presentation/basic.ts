@@ -142,6 +142,7 @@ export const beastBookAdapter: ItemAdapter = (item, def) => {
   );
   const superior = BEAST_SUPERIOR_BOOK_SKILL_IDS.has(def.skillId!);
   const tier = !available ? '已失效' : superior ? '上品' : '普通';
+  const skill = beastSkillPresentation(def.skillId!);
   return {
     summary: {
       icon: superior ? '📕' : '📘',
@@ -154,7 +155,17 @@ export const beastBookAdapter: ItemAdapter = (item, def) => {
       sections: [
         {
           title: '所载传承',
-          entries: lines(beastSkillPresentation(def.skillId!).description),
+          entries: [
+            ...lines(skill.summary).map((line) => ({ ...line, tone: 'muted' as const })),
+            ...(skill.details
+              ? [{
+                  kind: 'disclosure' as const,
+                  title: '具体效果',
+                  tone: 'positive' as const,
+                  rows: lines(skill.details),
+                }]
+              : []),
+          ],
         },
       ],
       description: superior

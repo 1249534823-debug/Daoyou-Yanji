@@ -19,33 +19,33 @@ function beastPassiveDescription(skill: SkillDef): string | undefined {
   const percent = (value: number) => Math.round(value * 100);
   switch (effect.type) {
     case 'ghost':
-      return `死亡后第 ${effect.delay} 个回合开始复起，恢复至可恢复气血上限；不接受普通气血恢复，免疫常规异常，涅槃重生失效。被镇魂击杀后无法复起，等待期间不计存活。`;
+      return `死亡后第 ${effect.delay} 个回合开始复起，气血恢复至可恢复上限。无法接受普通气血恢复，免疫控制、减益和持续伤害；涅槃重生失效。被镇魂击杀后无法复起，等待期间不计存活。`;
     case 'exorcism':
       return `对灵魂体目标的物理和法术伤害提高 ${percent(effect.factor - 1)}%，击杀后阻止其本次复起。`;
     case 'denial':
-      return `免疫常规异常并拒绝增益，使灵魂体、涅槃重生、解厄、高级避厄及定神失效；受到灵魂体的物理与法术伤害增加 ${percent(effect.ghostDamageFactor - 1)}%。${effect.spellFactor < 1 ? `所受法术伤害降低 ${percent(1 - effect.spellFactor)}%。` : ''}`;
+      return `免疫控制、减益和持续伤害，无法获得增益；灵魂体、涅槃重生、定神（均含高级版）及解厄、高级避厄失效。受到灵魂体造成的物理与法术伤害增加 ${percent(effect.ghostDamageFactor - 1)}%。${effect.spellFactor < 1 ? `所受法术伤害降低 ${percent(1 - effect.spellFactor)}%。` : ''}`;
     case 'poison':
-      return `普通攻击直接扣血后有 ${percent(effect.chance)}% 概率使目标中毒 ${effect.duration} 回合，每回合损失 ${percent(effect.hpRatio)}% 最大气血和 ${percent(effect.mpRatio)}% 最大法力。${effect.immune ? '自身免疫此毒。' : ''}`;
+      return `普通攻击使目标实际损失气血且目标仍存活时，有 ${percent(effect.chance)}% 概率使其中毒 ${effect.duration} 回合；中毒期间每回合损失其最大气血的 ${percent(effect.hpRatio)}% 和最大法力的 ${percent(effect.mpRatio)}%。${effect.immune ? '自身免疫此毒。' : ''}`;
     case 'miracle':
       return `${effect.immune ? '免疫' : '回合末解除'}可驱散的控制、减益和持续伤害状态，不包含禁复活。`;
     case 'concentration':
-      return `免疫可驱散的控制状态（不含禁复活），物理伤害降低 ${percent(1 - effect.physicalFactor)}%。${effect.dodgeBonus ? `躲避增加 ${effect.dodgeBonus} 点。` : ''}`;
+      return `免疫可驱散的控制状态（不含禁复活），自身造成的物理伤害降低 ${percent(1 - effect.physicalFactor)}%。${effect.dodgeBonus ? `躲避增加 ${effect.dodgeBonus} 点。` : ''}`;
     case 'eternity':
       return `获得可延长增益时持续时间增加 ${percent(effect.factor - 1)}%，向下取整，最多额外 ${effect.maxExtra} 回合；不延长隐身、控制与特殊入场效果。`;
     case 'stealth':
-      return `每场首次出战时隐身 ${effect.minDuration}～${effect.maxDuration} 回合（含入场回合），不能施法，物理伤害降低 ${percent(1 - effect.physicalFactor)}%。灵觉可看破，群法仍可命中；召回后不重新触发。`;
+      return `每场首次出战时隐身 ${effect.minDuration}～${effect.maxDuration} 回合（含入场回合），不能施法，自身造成的物理伤害降低 ${percent(1 - effect.physicalFactor)}%。灵觉可看破，群法仍可命中；召回后不重新触发。`;
     case 'perception':
-      return `可以选中隐身目标。${effect.dodgeBonus ? `躲避增加 ${effect.dodgeBonus} 点。` : ''}`;
+      return `能看破隐身，攻击隐身目标。${effect.dodgeBonus ? `躲避增加 ${effect.dodgeBonus} 点。` : ''}`;
     case 'spellRepeat':
-      return `直接伤害法术施放后有 ${percent(effect.chance)}% 概率追加同一法术，追加伤害按正常值的 ${percent(effect.factor)}% 结算；沿用原目标，不额外消耗法力，也不会连续追加。`;
+      return `施放直接造成伤害的法术后，有 ${percent(effect.chance)}% 概率对原目标追加同一法术；追加伤害为正常值的 ${percent(effect.factor)}%，不额外消耗法力，也不会再次触发追加。`;
     case 'spellFluctuation':
-      return `法术伤害在正常值的 ${percent(effect.min)}%～${percent(effect.max)}% 之间波动，替换基础波动区间。${effect.suppressReflection ? '法术攻击不触发灵法反震。' : ''}`;
+      return `法术伤害在正常值的 ${percent(effect.min)}%～${percent(effect.max)}% 之间波动，取代通常的法伤波动范围。${effect.suppressReflection ? '法术攻击不触发灵法反震。' : ''}`;
     case 'groupSpell':
-      return `消耗 ${effect.costMp} 法力，初始攻击 1 个目标；每满 ${effect.levelsPerTarget} 级多攻击 1 个，最多 ${effect.maxTargets} 个。法术伤害系数 ${effect.coefficient}，附加威力 ${effect.powerBase} + 等级 × ${effect.powerPerLevel}；没有元素克制。`;
+      return `消耗 ${effect.costMp} 法力，初始攻击 1 个目标；每满 ${effect.levelsPerTarget} 级多攻击 1 个，最多 ${effect.maxTargets} 个。法术伤害系数为 ${effect.coefficient}，附加威力为 ${effect.powerBase} + ${effect.powerPerLevel === 1 ? '自身等级' : `自身等级 × ${effect.powerPerLevel}`}；没有元素克制。`;
     case 'spellHit':
-      return `消耗 ${effect.costMp} 法力，攻击 1 个目标。法术伤害系数 ${effect.coefficient}，附加威力 ${effect.powerBase} + 等级 × ${effect.powerPerLevel}；没有元素克制。`;
+      return `消耗 ${effect.costMp} 法力，攻击 1 个目标。法术伤害系数为 ${effect.coefficient}，附加威力为 ${effect.powerBase} + ${effect.powerPerLevel === 1 ? '自身等级' : `自身等级 × ${effect.powerPerLevel}`}；没有元素克制。`;
     case 'parry':
-      return `每回合首次命中的物理伤害降低 ${percent(1 - effect.factor)}%。护盾吸收前消耗次数，蛮力可忽略此效果且不消耗次数。`;
+      return `每回合首次被物理攻击命中时，伤害降低 ${percent(1 - effect.factor)}%。即使护盾挡下伤害，也会消耗本回合的招架机会；蛮力可无视招架，且不消耗这次机会。`;
     case 'defenseTraining':
       return `物理防御提高自身等级 × ${effect.perLevel}，向下取整；自身法术伤害降低 ${percent(1 - effect.spellFactor)}%。`;
     case 'strengthTraining':
@@ -57,15 +57,15 @@ function beastPassiveDescription(skill: SkillDef): string | undefined {
     case 'spellResistance':
       return `受到的法术伤害降低 ${percent(1 - effect.takenFactor)}%，自身造成的物理伤害降低 ${percent(1 - effect.physicalFactor)}%；不减免固定伤害。`;
     case 'lifesteal':
-      return `物理攻击直接命中后，恢复目标实际损失气血的 ${percent(effect.ratio)}%，向下取整，不超过可恢复上限。连击追加攻击与反击不触发噬血，无法从灵魂体目标噬血。`;
+      return `物理攻击使目标实际损失气血后，自身恢复本次损失气血的 ${percent(effect.ratio)}%，向下取整且不超过可恢复上限。连击追加攻击与反击不触发噬血，也无法从灵魂体目标噬血。`;
     case 'reflection':
-      return `受到${effect.kind === 'physical' ? '物理' : '法术'}攻击并损失气血时，有 ${percent(effect.chance)}% 概率向攻击者反震实际损失气血的 ${percent(effect.ratio)}%，按固定伤害结算，最低 1 点。追加攻击不触发反震。${effect.kind === 'physical' ? '阻止敌方连击，偷袭不解除此限制。' : '不阻止物理连击。'}`;
+      return `受到${effect.kind === 'physical' ? '物理' : '法术'}攻击并实际损失气血时，有 ${percent(effect.chance)}% 概率对攻击者造成相当于本次气血损失 ${percent(effect.ratio)}% 的固定伤害，最低 1 点。追加攻击不触发反震。${effect.kind === 'physical' ? '阻止敌方连击，偷袭不解除此限制。' : '不阻止物理连击。'}`;
     case 'divineRevival':
       return `受到致命伤害时，有 ${percent(effect.chance)}% 概率复生，恢复至最大气血的 ${percent(effect.hpRatio)}%，受可恢复上限和禁复活状态限制。每次致命伤害独立判定，成功不计死亡；持有灵魂体或绝灵时不生效。`;
     case 'counter':
       return `受到物理攻击并损失气血时，有 ${percent(effect.chance)}% 概率反击，攻击系数为普攻的 ${percent(effect.coefficient)}%。反击与连击追加攻击不会再次触发反击。`;
     case 'critical':
-      return `${effect.kind === 'physical' ? '物理' : '法术'}暴击率提高 ${percent(effect.chance)}%，暴击倍率沿用战斗规则。`;
+      return `${effect.kind === 'physical' ? '物理' : '法术'}暴击率提高 ${percent(effect.chance)}%，暴击伤害倍率不变。`;
     case 'regeneration':
       return `每回合结束时恢复${effect.resource === 'hp' ? '气血' : '法力'}，数值为自身等级${effect.levelDivisor === 1 ? '' : `的 1/${effect.levelDivisor}`}，向下取整，不超过上限；死亡或未出战时不生效。`;
     case 'spellBoost':
@@ -123,6 +123,7 @@ const effectLabels: Record<SkillEffect['type'], string> = {
 export function combatV6SkillDetails(
   skills: SkillDef[],
   statuses: StatusDef[],
+  options: { includeBeastFlavor?: boolean } = {},
 ) {
   const names = new Map(statuses.map((status) => [status.id, status.name]));
   const describe = (effect: SkillEffect): string => {
@@ -170,8 +171,10 @@ export function combatV6SkillDetails(
           (skill.capture
             ? '尝试收服野生灵兽，气血越低越容易成功；执行时消耗法力，失败仍消耗。'
             : [
-                BEAST_SKILL_CONTENT.find((entry) => entry.id === skill.id)
-                  ?.flavorText,
+                options.includeBeastFlavor === false
+                  ? undefined
+                  : BEAST_SKILL_CONTENT.find((entry) => entry.id === skill.id)
+                      ?.flavorText,
                 beastComboDescription(skill) ??
                   beastPassiveDescription(skill) ??
                   ([

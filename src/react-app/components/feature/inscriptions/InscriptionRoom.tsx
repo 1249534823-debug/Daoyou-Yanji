@@ -291,7 +291,10 @@ export function InscriptionRoom({ ownerId }: { ownerId: string }) {
     const describe = (ref: InscriptionRef, quantity: number) => {
       const item = byId.get(ref.id);
       const location = item?.location === 'storage' ? '储藏室' : '储物袋';
-      return `${location} · ${item?.name} ×${quantity}`;
+      const definition = item && itemDefinition(item.definitionId);
+      const level =
+        definition?.kind === 'inscription' ? ` · ${definition.level}级` : '';
+      return `${location} · ${item?.name}${level} ×${quantity}`;
     };
     if (input.action === 'draw') {
       lines.push(...input.materials.map((ref) => describe(ref, ref.quantity)));

@@ -108,6 +108,9 @@ describe('阵纹物品与绘制', () => {
       expect(
         DAO_FORMATION_INSCRIPTIONS_V1.some((p) => p.id === def.patternId),
       ).toBe(true);
+      expect(def.name).toBe(
+        DAO_FORMATION_INSCRIPTIONS_V1.find((p) => p.id === def.patternId)!.name,
+      );
     }
     expect(
       InventoryItemSchema.safeParse({ ...glyph(), instanceData: { level: 11 } })

@@ -17,6 +17,8 @@ it('技能格与传承灵印都读取技能配置的高级标记', () => {
       skill.book && skill.advanced,
     );
     expect(view.description).not.toMatch(/demo/);
+    expect(view.summary).toBe(skill.flavorText);
+    expect(view.details).not.toBe(skill.flavorText);
   }
   for (const id of [
     'beast.thunderstorm',
@@ -51,5 +53,17 @@ it('冲突说明保留在描述，冲突技能仍按自身等级展示', () => {
       style: 'advanced',
       description: expect.stringContaining('持有灵魂体或绝灵时不生效'),
     },
+  );
+});
+
+it('技能简述与具体数值分别提供给预览', () => {
+  const combo = beastSkillPresentation('beast.advanced-combo');
+  expect(combo.summary).toBe('普通攻击命中后有机会追加一击，但自身造成的物理伤害会降低。');
+  expect(combo.details).toContain('55%');
+  expect(combo.details).toContain('20%');
+  expect(combo.description).toBe(`${combo.summary}\n${combo.details}`);
+  expect(beastSkillPresentation('beast.perception').details).toBe('');
+  expect(beastSkillPresentation('beast.advanced-denial').details).toContain(
+    '灵魂体、涅槃重生、定神（均含高级版）',
   );
 });

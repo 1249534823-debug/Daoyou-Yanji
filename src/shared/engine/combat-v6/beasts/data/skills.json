@@ -1,7 +1,7 @@
 {
   "$schema": "./skills.schema.json",
   "formatVersion": 1,
-  "contentRevision": 15,
+  "contentRevision": 16,
   "skills": [
     {
       "id": "beast.spirit-flame",
@@ -30,7 +30,7 @@
         "physicalFactor": 0.75
       },
       "icon": "⚔️",
-      "flavorText": "普通攻击命中后有机会追加一击，但自身物理伤害会降低。"
+      "flavorText": "普通攻击命中后有机会追加一击，但自身造成的物理伤害会降低。"
     },
     {
       "id": "beast.advanced-combo",
@@ -44,7 +44,7 @@
         "physicalFactor": 0.8
       },
       "icon": "⚔️",
-      "flavorText": "普通攻击命中后有机会追加一击，但自身物理伤害会降低。"
+      "flavorText": "普通攻击命中后有机会追加一击，但自身造成的物理伤害会降低。"
     },
     {
       "id": "beast.counter",
@@ -291,7 +291,7 @@
         "ratio": 0.25
       },
       "icon": "🩸",
-      "flavorText": "直接物理攻击命中后，吸取目标损失的气血。"
+      "flavorText": "物理攻击使目标损失气血时，按伤害量恢复自身气血。"
     },
     {
       "id": "beast.advanced-lifesteal",
@@ -303,7 +303,7 @@
         "ratio": 0.3
       },
       "icon": "🩸",
-      "flavorText": "直接物理攻击命中后，吸取目标损失的气血。"
+      "flavorText": "物理攻击使目标损失气血时，按伤害量恢复自身气血。"
     },
     {
       "id": "beast.reflection",
@@ -317,7 +317,7 @@
         "ratio": 0.25
       },
       "icon": "🪞",
-      "flavorText": "受到物理攻击并损失气血时，有机会将伤害反震给攻击者。"
+      "flavorText": "受到物理攻击并损失气血时，有机会将部分伤害反震给攻击者。"
     },
     {
       "id": "beast.advanced-reflection",
@@ -331,7 +331,7 @@
         "ratio": 0.5
       },
       "icon": "🪞",
-      "flavorText": "受到物理攻击并损失气血时，有机会将伤害反震给攻击者。"
+      "flavorText": "受到物理攻击并损失气血时，有机会将部分伤害反震给攻击者。"
     },
     {
       "id": "beast.divine-revival",
@@ -344,7 +344,7 @@
         "hpRatio": 0.6
       },
       "icon": "🪷",
-      "flavorText": "受到致命伤害时，有机会保住性命并恢复气血。"
+      "flavorText": "受到致命伤害时，有机会复生并恢复气血。"
     },
     {
       "id": "beast.advanced-divine-revival",
@@ -357,7 +357,7 @@
         "hpRatio": 1
       },
       "icon": "🪷",
-      "flavorText": "受到致命伤害时，有机会保住性命并恢复气血。"
+      "flavorText": "受到致命伤害时，有机会复生并恢复气血。"
     },
     {
       "id": "beast.spell-reflection",
@@ -371,7 +371,7 @@
         "ratio": 0.25
       },
       "icon": "🔷",
-      "flavorText": "受到法术攻击并损失气血时，有机会将伤害反震给施术者。"
+      "flavorText": "受到法术攻击并损失气血时，有机会将部分伤害反震给施术者。"
     },
     {
       "id": "beast.advanced-spell-reflection",
@@ -385,7 +385,7 @@
         "ratio": 0.5
       },
       "icon": "🔷",
-      "flavorText": "受到法术攻击并损失气血时，有机会将伤害反震给施术者。"
+      "flavorText": "受到法术攻击并损失气血时，有机会将部分伤害反震给施术者。"
     },
     {
       "id": "beast.wisdom",
@@ -421,7 +421,7 @@
         "factor": 1.05
       },
       "icon": "🥷",
-      "flavorText": "提高物理伤害，攻击时不会引发目标的反击或反震。"
+      "flavorText": "提高自身物理伤害，物理攻击不会触发目标的反击或反震。"
     },
     {
       "id": "beast.advanced-sneak-attack",
@@ -433,7 +433,7 @@
         "factor": 1.1
       },
       "icon": "🥷",
-      "flavorText": "提高物理伤害，攻击时不会引发目标的反击或反震。"
+      "flavorText": "提高自身物理伤害，物理攻击不会触发目标的反击或反震。"
     },
     {
       "id": "beast.spell-resistance",
@@ -446,7 +446,7 @@
         "physicalFactor": 0.9
       },
       "icon": "🔰",
-      "flavorText": "降低所受法术伤害，但自身物理伤害也会降低。"
+      "flavorText": "降低所受法术伤害，但自身造成的物理伤害也会降低。"
     },
     {
       "id": "beast.advanced-spell-resistance",
@@ -459,7 +459,7 @@
         "physicalFactor": 0.9
       },
       "icon": "🔰",
-      "flavorText": "降低所受法术伤害，但自身物理伤害也会降低。"
+      "flavorText": "降低所受法术伤害，但自身造成的物理伤害也会降低。"
     },
     {
       "id": "beast.parry",
@@ -471,7 +471,7 @@
         "factor": 0.9
       },
       "icon": "🤺",
-      "flavorText": "每回合首次受到物理攻击时，减轻该次伤害。"
+      "flavorText": "每回合首次被物理攻击命中时，减轻该次伤害。"
     },
     {
       "id": "beast.advanced-parry",
@@ -483,7 +483,7 @@
         "factor": 0.8
       },
       "icon": "🤺",
-      "flavorText": "每回合首次受到物理攻击时，减轻该次伤害。"
+      "flavorText": "每回合首次被物理攻击命中时，减轻该次伤害。"
     },
     {
       "id": "beast.defense",
@@ -496,7 +496,7 @@
         "spellFactor": 0.9
       },
       "icon": "🛡️",
-      "flavorText": "物理防御随等级提高，但自身法术伤害降低。"
+      "flavorText": "物理防御随等级提高，但自身造成的法术伤害降低。"
     },
     {
       "id": "beast.advanced-defense",
@@ -509,7 +509,7 @@
         "spellFactor": 0.95
       },
       "icon": "🛡️",
-      "flavorText": "物理防御随等级提高，但自身法术伤害降低。"
+      "flavorText": "物理防御随等级提高，但自身造成的法术伤害降低。"
     },
     {
       "id": "beast.strength",
@@ -552,7 +552,7 @@
         "maxTargets": 3
       },
       "icon": "🌩️",
-      "flavorText": "雷光扫向敌方，随着等级提升可攻击更多目标。"
+      "flavorText": "雷光扫过敌方，造成法术伤害；等级越高，可攻击的目标越多。"
     },
     {
       "id": "beast.mountain-crush",
@@ -569,7 +569,7 @@
         "maxTargets": 3
       },
       "icon": "⛰️",
-      "flavorText": "山石崩落压向敌方，随着等级提升可攻击更多目标。"
+      "flavorText": "山石砸向敌方，造成法术伤害；等级越高，可攻击的目标越多。"
     },
     {
       "id": "beast.flood",
@@ -586,7 +586,7 @@
         "maxTargets": 3
       },
       "icon": "🌊",
-      "flavorText": "翻江倒海敌方，随着等级提升可攻击更多目标。"
+      "flavorText": "巨浪冲向敌方，造成法术伤害；等级越高，可攻击的目标越多。"
     },
     {
       "id": "beast.wildfire",
@@ -603,7 +603,7 @@
         "maxTargets": 3
       },
       "icon": "🌋",
-      "flavorText": "烈焰席卷敌方，随着等级提升可攻击更多目标。"
+      "flavorText": "烈焰席卷敌方，造成法术伤害；等级越高，可攻击的目标越多。"
     },
     {
       "id": "beast.spell-combo",
@@ -616,7 +616,7 @@
         "factor": 0.5
       },
       "icon": "🌀",
-      "flavorText": "直接伤害法术施放后，有机会再次施放同一法术。"
+      "flavorText": "施放伤害法术后，有机会对原目标再施放一次同一法术。"
     },
     {
       "id": "beast.advanced-spell-combo",
@@ -629,7 +629,7 @@
         "factor": 0.5
       },
       "icon": "🌀",
-      "flavorText": "直接伤害法术施放后，有机会再次施放同一法术。"
+      "flavorText": "施放伤害法术后，有机会对原目标再施放一次同一法术。"
     },
     {
       "id": "beast.spell-fluctuation",
@@ -643,7 +643,7 @@
         "suppressReflection": false
       },
       "icon": "🎲",
-      "flavorText": "造成的法术伤害有高低波动。"
+      "flavorText": "法术伤害忽高忽低。"
     },
     {
       "id": "beast.advanced-spell-fluctuation",
@@ -657,7 +657,7 @@
         "suppressReflection": true
       },
       "icon": "🎲",
-      "flavorText": "造成的法术伤害有高低波动，法术攻击还不会触发灵法反震。"
+      "flavorText": "法术伤害起伏更大，法术攻击也不会触发灵法反震。"
     },
     {
       "id": "beast.stealth",
@@ -671,7 +671,7 @@
         "physicalFactor": 0.8
       },
       "icon": "🌫️",
-      "flavorText": "首次出战时隐身数回合，期间不能施法，物理伤害降低。"
+      "flavorText": "首次出战时隐身数回合，期间不能施法，造成的物理伤害降低。"
     },
     {
       "id": "beast.advanced-stealth",
@@ -685,7 +685,7 @@
         "physicalFactor": 0.85
       },
       "icon": "🌫️",
-      "flavorText": "首次出战时隐身数回合，期间不能施法，物理伤害降低。"
+      "flavorText": "首次出战时隐身数回合，期间不能施法，造成的物理伤害降低。"
     },
     {
       "id": "beast.perception",
@@ -697,7 +697,7 @@
         "dodgeBonus": 0
       },
       "icon": "👁️",
-      "flavorText": "可以选中隐身目标。"
+      "flavorText": "能看破隐身，攻击隐身目标。"
     },
     {
       "id": "beast.advanced-perception",
@@ -709,7 +709,7 @@
         "dodgeBonus": 10
       },
       "icon": "👁️",
-      "flavorText": "可以选中隐身目标，并提高自身躲避。"
+      "flavorText": "能看破隐身并攻击隐身目标，自身躲避也会提高。"
     },
     {
       "id": "beast.poison",
@@ -725,7 +725,7 @@
         "immune": false
       },
       "icon": "☠️",
-      "flavorText": "普通攻击造成伤害后，有机会使目标中毒，持续损失气血和法力。"
+      "flavorText": "普攻伤到目标后，有机会使其中毒，持续损失气血和法力。"
     },
     {
       "id": "beast.advanced-poison",
@@ -741,7 +741,7 @@
         "immune": true
       },
       "icon": "☠️",
-      "flavorText": "普通攻击造成伤害后，有机会使目标中毒；自身免疫此毒。"
+      "flavorText": "普攻伤到目标后，有机会使其中毒，持续损失气血和法力；自身免疫此毒。"
     },
     {
       "id": "beast.miracle",
@@ -778,7 +778,7 @@
         "dodgeBonus": 0
       },
       "icon": "🧠",
-      "flavorText": "免疫可驱散的控制，但自身物理伤害降低。"
+      "flavorText": "免疫可驱散的控制，但自身造成的物理伤害降低。"
     },
     {
       "id": "beast.advanced-concentration",
@@ -791,7 +791,7 @@
         "dodgeBonus": 10
       },
       "icon": "🧠",
-      "flavorText": "免疫可驱散的控制，提高自身躲避，但物理伤害降低。"
+      "flavorText": "免疫可驱散的控制，提高自身躲避，但造成的物理伤害降低。"
     },
     {
       "id": "beast.eternity",
@@ -878,7 +878,7 @@
         "spellFactor": 1
       },
       "icon": "🚫",
-      "flavorText": "免疫常规异常且无法接受增益，但受到灵魂体的伤害增加。"
+      "flavorText": "免疫控制、减益和持续伤害，无法获得增益；更怕灵魂体攻击。"
     },
     {
       "id": "beast.advanced-denial",
@@ -891,7 +891,7 @@
         "spellFactor": 0.8
       },
       "icon": "🚫",
-      "flavorText": "免疫常规异常且无法接受增益，所受法术伤害降低，但更易受到灵魂体的伤害。"
+      "flavorText": "免疫控制、减益和持续伤害，无法获得增益；减轻法术伤害，却更怕灵魂体攻击。"
     }
   ],
   "families": [
