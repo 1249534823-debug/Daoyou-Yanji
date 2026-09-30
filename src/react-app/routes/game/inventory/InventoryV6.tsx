@@ -20,6 +20,7 @@ import { InventoryItems } from '@app/components/feature/items/InventoryItems';
 import { GameSceneFrame } from '@app/components/game-shell/GameSceneFrame';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton } from '@app/components/ui/InkButton';
+import { InkQuantityInput } from '@app/components/ui/InkQuantityInput';
 import { useInventoryBag } from '@app/lib/resources/bag';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
 import { useCultivatorIdentity } from '@app/lib/resources/player';
@@ -506,7 +507,7 @@ function ItemActions({
   level?: number;
 }) {
   const definition = itemDefinition(item.definitionId);
-  const [useQuantity, setUseQuantity] = useState(1);
+  const [useQuantity, setUseQuantity] = useState('1');
   const ref = { id: item.id, revision: item.revision };
   const navigate = useNavigate();
   const consumable =
@@ -540,66 +541,29 @@ function ItemActions({
       directUse &&
       consumable.spec.kind === 'pill' &&
       item.quantity > 1 ? (
-        <div
-          role="group"
-          aria-label={`服用数量，最多${maxUseQuantity}颗`}
-          className="border-ink/20 flex h-8 items-center border"
-        >
-          <button
-            type="button"
-            aria-label="减少服用数量"
-            disabled={pending || useQuantity <= 1}
-            onClick={() => setUseQuantity((value) => Math.max(1, value - 1))}
-            className="disabled:text-ink-secondary/50 h-full w-8 cursor-pointer disabled:cursor-default"
-          >
-            −
-          </button>
-          <input
-            aria-label="服用数量"
-            type="number"
-            min={1}
-            max={maxUseQuantity}
-            value={useQuantity}
-            disabled={pending}
-            className="border-ink/20 h-full w-9 [appearance:textfield] border-x bg-transparent text-center font-mono [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-            onChange={(e) => setUseQuantity(Number(e.target.value))}
-          />
-          <button
-            type="button"
-            aria-label="增加服用数量"
-            disabled={pending || useQuantity >= maxUseQuantity}
-            onClick={() =>
-              setUseQuantity((value) => Math.min(maxUseQuantity, value + 1))
-            }
-            className="disabled:text-ink-secondary/50 h-full w-8 cursor-pointer disabled:cursor-default"
-          >
-            +
-          </button>
-          <button
-            type="button"
-            aria-label={`设为最多${maxUseQuantity}颗`}
-            disabled={pending || useQuantity === maxUseQuantity}
-            onClick={() => setUseQuantity(maxUseQuantity)}
-            className="border-ink/20 disabled:text-ink-secondary/50 h-full cursor-pointer border-l px-1.5 disabled:cursor-default"
-          >
-            最多
-          </button>
-        </div>
+        <InkQuantityInput
+          label="服用数量"
+          value={useQuantity}
+          onChange={setUseQuantity}
+          max={maxUseQuantity}
+          disabled={pending}
+        />
       ) : null}
       {item.location === 'bag' && directUse ? (
         <InkButton
           disabled={
             pending ||
             (consumable.spec.kind === 'pill' &&
-              (!Number.isInteger(useQuantity) ||
-                useQuantity < 1 ||
-                useQuantity > maxUseQuantity))
+              (!Number.isInteger(Number(useQuantity)) ||
+                Number(useQuantity) < 1 ||
+                Number(useQuantity) > maxUseQuantity))
           }
           onClick={() =>
             void act({
               action: 'use',
               ...ref,
-              quantity: consumable.spec.kind === 'pill' ? useQuantity : 1,
+              quantity:
+                consumable.spec.kind === 'pill' ? Number(useQuantity) : 1,
             })
           }
         >
