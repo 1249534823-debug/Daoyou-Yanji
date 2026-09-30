@@ -1,12 +1,13 @@
 {
   "$schema": "./skills.schema.json",
   "formatVersion": 1,
-  "contentRevision": 14,
+  "contentRevision": 15,
   "skills": [
     {
       "id": "beast.spirit-flame",
       "name": "灵火",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "spellHit",
         "costMp": 10,
@@ -21,6 +22,7 @@
       "id": "beast.combo",
       "name": "连击",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "combo",
         "chance": 0.45,
@@ -34,6 +36,7 @@
       "id": "beast.advanced-combo",
       "name": "高级连击",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "combo",
         "chance": 0.55,
@@ -47,6 +50,7 @@
       "id": "beast.counter",
       "name": "反击",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "counter",
         "chance": 0.3,
@@ -59,6 +63,7 @@
       "id": "beast.advanced-counter",
       "name": "高级反击",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "counter",
         "chance": 0.3,
@@ -71,6 +76,7 @@
       "id": "beast.critical",
       "name": "必杀",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "critical",
         "kind": "physical",
@@ -83,6 +89,7 @@
       "id": "beast.advanced-critical",
       "name": "高级必杀",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "critical",
         "kind": "physical",
@@ -95,6 +102,7 @@
       "id": "beast.spell-critical",
       "name": "灵法会心",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "critical",
         "kind": "spell",
@@ -107,6 +115,7 @@
       "id": "beast.advanced-spell-critical",
       "name": "高级灵法会心",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "critical",
         "kind": "spell",
@@ -119,6 +128,7 @@
       "id": "beast.regeneration",
       "name": "自愈",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "regeneration",
         "resource": "hp",
@@ -131,6 +141,7 @@
       "id": "beast.advanced-regeneration",
       "name": "高级自愈",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "regeneration",
         "resource": "hp",
@@ -143,6 +154,7 @@
       "id": "beast.meditation",
       "name": "回灵",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "regeneration",
         "resource": "mp",
@@ -155,6 +167,7 @@
       "id": "beast.advanced-meditation",
       "name": "高级回灵",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "regeneration",
         "resource": "mp",
@@ -167,6 +180,7 @@
       "id": "beast.agility",
       "name": "迅捷",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "speed",
         "factor": 1.1
@@ -178,6 +192,7 @@
       "id": "beast.advanced-agility",
       "name": "高级迅捷",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "speed",
         "factor": 1.2
@@ -189,6 +204,7 @@
       "id": "beast.spell-mastery",
       "name": "灵法精通",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "spellBoost",
         "factor": 1.1
@@ -200,6 +216,7 @@
       "id": "beast.advanced-spell-mastery",
       "name": "高级灵法精通",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "spellBoost",
         "factor": 1.2
@@ -211,6 +228,7 @@
       "id": "beast.sluggish",
       "name": "迟钝",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "speed",
         "factor": 0.8
@@ -222,6 +240,7 @@
       "id": "beast.thunder",
       "name": "雷击",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "spellHit",
         "costMp": 10,
@@ -236,6 +255,7 @@
       "id": "beast.falling-rock",
       "name": "落岩",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "spellHit",
         "costMp": 10,
@@ -250,6 +270,7 @@
       "id": "beast.water-attack",
       "name": "水击",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "spellHit",
         "costMp": 10,
@@ -264,6 +285,7 @@
       "id": "beast.lifesteal",
       "name": "噬血",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "lifesteal",
         "ratio": 0.25
@@ -275,6 +297,7 @@
       "id": "beast.advanced-lifesteal",
       "name": "高级噬血",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "lifesteal",
         "ratio": 0.3
@@ -286,6 +309,7 @@
       "id": "beast.reflection",
       "name": "反震",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "reflection",
         "kind": "physical",
@@ -299,6 +323,7 @@
       "id": "beast.advanced-reflection",
       "name": "高级反震",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "reflection",
         "kind": "physical",
@@ -312,6 +337,7 @@
       "id": "beast.divine-revival",
       "name": "涅槃重生",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "divineRevival",
         "chance": 0.2,
@@ -324,6 +350,7 @@
       "id": "beast.advanced-divine-revival",
       "name": "高级涅槃重生",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "divineRevival",
         "chance": 0.3,
@@ -336,6 +363,7 @@
       "id": "beast.spell-reflection",
       "name": "灵法反震",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "reflection",
         "kind": "spell",
@@ -349,6 +377,7 @@
       "id": "beast.advanced-spell-reflection",
       "name": "高级灵法反震",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "reflection",
         "kind": "spell",
@@ -362,6 +391,7 @@
       "id": "beast.wisdom",
       "name": "慧根",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "wisdom",
         "factor": 0.75
@@ -373,6 +403,7 @@
       "id": "beast.advanced-wisdom",
       "name": "高级慧根",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "wisdom",
         "factor": 0.5
@@ -384,6 +415,7 @@
       "id": "beast.sneak-attack",
       "name": "偷袭",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "sneakAttack",
         "factor": 1.05
@@ -395,6 +427,7 @@
       "id": "beast.advanced-sneak-attack",
       "name": "高级偷袭",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "sneakAttack",
         "factor": 1.1
@@ -406,6 +439,7 @@
       "id": "beast.spell-resistance",
       "name": "御法",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "spellResistance",
         "takenFactor": 0.95,
@@ -418,6 +452,7 @@
       "id": "beast.advanced-spell-resistance",
       "name": "高级御法",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "spellResistance",
         "takenFactor": 0.9,
@@ -430,6 +465,7 @@
       "id": "beast.parry",
       "name": "招架",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "parry",
         "factor": 0.9
@@ -441,6 +477,7 @@
       "id": "beast.advanced-parry",
       "name": "高级招架",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "parry",
         "factor": 0.8
@@ -452,6 +489,7 @@
       "id": "beast.defense",
       "name": "铁骨",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "defenseTraining",
         "perLevel": 0.6,
@@ -464,6 +502,7 @@
       "id": "beast.advanced-defense",
       "name": "高级铁骨",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "defenseTraining",
         "perLevel": 0.8,
@@ -476,6 +515,7 @@
       "id": "beast.strength",
       "name": "蛮力",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "strengthTraining",
         "perLevel": 0.4,
@@ -488,6 +528,7 @@
       "id": "beast.advanced-strength",
       "name": "高级蛮力",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "strengthTraining",
         "perLevel": 0.55,
@@ -498,8 +539,9 @@
     },
     {
       "id": "beast.thunderstorm",
-      "name": "雷光横扫",
+      "name": "九霄神雷",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "groupSpell",
         "costMp": 20,
@@ -516,6 +558,7 @@
       "id": "beast.mountain-crush",
       "name": "山崩地裂",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "groupSpell",
         "costMp": 20,
@@ -530,8 +573,9 @@
     },
     {
       "id": "beast.flood",
-      "name": "洪流席卷",
+      "name": "翻江倒海",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "groupSpell",
         "costMp": 20,
@@ -542,12 +586,13 @@
         "maxTargets": 3
       },
       "icon": "🌊",
-      "flavorText": "洪流席卷敌方，随着等级提升可攻击更多目标。"
+      "flavorText": "翻江倒海敌方，随着等级提升可攻击更多目标。"
     },
     {
       "id": "beast.wildfire",
-      "name": "烈焰燎原",
+      "name": "红莲业火",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "groupSpell",
         "costMp": 20,
@@ -564,6 +609,7 @@
       "id": "beast.spell-combo",
       "name": "灵法连击",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "spellRepeat",
         "chance": 0.2,
@@ -576,6 +622,7 @@
       "id": "beast.advanced-spell-combo",
       "name": "高级灵法连击",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "spellRepeat",
         "chance": 0.3,
@@ -588,6 +635,7 @@
       "id": "beast.spell-fluctuation",
       "name": "法威无常",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "spellFluctuation",
         "min": 0.8,
@@ -601,6 +649,7 @@
       "id": "beast.advanced-spell-fluctuation",
       "name": "高级法威无常",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "spellFluctuation",
         "min": 0.5,
@@ -614,6 +663,7 @@
       "id": "beast.stealth",
       "name": "隐身",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "stealth",
         "minDuration": 2,
@@ -627,6 +677,7 @@
       "id": "beast.advanced-stealth",
       "name": "高级隐身",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "stealth",
         "minDuration": 3,
@@ -640,6 +691,7 @@
       "id": "beast.perception",
       "name": "灵觉",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "perception",
         "dodgeBonus": 0
@@ -651,6 +703,7 @@
       "id": "beast.advanced-perception",
       "name": "高级灵觉",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "perception",
         "dodgeBonus": 10
@@ -662,6 +715,7 @@
       "id": "beast.poison",
       "name": "毒性",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "poison",
         "chance": 0.15,
@@ -677,6 +731,7 @@
       "id": "beast.advanced-poison",
       "name": "高级毒性",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "poison",
         "chance": 0.2,
@@ -692,6 +747,7 @@
       "id": "beast.miracle",
       "name": "解厄",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "miracle",
         "immune": false
@@ -703,6 +759,7 @@
       "id": "beast.advanced-miracle",
       "name": "高级避厄",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "miracle",
         "immune": true
@@ -714,6 +771,7 @@
       "id": "beast.concentration",
       "name": "定神",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "concentration",
         "physicalFactor": 0.8,
@@ -726,6 +784,7 @@
       "id": "beast.advanced-concentration",
       "name": "高级定神",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "concentration",
         "physicalFactor": 0.8,
@@ -738,6 +797,7 @@
       "id": "beast.eternity",
       "name": "灵效绵长",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "eternity",
         "factor": 1.5,
@@ -750,6 +810,7 @@
       "id": "beast.advanced-eternity",
       "name": "高级灵效绵长",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "eternity",
         "factor": 2,
@@ -762,6 +823,7 @@
       "id": "beast.ghost",
       "name": "灵魂体",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "ghost",
         "delay": 5
@@ -773,6 +835,7 @@
       "id": "beast.advanced-ghost",
       "name": "高级灵魂体",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "ghost",
         "delay": 5
@@ -784,6 +847,7 @@
       "id": "beast.exorcism",
       "name": "镇魂",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "exorcism",
         "factor": 1.5
@@ -795,6 +859,7 @@
       "id": "beast.advanced-exorcism",
       "name": "高级镇魂",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "exorcism",
         "factor": 2
@@ -806,6 +871,7 @@
       "id": "beast.denial",
       "name": "绝灵",
       "book": true,
+      "advanced": false,
       "effect": {
         "type": "denial",
         "ghostDamageFactor": 1.2,
@@ -818,6 +884,7 @@
       "id": "beast.advanced-denial",
       "name": "高级绝灵",
       "book": true,
+      "advanced": true,
       "effect": {
         "type": "denial",
         "ghostDamageFactor": 1.2,

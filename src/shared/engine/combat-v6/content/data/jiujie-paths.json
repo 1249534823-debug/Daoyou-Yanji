@@ -675,7 +675,7 @@
           "sourceIsOwnedPet": true
         }
       ],
-      "description": "自己的灵兽施放雷击、雷光横扫时，伤害提高12%。"
+      "description": "自己的灵兽施放雷击、九霄神雷时，伤害提高12%。"
     },
     {
       "id": "jiujie.passive.xianyin",
@@ -1291,7 +1291,7 @@
           "name": "共鸣",
           "layer": 5,
           "slot": 1,
-          "description": "自己的灵兽施放雷击、雷光横扫时，伤害提高12%。",
+          "description": "自己的灵兽施放雷击、九霄神雷时，伤害提高12%。",
           "passives": [
             "jiujie.passive.gongming"
           ]

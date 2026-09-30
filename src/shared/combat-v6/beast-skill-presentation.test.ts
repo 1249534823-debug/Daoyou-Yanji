@@ -1,18 +1,31 @@
 import { expect, it } from 'vitest';
 import {
+  BEAST_ADVANCED_SKILL_IDS,
   BEAST_SKILL_CONTENT,
-  BEAST_SKILL_FAMILIES,
+  BEAST_SUPERIOR_BOOK_SKILL_IDS,
 } from '../engine/combat-v6/beasts/content';
 import skills from '../engine/combat-v6/beasts/data/skills.json';
 import { BeastSkillsPackShape } from '../engine/combat-v6/beasts/pack';
 import { beastSkillPresentation } from './beast-skill-presentation';
-it('全部技能读取配置图标，等级由技能族决定，不依赖ID命名', () => {
-  const advanced = new Set(BEAST_SKILL_FAMILIES.map((f) => f.advanced));
+it('技能格与传承灵印都读取技能配置的高级标记', () => {
   for (const skill of BEAST_SKILL_CONTENT) {
     const view = beastSkillPresentation(skill.id);
     expect(view.icon).toBe(skill.icon);
-    expect(view.style).toBe(advanced.has(skill.id) ? 'advanced' : 'normal');
+    expect(view.style).toBe(skill.advanced ? 'advanced' : 'normal');
+    expect(BEAST_ADVANCED_SKILL_IDS.has(skill.id)).toBe(skill.advanced);
+    expect(BEAST_SUPERIOR_BOOK_SKILL_IDS.has(skill.id)).toBe(
+      skill.book && skill.advanced,
+    );
     expect(view.description).not.toMatch(/demo/);
+  }
+  for (const id of [
+    'beast.thunderstorm',
+    'beast.mountain-crush',
+    'beast.flood',
+    'beast.wildfire',
+  ]) {
+    expect(BEAST_SUPERIOR_BOOK_SKILL_IDS.has(id)).toBe(true);
+    expect(beastSkillPresentation(id).style).toBe('advanced');
   }
   expect(new Set(BEAST_SKILL_CONTENT.map((s) => s.icon)).size).toBeGreaterThan(
     25,

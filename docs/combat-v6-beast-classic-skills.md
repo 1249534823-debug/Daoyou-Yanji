@@ -122,10 +122,10 @@
 | `beast.advanced-defense` | 高级铁骨 | 高级防御 | 第四阶段 |
 | `beast.strength` | 蛮力 | 强力 | 第四阶段 |
 | `beast.advanced-strength` | 高级蛮力 | 高级强力 | 第四阶段 |
-| `beast.thunderstorm` | 雷光横扫 | 奔雷咒 | 第六阶段 |
+| `beast.thunderstorm` | 九霄神雷 | 奔雷咒 | 第六阶段 |
 | `beast.mountain-crush` | 山崩地裂 | 泰山压顶 | 第六阶段 |
-| `beast.flood` | 洪流席卷 | 水漫金山 | 第六阶段 |
-| `beast.wildfire` | 烈焰燎原 | 地狱烈火 | 第六阶段 |
+| `beast.flood` | 翻江倒海 | 水漫金山 | 第六阶段 |
+| `beast.wildfire` | 红莲业火 | 地狱烈火 | 第六阶段 |
 | `beast.spell-combo` | 灵法连击 | 法术连击 | 第七阶段 |
 | `beast.advanced-spell-combo` | 高级灵法连击 | 高级法术连击 | 第七阶段 |
 | `beast.spell-fluctuation` | 法威无常 | 法术波动 | 第七阶段 |
