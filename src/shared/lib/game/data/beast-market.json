@@ -292,22 +292,22 @@
       {
         "definitionId": "book.beast.thunderstorm",
         "rarity": "rare",
-        "priceTier": 7
+        "priceTier": 3
       },
       {
         "definitionId": "book.beast.mountain-crush",
         "rarity": "rare",
-        "priceTier": 7
+        "priceTier": 3
       },
       {
         "definitionId": "book.beast.flood",
         "rarity": "rare",
-        "priceTier": 7
+        "priceTier": 3
       },
       {
         "definitionId": "book.beast.wildfire",
         "rarity": "rare",
-        "priceTier": 7
+        "priceTier": 3
       },
       {
         "definitionId": "book.beast.advanced-spell-combo",
@@ -317,7 +317,7 @@
       {
         "definitionId": "book.beast.advanced-spell-fluctuation",
         "rarity": "rare",
-        "priceTier": 2
+        "priceTier": 6
       },
       {
         "definitionId": "book.beast.advanced-stealth",

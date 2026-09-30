@@ -210,7 +210,7 @@ export default function InventoryV6() {
   }
   return (
     <GameSceneFrame variant="workflow">
-      <div className="grid min-w-0 gap-5 lg:grid-cols-2 lg:gap-6">
+      <div className="grid min-w-0 gap-5 lg:grid-cols-[minmax(0,5fr)_minmax(0,9fr)] lg:gap-6">
         <EquipmentRack
           items={equipped}
           gender={character?.gender}
@@ -236,154 +236,172 @@ export default function InventoryV6() {
           }}
         />
         <div className="space-y-2">
-          <div className="flex items-center justify-between gap-3 text-sm">
-            <div className="flex min-w-0 items-center gap-4 whitespace-nowrap">
-              {(['bag', 'storage'] as const).map((value) => (
-                <button
-                  key={value}
-                  disabled={pending}
-                  aria-pressed={location === value}
-                  className={
-                    location === value
-                      ? 'text-ink font-semibold underline underline-offset-4'
-                      : 'text-ink-secondary'
-                  }
-                  onClick={() => {
-                    clearSelection();
-                    setParams({ location: value });
-                    setPage(0);
-                    setData(undefined);
-                    setSlotFilter(undefined);
-                  }}
-                >
-                  {value === 'bag' ? '随身物品' : '洞府储藏室'}
-                </button>
-              ))}
-            </div>
-            {selecting ? (
-              <div className="flex shrink-0 items-center gap-1 whitespace-nowrap">
-                <span
-                  className="text-ink-secondary font-mono text-xs"
-                  aria-live="polite"
-                >
-                  已选 {selectedItems.length}
-                </span>
-                <InkButton
-                  onClick={() => {
-                    clearSelection();
-                    setSelecting(false);
-                  }}
-                >
-                  完成
-                </InkButton>
+          <div className="space-y-2 lg:flex lg:items-center lg:gap-3 lg:space-y-0">
+            <div className="flex items-center justify-between gap-3 text-sm lg:shrink-0">
+              <div className="flex min-w-0 items-center gap-4 whitespace-nowrap">
+                {(['bag', 'storage'] as const).map((value) => (
+                  <button
+                    key={value}
+                    disabled={pending}
+                    aria-pressed={location === value}
+                    className={
+                      location === value
+                        ? 'text-ink font-semibold underline underline-offset-4'
+                        : 'text-ink-secondary'
+                    }
+                    onClick={() => {
+                      clearSelection();
+                      setParams({ location: value });
+                      setPage(0);
+                      setData(undefined);
+                      setSlotFilter(undefined);
+                    }}
+                  >
+                    {value === 'bag' ? '随身物品' : '洞府储藏室'}
+                  </button>
+                ))}
               </div>
-            ) : (
-              <span
-                className="text-ink-secondary shrink-0 font-mono text-xs whitespace-nowrap"
-                aria-live="polite"
-              >
-                {location === 'bag'
-                  ? `${visibleData?.used ?? '—'} / ${BAG_CAPACITY} 格`
-                  : `${data?.total ?? '—'} 件`}
-              </span>
-            )}
-          </div>
-          <div className="@container">
-            <div className="flex min-w-0 items-center gap-2">
-              <div className="flex min-w-0 flex-1 flex-wrap items-center gap-2">
-                <InventoryFilters
-                  value={filter}
-                  onChange={(value) => {
-                    clearSelection();
-                    setFilter(value);
-                    setPage(0);
-                    if (location === 'storage') setData(undefined);
-                    setSlotFilter(undefined);
-                  }}
-                />
-                {slotFilter ? (
+              {selecting ? (
+                <div className="flex shrink-0 items-center gap-1 whitespace-nowrap">
+                  <span
+                    className="text-ink-secondary font-mono text-xs"
+                    aria-live="polite"
+                  >
+                    已选 {selectedItems.length}
+                  </span>
                   <InkButton
                     onClick={() => {
                       clearSelection();
-                      setSlotFilter(undefined);
-                      setFilter(defaultInventoryFilter);
+                      setSelecting(false);
                     }}
                   >
-                    {EQUIPMENT_SLOT_NAMES[slotFilter]} ×
+                    完成
                   </InkButton>
-                ) : null}
-              </div>
-              <div className="flex shrink-0 items-center justify-end gap-1">
-                {selecting ? (
-                  <>
+                </div>
+              ) : (
+                <span
+                  className="text-ink-secondary shrink-0 font-mono text-xs whitespace-nowrap"
+                  aria-live="polite"
+                >
+                  {location === 'bag'
+                    ? `${visibleData?.used ?? '—'} / ${BAG_CAPACITY} 格`
+                    : `${data?.total ?? '—'} 件`}
+                </span>
+              )}
+            </div>
+            <div className="@container min-w-0 lg:flex-1">
+              <div className="flex min-w-0 items-center gap-2">
+                <div className="flex min-w-0 flex-1 flex-wrap items-center gap-2">
+                  <InventoryFilters
+                    value={filter}
+                    onChange={(value) => {
+                      clearSelection();
+                      setFilter(value);
+                      setPage(0);
+                      if (location === 'storage') setData(undefined);
+                      setSlotFilter(undefined);
+                    }}
+                  />
+                  {slotFilter ? (
                     <InkButton
-                      disabled={unavailable || !visibleItems.length}
-                      onClick={() =>
-                        setSelectedIds(
-                          selectedItems.length === visibleItems.length
-                            ? new Set()
-                            : new Set(visibleItems.map((item) => item.id)),
-                        )
-                      }
-                    >
-                      <span className="@min-[30rem]:hidden">
-                        {selectedItems.length === visibleItems.length &&
-                        visibleItems.length
-                          ? '清空'
-                          : '全选'}
-                      </span>
-                      <span className="hidden @min-[30rem]:inline">
-                        {selectedItems.length === visibleItems.length &&
-                        visibleItems.length
-                          ? '取消全选'
-                          : '全选本页'}
-                      </span>
-                    </InkButton>
-                    <InkButton
-                      disabled={unavailable || !selectedItems.length}
-                      onClick={() =>
-                        void act({
-                          action: 'transfer_many',
-                          items: selectedItems.map(({ id, revision }) => ({
-                            id,
-                            revision,
-                          })),
-                          location: location === 'bag' ? 'storage' : 'bag',
-                        })
-                      }
-                    >
-                      <span className="@min-[30rem]:hidden">
-                        {location === 'bag' ? '存入' : '取出'}
-                      </span>
-                      <span className="hidden @min-[30rem]:inline">
-                        {location === 'bag' ? '存入洞府储藏室' : '取入储物袋'}
-                      </span>
-                    </InkButton>
-                  </>
-                ) : (
-                  <>
-                    <InkButton
-                      disabled={unavailable}
                       onClick={() => {
                         clearSelection();
-                        setSelecting(true);
+                        setSlotFilter(undefined);
+                        setFilter(defaultInventoryFilter);
                       }}
                     >
-                      多选
+                      {EQUIPMENT_SLOT_NAMES[slotFilter]} ×
                     </InkButton>
-                    <InkButton
-                      disabled={pending}
-                      onClick={() => {
-                        clearSelection();
-                        void bagQuery.reload();
-                        setData(undefined);
-                        setRefresh((value) => value + 1);
-                      }}
-                    >
-                      刷新
-                    </InkButton>
-                  </>
-                )}
+                  ) : null}
+                </div>
+                <div className="flex shrink-0 items-center justify-end gap-1">
+                  {selecting ? (
+                    <>
+                      <InkButton
+                        disabled={unavailable || !visibleItems.length}
+                        onClick={() =>
+                          setSelectedIds(
+                            selectedItems.length === visibleItems.length
+                              ? new Set()
+                              : new Set(visibleItems.map((item) => item.id)),
+                          )
+                        }
+                      >
+                        <span className="@min-[30rem]:hidden">
+                          {selectedItems.length === visibleItems.length &&
+                          visibleItems.length
+                            ? '清空'
+                            : '全选'}
+                        </span>
+                        <span className="hidden @min-[30rem]:inline">
+                          {selectedItems.length === visibleItems.length &&
+                          visibleItems.length
+                            ? '取消全选'
+                            : '全选本页'}
+                        </span>
+                      </InkButton>
+                      <InkButton
+                        disabled={unavailable || !selectedItems.length}
+                        onClick={() =>
+                          void act({
+                            action: 'transfer_many',
+                            items: selectedItems.map(({ id, revision }) => ({
+                              id,
+                              revision,
+                            })),
+                            location: location === 'bag' ? 'storage' : 'bag',
+                          })
+                        }
+                      >
+                        <span className="@min-[30rem]:hidden">
+                          {location === 'bag' ? '存入' : '取出'}
+                        </span>
+                        <span className="hidden @min-[30rem]:inline">
+                          {location === 'bag' ? '存入洞府储藏室' : '取入储物袋'}
+                        </span>
+                      </InkButton>
+                    </>
+                  ) : (
+                    <>
+                      <InkButton
+                        disabled={unavailable}
+                        onClick={() => {
+                          clearSelection();
+                          setSelecting(true);
+                        }}
+                      >
+                        多选
+                      </InkButton>
+                      <InkButton
+                        disabled={pending}
+                        onClick={() => {
+                          clearSelection();
+                          void bagQuery.reload();
+                          setData(undefined);
+                          setRefresh((value) => value + 1);
+                        }}
+                      >
+                        刷新
+                      </InkButton>
+                      {location === 'bag' ? (
+                        <InkButton
+                          disabled={unavailable || filtered}
+                          onClick={() =>
+                            void act({
+                              action: 'sort',
+                              items: data!.items.map(({ id, revision }) => ({
+                                id,
+                                revision,
+                              })),
+                            })
+                          }
+                        >
+                          整理
+                        </InkButton>
+                      ) : null}
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -401,6 +419,7 @@ export default function InventoryV6() {
               items={visibleItems}
               location={location}
               compact={location === 'bag' && filtered}
+              className="w-full grid-cols-5 gap-1.5 md:grid-cols-8 md:gap-1"
               quickTouchHint={selecting}
               slotProps={(entry) => ({
                 disabled: unavailable || (filtered && !entry),
@@ -435,24 +454,6 @@ export default function InventoryV6() {
               })}
             />
           )}
-          <div className="flex justify-end gap-3">
-            {location === 'bag' && !selecting ? (
-              <InkButton
-                disabled={unavailable || filtered}
-                onClick={() =>
-                  void act({
-                    action: 'sort',
-                    items: data!.items.map(({ id, revision }) => ({
-                      id,
-                      revision,
-                    })),
-                  })
-                }
-              >
-                整理
-              </InkButton>
-            ) : null}
-          </div>
           {visibleData &&
           visibleItems.length === 0 &&
           (location === 'storage' || filtered) ? (
