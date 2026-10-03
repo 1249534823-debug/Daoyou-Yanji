@@ -2,7 +2,7 @@
 
 审查日期：2026-10-03。目标：NestJS 后端 + React SPA/Vite + pnpm workspace + Turborepo。
 
-第 1—6 节保留前次架构整理的审查与验证记录；第 7 节记录按推荐顺序实施的后续六个阶段。本文区分首次审查发现和各轮重构后的状态。代码、依赖图、构建产物与本地运行是判断依据；历史迁移文档不等同于生产验收。本轮改动保留在工作区，尚未发布。
+第 1—6 节保留前次架构整理的审查与验证记录；第 7 节记录按推荐顺序实施的后续六个阶段；第 8 节为提交后的现状复审与继续顺序。本文区分首次审查发现和各轮重构后的状态。代码、依赖图、构建产物与本地运行是判断依据；历史迁移文档不等同于生产验收。复审时结构改动已提交，目标环境发布结果尚未核验。
 
 ## 1. 结论
 
@@ -186,3 +186,99 @@ PostgreSQL 管理长期角色/资产/资源版本和回放。Redis 管理活跃�
 本地启动时，既有到期拍卖的道装附件不符合当前 shared 物品协议，后台 expireListings 任务报 schema 错误；本轮没有改写这些存量资产。秘境准备页还显示气血 1/996，而 HUD 显示 996/996，需另行核查读取/缓存的权威来源；本轮仅移动实现，未调整相关计算或掩盖差异。
 
 完整秘境 LLM 生成/结算、蜃楼高境界流程、服务端请求重放和失败分支、自然会话续期、历史资产、多人胜利结算仍需真实流程补充。目标环境灰度、旧 SPA/API 兼容、镜像切换与回滚、分支保护和远端 workflow 结果没有执行；继续按 [nestjs-migration.md](nestjs-migration.md) 的发布验收推进。结构迁移阶段已落地，发布验收保持开放。
+
+## 8. 提交后复审与继续顺序
+
+复审日期：2026-10-03。代码基线为 `nestjs` 分支的 `911e0418`（迁移优化），此前为 `2ed7fa01`（结构优化）、`0de7fd73`（nestjs改造）。复审开始时工作区干净：第 7 节的“尚未提交”是当时的实施记录，当前这些结构改动已经提交。未读取远端 CI 或生产状态，不据本地 Git 推断已推送、合并或部署。
+
+### 完成程度
+
+目前处于“框架切换和结构重构完成，业务验收与发布收口进行中”。三个 workspace 与独立构建方式符合 NestJS 模块化单体 + React SPA 的目标；六个结构批次均有实际代码。这里不以文件移动量或单一百分比表示整体迁移完成度。
+
+| 层面 | 当前事实 | 判断 |
+| --- | --- | --- |
+| 框架与工具链 | Nest 为唯一 API 开发/构建入口；pnpm/Turbo 管理 API、Web、shared；Docker 运行 API 编译产物 | 已完成代码切换 |
+| 领域归属 | 玩家状态协调归 player，秘境/蜃楼归玩法 feature，jobs 和业务消息组合归 Runtime；45 个 `.module.ts` 文件 | 目录所有权已建立，内部封装仍可改善 |
+| Nest 组合 | 坊市购买、秘境流程、训练会话已有 factory/provider；训练与后台过期流程共享实例 | 关键样板完成，业务副作用依赖尚未全面显式化 |
+| SPA 与 shared | router 分领域组装，HUD 拆分；shared 有 344 个精确 exports，无 wildcard | 本轮结构目标已完成 |
+| 质量与发布 | PR/master、tag 复用 quality-check，镜像发布等待质量检查；记录 revision、digest、SPA build ID | 配置完成，远端执行、必需检查及实际回滚未核验 |
+| 运行验收 | 前轮已有购买/回收、训练、健康检查和停机证据；完整结算、特殊存量等仍开放 | 局部通过，尚不能宣布上线验收完成 |
+
+### 仍需处理的架构问题
+
+1. **依赖封装未完全覆盖。** AuctionService 直接调用 repository/应用函数，AuctionApplicationService 直接使用命令协调器和 Redis 锁。PlayerStateModule、DatabaseModule 的 `useValue` 保证复用旧实例，但实例仍在模块加载时创建。DungeonFlowService 只显式接收 round generator，DB、Redis、角色状态服务等依赖仍通过导入获得。因此 Module 图不是完整业务副作用依赖图。这不是已发现重复实例的证据。
+2. **跨领域内部导入仍多。** 本轮对 API 源码转译后的静态 import 声明做统计：排除 lib/runtime 发起的导入，存在 286 条指向其他 feature 的 `application/` 或 `organization/` 的运行值 import；扣除明确的 `player/application/state` 协调层后为 198 条。这是耦合盘点，不是 198 个错误；既有公开叶子入口、合法协调与应封装的业务依赖需要逐项判断。没有文件级静态循环也不等于领域间已经解耦。
+3. **Lint 配置存在规则覆盖。** `eslint.config.js` 中 Service 配置禁止直接导入 `db/getExecutor`，后续 Market/Inventory 又配置同名 `no-restricted-imports`，覆盖了这项限制。对 MarketService 执行 `eslint --print-config` 已确认最终配置没有该 `paths` 限制。应组合约束并核对最终配置；现有服务使用 DI，不能把门禁缺口误报成运行数据库故障。
+4. **Lint 的宿主和异步规则仍待改善。** React Hooks/Refresh 和 browser globals 当前应用于全仓 TS/TSX；API 未启用类型感知的 `no-floating-promises`、`no-misused-promises`。建议先分宿主，再在 API 高风险异步路径试行并审查合法后台任务；不需要更换整套检查器。
+5. **大流程尚未职责拆分。** DungeonFlowService 仍有 2206 行，兼有流程、生成、持久化与结算相关逻辑。其生成部分已提取，但在缺少完整秘境验收前继续大拆会增加定位风险。schema 集中和文件行数本身不是必须拆分的理由。
+
+上轮记录的过期拍卖道装附件 schema 错误、秘境准备页与 HUD 气血差异，本轮没有重新启动应用复现。应作为待诊断问题保留，不能认定为本次迁移引入，也不能认定已修复。
+
+### 推荐继续顺序
+
+| 顺序 | 工作范围 | 完成条件 |
+| --- | --- | --- |
+| 1. 补齐审查与质量门禁 | 修正 ESLint 约束覆盖；按 Web/API/shared 划分 globals/React 规则；小范围评估 API Promise 检查；复现并定位上述两项运行问题，修复另列最小变更 | 最终 lint 配置保留每项约束；lint/typecheck/build 通过；运行问题有权威来源与处理结论 |
+| 2. 收口业务验收 | 优先验证坊市同 requestId 重放、请求指纹冲突、报价过期、资源不足；完成秘境探索/战斗/结算与资源同步；补自然会话续期 Cookie、消息恢复/终局去重证据 | 重放不重复扣费/发奖，失败不留下部分资产变化，结算和客户端资源一致；缺少高境界/历史资产样本的项目明确保持开放 |
+| 3. 按纵向业务补依赖封装 | 先以拍卖为下一条坊市样板：明确命令协调、角色查询、锁和存储依赖；再处理邮件/背包等实际被修改的链路；秘境在完整验收后再按状态转换、持久化/结算、LLM 生成职责拆分 | 每批实际副作用依赖可追踪，事务执行器/锁/幂等/outbox 顺序不变，旧导入退出，相应真实流程通过 |
+| 4. 完成发布验收 | 核验远端 PR/tag 质量检查及分支保护；记录匹配的 API revision/digest 和 SPA build ID；按目标环境执行兼容发布与回滚演练 | 旧 SPA 可用、健康检查/实时连接/资源协议通过、固定镜像回滚有实测记录；数据迁移如需执行则独立审核 |
+
+建议下一轮以第 1、2 项为主要交付，拍卖 Provider 重构保持独立批次。上线不必等待所有领域函数改成 Injectable；应等待相关业务和发布风险得到验收。继续保留三个 workspace、单 API 部署单元、Rspack、Zod 契约及纯函数，不为形式统一新增包、服务或 DTO 体系。
+
+### 本轮复核范围
+
+- `pnpm run lint`：通过，0 error / 0 warning。
+- `pnpm exec turbo run typecheck --force`：三个 workspace 均通过，未用缓存。
+- `pnpm exec tsc --noEmit -p tsconfig.node.json`：根维护工具通过。
+- 静态运行值依赖复核：1670 个生产 TS/TSX 文件，API 546、Web 584、shared 540；无文件级静态循环，无 API/Web/shared 应用越界导入。动态调用与运行时状态不在此结论范围内。
+- 读取实际 Module/Provider、Runtime、构建配置、exports、工作流和 ESLint 最终配置。本轮只更新报告，未修改业务代码。
+
+未重跑 shared 测试、双应用构建、Docker 构建或浏览器流程：本轮未修改相应代码，前轮结果保留在第 7 节，不当作本轮新证据。未核验远端 CI、分支保护和目标环境部署。
+
+## 9. 质量门禁与业务验收收口
+
+实施日期：2026-10-03。范围为第 8 节推荐顺序的第 1、2 项；拍卖 Provider 重构、数据迁移和发布保持独立批次。本轮修改未提交、推送或部署。
+
+### 最小代码改动
+
+- ESLint 按宿主划分规则：Web 使用 browser globals、React Hooks/Refresh；API、维护脚本与根 TS 工具使用 Node globals；shared 不获得浏览器或 Node globals。API 的 main、http、runtime、realtime 启用类型感知的 `no-floating-promises`、`no-misused-promises`，均为 error。
+- 合并 Market/Inventory Service 的数据库导入限制与 feature 边界，修复后续 `no-restricted-imports` 覆盖前项规则的问题。最终配置检查和内存中的错误样例确认：`db` 的别名导入仍被拒绝，未处理 Promise 和异步定时回调分别命中两项规则。没有批量修改合法后台任务。
+- 秘境页面复用 `useCultivatorDisplayProjection()`，不再独立显示原始 condition 快照。原始存储气血为 1，但恢复时间戳允许自然恢复，HUD 因而显示 996；准备页遗漏了时间投影。本轮准备页与 HUD 使用同一服务端时钟、恢复倍率和 `recoveryPaused`，没有修改持久资源或游戏算法。
+
+### 本地业务验收
+
+环境为 Web `127.0.0.1:5174`、API `3001`、PostgreSQL `127.0.0.1:15432/daoyou_local` 及原有 Redis/NATS/Mailpit。使用既有本地道友2、3，未发放资产、修改角色或认证数据。
+
+| 场景 | 本轮实测 |
+| --- | --- |
+| 购买及同 requestId 重放 | UI 购买沉铁砂 1 件，扣 50 灵石；重放返回 200、`state.replayed: true`，资源 event ID/version 相同。只读数据库确认一条 journal receipt、两个资源事件且同一 scope version |
+| 请求指纹与价格错误 | 同 requestId 改 expectedTotal 返回 409；新 requestId 使用与有效货架不符的总价返回 409。后者覆盖价格不匹配分支，不是自然变价模拟 |
+| 回收及重复确认 | 回收上述沉铁砂得 13 灵石；重复 confirm 返回 200、replayed，数据库只有一条 receipt 和同一批资源事件；另一份报价在物品移除后确认返回 409 |
+| 报价自然过期 | 第三份未使用报价等待原定 600 秒期限后确认，返回 410“这份报价已过期，请重新询价。”；没有修改时钟、Redis TTL 或报价数据 |
+| 资源不足 | 本地道友3的实际灵石为 0；合法价格购买返回 400，前后背包一致，未留下部分写入 |
+| 秘境准备与战斗入场 | 准备页从 1/996 修正为 996/996；入场也为气血 996/996、法力 900/900。战后 HUD 与准备页均为气血 991/996、法力 557/900 |
+| 完整秘境与 LLM 恢复 | 落日森林·废弃药园完成 5 轮，首轮遭遇战在第 8 回合自然胜利。第三轮生成先因正文不足 300 字、自动重试又因高风险选项没有真实代价被 schema 拒绝；页面进入恢复态，点击重新推演后成功。严格校验未放宽 |
+| 进程恢复 | 第三轮无待处理动作时 SIGTERM API，再启动最终构建并刷新页面；原 run、轮次、抉择和已确定收获恢复，后续正常完成 |
+| 终局与资源到账 | 结算显示灵石 +1858、修为 +461、感悟 +3 及五件物品；HUD 为灵石 42563、修为 2291、感悟 108、天地灵气 190，与数据库相符。持久 run 为 FINISHED，一条秘境历史；战斗终局归档一条，source=dungeon、8 回合、side-0，按现有非竞技政策不保留 replay payload |
+| 末轮动作重放 | 原 actionId/runId/round 再提交返回 409“探索轮次已变化”；未再次结算。这里只验证已完成动作拒绝重放，未模拟 NATS 重复终局消息 |
+| 响应式 | 360×800 与 1280×900 检查准备页资源、任务入口及滚动；无水平溢出。没有新增页面布局或全局样式 |
+
+本地道友2本轮购买／回收净支出 37 灵石，再获得实际秘境奖励 1858；最终 42563。沉铁砂已通过正式回收清理，秘境已结束；真实玩法收益、战斗消耗与记录保留，不回滚玩家进度。本地道友3保持 0 灵石。截图保存在当次任务临时产物，不加入仓库。
+
+### 拍卖存量问题的结论
+
+只读检查发现三份到期且仍 active 的本地拍卖：道装“龙吟踏云履”、材料“凝煞尘”、灵兽“岩甲猪”。后两份符合当前协议；2026-09-15 生成的道装快照缺少 `formationInscriptions`，当前 `AuctionSnapshotSchema` → `ItemGrantSchema` → `InventoryEquipmentSchema` 要求固定双孔元组，因此拒绝该附件。`expireListings()` 在一个事务内标记并返还整批资产，一份非法附件会使整批回滚。这是持久快照兼容缺口，不能由 Provider 重构解决。
+
+设计文档此前声称已通过 `0054_equipment_formation_slots` 补齐，但当前仓库与 journal 不存在该迁移；实际 0054 是 `admin_inventory_rewards`，journal 到 0060。已纠正文档。下一批应只读盘点背包 `equipment.v6` 实例、拍卖快照、未领取邮件／奖励快照；仅对确认从未烙印且缺字段的装备设计确定性双空孔回填。旧单孔、有值但非法和其他字段错误应另列处理，不默认抹除已有阵纹。迁移需有范围计数、前后校验和数据恢复方案。本轮没有写 SQL 迁移或改写存量，没有跳过返还、删除资产或放宽 schema；拍卖问题仍开放。
+
+### 检查与仍开放项目
+
+- `pnpm run lint`：最终通过，0 error / 0 warning。
+- `pnpm exec turbo run typecheck --force`：三个 workspace 通过，未使用缓存。
+- `pnpm exec tsc --noEmit -p tsconfig.node.json`：通过。
+- `pnpm exec turbo run build --force`：API/Web 通过，未使用缓存；既有 Phaser 大 chunk 提示保留。
+- 重启后 `/api/health-check` 返回 200，database/redis/nats/messaging 均 up；最终停机按调度、HTTP、消息、DB/Redis 顺序完成。只停止本轮启动的 API/Web，保留原有基础设施；临时浏览器页关闭，响应式尺寸已恢复。
+- `git diff --check` 通过；ESLint 配置、秘境 route 与本报告的 Prettier 检查通过。装备设计文档整文件 Prettier 检查仍不通过，HEAD 原文件也有相同格式基线；本轮仅纠正迁移说明，未重排无关表格。
+- 未重跑 shared 单元测试和 Docker 构建：没有修改 shared 引擎、依赖或镜像构建路径；此前结果仍是历史证据。没有新增 API/Web 测试或一次性验收脚本。
+
+下一步先处理历史道装数据迁移，再独立将拍卖副作用依赖按坊市样板封装。自然会话续期 Cookie、NATS 重复终局交付／长时间断线、蜃楼高境界流程和多人胜利结算仍未完成；本轮正常登录登出、API 重启和末轮请求重放不能替代这些项目。远端 CI、分支保护、目标环境兼容发布与实际回滚继续保持开放。完整秘境已补齐一条真实路径，不能据此宣布所有发布验收完成。

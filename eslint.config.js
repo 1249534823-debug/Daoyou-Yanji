@@ -25,15 +25,45 @@ const sharedImportBoundaries = [
   'tailwind-merge',
 ];
 
+const databaseServiceImports = [
+  {
+    name: '@server/lib/drizzle/db',
+    importNames: ['db', 'getExecutor'],
+    message:
+      'Inject DRIZZLE_DATABASE in Nest services; pass it to repository calls.',
+  },
+];
+
+const marketImportBoundaries = [
+  { group: ['@app/*', '@daoyou/web*', '**/apps/web/**'] },
+  {
+    group: [
+      '@server/cultivator/application/**',
+      '@server/inventory/application/**',
+    ],
+    message:
+      'Market uses public character queries and inventory operations/providers.',
+  },
+];
+
+const inventoryImportBoundaries = [
+  { group: ['@app/*', '@daoyou/web*', '**/apps/web/**'] },
+  {
+    group: ['@server/market/**', '**/market/application/**'],
+    message: 'Inventory owns recycling and must not depend on Market.',
+  },
+];
+
 export default tseslint.config(
   { ignores: ['**/dist/**'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
-    },
+    languageOptions: { ecmaVersion: 'latest' },
+  },
+  {
+    files: ['apps/web/**/*.{ts,tsx}'],
+    languageOptions: { globals: globals.browser },
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
@@ -44,6 +74,23 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true, allowExportNames: ['loader'] },
       ],
+    },
+  },
+  {
+    files: ['apps/api/**/*.ts', 'scripts/**/*.ts', '*.ts'],
+    languageOptions: { globals: globals.node },
+  },
+  {
+    files: [
+      'apps/api/src/main.ts',
+      'apps/api/src/http/**/*.ts',
+      'apps/api/src/runtime/**/*.ts',
+      'apps/api/src/realtime/**/*.ts',
+    ],
+    languageOptions: { parserOptions: { projectService: true } },
+    rules: {
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/no-misused-promises': 'error',
     },
   },
   {
@@ -154,19 +201,16 @@ export default tseslint.config(
   },
   {
     files: ['apps/api/src/**/*.service.ts'],
+    ignores: [
+      'apps/api/src/market/**/*.service.ts',
+      'apps/api/src/inventory/**/*.service.ts',
+    ],
     rules: {
       'no-restricted-imports': [
         'error',
         {
           patterns: ['@app/*', '@daoyou/web*', '**/apps/web/**'],
-          paths: [
-            {
-              name: '@server/lib/drizzle/db',
-              importNames: ['db', 'getExecutor'],
-              message:
-                'Inject DRIZZLE_DATABASE in Nest services; pass it to repository calls.',
-            },
-          ],
+          paths: databaseServiceImports,
         },
       ],
     },
@@ -177,17 +221,7 @@ export default tseslint.config(
       'no-restricted-imports': [
         'error',
         {
-          patterns: [
-            { group: ['@app/*', '@daoyou/web*', '**/apps/web/**'] },
-            {
-              group: [
-                '@server/cultivator/application/**',
-                '@server/inventory/application/**',
-              ],
-              message:
-                'Market uses public character queries and inventory operations/providers.',
-            },
-          ],
+          patterns: marketImportBoundaries,
         },
       ],
     },
@@ -198,15 +232,26 @@ export default tseslint.config(
       'no-restricted-imports': [
         'error',
         {
-          patterns: [
-            { group: ['@app/*', '@daoyou/web*', '**/apps/web/**'] },
-            {
-              group: ['@server/market/**', '**/market/application/**'],
-              message:
-                'Inventory owns recycling and must not depend on Market.',
-            },
-          ],
+          patterns: inventoryImportBoundaries,
         },
+      ],
+    },
+  },
+  {
+    files: ['apps/api/src/market/**/*.service.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        { patterns: marketImportBoundaries, paths: databaseServiceImports },
+      ],
+    },
+  },
+  {
+    files: ['apps/api/src/inventory/**/*.service.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        { patterns: inventoryImportBoundaries, paths: databaseServiceImports },
       ],
     },
   },

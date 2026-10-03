@@ -1,11 +1,8 @@
+import { useCultivatorDisplayProjection } from '@app/components/feature/cultivator/useCultivatorDisplayProjection';
 import { GameSceneLoading } from '@app/components/game-shell';
 import { InkButton, InkNotice } from '@app/components/ui';
 import { useDungeonViewModel } from '@app/lib/hooks/dungeon/useDungeonViewModel';
 import { useTaskList } from '@app/lib/hooks/useTaskList';
-import {
-  useCultivatorCondition,
-  useCultivatorIdentity,
-} from '@app/lib/resources/player';
 import { Suspense, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
 import { DungeonViewRenderer } from './components/DungeonViewRenderer';
@@ -21,32 +18,10 @@ import { resolveDungeonSceneDescriptor } from './dungeonSceneRegistry';
  * 3. 视图渲染：委托给 DungeonViewRenderer 处理
  */
 function DungeonContent() {
-  const identity = useCultivatorIdentity();
-  const condition = useCultivatorCondition();
-  const cultivator = identity.data?.cultivator
-    ? { ...identity.data.cultivator, condition: condition.data }
-    : null;
-  const resource = (
-    point: { current: number; max?: number } | undefined,
-    authorityMax?: number,
-  ) => {
-    const max = authorityMax ?? point?.max ?? 0;
-    const current = Math.min(max, Math.max(0, point?.current ?? 0));
-    return { current, max, percent: max ? (current / max) * 100 : 0 };
-  };
-  const battleEntryResources = condition.data
-    ? {
-        hp: resource(
-          condition.data.resources.hp,
-          condition.data.combatV6?.maxHp,
-        ),
-        mp: resource(
-          condition.data.resources.mp,
-          condition.data.combatV6?.maxMp,
-        ),
-      }
-    : undefined;
-  const isCultivatorLoading = identity.loading || condition.loading;
+  const projection = useCultivatorDisplayProjection();
+  const cultivator = projection.data?.cultivator ?? null;
+  const battleEntryResources = projection.data?.display.resources;
+  const isCultivatorLoading = projection.loading;
   const { tasks, loading: tasksLoading } = useTaskList(cultivator?.id);
   const [searchParams] = useSearchParams();
   const preSelectedNodeId = searchParams.get('nodeId');
