@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { LINGXIAO_V6_DEFINITION as definition } from './lingxiao';
-import { COMBAT_V6_SECT_DEFINITIONS } from './index';
-import { canSelectMeridianNode, connectedMeridianSelection, meridianNodesConnect, toggleMeridianNode } from './meridian-selection';
-import { createEmptySectCombatProgressV6 } from '../build-state';
-import { compileSectDefinitionV6 } from './compiler';
-import { sectV6Change } from '../sect-progression';
+import { LINGXIAO_V6_DEFINITION as definition } from './lingxiao.js';
+import { COMBAT_V6_SECT_DEFINITIONS } from './index.js';
+import { canSelectMeridianNode, connectedMeridianSelection, meridianNodesConnect, toggleMeridianNode } from './meridian-selection.js';
+import { createEmptySectCombatProgressV6 } from '../build-state/index.js';
+import { compileSectDefinitionV6 } from './compiler.js';
+import { sectV6Change } from '../sect-progression/index.js';
 
 const ref = { membershipId: '00000000-0000-4000-8000-000000000001', expectedRevision: 0 };
 describe('全宗门统一末层结构', () => {

@@ -1,4 +1,4 @@
-import { sectOrganizationFacade } from './organization/productionSectOrganization';
+import { sectOrganizationFacade } from './organization/productionSectOrganization.js';
 
 export const SECT_ORGANIZATION = Symbol('SECT_ORGANIZATION');
 export type SectOrganization = typeof sectOrganizationFacade;

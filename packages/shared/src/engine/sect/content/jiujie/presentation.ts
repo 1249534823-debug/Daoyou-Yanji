@@ -1,5 +1,5 @@
-import type { SectMapHotspot, SectPresentationTheme } from '../../core';
-import { JIUJIE_SECT_ID } from './ids';
+import type { SectMapHotspot, SectPresentationTheme } from '../../core/index.js';
+import { JIUJIE_SECT_ID } from './ids.js';
 const h = (id: string, label: string, left: string, top: string, route: string, permission: SectMapHotspot['permission'], note: string, facility?: string, locked?: boolean, visitor?: SectMapHotspot['visitor']): SectMapHotspot => ({ id, label, left, top, route, permission, note, facility, locked, visitor });
 export const JIUJIE_SECT_PRESENTATION: SectPresentationTheme = {
   sectId: JIUJIE_SECT_ID,

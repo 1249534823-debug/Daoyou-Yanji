@@ -1,22 +1,22 @@
 import { describe, expect, it } from 'vitest';
-import { generateForgedEquipment } from '../engine/combat-v6/equipment/forging';
-import { buildSpiritFruitSpec } from '../engine/spirit-field/spiritFruit';
-import { ConsumableFactsSchema } from '../items/definitions/consumables';
-import { libraryMaterialGrant } from '../items/libraryMaterialGrant';
-import { ITEM_DEFINITIONS } from '../items/registry';
-import { resolveAlchemyEffects } from '../lib/alchemyEffectResolver';
+import { generateForgedEquipment } from '../engine/combat-v6/equipment/forging.js';
+import { buildSpiritFruitSpec } from '../engine/spirit-field/spiritFruit.js';
+import { ConsumableFactsSchema } from '../items/definitions/consumables.js';
+import { libraryMaterialGrant } from '../items/libraryMaterialGrant.js';
+import { ITEM_DEFINITIONS } from '../items/registry.js';
+import { resolveAlchemyEffects } from '../lib/alchemyEffectResolver.js';
 import {
   ItemLibraryEntrySchema,
   ItemLibraryMaterialGenerateSchema,
   MailAttachmentsSchema,
-} from '../lib/itemLibrary';
+} from '../lib/itemLibrary.js';
 import {
   RewardItemSchema,
   RewardSelectionsSchema,
   materializeRewardAttachments,
   materializeRewardItem,
   rewardAttachments,
-} from './adminRewards';
+} from './adminRewards.js';
 
 const fixed = ITEM_DEFINITIONS.find((d) => d.kind === 'beast_refinement')!;
 const equipment = generateForgedEquipment({

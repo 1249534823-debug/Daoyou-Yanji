@@ -8,7 +8,7 @@ import { QUALITY_ORDER } from '@daoyou/shared/types/constants';
 import {
   FATE_QUALITY_SCALE,
   FATE_ROLL_VERSION,
-} from '@server/reshape/application/FateConfig';
+} from '@server/reshape/application/FateConfig.js';
 
 type FateValueKind =
   | 'multiplier_up'

@@ -10,22 +10,22 @@ import {
   StatusCategory,
   TargetSide,
   type SkillDef,
-} from '../core';
-import { createDaoyouRuleset } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_4B_VERSIONS } from '../version';
+} from '../core/index.js';
+import { createDaoyouRuleset } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_4B_VERSIONS } from '../version.js';
 import {
   compileDaoEquipmentSpecialLoadoutV1,
   daoEquipmentRequiredLevel,
-} from './compiler';
-import data from './data/equipment-special.json';
-import { generateDaoEquipmentV2 } from './generator';
-import { compileEquipmentEssence } from './special-compiler';
+} from './compiler.js';
+import data from './data/equipment-special.json' with { type: 'json' };
+import { generateDaoEquipmentV2 } from './generator.js';
+import { compileEquipmentEssence } from './special-compiler.js';
 import {
   createDaoRageGainPassive,
   DAO_EQUIPMENT_ESSENCES_V1,
-} from './special-content';
-import { loadEquipmentSpecialPack } from './special-pack';
-import type { DaoEquipmentSlot } from './types';
+} from './special-content.js';
+import { loadEquipmentSpecialPack } from './special-pack.js';
+import type { DaoEquipmentSlot } from './types.js';
 
 const pack = loadEquipmentSpecialPack(data);
 const id = (key: string) => `dao_equipment.essence.${key}`;

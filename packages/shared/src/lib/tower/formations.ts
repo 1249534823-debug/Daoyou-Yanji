@@ -1,4 +1,4 @@
-import generation from '../../engine/combat-v6/tower/data/generation.json';
+import generation from '../../engine/combat-v6/tower/data/generation.json' with { type: 'json' };
 /** Encounter budgets belong to the whole group; companions never inherit leader traits. */
 export const TOWER_FORMATIONS = {
   solo: {

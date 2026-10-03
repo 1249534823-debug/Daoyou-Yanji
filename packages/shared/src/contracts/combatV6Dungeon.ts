@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import type { CombatV6TrainingSessionViewV1 } from './combatV6';
+import type { CombatV6TrainingSessionViewV1 } from './combatV6.js';
 export const DungeonFlowRequestSchema = z
   .object({
     expected: z

@@ -1,26 +1,26 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from '@server/database/database.module';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { CombatV6RuntimeStore } from './application/CombatV6RuntimeStore';
-import { CombatV6TrainingSessionService } from './application/CombatV6TrainingSessionService';
-import { AutoStrategyController } from './auto-strategy.controller';
-import { AutoStrategyService } from './auto-strategy.service';
-import { BreakthroughController } from './breakthrough.controller';
-import { BreakthroughService } from './breakthrough.service';
-import { CombatActivityController } from './combat-activity.controller';
-import { CombatActivityService } from './combat-activity.service';
+import { DatabaseModule } from '@server/database/database.module.js';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { CombatV6RuntimeStore } from './application/CombatV6RuntimeStore.js';
+import { CombatV6TrainingSessionService } from './application/CombatV6TrainingSessionService.js';
+import { AutoStrategyController } from './auto-strategy.controller.js';
+import { AutoStrategyService } from './auto-strategy.service.js';
+import { BreakthroughController } from './breakthrough.controller.js';
+import { BreakthroughService } from './breakthrough.service.js';
+import { CombatActivityController } from './combat-activity.controller.js';
+import { CombatActivityService } from './combat-activity.service.js';
 import {
   ReplaysController,
   SharedReplaysController,
-} from './replays.controller';
-import { ReplaysService } from './replays.service';
-import { SectTaskBattleController } from './sect-task.controller';
-import { SectTaskBattleService } from './sect-task.service';
-import { TraceParamsPipe, TrainingController } from './training.controller';
-import { TrainingService } from './training.service';
-import { WildController } from './wild.controller';
-import { WildService } from './wild.service';
+} from './replays.controller.js';
+import { ReplaysService } from './replays.service.js';
+import { SectTaskBattleController } from './sect-task.controller.js';
+import { SectTaskBattleService } from './sect-task.service.js';
+import { TraceParamsPipe, TrainingController } from './training.controller.js';
+import { TrainingService } from './training.service.js';
+import { WildController } from './wild.controller.js';
+import { WildService } from './wild.service.js';
 
 @Module({
   imports: [DatabaseModule],

@@ -39,7 +39,7 @@ import type {
   ConditionStatusKey,
 } from '@daoyou/shared/types/condition';
 import { format } from 'd3-format';
-import { calculateExpProgress, getBreakthroughType, isBottleneckReached } from './cultivationUtils';
+import { calculateExpProgress, getBreakthroughType, isBottleneckReached } from './cultivationUtils.js';
 
 const REALM_ORDER = [...REALM_VALUES];
 const STAGE_ORDER = [...REALM_STAGE_VALUES];

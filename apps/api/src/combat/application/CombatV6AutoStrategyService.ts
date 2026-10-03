@@ -1,9 +1,9 @@
-import { db } from '@server/lib/drizzle/db';
+import { db } from '@server/lib/drizzle/db.js';
 import {
   readCustomAutoStrategy,
   removeCustomAutoStrategy,
   saveCustomAutoStrategy,
-} from '@server/lib/repositories/combatV6AutoStrategyRepository';
+} from '@server/lib/repositories/combatV6AutoStrategyRepository.js';
 import { autoStatusChoices } from '@daoyou/shared/combat-v6/auto-status-options';
 import {
   defaultAutoStrategy,
@@ -11,7 +11,7 @@ import {
 } from '@daoyou/shared/combat-v6/auto-strategy';
 import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/shared/engine/combat-v6/content';
 import { projectCharacterToCombatV6 } from '@daoyou/shared/engine/combat-v6/projection';
-import { assembleCombatV6TrainingPlayer } from '@server/combat/application/CombatV6BuildService';
+import { assembleCombatV6TrainingPlayer } from '@server/combat/application/CombatV6BuildService.js';
 
 export class AutoStrategyError extends Error {}
 

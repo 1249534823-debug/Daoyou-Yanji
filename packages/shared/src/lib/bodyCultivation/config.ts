@@ -7,8 +7,8 @@ import type {
   LegacyTemperingTrackPath,
 } from '@daoyou/shared/types/condition';
 import { REALM_ORDER, type RealmType } from '@daoyou/shared/types/constants';
-import { BODY_CULTIVATION_PACK, BODY_CULTIVATION_TRACK_KEYS, bodyCultivationThreshold } from './pack';
-export { BODY_CULTIVATION_TRACK_KEYS } from './pack';
+import { BODY_CULTIVATION_PACK, BODY_CULTIVATION_TRACK_KEYS, bodyCultivationThreshold } from './pack.js';
+export { BODY_CULTIVATION_TRACK_KEYS } from './pack.js';
 
 
 export const BODY_CULTIVATION_TRACK_PATHS = BODY_CULTIVATION_TRACK_KEYS.map(

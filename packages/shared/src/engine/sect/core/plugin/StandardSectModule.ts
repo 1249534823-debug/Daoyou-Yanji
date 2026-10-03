@@ -1,10 +1,10 @@
-import type { SectAdmissionContext, SectDefinition } from '../domain';
+import type { SectAdmissionContext, SectDefinition } from '../domain/index.js';
 import {
   StandardSectOrganizationModule,
   type SectOrganizationTheme,
-} from '../organization';
-import type { SectModule } from './contracts';
-import { AllowedRaceAdmissionPolicy } from './policies';
+} from '../organization/index.js';
+import type { SectModule } from './contracts.js';
+import { AllowedRaceAdmissionPolicy } from './policies.js';
 
 export interface StandardSectModuleOptions {
   organizationTheme?: SectOrganizationTheme;

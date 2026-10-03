@@ -1,5 +1,5 @@
-import { addItems as planItems } from './index';
-import { inventoryStackIdentity } from './stack-key';
+import { addItems as planItems } from './index.js';
+import { inventoryStackIdentity } from './stack-key.js';
 
 /** Pure planner tests supply opaque keys; hashing is a server persistence concern. */
 export function addItems(

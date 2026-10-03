@@ -1,5 +1,5 @@
-import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db';
-import * as schema from '@server/lib/drizzle/schema';
+import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
+import * as schema from '@server/lib/drizzle/schema.js';
 import { FRIEND_MAIL_TALISMAN_SCENARIO } from '@daoyou/shared/config/socialConfig';
 import {
   mailGiftBlockReason,
@@ -8,18 +8,18 @@ import {
 import { itemDefinition, ItemGrantSchema } from '@daoyou/shared/inventory';
 import type { MailAttachment } from '@daoyou/shared/types/mail';
 import { and, eq } from 'drizzle-orm';
-import { assertFriend, FriendServiceError } from '@server/social/application/FriendService';
+import { assertFriend, FriendServiceError } from '@server/social/application/FriendService.js';
 import {
   assertInventoryIdle,
   InventoryError,
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/operations';
-import { MailService } from '@server/mail/application/MailService';
+} from '@server/inventory/operations.js';
+import { MailService } from '@server/mail/application/MailService.js';
 import {
   consumeFirstTalismanByScenario,
   TalismanScenarioError,
-} from '@server/inscriptions/application/TalismanScenarioService';
+} from '@server/inscriptions/application/TalismanScenarioService.js';
 
 export type PlayerMailAttachmentInput = NonNullable<
   SendMailRequest['attachment']

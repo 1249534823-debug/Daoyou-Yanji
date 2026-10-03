@@ -8,7 +8,7 @@ import {
   Put,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import { CombatAutoRequestSchema } from '@daoyou/shared/combat-v6/auto';
 import {
   CombatV6TrainingCommandRequestSchema,
@@ -16,12 +16,12 @@ import {
   CombatV6TrainingRevisionRequestSchema,
 } from '@daoyou/shared/contracts/combatV6';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { SectTaskBattleService } from './sect-task.service';
-import { taskBattleErrors } from './task-battle-errors';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { SectTaskBattleService } from './sect-task.service.js';
+import { taskBattleErrors } from './task-battle-errors.js';
 
 @Controller('api/combat-v6/sect-tasks/sessions')
 @Access('active')

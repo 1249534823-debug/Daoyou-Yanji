@@ -6,7 +6,7 @@ import {
   type RealmType,
 } from '@daoyou/shared/types/constants';
 import { z } from 'zod';
-import type { SectBattleTargetAcquisition } from './contracts';
+import type { SectBattleTargetAcquisition } from './contracts.js';
 
 export const SECT_BATTLE_TARGET_SCHEMA_VERSION = 1;
 

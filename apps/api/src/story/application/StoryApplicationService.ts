@@ -1,6 +1,6 @@
 import type { StoryView } from '@daoyou/shared/story/schema';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
-import { StoryService } from '@server/story/application/StoryService';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import { StoryService } from '@server/story/application/StoryService.js';
 
 export function completeStoryPerformanceCommand(args: {
   userId: string;

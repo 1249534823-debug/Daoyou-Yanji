@@ -9,9 +9,9 @@ import {
   type ConditionOperation,
   type PillAppearanceGrade,
 } from '@daoyou/shared/types/consumable';
-import { getAlchemyPropertyTrackPath } from './alchemyProperties';
-import { buildCultivationBoostPayload } from './cultivationBoost';
-import { getPillAppearanceToxicityMultiplier } from './pillAppearance';
+import { getAlchemyPropertyTrackPath } from './alchemyProperties.js';
+import { buildCultivationBoostPayload } from './cultivationBoost.js';
+import { getPillAppearanceToxicityMultiplier } from './pillAppearance.js';
 
 export const ALCHEMY_EFFECT_SLOT_MULTIPLIERS = [1, 0.35, 0.2] as const;
 

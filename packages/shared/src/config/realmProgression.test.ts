@@ -10,7 +10,7 @@ import {
   getRealmStageLevel,
   getLevelRealmStage,
   getRealmStageUnallocatedAttributeBudget,
-} from './realmProgression';
+} from './realmProgression.js';
 
 describe('realmProgression', () => {
   it('calculates fixed attribute budgets by realm and stage', () => {

@@ -3,12 +3,12 @@ import {
   PlayerJournalEventSchema,
   StoredJournalEventSchema,
   retreatResultFromJournal,
-} from './contracts/playerJournal';
-import type { InventoryItem } from './inventory';
+} from './contracts/playerJournal.js';
+import type { InventoryItem } from './inventory/index.js';
 import {
   compactJournalChanges,
   inventoryJournalChanges,
-} from './playerJournal';
+} from './playerJournal.js';
 
 const item: InventoryItem = {
   id: 'ore',

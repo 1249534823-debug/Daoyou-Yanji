@@ -4,7 +4,7 @@ import {
   getAuthPageAnnouncement,
   getResolvedCommunityQqGroupNumber,
   upsertAppSetting,
-} from '@server/lib/repositories/appSettingsRepository';
+} from '@server/lib/repositories/appSettingsRepository.js';
 import { APP_SETTING_KEYS } from '@daoyou/shared/lib/constants/appSettings';
 import { z } from 'zod';
 

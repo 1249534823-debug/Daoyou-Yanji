@@ -1,9 +1,9 @@
-import { sectOrganizationFacade } from '@server/sects/organization';
-import { createPostgresSectCommandContext } from '@server/sects/organization/PostgresSectOrganizationAdapters';
+import { sectOrganizationFacade } from '@server/sects/organization/index.js';
+import { createPostgresSectCommandContext } from '@server/sects/organization/PostgresSectOrganizationAdapters.js';
 import {
   executeSectPlayerCommand,
   type SectCommandArgs,
-} from '@server/sects/organization/commandSupport';
+} from '@server/sects/organization/commandSupport.js';
 
 export function executeSectTaskActionCommand(
   args: SectCommandArgs & {

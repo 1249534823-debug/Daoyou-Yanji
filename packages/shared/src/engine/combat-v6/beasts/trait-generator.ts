@@ -1,5 +1,5 @@
-import { SeededRng } from '../core/rng';
-import type { BeastSpeciesDefinition } from './pack';
+import { SeededRng } from '../core/rng.js';
+import type { BeastSpeciesDefinition } from './pack.js';
 
 export type BeastTraits = {
   aptitudes: Record<keyof BeastSpeciesDefinition['aptitudes'], number>;

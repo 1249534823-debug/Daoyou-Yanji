@@ -17,7 +17,7 @@ import {
   qiCurrencyChange,
   qiCurrencyPatch,
   type QiSettlementBaseline,
-} from '@server/cultivator/application/QiResourceChanges';
+} from '@server/cultivator/application/QiResourceChanges.js';
 
 export function conditionChangesAfterConsumable(args: {
   consumable: Consumable;

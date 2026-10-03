@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { TOWER_FORMATIONS } from '../../../lib/tower/formations';
-import { TOWER_CATALOG } from './catalog';
-import raw from './data/generation.json';
+import { TOWER_FORMATIONS } from '../../../lib/tower/formations.js';
+import { TOWER_CATALOG } from './catalog.js';
+import raw from './data/generation.json' with { type: 'json' };
 
 const id = z.string().min(1);
 const recipe = z.strictObject({ formation: id, archetype: id, behavior: id });

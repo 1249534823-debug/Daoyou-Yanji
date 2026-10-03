@@ -1,6 +1,6 @@
 import { REALM_DAILY_EXP_BUDGET } from '@daoyou/shared/config/cultivationExpGain';
 import type { RealmType } from '@daoyou/shared/types/constants';
-import type { SectDiscipleRank } from '../domain';
+import type { SectDiscipleRank } from '../domain/index.js';
 
 export const STANDARD_SECT_STIPEND_CURVE = {
   // Weekly passive income starts at two realm daily budgets, then rank and

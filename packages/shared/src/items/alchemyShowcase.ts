@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { QUALITY_ORDER } from '../types/constants';
+import { QUALITY_ORDER } from '../types/constants.js';
 import {
   CONSUMABLE_ITEM,
   ConsumableFactsSchema,
-} from './definitions/consumables';
-import type { InventoryShowcaseSnapshot } from './showcase';
+} from './definitions/consumables.js';
+import type { InventoryShowcaseSnapshot } from './showcase.js';
 
 const AlchemyOutputSchema = ConsumableFactsSchema.strip().extend({
   quantity: z.number().int().positive(),

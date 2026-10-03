@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from './data/jiujie-paths.json';
-import schema from './data/jiujie-paths.schema.json';
-import { JiujiePathsShape, loadJiujiePaths } from './jiujie-path-pack';
-import { JIUJIE_V6_DEFINITION as definition } from './jiujie';
-import { compileSectDefinitionV6 } from './compiler';
-import { createEmptySectCombatProgressV6 } from '../build-state';
+import raw from './data/jiujie-paths.json' with { type: 'json' };
+import schema from './data/jiujie-paths.schema.json' with { type: 'json' };
+import { JiujiePathsShape, loadJiujiePaths } from './jiujie-path-pack.js';
+import { JIUJIE_V6_DEFINITION as definition } from './jiujie.js';
+import { compileSectDefinitionV6 } from './compiler.js';
+import { createEmptySectCombatProgressV6 } from '../build-state/index.js';
 
 describe('九劫双流派经脉', () => {
   it('schema 同步，38个可选节点、4个自动奖励', () => {

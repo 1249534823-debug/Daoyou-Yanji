@@ -1,12 +1,12 @@
-import { rollDrops } from '../drops';
-import { SeededRng } from '../engine/combat-v6/core';
-import type { ItemGrant } from '../inventory';
+import { rollDrops } from '../drops/index.js';
+import { SeededRng } from '../engine/combat-v6/core/index.js';
+import type { ItemGrant } from '../inventory/index.js';
 import {
   STORY_REWARD_PACK,
   STORY_SPIRIT_STONE_REWARD,
   storyDropPool,
   type StoryRewardPack,
-} from '../rewards/story-pack';
+} from '../rewards/story-pack.js';
 
 export interface PlannedStoryReward {
   items: ItemGrant[];

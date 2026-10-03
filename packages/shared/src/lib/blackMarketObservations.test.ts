@@ -1,4 +1,4 @@
-import { sanitizeBlackMarketObservationText } from './blackMarketObservations';
+import { sanitizeBlackMarketObservationText } from './blackMarketObservations.js';
 
 describe('black market observations', () => {
   it('removes exact identity, quality and price language', () => {

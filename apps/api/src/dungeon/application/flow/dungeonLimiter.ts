@@ -5,7 +5,7 @@
  * 过期时间设为 24 小时，确保次日自动重置
  */
 
-import { redis } from '@server/lib/redis/index';
+import { redis } from '@server/lib/redis/index.js';
 
 const DAILY_DUNGEON_LIMIT = 2;
 const KEY_TTL_SECONDS = 86400; // 24 小时

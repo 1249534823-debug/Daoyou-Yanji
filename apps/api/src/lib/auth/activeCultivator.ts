@@ -1,9 +1,9 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
-import { getExecutor } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { redis } from '@server/lib/redis';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
+import { getExecutor } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import { redis } from '@server/lib/redis/index.js';
 import { and, eq } from 'drizzle-orm';
-import type { ActiveCultivatorRef, AuthUser } from './types';
+import type { ActiveCultivatorRef, AuthUser } from './types.js';
 
 const ACTIVE_REF_REDIS_TTL_SECONDS = 600;
 

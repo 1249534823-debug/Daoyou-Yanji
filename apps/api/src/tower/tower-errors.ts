@@ -1,9 +1,9 @@
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { InventoryError } from '@server/inventory/operations';
-import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService';
-import { TowerV6Error } from '@server/tower/application/runtime/combatV6';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { InventoryError } from '@server/inventory/operations.js';
+import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService.js';
+import { TowerV6Error } from '@server/tower/application/runtime/combatV6.js';
 import { ZodError } from 'zod';
-import { apiErrorFilter } from '../http/error-filter';
+import { apiErrorFilter } from '../http/error-filter.js';
 
 function towerError(error: unknown): Response {
   const lock = redisLockErrorResponse(error);

@@ -2,7 +2,7 @@ import { HttpException, Injectable } from '@nestjs/common';
 import {
   getItemLibraryDailyMaterialGenerationSettings,
   upsertItemLibraryDailyMaterialGenerationSettings,
-} from '@server/lib/repositories/appSettingsRepository';
+} from '@server/lib/repositories/appSettingsRepository.js';
 import {
   archiveItemLibraryEntry,
   createItemLibraryEntry,
@@ -10,11 +10,11 @@ import {
   listItemLibrary,
   normalizeItemLibraryFilters,
   updateItemLibraryEntry,
-} from '@server/lib/repositories/itemLibraryRepository';
+} from '@server/lib/repositories/itemLibraryRepository.js';
 import {
   generateMaterialLibraryEntries,
   generateSpiritSeedLibraryEntries,
-} from '@server/admin/application/MaterialLibraryService';
+} from '@server/admin/application/MaterialLibraryService.js';
 import { ItemLibraryDailyMaterialGenerationSettingsSchema } from '@daoyou/shared/lib/constants/appSettings';
 import {
   CreateItemLibraryEntrySchema,

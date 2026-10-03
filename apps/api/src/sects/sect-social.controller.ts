@@ -6,20 +6,20 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   SectChatListQuerySchema,
   WorldChatCreateMessageSchema,
   type SectChatListQuery,
   type WorldChatCreateMessageRequest,
 } from '@daoyou/shared/contracts/world-chat';
-import { Access, CurrentCultivator } from '../auth/access';
-import { RejectRetiredBattleSharePipe } from '../http/chat-input.pipe';
-import { apiErrorFilter } from '../http/error-filter';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { SectSocialService } from './sect-social.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { RejectRetiredBattleSharePipe } from '../http/chat-input.pipe.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { SectSocialService } from './sect-social.service.js';
 
 const ContributionErrors = apiErrorFilter((error) => {
   if (error instanceof Error && error.message === 'SECT_MEMBERSHIP_REQUIRED')

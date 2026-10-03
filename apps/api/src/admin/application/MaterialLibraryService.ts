@@ -1,11 +1,11 @@
-import { SpiritSeedGenerator } from '@server/lib/generation/SpiritSeedGenerator';
+import { SpiritSeedGenerator } from '@server/lib/generation/SpiritSeedGenerator.js';
 import {
   getExecutor,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
-import { itemLibrary } from '@server/lib/drizzle/schema';
-import { MaterialGenerator } from '@server/lib/generation/MaterialGenerator';
+} from '@server/lib/drizzle/db.js';
+import { itemLibrary } from '@server/lib/drizzle/schema.js';
+import { MaterialGenerator } from '@server/lib/generation/MaterialGenerator.js';
 import type { MaterialSkeleton } from '@daoyou/shared/engine/material/creation/types';
 import {
   ItemLibraryEntrySchema,
@@ -21,7 +21,7 @@ import {
 } from '@daoyou/shared/types/constants';
 import type { Material } from '@daoyou/shared/types/cultivator';
 import { and, asc, eq, gte, inArray, sql } from 'drizzle-orm';
-import { computeItemLibrarySampleKey } from '@server/lib/utils/itemLibrarySampleKey';
+import { computeItemLibrarySampleKey } from '@server/lib/utils/itemLibrarySampleKey.js';
 
 type ItemLibraryRow = typeof itemLibrary.$inferSelect;
 

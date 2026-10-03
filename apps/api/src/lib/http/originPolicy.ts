@@ -1,5 +1,5 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
-import { isAllowedPublicWebOrigin, normalizeOrigin } from './origins';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
+import { isAllowedPublicWebOrigin, normalizeOrigin } from './origins.js';
 
 function getApiSelfOrigin() {
   return normalizeOrigin(getRuntimeEnvironment().BETTER_AUTH_URL);

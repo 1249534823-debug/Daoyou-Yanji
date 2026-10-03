@@ -11,16 +11,16 @@ import {
   UseFilters,
   type PipeTransform,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import { CombatV6ReplayParamsSchema } from '@daoyou/shared/contracts/combatV6';
 import { CombatV6HistoryQuerySchema } from '@daoyou/shared/contracts/combatV6Replay';
 import type { Response } from 'express';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { FirstQuery } from '../http/first-query';
-import { ZodPipe } from '../http/zod.pipe';
-import { CombatErrors } from './combat-errors';
-import { ReplaysService } from './replays.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { FirstQuery } from '../http/first-query.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { CombatErrors } from './combat-errors.js';
+import { ReplaysService } from './replays.service.js';
 
 @Controller('api/combat-v6/replays')
 @Access('active')

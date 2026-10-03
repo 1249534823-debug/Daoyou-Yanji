@@ -10,29 +10,29 @@ import {
 } from '@daoyou/shared/engine/combat-v6/sect/host';
 import { resolveSectBattleTargetRealmCandidates } from '@daoyou/shared/engine/sect';
 import { productionSectRuntime } from '@daoyou/shared/engine/sect/content';
-import { type DbTransaction } from '@server/lib/drizzle/db';
+import { type DbTransaction } from '@server/lib/drizzle/db.js';
 import {
   cultivators,
   sectCombatStates,
   sectMemberships,
-} from '@server/lib/drizzle/schema';
-import { dungeonPlayer } from '@server/dungeon/combat-player';
-import { redis } from '@server/lib/redis';
+} from '@server/lib/drizzle/schema.js';
+import { dungeonPlayer } from '@server/dungeon/combat-player.js';
+import { redis } from '@server/lib/redis/index.js';
 import { and, eq, inArray, isNotNull, ne, sql } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
 import {
   invalidSectTask,
   sectTaskPeriodKey,
-} from '@server/sects/organization/SectTaskApplicationSupport';
+} from '@server/sects/organization/SectTaskApplicationSupport.js';
 import type {
   SectTaskEnrollmentContext,
   SectTaskExecutionContext,
-} from '@server/sects/organization/task-executors/SectTaskExecutor';
-import { hasActiveCombat } from '@server/combat/application/CombatOccupancy';
+} from '@server/sects/organization/task-executors/SectTaskExecutor.js';
+import { hasActiveCombat } from '@server/combat/application/CombatOccupancy.js';
 import {
   assembleCombatV6TrainingPlayer,
   CombatV6BuildError,
-} from '@server/combat/application/CombatV6BuildService';
+} from '@server/combat/application/CombatV6BuildService.js';
 
 const key = (id: string) => `combat:v6:sect-task:${id}`;
 

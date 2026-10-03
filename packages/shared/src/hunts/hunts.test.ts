@@ -3,17 +3,17 @@ import {
   HuntCreateTeamSchema,
   HuntEventIdSchema,
   type HuntTeam,
-} from '../contracts/hunts';
-import { getAtlasRegion, hasAtlasMap } from '../lib/game/mapAtlas';
-import { getWorldMapLocation } from '../lib/game/mapSystem';
+} from '../contracts/hunts.js';
+import { getAtlasRegion, hasAtlasMap } from '../lib/game/mapAtlas.js';
+import { getWorldMapLocation } from '../lib/game/mapSystem.js';
 import {
   HUNT_BOSSES,
   HUNT_CYCLE_MS,
   huntEventById,
   huntEventsAt,
   huntIsOpen,
-} from './config';
-import { huntStartError, selectHuntTeam } from './rules';
+} from './config.js';
+import { huntStartError, selectHuntTeam } from './rules.js';
 const now = HUNT_CYCLE_MS * 100 + 10;
 function team(count: number, assisting = false): HuntTeam {
   return {

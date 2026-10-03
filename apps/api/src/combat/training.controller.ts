@@ -20,16 +20,16 @@ import {
   Put,
   UseFilters,
 } from '@nestjs/common';
-import { AppConfigService } from '@server/config/app-config.service';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import { AppConfigService } from '@server/config/app-config.service.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { AutoErrors } from './auto-errors';
-import { CombatErrors } from './combat-errors';
-import { TrainingService } from './training.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { AutoErrors } from './auto-errors.js';
+import { CombatErrors } from './combat-errors.js';
+import { TrainingService } from './training.service.js';
 
 @Injectable()
 export class TraceParamsPipe extends ZodPipe<

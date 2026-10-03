@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from '@server/database/database.module';
-import { ArenaBattleStartOrchestrator } from '@server/arena/application/ArenaBattleStartOrchestrator';
-import { ArenaRoomService } from '@server/arena/application/ArenaRoomService';
-import { CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore';
-import { AuthModule } from '../auth/auth.module';
-import { ArenaBattlesController } from './arena-battles.controller';
-import { ArenaBattlesService } from './arena-battles.service';
-import { ArenaRealtimeService } from './arena-realtime.service';
-import { ArenaRoomsController } from './arena-rooms.controller';
-import { ArenaRoomsService } from './arena-rooms.service';
-import { ArenaGateway } from './arena.gateway';
+import { DatabaseModule } from '@server/database/database.module.js';
+import { ArenaBattleStartOrchestrator } from '@server/arena/application/ArenaBattleStartOrchestrator.js';
+import { ArenaRoomService } from '@server/arena/application/ArenaRoomService.js';
+import { CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore.js';
+import { AuthModule } from '../auth/auth.module.js';
+import { ArenaBattlesController } from './arena-battles.controller.js';
+import { ArenaBattlesService } from './arena-battles.service.js';
+import { ArenaRealtimeService } from './arena-realtime.service.js';
+import { ArenaRoomsController } from './arena-rooms.controller.js';
+import { ArenaRoomsService } from './arena-rooms.service.js';
+import { ArenaGateway } from './arena.gateway.js';
 
 @Module({
   imports: [DatabaseModule, AuthModule],

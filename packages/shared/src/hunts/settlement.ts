@@ -3,8 +3,8 @@ import {
   type Attrs,
   type BattleState,
   type Unit,
-} from '../engine/combat-v6/core';
-import { settleWildResources } from '../engine/combat-v6/wild/rules';
+} from '../engine/combat-v6/core/index.js';
+import { settleWildResources } from '../engine/combat-v6/wild/rules.js';
 
 /** Personal success uses the terminal battle state, before post-battle recovery. */
 export function huntParticipantSucceeded(state: BattleState, unitId: string) {

@@ -8,12 +8,12 @@ import {
   type AdminAccountListQuery,
 } from '@daoyou/shared/contracts/adminAccounts';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import { auth } from '@server/lib/auth/auth';
-import { authAccounts, authSessions } from '@server/lib/auth/schema';
-import type { AuthUser } from '@server/lib/auth/types';
-import { runDbTasks, type DbClient } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import { auth } from '@server/lib/auth/auth.js';
+import { authAccounts, authSessions } from '@server/lib/auth/schema.js';
+import type { AuthUser } from '@server/lib/auth/types.js';
+import { runDbTasks, type DbClient } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
 import { APIError } from 'better-auth/api';
 import { and, eq, inArray } from 'drizzle-orm';
 type AuthHeaders = (headers: Headers) => void;

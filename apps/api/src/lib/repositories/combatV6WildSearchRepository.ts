@@ -5,8 +5,8 @@ import {
   type WildRuntime,
 } from '@daoyou/shared/contracts/combatV6Wild';
 import { eq } from 'drizzle-orm';
-import { db, type DbExecutor, type DbTransaction } from '../drizzle/db';
-import { wildSearches } from '../drizzle/schema';
+import { db, type DbExecutor, type DbTransaction } from '../drizzle/db.js';
+import { wildSearches } from '../drizzle/schema.js';
 
 export async function readWildSearch(cultivatorId: string, q: DbExecutor = db) {
   const [row] = await q

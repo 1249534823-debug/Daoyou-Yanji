@@ -3,7 +3,7 @@ import {
   LLM_PROVIDER_IDS,
   LlmProviderIdSchema,
   type LlmProviderId,
-} from './llm';
+} from './llm.js';
 
 export type LlmRouteSpec = {
   provider: LlmProviderId;

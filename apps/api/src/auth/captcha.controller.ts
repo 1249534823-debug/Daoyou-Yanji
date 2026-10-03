@@ -1,7 +1,7 @@
 import { Controller, Get, Header, Inject } from '@nestjs/common';
-import { FirstQuery } from '../http/first-query';
-import { Access } from './access';
-import { CaptchaService } from './captcha.service';
+import { FirstQuery } from '../http/first-query.js';
+import { Access } from './access.js';
+import { CaptchaService } from './captcha.service.js';
 
 @Controller('api/captcha')
 @Access('public')

@@ -1,22 +1,22 @@
 import { z } from 'zod';
-import type { CombatV6CommandGroup } from '../contracts/combatV6';
+import type { CombatV6CommandGroup } from '../contracts/combatV6.js';
 import type {
   BattleState,
   CombatV6CommandOptions,
   SkillDef,
   StatusDef,
-} from '../engine/combat-v6/core';
-import { observeAutoBattle } from './auto-observation';
-import { AUTO_POLICY_VERSION } from './auto-policy';
-import { chooseStrategyCandidate, type AutoStrategy } from './auto-strategy';
+} from '../engine/combat-v6/core/index.js';
+import { observeAutoBattle } from './auto-observation.js';
+import { AUTO_POLICY_VERSION } from './auto-policy.js';
+import { chooseStrategyCandidate, type AutoStrategy } from './auto-strategy.js';
 import {
   rankAutoActions,
   type AutoCandidate,
   type AutoIntent,
-} from './auto-utility';
-import { controlledUnits } from './controlled-commands';
+} from './auto-utility.js';
+import { controlledUnits } from './controlled-commands.js';
 
-export { AUTO_POLICY_VERSION } from './auto-policy';
+export { AUTO_POLICY_VERSION } from './auto-policy.js';
 export const AUTO_DELAY_MS = 3000;
 export const CombatAutoRequestSchema = z
   .object({

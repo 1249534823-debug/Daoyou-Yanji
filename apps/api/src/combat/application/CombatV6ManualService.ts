@@ -1,16 +1,16 @@
-import { readCharacterManuals } from '@server/lib/repositories/characterLoadoutRepository';
-import { db, type DbExecutor } from '@server/lib/drizzle/db';
+import { readCharacterManuals } from '@server/lib/repositories/characterLoadoutRepository.js';
+import { db, type DbExecutor } from '@server/lib/drizzle/db.js';
 import {
   cultivatorManualSlots,
   cultivatorManualStates,
   cultivators,
   inventoryItems,
-} from '@server/lib/drizzle/schema';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
+} from '@server/lib/drizzle/schema.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
 import {
   characterIdentityRow,
-} from '@server/lib/repositories/sectCombatRepository';
-import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository';
+} from '@server/lib/repositories/sectCombatRepository.js';
+import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
 import {
   getOrInitCultivationProgress,
   stripExpCapForStorage,
@@ -29,9 +29,9 @@ import {
   InventoryError,
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/operations';
-import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
-import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
+} from '@server/inventory/operations.js';
+import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster.js';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
 
 async function readManualFacts(owner: string, q: DbExecutor) {
   const character = await characterIdentityRow(owner, q);

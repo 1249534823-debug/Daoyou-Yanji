@@ -1,4 +1,4 @@
-import { BEAST_STATUS_DEFS, BEAST_SKILLS, projectBeastRoster } from '../beasts';
+import { BEAST_STATUS_DEFS, BEAST_SKILLS, projectBeastRoster } from '../beasts/index.js';
 import {
   ATTR_NAMES,
   EffectType,

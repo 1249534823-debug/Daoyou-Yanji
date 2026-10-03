@@ -13,8 +13,8 @@ import { getTowerSeasonMeta } from '@daoyou/shared/lib/tower/season';
 import type { TowerSeasonMeta } from '@daoyou/shared/lib/tower/types';
 import { and, desc, eq, gte, lt, ne } from 'drizzle-orm';
 import { createHash } from 'node:crypto';
-import { db, type DbExecutor, type DbTransaction } from '../drizzle/db';
-import { towerRewardStates, towerWeeks } from '../drizzle/schema';
+import { db, type DbExecutor, type DbTransaction } from '../drizzle/db.js';
+import { towerRewardStates, towerWeeks } from '../drizzle/schema.js';
 
 export async function readTowerPublishedWeek(
   seasonKey: string,

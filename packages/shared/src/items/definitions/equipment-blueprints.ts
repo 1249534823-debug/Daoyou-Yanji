@@ -1,6 +1,6 @@
 import { getLevelRealmStage } from '@daoyou/shared/config/realmProgression';
-import { EQUIPMENT_LEVELS } from '../../engine/combat-v6/equipment/realm';
-import { DAO_EQUIPMENT_SLOTS } from '../../engine/combat-v6/equipment/types';
+import { EQUIPMENT_LEVELS } from '../../engine/combat-v6/equipment/realm.js';
+import { DAO_EQUIPMENT_SLOTS } from '../../engine/combat-v6/equipment/types.js';
 export const EQUIPMENT_SLOT_NAMES = {
   weapon: '法兵',
   head: '法冠',

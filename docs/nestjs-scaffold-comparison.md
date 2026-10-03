@@ -1,5 +1,8 @@
 # NestJS 脚手架与当前项目用法对比报告
 
+> 后续工具链调整：API 已切换到 Nest CLI 默认 tsc 和 Oxlint，shared 独立编译并通过 dist 入口交付；开发命令使用 Turbo watch。下文的 Rspack／源码包描述保留为切换前审查记录，现行操作见 [本地开发](local-development.md)。
+
+
 分析日期：2026-10-03。
 
 对照项目为 `/Users/churcht/Documents/GitHub/daoyou-nest`，分析对象为 Daoyou 当前工作区，包含尚未提交的架构整理改动。本文依据两边实际配置、源码、已安装 Nest CLI 实现及本轮静态检查，不把历史迁移记录当作本轮运行验证。

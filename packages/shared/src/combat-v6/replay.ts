@@ -1,17 +1,17 @@
-import { publicUnitAppearances } from './unit-appearance';
+import { publicUnitAppearances } from './unit-appearance.js';
 import {
   COMBAT_V6_REPLAY_VERSION,
   parseCombatV6Replay,
   type CombatV6ReplayV1,
 } from '@daoyou/shared/contracts/combatV6Runtime';
-import type { CombatV6ReplayTimeline } from '../contracts/combatV6Replay';
-import { arenaEvents, projectReplayUnits } from './arena';
-import { applyUnitDelta, diffUnits } from './playback';
+import type { CombatV6ReplayTimeline } from '../contracts/combatV6Replay.js';
+import { arenaEvents, projectReplayUnits } from './arena.js';
+import { applyUnitDelta, diffUnits } from './playback.js';
 import {
   combatV6Display,
   combatV6Units,
   visibleUnitNames,
-} from './presentation';
+} from './presentation.js';
 
 /** All hosts emit the same archive, without delivery state or host snapshots. */
 export function createCombatV6Replay(

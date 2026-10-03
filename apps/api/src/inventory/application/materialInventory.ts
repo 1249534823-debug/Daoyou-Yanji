@@ -1,5 +1,5 @@
-import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db';
-import { materials } from '@server/lib/drizzle/schema';
+import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
+import { materials } from '@server/lib/drizzle/schema.js';
 import type { Material } from '@daoyou/shared/types/cultivator';
 import { and, asc, eq, sql } from 'drizzle-orm';
 import { readSpiritFieldSeedSpec } from '@daoyou/shared/engine/spirit-field/seedMaterial';

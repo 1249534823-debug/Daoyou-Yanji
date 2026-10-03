@@ -1,6 +1,6 @@
 import type { Artifact, Consumable, Material } from '@daoyou/shared/types/cultivator';
-import type { BeastTradePreview, BeastTransfer } from '../contracts/beastTrade';
-import type { ItemGrant } from '../inventory';
+import type { BeastTradePreview, BeastTransfer } from '../contracts/beastTrade.js';
+import type { ItemGrant } from '../inventory/index.js';
 
 export type MailAttachmentType =
   | 'beast_v1'

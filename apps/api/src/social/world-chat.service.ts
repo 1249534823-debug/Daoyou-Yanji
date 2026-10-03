@@ -3,16 +3,16 @@ import type {
   WorldChatListQuery,
 } from '@daoyou/shared/contracts/world-chat';
 import { Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { checkAndAcquireCooldown } from '@server/lib/redis/worldChatLimiter';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { checkAndAcquireCooldown } from '@server/lib/redis/worldChatLimiter.js';
 import {
   listLatestMessages,
   listMessages,
-} from '@server/lib/repositories/worldChatRepository';
-import { createAndPublishWorldChatMessage } from '@server/social/application/chatDelivery';
-import { createCultivatorChatMessage } from '@server/social/application/chatMessageApplication';
+} from '@server/lib/repositories/worldChatRepository.js';
+import { createAndPublishWorldChatMessage } from '@server/social/application/chatDelivery.js';
+import { createCultivatorChatMessage } from '@server/social/application/chatMessageApplication.js';
 
 @Injectable()
 export class WorldChatService {

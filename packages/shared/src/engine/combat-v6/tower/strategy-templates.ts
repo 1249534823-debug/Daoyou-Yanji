@@ -1,15 +1,15 @@
 import {
   TOWER_FORMATIONS,
   type TowerFormationId,
-} from '../../../lib/tower/formations';
-import { resolveTowerFloorKind } from '../../../lib/tower/helpers';
-import type { TowerWeek } from '../../../lib/tower/weekly';
-import { TOWER_CATALOG } from './catalog';
-import { TOWER_GENERATION as generation } from './generation';
+} from '../../../lib/tower/formations.js';
+import { resolveTowerFloorKind } from '../../../lib/tower/helpers.js';
+import type { TowerWeek } from '../../../lib/tower/weekly.js';
+import { TOWER_CATALOG } from './catalog.js';
+import { TOWER_GENERATION as generation } from './generation.js';
 import {
   validateTowerFloorStrategy,
   type TowerFloorStrategy,
-} from './strategy';
+} from './strategy.js';
 
 function recipe(
   floor: number,

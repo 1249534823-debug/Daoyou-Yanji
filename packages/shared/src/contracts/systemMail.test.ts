@@ -5,7 +5,7 @@ import {
   SystemMailConditionsSchema,
   SystemMailInputSchema,
   type SystemMailAudienceSnapshot,
-} from './systemMail';
+} from './systemMail.js';
 
 const publishedAt = '2026-09-23T00:00:00Z';
 const facts: SystemMailAudienceSnapshot = {

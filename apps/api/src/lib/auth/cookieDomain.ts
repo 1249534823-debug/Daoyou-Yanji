@@ -1,4 +1,4 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
 export type CrossSubDomainCookiesConfig = {
   enabled: true;
   domain: string;

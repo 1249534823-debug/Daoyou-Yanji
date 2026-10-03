@@ -1,28 +1,28 @@
-import { db, type DbClient, type DbTransaction } from '@server/lib/drizzle/db';
-import { assertCombatV6MutationAllowed } from '@server/combat/mutation-policy';
+import { db, type DbClient, type DbTransaction } from '@server/lib/drizzle/db.js';
+import { assertCombatV6MutationAllowed } from '@server/combat/mutation-policy.js';
 import {
   findPlayerMutationRequest,
   insertPlayerMutationRequest,
   listResourceChangesForRequest,
   lockCultivatorForStateMutation,
   readScopeVersion,
-} from '@server/lib/repositories/playerStateRepository';
+} from '@server/lib/repositories/playerStateRepository.js';
 import {
   redisLockKeys,
   withRedisLock,
   type RedisLeaseContext,
-} from '@server/lib/redis/lock';
-import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
+} from '@server/lib/redis/lock.js';
+import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster.js';
 import type { PlayerResourceMutationMeta } from '@daoyou/shared/contracts/player';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
 import { createHash } from 'node:crypto';
-import { captureJournalSettlement } from '@server/player/application/JournalSettlement';
-import { claimJournalOperation, completeJournalOperation, isJournalActivity, journalOperationKey } from '@server/lib/repositories/playerJournalRepository';
+import { captureJournalSettlement } from '@server/player/application/JournalSettlement.js';
+import { claimJournalOperation, completeJournalOperation, isJournalActivity, journalOperationKey } from '@server/lib/repositories/playerJournalRepository.js';
 import type { PlayerJournalEvent } from '@daoyou/shared/contracts/playerJournal';
 import {
   baselinesFromResourceChanges,
   resourceEventCommitter,
-} from '@server/player/application/state/ResourceEventCommitter';
+} from '@server/player/application/state/ResourceEventCommitter.js';
 
 const RETRYABLE_TRANSACTION_CODES = new Set(['40P01', '40001', '55P03']);
 const MAX_TRANSACTION_ATTEMPTS = 3;

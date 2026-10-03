@@ -1,14 +1,14 @@
-import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db';
+import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db.js';
 import {
   sectCombatStates,
   sectMeridianLoadouts,
   sectMethodProgress,
-} from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/schema.js';
 import {
   findSectCombatState,
   readSectCombatProgress,
   readSectMethodLevels,
-} from '@server/lib/repositories/sectCombatRepository';
+} from '@server/lib/repositories/sectCombatRepository.js';
 import {
   createEmptySectCombatProgressV6,
   createFreshCombatV6MethodLevels,
@@ -19,7 +19,7 @@ import {
 } from '@daoyou/shared/engine/combat-v6/content';
 import { transferSectProgress } from '@daoyou/shared/engine/combat-v6/sect-progression';
 import { eq } from 'drizzle-orm';
-import { InventoryError } from '@server/inventory/operations';
+import { InventoryError } from '@server/inventory/operations.js';
 
 export async function planV6SectTransfer(
   membershipId: string,

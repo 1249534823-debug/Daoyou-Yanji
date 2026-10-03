@@ -1,9 +1,9 @@
 import { createHash } from 'node:crypto';
 import { expect, it } from 'vitest';
-import { generateForgedEquipment } from './forging';
-import { generateDaoEquipmentV1, generateDaoEquipmentV2 } from './generator';
-import { DAO_EQUIPMENT_SLOTS } from './types';
-import { forgedName } from '../../../forging/names';
+import { generateForgedEquipment } from './forging.js';
+import { generateDaoEquipmentV1, generateDaoEquipmentV2 } from './generator.js';
+import { DAO_EQUIPMENT_SLOTS } from './types.js';
+import { forgedName } from '../../../forging/names.js';
 
 // 经确认的14器蕴与38器诀产出池基线：炼气、化神、金丹。
 // V4 八行由 elements.test.ts、V5 器形与命名由 weapons.test.ts 验证；这里锁定 V3 的旧数值随机流。

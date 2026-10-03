@@ -2,14 +2,14 @@ import {
   BEAST_GENERATION,
   BEAST_SPECIES,
   BEAST_SPECIES_REVISION,
-} from './content';
-import { beastPointBudget, type BeastOriginKind } from './identity';
+} from './content.js';
+import { beastPointBudget, type BeastOriginKind } from './identity.js';
 import {
   BEAST_VERSION,
   GeneratedBeastSchema,
   type SummonedBeast,
-} from './schema';
-import { rollBeastTraits } from './trait-generator';
+} from './schema.js';
+import { rollBeastTraits } from './trait-generator.js';
 
 function createIndividual(
   id: string,

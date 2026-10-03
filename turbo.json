@@ -8,16 +8,20 @@
       "env": ["NODE_ENV", "VITE_*", "CF_PAGES_COMMIT_SHA", "GITHUB_SHA"]
     },
     "typecheck": {
-      "dependsOn": ["^typecheck"],
+      "dependsOn": ["^build", "^typecheck"],
       "outputs": []
     },
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "dependsOn": ["^build"],
+      "interruptible": true
     },
     "prd": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "dependsOn": ["^build"],
+      "interruptible": true
     }
   }
 }

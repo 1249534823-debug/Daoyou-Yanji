@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { buildGeneratedCharacter } from './CharacterGenerator';
-import type { CultivatorAIRawData } from './types';
+import { buildGeneratedCharacter } from './CharacterGenerator.js';
+import type { CultivatorAIRawData } from './types.js';
 
 const buildAIData = (
   overrides: Partial<CultivatorAIRawData> = {},

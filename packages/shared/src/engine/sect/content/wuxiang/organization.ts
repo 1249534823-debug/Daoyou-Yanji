@@ -1,4 +1,4 @@
-import type { SectOrganizationTheme } from '../../core';
+import type { SectOrganizationTheme } from '../../core/index.js';
 
 export const WUXIANG_ORGANIZATION_THEME: SectOrganizationTheme = {
   elderTrial: {

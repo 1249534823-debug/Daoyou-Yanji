@@ -1,13 +1,13 @@
-import { db } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
+import { db } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
 import {
   prepareWildBattle,
   readWildSearch,
   saveWildSearch,
-} from '@server/lib/repositories/combatV6WildSearchRepository';
-import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository';
-import { findActiveSectMembership } from '@server/lib/repositories/sectCombatRepository';
+} from '@server/lib/repositories/combatV6WildSearchRepository.js';
+import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
+import { findActiveSectMembership } from '@server/lib/repositories/sectCombatRepository.js';
 
 import { automaticCommands } from '@daoyou/shared/combat-v6/auto';
 import {
@@ -55,17 +55,17 @@ import { WILD_DROP_POOLS, wildItemRewards } from '@daoyou/shared/rewards/wild';
 import { REALM_ORDER } from '@daoyou/shared/types/constants';
 import { eq } from 'drizzle-orm';
 import { createHash, randomInt, randomUUID } from 'node:crypto';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
-import { ConditionService } from '@server/cultivator/application/ConditionService';
-import { qiCurrencyChange } from '@server/cultivator/application/QiResourceChanges';
-import { QiService } from '@server/cultivator/application/QiService';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import { ConditionService } from '@server/cultivator/application/ConditionService.js';
+import { qiCurrencyChange } from '@server/cultivator/application/QiResourceChanges.js';
+import { QiService } from '@server/cultivator/application/QiService.js';
 
-import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
-import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository';
-import { assembleCombatV6WildPlayer } from '@server/combat/application/CombatV6BuildService';
-import { hasActiveCombat } from '@server/combat/application/CombatOccupancy';
-import { CombatV6RuntimeStore } from '@server/combat/application/CombatV6RuntimeStore';
-import { CombatV6WildStore } from '@server/combat/application/CombatV6WildStore';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
+import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
+import { assembleCombatV6WildPlayer } from '@server/combat/application/CombatV6BuildService.js';
+import { hasActiveCombat } from '@server/combat/application/CombatOccupancy.js';
+import { CombatV6RuntimeStore } from '@server/combat/application/CombatV6RuntimeStore.js';
+import { CombatV6WildStore } from '@server/combat/application/CombatV6WildStore.js';
 
 type Actor = { userId: string; cultivatorId: string };
 export class WildError extends Error {

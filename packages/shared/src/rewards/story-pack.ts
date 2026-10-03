@@ -1,9 +1,9 @@
 import { z } from 'zod';
-import { DropPoolSchema, type DropPool } from '../drops';
-import { findItemDefinition } from '../items/registry';
-import { MATERIAL_ITEM, MaterialFactsSchema } from '../items/definitions/materials';
-import { formatContentPackErrors } from '../lib/content-pack-errors';
-import raw from './data/story.json';
+import { DropPoolSchema, type DropPool } from '../drops/index.js';
+import { findItemDefinition } from '../items/registry.js';
+import { MATERIAL_ITEM, MaterialFactsSchema } from '../items/definitions/materials.js';
+import { formatContentPackErrors } from '../lib/content-pack-errors.js';
+import raw from './data/story.json' with { type: 'json' };
 
 export const STORY_SPIRIT_STONE_REWARD = 'currency.spirit-stones';
 

@@ -1,6 +1,6 @@
-import type { HuntTeam } from '../contracts/hunts';
-import { REALM_VALUES, type RealmType } from '../types/constants';
-import { huntIsOpen } from './config';
+import type { HuntTeam } from '../contracts/hunts.js';
+import { REALM_VALUES, type RealmType } from '../types/constants.js';
+import { huntIsOpen } from './config.js';
 export function huntRealmAllowed(
   team: Pick<HuntTeam, 'minRealm' | 'maxRealm'>,
   realm: RealmType,

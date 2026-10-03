@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   mutateInscriptions,
   readInscriptions,
-} from '@server/inscriptions/application/InscriptionService';
+} from '@server/inscriptions/application/InscriptionService.js';
 import type { InscriptionRequest } from '@daoyou/shared/contracts/inscriptions';
 
 @Injectable()

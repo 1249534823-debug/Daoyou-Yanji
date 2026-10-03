@@ -1,8 +1,8 @@
 import type { SectTaskRewardSnapshot } from '@daoyou/shared/engine/sect';
 import type { Material } from '@daoyou/shared/types/cultivator';
-import { organizationError } from '@server/sects/organization/applicationSupport';
-import type { SectRewardGateway } from '@server/sects/organization/ports';
-import type { SectCommandEffects } from '@server/sects/organization/SectCommandEffects';
+import { organizationError } from '@server/sects/organization/applicationSupport.js';
+import type { SectRewardGateway } from '@server/sects/organization/ports.js';
+import type { SectCommandEffects } from '@server/sects/organization/SectCommandEffects.js';
 
 type SectTaskItemGrant = SectTaskRewardSnapshot['grants'][number]['grant'];
 

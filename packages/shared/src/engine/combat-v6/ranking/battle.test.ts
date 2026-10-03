@@ -1,11 +1,11 @@
 import { expect, it } from 'vitest';
-import { applyUnitDelta } from '../../../combat-v6/playback';
-import { combatV6Units } from '../../../combat-v6/presentation';
-import { BEAST_SPECIES, generateStarterBeast } from '../beasts';
-import { COMBAT_V6_SECT_DEFINITIONS_V4 } from '../content';
-import type { CombatV6TrainingPlayerInput } from '../encounter';
-import { compileRankingBattle, simulateRankingBattle } from './battle';
-import { projectCharacterToCombatV6 } from '../projection';
+import { applyUnitDelta } from '../../../combat-v6/playback.js';
+import { combatV6Units } from '../../../combat-v6/presentation.js';
+import { BEAST_SPECIES, generateStarterBeast } from '../beasts/index.js';
+import { COMBAT_V6_SECT_DEFINITIONS_V4 } from '../content/index.js';
+import type { CombatV6TrainingPlayerInput } from '../encounter/index.js';
+import { compileRankingBattle, simulateRankingBattle } from './battle.js';
+import { projectCharacterToCombatV6 } from '../projection/index.js';
 
 function player(id: string): CombatV6TrainingPlayerInput {
   const def = COMBAT_V6_SECT_DEFINITIONS_V4.youdu;

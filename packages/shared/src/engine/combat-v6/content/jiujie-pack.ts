@@ -5,11 +5,11 @@ import {
   SkillTag,
   type SkillDef,
   type StatusDef,
-} from '../core';
-import { validateSectExpressions } from './authoring-expressions';
-import raw from './data/jiujie-combat.json';
-import { sectSkillLearning } from './skill-learning';
-import type { SectSkillDefV6 } from './types';
+} from '../core/index.js';
+import { validateSectExpressions } from './authoring-expressions.js';
+import raw from './data/jiujie-combat.json' with { type: 'json' };
+import { sectSkillLearning } from './skill-learning.js';
+import type { SectSkillDefV6 } from './types.js';
 import {
   jjEffect,
   jjExpr,
@@ -18,7 +18,7 @@ import {
   jjModifier,
   jjStatus,
   jjTargeting,
-} from './jiujie-shapes';
+} from './jiujie-shapes.js';
 
 export const JiujieCombatShape = z.strictObject({
   $schema: z.string().optional(),

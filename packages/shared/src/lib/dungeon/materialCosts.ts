@@ -2,7 +2,7 @@ import type { DungeonMaterialSelection } from '@daoyou/shared/contracts/combatV6
 import { itemDefinition, type InventoryItem } from '@daoyou/shared/inventory';
 import { materialFactsOf } from '@daoyou/shared/items/material';
 import { QUALITY_VALUES } from '@daoyou/shared/types/constants';
-import type { DungeonOptionCost } from './types';
+import type { DungeonOptionCost } from './types.js';
 
 export function dungeonMaterialMatches(
   item: InventoryItem,

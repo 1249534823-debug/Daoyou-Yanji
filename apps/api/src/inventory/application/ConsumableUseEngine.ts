@@ -1,12 +1,12 @@
-import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db';
-import * as schema from '@server/lib/drizzle/schema';
-import { hasActiveDungeon } from '@server/dungeon/occupancy';
-import { redis } from '@server/lib/redis';
-import { parseRedisJson } from '@server/lib/redis/json';
-import type { RedisLeaseContext } from '@server/lib/redis/lock';
-import { loadPlayerConsumableOperationFacts } from '@server/cultivator/application/readers/CultivatorConditionFactsReader';
-import { consumeConsumableById } from '@server/cultivator/application/readers/CultivatorInventoryRepository';
-import { replaceSpiritualRoots } from '@server/cultivator/application/readers/CultivatorProfileRepository';
+import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
+import * as schema from '@server/lib/drizzle/schema.js';
+import { hasActiveDungeon } from '@server/dungeon/occupancy.js';
+import { redis } from '@server/lib/redis/index.js';
+import { parseRedisJson } from '@server/lib/redis/json.js';
+import type { RedisLeaseContext } from '@server/lib/redis/lock.js';
+import { loadPlayerConsumableOperationFacts } from '@server/cultivator/application/readers/CultivatorConditionFactsReader.js';
+import { consumeConsumableById } from '@server/cultivator/application/readers/CultivatorInventoryRepository.js';
+import { replaceSpiritualRoots } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 import { stripExpCapForStorage } from '@daoyou/shared/engine/cultivation/cultivationUtils';
 import {
   ATTRIBUTE_RESET_TALISMAN_NAME,
@@ -34,14 +34,14 @@ import { and, eq, ne } from 'drizzle-orm';
 import {
   AttributeResetService,
   withAttributeResetLock,
-} from '@server/cultivator/application/AttributeResetService';
-import { getBagConsumable as loadOwnedConsumable } from '@server/inventory/application/BagConsumables';
+} from '@server/cultivator/application/AttributeResetService.js';
+import { getBagConsumable as loadOwnedConsumable } from '@server/inventory/application/BagConsumables.js';
 import {
   PillOperationExecutor,
   type PillCultivatorFacts,
-} from '@server/inventory/application/PillOperationExecutor';
-import { QiService } from '@server/cultivator/application/QiService';
-import { SectMeridianResetService } from '@server/sects/application/SectMeridianResetService';
+} from '@server/inventory/application/PillOperationExecutor.js';
+import { QiService } from '@server/cultivator/application/QiService.js';
+import { SectMeridianResetService } from '@server/sects/application/SectMeridianResetService.js';
 
 function describeTrackLevelUp(levelUp: {
   track: Parameters<typeof getTrackConfig>[0];

@@ -1,8 +1,8 @@
-import { ConsumableFactsSchema } from '../items/definitions/consumables';
-import { MaterialFactsSchema } from '../items/definitions/materials';
-import { SeedFactsSchema } from '../items/definitions/seeds';
-import { stableSerializeConsumableSpec } from '../lib/consumables';
-import { calculatePillScore } from '../lib/pillScore';
+import { ConsumableFactsSchema } from '../items/definitions/consumables.js';
+import { MaterialFactsSchema } from '../items/definitions/materials.js';
+import { SeedFactsSchema } from '../items/definitions/seeds.js';
+import { stableSerializeConsumableSpec } from '../lib/consumables.js';
+import { calculatePillScore } from '../lib/pillScore.js';
 
 /** Versioned, length-prefixed UTF-8 facts; SQL backfill uses the same encoding. */
 export function inventoryStackIdentity(

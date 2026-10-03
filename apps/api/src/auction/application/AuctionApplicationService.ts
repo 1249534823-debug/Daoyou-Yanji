@@ -1,6 +1,6 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
 import type {
   AuctionBeastListRequest,
   AuctionListRequest,
@@ -13,9 +13,9 @@ import {
   clearAuctionListingsCache,
   listBeast,
   listItem,
-} from '@server/auction/application/AuctionService';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
-import { readCultivatorName } from '@server/cultivator/facts';
+} from '@server/auction/application/AuctionService.js';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import { readCultivatorName } from '@server/cultivator/facts.js';
 
 export async function executeAuctionBuyCommand(args: {
   listingId: string;

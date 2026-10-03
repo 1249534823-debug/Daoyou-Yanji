@@ -1,26 +1,26 @@
 import {
   DUNGEON_EXP_BUDGET,
   REALM_DAILY_EXP_BUDGET,
-} from '../config/cultivationExpGain';
-import { getLevelRealmStage } from '../config/realmProgression';
-import { rollDrops, type DropPool } from '../drops';
-import { SeededRng } from '../engine/combat-v6/core';
+} from '../config/cultivationExpGain.js';
+import { getLevelRealmStage } from '../config/realmProgression.js';
+import { rollDrops, type DropPool } from '../drops/index.js';
+import { SeededRng } from '../engine/combat-v6/core/index.js';
 import {
   equipmentRealm,
   OPEN_EQUIPMENT_LEVELS,
-} from '../engine/combat-v6/equipment/realm';
-import type { ItemGrant } from '../inventory';
-import { itemDefinition } from '../inventory';
-import { BLUEPRINTS } from '../items/definitions/equipment-blueprints';
-import { materialFactsOf } from '../items/material';
-import { calculateCultivationExpByDailyBudget } from '../lib/cultivationExpGain';
+} from '../engine/combat-v6/equipment/realm.js';
+import type { ItemGrant } from '../inventory/index.js';
+import { itemDefinition } from '../inventory/index.js';
+import { BLUEPRINTS } from '../items/definitions/equipment-blueprints.js';
+import { materialFactsOf } from '../items/material.js';
+import { calculateCultivationExpByDailyBudget } from '../lib/cultivationExpGain.js';
 import {
   getDungeonRewardBonus,
   type DungeonDifficultyTier,
-} from '../lib/game/mapSystem';
-import type { RealmType } from '../types/constants';
-import { REALM_YIELD_RATES } from '../types/constants';
-import { DUNGEON_REWARD_PACK } from './dungeon-pack';
+} from '../lib/game/mapSystem.js';
+import type { RealmType } from '../types/constants.js';
+import { REALM_YIELD_RATES } from '../types/constants.js';
+import { DUNGEON_REWARD_PACK } from './dungeon-pack.js';
 
 export type DungeonRewardSource = 'exploration' | 'battle' | 'completion';
 export interface DungeonRewardEntry {

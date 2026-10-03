@@ -1,8 +1,8 @@
-import { isRedisLockContention, withRedisLock } from '@server/lib/redis/lock';
+import { isRedisLockContention, withRedisLock } from '@server/lib/redis/lock.js';
 import type { ArenaRoomV1 } from '@daoyou/shared/contracts/arena';
-import { ArenaRoomService } from '@server/arena/application/ArenaRoomService';
-import { createArenaV6 } from '@server/combat/application/CombatV6ArenaService';
-import { CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore';
+import { ArenaRoomService } from '@server/arena/application/ArenaRoomService.js';
+import { createArenaV6 } from '@server/combat/application/CombatV6ArenaService.js';
+import { CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore.js';
 
 export interface ArenaBattleStartResult {
   readonly room: ArenaRoomV1;

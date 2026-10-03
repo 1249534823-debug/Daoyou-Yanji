@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createTextFilter } from './index';
+import { createTextFilter } from './index.js';
 
 const dictionary = {
   blockedWords: ['坏蛋', '骗子', 'bad'],

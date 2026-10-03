@@ -9,7 +9,7 @@ import {
   Put,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import { CombatAutoRequestSchema } from '@daoyou/shared/combat-v6/auto';
 import {
   CombatV6TrainingCommandRequestSchema,
@@ -19,12 +19,12 @@ import {
 import { TOWER_BLESSING_IDS } from '@daoyou/shared/lib/tower/blessings';
 import { TOWER_ELIGIBLE_REALMS } from '@daoyou/shared/lib/tower/helpers';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { TowerErrors } from './tower-errors';
-import { TowerService } from './tower.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { TowerErrors } from './tower-errors.js';
+import { TowerService } from './tower.service.js';
 
 const ActionSchema = z.object({
   runId: z.uuid(),

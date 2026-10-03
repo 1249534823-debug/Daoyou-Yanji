@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   resolveSectPresentation,
   type SectPresentationTheme,
-} from './sectPresentation';
+} from './sectPresentation.js';
 
 describe('sect presentation affairs room', () => {
   it('provides one default NPC for every task kind', () => {

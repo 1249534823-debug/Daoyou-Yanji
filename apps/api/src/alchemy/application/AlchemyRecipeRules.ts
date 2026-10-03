@@ -32,7 +32,7 @@ import type {
   PillQuotaCategory,
   WeightedAlchemyProperty,
 } from '@daoyou/shared/types/consumable';
-import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError';
+import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError.js';
 
 export interface PreparedAlchemyMaterial {
   id: string;

@@ -14,11 +14,11 @@ import {
   type MaterialType,
   type Quality,
 } from '@daoyou/shared/types/constants';
-import { generateAiArray } from '@server/utils/aiClient';
+import { generateAiArray } from '@server/utils/aiClient.js';
 import {
   getMaterialGenerationPrompt,
   getMaterialGenerationUserPrompt,
-} from './material-prompts';
+} from './material-prompts.js';
 
 export class MaterialGenerator extends MaterialSkeletonGenerator {
   /**

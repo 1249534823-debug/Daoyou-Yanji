@@ -1,5 +1,5 @@
-import { renderPrompt } from '@server/lib/prompts';
-import { generateAiObject } from '@server/utils/aiClient';
+import { renderPrompt } from '@server/lib/prompts/index.js';
+import { generateAiObject } from '@server/utils/aiClient.js';
 import { SPIRIT_FIELD_METHOD_MAP, getAffinityScore, type SpiritFieldCultivationMethod, type SpiritFieldHarvestSettlement, type SpiritFieldPlantSnapshot, type SpiritFieldStageHistory, type SpiritFieldStageJudgment } from '@daoyou/shared/engine/spirit-field';
 import { z } from 'zod';
 

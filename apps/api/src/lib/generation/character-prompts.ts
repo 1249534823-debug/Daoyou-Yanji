@@ -1,4 +1,4 @@
-import { renderPromptSystem, renderPromptUser } from '@server/lib/prompts';
+import { renderPromptSystem, renderPromptUser } from '@server/lib/prompts/index.js';
 
 /**
  * 角色生成 Prompt 模板（系统提示词）

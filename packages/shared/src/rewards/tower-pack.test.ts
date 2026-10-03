@@ -1,17 +1,17 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '../engine/combat-v6/beasts/content';
+import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '../engine/combat-v6/beasts/content.js';
 import {
   equipmentRealm,
   isOpenEquipmentLevel,
-} from '../engine/combat-v6/equipment/realm';
-import { combatCharacterLevel } from '../engine/combat-v6/projection/character-level';
-import { itemDefinition, ItemGrantSchema } from '../inventory';
-import { TOWER_ELIGIBLE_REALMS } from '../lib/tower/helpers';
-import raw from './data/tower.json';
-import schema from './data/tower.schema.json';
-import { planTowerReward, towerRewardPreviews } from './tower';
-import { loadTowerRewardPack, TowerRewardPackShape } from './tower-pack';
+} from '../engine/combat-v6/equipment/realm.js';
+import { combatCharacterLevel } from '../engine/combat-v6/projection/character-level.js';
+import { itemDefinition, ItemGrantSchema } from '../inventory/index.js';
+import { TOWER_ELIGIBLE_REALMS } from '../lib/tower/helpers.js';
+import raw from './data/tower.json' with { type: 'json' };
+import schema from './data/tower.schema.json' with { type: 'json' };
+import { planTowerReward, towerRewardPreviews } from './tower.js';
+import { loadTowerRewardPack, TowerRewardPackShape } from './tower-pack.js';
 
 describe('幻境逐层奖励', () => {
   it('编辑器Schema同步', () =>

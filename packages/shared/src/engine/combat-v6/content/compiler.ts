@@ -1,4 +1,4 @@
-import { connectedMeridianSelection, normalizeMeridianSelection } from './meridian-selection';
+import { connectedMeridianSelection, normalizeMeridianSelection } from './meridian-selection.js';
 import { EffectType, type SkillDef, type SkillEffect } from "../core/index.ts"
 import type { CombatV6ProjectionDiagnostic } from "../projection/types.ts"
 import type {
@@ -565,4 +565,4 @@ export function compileSectDefinitionV6(input: CompileSectCombatV6Input): Compil
     },
   }
 }
-import { methodLevelCap } from '../sect-progression/pack';
+import { methodLevelCap } from '../sect-progression/pack.js';

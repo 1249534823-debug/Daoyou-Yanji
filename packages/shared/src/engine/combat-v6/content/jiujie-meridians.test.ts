@@ -1,14 +1,14 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { createBattle, effectiveAttrs, restoreBattle, SeededRng, type Command, type CreateBattleInput, type SkillDef } from '../core';
-import { createEmptySectCombatProgressV6 } from '../build-state';
-import { createDaoyouRuleset } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_6D_VERSIONS as versions } from '../version';
-import { DAO_EQUIPMENT_ARTS_V1 } from '../equipment/special-content';
-import { YOUDU_COMBAT } from './youdu-pack';
-import { JIUJIE_V6_DEFINITION as definition } from './jiujie';
-import { JIUJIE_COMBAT } from './jiujie-pack';
-import { daoyouFormulas } from '../rules-daoyou/formulas';
-import { compileSectDefinitionV6 } from './compiler';
+import { createBattle, effectiveAttrs, restoreBattle, SeededRng, type Command, type CreateBattleInput, type SkillDef } from '../core/index.js';
+import { createEmptySectCombatProgressV6 } from '../build-state/index.js';
+import { createDaoyouRuleset } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_6D_VERSIONS as versions } from '../version.js';
+import { DAO_EQUIPMENT_ARTS_V1 } from '../equipment/special-content.js';
+import { YOUDU_COMBAT } from './youdu-pack.js';
+import { JIUJIE_V6_DEFINITION as definition } from './jiujie.js';
+import { JIUJIE_COMBAT } from './jiujie-pack.js';
+import { daoyouFormulas } from '../rules-daoyou/formulas.js';
+import { compileSectDefinitionV6 } from './compiler.js';
 
 const S = (x: string) => `jiujie.skill.${x}`;
 const T = (x: string) => `jiujie.status.${x}`;

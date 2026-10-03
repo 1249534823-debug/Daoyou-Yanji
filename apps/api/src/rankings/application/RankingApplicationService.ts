@@ -1,5 +1,5 @@
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
-import { MailService, type MailAttachment } from '@server/mail/application/MailService';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import { MailService, type MailAttachment } from '@server/mail/application/MailService.js';
 
 export async function sendWeeklyRankingRewardCommand(args: {
   userId: string;

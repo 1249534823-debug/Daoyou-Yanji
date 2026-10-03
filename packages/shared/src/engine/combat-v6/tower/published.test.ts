@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { getTowerSeasonMeta } from '../../../lib/tower/season';
-import { createTowerWeek, TOWER_ENCOUNTERS } from '../../../lib/tower/weekly';
+import { getTowerSeasonMeta } from '../../../lib/tower/season.js';
+import { createTowerWeek, TOWER_ENCOUNTERS } from '../../../lib/tower/weekly.js';
 import {
   publishedTowerEncounter,
   publishTowerWeek,
   validatePublishedTowerWeek,
-} from './published';
-import { expandTowerFloor } from './strategy-templates';
+} from './published.js';
+import { expandTowerFloor } from './strategy-templates.js';
 
 describe('完整遭遇与冻结周配置', () => {
   it('缺失历史周和跨年仍生成完整且确定的周配置', () => {

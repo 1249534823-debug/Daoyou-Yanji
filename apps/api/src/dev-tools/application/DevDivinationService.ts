@@ -1,10 +1,10 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
 import { allowsLocalDevTools } from '@daoyou/shared/config/deployment';
 import { eq } from 'drizzle-orm';
-import { db } from '@server/lib/drizzle/db';
-import { cultivators, dailyDivinations } from '@server/lib/drizzle/schema';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
-import { DivinationError } from '@server/divination/application/DivinationService';
+import { db } from '@server/lib/drizzle/db.js';
+import { cultivators, dailyDivinations } from '@server/lib/drizzle/schema.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
+import { DivinationError } from '@server/divination/application/DivinationService.js';
 
 export async function resetDevDivination(owner: string) {
   if (!allowsLocalDevTools(getRuntimeEnvironment().APP_ENV, getRuntimeEnvironment().NODE_ENV))

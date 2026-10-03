@@ -6,14 +6,14 @@ import {
   Patch,
   UseFilters,
 } from '@nestjs/common';
-import type { AuthUser } from '@server/lib/auth/types';
-import { Access, CurrentUser } from '../auth/access';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { AdminErrors } from './admin-errors';
-import { AdminFeedbackService } from './feedback.service';
-import { MonitoringService } from './monitoring.service';
-import { SettingsService } from './settings.service';
+import type { AuthUser } from '@server/lib/auth/types.js';
+import { Access, CurrentUser } from '../auth/access.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { AdminErrors } from './admin-errors.js';
+import { AdminFeedbackService } from './feedback.service.js';
+import { MonitoringService } from './monitoring.service.js';
+import { SettingsService } from './settings.service.js';
 
 @Controller('api/admin')
 @Access('admin')

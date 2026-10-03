@@ -1,6 +1,6 @@
 import { Controller, Get, Inject } from '@nestjs/common';
-import { Access } from '../auth/access';
-import { CommunityService } from './community.service';
+import { Access } from '../auth/access.js';
+import { CommunityService } from './community.service.js';
 
 @Controller('api/community')
 @Access('public')

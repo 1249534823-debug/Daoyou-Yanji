@@ -1,7 +1,7 @@
 import { CREATION_MATERIAL_SEMANTIC_TAGS } from '@daoyou/shared/engine/shared/tag-domain';
 import { ELEMENT_VALUES, QUALITY_VALUES, REALM_VALUES, type ElementType, type Quality, type RealmType } from '@daoyou/shared/types/constants';
 import type { Material } from '@daoyou/shared/types/cultivator';
-import { SPIRIT_FIELD_CULTIVATION_METHODS, SPIRIT_FIELD_OUTCOME_KINDS, SPIRIT_SEED_GROWTH_FORMS, SPIRIT_SEED_GROWTH_TRAITS, SPIRIT_SEED_HABITAT_TAGS, SPIRIT_SEED_HARVEST_PARTS, SPIRIT_SEED_USE_TAGS, type SpiritFieldPlantSnapshot, type SpiritFieldSeedSpec } from './types';
+import { SPIRIT_FIELD_CULTIVATION_METHODS, SPIRIT_FIELD_OUTCOME_KINDS, SPIRIT_SEED_GROWTH_FORMS, SPIRIT_SEED_GROWTH_TRAITS, SPIRIT_SEED_HABITAT_TAGS, SPIRIT_SEED_HARVEST_PARTS, SPIRIT_SEED_USE_TAGS, type SpiritFieldPlantSnapshot, type SpiritFieldSeedSpec } from './types.js';
 
 function isRecord(value: unknown): value is Record<string, unknown> { return Boolean(value && typeof value === 'object' && !Array.isArray(value)); }
 function isEnum<T extends string>(value: unknown, allowed: readonly T[]): value is T { return typeof value === 'string' && allowed.includes(value as T); }

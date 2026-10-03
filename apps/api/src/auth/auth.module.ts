@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
-import { AccessGuard } from './access.guard';
-import { CaptchaController } from './captcha.controller';
-import { CaptchaService } from './captcha.service';
-import { SessionService } from './session.service';
+import { AccessGuard } from './access.guard.js';
+import { CaptchaController } from './captcha.controller.js';
+import { CaptchaService } from './captcha.service.js';
+import { SessionService } from './session.service.js';
 
 @Module({
   controllers: [CaptchaController],

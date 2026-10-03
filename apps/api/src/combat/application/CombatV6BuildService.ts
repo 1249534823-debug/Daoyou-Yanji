@@ -1,12 +1,12 @@
-import { readCharacterEquipment, readCharacterManuals } from '@server/lib/repositories/characterLoadoutRepository';
-import { db, runDbTasks, type DbExecutor } from '@server/lib/drizzle/db';
+import { readCharacterEquipment, readCharacterManuals } from '@server/lib/repositories/characterLoadoutRepository.js';
+import { db, runDbTasks, type DbExecutor } from '@server/lib/drizzle/db.js';
 import {
   sectCombatStates,
   sectMeridianLoadouts,
   sectMethodProgress,
-} from '@server/lib/drizzle/schema';
-import { readBeastRoster } from '@server/lib/repositories/combatV6BeastRepository';
-import { readCustomAutoStrategy } from '@server/lib/repositories/combatV6AutoStrategyRepository';
+} from '@server/lib/drizzle/schema.js';
+import { readBeastRoster } from '@server/lib/repositories/combatV6BeastRepository.js';
+import { readCustomAutoStrategy } from '@server/lib/repositories/combatV6AutoStrategyRepository.js';
 import { defaultAutoStrategy } from '@daoyou/shared/combat-v6/auto-strategy';
 import {
   characterIdentityRow,
@@ -15,9 +15,9 @@ import {
   readSectMethodLevels,
   readActiveSectCombatProgress,
   lockActiveMembership,
-} from '@server/lib/repositories/sectCombatRepository';
-import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository';
-import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
+} from '@server/lib/repositories/sectCombatRepository.js';
+import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
 import type {
   SectPathSelectionRequest,
   SectCombatView,
@@ -36,7 +36,7 @@ import { projectCharacterToCombatV6 } from '@daoyou/shared/engine/combat-v6/proj
 import type { CultivatorCondition } from '@daoyou/shared/types/condition';
 import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import { and, eq, isNull, sql } from 'drizzle-orm';
-import { assertCombatV6MutationAllowed } from '@server/combat/application/CombatV6MutationGuard';
+import { assertCombatV6MutationAllowed } from '@server/combat/application/CombatV6MutationGuard.js';
 
 export class CombatV6BuildError extends Error {
   constructor(

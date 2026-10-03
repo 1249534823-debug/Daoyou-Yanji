@@ -2,23 +2,23 @@ import {
   getRealmStageLevel,
   getRealmStageNaturalAttributeValue,
   getRealmStageUnallocatedAttributeBudget,
-} from '../../../config/realmProgression';
-import { BODY_CULTIVATION_TRACK_KEYS } from '../../../lib/bodyCultivation/pack';
+} from '../../../config/realmProgression.js';
+import { BODY_CULTIVATION_TRACK_KEYS } from '../../../lib/bodyCultivation/pack.js';
 import type {
   BodyCultivationRealm,
   BodyCultivationState,
-} from '../../../types/condition';
-import type { RealmStage, RealmType } from '../../../types/constants';
-import { generateStarterBeast } from '../beasts';
-import { allocateBeast, gainBeastExp } from '../beasts/progression';
-import { COMBAT_V6_SECT_DEFINITIONS, type CombatV6SectId } from '../content';
-import type { CombatV6TrainingPlayerInput } from '../encounter';
+} from '../../../types/condition.js';
+import type { RealmStage, RealmType } from '../../../types/constants.js';
+import { generateStarterBeast } from '../beasts/index.js';
+import { allocateBeast, gainBeastExp } from '../beasts/progression.js';
+import { COMBAT_V6_SECT_DEFINITIONS, type CombatV6SectId } from '../content/index.js';
+import type { CombatV6TrainingPlayerInput } from '../encounter/index.js';
 import {
   DAO_EQUIPMENT_GENERATOR_VERSION,
   DAO_EQUIPMENT_TEMPLATES_V1,
   generateDaoEquipmentV1,
-} from '../equipment';
-import { OPEN_EQUIPMENT_LEVELS, equipmentRealm } from '../equipment/realm';
+} from '../equipment/index.js';
+import { OPEN_EQUIPMENT_LEVELS, equipmentRealm } from '../equipment/realm.js';
 
 // Frozen progression samples; never inferred from the challenger at runtime.
 const trainingByRealm: Partial<

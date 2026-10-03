@@ -1,4 +1,4 @@
-import { getJetStreamClient } from '@server/lib/nats';
+import { getJetStreamClient } from '@server/lib/nats/index.js';
 import {
   DOMAIN_EVENT_STREAM,
   parseDomainEventEnvelope,
@@ -10,7 +10,7 @@ import {
   consumerRetryDelayMs,
   DEAD_LETTER_STREAM,
   DEAD_LETTER_SUBJECT_PREFIX,
-} from './natsTopology';
+} from './natsTopology.js';
 
 const MAX_PROCESSING_ATTEMPTS = 10;
 const WORKING_INTERVAL_MS = 30_000;

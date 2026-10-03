@@ -5,17 +5,17 @@ import {
   type RealmStage,
   type RealmType,
 } from '@daoyou/shared/types/constants';
-import { TOWER_BLESSINGS_PACK } from './blessing-pack';
+import { TOWER_BLESSINGS_PACK } from './blessing-pack.js';
 import {
   compileTowerBlessingDefinitions,
   type TowerBlessingId,
-} from './blessings';
-import { TOWER_ENCOUNTER_PACK } from './encounter-pack';
+} from './blessings.js';
+import { TOWER_ENCOUNTER_PACK } from './encounter-pack.js';
 import type {
   TowerBlessingChoice,
   TowerFloorKind,
   TowerMilestoneTier,
-} from './types';
+} from './types.js';
 
 export const TOWER_MAX_FLOOR = TOWER_ENCOUNTER_PACK.floors.length;
 export const TOWER_DIFFICULTY_STEP = TOWER_ENCOUNTER_PACK.difficultyStep;

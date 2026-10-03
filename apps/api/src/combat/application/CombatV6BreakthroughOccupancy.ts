@@ -1,5 +1,5 @@
-import { db, type DbExecutor } from '@server/lib/drizzle/db';
-import { cultivatorTasks } from '@server/lib/drizzle/schema';
+import { db, type DbExecutor } from '@server/lib/drizzle/db.js';
+import { cultivatorTasks } from '@server/lib/drizzle/schema.js';
 import { and, eq, sql } from 'drizzle-orm';
 
 export async function activeBreakthroughBattle(

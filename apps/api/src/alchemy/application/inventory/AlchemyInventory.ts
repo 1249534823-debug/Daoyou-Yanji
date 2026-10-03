@@ -2,8 +2,8 @@ import {
   getExecutor,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
-import { inventoryItems } from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/db.js';
+import { inventoryItems } from '@server/lib/drizzle/schema.js';
 import {
   groupAlchemyBagMaterials,
   groupAlchemyStorageMaterials,
@@ -13,12 +13,12 @@ import { inventoryStackIdentity } from '@daoyou/shared/inventory/stack-key';
 import { consumableFactsOf } from '@daoyou/shared/items/definitions/consumables';
 import type { Consumable } from '@daoyou/shared/types/cultivator';
 import { and, eq, inArray } from 'drizzle-orm';
-import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError';
+import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError.js';
 import {
   grantInventory,
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/operations';
+} from '@server/inventory/operations.js';
 
 export async function readAlchemyMaterials(
   owner: string,

@@ -1,16 +1,16 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';
-import data from './data/equipment-forging.json';
-import schema from './data/equipment-forging.schema.json';
+import data from './data/equipment-forging.json' with { type: 'json' };
+import schema from './data/equipment-forging.schema.json' with { type: 'json' };
 import {
   EquipmentForgingPackShape,
   loadEquipmentForgingPack,
-} from './forging-pack';
-import { daoEquipmentGenerationRulesV2 } from './generator';
+} from './forging-pack.js';
+import { daoEquipmentGenerationRulesV2 } from './generator.js';
 import {
   DAO_EQUIPMENT_ARTS_V1,
   DAO_EQUIPMENT_ESSENCES_V1,
-} from './special-content';
+} from './special-content.js';
 
 const definitions = {
   arts: DAO_EQUIPMENT_ARTS_V1,
@@ -138,10 +138,10 @@ it('shares edited generation, pool, cost and material boost configuration', asyn
   copy.forging.costs[0].spiritStones = 321;
   vi.resetModules();
   vi.doMock('./data/equipment-forging.json', () => ({ default: copy }));
-  const { generateDaoEquipmentV2 } = await import('./generator');
+  const { generateDaoEquipmentV2 } = await import('./generator.js');
   const { generateForgedEquipment, FORGING_BOOST_PER_MATERIAL } =
-    await import('./forging');
-  const { forgingCost } = await import('../../../forging/rules');
+    await import('./forging.js');
+  const { forgingCost } = await import('../../../forging/rules.js');
   const input = {
     id: 'edited',
     createdAt: '2026-09-11',
@@ -171,7 +171,7 @@ it('shares edited generation, pool, cost and material boost configuration', asyn
 });
 
 it('更换器蕴候选池不改变白字、绿字、器诀或其他成品事实', async () => {
-  const { generateDaoEquipmentV2: original } = await import('./generator');
+  const { generateDaoEquipmentV2: original } = await import('./generator.js');
   const inputs = Array.from({ length: 256 }, (_, seed) => ({
     id: 'pool-invariance', createdAt: 'test', seed,
     templateId: 'dao_equipment.standard.weapon.v1', equipmentLevel: 50,
@@ -188,12 +188,12 @@ it('更换器蕴候选池不改变白字、绿字、器诀或其他成品事实'
   copy.generation.essencePool.reverse();
   vi.resetModules();
   vi.doMock('./data/equipment-forging.json', () => ({ default: copy }));
-  const { generateDaoEquipmentV2: changed } = await import('./generator');
+  const { generateDaoEquipmentV2: changed } = await import('./generator.js');
   expect(inputs.map((input) => withoutEssences(changed(input)))).toEqual(expected);
 });
 
 it('更换器诀候选池不改变白字、绿字、器蕴或其他成品事实', async () => {
-  const { generateDaoEquipmentV2: original } = await import('./generator');
+  const { generateDaoEquipmentV2: original } = await import('./generator.js');
   const inputs = Array.from({ length: 256 }, (_, seed) => ({
     id: 'pool-invariance', createdAt: 'test', seed,
     templateId: 'dao_equipment.standard.weapon.v1', equipmentLevel: 50,
@@ -210,6 +210,6 @@ it('更换器诀候选池不改变白字、绿字、器蕴或其他成品事实'
   copy.generation.artPool.reverse();
   vi.resetModules();
   vi.doMock('./data/equipment-forging.json', () => ({ default: copy }));
-  const { generateDaoEquipmentV2: changed } = await import('./generator');
+  const { generateDaoEquipmentV2: changed } = await import('./generator.js');
   expect(inputs.map((input) => withoutArt(changed(input)))).toEqual(expected);
 });

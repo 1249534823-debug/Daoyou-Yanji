@@ -1,8 +1,8 @@
-import type { SectFacilityState } from '../domain';
+import type { SectFacilityState } from '../domain/index.js';
 import type {
   SectBenefitMetric,
   SectFacilityEffectSnapshot,
-} from '../organization';
+} from '../organization/index.js';
 
 export type SectFacilityDialogueEmphasis =
   'level' | 'benefit' | 'progress' | 'warning';

@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import { createEmptySectCombatProgressV6 } from '../build-state';
-import { compileSectDefinitionV6 } from './compiler';
-import raw from './data/wuxiang-paths.json';
-import schema from './data/wuxiang-paths.schema.json';
-import { WUXIANG_V6_DEFINITION as definition } from './wuxiang';
+import { createEmptySectCombatProgressV6 } from '../build-state/index.js';
+import { compileSectDefinitionV6 } from './compiler.js';
+import raw from './data/wuxiang-paths.json' with { type: 'json' };
+import schema from './data/wuxiang-paths.schema.json' with { type: 'json' };
+import { WUXIANG_V6_DEFINITION as definition } from './wuxiang.js';
 import {
   WuxiangPathsPackShape,
   loadWuxiangPathsPack,
-} from './wuxiang-path-pack';
+} from './wuxiang-path-pack.js';
 
 describe('无相两条完整经脉', () => {
   it('Schema 同步', () =>

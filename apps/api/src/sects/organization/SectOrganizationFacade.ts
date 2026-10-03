@@ -1,15 +1,15 @@
 import type { SectRuntime } from '@daoyou/shared/engine/sect';
-import type { GetSectTasksQueryHandler } from '@server/sects/organization/GetSectTasksQueryHandler';
-import { SectAdmissionApplicationService } from '@server/sects/organization/SectAdmissionApplicationService';
-import type { SectConstructionApplicationService } from '@server/sects/organization/SectConstructionApplicationService';
-import type { SectEconomyApplicationService } from '@server/sects/organization/SectEconomyApplicationService';
-import type { SectMembershipApplicationService } from '@server/sects/organization/SectMembershipApplicationService';
-import type { ExecuteSectTaskActionHandler } from '@server/sects/organization/SectTaskApplicationService';
-import type { SectTaskSubmissionQueryService } from '@server/sects/organization/SectTaskSubmissionQueryService';
+import type { GetSectTasksQueryHandler } from '@server/sects/organization/GetSectTasksQueryHandler.js';
+import { SectAdmissionApplicationService } from '@server/sects/organization/SectAdmissionApplicationService.js';
+import type { SectConstructionApplicationService } from '@server/sects/organization/SectConstructionApplicationService.js';
+import type { SectEconomyApplicationService } from '@server/sects/organization/SectEconomyApplicationService.js';
+import type { SectMembershipApplicationService } from '@server/sects/organization/SectMembershipApplicationService.js';
+import type { ExecuteSectTaskActionHandler } from '@server/sects/organization/SectTaskApplicationService.js';
+import type { SectTaskSubmissionQueryService } from '@server/sects/organization/SectTaskSubmissionQueryService.js';
 import type {
   SectAdmissionRepository,
   SectAdmissionResourceReader,
-} from '@server/sects/organization/ports';
+} from '@server/sects/organization/ports.js';
 
 export interface SectOrganizationServices {
   membership: SectMembershipApplicationService;

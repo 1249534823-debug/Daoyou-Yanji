@@ -7,21 +7,21 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { AttributeResetServiceError } from '@server/cultivator/application/AttributeResetService';
-import { RedeemClaimError } from '@server/admin/application/RedeemCodeApplicationService';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { AttributeResetServiceError } from '@server/cultivator/application/AttributeResetService.js';
+import { RedeemClaimError } from '@server/admin/application/RedeemCodeApplicationService.js';
 import {
   AttributeAllocationSchema,
   type AttributeAllocationRequest,
 } from '@daoyou/shared/contracts/characterAttributes';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody, JsonBodyParseError } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { ProfileService } from './profile.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody, JsonBodyParseError } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { ProfileService } from './profile.service.js';
 
 const TitleSchema = z.object({
   title: z.string().min(2).max(8).optional().nullable(),

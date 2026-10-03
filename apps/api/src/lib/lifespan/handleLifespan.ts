@@ -1,13 +1,13 @@
-import { cultivators } from '@server/lib/drizzle/schema';
-import type { DbTransaction } from '@server/lib/drizzle/db';
-import { invalidateActiveCultivatorRef } from '@server/lib/auth/activeCultivator';
-import { findActiveCultivatorOwnerId } from '@server/lib/repositories/cultivatorRepository';
-import { updateCultivator } from '@server/cultivator/application/readers/CultivatorStateRepository';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
+import { invalidateActiveCultivatorRef } from '@server/lib/auth/activeCultivator.js';
+import { findActiveCultivatorOwnerId } from '@server/lib/repositories/cultivatorRepository.js';
+import { updateCultivator } from '@server/cultivator/application/readers/CultivatorStateRepository.js';
 import type { BreakthroughModifiers } from '@daoyou/shared/engine/cultivation/breakthroughCalculator';
 import type {
   LifespanExhaustedStoryPayload,
   RetreatStoryCultivator,
-} from '@server/utils/prompts';
+} from '@server/utils/prompts.js';
 import { RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import { eq } from 'drizzle-orm';
 

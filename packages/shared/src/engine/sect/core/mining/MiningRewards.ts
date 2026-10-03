@@ -3,9 +3,9 @@ import {
   type Quality,
   type RealmType,
 } from '@daoyou/shared/types/constants';
-import { SECT_REALM_QUALITY_RULES } from '../organization/taskRequirements';
-import type { SectTaskRewardSnapshot } from '../organization/taskRewards';
-import type { MiningScoreTier } from './MiningGameRules';
+import { SECT_REALM_QUALITY_RULES } from '../organization/taskRequirements.js';
+import type { SectTaskRewardSnapshot } from '../organization/taskRewards.js';
+import type { MiningScoreTier } from './MiningGameRules.js';
 
 export const MINING_TIER_REWARD_MULTIPLIER = {
   D: 0.75,

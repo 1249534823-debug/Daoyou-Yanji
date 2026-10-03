@@ -4,13 +4,13 @@ import type {
   ArenaSocketMessage,
 } from '@daoyou/shared/contracts/combatV6Arena';
 import { ARENA_PUBLIC_VIEW } from '@daoyou/shared/contracts/combatV6Arena';
-import { ArenaRoomService } from '@server/arena/application/ArenaRoomService';
+import { ArenaRoomService } from '@server/arena/application/ArenaRoomService.js';
 import {
   publishNatsCoreMessage,
   subscribeNatsCoreSubject,
   waitForNatsCoreSubjectReady,
-} from '@server/realtime/infrastructure/natsCorePubSub';
-import { CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore';
+} from '@server/realtime/infrastructure/natsCorePubSub.js';
+import { CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore.js';
 
 const subject = (id: string) => `daoyou.realtime.combat-v6.arena.${id}`;
 export async function subscribeArenaV6(

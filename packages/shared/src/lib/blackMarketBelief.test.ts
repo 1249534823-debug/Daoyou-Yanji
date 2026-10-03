@@ -1,7 +1,7 @@
 import {
   applyBlackMarketBeliefPatch,
   describeBlackMarketClaimMode,
-} from './blackMarketBelief';
+} from './blackMarketBelief.js';
 
 const belief = {
   confidence: 'medium' as const,

@@ -1,18 +1,18 @@
 import type {
   TowerReward,
   TowerRewardPreview,
-} from '../contracts/combatV6Tower';
-import { rollDrops } from '../drops';
-import { SeededRng } from '../engine/combat-v6/core';
+} from '../contracts/combatV6Tower.js';
+import { rollDrops } from '../drops/index.js';
+import { SeededRng } from '../engine/combat-v6/core/index.js';
 import {
   equipmentRealm,
   isOpenEquipmentLevel,
-} from '../engine/combat-v6/equipment/realm';
-import { combatCharacterLevel } from '../engine/combat-v6/projection/character-level';
-import { itemDefinition } from '../inventory';
-import { hashTowerSeed } from '../lib/tower/helpers';
-import type { RealmType } from '../types/constants';
-import { TOWER_REWARD_PACK } from './tower-pack';
+} from '../engine/combat-v6/equipment/realm.js';
+import { combatCharacterLevel } from '../engine/combat-v6/projection/character-level.js';
+import { itemDefinition } from '../inventory/index.js';
+import { hashTowerSeed } from '../lib/tower/helpers.js';
+import type { RealmType } from '../types/constants.js';
+import { TOWER_REWARD_PACK } from './tower-pack.js';
 
 function eligibleRewardItems(
   drop: (typeof TOWER_REWARD_PACK)['floors'][number]['drops'][number],

@@ -1,16 +1,16 @@
-import type { ManualAction } from '../contracts/combatV6Manuals';
+import type { ManualAction } from '../contracts/combatV6Manuals.js';
 import {
   CHARACTER_MANUALS_V1,
   manualRule,
-} from '../engine/combat-v6/manuals/content';
-import { changeManual } from '../engine/combat-v6/manuals/state';
+} from '../engine/combat-v6/manuals/content.js';
+import { changeManual } from '../engine/combat-v6/manuals/state.js';
 import type {
   CultivatorManualStateV1,
   ManualStateChangeResult,
-} from '../engine/combat-v6/manuals/types';
-import type { InventoryItem } from '../inventory';
-import { findItemDefinition } from '../items/registry';
-import type { RealmType } from '../types/constants';
+} from '../engine/combat-v6/manuals/types.js';
+import type { InventoryItem } from '../inventory/index.js';
+import { findItemDefinition } from '../items/registry.js';
+import type { RealmType } from '../types/constants.js';
 
 /** Learning costs one jade; successive bottlenecks cost two, then three. */
 export function manualJadeCost(

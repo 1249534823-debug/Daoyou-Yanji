@@ -1,4 +1,4 @@
-import type { DaoEquipmentSlot } from './types';
+import type { DaoEquipmentSlot } from './types.js';
 
 export const DAO_WEAPON_TYPES = [
   'axe',

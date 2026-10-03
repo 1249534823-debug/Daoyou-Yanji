@@ -1,7 +1,7 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
-import { buyReputationShopItem } from '@server/reputation-shop/application/ReputationShopService';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import { buyReputationShopItem } from '@server/reputation-shop/application/ReputationShopService.js';
 
 export function purchaseReputationShopItemCommand(args: {
   id: string;

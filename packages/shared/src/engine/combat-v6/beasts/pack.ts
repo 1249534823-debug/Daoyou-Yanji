@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { getRealmStageLevel } from '../../../config/realmProgression';
-import { REALM_VALUES } from '../../../types/constants';
+import { getRealmStageLevel } from '../../../config/realmProgression.js';
+import { REALM_VALUES } from '../../../types/constants.js';
 
 const identity = {
   $schema: z.string().optional(),

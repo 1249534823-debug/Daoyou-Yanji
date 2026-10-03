@@ -1,7 +1,7 @@
 import {
   buySectShopItem,
   listSectShopItems,
-} from '@server/sects/application/SectShopService';
+} from '@server/sects/application/SectShopService.js';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
 import { SectMembership, SectStipendClaim } from '@daoyou/shared/engine/sect';
 import type { RealmType } from '@daoyou/shared/types/constants';
@@ -11,18 +11,18 @@ import {
   organizationFor,
   quoteSectStipend,
   requireMembership,
-} from '@server/sects/organization/applicationSupport';
+} from '@server/sects/organization/applicationSupport.js';
 import type {
   SectEconomyCommandContext,
   SectEconomyQueryContext,
   SectMembershipRecord,
-} from '@server/sects/organization/ports';
-import type { SectBenefitService } from '@server/sects/organization/SectBenefitService';
+} from '@server/sects/organization/ports.js';
+import type { SectBenefitService } from '@server/sects/organization/SectBenefitService.js';
 import {
   emptySectCommandEffects,
   type SectCommandEffects,
-} from '@server/sects/organization/SectCommandEffects';
-import type { SectDomainEventDispatcherFactory } from '@server/sects/organization/SectDomainEventDispatcher';
+} from '@server/sects/organization/SectCommandEffects.js';
+import type { SectDomainEventDispatcherFactory } from '@server/sects/organization/SectDomainEventDispatcher.js';
 
 export class SectEconomyApplicationService {
   constructor(

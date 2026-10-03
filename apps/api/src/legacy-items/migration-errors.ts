@@ -1,8 +1,8 @@
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { InventoryError } from '@server/inventory/operations';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { InventoryError } from '@server/inventory/operations.js';
 import { InventoryRuleError } from '@daoyou/shared/inventory';
 import { ZodError } from 'zod';
-import { apiErrorFilter } from '../http/error-filter';
+import { apiErrorFilter } from '../http/error-filter.js';
 
 export function migrationErrors(kind: 'manual' | 'artifact') {
   return apiErrorFilter((error) => {

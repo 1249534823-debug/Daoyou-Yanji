@@ -1,16 +1,16 @@
-import { CHARACTER_MANUALS_V1 } from '../engine/combat-v6/manuals/content';
+import { CHARACTER_MANUALS_V1 } from '../engine/combat-v6/manuals/content.js';
 import {
   BASE_PRICES,
   TYPE_MULTIPLIERS,
-} from '../engine/material/creation/config';
+} from '../engine/material/creation/config.js';
 import {
   emptySlot,
   InventoryRuleError,
   type InventoryItem,
-} from '../inventory';
-import { inventoryStackIdentity } from '../inventory/stack-key';
-import { MaterialFactsSchema } from '../items/definitions/materials';
-import { REALM_VALUES, type Quality, type RealmType } from '../types/constants';
+} from '../inventory/index.js';
+import { inventoryStackIdentity } from '../inventory/stack-key.js';
+import { MaterialFactsSchema } from '../items/definitions/materials.js';
+import { REALM_VALUES, type Quality, type RealmType } from '../types/constants.js';
 
 export const ENLIGHTENMENT_QUALITIES = [
   '凡品',

@@ -3,7 +3,7 @@ import type {
   ResourceChange,
   ResourceDataMap,
   ResourceTopic,
-} from './registry';
+} from './registry.js';
 
 export const RESOURCE_SCOPE_KINDS = [
   'account',

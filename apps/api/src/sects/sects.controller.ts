@@ -9,7 +9,7 @@ import {
   Req,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   SectDonationRequestSchema,
   SectMembersQuerySchema,
@@ -19,14 +19,14 @@ import {
 } from '@daoyou/shared/contracts/sect';
 import type { Request } from 'express';
 import type { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { SectErrors } from './sect-errors';
-import type { SectCommandRequest } from './sect-idempotency';
-import { SectOrganizationService } from './sect-organization.service';
-import { SectsService } from './sects.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { SectErrors } from './sect-errors.js';
+import type { SectCommandRequest } from './sect-idempotency.js';
+import { SectOrganizationService } from './sect-organization.service.js';
+import { SectsService } from './sects.service.js';
 
 const retiredPaths = [
   'current/methods/:methodId/train',

@@ -8,14 +8,14 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { FriendServiceError } from '@server/social/application/FriendService';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { FriendServiceError } from '@server/social/application/FriendService.js';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { FirstQuery } from '../http/first-query';
-import { ZodPipe } from '../http/zod.pipe';
-import { FriendsService } from './friends.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { FirstQuery } from '../http/first-query.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { FriendsService } from './friends.service.js';
 
 const TargetSchema = z.object({ cultivatorId: z.string().uuid() });
 const SearchSchema = z.object({ name: z.string().trim().min(1).max(100) });

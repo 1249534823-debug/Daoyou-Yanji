@@ -1,10 +1,10 @@
-import { db, getExecutor, type DbTransaction } from '@server/lib/drizzle/db';
-import { mails } from '@server/lib/drizzle/schema';
-import { createDomainEvent } from '@server/lib/mq/domainEventWriter';
-import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher';
+import { db, getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
+import { mails } from '@server/lib/drizzle/schema.js';
+import { createDomainEvent } from '@server/lib/mq/domainEventWriter.js';
+import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher.js';
 import type { MailAttachment } from '@daoyou/shared/types/mail';
 import { eq } from 'drizzle-orm';
-import { newRewardAttachment } from '@server/mail/application/MailInventory';
+import { newRewardAttachment } from '@server/mail/application/MailInventory.js';
 
 export type { MailAttachment, MailAttachmentType } from '@daoyou/shared/types/mail';
 

@@ -1,15 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import { BOOKS } from '../items/definitions/beast-books';
-import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '../engine/combat-v6/beasts/content';
-import raw from './data/wild.json';
-import schema from './data/wild.schema.json';
-import { WILD_INHERITANCE_POOL, wildItemRewards } from './wild';
+import { BOOKS } from '../items/definitions/beast-books.js';
+import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '../engine/combat-v6/beasts/content.js';
+import raw from './data/wild.json' with { type: 'json' };
+import schema from './data/wild.schema.json' with { type: 'json' };
+import { WILD_INHERITANCE_POOL, wildItemRewards } from './wild.js';
 import {
   WildRewardPackShape,
   compileWildRewardPool,
   loadWildRewardPack,
-} from './wild-pack';
+} from './wild-pack.js';
 
 describe('野外传承灵印奖励包', () => {
   it('Schema 同步', () =>

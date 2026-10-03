@@ -1,5 +1,5 @@
 import { All, Controller, HttpCode } from '@nestjs/common';
-import { Access } from '../auth/access';
+import { Access } from '../auth/access.js';
 
 @Controller('api/battle-records')
 @Access('public')

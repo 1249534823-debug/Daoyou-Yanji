@@ -1,6 +1,6 @@
-import { renderPrompt } from '@server/lib/prompts';
-import { generateAiObject } from '@server/utils/aiClient';
-import { stableCompactStringify, truncateText } from '@server/utils/llmPayload';
+import { renderPrompt } from '@server/lib/prompts/index.js';
+import { generateAiObject } from '@server/utils/aiClient.js';
+import { stableCompactStringify, truncateText } from '@server/utils/llmPayload.js';
 import {
   GENERATABLE_ALCHEMY_PROPERTY_KEY_VALUES,
   getAlchemyPropertyLabel,
@@ -13,7 +13,7 @@ import {
   type AlchemyRecipePlan,
 } from '@daoyou/shared/types/consumable';
 import { z } from 'zod';
-import type { PreparedAlchemyMaterial } from '@server/alchemy/application/AlchemyRecipeRules';
+import type { PreparedAlchemyMaterial } from '@server/alchemy/application/AlchemyRecipeRules.js';
 
 const weightedAlchemyPropertySchema = z.object({
   key: z.enum(GENERATABLE_ALCHEMY_PROPERTY_KEY_VALUES),

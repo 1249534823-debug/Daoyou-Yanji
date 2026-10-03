@@ -9,20 +9,20 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   AuctionBeastListSchema,
   AuctionBuySchema,
   AuctionListSchema,
 } from '@daoyou/shared/contracts/auction';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { AuctionListingsErrors, auctionMutationErrors } from './auction-errors';
-import { ListingsSchema } from './auction-input';
-import { AuctionService } from './auction.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { AuctionListingsErrors, auctionMutationErrors } from './auction-errors.js';
+import { ListingsSchema } from './auction-input.js';
+import { AuctionService } from './auction.service.js';
 
 @Controller('api/auction')
 @Access('active')

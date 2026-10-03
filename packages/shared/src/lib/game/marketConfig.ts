@@ -16,7 +16,7 @@ import type {
   ResolvedLayerConfig,
 } from '@daoyou/shared/types/market';
 import { MARKET_ITEM_COUNT, MARKET_REFRESH_MS } from '@daoyou/shared/types/market';
-import mapData from '../../data/map.json';
+import mapData from '../../data/map.json' with { type: 'json' };
 
 export const MARKET_STALE_RETRY_MS = 15000;
 export const MYSTERY_MAPPING_TTL_SEC = 72 * 60 * 60;

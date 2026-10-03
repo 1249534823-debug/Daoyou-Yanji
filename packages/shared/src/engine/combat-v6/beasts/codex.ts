@@ -1,7 +1,7 @@
-import { REALM_ORDER, type RealmType } from '../../../types/constants';
-import { WILD_REGIONS } from '../wild/content';
-import { BEAST_SPECIES } from './content';
-import type { BeastSpeciesDefinition } from './pack';
+import { REALM_ORDER, type RealmType } from '../../../types/constants.js';
+import { WILD_REGIONS } from '../wild/content.js';
+import { BEAST_SPECIES } from './content.js';
+import type { BeastSpeciesDefinition } from './pack.js';
 
 export interface BeastCodexHabitat {
   nodeId: string;

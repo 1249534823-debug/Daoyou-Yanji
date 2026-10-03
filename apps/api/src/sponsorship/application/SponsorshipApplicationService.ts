@@ -1,8 +1,8 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
-import { sendViaSmtp } from '@server/lib/admin/smtp';
-import { getAdminUserIds } from '@server/lib/auth/adminAccess';
-import { authUsers } from '@server/lib/auth/schema';
-import { db, type DbTransaction } from '@server/lib/drizzle/db';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
+import { sendViaSmtp } from '@server/lib/admin/smtp.js';
+import { getAdminUserIds } from '@server/lib/auth/adminAccess.js';
+import { authUsers } from '@server/lib/auth/schema.js';
+import { db, type DbTransaction } from '@server/lib/drizzle/db.js';
 import {
   cultivators,
   sponsorshipAdminActions,
@@ -12,21 +12,21 @@ import {
   sponsorshipMeritRecords,
   sponsorshipOrders,
   sponsorshipOrderSnapshots,
-} from '@server/lib/drizzle/schema';
-import { createDomainEvent } from '@server/lib/mq/domainEventWriter';
-import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher';
+} from '@server/lib/drizzle/schema.js';
+import { createDomainEvent } from '@server/lib/mq/domainEventWriter.js';
+import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher.js';
 import {
   isRedisLockContention,
   redisLockKeys,
   withRedisLock,
-} from '@server/lib/redis/lock';
+} from '@server/lib/redis/lock.js';
 import {
   getAfdianSponsorshipConfig,
   upsertAfdianSponsorshipConfig,
-} from '@server/lib/repositories/appSettingsRepository';
-import { hashSponsorshipClaimCode } from '@server/lib/sponsorship/claimCode';
-import { requireSponsorshipProvider } from '@server/lib/sponsorship/providerRegistry';
-import type { ProviderOrder } from '@server/lib/sponsorship/types';
+} from '@server/lib/repositories/appSettingsRepository.js';
+import { hashSponsorshipClaimCode } from '@server/lib/sponsorship/claimCode.js';
+import { requireSponsorshipProvider } from '@server/lib/sponsorship/providerRegistry.js';
+import type { ProviderOrder } from '@server/lib/sponsorship/types.js';
 import {
   formatSponsorshipMonth,
   highestSponsorshipTier,
@@ -49,7 +49,7 @@ import {
 } from 'drizzle-orm';
 import { randomBytes } from 'node:crypto';
 import { z } from 'zod';
-import { MailService } from '@server/mail/application/MailService';
+import { MailService } from '@server/mail/application/MailService.js';
 
 const SNAPSHOT_RETENTION_MS = 2 * 365 * 24 * 60 * 60 * 1_000;
 const CLAIM_RETENTION_MS = 90 * 24 * 60 * 60 * 1_000;

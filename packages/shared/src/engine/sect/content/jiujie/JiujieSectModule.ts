@@ -1,6 +1,6 @@
-import { StandardSectModule } from '../../core';
-import { JIUJIE_DEFINITION } from './definition';
-import { JIUJIE_ORGANIZATION_THEME } from './organization';
+import { StandardSectModule } from '../../core/index.js';
+import { JIUJIE_DEFINITION } from './definition.js';
+import { JIUJIE_ORGANIZATION_THEME } from './organization.js';
 
 export class JiujieSectModule extends StandardSectModule {
   constructor() {

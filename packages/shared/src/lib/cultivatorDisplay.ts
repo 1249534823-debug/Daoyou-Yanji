@@ -1,9 +1,9 @@
-import { CHARACTER_ATTRIBUTE_LABELS } from './characterAttributeLabels';
-export { CHARACTER_ATTRIBUTE_LABELS } from './characterAttributeLabels';
+import { CHARACTER_ATTRIBUTE_LABELS } from './characterAttributeLabels.js';
+export { CHARACTER_ATTRIBUTE_LABELS } from './characterAttributeLabels.js';
 import type { Cultivator } from '@daoyou/shared/types/cultivator';
 import type { Attributes } from '@daoyou/shared/types/cultivator';
 import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import { projectNaturalRecoveryResources } from './condition';
+import { projectNaturalRecoveryResources } from './condition.js';
 import {
   projectCharacterToCombatV6,
   type CharacterPanelV1,

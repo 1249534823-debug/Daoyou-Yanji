@@ -10,8 +10,8 @@ import type {
   SectBenefitQueryContext,
   SectMembershipRecord,
   SectModuleResolver,
-} from '@server/sects/organization/ports';
-import { SectCapabilityAuthorizer } from '@server/sects/organization/SectCapabilityAuthorizer';
+} from '@server/sects/organization/ports.js';
+import { SectCapabilityAuthorizer } from '@server/sects/organization/SectCapabilityAuthorizer.js';
 
 type BenefitMembership = Pick<SectMembershipRecord, 'sectId' | 'discipleRank'>;
 

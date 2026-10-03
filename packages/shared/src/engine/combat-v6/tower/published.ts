@@ -1,21 +1,21 @@
 import { z } from 'zod';
-import type { TowerSeasonMeta } from '../../../lib/tower/types';
+import type { TowerSeasonMeta } from '../../../lib/tower/types.js';
 import {
   createTowerWeek,
   TOWER_CONTENT_VERSION,
   TOWER_GENERATOR_VERSION,
   type TowerWeek,
-} from '../../../lib/tower/weekly';
-import type { RealmType } from '../../../types/constants';
+} from '../../../lib/tower/weekly.js';
+import type { RealmType } from '../../../types/constants.js';
 import {
   TOWER_STRATEGY_VERSION,
   TowerFloorStrategySchema,
   towerStrategyPreview,
   towerStrategySignature,
   validateTowerFloorStrategy,
-} from './strategy';
-import { compileTowerStrategy } from './strategy-compiler';
-import { expandTowerFloor, expandTowerWeek } from './strategy-templates';
+} from './strategy.js';
+import { compileTowerStrategy } from './strategy-compiler.js';
+import { expandTowerFloor, expandTowerWeek } from './strategy-templates.js';
 
 const PublishedTowerWeekSchema = z.strictObject({
   schemaVersion: z.literal(3),

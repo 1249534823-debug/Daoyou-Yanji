@@ -3,9 +3,9 @@ import {
   SECT_RANK_METHOD_CAP,
   type SectDiscipleRank,
   type SectRankRequirement,
-} from '../domain';
-import { StandardSectCapabilityPolicy } from './StandardSectCapabilityPolicy';
-import { getSectFacilityUpgradeTarget } from './construction';
+} from '../domain/index.js';
+import { StandardSectCapabilityPolicy } from './StandardSectCapabilityPolicy.js';
+import { getSectFacilityUpgradeTarget } from './construction.js';
 import {
   SECT_CRAFT_CONTEXTS,
   type SectBenefitPolicy,
@@ -18,8 +18,8 @@ import {
   type SectTaskCatalog,
   type SectTaskDefinition,
   type SectTaskDialogueDefinition,
-} from './contracts';
-import { calculateStandardSectStipendBase } from './stipend';
+} from './contracts.js';
+import { calculateStandardSectStipendBase } from './stipend.js';
 
 const capabilities = new StandardSectCapabilityPolicy(
   {

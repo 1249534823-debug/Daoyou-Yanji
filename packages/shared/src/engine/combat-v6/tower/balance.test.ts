@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { automaticCommands } from '../../../combat-v6/auto';
-import { allowedTowerFormations } from '../../../lib/tower/formations';
-import { getTowerSeasonMeta } from '../../../lib/tower/season';
-import { createTowerWeek, TOWER_COMBINATIONS } from '../../../lib/tower/weekly';
-import { createTowerHost } from './host';
-import { towerReferenceBuild as reference } from './reference-fixtures';
+import { automaticCommands } from '../../../combat-v6/auto.js';
+import { allowedTowerFormations } from '../../../lib/tower/formations.js';
+import { getTowerSeasonMeta } from '../../../lib/tower/season.js';
+import { createTowerWeek, TOWER_COMBINATIONS } from '../../../lib/tower/weekly.js';
+import { createTowerHost } from './host.js';
+import { towerReferenceBuild as reference } from './reference-fixtures.js';
 const week = createTowerWeek(getTowerSeasonMeta(new Date('2026-09-19')));
 describe('金丹普通构筑的关键层可玩性', () => {
   for (const sectId of ['lingxiao', 'jiujie', 'youdu'] as const) {

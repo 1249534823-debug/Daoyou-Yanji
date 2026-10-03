@@ -4,7 +4,7 @@ import {
   type SectAbilityDefinition,
   type SectDefinitionWithoutPaths,
   type SectPathDefinition,
-} from '../../core';
+} from '../../core/index.js';
 
 const layers = [
   {

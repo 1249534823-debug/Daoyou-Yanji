@@ -1,9 +1,9 @@
 import { Controller, Get, HttpException, Inject } from '@nestjs/common';
-import { getMessageInfrastructureHealthStatus } from '@server/runtime/messaging/domainEventRegistry';
-import { getNatsHealthStatus } from '@server/lib/nats';
-import { getRedisHealthStatus } from '@server/lib/redis';
-import { Access } from '../auth/access';
-import { DatabaseService } from '../database/database.service';
+import { getMessageInfrastructureHealthStatus } from '@server/runtime/messaging/domainEventRegistry.js';
+import { getNatsHealthStatus } from '@server/lib/nats/index.js';
+import { getRedisHealthStatus } from '@server/lib/redis/index.js';
+import { Access } from '../auth/access.js';
+import { DatabaseService } from '../database/database.service.js';
 
 @Controller('api/health-check')
 @Access('public')

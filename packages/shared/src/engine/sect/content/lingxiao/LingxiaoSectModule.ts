@@ -1,6 +1,6 @@
-import { StandardSectModule } from '../../core';
-import { LINGXIAO_DEFINITION } from './definition';
-import { LINGXIAO_ORGANIZATION_THEME } from './organization/LingxiaoOrganizationModule';
+import { StandardSectModule } from '../../core/index.js';
+import { LINGXIAO_DEFINITION } from './definition.js';
+import { LINGXIAO_ORGANIZATION_THEME } from './organization/LingxiaoOrganizationModule.js';
 
 export class LingxiaoSectModule extends StandardSectModule {
   constructor() {

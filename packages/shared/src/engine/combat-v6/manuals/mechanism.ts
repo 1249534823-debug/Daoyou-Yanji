@@ -9,8 +9,8 @@ import {
   type EffectWhen,
   type SkillDef,
   type SkillHook,
-} from '../core';
-import type { ManualMechanism } from './pack';
+} from '../core/index.js';
+import type { ManualMechanism } from './pack.js';
 
 export function manualMechanismValue(
   mechanism: ManualMechanism,

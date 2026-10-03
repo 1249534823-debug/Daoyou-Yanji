@@ -2,10 +2,10 @@ import {
   isAltchaServerEnabled,
   verifyAltchaPayload,
   type AltchaAction,
-} from '@server/lib/auth/altcha';
-import { auth } from '@server/lib/auth/auth';
-import { authUsers } from '@server/lib/auth/schema';
-import { db } from '@server/lib/drizzle/db';
+} from '@server/lib/auth/altcha.js';
+import { auth } from '@server/lib/auth/auth.js';
+import { authUsers } from '@server/lib/auth/schema.js';
+import { db } from '@server/lib/drizzle/db.js';
 import { eq } from 'drizzle-orm';
 
 const CAPTCHA_ACTION_BY_PATH = new Map<string, AltchaAction>([

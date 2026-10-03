@@ -7,13 +7,13 @@ import {
   type Quality,
 } from '@daoyou/shared/types/constants';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
-import { getPaginatedInventoryByType } from '@server/cultivator/application/readers/CultivatorInventoryRepository';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import { discardInventoryItem } from '@server/inventory/application/InventoryApplicationService';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
-import { readResourceWithMeta } from '@server/player/application/state/ResourceReadService';
+import { getPaginatedInventoryByType } from '@server/cultivator/application/readers/CultivatorInventoryRepository.js';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import { discardInventoryItem } from '@server/inventory/application/InventoryApplicationService.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
+import { readResourceWithMeta } from '@server/player/application/state/ResourceReadService.js';
 import { z } from 'zod';
 const DiscardSchema = z.object({
   itemId: z.string(),

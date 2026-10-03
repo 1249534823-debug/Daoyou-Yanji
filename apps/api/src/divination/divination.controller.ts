@@ -7,19 +7,19 @@ import {
   Res,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   DivinationDrawSchema,
   DivinationInterpretSchema,
 } from '@daoyou/shared/contracts/divination';
 import type { Response } from 'express';
 import type { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { JsonBody } from '../http/json-body';
-import { streamSseEvents } from '../http/sse';
-import { ZodPipe } from '../http/zod.pipe';
-import { DivinationExceptionFilter } from './divination-exception.filter';
-import { DivinationService } from './divination.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { JsonBody } from '../http/json-body.js';
+import { streamSseEvents } from '../http/sse.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { DivinationExceptionFilter } from './divination-exception.filter.js';
+import { DivinationService } from './divination.service.js';
 
 @Controller('api/divination')
 @Access('active')

@@ -1,11 +1,11 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   confirmFateReshapeCommand,
   startFateReshapeCommand,
-} from '@server/reshape/application/FateReshapeApplicationService';
-import { FateReshapeService as FateSessions } from '@server/reshape/application/FateReshapeService';
-import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
+} from '@server/reshape/application/FateReshapeApplicationService.js';
+import { FateReshapeService as FateSessions } from '@server/reshape/application/FateReshapeService.js';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
 import { z } from 'zod';
 const ConfirmSchema = z.object({
   selectedIndices: z.array(z.number().int().nonnegative()).length(3),

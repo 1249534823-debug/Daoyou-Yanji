@@ -1,6 +1,6 @@
 import { Cultivator } from '@daoyou/shared/types/cultivator';
-import { redis } from '../redis';
-import { parseRedisJson } from '../redis/json';
+import { redis } from '../redis/index.js';
+import { parseRedisJson } from '../redis/json.js';
 
 const TEMP_CHAR_TTL = 3600; // 1 hour in seconds
 const TEMP_PREFIX = 'temp_cultivator:';

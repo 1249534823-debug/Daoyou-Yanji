@@ -9,13 +9,13 @@ import {
   UseFilters,
   type PipeTransform,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { StoryService } from './story.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { StoryService } from './story.service.js';
 
 const CompleteSchema = z
   .object({ outcome: z.string().trim().min(1).max(40) })

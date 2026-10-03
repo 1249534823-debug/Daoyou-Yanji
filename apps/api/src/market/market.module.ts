@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
-import { CultivatorQueriesService } from '@server/cultivator/cultivator-queries.service';
-import { CultivatorModule } from '@server/cultivator/cultivator.module';
-import { DatabaseModule } from '@server/database/database.module';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import { InventoryModule } from '@server/inventory/inventory.module';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { PlayerCommandExecutor } from '@server/player/application/state/CommandExecutors';
-import { PlayerStateModule } from '@server/player/player-state.module';
-import { MarketPurchaseService } from './application/MarketApplicationService';
-import { MarketController } from './market.controller';
-import { MarketService } from './market.service';
+import { CultivatorQueriesService } from '@server/cultivator/cultivator-queries.service.js';
+import { CultivatorModule } from '@server/cultivator/cultivator.module.js';
+import { DatabaseModule } from '@server/database/database.module.js';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import { InventoryModule } from '@server/inventory/inventory.module.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { PlayerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import { PlayerStateModule } from '@server/player/player-state.module.js';
+import { MarketPurchaseService } from './application/MarketApplicationService.js';
+import { MarketController } from './market.controller.js';
+import { MarketService } from './market.service.js';
 
 @Module({
   imports: [

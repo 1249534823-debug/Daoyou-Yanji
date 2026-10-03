@@ -4,7 +4,7 @@ import type {
 } from '@daoyou/shared/engine/cultivation/CultivationEngine';
 import { REALM_STAGE_VALUES, REALM_VALUES } from '@daoyou/shared/types/constants';
 import { z } from 'zod';
-import type { RetreatResultData } from './retreat';
+import type { RetreatResultData } from './retreat.js';
 
 const amount = z.number().nonnegative();
 const cultivationSummary = z.object({

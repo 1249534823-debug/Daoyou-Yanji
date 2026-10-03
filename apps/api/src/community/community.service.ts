@@ -2,7 +2,7 @@ import { HttpException, Injectable } from '@nestjs/common';
 import {
   getAuthPageAnnouncement,
   getResolvedCommunityQqGroupNumber,
-} from '@server/lib/repositories/appSettingsRepository';
+} from '@server/lib/repositories/appSettingsRepository.js';
 
 @Injectable()
 export class CommunityService {

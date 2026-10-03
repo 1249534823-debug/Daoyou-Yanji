@@ -1,4 +1,4 @@
-import { isRedisConfigured, redis } from './index';
+import { isRedisConfigured, redis } from './index.js';
 
 const ACQUIRE_COOLDOWN_SCRIPT = `
 local key = KEYS[1]

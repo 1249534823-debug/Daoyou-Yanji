@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { loadStoryRewardPack } from '../rewards/story-pack';
-import { storyReward } from './grants';
+import { loadStoryRewardPack } from '../rewards/story-pack.js';
+import { storyReward } from './grants.js';
 
 describe('story rewards', () => {
   it('rolls the configured herb bundle', () => {

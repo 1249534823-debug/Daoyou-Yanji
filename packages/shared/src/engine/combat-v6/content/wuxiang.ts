@@ -1,7 +1,7 @@
-import { SECT_METHODS } from './method-pack';
-import type { SectDefinitionV6 } from './types';
-import { WUXIANG_COMBAT } from './wuxiang-pack';
-import { WUXIANG_PATHS } from './wuxiang-path-pack';
+import { SECT_METHODS } from './method-pack.js';
+import type { SectDefinitionV6 } from './types.js';
+import { WUXIANG_COMBAT } from './wuxiang-pack.js';
+import { WUXIANG_PATHS } from './wuxiang-path-pack.js';
 
 export const WUXIANG_V6_ID = 'wuxiang' as const;
 export const WUXIANG_PATH_ID = {

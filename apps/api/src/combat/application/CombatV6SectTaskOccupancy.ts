@@ -1,5 +1,5 @@
-import { db, type DbExecutor } from '@server/lib/drizzle/db';
-import { sectMemberships, sectTaskRecords } from '@server/lib/drizzle/schema';
+import { db, type DbExecutor } from '@server/lib/drizzle/db.js';
+import { sectMemberships, sectTaskRecords } from '@server/lib/drizzle/schema.js';
 import { and, eq, sql } from 'drizzle-orm';
 
 export async function activeSectTaskBattle(owner: string, q: DbExecutor = db) {

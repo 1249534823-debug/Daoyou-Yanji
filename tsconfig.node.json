@@ -14,6 +14,5 @@
     "drizzle*.config.ts",
     "scripts/**/*.ts",
     "apps/api/scripts/**/*.ts"
-  ],
-  "files": ["./apps/api/src/types/markdown.d.ts"]
+  ]
 }

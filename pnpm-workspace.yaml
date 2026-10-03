@@ -6,3 +6,6 @@ injectWorkspacePackages: true
 autoInstallPeers: false
 onlyBuiltDependencies:
   - esbuild
+
+syncInjectedDepsAfterScripts:
+  - build

@@ -10,11 +10,11 @@ import {
   runDbTasks,
   type DbClient,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
+} from '@server/lib/drizzle/db.js';
 import {
   readResourceVersions,
   readScopeVersion,
-} from '@server/lib/repositories/playerStateRepository';
+} from '@server/lib/repositories/playerStateRepository.js';
 import { sql } from 'drizzle-orm';
 
 export async function readResourceWithMeta<TTopic extends ResourceTopic>(

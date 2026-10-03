@@ -1,15 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import { generateWildIndividual } from '../wild/generator';
-import { BEAST_SKILLS, BEAST_SPECIES } from './content';
-import fusionSchema from './data/fusion.schema.json';
-import { beastFusionReason, fuseBeasts, fusionPreview } from './fusion';
-import { BEAST_FUSION, BeastFusionConfigSchema } from './fusion-config';
-import { generateStarterBeast } from './generator';
-import { beastPointBudget } from './identity';
-import { gainBeastExp } from './progression';
-import { beastAttributes } from './projection';
-import { BeastSchema, GeneratedBeastSchema } from './schema';
+import { generateWildIndividual } from '../wild/generator.js';
+import { BEAST_SKILLS, BEAST_SPECIES } from './content.js';
+import fusionSchema from './data/fusion.schema.json' with { type: 'json' };
+import { beastFusionReason, fuseBeasts, fusionPreview } from './fusion.js';
+import { BEAST_FUSION, BeastFusionConfigSchema } from './fusion-config.js';
+import { generateStarterBeast } from './generator.js';
+import { beastPointBudget } from './identity.js';
+import { gainBeastExp } from './progression.js';
+import { beastAttributes } from './projection.js';
+import { BeastSchema, GeneratedBeastSchema } from './schema.js';
 
 const owner = '00000000-0000-4000-8000-000000000001';
 const ids = [

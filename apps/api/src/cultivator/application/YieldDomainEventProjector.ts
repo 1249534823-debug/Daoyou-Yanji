@@ -1,10 +1,10 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import type { DomainEventEnvelope } from '@daoyou/shared/contracts/domainEvents';
 import type { ItemGrant } from '@daoyou/shared/inventory';
 import { findItemDefinition } from '@daoyou/shared/items/registry';
 import type { RealmType } from '@daoyou/shared/types/constants';
-import { MailService, type MailAttachment } from '@server/mail/application/MailService';
-import { generateRealmMaterials } from '@server/inventory/application/MaterialRewardService';
+import { MailService, type MailAttachment } from '@server/mail/application/MailService.js';
+import { generateRealmMaterials } from '@server/inventory/application/MaterialRewardService.js';
 
 export async function generateYieldRewardAttachments(
   event: DomainEventEnvelope<'yield.claimed'>,

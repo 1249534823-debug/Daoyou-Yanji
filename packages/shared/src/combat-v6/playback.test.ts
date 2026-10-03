@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import type { CombatV6TrainingUnitViewV1 as Unit } from '../contracts/combatV6';
-import { applyUnitDelta, contiguousEvents, diffUnits } from './playback';
-import { combatV6Playback, combatV6Units } from './presentation';
+import type { CombatV6TrainingUnitViewV1 as Unit } from '../contracts/combatV6.js';
+import { applyUnitDelta, contiguousEvents, diffUnits } from './playback.js';
+import { combatV6Playback, combatV6Units } from './presentation.js';
 import {
   presentationBattle,
   presentationScenarios,
-} from './presentation-fixtures';
+} from './presentation-fixtures.js';
 const unit = (id: string): Unit => ({
   id,
   name: id,

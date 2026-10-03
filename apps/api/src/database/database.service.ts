@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { closeDatabase, type DbClient } from '@server/lib/drizzle/db';
+import { closeDatabase, type DbClient } from '@server/lib/drizzle/db.js';
 import { sql } from 'drizzle-orm';
 
 export const DRIZZLE_DATABASE = Symbol('DRIZZLE_DATABASE');

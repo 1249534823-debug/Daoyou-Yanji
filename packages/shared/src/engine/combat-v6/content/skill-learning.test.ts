@@ -1,12 +1,12 @@
 import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from './data/skill-learning.json';
-import schema from './data/skill-learning.schema.json';
-import { SectSkillLearningShape, loadSectSkillLearning, sectSkillLearning } from './skill-learning';
-import { COMBAT_V6_SECT_DEFINITIONS } from './index';
-import { compileSectDefinitionV6 } from './compiler';
-import { createEmptySectCombatProgressV6, createFreshCombatV6MethodLevels } from '../build-state';
+import raw from './data/skill-learning.json' with { type: 'json' };
+import schema from './data/skill-learning.schema.json' with { type: 'json' };
+import { SectSkillLearningShape, loadSectSkillLearning, sectSkillLearning } from './skill-learning.js';
+import { COMBAT_V6_SECT_DEFINITIONS } from './index.js';
+import { compileSectDefinitionV6 } from './compiler.js';
+import { createEmptySectCombatProgressV6, createFreshCombatV6MethodLevels } from '../build-state/index.js';
 
 describe('宗门技能学习配置', () => {
   it('技能、状态、流派和心法保持基线（含比例伤害分类）', () => {

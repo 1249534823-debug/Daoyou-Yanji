@@ -5,17 +5,17 @@ import {
   resolveServerLlmRoutes,
   type LlmRoute,
 } from '@daoyou/shared/config/llmRouting';
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
-import { getCurrentContext } from '@server/lib/http/context';
-import { recordLlmCallMetric } from '@server/lib/llm/metricsStore';
-import { LLM_PROVIDERS } from '@server/lib/llm/providers';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
+import { getCurrentContext } from '@server/lib/http/context.js';
+import { recordLlmCallMetric } from '@server/lib/llm/metricsStore.js';
+import { LLM_PROVIDERS } from '@server/lib/llm/providers.js';
 import type {
   LlmCallAttemptMetrics,
   LlmCallMetrics,
   LlmSceneId,
   LlmStructuredFailureKind,
-} from '@server/lib/llm/types';
-import { stableCompactStringify, truncateText } from '@server/utils/llmPayload';
+} from '@server/lib/llm/types.js';
+import { stableCompactStringify, truncateText } from '@server/utils/llmPayload.js';
 import {
   generateText,
   JSONParseError,

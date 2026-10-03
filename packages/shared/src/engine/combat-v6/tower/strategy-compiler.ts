@@ -1,25 +1,25 @@
-import { TOWER_ENCOUNTER_PACK as pack } from '../../../lib/tower/encounter-pack';
-import type { RealmType } from '../../../types/constants';
+import { TOWER_ENCOUNTER_PACK as pack } from '../../../lib/tower/encounter-pack.js';
+import type { RealmType } from '../../../types/constants.js';
 import {
   UnitKind,
   type CreateBattleInput,
   type SkillDef,
   type StatusDef,
-} from '../core';
-import { combatCharacterLevel } from '../projection/character-level';
+} from '../core/index.js';
+import { combatCharacterLevel } from '../projection/character-level.js';
 import {
   TOWER_CATALOG,
   TOWER_SKILLS,
   TOWER_STATUS_DEFS,
   type TowerModifier,
   type TowerNpcPlan,
-} from './catalog';
+} from './catalog.js';
 import {
   TOWER_STRATEGY_VERSION,
   towerStrategyPreview,
   validateTowerFloorStrategy,
   type TowerFloorStrategy,
-} from './strategy';
+} from './strategy.js';
 
 /** Bind only matching reference strings; no mechanic names or slot assumptions. */
 function bindReferences<T>(value: T, refs: Map<string, string>): T {

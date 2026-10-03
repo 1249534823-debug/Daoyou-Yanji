@@ -1,8 +1,8 @@
 import { expect, it } from 'vitest';
-import { REALM_ORDER } from '../../../types/constants';
-import { WILD_REGIONS } from '../wild/content';
-import { listBeastCodex } from './codex';
-import { BEAST_SPECIES } from './content';
+import { REALM_ORDER } from '../../../types/constants.js';
+import { WILD_REGIONS } from '../wild/content.js';
+import { listBeastCodex } from './codex.js';
+import { BEAST_SPECIES } from './content.js';
 
 const codex = listBeastCodex();
 

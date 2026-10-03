@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { inventoryBagSchema, type BagResourceDataMap } from './bag';
+import { inventoryBagSchema, type BagResourceDataMap } from './bag.js';
 import {
   ResourceScopeSchema,
   type ResourceScope,
   type ResourceScopeKind,
-} from './core';
+} from './core.js';
 import {
   artifactSchema,
   consumableSchema,
@@ -12,20 +12,20 @@ import {
   INVENTORY_RESOURCE_TOPICS,
   materialSchema,
   type InventoryResourceDataMap,
-} from './inventory';
+} from './inventory.js';
 import {
   PLAYER_RESOURCE_DATA_SCHEMAS,
   PLAYER_RESOURCE_TOPICS,
   profileCultivatorSchema,
   taskInstanceSchema,
   type PlayerResourceDataMap,
-} from './player';
+} from './player.js';
 import {
   SECT_RESOURCE_DATA_SCHEMAS,
   SECT_RESOURCE_TOPICS,
   sectTaskViewSchema,
   type SectResourceDataMap,
-} from './sect';
+} from './sect.js';
 
 /**
  * Resource protocol source of truth. A topic is deliberately mapped to one

@@ -4,13 +4,13 @@ import {
   manualSlot,
   MAX_MANUALS_PER_SLOT,
   validateManualStateV1,
-} from './compiler';
-import { CHARACTER_MANUALS_V1, manualRule } from './content';
+} from './compiler.js';
+import { CHARACTER_MANUALS_V1, manualRule } from './content.js';
 import type {
   CultivatorManualStateV1,
   ManualSlotV1,
   ManualStateChangeResult,
-} from './types';
+} from './types.js';
 
 export function changeManual(input: {
   state: CultivatorManualStateV1;

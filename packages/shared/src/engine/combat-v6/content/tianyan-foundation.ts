@@ -1,15 +1,15 @@
 import { formatContentPackErrors } from '@daoyou/shared/lib/content-pack-errors';
 import { z } from 'zod';
-import { type StatusDef } from '../core';
-import { validateSectExpressions } from './authoring-expressions';
-import raw from './data/tianyan-foundation.json';
+import { type StatusDef } from '../core/index.js';
+import { validateSectExpressions } from './authoring-expressions.js';
+import raw from './data/tianyan-foundation.json' with { type: 'json' };
 import {
   tyEffect,
   tyElement,
   tyId,
   tyModifier,
   tyStatus,
-} from './tianyan-shapes';
+} from './tianyan-shapes.js';
 
 export const TianyanFoundationShape = z.strictObject({
   $schema: z.string().optional(),

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { ITEM_DEFINITIONS } from '../items/registry';
-import { mailGiftBlockReason, SendMailSchema } from './mail';
+import { ITEM_DEFINITIONS } from '../items/registry.js';
+import { mailGiftBlockReason, SendMailSchema } from './mail.js';
 
 describe('mail gifts', () => {
   it('accepts bag items across registered kinds without the old auction quality gate', () => {

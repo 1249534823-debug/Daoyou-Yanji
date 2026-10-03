@@ -2,20 +2,20 @@ import { describe, expect, it } from 'vitest';
 import {
   MAX_RECYCLE_SELECTION,
   RecycleRequestSchema,
-} from '../contracts/recycle';
-import { generateForgedEquipment } from '../engine/combat-v6/equipment/forging';
-import { buildSpiritFieldSeedDetails } from '../engine/spirit-field/seedMaterial';
-import type { SpiritFieldPlantSnapshot } from '../engine/spirit-field/types';
-import { consumableFactsOf } from '../items/definitions/consumables';
-import { seedFactsOf } from '../items/definitions/seeds';
-import type { Consumable } from '../types/cultivator';
-import { recycleBlockingReason } from './recycle';
+} from '../contracts/recycle.js';
+import { generateForgedEquipment } from '../engine/combat-v6/equipment/forging.js';
+import { buildSpiritFieldSeedDetails } from '../engine/spirit-field/seedMaterial.js';
+import type { SpiritFieldPlantSnapshot } from '../engine/spirit-field/types.js';
+import { consumableFactsOf } from '../items/definitions/consumables.js';
+import { seedFactsOf } from '../items/definitions/seeds.js';
+import type { Consumable } from '../types/cultivator.js';
+import { recycleBlockingReason } from './recycle.js';
 import {
   blueprintRecycleUnitPrice,
   equipmentRecycleUnitPrice,
   manualJadeRecycleUnitPrice,
   seedRecycleUnitPrice,
-} from './recyclePrice';
+} from './recyclePrice.js';
 
 describe('回收边界', () => {
   it('允许随身和储藏室的灵果回收', () => {

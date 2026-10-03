@@ -1,5 +1,5 @@
 import { passiveSkills } from "./skills.ts"
-import { evalExpr } from './expr'
+import { evalExpr } from './expr.js'
 /**
  * 钩子/效果条件匹配。只认标签、状态、技能 id 列表和数值门槛，不认门派。
  */

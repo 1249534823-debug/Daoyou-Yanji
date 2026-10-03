@@ -1,5 +1,5 @@
 import type { NarrativePerformanceScript } from '@daoyou/shared/types/narrative';
-import type { SectCapabilityKey } from '../organization/contracts';
+import type { SectCapabilityKey } from '../organization/contracts.js';
 
 export type SectSceneKey =
   | 'map'

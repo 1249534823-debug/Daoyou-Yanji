@@ -1,11 +1,11 @@
-import { BEAST_SPECIES, BEAST_SPECIES_REVISION } from './content';
-import { BEAST_REFINEMENT } from './refinement-config';
+import { BEAST_SPECIES, BEAST_SPECIES_REVISION } from './content.js';
+import { BEAST_REFINEMENT } from './refinement-config.js';
 import {
   BEAST_VERSION,
   GeneratedBeastSchema,
   type SummonedBeast,
-} from './schema';
-import { rollBeastTraits } from './trait-generator';
+} from './schema.js';
+import { rollBeastTraits } from './trait-generator.js';
 
 export function beastRefinementReason(
   beast: SummonedBeast,

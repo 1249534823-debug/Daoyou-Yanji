@@ -1,8 +1,8 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';
-import data from './data/equipment-base.json';
-import editorSchema from './data/equipment-base.schema.json';
-import { EquipmentBasePackShape, loadEquipmentBasePack } from './pack';
+import data from './data/equipment-base.json' with { type: 'json' };
+import editorSchema from './data/equipment-base.schema.json' with { type: 'json' };
+import { EquipmentBasePackShape, loadEquipmentBasePack } from './pack.js';
 
 describe('equipment base data pack', () => {
   it('loads the shipped pack and keeps editor schema aligned', () => {
@@ -163,9 +163,9 @@ it('feeds changed JSON into generation, forging and instance validation', async 
   vi.resetModules();
   vi.doMock('./data/equipment-base.json', () => ({ default: changed }));
   const { generateDaoEquipmentV2, daoEquipmentGenerationRulesV1 } =
-    await import('./generator');
-  const { generateForgedEquipment } = await import('./forging');
-  const { compileDaoEquipmentSpecialLoadoutV1 } = await import('./compiler');
+    await import('./generator.js');
+  const { generateForgedEquipment } = await import('./forging.js');
+  const { compileDaoEquipmentSpecialLoadoutV1 } = await import('./compiler.js');
   const input = {
     id: 'config-test',
     createdAt: '2026-09-11T00:00:00.000Z',

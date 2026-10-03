@@ -1,4 +1,4 @@
-import { truncateText } from '@server/utils/llmPayload';
+import { truncateText } from '@server/utils/llmPayload.js';
 import type { ResolvedDungeonMapConfig } from '@daoyou/shared/lib/game/mapSystem';
 import type { RealmType } from '@daoyou/shared/types/constants';
 import type {
@@ -8,7 +8,7 @@ import type {
   DungeonState,
   History,
   RewardBlueprint,
-} from '@server/dungeon/application/flow/types';
+} from '@server/dungeon/application/flow/types.js';
 
 const HISTORY_LIMIT = 4;
 const JOURNEY_LIMIT = 5;

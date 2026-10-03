@@ -5,7 +5,7 @@ import {
   type ArgumentsHost,
   type ExceptionFilter,
 } from '@nestjs/common';
-import { redisLockErrorResponse } from '@server/lib/http/errors';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
 import type { Request, Response } from 'express';
 
 @Catch()

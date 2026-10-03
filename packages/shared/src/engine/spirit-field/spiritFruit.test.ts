@@ -1,6 +1,6 @@
 import { ALCHEMY_EFFECT_BASE_BY_QUALITY } from '@daoyou/shared/config/alchemyEffectConfig';
 import { describe, expect, it } from 'vitest';
-import { buildSpiritFruitSpec } from './spiritFruit';
+import { buildSpiritFruitSpec } from './spiritFruit.js';
 
 describe('spirit fruit effect protocol', () => {
   const families = [

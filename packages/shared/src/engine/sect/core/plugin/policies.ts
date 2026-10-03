@@ -2,8 +2,8 @@ import type {
   PlayerRaceId,
   SectAdmissionContext,
   SectAdmissionResult,
-} from '../domain';
-import type { SectAdmissionPolicy } from './contracts';
+} from '../domain/index.js';
+import type { SectAdmissionPolicy } from './contracts.js';
 
 /** 通用种族准入策略；拒绝文案由宗门内容提供。 */
 export class AllowedRaceAdmissionPolicy implements SectAdmissionPolicy {

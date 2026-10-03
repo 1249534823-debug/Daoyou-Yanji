@@ -30,17 +30,17 @@ import {
   type SweepDirection,
 } from '@daoyou/shared/engine/sect';
 import { z, type ZodType } from 'zod';
-import { SectError } from '@server/sects/application/SectError';
+import { SectError } from '@server/sects/application/SectError.js';
 import type {
   SectCommandContext,
   SectMembershipRecord,
   SectTaskRecord,
-} from '@server/sects/organization/ports';
+} from '@server/sects/organization/ports.js';
 import {
   emptySectCommandEffects,
   mergeSectCommandEffects,
   type SectCommandEffects,
-} from '@server/sects/organization/SectCommandEffects';
+} from '@server/sects/organization/SectCommandEffects.js';
 
 export interface SectTaskActionDescriptor {
   key: string;

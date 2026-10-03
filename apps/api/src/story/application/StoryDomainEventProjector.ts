@@ -1,5 +1,5 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
-import { StoryService } from '@server/story/application/StoryService';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
+import { StoryService } from '@server/story/application/StoryService.js';
 import {
   isDomainEventType,
   type DomainEventEnvelope,

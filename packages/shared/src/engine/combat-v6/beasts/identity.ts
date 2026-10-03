@@ -1,4 +1,4 @@
-import { BEAST_PROGRESSION } from './content';
+import { BEAST_PROGRESSION } from './content.js';
 
 export type BeastOriginKind = 'baby' | 'pseudo_baby' | 'wild';
 export type BeastIdentity = {

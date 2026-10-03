@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import type { ItemGrant } from '../inventory';
-import type { Quality } from '../types/constants';
+import type { ItemGrant } from '../inventory/index.js';
+import type { Quality } from '../types/constants.js';
 
 export const ManualMigrationConfigSchema = z
   .object({

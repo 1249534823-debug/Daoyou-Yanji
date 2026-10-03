@@ -1,7 +1,7 @@
-import { LINGXIAO_COMBAT } from "./lingxiao-pack";
-import { LINGXIAO_PATHS } from "./lingxiao-path-pack";
-import { SECT_METHODS } from "./method-pack";
-import type { SectDefinitionV6 } from "./types";
+import { LINGXIAO_COMBAT } from "./lingxiao-pack.js";
+import { LINGXIAO_PATHS } from "./lingxiao-path-pack.js";
+import { SECT_METHODS } from "./method-pack.js";
+import type { SectDefinitionV6 } from "./types.js";
 
 export const LINGXIAO_V6_ID = "lingxiao" as const
 export const LINGXIAO_PATH_ID = {

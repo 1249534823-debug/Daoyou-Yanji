@@ -1,4 +1,4 @@
-import type { RealmType } from './constants';
+import type { RealmType } from './constants.js';
 
 export type ConditionResourceKey = 'hp' | 'mp';
 

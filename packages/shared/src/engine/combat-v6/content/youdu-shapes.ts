@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { DamageKind, DamageOrigin, EffectType, HookAim, HookName, SkillTag, StatusCategory, StatusHit, TargetMode, TargetSide, UnitKind } from '../core';
+import { DamageKind, DamageOrigin, EffectType, HookAim, HookName, SkillTag, StatusCategory, StatusHit, TargetMode, TargetSide, UnitKind } from '../core/index.js';
 
 export const ydId = z.string().regex(/^youdu\.[a-z][a-z0-9_.]*$/);
 const ref = z.string().min(1);

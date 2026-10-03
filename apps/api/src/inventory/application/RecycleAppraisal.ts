@@ -1,4 +1,4 @@
-import { calculateSingleElixirScore } from '@server/utils/rankingUtils';
+import { calculateSingleElixirScore } from '@server/utils/rankingUtils.js';
 import {
   APPRAISAL_KEYWORD_BONUS_MAX,
   APPRAISAL_KEYWORD_BONUS_MIN,

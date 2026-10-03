@@ -1,6 +1,6 @@
-import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db';
-import { getExecutor } from '@server/lib/drizzle/db';
-import { messageConsumptions } from '@server/lib/drizzle/schema';
+import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db.js';
+import { getExecutor } from '@server/lib/drizzle/db.js';
+import { messageConsumptions } from '@server/lib/drizzle/schema.js';
 import { and, lt, ne } from 'drizzle-orm';
 
 export const COMBAT_V6_CONDITION_CONSUMER = 'combat-v6-condition-v1';

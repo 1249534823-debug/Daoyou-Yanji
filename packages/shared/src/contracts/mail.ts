@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { ItemGrantSchema } from '../inventory';
-import { findItemDefinition } from '../items/registry';
+import { ItemGrantSchema } from '../inventory/index.js';
+import { findItemDefinition } from '../items/registry.js';
 
 export const SendMailSchema = z
   .object({

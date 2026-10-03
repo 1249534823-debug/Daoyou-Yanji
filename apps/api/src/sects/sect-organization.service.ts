@@ -8,47 +8,47 @@ import { SectShopBuyParamsSchema } from '@daoyou/shared/contracts/sectShop';
 import { productionSectRuntime as runtime } from '@daoyou/shared/engine/sect/content';
 import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { findMembership } from '@server/lib/repositories/sectRepository';
-import type { CommittedCommand } from '@server/player/application/state/CommandExecutors';
-import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import { findMembership } from '@server/lib/repositories/sectRepository.js';
+import type { CommittedCommand } from '@server/player/application/state/CommandExecutors.js';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
 import {
   readResourceWithMeta,
   readResourceWithResolvedScope,
-} from '@server/player/application/state/ResourceReadService';
-import { SectError } from '@server/sects/application/SectError';
+} from '@server/player/application/state/ResourceReadService.js';
+import { SectError } from '@server/sects/application/SectError.js';
 import {
   createPostgresSectConstructionQueryContext,
   createPostgresSectEconomyContext,
   createPostgresSectMembershipQueryContext,
   createPostgresSectQueryContext,
-} from '@server/sects/organization/PostgresSectOrganizationAdapters';
-import { executeSectConstructionDonationCommand } from '@server/sects/organization/SectConstructionCommand';
+} from '@server/sects/organization/PostgresSectOrganizationAdapters.js';
+import { executeSectConstructionDonationCommand } from '@server/sects/organization/SectConstructionCommand.js';
 import {
   executeSectShopPurchaseCommand,
   executeSectStipendClaimCommand,
-} from '@server/sects/organization/SectEconomyCommand';
+} from '@server/sects/organization/SectEconomyCommand.js';
 import {
   executeSectJoinCommand,
   executeSectPromotionCommand,
-} from '@server/sects/organization/SectMembershipCommand';
-import { executeSectTaskActionCommand } from '@server/sects/organization/SectTaskCommand';
-import { previewSectTransfer } from '@server/sects/organization/SectTransferApplicationService';
-import { executeSectTransferCommand } from '@server/sects/organization/SectTransferCommand';
-import type { SectCommandArgs } from '@server/sects/organization/commandSupport';
+} from '@server/sects/organization/SectMembershipCommand.js';
+import { executeSectTaskActionCommand } from '@server/sects/organization/SectTaskCommand.js';
+import { previewSectTransfer } from '@server/sects/organization/SectTransferApplicationService.js';
+import { executeSectTransferCommand } from '@server/sects/organization/SectTransferCommand.js';
+import type { SectCommandArgs } from '@server/sects/organization/commandSupport.js';
 import { eq } from 'drizzle-orm';
 import type { z } from 'zod';
 import {
   requireSectIdempotency,
   type SectCommandRequest,
-} from './sect-idempotency';
+} from './sect-idempotency.js';
 import {
   SECT_ORGANIZATION,
   type SectOrganization,
-} from './sect-organization.provider';
+} from './sect-organization.provider.js';
 
 @Injectable()
 export class SectOrganizationService {

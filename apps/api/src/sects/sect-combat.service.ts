@@ -4,16 +4,16 @@ import { Inject, Injectable } from '@nestjs/common';
 import {
   getSectCombatView,
   selectInitialSectPath,
-} from '@server/combat/application/CombatV6BuildService';
+} from '@server/combat/application/CombatV6BuildService.js';
 import {
   mutateSectV6,
   readSectV6,
-} from '@server/combat/application/CombatV6SectService';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
-import { readResourceWithMeta } from '@server/player/application/state/ResourceReadService';
+} from '@server/combat/application/CombatV6SectService.js';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
+import { readResourceWithMeta } from '@server/player/application/state/ResourceReadService.js';
 import type { z } from 'zod';
 
 @Injectable()

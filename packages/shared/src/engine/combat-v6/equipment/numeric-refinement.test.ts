@@ -1,14 +1,14 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { forgingInputs } from '../../../forging/rules';
-import { InventoryEquipmentSchema } from '../../../inventory/equipment';
-import type { MaterialFacts } from '../../../items/definitions/materials';
-import { SeededRng } from '../core';
-import { compileDaoEquipmentSpecialLoadoutV1 } from './compiler';
-import { daoEquipmentAttributeRange, daoEquipmentBaseRange, daoEquipmentTemplateOf } from './content';
-import { generateForgedEquipment } from './forging';
-import { generateDaoEquipmentV2 } from './generator';
-import { equipmentReferenceLevel, OPEN_EQUIPMENT_LEVELS } from './realm';
-import { DAO_EQUIPMENT_SLOTS, type DaoEquipmentSlot } from './types';
+import { forgingInputs } from '../../../forging/rules.js';
+import { InventoryEquipmentSchema } from '../../../inventory/equipment.js';
+import type { MaterialFacts } from '../../../items/definitions/materials.js';
+import { SeededRng } from '../core/index.js';
+import { compileDaoEquipmentSpecialLoadoutV1 } from './compiler.js';
+import { daoEquipmentAttributeRange, daoEquipmentBaseRange, daoEquipmentTemplateOf } from './content.js';
+import { generateForgedEquipment } from './forging.js';
+import { generateDaoEquipmentV2 } from './generator.js';
+import { equipmentReferenceLevel, OPEN_EQUIPMENT_LEVELS } from './realm.js';
+import { DAO_EQUIPMENT_SLOTS, type DaoEquipmentSlot } from './types.js';
 
 const input = (slot: DaoEquipmentSlot = 'weapon', equipmentLevel = 90) => ({
   id: slot, createdAt: '2026-09-12', seed: 123,

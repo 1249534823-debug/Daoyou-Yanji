@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { distributeBeastPoints } from '../beasts/allocation';
-import { BEAST_PROGRESSION } from '../beasts/content';
-import { generateCapturedBeast } from '../beasts/generator';
-import { BeastSchema, GeneratedBeastSchema } from '../beasts/schema';
-import { SeededRng } from '../core';
-import { WILD_PACK } from './pack';
+import { distributeBeastPoints } from '../beasts/allocation.js';
+import { BEAST_PROGRESSION } from '../beasts/content.js';
+import { generateCapturedBeast } from '../beasts/generator.js';
+import { BeastSchema, GeneratedBeastSchema } from '../beasts/schema.js';
+import { SeededRng } from '../core/index.js';
+import { WILD_PACK } from './pack.js';
 
 export const WildCombatantSchema = z.strictObject({
   unitId: z.string().min(1),

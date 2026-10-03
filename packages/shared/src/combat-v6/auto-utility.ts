@@ -5,11 +5,11 @@ import type {
   SkillEffect,
   StatusDef,
   Unit,
-} from '../engine/combat-v6/core';
-import { evalExpr, skillLevelOf } from '../engine/combat-v6/core/expr';
-import { matchesWhen, targetStatusStacks } from '../engine/combat-v6/core/when';
-import { daoyouRulesetV6 } from '../engine/combat-v6/rules-daoyou';
-import type { AutoObservation } from './auto-observation';
+} from '../engine/combat-v6/core/index.js';
+import { evalExpr, skillLevelOf } from '../engine/combat-v6/core/expr.js';
+import { matchesWhen, targetStatusStacks } from '../engine/combat-v6/core/when.js';
+import { daoyouRulesetV6 } from '../engine/combat-v6/rules-daoyou/index.js';
+import type { AutoObservation } from './auto-observation.js';
 
 type Benefits = {
   offense: number;

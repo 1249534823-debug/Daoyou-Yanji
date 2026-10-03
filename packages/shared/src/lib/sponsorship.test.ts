@@ -7,7 +7,7 @@ import {
   isSponsorshipOrderAccepted,
   parseCnyAmountToFen,
   resolveSponsorshipTier,
-} from './sponsorship';
+} from './sponsorship.js';
 
 describe('sponsorship rules', () => {
   it.each([

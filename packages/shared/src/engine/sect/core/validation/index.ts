@@ -1,3 +1,3 @@
-export * from './SectModuleValidator';
-export * from './SectStateValidator';
-export * from './ValidationPipeline';
+export * from './SectModuleValidator.js';
+export * from './SectStateValidator.js';
+export * from './ValidationPipeline.js';

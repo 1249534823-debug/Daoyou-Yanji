@@ -8,12 +8,12 @@ import {
   Put,
   UseFilters,
 } from '@nestjs/common';
-import type { AuthUser } from '@server/lib/auth/types';
-import { Access, CurrentUser } from '../auth/access';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { AdminErrors } from './admin-errors';
-import { AdminSectShopService } from './sect-shop.service';
+import type { AuthUser } from '@server/lib/auth/types.js';
+import { Access, CurrentUser } from '../auth/access.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { AdminErrors } from './admin-errors.js';
+import { AdminSectShopService } from './sect-shop.service.js';
 
 @Controller('api/admin/sect-shop')
 @Access('admin')

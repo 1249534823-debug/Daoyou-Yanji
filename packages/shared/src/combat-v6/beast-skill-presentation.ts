@@ -2,8 +2,8 @@ import {
   BEAST_ADVANCED_SKILL_IDS,
   BEAST_SKILL_CONTENT,
   BEAST_SKILLS,
-} from '../engine/combat-v6/beasts/content';
-import { combatV6SkillDetails } from './skill-details';
+} from '../engine/combat-v6/beasts/content.js';
+import { combatV6SkillDetails } from './skill-details.js';
 
 export type BeastSkillPresentation = {
   name: string;

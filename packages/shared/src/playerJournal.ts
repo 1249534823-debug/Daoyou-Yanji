@@ -1,6 +1,6 @@
-import type { JournalChange } from './contracts/playerJournal';
-import type { InventoryItem } from './inventory';
-import { findItemDefinition } from './items/registry';
+import type { JournalChange } from './contracts/playerJournal.js';
+import type { InventoryItem } from './inventory/index.js';
+import { findItemDefinition } from './items/registry.js';
 
 /** Quantity changes only: moving/equipping an existing item is not a gain. */
 export function inventoryJournalChanges(

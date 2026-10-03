@@ -1,15 +1,15 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
-import { deliverMarketMaterial } from '@server/market/application/MarketInventoryDelivery';
-import type { DbTransaction } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
-import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateRepository';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
+import { deliverMarketMaterial } from '@server/market/application/MarketInventoryDelivery.js';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
+import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateRepository.js';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
 import {
   materialLibraryEntryToMaterial,
   sampleMaterialLibraryEntryByPreferences,
-} from '@server/admin/application/MaterialLibraryService';
-import { readCultivatorRealm } from '@server/cultivator/facts';
+} from '@server/admin/application/MaterialLibraryService.js';
+import { readCultivatorRealm } from '@server/cultivator/facts.js';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
 import { MaterialFactsSchema } from '@daoyou/shared/items/definitions/materials';
 import {
@@ -61,22 +61,22 @@ import { createHmac, randomUUID } from 'node:crypto';
 import {
   blackMarketConversationService,
   fallbackTurnReply,
-} from '@server/black-market/application/BlackMarketConversationService';
+} from '@server/black-market/application/BlackMarketConversationService.js';
 import {
   grantBlackMarketEntry,
   listBlackMarketEntryGrants,
-} from '@server/black-market/application/BlackMarketEntryService';
-import { buildBlackMarketMask } from '@server/black-market/application/BlackMarketMaskService';
-import { BLACK_MARKET_NPCS, getBlackMarketNpc } from '@server/black-market/application/BlackMarketNpcConfig';
-import { blackMarketObservationService } from '@server/black-market/application/BlackMarketObservationService';
-import { blackMarketPerceptionService } from '@server/black-market/application/BlackMarketPerceptionService';
-import { blackMarketSessionRepository } from '@server/black-market/application/BlackMarketSessionRepository';
+} from '@server/black-market/application/BlackMarketEntryService.js';
+import { buildBlackMarketMask } from '@server/black-market/application/BlackMarketMaskService.js';
+import { BLACK_MARKET_NPCS, getBlackMarketNpc } from '@server/black-market/application/BlackMarketNpcConfig.js';
+import { blackMarketObservationService } from '@server/black-market/application/BlackMarketObservationService.js';
+import { blackMarketPerceptionService } from '@server/black-market/application/BlackMarketPerceptionService.js';
+import { blackMarketSessionRepository } from '@server/black-market/application/BlackMarketSessionRepository.js';
 import type {
   BlackMarketInternalSession,
   BlackMarketPreparedTurn,
   BlackMarketTurnContext,
   BlackMarketTurnProposal,
-} from '@server/black-market/application/types';
+} from '@server/black-market/application/types.js';
 
 const PURCHASE_SOURCE = 'black_market_purchase';
 const SESSION_MESSAGE_LIMIT = 24;

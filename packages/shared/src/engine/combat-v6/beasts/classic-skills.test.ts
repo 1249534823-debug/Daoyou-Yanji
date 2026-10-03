@@ -1,15 +1,15 @@
 import { describe, expect, it } from 'vitest';
-import { combatV6SkillDetails } from '../../../combat-v6/skill-details';
-import { CommandType, EventType, createBattle, type LineupUnit } from '../core';
-import { createDaoyouRuleset } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_7C_VERSIONS } from '../version';
-import { BEAST_SKILLS, BEAST_SKILL_FAMILIES, BEAST_SPECIES } from './content';
-import { generateStarterBeast } from './generator';
+import { combatV6SkillDetails } from '../../../combat-v6/skill-details.js';
+import { CommandType, EventType, createBattle, type LineupUnit } from '../core/index.js';
+import { createDaoyouRuleset } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_7C_VERSIONS } from '../version.js';
+import { BEAST_SKILLS, BEAST_SKILL_FAMILIES, BEAST_SPECIES } from './content.js';
+import { generateStarterBeast } from './generator.js';
 import {
   activeBeastSkills,
   beastPanel,
   projectBeastRoster,
-} from './projection';
+} from './projection.js';
 
 const id = '00000000-0000-4000-8000-000000000001';
 function beast(skills: string[]) {

@@ -1,5 +1,5 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
-import { createTransactionalMessage } from '@server/lib/repositories/transactionalMessageRepository';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
+import { createTransactionalMessage } from '@server/lib/repositories/transactionalMessageRepository.js';
 import type {
   DomainEventData,
   DomainEventType,

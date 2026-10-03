@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { REALM_VALUES, type RealmType } from '../types/constants';
+import { REALM_VALUES, type RealmType } from '../types/constants.js';
 
 export const RankingChallengeSchema = z
   .object({

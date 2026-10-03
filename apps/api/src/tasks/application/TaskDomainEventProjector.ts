@@ -1,13 +1,13 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
-import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
+import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
 import {
   isDomainEventType,
   type DomainEventEnvelope,
 } from '@daoyou/shared/contracts/domainEvents';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
-import type { FeatureCommandResult } from '@server/player/application/state/CommandExecutors';
-import { readPlayerTaskSummary } from '@server/player/application/PlayerResourceReaderService';
-import { TaskService } from '@server/tasks/application/TaskService';
+import type { FeatureCommandResult } from '@server/player/application/state/CommandExecutors.js';
+import { readPlayerTaskSummary } from '@server/player/application/PlayerResourceReaderService.js';
+import { TaskService } from '@server/tasks/application/TaskService.js';
 
 export async function projectTaskDomainEvent(
   event: DomainEventEnvelope,

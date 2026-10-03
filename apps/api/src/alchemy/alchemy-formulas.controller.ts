@@ -8,21 +8,21 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError.js';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { AlchemyFormulasService } from './alchemy-formulas.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { AlchemyFormulasService } from './alchemy-formulas.service.js';
 import {
   DiscoveryConfirmSchema,
   FormulaAnalyzeSchema,
   FormulaIdParamSchema,
   FormulaListQuerySchema,
-} from './alchemy-input';
+} from './alchemy-input.js';
 
 function formulaErrors(message: string, includeDetails = true) {
   return apiErrorFilter((error) => {

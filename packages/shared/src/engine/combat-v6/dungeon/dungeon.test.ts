@@ -13,13 +13,13 @@ import {
   COMBAT_V6_SECT_DEFINITIONS_V4,
   type CombatV6SectId,
   type SectCombatProgressV6,
-} from '../content';
+} from '../content/index.js';
 import {
   DUNGEON_TEMPLATES,
   DungeonHost,
   carryDungeonBeastResources,
   createDungeonHost,
-} from './host';
+} from './host.js';
 function player(sectId: CombatV6SectId) {
   const def = COMBAT_V6_SECT_DEFINITIONS_V4[sectId];
   const track = { level: 0, progress: 0 };

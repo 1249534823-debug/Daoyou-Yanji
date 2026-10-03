@@ -1,9 +1,9 @@
 import type { FeedbackCreateRequest } from '@daoyou/shared/contracts/feedback';
 import { Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { createFeedback } from '@server/lib/repositories/feedbackRepository';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import { createFeedback } from '@server/lib/repositories/feedbackRepository.js';
 import { and, eq } from 'drizzle-orm';
 
 @Injectable()

@@ -1,11 +1,11 @@
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
 import type { SectContextData } from '@daoyou/shared/contracts/sect';
 import type { SectAdmissionContext, SectRuntime } from '@daoyou/shared/engine/sect';
-import { SectError } from '@server/sects/application/SectError';
+import { SectError } from '@server/sects/application/SectError.js';
 import type {
   SectAdmissionRepository,
   SectAdmissionResourceReader,
-} from '@server/sects/organization/ports';
+} from '@server/sects/organization/ports.js';
 
 /** Admission use cases. Persistence and transaction ownership stay outside this class. */
 export class SectAdmissionApplicationService {

@@ -1,21 +1,21 @@
-import { consumeLifespanAndHandleDepletion } from '@server/lib/lifespan/handleLifespan';
-import { createDomainEvent } from '@server/lib/mq/domainEventWriter';
-import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher';
+import { consumeLifespanAndHandleDepletion } from '@server/lib/lifespan/handleLifespan.js';
+import { createDomainEvent } from '@server/lib/mq/domainEventWriter.js';
+import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher.js';
 import {
   redisLockKeys,
   withRedisLock,
   type RedisLeaseContext,
-} from '@server/lib/redis/lock';
-import { loadPlayerRetreatFacts } from '@server/cultivator/application/readers/CultivatorConditionFactsReader';
+} from '@server/lib/redis/lock.js';
+import { loadPlayerRetreatFacts } from '@server/cultivator/application/readers/CultivatorConditionFactsReader.js';
 import {
   addBreakthroughHistoryEntry,
   addRetreatRecord,
   updateCultivator,
-} from '@server/cultivator/application/readers/CultivatorStateRepository';
+} from '@server/cultivator/application/readers/CultivatorStateRepository.js';
 import type {
   BreakthroughStoryPayload,
   LifespanExhaustedStoryPayload,
-} from '@server/utils/prompts';
+} from '@server/utils/prompts.js';
 import { getRetreatQiCost } from '@daoyou/shared/config/qiSystem';
 import { RESOURCE_DATA_SCHEMAS } from '@daoyou/shared/contracts/resources';
 import type { RetreatResultData } from '@daoyou/shared/contracts/retreat';
@@ -25,14 +25,14 @@ import {
 } from '@daoyou/shared/engine/cultivation/CultivationEngine';
 import type { BreakthroughHistoryEntry } from '@daoyou/shared/types/cultivator';
 import { randomUUID } from 'crypto';
-import { findJournalOperation } from '@server/lib/repositories/playerJournalRepository';
+import { findJournalOperation } from '@server/lib/repositories/playerJournalRepository.js';
 import { retreatResultFromJournal } from '@daoyou/shared/contracts/playerJournal';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
-import { PillOperationExecutor } from '@server/inventory/application/PillOperationExecutor';
-import { QiService } from '@server/cultivator/application/QiService';
-import { breakthroughChanges, retreatChanges } from '@server/cultivator/application/RetreatResourceChanges';
-import { sectOrganizationFacade } from '@server/sects/organization';
-import { TaskService } from '@server/tasks/application/TaskService';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import { PillOperationExecutor } from '@server/inventory/application/PillOperationExecutor.js';
+import { QiService } from '@server/cultivator/application/QiService.js';
+import { breakthroughChanges, retreatChanges } from '@server/cultivator/application/RetreatResourceChanges.js';
+import { sectOrganizationFacade } from '@server/sects/organization/index.js';
+import { TaskService } from '@server/tasks/application/TaskService.js';
 
 export type RetreatStorySource =
   | { type: 'breakthrough'; payload: BreakthroughStoryPayload }
@@ -459,4 +459,4 @@ export async function commitBreakthroughRetreat(args: {
   });
   return { committed, domainEventId };
 }
-import { assertCombatV6MutationAllowed } from '@server/combat/mutation-policy';
+import { assertCombatV6MutationAllowed } from '@server/combat/mutation-policy.js';

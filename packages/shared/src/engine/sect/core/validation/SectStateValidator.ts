@@ -1,5 +1,5 @@
-import { type CultivatorSectState } from '../domain';
-import type { SectModule } from '../plugin';
+import { type CultivatorSectState } from '../domain/index.js';
+import type { SectModule } from '../plugin/index.js';
 
 /** 持久化水合与运行时入口共用的结构校验器。 */
 export class SectStateValidator {

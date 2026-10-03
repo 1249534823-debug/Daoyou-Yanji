@@ -5,7 +5,7 @@ import {
   ItemLibraryConsumablePayloadSchema,
   ItemLibraryMaterialPayloadSchema,
   MailAttachmentsSchema,
-} from './itemLibrary';
+} from './itemLibrary.js';
 
 function buildPillPayload() {
   return {

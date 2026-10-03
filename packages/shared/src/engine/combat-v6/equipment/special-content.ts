@@ -1,13 +1,13 @@
-import data from './data/equipment-special.json';
+import data from './data/equipment-special.json' with { type: 'json' };
 import {
   compileEquipmentArt,
   compileEquipmentEssence,
   compileRageGainPassive,
-} from './special-compiler';
-import { DAO_RAGE_RESOURCE_ID } from './special-ids';
-import { loadEquipmentSpecialPack } from './special-pack';
+} from './special-compiler.js';
+import { DAO_RAGE_RESOURCE_ID } from './special-ids.js';
+import { loadEquipmentSpecialPack } from './special-pack.js';
 
-export * from './special-ids';
+export * from './special-ids.js';
 
 const pack = loadEquipmentSpecialPack(data);
 export const DAO_RAGE_RESOURCE = {

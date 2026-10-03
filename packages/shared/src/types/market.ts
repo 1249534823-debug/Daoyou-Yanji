@@ -1,5 +1,5 @@
-import type { MaterialType, Quality, RealmType } from './constants';
-import type { Material } from './cultivator';
+import type { MaterialType, Quality, RealmType } from './constants.js';
+import type { Material } from './cultivator.js';
 
 export type MarketLayer = 'common' | 'treasure' | 'heaven' | 'black';
 export type RegionProfileKey =

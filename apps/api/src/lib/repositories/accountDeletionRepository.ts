@@ -1,8 +1,8 @@
-import { db, getExecutor } from '@server/lib/drizzle/db';
+import { db, getExecutor } from '@server/lib/drizzle/db.js';
 import {
   accountDeletionRecords,
   cultivators,
-} from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/schema.js';
 import { eq } from 'drizzle-orm';
 
 export async function recordPendingAccountDeletion(

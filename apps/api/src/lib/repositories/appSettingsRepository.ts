@@ -1,5 +1,5 @@
-import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db';
-import { appSettings } from '@server/lib/drizzle/schema';
+import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
+import { appSettings } from '@server/lib/drizzle/schema.js';
 import {
   APP_SETTING_KEYS,
   DEFAULT_COMMUNITY_QQ_GROUP_NUMBER,

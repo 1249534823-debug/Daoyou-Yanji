@@ -1,14 +1,14 @@
-import type { DbExecutor } from '@server/lib/drizzle/db';
+import type { DbExecutor } from '@server/lib/drizzle/db.js';
 import {
   cultivatorEquipmentSlots,
   cultivatorManualSlots,
   cultivatorManualStates,
   inventoryItems,
-} from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/schema.js';
 import type { DaoEquipmentLoadoutV1 } from '@daoyou/shared/engine/combat-v6/equipment';
 import type { CultivatorManualStateV1 } from '@daoyou/shared/engine/combat-v6/manuals';
 import { eq } from 'drizzle-orm';
-import { readActiveSectCombatProgress } from './sectCombatRepository';
+import { readActiveSectCombatProgress } from './sectCombatRepository.js';
 
 export async function readCharacterManuals(
   cultivatorId: string,

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { readCombatActivityNotice } from '@server/combat/application/CombatActivityNotice';
+import { readCombatActivityNotice } from '@server/combat/application/CombatActivityNotice.js';
 
 @Injectable()
 export class CombatActivityService {

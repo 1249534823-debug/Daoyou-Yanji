@@ -7,10 +7,10 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { InventoryError } from '@server/inventory/operations';
-import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { InventoryError } from '@server/inventory/operations.js';
+import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService.js';
 import {
   SectPathSelectionRequestSchema,
   type SectPathSelectionRequest,
@@ -18,12 +18,12 @@ import {
 import { SectV6ActionSchema } from '@daoyou/shared/contracts/combatV6Sect';
 import { SectV6RuleError } from '@daoyou/shared/engine/combat-v6/sect-progression';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { CombatErrors } from '../combat/combat-errors';
-import { apiErrorFilter } from '../http/error-filter';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { SectCombatService } from './sect-combat.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { CombatErrors } from '../combat/combat-errors.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { SectCombatService } from './sect-combat.service.js';
 
 const ProgressionErrors = apiErrorFilter((error) => {
   const lock = redisLockErrorResponse(error);

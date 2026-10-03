@@ -1,4 +1,4 @@
-import * as schema from '@server/lib/drizzle/schema';
+import * as schema from '@server/lib/drizzle/schema.js';
 import { assertConsumableSpec, stableSerializeConsumableSpec } from '@daoyou/shared/lib/consumables';
 import type { Consumable } from '@daoyou/shared/types/cultivator';
 import type { ConsumableType, Quality } from '@daoyou/shared/types/constants';

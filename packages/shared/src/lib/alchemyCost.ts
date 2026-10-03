@@ -2,7 +2,7 @@ import {
   QUALITY_ORDER,
   QUALITY_VALUES,
   type Quality,
-} from '../types/constants';
+} from '../types/constants.js';
 
 /** Existing alchemy price curve; inventory migration does not change prices. */
 export function calculateAlchemyCost(rank: Quality): number {

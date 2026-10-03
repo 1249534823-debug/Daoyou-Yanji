@@ -1,4 +1,4 @@
-import type { MeridianNodeDefV6, SectPathDefV6 } from './types';
+import type { MeridianNodeDefV6, SectPathDefV6 } from './types.js';
 
 /** 兼容早期将末端奖励当作互斥经脉保存的方案；读取不写回持久化数据。 */
 export function normalizeMeridianSelection(path: SectPathDefV6, nodeIds: string[]): string[] {

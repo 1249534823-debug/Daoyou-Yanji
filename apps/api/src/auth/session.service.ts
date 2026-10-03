@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { resolveActiveCultivatorRef } from '@server/lib/auth/activeCultivator';
-import { auth } from '@server/lib/auth/auth';
-import type { AuthUser } from '@server/lib/auth/types';
+import { resolveActiveCultivatorRef } from '@server/lib/auth/activeCultivator.js';
+import { auth } from '@server/lib/auth/auth.js';
+import type { AuthUser } from '@server/lib/auth/types.js';
 
 @Injectable()
 export class SessionService {

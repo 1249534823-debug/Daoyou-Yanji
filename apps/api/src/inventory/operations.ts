@@ -7,4 +7,4 @@ export {
   mutateInventory,
   readInventory,
   saveInventoryPlan,
-} from './application/InventoryService';
+} from './application/InventoryService.js';

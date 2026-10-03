@@ -3,28 +3,28 @@ import {
   SectTask,
   type SectDomainEvent,
 } from '@daoyou/shared/engine/sect';
-import { organizationError } from '@server/sects/organization/applicationSupport';
-import type { SectTaskItemRewardGrantStrategyRegistry } from '@server/sects/organization/TaskRewardStrategies';
+import { organizationError } from '@server/sects/organization/applicationSupport.js';
+import type { SectTaskItemRewardGrantStrategyRegistry } from '@server/sects/organization/TaskRewardStrategies.js';
 import type {
   SectCommandContext,
   SectEconomyCommandContext,
   SectMembershipCommandContext,
   SectMembershipRecord,
   SectTaskRecord,
-} from '@server/sects/organization/ports';
+} from '@server/sects/organization/ports.js';
 import {
   emptySectCommandEffects,
   mergeSectCommandEffects,
   type SectCommandEffects,
-} from '@server/sects/organization/SectCommandEffects';
-import { resolveCurrentSectTaskExecution } from '@server/sects/organization/SectTaskApplicationSupport';
-import { SectTaskOfferService } from '@server/sects/organization/SectTaskOfferService';
+} from '@server/sects/organization/SectCommandEffects.js';
+import { resolveCurrentSectTaskExecution } from '@server/sects/organization/SectTaskApplicationSupport.js';
+import { SectTaskOfferService } from '@server/sects/organization/SectTaskOfferService.js';
 import type {
   SectTaskFulfillmentRegistry,
   SectTaskOfferPolicyRegistry,
   SectTaskProgressRegistry,
   SectTaskRewardPolicyRegistry,
-} from '@server/sects/organization/SectTaskSettlement';
+} from '@server/sects/organization/SectTaskSettlement.js';
 
 type SectDomainEventType = SectDomainEvent['type'];
 type SectDomainEventOf<TType extends SectDomainEventType> = Extract<

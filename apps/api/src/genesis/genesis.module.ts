@@ -3,8 +3,8 @@ import {
   GenerateCharacterController,
   GenerateFatesController,
   SaveCharacterController,
-} from './genesis.controller';
-import { GenesisService } from './genesis.service';
+} from './genesis.controller.js';
+import { GenesisService } from './genesis.service.js';
 @Module({
   controllers: [
     GenerateCharacterController,

@@ -5,7 +5,7 @@ import {
   calculateEssenceBuckets,
   calculateRawEssence,
   rollAlchemyYieldProfile,
-} from './alchemyYield';
+} from './alchemyYield.js';
 import { PILL_UNIT_ESSENCE_BY_QUALITY } from '@daoyou/shared/config/alchemyEssenceConfig';
 import { QUALITY_ORDER } from '@daoyou/shared/types/constants';
 

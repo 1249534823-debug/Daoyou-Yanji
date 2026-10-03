@@ -38,42 +38,42 @@ import { parseMailAttachments } from '@daoyou/shared/lib/itemLibrary';
 import { and, asc, count, eq, gte, ilike, inArray, or, sql } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
 import type { z } from 'zod';
-import { db, type DbExecutor, type DbTransaction } from '@server/lib/drizzle/db';
-import { createDomainEvent } from '@server/lib/mq/domainEventWriter';
-import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher';
+import { db, type DbExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
+import { createDomainEvent } from '@server/lib/mq/domainEventWriter.js';
+import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher.js';
 import {
   consumables,
   cultivatorBeasts,
   cultivators,
   inventoryItems,
   materials,
-} from '@server/lib/drizzle/schema';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
+} from '@server/lib/drizzle/schema.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
 import {
   beastIndividualData,
   readBeastOwner,
-} from '@server/lib/repositories/combatV6BeastRepository';
+} from '@server/lib/repositories/combatV6BeastRepository.js';
 import {
   findPlayerMutationRequest,
   lockCultivatorForStateMutation,
-} from '@server/lib/repositories/playerStateRepository';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
-import { mapConsumableRow } from '@server/inventory/application/consumablePersistence';
-import { readCultivatorName } from '@server/cultivator/facts';
-import { addConsumableToInventoryInTransaction } from '@server/cultivator/application/readers/CultivatorInventoryRepository';
-import { generateForgingNarrative } from '@server/forging/application/ForgingNarrativeService';
+} from '@server/lib/repositories/playerStateRepository.js';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import { mapConsumableRow } from '@server/inventory/application/consumablePersistence.js';
+import { readCultivatorName } from '@server/cultivator/facts.js';
+import { addConsumableToInventoryInTransaction } from '@server/cultivator/application/readers/CultivatorInventoryRepository.js';
+import { generateForgingNarrative } from '@server/forging/application/ForgingNarrativeService.js';
 import {
   assertInventoryIdle,
   grantInventory,
   InventoryError,
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/operations';
-import { MailService } from '@server/mail/application/MailService';
-import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
-import { QiService } from '@server/cultivator/application/QiService';
-import { StoryService } from '@server/story/application/StoryService';
-import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
+} from '@server/inventory/operations.js';
+import { MailService } from '@server/mail/application/MailService.js';
+import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster.js';
+import { QiService } from '@server/cultivator/application/QiService.js';
+import { StoryService } from '@server/story/application/StoryService.js';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
 
 async function mutate<T>(
   owner: string,

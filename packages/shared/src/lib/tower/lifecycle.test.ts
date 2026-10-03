@@ -3,7 +3,7 @@ import {
   shouldExpireTowerRun,
   towerRunOccupancy,
   type TowerLifecycleState,
-} from './lifecycle';
+} from './lifecycle.js';
 
 const end = Date.parse('2026-09-20T16:00:00Z');
 const base: TowerLifecycleState = {

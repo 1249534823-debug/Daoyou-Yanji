@@ -2,13 +2,13 @@ import { z } from 'zod';
 import {
   DAO_EQUIPMENT_SLOTS,
   type DaoEquipmentInstanceV1,
-} from '../engine/combat-v6/equipment/types';
+} from '../engine/combat-v6/equipment/types.js';
 import {
   DAO_WEAPON_TYPES,
   equipmentWeaponTypeProblem,
-} from '../engine/combat-v6/equipment/weapons';
-import type { ItemGrant } from '../inventory';
-import type { RealmType } from '../types/constants';
+} from '../engine/combat-v6/equipment/weapons.js';
+import type { ItemGrant } from '../inventory/index.js';
+import type { RealmType } from '../types/constants.js';
 
 export const ExchangeArtifactSchema = z
   .object({

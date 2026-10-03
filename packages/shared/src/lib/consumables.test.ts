@@ -1,6 +1,6 @@
 import type { Consumable } from '@daoyou/shared/types/cultivator';
 import { describe, expect, it } from 'vitest';
-import { buildConsumableStackKey } from './consumables';
+import { buildConsumableStackKey } from './consumables.js';
 
 function buildPill(version?: 3 | 4): Consumable {
   return {

@@ -4,15 +4,15 @@ import {
   AUCTION_MAX_UNIT_PRICE,
   getAuctionUnitPriceCap,
   isAuctionListableQuality,
-} from '../config/auctionConfig';
-import { ItemGrantSchema, itemDefinition } from '../inventory';
-import { InventoryEquipmentSchema } from '../inventory/equipment';
-import { ConsumableFactsSchema } from '../items/definitions/consumables';
-import { SeedFactsSchema } from '../items/definitions/seeds';
-import { materialFactsOf } from '../items/material';
-import { findItemDefinition } from '../items/registry';
-import { QUALITY_VALUES, type Quality } from '../types/constants';
-import { BeastTransferSchema, type BeastTradePreview } from './beastTrade';
+} from '../config/auctionConfig.js';
+import { ItemGrantSchema, itemDefinition } from '../inventory/index.js';
+import { InventoryEquipmentSchema } from '../inventory/equipment.js';
+import { ConsumableFactsSchema } from '../items/definitions/consumables.js';
+import { SeedFactsSchema } from '../items/definitions/seeds.js';
+import { materialFactsOf } from '../items/material.js';
+import { findItemDefinition } from '../items/registry.js';
+import { QUALITY_VALUES, type Quality } from '../types/constants.js';
+import { BeastTransferSchema, type BeastTradePreview } from './beastTrade.js';
 
 export const AUCTION_ITEM_TYPES = [
   'material',

@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from '@server/database/database.module';
-import { ConditionController } from './condition.controller';
-import { ConditionService } from './condition.service';
-import { CultivationController } from './cultivation.controller';
-import { CultivatorQueriesService } from './cultivator-queries.service';
-import { LifecycleController } from './lifecycle.controller';
-import { LifecycleService } from './lifecycle.service';
-import { ProfileController } from './profile.controller';
-import { ProfileService } from './profile.service';
-import { RetreatService } from './retreat.service';
-import { YieldService } from './yield.service';
+import { DatabaseModule } from '@server/database/database.module.js';
+import { ConditionController } from './condition.controller.js';
+import { ConditionService } from './condition.service.js';
+import { CultivationController } from './cultivation.controller.js';
+import { CultivatorQueriesService } from './cultivator-queries.service.js';
+import { LifecycleController } from './lifecycle.controller.js';
+import { LifecycleService } from './lifecycle.service.js';
+import { ProfileController } from './profile.controller.js';
+import { ProfileService } from './profile.service.js';
+import { RetreatService } from './retreat.service.js';
+import { YieldService } from './yield.service.js';
 
 @Module({
   imports: [DatabaseModule],

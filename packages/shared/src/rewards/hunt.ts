@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { DropPoolSchema, rollDrops } from '../drops';
-import { YieldCalculator } from '../engine/yield/YieldCalculator';
-import type { HuntEvent } from '../hunts/config';
-import { ItemGrantSchema } from '../inventory';
-import { findItemDefinition } from '../items/registry';
-import raw from './data/hunt.json';
+import { DropPoolSchema, rollDrops } from '../drops/index.js';
+import { YieldCalculator } from '../engine/yield/YieldCalculator.js';
+import type { HuntEvent } from '../hunts/config.js';
+import { ItemGrantSchema } from '../inventory/index.js';
+import { findItemDefinition } from '../items/registry.js';
+import raw from './data/hunt.json' with { type: 'json' };
 
 export const HUNT_REWARD_HOURS = 6;
 export const HuntDropPoolSchema = DropPoolSchema.superRefine((pool, ctx) => {

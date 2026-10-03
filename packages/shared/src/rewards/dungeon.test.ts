@@ -1,15 +1,15 @@
 import { describe, expect, it } from 'vitest';
-import { getRealmStageLevel } from '../config/realmProgression';
-import { findItemDefinition } from '../items/registry';
-import { REALM_VALUES } from '../types/constants';
-import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '../engine/combat-v6/beasts/content';
+import { getRealmStageLevel } from '../config/realmProgression.js';
+import { findItemDefinition } from '../items/registry.js';
+import { REALM_VALUES } from '../types/constants.js';
+import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '../engine/combat-v6/beasts/content.js';
 import {
   appendDungeonReward,
   dungeonRewardItemName,
   planDungeonReward,
   planDungeonStepResources,
-} from './dungeon';
-import { DUNGEON_REWARD_PACK, loadDungeonRewardPack } from './dungeon-pack';
+} from './dungeon.js';
+import { DUNGEON_REWARD_PACK, loadDungeonRewardPack } from './dungeon-pack.js';
 
 const originalPack = structuredClone(DUNGEON_REWARD_PACK);
 for (const source of Object.values(originalPack.sources)) {

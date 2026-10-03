@@ -1,12 +1,12 @@
 import {
   breakthroughHistory,
   cultivators,
-} from '@server/lib/drizzle/schema';
-import { invalidateActiveCultivatorRef } from '@server/lib/auth/activeCultivator';
+} from '@server/lib/drizzle/schema.js';
+import { invalidateActiveCultivatorRef } from '@server/lib/auth/activeCultivator.js';
 import {
   redisLockKeys,
   withRedisLock,
-} from '@server/lib/redis/lock';
+} from '@server/lib/redis/lock.js';
 import {
   getRealmStageNaturalAttributeValue,
   getRealmStageUnallocatedAttributeBudget,
@@ -17,11 +17,11 @@ import { and, eq } from 'drizzle-orm';
 import {
   AttributeResetService,
   withAttributeResetLock,
-} from '@server/cultivator/application/AttributeResetService';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
+} from '@server/cultivator/application/AttributeResetService.js';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
 import {
   deleteCultivator,
-} from '@server/cultivator/application/readers/CultivatorStateRepository';
+} from '@server/cultivator/application/readers/CultivatorStateRepository.js';
 
 type Actor = {
   userId: string;

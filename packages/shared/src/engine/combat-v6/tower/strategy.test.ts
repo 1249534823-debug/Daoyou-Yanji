@@ -1,16 +1,16 @@
 import { describe, expect, it } from 'vitest';
-import { TOWER_ELIGIBLE_REALMS } from '../../../lib/tower/helpers';
-import { getTowerSeasonMeta } from '../../../lib/tower/season';
-import { createTowerWeek, TOWER_ENCOUNTERS } from '../../../lib/tower/weekly';
+import { TOWER_ELIGIBLE_REALMS } from '../../../lib/tower/helpers.js';
+import { getTowerSeasonMeta } from '../../../lib/tower/season.js';
+import { createTowerWeek, TOWER_ENCOUNTERS } from '../../../lib/tower/weekly.js';
 import {
   hasTowerTrait,
   TOWER_STRATEGY_VERSION,
   towerStrategySignature,
   validateTowerFloorStrategy,
   type TowerFloorStrategy,
-} from './strategy';
-import { compileTowerStrategy } from './strategy-compiler';
-import { expandTowerWeek } from './strategy-templates';
+} from './strategy.js';
+import { compileTowerStrategy } from './strategy-compiler.js';
+import { expandTowerWeek } from './strategy-templates.js';
 const week = createTowerWeek(getTowerSeasonMeta(new Date('2026-09-19')));
 const compile = (f: TowerFloorStrategy) =>
   compileTowerStrategy('金丹', f, TOWER_STRATEGY_VERSION);

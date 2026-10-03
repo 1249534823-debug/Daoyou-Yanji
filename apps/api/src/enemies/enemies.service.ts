@@ -1,7 +1,7 @@
 import { HttpException, Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { cultivators, spiritualRoots } from '@server/lib/drizzle/schema';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { cultivators, spiritualRoots } from '@server/lib/drizzle/schema.js';
 import { and, eq } from 'drizzle-orm';
 
 @Injectable()

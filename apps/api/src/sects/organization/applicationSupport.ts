@@ -4,13 +4,13 @@ import {
   type SectOrganizationModule,
 } from '@daoyou/shared/engine/sect';
 import type { RealmType } from '@daoyou/shared/types/constants';
-import { SectError } from '@server/sects/application/SectError';
+import { SectError } from '@server/sects/application/SectError.js';
 import type {
   SectFacilityRecord,
   SectMembershipReadRepository,
   SectMembershipRecord,
   SectModuleResolver,
-} from '@server/sects/organization/ports';
+} from '@server/sects/organization/ports.js';
 
 export function organizationError(message: string, status = 409): never {
   throw new SectError('SECT_ORGANIZATION_INVALID', message, status);

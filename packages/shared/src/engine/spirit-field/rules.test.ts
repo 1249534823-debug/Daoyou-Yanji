@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { advanceSpiritFieldPlotToDecision, createDefaultSpiritFieldPlots, getCultivationResourceCost, getSpiritFieldPlotRuntime, getStageDurationMs, settleSpiritFieldHarvest } from '.';
-import type { SpiritFieldPlantSnapshot, SpiritFieldPlotState } from './types';
+import { advanceSpiritFieldPlotToDecision, createDefaultSpiritFieldPlots, getCultivationResourceCost, getSpiritFieldPlotRuntime, getStageDurationMs, settleSpiritFieldHarvest } from './index.js';
+import type { SpiritFieldPlantSnapshot, SpiritFieldPlotState } from './types.js';
 
 const plant: SpiritFieldPlantSnapshot = {
   id: 'seed-test', seedName: '青纹眠籽', seedDescription: '青灰种壳上有木纹。', clueTexts: ['遇到温和灵机时微微发热', '似乎不喜血性浇灌'],

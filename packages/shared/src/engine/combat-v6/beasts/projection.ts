@@ -1,19 +1,19 @@
-import { SkillTag, UnitKind, type LineupUnit, type Side } from '../core';
-import { DEFAULT_ATTRS } from '../core/units';
+import { SkillTag, UnitKind, type LineupUnit, type Side } from '../core/index.js';
+import { DEFAULT_ATTRS } from '../core/units.js';
 import {
   BEAST_PROGRESSION,
   BEAST_SKILLS,
   BEAST_SKILL_CONTENT,
   BEAST_SKILL_FAMILIES,
   BEAST_SPECIES,
-} from './content';
-import { beastBaseAttribute } from './identity';
+} from './content.js';
+import { beastBaseAttribute } from './identity.js';
 import {
   BeastLineupSchema,
   BeastSchema,
   type BeastRoster,
   type SummonedBeast,
-} from './schema';
+} from './schema.js';
 
 export function activeBeastSkills(beast: SummonedBeast) {
   return beast.skills.filter(

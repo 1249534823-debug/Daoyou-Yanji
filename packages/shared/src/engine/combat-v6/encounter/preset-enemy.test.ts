@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { TOWER_ENCOUNTER_PACK } from '../../../lib/tower/encounter-pack';
-import { presetEnemyAttrs } from './preset-enemy';
+import { TOWER_ENCOUNTER_PACK } from '../../../lib/tower/encounter-pack.js';
+import { presetEnemyAttrs } from './preset-enemy.js';
 
 describe('预设敌人预算', () => {
   it('金丹中期与蜃楼的整场气血和输出预算一致', () => {

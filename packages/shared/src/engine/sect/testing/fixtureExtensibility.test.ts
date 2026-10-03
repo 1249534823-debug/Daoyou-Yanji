@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { createProductionSectCatalog, productionSectRuntime } from '../content';
-import { createSectRuntime } from '../core';
+import { createProductionSectCatalog, productionSectRuntime } from '../content/index.js';
+import { createSectRuntime } from '../core/index.js';
 import {
   FIXTURE_SECT_MODULE,
   fixtureSectState,
-} from './fixtures/FixtureSectModule';
+} from './fixtures/FixtureSectModule.js';
 
 describe('宗门组织扩展与成员状态', () => {
   it('组织目录注册不需要战斗编译器或选招策略', () => {

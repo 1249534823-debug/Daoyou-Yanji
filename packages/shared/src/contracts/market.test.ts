@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { MarketBuySchema } from './market';
+import { MarketBuySchema } from './market.js';
 
 const purchase = {
   requestId: 'b1f82f67-5e78-4d4e-8b94-14de5589aa61',

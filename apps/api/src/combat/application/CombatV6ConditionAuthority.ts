@@ -1,18 +1,18 @@
-import { redis } from '@server/lib/redis';
-import { arenaOccupancyKey, CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore';
-import { hasTowerBattle } from '@server/tower/occupancy';
-import { readCharacterCombatBuild } from '@server/lib/repositories/characterLoadoutRepository';
-import type { DbExecutor } from '@server/lib/drizzle/db';
-import { hasActiveDungeon } from '@server/dungeon/occupancy';
+import { redis } from '@server/lib/redis/index.js';
+import { arenaOccupancyKey, CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore.js';
+import { hasTowerBattle } from '@server/tower/occupancy.js';
+import { readCharacterCombatBuild } from '@server/lib/repositories/characterLoadoutRepository.js';
+import type { DbExecutor } from '@server/lib/drizzle/db.js';
+import { hasActiveDungeon } from '@server/dungeon/occupancy.js';
 import {
   characterIdentityRow,
-} from '@server/lib/repositories/sectCombatRepository';
+} from '@server/lib/repositories/sectCombatRepository.js';
 import { projectCharacterDisplaySnapshot } from '@daoyou/shared/lib/cultivatorDisplay';
 import type { CultivatorCondition } from '@daoyou/shared/types/condition';
 import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
-import { CombatV6WildStore } from '@server/combat/application/CombatV6WildStore';
-import { activeSectTaskBattle } from '@server/combat/application/CombatV6SectTaskOccupancy';
-import { activeBreakthroughBattle } from '@server/combat/application/CombatV6BreakthroughOccupancy';
+import { CombatV6WildStore } from '@server/combat/application/CombatV6WildStore.js';
+import { activeSectTaskBattle } from '@server/combat/application/CombatV6SectTaskOccupancy.js';
+import { activeBreakthroughBattle } from '@server/combat/application/CombatV6BreakthroughOccupancy.js';
 import { SectTaskRecordPayloadSchema } from '@daoyou/shared/engine/sect';
 import { SectV6TargetSchema } from '@daoyou/shared/contracts/combatV6SectTask';
 

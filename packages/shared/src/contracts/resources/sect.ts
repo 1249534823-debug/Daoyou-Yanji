@@ -11,7 +11,7 @@ import type {
   SectMembersData,
   SectShopData,
   SectTasksData,
-} from '../sect';
+} from '../sect.js';
 
 export const SECT_RESOURCE_TOPICS = [
   'sect.membership',

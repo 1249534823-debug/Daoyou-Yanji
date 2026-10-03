@@ -1,10 +1,10 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
-import { betterAuthSchema } from '@server/lib/auth/schema';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
+import { betterAuthSchema } from '@server/lib/auth/schema.js';
 import { is } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { PgTransaction } from 'drizzle-orm/pg-core';
 import { Pool } from 'pg';
-import * as schema from './schema';
+import * as schema from './schema.js';
 
 const connectionString = getRuntimeEnvironment().DATABASE_URL;
 const maxConnections = Number(getRuntimeEnvironment().DB_MAX_CONNECTIONS || 20);

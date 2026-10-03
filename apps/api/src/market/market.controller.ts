@@ -7,20 +7,20 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors';
-import { MarketRecycleError } from '@server/inventory/recycle-errors';
-import { MarketServiceError } from '@server/market/application/MarketService';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors.js';
+import { MarketRecycleError } from '@server/inventory/recycle-errors.js';
+import { MarketServiceError } from '@server/market/application/MarketService.js';
 import { MarketBuySchema } from '@daoyou/shared/contracts/market';
 import { RecycleRequestSchema } from '@daoyou/shared/contracts/recycle';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { MarketService } from './market.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { MarketService } from './market.service.js';
 
 const RecycleErrors = apiErrorFilter((error) => {
   const lock = redisLockErrorResponse(error);

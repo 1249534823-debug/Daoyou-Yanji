@@ -1,8 +1,8 @@
-import type { ArenaRuntime } from '../../../contracts/combatV6Arena';
-import type { HuntBossId, HuntEvent } from '../../../hunts/config';
-import { HUNT_BOSSES } from '../../../hunts/config';
-import type { Command, LineupUnit, SkillDef, StatusDef } from '../core';
-import { huntEnemyAttrs } from './balance';
+import type { ArenaRuntime } from '../../../contracts/combatV6Arena.js';
+import type { HuntBossId, HuntEvent } from '../../../hunts/config.js';
+import { HUNT_BOSSES } from '../../../hunts/config.js';
+import type { Command, LineupUnit, SkillDef, StatusDef } from '../core/index.js';
+import { huntEnemyAttrs } from './balance.js';
 const mark = 'hunt.demon.mark';
 const ward = 'hunt.beast.ward';
 export const HUNT_SKILLS: SkillDef[] = [

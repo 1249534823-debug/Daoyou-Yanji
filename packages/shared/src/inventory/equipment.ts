@@ -1,13 +1,13 @@
 import { z } from 'zod';
-import { ELEMENT_VALUES } from '../types/constants';
-import { DAO_EQUIPMENT_SLOTS } from '../engine/combat-v6/equipment';
+import { ELEMENT_VALUES } from '../types/constants.js';
+import { DAO_EQUIPMENT_SLOTS } from '../engine/combat-v6/equipment/index.js';
 import {
   EquipmentCrafterNameSchema,
   ForgedEquipmentDescSchema,
-} from '../forging/narrative';
-import { CHARACTER_ATTRIBUTE_LABELS } from '../lib/characterAttributeLabels';
-import { DAO_WEAPON_TYPES, equipmentWeaponTypeProblem } from '../engine/combat-v6/equipment/weapons';
-import { FormationInscriptionsSchema, validateFormationInscriptions } from '../engine/combat-v6/equipment/inscriptions';
+} from '../forging/narrative.js';
+import { CHARACTER_ATTRIBUTE_LABELS } from '../lib/characterAttributeLabels.js';
+import { DAO_WEAPON_TYPES, equipmentWeaponTypeProblem } from '../engine/combat-v6/equipment/weapons.js';
+import { FormationInscriptionsSchema, validateFormationInscriptions } from '../engine/combat-v6/equipment/inscriptions.js';
 // 器胚使用战斗面板名称；附灵展示必须使用 CHARACTER_ATTRIBUTE_LABELS。
 export const EQUIPMENT_ATTRIBUTE_NAMES = {
   ...CHARACTER_ATTRIBUTE_LABELS,

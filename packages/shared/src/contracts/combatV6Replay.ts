@@ -4,7 +4,7 @@ import type {
   CombatV6TrainingSessionViewV1,
   CombatV6TrainingUnitViewV1,
   CombatV6UnitAppearance,
-} from './combatV6';
+} from './combatV6.js';
 
 /** Stored display facts use authoritative event cursors; API projection reindexes them. */
 export type CombatV6ReplayTimeline = {

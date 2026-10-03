@@ -9,7 +9,7 @@ import {
   BODY_REALM_LABELS,
   LEGACY_TEMPERING_TO_BODY_TRACK,
   createEmptyProgressTrack,
-} from './config';
+} from './config.js';
 
 function normalizeProgressTrack(
   value: ConditionProgressTrack | undefined,

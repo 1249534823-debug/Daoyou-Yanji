@@ -6,22 +6,22 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { BeastError } from '@server/combat/application/BeastMutationGuard';
-import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors';
-import { InventoryError } from '@server/inventory/operations';
-import { PlayerMailCommandError } from '@server/mail/application/PlayerMailApplicationService';
-import { PlayerMailServiceError } from '@server/mail/application/PlayerMailService';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { BeastError } from '@server/combat/application/BeastMutationGuard.js';
+import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors.js';
+import { InventoryError } from '@server/inventory/operations.js';
+import { PlayerMailCommandError } from '@server/mail/application/PlayerMailApplicationService.js';
+import { PlayerMailServiceError } from '@server/mail/application/PlayerMailService.js';
 import { SendMailSchema, type SendMailRequest } from '@daoyou/shared/contracts/mail';
 import { JournalRequestSchema } from '@daoyou/shared/contracts/playerJournal';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { MailService } from './mail.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { MailService } from './mail.service.js';
 
 const MailIdSchema = z.object({ mailId: z.string() });
 const SendErrors = apiErrorFilter((error) => {

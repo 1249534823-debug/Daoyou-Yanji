@@ -1,8 +1,8 @@
-import type { CombatV6UnitAppearance } from '../contracts/combatV6';
-import type { AutoStrategy } from './auto-strategy';
-import { BEAST_SPECIES } from '../engine/combat-v6/beasts/content';
-import type { CreateBattleInput } from '../engine/combat-v6/core';
-import type { CombatV6TrainingPlayerInput } from '../engine/combat-v6/encounter/types';
+import type { CombatV6UnitAppearance } from '../contracts/combatV6.js';
+import type { AutoStrategy } from './auto-strategy.js';
+import { BEAST_SPECIES } from '../engine/combat-v6/beasts/content.js';
+import type { CreateBattleInput } from '../engine/combat-v6/core/index.js';
+import type { CombatV6TrainingPlayerInput } from '../engine/combat-v6/encounter/types.js';
 
 /** Frozen presentation facts belong to the host, never to combat calculations. */
 export type PresentedBattleInput = Omit<CreateBattleInput, 'ruleset'> & {

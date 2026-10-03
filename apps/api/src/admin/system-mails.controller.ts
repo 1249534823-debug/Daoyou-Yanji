@@ -8,20 +8,20 @@ import {
   Put,
   UseFilters,
 } from '@nestjs/common';
-import type { AuthUser } from '@server/lib/auth/types';
+import type { AuthUser } from '@server/lib/auth/types.js';
 import type { z } from 'zod';
-import { Access, CurrentUser } from '../auth/access';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { AdminErrors } from './admin-errors';
+import { Access, CurrentUser } from '../auth/access.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { AdminErrors } from './admin-errors.js';
 import {
   CreateSchema,
   ListSchema,
   RevisionSchema,
   UpdateSchema,
-} from './system-mails-input';
-import { AdminSystemMailsService } from './system-mails.service';
+} from './system-mails-input.js';
+import { AdminSystemMailsService } from './system-mails.service.js';
 @Controller('api/admin/system-mails')
 @Access('admin')
 @UseFilters(AdminErrors)

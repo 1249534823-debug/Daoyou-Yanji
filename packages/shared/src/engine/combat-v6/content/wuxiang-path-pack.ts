@@ -1,12 +1,12 @@
 import { formatContentPackErrors } from '@daoyou/shared/lib/content-pack-errors';
 import { z } from 'zod';
-import { ATTR_NAMES, SkillTag, TargetSide } from '../core';
-import { validateSectExpressions } from './authoring-expressions';
-import raw from './data/wuxiang-paths.json';
-import { sectSkillLearning } from './skill-learning';
-import type { SectPathDefV6, SectSkillDefV6 } from './types';
-import { WUXIANG_COMBAT, validateWuxiangReferences } from './wuxiang-pack';
-import { wxHook, wxId, wxModifier } from './wuxiang-shapes';
+import { ATTR_NAMES, SkillTag, TargetSide } from '../core/index.js';
+import { validateSectExpressions } from './authoring-expressions.js';
+import raw from './data/wuxiang-paths.json' with { type: 'json' };
+import { sectSkillLearning } from './skill-learning.js';
+import type { SectPathDefV6, SectSkillDefV6 } from './types.js';
+import { WUXIANG_COMBAT, validateWuxiangReferences } from './wuxiang-pack.js';
+import { wxHook, wxId, wxModifier } from './wuxiang-shapes.js';
 
 export const WuxiangPathsPackShape = z.strictObject({
   $schema: z.string().optional(),

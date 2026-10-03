@@ -1,5 +1,5 @@
-import { apiErrorFilter } from '../http/error-filter';
-import { JsonBodyParseError } from '../http/json-body';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { JsonBodyParseError } from '../http/json-body.js';
 
 // Auto commands parse inputs before their route-local service catch block.
 export const AutoErrors = apiErrorFilter((error) => {

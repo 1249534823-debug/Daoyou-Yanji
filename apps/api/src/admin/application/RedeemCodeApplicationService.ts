@@ -1,10 +1,10 @@
-import { redeemCodeClaims, redeemCodes } from '@server/lib/drizzle/schema';
-import { resolveRedeemCodeRewardAttachments } from '@server/lib/redeem/reward';
+import { redeemCodeClaims, redeemCodes } from '@server/lib/drizzle/schema.js';
+import { resolveRedeemCodeRewardAttachments } from '@server/lib/redeem/reward.js';
 import { materializeRewardAttachments } from '@daoyou/shared/contracts/adminRewards';
 import { and, eq, sql } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
-import { MailService } from '@server/mail/application/MailService';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import { MailService } from '@server/mail/application/MailService.js';
 
 export class RedeemClaimError extends Error {
   constructor(

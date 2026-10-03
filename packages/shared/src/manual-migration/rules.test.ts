@@ -2,16 +2,16 @@ import { describe, expect, it } from 'vitest';
 import {
   ExchangeManualSchema,
   ManualMigrationConfigSchema,
-} from '../contracts/manualMigration';
-import { ItemGrantSchema } from '../inventory';
-import { QUALITY_VALUES } from '../types/constants';
+} from '../contracts/manualMigration.js';
+import { ItemGrantSchema } from '../inventory/index.js';
+import { QUALITY_VALUES } from '../types/constants.js';
 import {
   buildManualMigrationPolicy,
   drawLegacyManual,
   MANUAL_MIGRATION_CONFIG,
   manualMigrationPlan,
   validateManualSelection,
-} from './rules';
+} from './rules.js';
 const policy = buildManualMigrationPolicy({
   s2: 1000,
   s3: 2000,

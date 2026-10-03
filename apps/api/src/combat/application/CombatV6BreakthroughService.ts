@@ -1,16 +1,16 @@
 import { publicUnitAppearances } from '@daoyou/shared/combat-v6/unit-appearance';
-import { db, type DbTransaction } from '@server/lib/drizzle/db';
-import { cultivators, cultivatorTasks } from '@server/lib/drizzle/schema';
-import { dungeonPlayer } from '@server/dungeon/combat-player';
-import { redis } from '@server/lib/redis';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
-import { settleBeastDeaths } from '@server/lib/repositories/combatV6BeastRepository';
-import { archiveCombatV6Replay } from '@server/lib/repositories/combatV6ReplayRepository';
-import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository';
+import { db, type DbTransaction } from '@server/lib/drizzle/db.js';
+import { cultivators, cultivatorTasks } from '@server/lib/drizzle/schema.js';
+import { dungeonPlayer } from '@server/dungeon/combat-player.js';
+import { redis } from '@server/lib/redis/index.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
+import { settleBeastDeaths } from '@server/lib/repositories/combatV6BeastRepository.js';
+import { archiveCombatV6Replay } from '@server/lib/repositories/combatV6ReplayRepository.js';
+import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
 import {
   findCultivatorTaskById,
   updateCultivatorTask,
-} from '@server/lib/repositories/taskRepository';
+} from '@server/lib/repositories/taskRepository.js';
 import { automaticCommands } from '@daoyou/shared/combat-v6/auto';
 import {
   combatV6Display,
@@ -38,10 +38,10 @@ import type { CultivatorCondition } from '@daoyou/shared/types/condition';
 import type { TaskInstanceMetadata } from '@daoyou/shared/types/task';
 import { eq } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
-import { ConditionService } from '@server/cultivator/application/ConditionService';
-import { assertInventoryIdle } from '@server/inventory/operations';
-import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
-import { TaskService } from '@server/tasks/application/TaskService';
+import { ConditionService } from '@server/cultivator/application/ConditionService.js';
+import { assertInventoryIdle } from '@server/inventory/operations.js';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
+import { TaskService } from '@server/tasks/application/TaskService.js';
 
 type Actor = { userId: string; cultivatorId: string };
 const key = (id: string) => `combat:v6:breakthrough:${id}`;

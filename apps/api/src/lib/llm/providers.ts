@@ -1,4 +1,4 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
 import { createAlibaba } from '@ai-sdk/alibaba';
 import { createDeepSeek, deepSeek } from '@ai-sdk/deepseek';
 import type { LanguageModel } from 'ai';

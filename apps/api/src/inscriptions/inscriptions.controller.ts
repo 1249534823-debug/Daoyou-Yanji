@@ -7,25 +7,25 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors';
-import { InventoryError } from '@server/inventory/operations';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors.js';
+import { InventoryError } from '@server/inventory/operations.js';
 import {
   QiInsufficientError,
   QiServiceError,
-} from '@server/cultivator/application/QiService';
+} from '@server/cultivator/application/QiService.js';
 import {
   InscriptionRequestSchema,
   type InscriptionRequest,
 } from '@daoyou/shared/contracts/inscriptions';
 import { InventoryRuleError } from '@daoyou/shared/inventory';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { InscriptionsService } from './inscriptions.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { InscriptionsService } from './inscriptions.service.js';
 
 const InscriptionsErrors = apiErrorFilter((error) => {
   const lock = redisLockErrorResponse(error);

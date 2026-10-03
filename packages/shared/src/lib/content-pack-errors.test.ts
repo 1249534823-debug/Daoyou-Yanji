@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatContentPackErrors } from './content-pack-errors';
+import { formatContentPackErrors } from './content-pack-errors.js';
 
 describe('content pack error locations', () => {
   it('identifies nested authored entries even for structural failures', () => {

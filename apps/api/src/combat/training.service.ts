@@ -6,8 +6,8 @@ import { Inject, Injectable } from '@nestjs/common';
 import {
   COMBAT_V6_TRAINING_CONTENT_VIEW,
   CombatV6TrainingSessionService,
-} from '@server/combat/application/CombatV6TrainingSessionService';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+} from '@server/combat/application/CombatV6TrainingSessionService.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import type { z } from 'zod';
 
 @Injectable()

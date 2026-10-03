@@ -1,26 +1,8 @@
-import dailyDivinationPrompt from '@server/prompts/daily-divination.md?raw';
-import alchemyFormulaAnalysisPrompt from '@server/prompts/alchemy-formula-analysis.md?raw';
-import alchemyImprovisedCopyPrompt from '@server/prompts/alchemy-improvised-copy.md?raw';
-import alchemyRecipePlanPrompt from '@server/prompts/alchemy-recipe-plan.md?raw';
-import blackMarketObservationsPrompt from '@server/prompts/black-market-observations.md?raw';
-import blackMarketPerceptionPrompt from '@server/prompts/black-market-perception.md?raw';
-import blackMarketReplyPrompt from '@server/prompts/black-market-reply.md?raw';
-import blackMarketTurnPrompt from '@server/prompts/black-market-turn.md?raw';
-import breakthroughStoryPrompt from '@server/prompts/breakthrough-story.md?raw';
-import characterGenerationPrompt from '@server/prompts/character-generation.md?raw';
-import divineFortunePrompt from '@server/prompts/divine-fortune.md?raw';
-import dungeonRoundPrompt from '@server/prompts/dungeon-round.md?raw';
-import dungeonSettlementPrompt from '@server/prompts/dungeon-settlement.md?raw';
-import fateNamingPrompt from '@server/prompts/fate-naming.md?raw';
-import equipmentForgeNamingPrompt from '@server/prompts/equipment-forge-naming.md?raw';
-import identityReshapePrompt from '@server/prompts/identity-reshape.md?raw';
-import lifespanExhaustedPrompt from '@server/prompts/lifespan-exhausted.md?raw';
-import materialGenerationPrompt from '@server/prompts/material-generation.md?raw';
-import spiritFieldFinalizationPrompt from '@server/prompts/spirit-field-finalization.md?raw';
-import spiritFieldStageJudgmentPrompt from '@server/prompts/spirit-field-stage-judgment.md?raw';
-import spiritSeedGenerationPrompt from '@server/prompts/spirit-seed-generation.md?raw';
-import yieldStoryPrompt from '@server/prompts/yield-story.md?raw';
-import { renderTemplate, type TemplateVariableMap } from '../template/render';
+import { readFileSync } from 'node:fs';
+import {
+  renderTemplate,
+  type TemplateVariableMap,
+} from '../template/render.js';
 
 export interface PromptTemplateFile {
   id: string;
@@ -35,30 +17,30 @@ export interface RenderedPrompt {
 
 export type PromptSectionKey = 'system' | 'user';
 
-const bundledPromptSources: Record<string, string> = {
-  'daily-divination.md': dailyDivinationPrompt,
-  'alchemy-formula-analysis.md': alchemyFormulaAnalysisPrompt,
-  'alchemy-improvised-copy.md': alchemyImprovisedCopyPrompt,
-  'alchemy-recipe-plan.md': alchemyRecipePlanPrompt,
-  'black-market-turn.md': blackMarketTurnPrompt,
-  'black-market-reply.md': blackMarketReplyPrompt,
-  'black-market-perception.md': blackMarketPerceptionPrompt,
-  'black-market-observations.md': blackMarketObservationsPrompt,
-  'breakthrough-story.md': breakthroughStoryPrompt,
-  'character-generation.md': characterGenerationPrompt,
-  'divine-fortune.md': divineFortunePrompt,
-  'dungeon-round.md': dungeonRoundPrompt,
-  'dungeon-settlement.md': dungeonSettlementPrompt,
-  'fate-naming.md': fateNamingPrompt,
-  'equipment-forge-naming.md': equipmentForgeNamingPrompt,
-  'identity-reshape.md': identityReshapePrompt,
-  'lifespan-exhausted.md': lifespanExhaustedPrompt,
-  'material-generation.md': materialGenerationPrompt,
-  'spirit-seed-generation.md': spiritSeedGenerationPrompt,
-  'spirit-field-stage-judgment.md': spiritFieldStageJudgmentPrompt,
-  'spirit-field-finalization.md': spiritFieldFinalizationPrompt,
-  'yield-story.md': yieldStoryPrompt,
-};
+const promptSources = [
+  'daily-divination.md',
+  'alchemy-formula-analysis.md',
+  'alchemy-improvised-copy.md',
+  'alchemy-recipe-plan.md',
+  'black-market-observations.md',
+  'black-market-perception.md',
+  'black-market-reply.md',
+  'black-market-turn.md',
+  'breakthrough-story.md',
+  'character-generation.md',
+  'divine-fortune.md',
+  'dungeon-round.md',
+  'dungeon-settlement.md',
+  'fate-naming.md',
+  'equipment-forge-naming.md',
+  'identity-reshape.md',
+  'lifespan-exhausted.md',
+  'material-generation.md',
+  'spirit-field-finalization.md',
+  'spirit-field-stage-judgment.md',
+  'spirit-seed-generation.md',
+  'yield-story.md',
+];
 
 export function parsePromptTemplateMarkdown(
   raw: string,
@@ -122,7 +104,11 @@ function validatePromptTemplateFile(
 
 const promptTemplateMap = new Map<string, PromptTemplateFile>();
 
-for (const [source, raw] of Object.entries(bundledPromptSources)) {
+for (const source of promptSources) {
+  const raw = readFileSync(
+    new URL(`../../prompts/${source}`, import.meta.url),
+    'utf8',
+  );
   const template = parsePromptTemplateMarkdown(raw, source);
   if (promptTemplateMap.has(template.id)) {
     throw new Error(`Prompt 模板 id 重复: ${template.id} (${source})`);

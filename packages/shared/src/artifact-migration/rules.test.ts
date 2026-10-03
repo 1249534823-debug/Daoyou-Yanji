@@ -1,15 +1,15 @@
 import { describe, expect, it } from 'vitest';
-import { ExchangeArtifactSchema } from '../contracts/artifactMigration';
-import { generateForgedEquipment } from '../engine/combat-v6/equipment/forging';
-import { DAO_EQUIPMENT_SLOTS } from '../engine/combat-v6/equipment/types';
-import { BLUEPRINTS } from '../items/definitions/equipment-blueprints';
-import { QUALITY_VALUES, REALM_VALUES } from '../types/constants';
+import { ExchangeArtifactSchema } from '../contracts/artifactMigration.js';
+import { generateForgedEquipment } from '../engine/combat-v6/equipment/forging.js';
+import { DAO_EQUIPMENT_SLOTS } from '../engine/combat-v6/equipment/types.js';
+import { BLUEPRINTS } from '../items/definitions/equipment-blueprints.js';
+import { QUALITY_VALUES, REALM_VALUES } from '../types/constants.js';
 import {
   artifactBlueprintCount,
   artifactMigrationPlan,
   artifactMigrationRealm,
   drawArtifactBlueprints,
-} from './rules';
+} from './rules.js';
 
 describe('旧法宝兑换', () => {
   it('仅神品额外获得50万灵石，不赠送消耗品且不改变境界或评分图纸', () => {

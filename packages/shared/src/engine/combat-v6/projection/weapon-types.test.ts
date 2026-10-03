@@ -1,8 +1,8 @@
 import { expect, it } from 'vitest';
-import { generateForgedEquipment } from '../equipment/forging';
-import { DAO_WEAPON_TYPES } from '../equipment/weapons';
-import { projectCharacterToCombatV6 } from './project-character';
-import type { CharacterCombatInput } from './types';
+import { generateForgedEquipment } from '../equipment/forging.js';
+import { DAO_WEAPON_TYPES } from '../equipment/weapons.js';
+import { projectCharacterToCombatV6 } from './project-character.js';
+import type { CharacterCombatInput } from './types.js';
 
 const input: CharacterCombatInput = {
   cultivator: {

@@ -2,8 +2,8 @@ import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resource
 import {
   executeSectPlayerCommand,
   type SectCommandArgs,
-} from '@server/sects/organization/commandSupport';
-import { executeSectTransfer } from '@server/sects/organization/SectTransferApplicationService';
+} from '@server/sects/organization/commandSupport.js';
+import { executeSectTransfer } from '@server/sects/organization/SectTransferApplicationService.js';
 
 export async function executeSectTransferCommand(
   args: SectCommandArgs & {

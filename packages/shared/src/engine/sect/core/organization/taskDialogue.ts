@@ -2,9 +2,9 @@ import type {
   SectTaskDefinition,
   SectTaskDialoguePresentation,
   SectTaskDialogueSegment,
-} from './contracts';
-import type { SectTaskOfferSnapshot } from './taskOffer';
-import { formatSectDeliveryRequirement } from './taskRequirements';
+} from './contracts.js';
+import type { SectTaskOfferSnapshot } from './taskOffer.js';
+import { formatSectDeliveryRequirement } from './taskRequirements.js';
 
 function progressSentence(current: number, target: number): string | undefined {
   if (target <= 1) return undefined;

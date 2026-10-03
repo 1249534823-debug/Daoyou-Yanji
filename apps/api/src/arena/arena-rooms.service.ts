@@ -4,14 +4,14 @@ import {
   REALM_VALUES,
 } from '@daoyou/shared/types/constants';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { ArenaBattleStartOrchestrator } from '@server/arena/application/ArenaBattleStartOrchestrator';
-import { ArenaRoomService } from '@server/arena/application/ArenaRoomService';
-import { publishArenaRoomChanges } from '@server/realtime/infrastructure/arenaRoomBroadcaster';
-import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import { ArenaBattleStartOrchestrator } from '@server/arena/application/ArenaBattleStartOrchestrator.js';
+import { ArenaRoomService } from '@server/arena/application/ArenaRoomService.js';
+import { publishArenaRoomChanges } from '@server/realtime/infrastructure/arenaRoomBroadcaster.js';
+import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService.js';
 import { and, eq } from 'drizzle-orm';
 import { z } from 'zod';
 

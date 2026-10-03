@@ -1,17 +1,17 @@
-import { getSectConstructionDailyStatus } from '@server/lib/redis/sectConstructionDaily';
+import { getSectConstructionDailyStatus } from '@server/lib/redis/sectConstructionDaily.js';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
 import type { SectConstructionMemberData } from '@daoyou/shared/contracts/sect';
 import { quoteSectConstructionDonation } from '@daoyou/shared/engine/sect';
-import type { SectBenefitService } from '@server/sects/organization/SectBenefitService';
+import type { SectBenefitService } from '@server/sects/organization/SectBenefitService.js';
 import {
   organizationError,
   organizationFor,
   requireMembership,
-} from '@server/sects/organization/applicationSupport';
+} from '@server/sects/organization/applicationSupport.js';
 import type {
   SectConstructionCommandContext,
   SectConstructionQueryContext,
-} from '@server/sects/organization/ports';
+} from '@server/sects/organization/ports.js';
 
 export class SectConstructionApplicationService {
   constructor(private readonly benefits: SectBenefitService) {}

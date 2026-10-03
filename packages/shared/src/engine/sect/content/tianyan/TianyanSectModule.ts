@@ -1,6 +1,6 @@
-import { StandardSectModule } from '../../core';
-import { TIANYAN_DEFINITION } from './definition';
-import { TIANYAN_ORGANIZATION_THEME } from './organization';
+import { StandardSectModule } from '../../core/index.js';
+import { TIANYAN_DEFINITION } from './definition.js';
+import { TIANYAN_ORGANIZATION_THEME } from './organization.js';
 
 export class TianyanSectModule extends StandardSectModule {
   constructor() {

@@ -17,7 +17,7 @@ import {
   formatSectDeliveryRequirement,
   generateSectDeliveryRequirement,
   pickSectTaskMinimumQuality,
-} from './taskRequirements';
+} from './taskRequirements.js';
 
 describe('sect task requirement generation', () => {
   it('centralizes requirement generation and difficulty tuning', () => {

@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { calculateRealmSectTaskReward } from '../organization/taskRewards';
+import { calculateRealmSectTaskReward } from '../organization/taskRewards.js';
 import {
   MINING_TIER_MATERIAL_QUANTITY,
   miningRealmQualities,
   miningRewardQuality,
   miningRewardQualityPreference,
   scaleMiningTaskReward,
-} from './MiningRewards';
+} from './MiningRewards.js';
 
 describe('sect spirit mining rewards', () => {
   it('maps score tiers through each realm quality ladder', () => {

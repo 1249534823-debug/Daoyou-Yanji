@@ -3,7 +3,7 @@ import {
   getSectFacilityUpgradeTarget,
   quoteSectConstructionDonation,
   SECT_CONSTRUCTION_DONATION_OPTIONS,
-} from './construction';
+} from './construction.js';
 
 describe('sect facility construction', () => {
   it('quotes the five fixed spirit stone tiers', () => {

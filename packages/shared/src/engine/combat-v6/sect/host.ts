@@ -1,18 +1,18 @@
-import { playerAppearances, type PresentedBattleInput } from '../../../combat-v6/unit-appearance';
-import { AUTO_POLICY_VERSION } from '../../../combat-v6/auto-policy';
-import { canonicalizeResourceParams } from '../../../contracts/resources/core';
-import { BEAST_STATUS_DEFS, BEAST_SKILLS, projectBeastRoster } from '../beasts';
-import type { CreateBattleInput, SkillDef, StatusDef } from '../core';
-import type { CombatV6TrainingPlayerInput } from '../encounter';
+import { playerAppearances, type PresentedBattleInput } from '../../../combat-v6/unit-appearance.js';
+import { AUTO_POLICY_VERSION } from '../../../combat-v6/auto-policy.js';
+import { canonicalizeResourceParams } from '../../../contracts/resources/core.js';
+import { BEAST_STATUS_DEFS, BEAST_SKILLS, projectBeastRoster } from '../beasts/index.js';
+import type { CreateBattleInput, SkillDef, StatusDef } from '../core/index.js';
+import type { CombatV6TrainingPlayerInput } from '../encounter/index.js';
 import {
   CombatV6PveHostSession,
   type PveRestoredState,
-} from '../encounter/host';
-import { projectCharacterToCombatV6 } from '../projection';
-import { characterBattleSkills } from '../projection/character-battle-skills';
-import { daoyouRulesetV6 } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version';
-import { presetEnemyAttrs } from '../encounter/preset-enemy';
+} from '../encounter/host.js';
+import { projectCharacterToCombatV6 } from '../projection/index.js';
+import { characterBattleSkills } from '../projection/character-battle-skills.js';
+import { daoyouRulesetV6 } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version.js';
+import { presetEnemyAttrs } from '../encounter/preset-enemy.js';
 
 export const SECT_BATTLE_VERSIONS = {
   ...COMBAT_V6_PHASE_6D_VERSIONS,

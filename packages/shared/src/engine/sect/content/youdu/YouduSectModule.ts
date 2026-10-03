@@ -1,6 +1,6 @@
-import { StandardSectModule } from '../../core';
-import { YOUDU_DEFINITION } from './definition';
-import { YOUDU_ORGANIZATION_THEME } from './organization';
+import { StandardSectModule } from '../../core/index.js';
+import { YOUDU_DEFINITION } from './definition.js';
+import { YOUDU_ORGANIZATION_THEME } from './organization.js';
 
 export class YouduSectModule extends StandardSectModule {
   constructor() {

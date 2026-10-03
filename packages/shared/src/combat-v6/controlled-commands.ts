@@ -2,8 +2,8 @@ import type {
   BattleState,
   CombatV6CommandOptions,
   Command,
-} from '../engine/combat-v6/core';
-import { canCollectCommand } from '../engine/combat-v6/core/units';
+} from '../engine/combat-v6/core/index.js';
+import { canCollectCommand } from '../engine/combat-v6/core/units.js';
 
 export function controlledUnits(state: BattleState, ownerId: string) {
   return state.units

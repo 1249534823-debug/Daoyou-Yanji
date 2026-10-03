@@ -1,7 +1,7 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { PRODUCTION_SECT_PRESENTATIONS } from './productionRuntime';
+import { PRODUCTION_SECT_PRESENTATIONS } from './productionRuntime.js';
 
 const forbiddenPlayerTerms =
   /[0-9%]|倍率|冷却|配置|构筑|技能槽|数值|开发|接口|数据库/;

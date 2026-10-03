@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import type { CultivatorManualStateV1 } from '../engine/combat-v6/manuals/types';
-import type { RealmType } from '../types/constants';
+import type { CultivatorManualStateV1 } from '../engine/combat-v6/manuals/types.js';
+import type { RealmType } from '../types/constants.js';
 
 const target = {
   expectedRevision: z.number().int().nonnegative(),

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { LINGXIAO_ORGANIZATION } from './LingxiaoOrganizationModule';
+import { LINGXIAO_ORGANIZATION } from './LingxiaoOrganizationModule.js';
 
 describe('LingxiaoOrganizationModule', () => {
   it('centralizes V1 facility permissions by disciple rank', () => {

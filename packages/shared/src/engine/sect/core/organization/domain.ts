@@ -2,8 +2,8 @@ import {
   SECT_DISCIPLE_RANKS,
   SECT_RANK_ORDER,
   type SectDiscipleRank,
-} from '../domain/organization';
-import type { SectTaskRewardSnapshot } from './taskRewards';
+} from '../domain/organization.js';
+import type { SectTaskRewardSnapshot } from './taskRewards.js';
 
 export type SectDomainEvent =
   | {

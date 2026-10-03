@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from './data/tianyan-skills.json';
-import schema from './data/tianyan-skills.schema.json';
+import raw from './data/tianyan-skills.json' with { type: 'json' };
+import schema from './data/tianyan-skills.schema.json' with { type: 'json' };
 import {
   loadTianyanSkills,
   TIANYAN_SKILLS,
   TianyanSkillsShape,
-} from './tianyan-skill-pack';
+} from './tianyan-skill-pack.js';
 
 describe('天衍基础技能配置', () => {
   it('Schema 同步', () =>

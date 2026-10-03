@@ -1,6 +1,6 @@
 import { Controller, Get, Inject } from '@nestjs/common';
-import { Access } from '../auth/access';
-import { DivineFortuneService } from './divine-fortune.service';
+import { Access } from '../auth/access.js';
+import { DivineFortuneService } from './divine-fortune.service.js';
 @Controller('api/divine-fortune')
 @Access('public')
 export class DivineFortuneController {

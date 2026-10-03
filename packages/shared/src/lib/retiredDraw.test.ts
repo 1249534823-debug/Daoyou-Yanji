@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { isTalismanScenario } from '../config/talismanScenarios';
-import { assertCurrentRewardItem, isRetiredDrawItem } from './retiredDraw';
+import { isTalismanScenario } from '../config/talismanScenarios.js';
+import { assertCurrentRewardItem, isRetiredDrawItem } from './retiredDraw.js';
 
 describe('retired draw production boundary', () => {
   it('rejects retired draw talismans without changing facts', () => {

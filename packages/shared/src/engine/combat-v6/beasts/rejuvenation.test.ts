@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { BEAST_SPECIES } from './content';
-import { generateCapturedBeast, generateStarterBeast } from './generator';
-import { beastPointBudget } from './identity';
-import { gainBeastExp, allocateBeast } from './progression';
-import { rejuvenateBeast } from './rejuvenation';
-import { GeneratedBeastSchema } from './schema';
+import { BEAST_SPECIES } from './content.js';
+import { generateCapturedBeast, generateStarterBeast } from './generator.js';
+import { beastPointBudget } from './identity.js';
+import { gainBeastExp, allocateBeast } from './progression.js';
+import { rejuvenateBeast } from './rejuvenation.js';
+import { GeneratedBeastSchema } from './schema.js';
 
 const owner = '00000000-0000-4000-8000-000000000001';
 const id = '00000000-0000-4000-8000-000000000002';

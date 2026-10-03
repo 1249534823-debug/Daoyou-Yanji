@@ -1,22 +1,22 @@
 import { publicUnitAppearances } from '@daoyou/shared/combat-v6/unit-appearance';
-import { db, type DbExecutor } from '@server/lib/drizzle/db';
+import { db, type DbExecutor } from '@server/lib/drizzle/db.js';
 import {
   cultivatorBeasts,
   cultivators,
   dungeonRuns,
-} from '@server/lib/drizzle/schema';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
+} from '@server/lib/drizzle/schema.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
 import {
   beastFromRow,
   beastIndividualData,
   settleBeastDeaths,
-} from '@server/lib/repositories/combatV6BeastRepository';
-import { archiveCombatV6Replay } from '@server/lib/repositories/combatV6ReplayRepository';
-import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository';
-import { assembleCombatV6TrainingPlayer } from '@server/combat/application/CombatV6BuildService';
-import { ConditionService } from '@server/cultivator/application/ConditionService';
-import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository';
-import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
+} from '@server/lib/repositories/combatV6BeastRepository.js';
+import { archiveCombatV6Replay } from '@server/lib/repositories/combatV6ReplayRepository.js';
+import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
+import { assembleCombatV6TrainingPlayer } from '@server/combat/application/CombatV6BuildService.js';
+import { ConditionService } from '@server/cultivator/application/ConditionService.js';
+import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
 import { automaticCommands } from '@daoyou/shared/combat-v6/auto';
 import {
   combatV6Display,
@@ -52,9 +52,9 @@ import type { CultivatorCondition } from '@daoyou/shared/types/condition';
 import type { RealmType } from '@daoyou/shared/types/constants';
 import { and, eq, ne } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
-import { hasActiveDungeon } from '@server/dungeon/application/flow/occupancy';
-import { resolveDungeonReward } from '@server/dungeon/application/flow/rewards';
-import type { BattleSession, DungeonState } from '@server/dungeon/application/flow/types';
+import { hasActiveDungeon } from '@server/dungeon/application/flow/occupancy.js';
+import { resolveDungeonReward } from '@server/dungeon/application/flow/rewards.js';
+import type { BattleSession, DungeonState } from '@server/dungeon/application/flow/types.js';
 
 export interface DungeonBattlePayload {
   session: BattleSession;

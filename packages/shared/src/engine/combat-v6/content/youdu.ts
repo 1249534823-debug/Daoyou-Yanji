@@ -1,7 +1,7 @@
-import { YOUDU_COMBAT } from "./youdu-pack";
-import { YOUDU_PATHS } from "./youdu-path-pack";
-import { SECT_METHODS } from "./method-pack";
-import type { SectDefinitionV6 } from "./types";
+import { YOUDU_COMBAT } from "./youdu-pack.js";
+import { YOUDU_PATHS } from "./youdu-path-pack.js";
+import { SECT_METHODS } from "./method-pack.js";
+import type { SectDefinitionV6 } from "./types.js";
 
 export const YOUDU_V6_ID = "youdu" as const
 export const YOUDU_PATH_ID = {

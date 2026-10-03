@@ -1,7 +1,7 @@
-import { consumables, materials } from '@server/lib/drizzle/schema';
+import { consumables, materials } from '@server/lib/drizzle/schema.js';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
 import { and, eq } from 'drizzle-orm';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
 
 class InventoryDiscardError extends Error {
   constructor(public status: number, message: string) {

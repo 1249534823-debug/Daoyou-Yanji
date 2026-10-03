@@ -3,7 +3,7 @@ import type {
   CultivationResult,
 } from '@daoyou/shared/engine/cultivation/CultivationEngine';
 import { z } from 'zod';
-import type { PlayerResourceMutationMeta } from './player';
+import type { PlayerResourceMutationMeta } from './player.js';
 
 export const RetreatRequestSchema = z.discriminatedUnion('action', [
   z.object({

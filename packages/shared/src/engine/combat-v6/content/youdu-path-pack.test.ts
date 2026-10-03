@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from './data/youdu-paths.json';
-import schema from './data/youdu-paths.schema.json';
-import { YouduPathsPackShape, loadYouduPathsPack, compileYouduPaths } from './youdu-path-pack';
-import { YOUDU_V6_DEFINITION } from './youdu';
-import { compileSectDefinitionV6 } from './compiler';
-import { createEmptySectCombatProgressV6 } from '../build-state';
-import { canSelectMeridianNode } from './meridian-selection';
+import raw from './data/youdu-paths.json' with { type: 'json' };
+import schema from './data/youdu-paths.schema.json' with { type: 'json' };
+import { YouduPathsPackShape, loadYouduPathsPack, compileYouduPaths } from './youdu-path-pack.js';
+import { YOUDU_V6_DEFINITION } from './youdu.js';
+import { compileSectDefinitionV6 } from './compiler.js';
+import { createEmptySectCombatProgressV6 } from '../build-state/index.js';
+import { canSelectMeridianNode } from './meridian-selection.js';
 
 describe('幽都原版经脉结构', () => {
   it('Schema 与编辑器同步', () => expect(z.toJSONSchema(YouduPathsPackShape, { reused: 'ref' })).toEqual(schema));

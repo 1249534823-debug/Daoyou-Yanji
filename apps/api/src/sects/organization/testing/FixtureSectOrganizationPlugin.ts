@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import type { SectOrganizationPluginManifest } from '@server/sects/organization/SectOrganizationPlugins';
-import type { SectTaskExecutor } from '@server/sects/organization/task-executors/SectTaskExecutor';
+import type { SectOrganizationPluginManifest } from '@server/sects/organization/SectOrganizationPlugins.js';
+import type { SectTaskExecutor } from '@server/sects/organization/task-executors/SectTaskExecutor.js';
 
 const fixtureInput = z.object({ pass: z.literal(true) });
 

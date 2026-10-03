@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from './data/jiujie-combat.json';
-import schema from './data/jiujie-combat.schema.json';
-import { JiujieCombatShape, loadJiujieCombat, JIUJIE_COMBAT } from './jiujie-pack';
+import raw from './data/jiujie-combat.json' with { type: 'json' };
+import schema from './data/jiujie-combat.schema.json' with { type: 'json' };
+import { JiujieCombatShape, loadJiujieCombat, JIUJIE_COMBAT } from './jiujie-pack.js';
 
 describe('九劫重做内容契约', () => {
   it('严格 schema 同步，基础技能不含探查、旧引爆和旧终极技能', () => {

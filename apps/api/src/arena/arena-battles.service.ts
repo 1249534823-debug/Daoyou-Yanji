@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   arenaReplayV6,
   ownedArenaV6,
   submitArenaV6,
   watchedArenaV6,
-} from '@server/combat/application/CombatV6ArenaService';
+} from '@server/combat/application/CombatV6ArenaService.js';
 import { arenaView } from '@daoyou/shared/combat-v6/arena';
 import type { ArenaV6Submit } from '@daoyou/shared/contracts/combatV6Arena';
 

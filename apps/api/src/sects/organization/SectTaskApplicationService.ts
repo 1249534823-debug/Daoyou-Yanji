@@ -8,35 +8,35 @@ import {
   type SectTaskDefinition,
 } from '@daoyou/shared/engine/sect';
 import { z } from 'zod';
-import { ClaimSectTaskRewardHandler } from '@server/sects/organization/ClaimSectTaskRewardHandler';
-import { SectCapabilityAuthorizer } from '@server/sects/organization/SectCapabilityAuthorizer';
-import type { SectDomainEventDispatcherFactory } from '@server/sects/organization/SectDomainEventDispatcher';
+import { ClaimSectTaskRewardHandler } from '@server/sects/organization/ClaimSectTaskRewardHandler.js';
+import { SectCapabilityAuthorizer } from '@server/sects/organization/SectCapabilityAuthorizer.js';
+import type { SectDomainEventDispatcherFactory } from '@server/sects/organization/SectDomainEventDispatcher.js';
 import {
   invalidSectTask,
   requireSectMembership,
   resolveCurrentSectTaskExecution,
   sectTaskPeriodKey,
-} from '@server/sects/organization/SectTaskApplicationSupport';
-import { SectTaskOfferService } from '@server/sects/organization/SectTaskOfferService';
+} from '@server/sects/organization/SectTaskApplicationSupport.js';
+import { SectTaskOfferService } from '@server/sects/organization/SectTaskOfferService.js';
 import type {
   SectTaskOfferPolicyRegistry,
   SectTaskRewardPolicyRegistry,
-} from '@server/sects/organization/SectTaskSettlement';
+} from '@server/sects/organization/SectTaskSettlement.js';
 import {
   toSectTaskView,
   toUnpersistedSectTaskView,
-} from '@server/sects/organization/SectTaskViewAssembler';
+} from '@server/sects/organization/SectTaskViewAssembler.js';
 import type {
   SectCommandContext,
   SectMembershipRecord,
   SectTaskRecord,
-} from '@server/sects/organization/ports';
-import type { SectTaskExecutorRegistry } from '@server/sects/organization/task-executors/SectTaskExecutor';
+} from '@server/sects/organization/ports.js';
+import type { SectTaskExecutorRegistry } from '@server/sects/organization/task-executors/SectTaskExecutor.js';
 import {
   emptySectCommandEffects,
   mergeSectCommandEffects,
   type SectCommandEffects,
-} from '@server/sects/organization/SectCommandEffects';
+} from '@server/sects/organization/SectCommandEffects.js';
 
 export class FulfillSectTaskHandler {
   constructor(private readonly events: SectDomainEventDispatcherFactory) {}

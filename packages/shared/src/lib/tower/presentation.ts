@@ -2,7 +2,7 @@ import {
   TOWER_BLESSINGS_PACK,
   towerBlessingRule,
   type TowerBlessingId,
-} from './blessing-pack';
+} from './blessing-pack.js';
 
 export function getTowerBlessingEffectPreview(
   args: {

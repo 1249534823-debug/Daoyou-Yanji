@@ -2,19 +2,19 @@ import { describe, expect, it } from 'vitest';
 import {
   createEmptySectCombatProgressV6,
   createFreshCombatV6MethodLevels,
-} from '../build-state';
+} from '../build-state/index.js';
 import {
   COMBAT_V6_SECT_DEFINITIONS_V4,
   compileSectCombatV6V4,
-} from '../content';
+} from '../content/index.js';
 import {
   MERIDIAN_LEVELS,
   meridianUnlockCost,
   methodTrainingCost,
   sectV6Change,
   transferSectProgress,
-} from './index';
-import { sectSkillCatalog } from './presentation';
+} from './index.js';
+import { sectSkillCatalog } from './presentation.js';
 
 const reference = {
   membershipId: '00000000-0000-4000-8000-000000000001',

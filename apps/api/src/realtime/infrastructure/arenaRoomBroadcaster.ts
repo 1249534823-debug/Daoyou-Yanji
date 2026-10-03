@@ -1,12 +1,12 @@
 import {
   publishNatsCoreMessage,
   subscribeNatsCoreSubject,
-} from '@server/realtime/infrastructure/natsCorePubSub';
+} from '@server/realtime/infrastructure/natsCorePubSub.js';
 import {
   createPubSubEnvelope,
   parsePubSubEnvelope,
-} from '@server/realtime/infrastructure/pubSubEnvelope';
-import { encodeNatsSubjectToken } from '@server/realtime/infrastructure/natsCorePubSub';
+} from '@server/realtime/infrastructure/pubSubEnvelope.js';
+import { encodeNatsSubjectToken } from '@server/realtime/infrastructure/natsCorePubSub.js';
 import type { ArenaRoomChangedPayloadV1 } from '@daoyou/shared/contracts/realtime';
 import type { ArenaRoomV1 } from '@daoyou/shared/contracts/arena';
 

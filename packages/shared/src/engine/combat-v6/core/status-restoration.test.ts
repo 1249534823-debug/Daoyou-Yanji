@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { createBattle, SeededRng, type SkillDef, type StatusDef } from './index';
-import { createDaoyouRuleset } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_6D_VERSIONS as versions } from '../version';
+import { createBattle, SeededRng, type SkillDef, type StatusDef } from './index.js';
+import { createDaoyouRuleset } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_6D_VERSIONS as versions } from '../version.js';
 
 const seal: SkillDef = { id: 'seal', name: '封印', tags: ['spell', 'seal'], targeting: { side: 'enemy' }, effects: [{ type: 'applyStatus', statusId: 'control', duration: 3, hit: 'seal' }] };
 function battle(chance: number, factor?: number, statusFactor?: number) {

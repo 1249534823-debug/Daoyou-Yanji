@@ -3,12 +3,12 @@ import {
   activeBeastSkills,
   BEAST_SPECIES,
   generateStarterBeast,
-} from '../engine/combat-v6/beasts';
+} from '../engine/combat-v6/beasts/index.js';
 import {
   DAO_EQUIPMENT_GENERATOR_VERSION_V2,
   DAO_EQUIPMENT_TEMPLATE_ID,
   generateDaoEquipmentV2,
-} from '../engine/combat-v6/equipment';
+} from '../engine/combat-v6/equipment/index.js';
 import {
   BOOKS,
   compactStorage,
@@ -17,8 +17,8 @@ import {
   sameStack,
   sortBag,
   type InventoryItem,
-} from './index';
-import { addItems } from './test-helpers';
+} from './index.js';
+import { addItems } from './test-helpers.js';
 const item = (slotIndex = 0, quantity = 1): InventoryItem => ({
   id: `item-${slotIndex}`,
   location: 'bag',

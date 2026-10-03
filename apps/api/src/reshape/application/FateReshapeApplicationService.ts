@@ -1,12 +1,12 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
 import {
   FateReshapeService,
   prepareFateReshapeConfirmation,
   prepareFateReshapeStart,
-} from '@server/reshape/application/FateReshapeService';
+} from '@server/reshape/application/FateReshapeService.js';
 
 export function startFateReshapeCommand(args: {
   userId: string;

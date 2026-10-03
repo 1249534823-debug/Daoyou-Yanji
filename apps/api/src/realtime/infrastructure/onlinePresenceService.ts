@@ -1,8 +1,8 @@
-import { scheduleSystemMailObservation } from '@server/mail/application/SystemMailService';
-import { redis } from '@server/lib/redis';
-import { db } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { getPubSubInstanceId } from '@server/realtime/infrastructure/pubSubEnvelope';
+import { scheduleSystemMailObservation } from '@server/mail/application/SystemMailService.js';
+import { redis } from '@server/lib/redis/index.js';
+import { db } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import { getPubSubInstanceId } from '@server/realtime/infrastructure/pubSubEnvelope.js';
 import type { AdminOnlineUsersSnapshot } from '@daoyou/shared/contracts/adminOnlineUsers';
 import { eq } from 'drizzle-orm';
 

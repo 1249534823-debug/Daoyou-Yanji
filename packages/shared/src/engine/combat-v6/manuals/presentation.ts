@@ -1,8 +1,8 @@
 import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/shared/lib/characterAttributeLabels';
-import { manualAttributeValue } from './attributes';
-import { manualMechanismValue } from './mechanism';
-import type { ManualMechanism } from './pack';
-import type { CharacterManualDefV1 } from './types';
+import { manualAttributeValue } from './attributes.js';
+import { manualMechanismValue } from './mechanism.js';
+import type { ManualMechanism } from './pack.js';
+import type { CharacterManualDefV1 } from './types.js';
 
 const conditions: Record<ManualMechanism['condition'], string> = {
   always: '',

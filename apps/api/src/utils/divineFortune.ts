@@ -1,4 +1,4 @@
-import { renderPrompt } from '@server/lib/prompts';
+import { renderPrompt } from '@server/lib/prompts/index.js';
 
 export {
   getRandomFallbackFortune,

@@ -4,8 +4,8 @@ import type {
   SectDiscipleRank,
   SectOrganizationModule,
 } from '@daoyou/shared/engine/sect';
-import { SectError } from '@server/sects/application/SectError';
-import type { SectMembershipRecord, SectModuleResolver } from '@server/sects/organization/ports';
+import { SectError } from '@server/sects/application/SectError.js';
+import type { SectMembershipRecord, SectModuleResolver } from '@server/sects/organization/ports.js';
 
 type CapabilitySubject =
   | Pick<SectMembershipRecord, 'sectId' | 'discipleRank'>

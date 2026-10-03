@@ -10,10 +10,10 @@ import {
   type SatelliteNode,
 } from '@daoyou/shared/lib/game/mapSystem';
 import { REALM_VALUES, type RealmType } from '@daoyou/shared/types/constants';
-import { renderPrompt } from '@server/lib/prompts';
-import { generateAiObject } from '@server/utils/aiClient';
-import { stableCompactStringify } from '@server/utils/llmPayload';
-import { buildDungeonRoundLlmContext } from './llmContext';
+import { renderPrompt } from '@server/lib/prompts/index.js';
+import { generateAiObject } from '@server/utils/aiClient.js';
+import { stableCompactStringify } from '@server/utils/llmPayload.js';
+import { buildDungeonRoundLlmContext } from './llmContext.js';
 import {
   createDungeonRoundLlmSchema,
   DungeonRoundSchema,
@@ -21,7 +21,7 @@ import {
   type DungeonRound,
   type DungeonRoundLlmContext,
   type DungeonState,
-} from './types';
+} from './types.js';
 
 const DUNGEON_MATERIAL_TYPE_GUIDE = Object.entries(TYPE_DESCRIPTIONS)
   .map(([key, desc]) => `${key}=${desc}`)

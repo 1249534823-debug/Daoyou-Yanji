@@ -1,20 +1,20 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';
-import { BOOKS } from '../../../items/definitions/beast-books';
-import { BEAST_SPECIES } from './content';
-import progression from './data/progression.json';
-import progressionSchema from './data/progression.schema.json';
-import skills from './data/skills.json';
-import skillsSchema from './data/skills.schema.json';
-import species from './data/species.json';
-import speciesSchema from './data/species.schema.json';
-import { generateStarterBeast } from './generator';
+import { BOOKS } from '../../../items/definitions/beast-books.js';
+import { BEAST_SPECIES } from './content.js';
+import progression from './data/progression.json' with { type: 'json' };
+import progressionSchema from './data/progression.schema.json' with { type: 'json' };
+import skills from './data/skills.json' with { type: 'json' };
+import skillsSchema from './data/skills.schema.json' with { type: 'json' };
+import species from './data/species.json' with { type: 'json' };
+import speciesSchema from './data/species.schema.json' with { type: 'json' };
+import { generateStarterBeast } from './generator.js';
 import {
   BeastProgressionPackShape,
   BeastSkillsPackShape,
   BeastSpeciesPackShape,
   loadBeastPacks,
-} from './pack';
+} from './pack.js';
 
 function input() {
   return structuredClone({ species, skills, progression });
@@ -259,8 +259,8 @@ it('uses edited generation ranges without invalidating existing individual rolls
   vi.resetModules();
   vi.doMock('./data/species.json', () => ({ default: copy }));
   const { generateStarterBeast: generate, generateCapturedBeast } =
-    await import('./generator');
-  const { BeastSchema } = await import('./schema');
+    await import('./generator.js');
+  const { BeastSchema } = await import('./schema.js');
   expect(BeastSchema.parse(existing)).toEqual(existing);
   const born = generate(id, id, species.species[0].id, 42);
   expect(Object.values(born.aptitudes)).toEqual([1500, 1600, 4000, 2400, 1300]);
@@ -297,10 +297,10 @@ it('uses edited points, experience, lifespan and panel parameters consistently',
   copy.panel.health = { aptitudeCoefficient: 0, attributeCoefficient: 7 };
   vi.resetModules();
   vi.doMock('./data/progression.json', () => ({ default: copy }));
-  const { generateStarterBeast: generate } = await import('./generator');
-  const { beastPanel, canDeployBeast } = await import('./projection');
+  const { generateStarterBeast: generate } = await import('./generator.js');
+  const { beastPanel, canDeployBeast } = await import('./projection.js');
   const { gainBeastExp, nextBeastExp, beastRestCost, loseBeastLifespan } =
-    await import('./progression');
+    await import('./progression.js');
   const id = '00000000-0000-4000-8000-000000000001';
   const born = generate(id, id, species.species[0].id, 42);
   expect(born.allocatedAttributes.magic).toBe(0);
@@ -320,7 +320,7 @@ it('derives book availability from the skill pack', async () => {
   vi.resetModules();
   vi.doMock('./data/skills.json', () => ({ default: copy }));
   const { BOOKS: books } =
-    await import('../../../items/definitions/beast-books');
+    await import('../../../items/definitions/beast-books.js');
   expect(books.map((b) => b.skillId)).toEqual(
     copy.skills.filter((s) => s.book).map((s) => s.id),
   );
@@ -396,7 +396,7 @@ it.each([
 it.each(['summoned_beast_v1', 'summoned_beast_capture_v1'] as const)(
   '未发布的旧版本 %s 不进行兼容推断',
   async (generationVersion) => {
-    const { BeastSchema } = await import('./schema');
+    const { BeastSchema } = await import('./schema.js');
     const id = '00000000-0000-4000-8000-000000000001';
     const current = generateStarterBeast(id, id, species.species[0].id, 42);
     expect(

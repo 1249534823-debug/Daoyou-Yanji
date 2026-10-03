@@ -1,4 +1,4 @@
-import type { LineupUnit, SkillDef } from '../core';
+import type { LineupUnit, SkillDef } from '../core/index.js';
 
 /** Compiled skills may contain path/meridian patches. Freeze every character's
  * effective definitions on the unit so an unpatched character never inherits

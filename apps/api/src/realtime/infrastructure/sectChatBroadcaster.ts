@@ -2,11 +2,11 @@ import {
   encodeNatsSubjectToken,
   publishNatsCoreMessage,
   subscribeNatsCoreSubject,
-} from '@server/realtime/infrastructure/natsCorePubSub';
+} from '@server/realtime/infrastructure/natsCorePubSub.js';
 import {
   createPubSubEnvelope,
   parsePubSubEnvelope,
-} from '@server/realtime/infrastructure/pubSubEnvelope';
+} from '@server/realtime/infrastructure/pubSubEnvelope.js';
 import type { WorldChatMessageDTO } from '@daoyou/shared/types/world-chat';
 
 type Listener = (message: WorldChatMessageDTO) => void;

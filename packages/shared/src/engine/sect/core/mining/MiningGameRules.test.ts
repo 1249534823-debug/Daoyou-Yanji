@@ -8,7 +8,7 @@ import {
   miningScoreTier,
   simulateMiningTranscript,
   summarizeMiningCatches,
-} from './MiningGameRules';
+} from './MiningGameRules.js';
 
 describe('sect spirit mining rules', () => {
   it('creates a deterministic field with varied ore sizes and two hazards', () => {

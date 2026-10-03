@@ -1,18 +1,18 @@
-import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher';
+import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher.js';
 import {
   releaseSectConstructionDaily,
   reserveSectConstructionDaily,
   type SectConstructionDailyRecord,
-} from '@server/lib/redis/sectConstructionDaily';
+} from '@server/lib/redis/sectConstructionDaily.js';
 import { quoteSectConstructionDonation } from '@daoyou/shared/engine/sect';
-import { sectOrganizationFacade } from '@server/sects/organization';
-import { SectError } from '@server/sects/application/SectError';
+import { sectOrganizationFacade } from '@server/sects/organization/index.js';
+import { SectError } from '@server/sects/application/SectError.js';
 import {
   executeSectPlayerCommand,
   type SectCommandArgs,
-} from '@server/sects/organization/commandSupport';
-import { createPostgresSectConstructionCommandContext } from '@server/sects/organization/PostgresSectOrganizationAdapters';
-import { getSectDateKey } from '@server/sects/organization/SectOrganizationClock';
+} from '@server/sects/organization/commandSupport.js';
+import { createPostgresSectConstructionCommandContext } from '@server/sects/organization/PostgresSectOrganizationAdapters.js';
+import { getSectDateKey } from '@server/sects/organization/SectOrganizationClock.js';
 
 export async function executeSectConstructionDonationCommand(
   args: SectCommandArgs & {

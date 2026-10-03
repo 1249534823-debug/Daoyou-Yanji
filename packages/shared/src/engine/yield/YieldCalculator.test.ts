@@ -1,7 +1,7 @@
 import {
   YieldCalculator,
   YIELD_MATERIAL_QUALITY_CHANCE_BY_REALM,
-} from './YieldCalculator';
+} from './YieldCalculator.js';
 import { calculateOfflineExp } from '@daoyou/shared/engine/cultivation/ExpBudgetCalculator';
 
 describe('YieldCalculator', () => {

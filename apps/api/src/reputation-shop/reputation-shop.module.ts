@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { ReputationShopController } from './reputation-shop.controller';
-import { ReputationShopService } from './reputation-shop.service';
+import { ReputationShopController } from './reputation-shop.controller.js';
+import { ReputationShopService } from './reputation-shop.service.js';
 
 @Module({
   controllers: [ReputationShopController],

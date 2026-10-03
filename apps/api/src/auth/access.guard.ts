@@ -6,12 +6,12 @@ import {
   type ExecutionContext,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { isAdminIdentity, isAdminUserId } from '@server/lib/auth/adminAccess';
+import { isAdminIdentity, isAdminUserId } from '@server/lib/auth/adminAccess.js';
 import { fromNodeHeaders } from 'better-auth/node';
 import type { Response } from 'express';
-import type { GameRequest } from '../http/request';
-import { ACCESS_POLICY, type AccessPolicy } from './access';
-import { SessionService } from './session.service';
+import type { GameRequest } from '../http/request.js';
+import { ACCESS_POLICY, type AccessPolicy } from './access.js';
+import { SessionService } from './session.service.js';
 
 @Injectable()
 export class AccessGuard implements CanActivate {

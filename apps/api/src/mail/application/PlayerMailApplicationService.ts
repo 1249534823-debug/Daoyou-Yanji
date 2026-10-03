@@ -1,24 +1,24 @@
-import { describeJournal } from '@server/player/application/JournalSettlement';
-import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateRepository';
-import { getExecutor } from '@server/lib/drizzle/db';
-import { mails } from '@server/lib/drizzle/schema';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
-import { resourceEngine } from '@server/player/application/state/ResourceEngine';
+import { describeJournal } from '@server/player/application/JournalSettlement.js';
+import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateRepository.js';
+import { getExecutor } from '@server/lib/drizzle/db.js';
+import { mails } from '@server/lib/drizzle/schema.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
+import { resourceEngine } from '@server/player/application/state/ResourceEngine.js';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
 import type { ResourceOperationSettlement } from '@daoyou/shared/engine/resource/types';
 import { attachmentsToResourceOperations } from '@daoyou/shared/lib/itemLibrary';
 import { and, eq, inArray } from 'drizzle-orm';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
 import {
   deliverMailBeasts,
   selectClaimableBeastMails,
-} from '@server/mail/application/MailBeastDelivery';
-import { deliverMailInventory } from '@server/mail/application/MailInventory';
-import type { MailAttachment } from '@server/mail/application/MailService';
-import { sendPlayerMail } from '@server/mail/application/PlayerMailService';
-import { readPlayerMailSummary } from '@server/player/application/PlayerResourceReaderService';
-import { readCultivatorName } from '@server/cultivator/facts';
-import { sanitizeMaterialForClient } from '@server/inventory/application/materialDetailsPrivacy';
+} from '@server/mail/application/MailBeastDelivery.js';
+import { deliverMailInventory } from '@server/mail/application/MailInventory.js';
+import type { MailAttachment } from '@server/mail/application/MailService.js';
+import { sendPlayerMail } from '@server/mail/application/PlayerMailService.js';
+import { readPlayerMailSummary } from '@server/player/application/PlayerResourceReaderService.js';
+import { readCultivatorName } from '@server/cultivator/facts.js';
+import { sanitizeMaterialForClient } from '@server/inventory/application/materialDetailsPrivacy.js';
 
 type MailActor = {
   userId: string;

@@ -5,16 +5,16 @@ import {
   wildEncounterView,
   WildRuntimeSchema,
   WildSettlementSchema,
-} from '../../../contracts/combatV6Wild';
-import { WILD_DROP_POOLS } from '../../../rewards/wild';
-import { BEAST_SKILLS } from '../beasts/content';
-import { activeBeastSkills, beastPanel } from '../beasts/projection';
-import { COMBAT_V6_SECT_DEFINITIONS_V4 } from '../content';
-import { SkillTag } from '../core';
-import type { CombatV6TrainingPlayerInput } from '../encounter';
-import { WILD_REGIONS } from './content';
-import { generateWildEncounter, generateWildIndividual } from './generator';
-import { createWildHost, WildHost } from './host';
+} from '../../../contracts/combatV6Wild.js';
+import { WILD_DROP_POOLS } from '../../../rewards/wild.js';
+import { BEAST_SKILLS } from '../beasts/content.js';
+import { activeBeastSkills, beastPanel } from '../beasts/projection.js';
+import { COMBAT_V6_SECT_DEFINITIONS_V4 } from '../content/index.js';
+import { SkillTag } from '../core/index.js';
+import type { CombatV6TrainingPlayerInput } from '../encounter/index.js';
+import { WILD_REGIONS } from './content.js';
+import { generateWildEncounter, generateWildIndividual } from './generator.js';
+import { createWildHost, WildHost } from './host.js';
 
 function player(id: string): CombatV6TrainingPlayerInput {
   const definition = COMBAT_V6_SECT_DEFINITIONS_V4.youdu;

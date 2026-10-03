@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import type { InventoryView } from '../contracts/inventory';
-import { inventoryShowcaseSnapshot, isInventoryShowcase } from './showcase';
+import type { InventoryView } from '../contracts/inventory.js';
+import { inventoryShowcaseSnapshot, isInventoryShowcase } from './showcase.js';
 
 describe('inventory showcase snapshots', () => {
   it('keeps public facts stable and omits inventory ownership and placement', () => {

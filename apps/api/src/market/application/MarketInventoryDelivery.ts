@@ -1,8 +1,8 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import { MaterialFactsSchema } from '@daoyou/shared/items/definitions/materials';
 import { seedFactsOf } from '@daoyou/shared/items/definitions/seeds';
 import type { Material } from '@daoyou/shared/types/cultivator';
-import { grantInventory } from '@server/inventory/operations';
+import { grantInventory } from '@server/inventory/operations.js';
 
 /** Market materials enter the same inventory as crafting output. Seeds preserve their growing facts. */
 export async function deliverMarketMaterial(

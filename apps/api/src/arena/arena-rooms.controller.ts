@@ -7,7 +7,7 @@ import {
   Post,
   Res,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   ArenaCreateRoomSchema,
   ArenaJoinRoomSchema,
@@ -16,10 +16,10 @@ import {
 } from '@daoyou/shared/contracts/arena';
 import type { Response } from 'express';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { ArenaRoomsService } from './arena-rooms.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { ArenaRoomsService } from './arena-rooms.service.js';
 
 const RoomIdSchema = z
   .string()

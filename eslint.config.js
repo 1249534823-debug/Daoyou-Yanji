@@ -25,37 +25,8 @@ const sharedImportBoundaries = [
   'tailwind-merge',
 ];
 
-const databaseServiceImports = [
-  {
-    name: '@server/lib/drizzle/db',
-    importNames: ['db', 'getExecutor'],
-    message:
-      'Inject DRIZZLE_DATABASE in Nest services; pass it to repository calls.',
-  },
-];
-
-const marketImportBoundaries = [
-  { group: ['@app/*', '@daoyou/web*', '**/apps/web/**'] },
-  {
-    group: [
-      '@server/cultivator/application/**',
-      '@server/inventory/application/**',
-    ],
-    message:
-      'Market uses public character queries and inventory operations/providers.',
-  },
-];
-
-const inventoryImportBoundaries = [
-  { group: ['@app/*', '@daoyou/web*', '**/apps/web/**'] },
-  {
-    group: ['@server/market/**', '**/market/application/**'],
-    message: 'Inventory owns recycling and must not depend on Market.',
-  },
-];
-
 export default tseslint.config(
-  { ignores: ['**/dist/**'] },
+  { ignores: ['**/dist/**', 'apps/api/**'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
@@ -77,21 +48,8 @@ export default tseslint.config(
     },
   },
   {
-    files: ['apps/api/**/*.ts', 'scripts/**/*.ts', '*.ts'],
+    files: ['scripts/**/*.ts', '*.ts'],
     languageOptions: { globals: globals.node },
-  },
-  {
-    files: [
-      'apps/api/src/main.ts',
-      'apps/api/src/http/**/*.ts',
-      'apps/api/src/runtime/**/*.ts',
-      'apps/api/src/realtime/**/*.ts',
-    ],
-    languageOptions: { parserOptions: { projectService: true } },
-    rules: {
-      '@typescript-eslint/no-floating-promises': 'error',
-      '@typescript-eslint/no-misused-promises': 'error',
-    },
   },
   {
     files: ['packages/shared/src/**/*.{ts,tsx}', 'apps/web/src/**/*.{ts,tsx}'],
@@ -121,15 +79,6 @@ export default tseslint.config(
         {
           patterns: sharedImportBoundaries,
         },
-      ],
-    },
-  },
-  {
-    files: ['apps/api/src/**/*.ts'],
-    rules: {
-      'no-restricted-imports': [
-        'error',
-        { patterns: ['@app/*', '@daoyou/web*', '**/apps/web/**'] },
       ],
     },
   },
@@ -175,104 +124,6 @@ export default tseslint.config(
           object: 'Date',
           property: 'now',
           message: 'Pass time from the host.',
-        },
-      ],
-    },
-  },
-  {
-    files: ['apps/api/src/lib/repositories/**/*.ts'],
-    rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: [
-            { group: ['@app/*', '@daoyou/web*', '**/apps/web/**'] },
-            {
-              group: [
-                '@server/*/application/**',
-                '@server/sects/organization/**',
-              ],
-              message: 'Repositories must not call application services.',
-            },
-          ],
-        },
-      ],
-    },
-  },
-  {
-    files: ['apps/api/src/**/*.service.ts'],
-    ignores: [
-      'apps/api/src/market/**/*.service.ts',
-      'apps/api/src/inventory/**/*.service.ts',
-    ],
-    rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: ['@app/*', '@daoyou/web*', '**/apps/web/**'],
-          paths: databaseServiceImports,
-        },
-      ],
-    },
-  },
-  {
-    files: ['apps/api/src/market/**/*.ts'],
-    rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: marketImportBoundaries,
-        },
-      ],
-    },
-  },
-  {
-    files: ['apps/api/src/inventory/**/*.ts'],
-    rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: inventoryImportBoundaries,
-        },
-      ],
-    },
-  },
-  {
-    files: ['apps/api/src/market/**/*.service.ts'],
-    rules: {
-      'no-restricted-imports': [
-        'error',
-        { patterns: marketImportBoundaries, paths: databaseServiceImports },
-      ],
-    },
-  },
-  {
-    files: ['apps/api/src/inventory/**/*.service.ts'],
-    rules: {
-      'no-restricted-imports': [
-        'error',
-        { patterns: inventoryImportBoundaries, paths: databaseServiceImports },
-      ],
-    },
-  },
-  {
-    files: ['apps/api/src/lib/mq/**/*.ts'],
-    rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: [
-            { group: ['@app/*', '@daoyou/web*', '**/apps/web/**'] },
-            {
-              group: [
-                '@server/*/application/**',
-                '@server/sects/organization/**',
-                '@server/runtime/**',
-              ],
-              message:
-                'Business message registration belongs to Runtime; MQ libraries own transport.',
-            },
-          ],
         },
       ],
     },

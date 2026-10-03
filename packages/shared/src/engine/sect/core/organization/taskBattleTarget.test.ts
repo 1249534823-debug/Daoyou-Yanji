@@ -5,7 +5,7 @@ import {
   readSectBattleTargetSnapshot,
   resolveSectBattleTargetRealmCandidates,
   summarizeSectBattleTarget,
-} from './taskBattleTarget';
+} from './taskBattleTarget.js';
 
 describe('sect battle target snapshot', () => {
   it.each([

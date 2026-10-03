@@ -1,10 +1,10 @@
 import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from './data/dungeon.json';
-import schema from './data/dungeon.schema.json';
-import { planDungeonReward } from './dungeon';
-import { DungeonRewardPackShape, loadDungeonRewardPack } from './dungeon-pack';
+import raw from './data/dungeon.json' with { type: 'json' };
+import schema from './data/dungeon.schema.json' with { type: 'json' };
+import { planDungeonReward } from './dungeon.js';
+import { DungeonRewardPackShape, loadDungeonRewardPack } from './dungeon-pack.js';
 
 describe('副本奖励数据包', () => {
   it('Schema 同步', () =>

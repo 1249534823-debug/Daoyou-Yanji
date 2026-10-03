@@ -3,16 +3,16 @@ import {
   STANDARD_SECT_PRESENTATION,
   StandardSectOrganizationModule,
   type SectPresentationTheme,
-} from '../core';
-import { LINGXIAO_SECT_PRESENTATION } from './lingxiao';
+} from '../core/index.js';
+import { LINGXIAO_SECT_PRESENTATION } from './lingxiao/index.js';
 import {
   PRODUCTION_SECT_PRESENTATIONS,
   PRODUCTION_SECTS,
-} from './productionRuntime';
-import { TIANYAN_SECT_PRESENTATION } from './tianyan';
-import { WUXIANG_SECT_PRESENTATION } from './wuxiang';
-import { YOUDU_SECT_PRESENTATION } from './youdu';
-import { JIUJIE_SECT_PRESENTATION } from './jiujie';
+} from './productionRuntime.js';
+import { TIANYAN_SECT_PRESENTATION } from './tianyan/index.js';
+import { WUXIANG_SECT_PRESENTATION } from './wuxiang/index.js';
+import { YOUDU_SECT_PRESENTATION } from './youdu/index.js';
+import { JIUJIE_SECT_PRESENTATION } from './jiujie/index.js';
 
 const taskIds = [
   'gate_sweep',

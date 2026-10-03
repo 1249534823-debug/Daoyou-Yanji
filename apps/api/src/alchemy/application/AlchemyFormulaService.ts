@@ -2,18 +2,18 @@ import {
   getExecutor,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
-import { alchemyFormulas, cultivators } from '@server/lib/drizzle/schema';
-import { redis } from '@server/lib/redis';
-import { parseRedisJson } from '@server/lib/redis/json';
+} from '@server/lib/drizzle/db.js';
+import { alchemyFormulas, cultivators } from '@server/lib/drizzle/schema.js';
+import { redis } from '@server/lib/redis/index.js';
+import { parseRedisJson } from '@server/lib/redis/json.js';
 import {
   aggregateAlchemyProperties,
   buildAlchemyBatchProfile,
   buildAlchemyPropertyTags,
   getQuotaCategoryForFamily,
   type PreparedAlchemyMaterial,
-} from '@server/alchemy/application/AlchemyRecipeRules';
-import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository';
+} from '@server/alchemy/application/AlchemyRecipeRules.js';
+import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 import { ALCHEMY_MAX_DOSE } from '@daoyou/shared/config/alchemyInput';
 import type { ResourceOperationSettlement } from '@daoyou/shared/engine/resource/types';
 import type { AlchemyBagMaterial } from '@daoyou/shared/inventory/alchemy';
@@ -77,14 +77,14 @@ import {
   consumeAlchemyMaterials,
   grantAlchemyOutput,
   loadAlchemyMaterials,
-} from '@server/alchemy/application/inventory/AlchemyInventory';
+} from '@server/alchemy/application/inventory/AlchemyInventory.js';
 import {
   assembleAlchemyOutputConsumables,
   type AlchemyOutputDraft,
-} from '@server/alchemy/application/inventory/AlchemyOutputAssembler';
-import { alchemyFormulaAnalyzer } from '@server/alchemy/application/AlchemyFormulaAnalyzer';
-import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError';
-import { sectOrganizationFacade } from '@server/sects/organization';
+} from '@server/alchemy/application/inventory/AlchemyOutputAssembler.js';
+import { alchemyFormulaAnalyzer } from '@server/alchemy/application/AlchemyFormulaAnalyzer.js';
+import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError.js';
+import { sectOrganizationFacade } from '@server/sects/organization/index.js';
 
 const DISCOVERY_TTL_SECONDS = 600;
 const FORMULA_ANALYSIS_TTL_SECONDS = 600;

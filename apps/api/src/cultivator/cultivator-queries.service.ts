@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { DbClient, DbExecutor } from '@server/lib/drizzle/db';
-import { readCultivatorRealm } from './application/readers/CultivatorFactsReader';
-import { getPlayerPreHeavenFates } from './application/readers/CultivatorProfileRepository';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { DbClient, DbExecutor } from '@server/lib/drizzle/db.js';
+import { readCultivatorRealm } from './application/readers/CultivatorFactsReader.js';
+import { getPlayerPreHeavenFates } from './application/readers/CultivatorProfileRepository.js';
 
 /** Public character facts for application use cases outside this feature. */
 @Injectable()

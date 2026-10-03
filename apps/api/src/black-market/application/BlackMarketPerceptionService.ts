@@ -1,13 +1,13 @@
-import { renderPrompt } from '@server/lib/prompts';
-import { generateAiObject } from '@server/utils/aiClient';
-import { truncateText } from '@server/utils/llmPayload';
+import { renderPrompt } from '@server/lib/prompts/index.js';
+import { generateAiObject } from '@server/utils/aiClient.js';
+import { truncateText } from '@server/utils/llmPayload.js';
 import type { BlackMarketPricingState } from '@daoyou/shared/lib/blackMarketPricing';
 import { z } from 'zod';
-import type { BlackMarketNpcConfig } from '@server/black-market/application/BlackMarketNpcConfig';
+import type { BlackMarketNpcConfig } from '@server/black-market/application/BlackMarketNpcConfig.js';
 import type {
   BlackMarketInternalObservation,
   BlackMarketNpcBeliefState,
-} from '@server/black-market/application/types';
+} from '@server/black-market/application/types.js';
 
 const beliefSchema = z.object({
   suspectedTypes: z.array(z.string().trim().min(1).max(24)).min(1).max(3),

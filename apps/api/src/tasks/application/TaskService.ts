@@ -2,12 +2,12 @@ import {
   getExecutor,
   runDbTasks,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
+} from '@server/lib/drizzle/db.js';
 import {
   findActiveCultivatorTaskProgressById,
   getCultivatorBreakthroughPillQuantities,
   type CultivatorBreakthroughPillRecord,
-} from '@server/lib/repositories/cultivatorRepository';
+} from '@server/lib/repositories/cultivatorRepository.js';
 import {
   createCultivatorTask,
   findCultivatorTaskByDefinition,
@@ -15,7 +15,7 @@ import {
   listCultivatorTasks,
   updateCultivatorTask,
   type CultivatorTaskRecord,
-} from '@server/lib/repositories/taskRepository';
+} from '@server/lib/repositories/taskRepository.js';
 import { getNextStage } from '@daoyou/shared/engine/cultivation/breakthroughCalculator';
 import { getOrInitCultivationProgress } from '@daoyou/shared/engine/cultivation/cultivationUtils';
 import { getBreakthroughPillLabel } from '@daoyou/shared/lib/breakthroughPill';
@@ -44,7 +44,7 @@ import {
   type BreakthroughTaskDefinition,
   type RuntimeTaskDefinition,
   type TaskStageTemplate,
-} from '@server/tasks/application/taskDefinitions';
+} from '@server/tasks/application/taskDefinitions.js';
 
 interface TaskServiceWriteOptions {
   tx?: DbTransaction;

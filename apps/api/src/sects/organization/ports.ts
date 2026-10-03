@@ -1,5 +1,5 @@
-import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db';
-import type { DomainEventWriter } from '@server/lib/mq/domainEventWriter';
+import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db.js';
+import type { DomainEventWriter } from '@server/lib/mq/domainEventWriter.js';
 import type { ResourceDataMap } from '@daoyou/shared/contracts/resources';
 import type { SectTaskSettlementData } from '@daoyou/shared/contracts/sect';
 import type {
@@ -14,7 +14,7 @@ import type {
 } from '@daoyou/shared/engine/sect';
 import type { Quality, RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import type { Material } from '@daoyou/shared/types/cultivator';
-import type { SectCommandEffects } from '@server/sects/organization/SectCommandEffects';
+import type { SectCommandEffects } from '@server/sects/organization/SectCommandEffects.js';
 
 export interface Clock {
   now(): Date;
@@ -239,10 +239,10 @@ export interface SectRewardMaterialCatalogGateway {
 
 export interface SectBattleGateway {
   freeze(
-    context: import('@server/sects/organization/task-executors/SectTaskExecutor').SectTaskEnrollmentContext,
+    context: import('@server/sects/organization/task-executors/SectTaskExecutor.js').SectTaskEnrollmentContext,
   ): Promise<import('@daoyou/shared/contracts/combatV6SectTask').SectV6Target>;
   start(
-    context: import('@server/sects/organization/task-executors/SectTaskExecutor').SectTaskExecutionContext,
+    context: import('@server/sects/organization/task-executors/SectTaskExecutor.js').SectTaskExecutionContext,
   ): Promise<{ battleId: string }>;
 }
 

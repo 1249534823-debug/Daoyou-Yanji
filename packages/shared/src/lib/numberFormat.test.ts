@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatCompactGameNumber, formatFullGameNumber } from './numberFormat';
+import { formatCompactGameNumber, formatFullGameNumber } from './numberFormat.js';
 
 describe('game number formatting', () => {
   it('keeps small numbers exact with grouping', () => {

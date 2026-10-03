@@ -1,10 +1,10 @@
-import data from './data/equipment-forging.json';
-import { loadEquipmentForgingPack } from './forging-pack';
+import data from './data/equipment-forging.json' with { type: 'json' };
+import { loadEquipmentForgingPack } from './forging-pack.js';
 import {
   DAO_EQUIPMENT_ARTS_V1,
   DAO_EQUIPMENT_ESSENCES_V1,
-} from './special-content';
-import type { DaoEquipmentSlot } from './types';
+} from './special-content.js';
+import type { DaoEquipmentSlot } from './types.js';
 
 const pack = loadEquipmentForgingPack(data, {
   essences: DAO_EQUIPMENT_ESSENCES_V1,

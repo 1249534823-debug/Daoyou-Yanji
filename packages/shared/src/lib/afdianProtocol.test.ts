@@ -4,7 +4,7 @@ import {
   buildAfdianCheckoutUrl,
   buildAfdianWebhookSignedText,
   createAfdianApiEnvelope,
-} from './afdianProtocol';
+} from './afdianProtocol.js';
 
 describe('Afdian official protocol', () => {
   it('matches the official API signing example', () => {

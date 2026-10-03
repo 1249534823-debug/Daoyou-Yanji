@@ -1,23 +1,23 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
-import { invalidateActiveCultivatorRef } from '@server/lib/auth/activeCultivator';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
+import { invalidateActiveCultivatorRef } from '@server/lib/auth/activeCultivator.js';
 import {
   redisLockKeys,
   withRedisLock,
-} from '@server/lib/redis/lock';
+} from '@server/lib/redis/lock.js';
 import {
   deleteTempData,
   getTempCharacter,
   getTempFates,
-} from '@server/lib/repositories/redisCultivatorRepository';
+} from '@server/lib/repositories/redisCultivatorRepository.js';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
 import type { Cultivator } from '@daoyou/shared/types/cultivator';
-import { MailService } from '@server/mail/application/MailService';
-import { TaskService } from '@server/tasks/application/TaskService';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
+import { MailService } from '@server/mail/application/MailService.js';
+import { TaskService } from '@server/tasks/application/TaskService.js';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
 import {
   createCultivator,
   hasActiveCultivator,
-} from '@server/cultivator/application/readers/CultivatorProfileRepository';
+} from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 
 export async function executeCultivatorCreationCommand(
   userId: string,

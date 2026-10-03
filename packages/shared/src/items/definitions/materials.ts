@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ELEMENT_VALUES, QUALITY_VALUES } from '../../types/constants';
+import { ELEMENT_VALUES, QUALITY_VALUES } from '../../types/constants.js';
 export const FORGING_MATERIAL_TYPES = [
   'ore',
   'tcdb',

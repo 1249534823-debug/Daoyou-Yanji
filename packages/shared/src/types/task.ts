@@ -1,6 +1,6 @@
-import type { ConditionStatusKey } from './condition';
-import type { RealmType } from './constants';
-import type { MailAttachment } from './mail';
+import type { ConditionStatusKey } from './condition.js';
+import type { RealmType } from './constants.js';
+import type { MailAttachment } from './mail.js';
 import type { DailyTaskDifficulty } from '@daoyou/shared/engine/cultivation/exp-gain-strategies/types';
 
 export type TaskCategory = 'breakthrough_major' | 'daily' | 'tutorial';
@@ -128,7 +128,7 @@ export interface TaskObjectiveState {
 }
 
 export interface TaskInstanceMetadata {
-  breakthroughBattle?: import('../contracts/combatV6Breakthrough').BreakthroughBattlePointer;
+  breakthroughBattle?: import('../contracts/combatV6Breakthrough.js').BreakthroughBattlePointer;
   fromRealm?: RealmType;
   toRealm?: RealmType;
   taskTheme?:

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { combatV6SkillDetails } from '../../../combat-v6/skill-details';
+import { combatV6SkillDetails } from '../../../combat-v6/skill-details.js';
 import {
   CommandType,
   DamageKind,
@@ -9,12 +9,12 @@ import {
   TargetSide,
   createBattle,
   type SkillDef,
-} from '../core';
-import { createDaoyouRuleset } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_7C_VERSIONS } from '../version';
-import { BEAST_SKILLS, BEAST_SKILL_CONTENT } from './content';
-import { beastDeathIds } from './progression';
-import { compileBeastSkill } from './skill-compiler';
+} from '../core/index.js';
+import { createDaoyouRuleset } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_7C_VERSIONS } from '../version.js';
+import { BEAST_SKILLS, BEAST_SKILL_CONTENT } from './content.js';
+import { beastDeathIds } from './progression.js';
+import { compileBeastSkill } from './skill-compiler.js';
 
 const ruleset = createDaoyouRuleset({
   formulas: {

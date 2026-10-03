@@ -23,12 +23,12 @@ import {
   type RealmStage,
 } from '@daoyou/shared/types/constants';
 import type { Cultivator } from '@daoyou/shared/types/cultivator';
-import { assertCombatV6MutationAllowed } from '@server/combat/mutation-policy';
-import { ConditionService } from '@server/cultivator/application/ConditionService';
-import { QiService } from '@server/cultivator/application/QiService';
-import { readCraftReadinessFacts } from '@server/cultivator/facts';
-import { getPlayerIdentityCultivatorById } from '@server/cultivator/application/readers/CultivatorProfileRepository';
-import { updateCultivator } from '@server/cultivator/application/readers/CultivatorStateRepository';
+import { assertCombatV6MutationAllowed } from '@server/combat/mutation-policy.js';
+import { ConditionService } from '@server/cultivator/application/ConditionService.js';
+import { QiService } from '@server/cultivator/application/QiService.js';
+import { readCraftReadinessFacts } from '@server/cultivator/facts.js';
+import { getPlayerIdentityCultivatorById } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
+import { updateCultivator } from '@server/cultivator/application/readers/CultivatorStateRepository.js';
 import {
   beginDungeonBattle,
   dungeonPlayer,
@@ -37,35 +37,35 @@ import {
   prepareDungeonEncounter,
   type DungeonBattlePayload,
   type DungeonEncounterPayload,
-} from '@server/dungeon/application/flow/combatV6';
+} from '@server/dungeon/application/flow/combatV6.js';
 import {
   applyDungeonCosts,
   validateDungeonCosts,
-} from '@server/dungeon/application/flow/costs';
-import type { RewardBlueprint } from '@server/dungeon/application/flow/reward/index';
-import { RewardFactory } from '@server/dungeon/application/flow/reward/index';
-import { resolveDungeonReward } from '@server/dungeon/application/flow/rewards';
-import { grantInventory } from '@server/inventory/operations';
-import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db';
-import { dungeonHistories, dungeonRuns } from '@server/lib/drizzle/schema';
-import { createDomainEvent } from '@server/lib/mq/domainEventWriter';
-import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher';
-import { renderPrompt } from '@server/lib/prompts/index';
-import { redis } from '@server/lib/redis/index';
+} from '@server/dungeon/application/flow/costs.js';
+import type { RewardBlueprint } from '@server/dungeon/application/flow/reward/index.js';
+import { RewardFactory } from '@server/dungeon/application/flow/reward/index.js';
+import { resolveDungeonReward } from '@server/dungeon/application/flow/rewards.js';
+import { grantInventory } from '@server/inventory/operations.js';
+import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
+import { dungeonHistories, dungeonRuns } from '@server/lib/drizzle/schema.js';
+import { createDomainEvent } from '@server/lib/mq/domainEventWriter.js';
+import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher.js';
+import { renderPrompt } from '@server/lib/prompts/index.js';
+import { redis } from '@server/lib/redis/index.js';
 import {
   isRedisLockContention,
   redisLockKeys,
   withRedisLock,
   type RedisLeaseContext,
-} from '@server/lib/redis/lock';
-import { findActiveCultivatorOwnerId } from '@server/lib/repositories/cultivatorRepository';
-import { resourceEngine } from '@server/player/application/state/ResourceEngine';
-import { generateAiObject } from '@server/utils/aiClient';
-import { stableCompactStringify } from '@server/utils/llmPayload';
+} from '@server/lib/redis/lock.js';
+import { findActiveCultivatorOwnerId } from '@server/lib/repositories/cultivatorRepository.js';
+import { resourceEngine } from '@server/player/application/state/ResourceEngine.js';
+import { generateAiObject } from '@server/utils/aiClient.js';
+import { stableCompactStringify } from '@server/utils/llmPayload.js';
 import { randomUUID } from 'crypto';
 import { and, desc, eq, isNull, ne } from 'drizzle-orm';
 import { z } from 'zod';
-import { generateDungeonRound } from './DungeonRoundGenerator';
+import { generateDungeonRound } from './DungeonRoundGenerator.js';
 
 import {
   DungeonOptionCost,
@@ -75,7 +75,7 @@ import {
   DungeonSettlement,
   DungeonSettlementLlmContext,
   DungeonState,
-} from '@server/dungeon/application/flow/types';
+} from '@server/dungeon/application/flow/types.js';
 
 const REDIS_TTL = 3600; // 1 hour expiration for active sessions
 const FLOW_LOCK_TTL_SECONDS = 180;

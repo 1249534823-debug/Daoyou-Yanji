@@ -1,11 +1,11 @@
 import { Controller, HttpCode, Inject, Post, UseFilters } from '@nestjs/common';
 import { AdminItemGenerationSchema } from '@daoyou/shared/contracts/adminItemGeneration';
 import type { z } from 'zod';
-import { Access } from '../auth/access';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { AdminErrors } from './admin-errors';
-import { AdminRewardItemsService } from './reward-items.service';
+import { Access } from '../auth/access.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { AdminErrors } from './admin-errors.js';
+import { AdminRewardItemsService } from './reward-items.service.js';
 
 @Controller('api/admin/reward-items')
 @Access('admin')

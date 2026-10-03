@@ -14,7 +14,7 @@ import {
   type SweepBoard,
   type SweepCell,
   type SweepDirection,
-} from './SweepGameRules';
+} from './SweepGameRules.js';
 
 const key = (cell: SweepCell) => `${cell.x}:${cell.y}`;
 

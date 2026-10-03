@@ -1,5 +1,5 @@
-import { GeneratedBeastSchema, type SummonedBeast } from './schema';
-import { beastPointBudget } from './identity';
+import { GeneratedBeastSchema, type SummonedBeast } from './schema.js';
+import { beastPointBudget } from './identity.js';
 
 export function rejuvenateBeast(beast: SummonedBeast): SummonedBeast {
   const reset = {

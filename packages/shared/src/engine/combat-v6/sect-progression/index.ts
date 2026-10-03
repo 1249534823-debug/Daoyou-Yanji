@@ -1,15 +1,15 @@
-import { canSelectMeridianNode, normalizeMeridianSelection } from '../content/meridian-selection';
+import { canSelectMeridianNode, normalizeMeridianSelection } from '../content/meridian-selection.js';
 import { getLevelRealmStage } from '@daoyou/shared/config/realmProgression';
-import { SECT_PROGRESSION, configuredMethodCost, configuredMeridianCost, methodLevelCap } from './pack';
+import { SECT_PROGRESSION, configuredMethodCost, configuredMeridianCost, methodLevelCap } from './pack.js';
 import type { SectV6Action, SectV6Cost } from '@daoyou/shared/contracts/combatV6Sect';
 import {
   COMBAT_V6_SECT_DEFINITIONS,
   compileCurrentSectCombatV6,
-} from '../content/index';
-import type { CombatV6SectId, SectCombatProgressV6 } from '../content/types';
+} from '../content/index.js';
+import type { CombatV6SectId, SectCombatProgressV6 } from '../content/types.js';
 
 export class SectV6RuleError extends Error {}
-export { methodLevelCap } from './pack';
+export { methodLevelCap } from './pack.js';
 export const MERIDIAN_LEVELS = SECT_PROGRESSION.meridian.characterLevels;
 export function methodTrainingCost(targetLevel: number): SectV6Cost {
   if (!Number.isInteger(targetLevel) || targetLevel < 1 || targetLevel > SECT_PROGRESSION.method.maxLevel)

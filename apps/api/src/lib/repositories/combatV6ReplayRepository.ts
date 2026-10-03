@@ -1,8 +1,8 @@
-import { db, type DbExecutor } from '@server/lib/drizzle/db';
+import { db, type DbExecutor } from '@server/lib/drizzle/db.js';
 import {
   combatReplayArchives,
   combatReplayParticipants,
-} from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/schema.js';
 import {
   COMBAT_V6_REPLAY_SOURCES,
   type CombatV6HistoryPage,

@@ -1,6 +1,6 @@
-import { redis } from '@server/lib/redis';
-import { parseRedisJson } from '@server/lib/redis/json';
-import type { BlackMarketInternalSession } from '@server/black-market/application/types';
+import { redis } from '@server/lib/redis/index.js';
+import { parseRedisJson } from '@server/lib/redis/json.js';
+import type { BlackMarketInternalSession } from '@server/black-market/application/types.js';
 
 const SESSION_PREFIX = 'black-market:v9:session';
 

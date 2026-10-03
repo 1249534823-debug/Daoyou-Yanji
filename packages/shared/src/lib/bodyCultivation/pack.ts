@@ -2,7 +2,7 @@ import { formatContentPackErrors } from '@daoyou/shared/lib/content-pack-errors'
 import { z } from 'zod';
 import { REALM_ORDER, type RealmType } from '@daoyou/shared/types/constants';
 import type { BodyCultivationRealm, BodyCultivationTrackKey } from '@daoyou/shared/types/condition';
-import raw from './data/body-cultivation.json';
+import raw from './data/body-cultivation.json' with { type: 'json' };
 
 export const BODY_CULTIVATION_TRACK_KEYS = ['skin', 'sinew_bone', 'organs', 'qi_blood', 'primordial_spirit'] as const satisfies BodyCultivationTrackKey[];
 const realmKeys = ['mortal_body', 'bronze_skin', 'iron_bone', 'jade_marrow', 'golden_body', 'dharma_body', 'dao_body'] as const satisfies BodyCultivationRealm[];

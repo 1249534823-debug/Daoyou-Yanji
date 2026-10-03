@@ -8,8 +8,8 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { SponsorshipApplicationError } from '@server/sponsorship/application/SponsorshipApplicationService';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { SponsorshipApplicationError } from '@server/sponsorship/application/SponsorshipApplicationService.js';
 import {
   SponsorshipCheckoutRequestSchema,
   SponsorshipClaimRequestSchema,
@@ -18,12 +18,12 @@ import {
   type SponsorshipCheckoutRequest,
   type SponsorshipClaimRequest,
 } from '@daoyou/shared/contracts/sponsorship';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { SponsorshipService } from './sponsorship.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { SponsorshipService } from './sponsorship.service.js';
 const SponsorshipErrors = apiErrorFilter((error) =>
   error instanceof SponsorshipApplicationError
     ? Response.json(

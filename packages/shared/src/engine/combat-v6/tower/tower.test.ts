@@ -2,24 +2,24 @@ import { describe, expect, it } from 'vitest';
 import {
   allowedTowerFormations,
   type TowerKeyFormation,
-} from '../../../lib/tower/formations';
-import { getTowerSeasonMeta } from '../../../lib/tower/season';
+} from '../../../lib/tower/formations.js';
+import { getTowerSeasonMeta } from '../../../lib/tower/season.js';
 import {
   createTowerWeek,
   TOWER_COMBINATIONS,
   towerEnemyPreview,
   type TowerWeek,
-} from '../../../lib/tower/weekly';
-import type { CultivatorCondition } from '../../../types/condition';
-import { BEAST_SPECIES, generateStarterBeast } from '../beasts';
+} from '../../../lib/tower/weekly.js';
+import type { CultivatorCondition } from '../../../types/condition.js';
+import { BEAST_SPECIES, generateStarterBeast } from '../beasts/index.js';
 import {
   COMBAT_V6_SECT_DEFINITIONS_V4,
   type CombatV6SectId,
   type SectCombatProgressV6,
-} from '../content';
-import { compileTowerEncounter } from './content';
-import { createTowerHost, projectTowerPlayer, TowerHost } from './host';
-import { publishTowerWeek } from './published';
+} from '../content/index.js';
+import { compileTowerEncounter } from './content.js';
+import { createTowerHost, projectTowerPlayer, TowerHost } from './host.js';
+import { publishTowerWeek } from './published.js';
 function player(sectId: CombatV6SectId) {
   const def = COMBAT_V6_SECT_DEFINITIONS_V4[sectId];
   const track = { level: 0, progress: 0 };

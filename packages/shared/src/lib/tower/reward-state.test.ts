@@ -4,7 +4,7 @@ import {
   TowerClaimsSchema,
   towerRewards,
   type TowerRewardState,
-} from './reward-state';
+} from './reward-state.js';
 
 const state: TowerRewardState = {
   seasonKey: '2026-W38@Asia/Shanghai',

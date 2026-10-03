@@ -1,15 +1,15 @@
 import type { MarketBuyInput } from '@daoyou/shared/contracts/market';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
-import type { CultivatorQueriesService } from '@server/cultivator/cultivator-queries.service';
-import type { DbClient, DbTransaction } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
-import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateRepository';
+import type { CultivatorQueriesService } from '@server/cultivator/cultivator-queries.service.js';
+import type { DbClient, DbTransaction } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
+import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateRepository.js';
 import {
   markMarketPurchased,
   prepareBatchMarketPurchase,
-} from '@server/market/application/MarketService';
-import type { PlayerCommandExecutor } from '@server/player/application/state/CommandExecutors';
+} from '@server/market/application/MarketService.js';
+import type { PlayerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
 import { eq } from 'drizzle-orm';
 
 type PreparedPurchaseCommand<T> = {

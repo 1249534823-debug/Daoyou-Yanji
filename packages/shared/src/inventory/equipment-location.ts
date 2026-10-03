@@ -1,4 +1,4 @@
-import { emptySlot, InventoryRuleError, type InventoryItem } from './index';
+import { emptySlot, InventoryRuleError, type InventoryItem } from './index.js';
 
 /** Plan bag/equipment locations without changing the caller's inventory. */
 export function changeEquipmentLocation(

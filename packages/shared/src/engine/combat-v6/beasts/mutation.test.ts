@@ -1,13 +1,13 @@
 import { expect, it } from 'vitest';
-import { learnBeastSkill } from '../../../inventory';
-import { BOOKS } from '../../../items/definitions/beast-books';
-import { BEAST_SPECIES } from './content';
-import { generateCapturedBeast, generateStarterBeast } from './generator';
-import { beastAttributes, beastPanel } from './projection';
-import { refineBeast } from './refinement';
-import { BEAST_REFINEMENT } from './refinement-config';
-import { BeastSchema } from './schema';
-import { rollBeastTraits } from './trait-generator';
+import { learnBeastSkill } from '../../../inventory/index.js';
+import { BOOKS } from '../../../items/definitions/beast-books.js';
+import { BEAST_SPECIES } from './content.js';
+import { generateCapturedBeast, generateStarterBeast } from './generator.js';
+import { beastAttributes, beastPanel } from './projection.js';
+import { refineBeast } from './refinement.js';
+import { BEAST_REFINEMENT } from './refinement-config.js';
+import { BeastSchema } from './schema.js';
+import { rollBeastTraits } from './trait-generator.js';
 
 const id = '00000000-0000-4000-8000-000000000001';
 

@@ -1,11 +1,11 @@
 import { Controller, Get, Inject } from '@nestjs/common';
-import type { AuthUser } from '@server/lib/auth/types';
+import type { AuthUser } from '@server/lib/auth/types.js';
 import { RESOURCE_SCOPE_KINDS } from '@daoyou/shared/contracts/resources';
 import { z } from 'zod';
-import { CurrentUser } from '../auth/access';
-import { FirstQuery } from '../http/first-query';
-import { ZodPipe } from '../http/zod.pipe';
-import { PlayerService } from './player.service';
+import { CurrentUser } from '../auth/access.js';
+import { FirstQuery } from '../http/first-query.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { PlayerService } from './player.service.js';
 
 const ResourcesQuery = z.object({ keys: z.string().min(1).max(256) });
 const EventsQuery = z.object({

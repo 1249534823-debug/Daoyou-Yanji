@@ -2,8 +2,8 @@ import { z } from 'zod';
 import type {
   BreakthroughChallengeId,
   BreakthroughSnapshot,
-} from '../engine/combat-v6/breakthrough/host';
-import type { CombatV6TrainingSessionViewV1 } from './combatV6';
+} from '../engine/combat-v6/breakthrough/host.js';
+import type { CombatV6TrainingSessionViewV1 } from './combatV6.js';
 
 export const BreakthroughBattlePointerSchema = z
   .object({

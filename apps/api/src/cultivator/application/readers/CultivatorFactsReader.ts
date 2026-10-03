@@ -2,8 +2,8 @@ import {
   getExecutor,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
-import { cultivators, spiritualRoots } from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/db.js';
+import { cultivators, spiritualRoots } from '@server/lib/drizzle/schema.js';
 import type {
   CultivationProgress,
   Cultivator,
@@ -11,7 +11,7 @@ import type {
 import type { CultivatorCondition } from '@daoyou/shared/types/condition';
 import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import { and, eq } from 'drizzle-orm';
-import { mapSpiritualRoots } from '@server/cultivator/application/readers/CultivatorProfileRepository';
+import { mapSpiritualRoots } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 
 async function requireFacts<T>(
   cultivatorId: string,

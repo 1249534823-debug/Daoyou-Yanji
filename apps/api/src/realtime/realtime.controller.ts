@@ -11,8 +11,8 @@ import {
 } from '@nestjs/common';
 import { fromNodeHeaders } from 'better-auth/node';
 import type { Request, Response } from 'express';
-import { Access } from '../auth/access';
-import { RealtimeService } from './realtime.service';
+import { Access } from '../auth/access.js';
+import { RealtimeService } from './realtime.service.js';
 
 @Injectable()
 class RealtimeHttpGuard implements CanActivate {

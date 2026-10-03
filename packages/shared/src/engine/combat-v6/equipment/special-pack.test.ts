@@ -1,17 +1,17 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import data from './data/equipment-special.json';
-import schema from './data/equipment-special.schema.json';
+import data from './data/equipment-special.json' with { type: 'json' };
+import schema from './data/equipment-special.schema.json' with { type: 'json' };
 import {
   compileEquipmentArt,
   compileEquipmentEssence,
   compileRageGainPassive,
-} from './special-compiler';
-import { DAO_EQUIPMENT_ARTS_V1, DAO_RAGE_RESOURCE } from './special-content';
+} from './special-compiler.js';
+import { DAO_EQUIPMENT_ARTS_V1, DAO_RAGE_RESOURCE } from './special-content.js';
 import {
   EquipmentSpecialPackShape,
   loadEquipmentSpecialPack,
-} from './special-pack';
+} from './special-pack.js';
 
 describe('equipment special configuration', () => {
   it('loads the 38 refined arts and validates the schema', () => {

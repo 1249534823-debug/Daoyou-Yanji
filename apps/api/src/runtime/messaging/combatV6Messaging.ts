@@ -13,24 +13,24 @@ import {
 import {
   startArenaV6Coordinator,
   stopArenaV6Coordinator,
-} from '@server/combat/application/CombatV6ArenaService';
-import { retryCombatV6Settlements } from '@server/combat/application/CombatV6ConditionProjector';
-import { CombatV6RuntimeStore } from '@server/combat/application/CombatV6RuntimeStore';
-import type { CombatV6TrainingSessionService } from '@server/combat/application/CombatV6TrainingSessionService';
-import { wildSessions } from '@server/combat/application/CombatV6WildSessionService';
+} from '@server/combat/application/CombatV6ArenaService.js';
+import { retryCombatV6Settlements } from '@server/combat/application/CombatV6ConditionProjector.js';
+import { CombatV6RuntimeStore } from '@server/combat/application/CombatV6RuntimeStore.js';
+import type { CombatV6TrainingSessionService } from '@server/combat/application/CombatV6TrainingSessionService.js';
+import { wildSessions } from '@server/combat/application/CombatV6WildSessionService.js';
 import {
   startHuntWorld,
   stopHuntWorld,
-} from '@server/hunts/application/HuntWorldService';
+} from '@server/hunts/application/HuntWorldService.js';
 import {
   COMBAT_V6_REPLAY_ARCHIVE_CONSUMER,
   consumerRetryDelayMs,
-} from '@server/lib/mq/natsTopology';
-import { getJetStreamClient } from '@server/lib/nats/index';
+} from '@server/lib/mq/natsTopology.js';
+import { getJetStreamClient } from '@server/lib/nats/index.js';
 import {
   archiveCombatV6Replay,
   CombatV6ReplayConflictError,
-} from '@server/lib/repositories/combatV6ReplayRepository';
+} from '@server/lib/repositories/combatV6ReplayRepository.js';
 import { JSONCodec, type ConsumerMessages, type JsMsg } from 'nats';
 
 const store = new CombatV6RuntimeStore();

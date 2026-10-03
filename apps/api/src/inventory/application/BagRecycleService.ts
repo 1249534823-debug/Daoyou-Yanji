@@ -20,21 +20,21 @@ import { QUALITY_ORDER } from '@daoyou/shared/types/constants';
 import {
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/application/InventoryService';
-import { getExecutor, type DbExecutor } from '@server/lib/drizzle/db';
-import { cultivators, inventoryItems } from '@server/lib/drizzle/schema';
-import { redis } from '@server/lib/redis';
+} from '@server/inventory/application/InventoryService.js';
+import { getExecutor, type DbExecutor } from '@server/lib/drizzle/db.js';
+import { cultivators, inventoryItems } from '@server/lib/drizzle/schema.js';
+import { redis } from '@server/lib/redis/index.js';
 import {
   playerCommandExecutor,
   type PlayerCommandExecutor,
-} from '@server/player/application/state/CommandExecutors';
+} from '@server/player/application/state/CommandExecutors.js';
 import {
   MarketRecycleError,
   buildMaterialHighTierAppraisal,
   calculateHighTierUnitPrice,
   calculateLowTierUnitPrice,
   calculatePillRecycleUnitPrice,
-} from './RecycleAppraisal';
+} from './RecycleAppraisal.js';
 import { and, eq, inArray, sql } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
 

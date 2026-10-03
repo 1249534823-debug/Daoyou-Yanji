@@ -2,9 +2,9 @@ import { describe, expect, it } from 'vitest';
 import {
   breakthroughBodyCultivationRealm,
   previewBodyCultivationRealmBreakthrough,
-} from './breakthrough';
-import { normalizeBodyCultivationState } from './normalize';
-import { getBodyCultivationSummary } from './summary';
+} from './breakthrough.js';
+import { normalizeBodyCultivationState } from './normalize.js';
+import { getBodyCultivationSummary } from './summary.js';
 import type {
   BodyCultivationRealm,
   BodyCultivationTrackKey,

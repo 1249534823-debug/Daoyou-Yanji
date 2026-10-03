@@ -2,52 +2,52 @@ import {
   isDomainEventType,
   type DomainEventEnvelope,
 } from '@daoyou/shared/contracts/domainEvents';
-import { projectCombatV6Condition } from '@server/combat/application/CombatV6ConditionProjector';
-import type { CombatV6TrainingSessionService } from '@server/combat/application/CombatV6TrainingSessionService';
+import { projectCombatV6Condition } from '@server/combat/application/CombatV6ConditionProjector.js';
+import type { CombatV6TrainingSessionService } from '@server/combat/application/CombatV6TrainingSessionService.js';
 import {
   generateYieldRewardAttachments,
   projectYieldReward,
-} from '@server/cultivator/application/YieldDomainEventProjector';
-import { projectHuntReward } from '@server/hunts/application/HuntRewardProjector';
-import { db } from '@server/lib/drizzle/db';
+} from '@server/cultivator/application/YieldDomainEventProjector.js';
+import { projectHuntReward } from '@server/hunts/application/HuntRewardProjector.js';
+import { db } from '@server/lib/drizzle/db.js';
 import {
   areDomainEventConsumersHealthy,
   startDomainEventConsumer,
   stopDomainEventConsumers,
-} from '@server/lib/mq/domainEventConsumer';
+} from '@server/lib/mq/domainEventConsumer.js';
 import {
   DOMAIN_EVENT_CONSUMERS,
   ensureMessageTopology,
-} from '@server/lib/mq/natsTopology';
+} from '@server/lib/mq/natsTopology.js';
 import {
   startTransactionalMessageRelay,
   stopTransactionalMessageRelay,
-} from '@server/lib/mq/transactionalMessageRelay';
-import { closeNatsConnection, getNatsConnection } from '@server/lib/nats/index';
-import { claimMessageForConsumer } from '@server/lib/repositories/messageConsumptionRepository';
-import { projectMailCreated } from '@server/mail/application/MailDomainEventProjector';
-import { projectSystemMailAudience } from '@server/mail/application/SystemMailService';
-import { executeDomainEvent } from '@server/player/application/state/DomainEventExecutor';
+} from '@server/lib/mq/transactionalMessageRelay.js';
+import { closeNatsConnection, getNatsConnection } from '@server/lib/nats/index.js';
+import { claimMessageForConsumer } from '@server/lib/repositories/messageConsumptionRepository.js';
+import { projectMailCreated } from '@server/mail/application/MailDomainEventProjector.js';
+import { projectSystemMailAudience } from '@server/mail/application/SystemMailService.js';
+import { executeDomainEvent } from '@server/player/application/state/DomainEventExecutor.js';
 import {
   areNatsCoreSubscriptionsHealthy,
   stopNatsCoreSubscriptions,
-} from '@server/realtime/infrastructure/natsCorePubSub';
+} from '@server/realtime/infrastructure/natsCorePubSub.js';
 import {
   isBackgroundCommandConsumerHealthy,
   startBackgroundCommandConsumer,
   stopBackgroundCommandConsumer,
-} from '@server/runtime/messaging/backgroundCommandConsumer';
+} from '@server/runtime/messaging/backgroundCommandConsumer.js';
 import {
   isCombatV6MessagingHealthy,
   startCombatV6Messaging,
   stopCombatV6Messaging,
-} from '@server/runtime/messaging/combatV6Messaging';
-import { projectSectConstructionDonation } from '@server/sects/organization/SectConstructionSettlementService';
-import { projectWorldRumorDomainEvent } from '@server/social/application/WorldRumorDomainEventProjector';
-import { processSponsorshipOrder } from '@server/sponsorship/application/SponsorshipApplicationService';
-import { projectRealmChangedRanking } from '@server/story/application/RealmChangedDomainEventProjector';
-import { projectStoryDomainEvent } from '@server/story/application/StoryDomainEventProjector';
-import { projectTaskDomainEvent } from '@server/tasks/application/TaskDomainEventProjector';
+} from '@server/runtime/messaging/combatV6Messaging.js';
+import { projectSectConstructionDonation } from '@server/sects/organization/SectConstructionSettlementService.js';
+import { projectWorldRumorDomainEvent } from '@server/social/application/WorldRumorDomainEventProjector.js';
+import { processSponsorshipOrder } from '@server/sponsorship/application/SponsorshipApplicationService.js';
+import { projectRealmChangedRanking } from '@server/story/application/RealmChangedDomainEventProjector.js';
+import { projectStoryDomainEvent } from '@server/story/application/StoryDomainEventProjector.js';
+import { projectTaskDomainEvent } from '@server/tasks/application/TaskDomainEventProjector.js';
 
 let registered = false;
 

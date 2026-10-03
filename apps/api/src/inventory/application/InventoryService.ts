@@ -1,4 +1,4 @@
-import { recordJournalItems } from '@server/player/application/JournalSettlement';
+import { recordJournalItems } from '@server/player/application/JournalSettlement.js';
 import type {
   InventoryAction,
   InventoryQuerySchema,
@@ -51,26 +51,26 @@ import {
   type DbClient,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
+} from '@server/lib/drizzle/db.js';
 import {
   cultivatorBeasts,
   cultivatorEquipmentSlots,
   inventoryItems,
-} from '@server/lib/drizzle/schema';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
+} from '@server/lib/drizzle/schema.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
 import {
   beastIndividualData,
   readBeastOwner,
   readBeastRoster,
-} from '@server/lib/repositories/combatV6BeastRepository';
-import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository';
-import { hasActiveCombat } from '@server/combat/application/CombatOccupancy';
-import { inventoryStackKey } from '@server/inventory/application/inventoryStackKey';
-import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
+} from '@server/lib/repositories/combatV6BeastRepository.js';
+import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
+import { hasActiveCombat } from '@server/combat/application/CombatOccupancy.js';
+import { inventoryStackKey } from '@server/inventory/application/inventoryStackKey.js';
+import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster.js';
 import {
   ResourceEventCommitter,
   type ResourceCommitResult,
-} from '@server/player/application/state/ResourceEventCommitter';
+} from '@server/player/application/state/ResourceEventCommitter.js';
 
 export class InventoryError extends Error {}
 export function inventoryItemOf(

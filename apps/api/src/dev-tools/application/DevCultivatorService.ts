@@ -1,4 +1,4 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
 import {
   getOrInitCultivationProgress,
   stripExpCapForStorage,
@@ -12,7 +12,7 @@ import type { CultivatorCondition } from '@daoyou/shared/types/condition';
 import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import type { CultivationProgress } from '@daoyou/shared/types/cultivator';
 import { and, eq } from 'drizzle-orm';
-import { db } from '@server/lib/drizzle/db';
+import { db } from '@server/lib/drizzle/db.js';
 import {
   cultivators,
   preHeavenFates,
@@ -20,34 +20,34 @@ import {
   sectMemberships,
   sectMethodProgress,
   spiritualRoots,
-} from '@server/lib/drizzle/schema';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
+} from '@server/lib/drizzle/schema.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
 import {
   getOrCreateSpiritField,
   updateSpiritField,
-} from '@server/lib/repositories/SpiritFieldRepository';
+} from '@server/lib/repositories/SpiritFieldRepository.js';
 import {
   lockActiveMembership,
   readSectCombatProgress,
-} from '@server/lib/repositories/sectCombatRepository';
-import { updateCultivatorTask } from '@server/lib/repositories/taskRepository';
-import { ConditionService } from '@server/cultivator/application/ConditionService';
+} from '@server/lib/repositories/sectCombatRepository.js';
+import { updateCultivatorTask } from '@server/lib/repositories/taskRepository.js';
+import { ConditionService } from '@server/cultivator/application/ConditionService.js';
 import {
   buildFateEffectEntry,
   getNegativeFateEffects,
   getPositiveFateEffects,
-} from '@server/reshape/application/FateFragmentRegistry';
-import { assertInventoryIdle, InventoryError } from '@server/inventory/operations';
-import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
-import { TaskService } from '@server/tasks/application/TaskService';
-import { readCombatV6ConditionAuthority } from '@server/combat/application/CombatV6ConditionAuthority';
+} from '@server/reshape/application/FateFragmentRegistry.js';
+import { assertInventoryIdle, InventoryError } from '@server/inventory/operations.js';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
+import { TaskService } from '@server/tasks/application/TaskService.js';
+import { readCombatV6ConditionAuthority } from '@server/combat/application/CombatV6ConditionAuthority.js';
 import {
   mapPreHeavenFatesForRuntime,
   mapSpiritualRoots,
   replacePreHeavenFates,
   replaceSpiritualRoots,
-} from '@server/cultivator/application/readers/CultivatorProfileRepository';
-import { getBreakthroughTaskDefinition } from '@server/tasks/application/taskDefinitions';
+} from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
+import { getBreakthroughTaskDefinition } from '@server/tasks/application/taskDefinitions.js';
 
 export async function patchDevCultivator(
   owner: string,

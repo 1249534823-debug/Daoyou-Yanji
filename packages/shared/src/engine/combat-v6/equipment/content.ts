@@ -1,6 +1,6 @@
-import data from './data/equipment-base.json';
-import { loadEquipmentBasePack } from './pack';
-import { DAO_WEAPONS, type DaoWeaponType } from './weapons';
+import data from './data/equipment-base.json' with { type: 'json' };
+import { loadEquipmentBasePack } from './pack.js';
+import { DAO_WEAPONS, type DaoWeaponType } from './weapons.js';
 import type {
   DaoEquipmentTemplateV1,
   DaoFormationInscriptionDefV1,

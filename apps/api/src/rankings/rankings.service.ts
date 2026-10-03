@@ -10,21 +10,21 @@ import type {
   WealthRankingEntry,
 } from '@daoyou/shared/types/rankings';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { cultivators, inventoryItems } from '@server/lib/drizzle/schema';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { cultivators, inventoryItems } from '@server/lib/drizzle/schema.js';
 import {
   getCultivatorRank,
   getRankingList,
   getRemainingChallenges,
-} from '@server/lib/redis/rankings';
+} from '@server/lib/redis/rankings.js';
 import {
   pendingRanking,
   runRankingChallenge,
-} from '@server/combat/application/CombatV6RankingService';
-import { loadCultivatorInspectionData } from '@server/cultivator/application/readers/CultivatorCombatProjectionReader';
-import { readCultivatorRealm } from '@server/cultivator/facts';
+} from '@server/combat/application/CombatV6RankingService.js';
+import { loadCultivatorInspectionData } from '@server/cultivator/application/readers/CultivatorCombatProjectionReader.js';
+import { readCultivatorRealm } from '@server/cultivator/facts.js';
 import { and, desc, eq, inArray, sql } from 'drizzle-orm';
 
 function parseRealm(raw: string | undefined): RealmType | null {

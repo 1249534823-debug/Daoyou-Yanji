@@ -1,19 +1,19 @@
-import { recordJournalChange } from '@server/player/application/JournalSettlement';
-import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db';
-import * as schema from '@server/lib/drizzle/schema';
+import { recordJournalChange } from '@server/player/application/JournalSettlement.js';
+import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db.js';
+import * as schema from '@server/lib/drizzle/schema.js';
 import {
   addArtifactToInventoryInTransaction,
   addConsumableToInventoryInTransaction,
   addMaterialToInventoryInTransaction,
   removeMaterialFromInventoryInTransaction,
-} from '@server/cultivator/application/readers/CultivatorInventoryRepository';
+} from '@server/cultivator/application/readers/CultivatorInventoryRepository.js';
 import {
   updateCultivationExp,
   updateLifespan,
   updateReputation,
   updateSpiritStones,
-} from '@server/cultivator/application/readers/CultivatorStateRepository';
-import { calculateSingleElixirScore } from '@server/utils/rankingUtils';
+} from '@server/cultivator/application/readers/CultivatorStateRepository.js';
+import { calculateSingleElixirScore } from '@server/utils/rankingUtils.js';
 import type {
   ResourceOperation,
   ResourceOperationResult,

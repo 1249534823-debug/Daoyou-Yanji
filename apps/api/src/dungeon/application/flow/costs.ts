@@ -7,13 +7,13 @@ import {
   getExecutor,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
-import { inventoryItems } from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/db.js';
+import { inventoryItems } from '@server/lib/drizzle/schema.js';
 import {
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/operations';
-import { resourceEngine } from '@server/player/application/state/ResourceEngine';
+} from '@server/inventory/operations.js';
+import { resourceEngine } from '@server/player/application/state/ResourceEngine.js';
 
 async function materialPlan(
   owner: string,

@@ -1,7 +1,7 @@
-import { projectCombatV6Condition } from '@server/combat/application/CombatV6ConditionProjector';
-import { CombatV6RuntimeStore } from '@server/combat/application/CombatV6RuntimeStore';
-import { wildTerminal } from '@server/combat/application/CombatV6WildSessionService';
-import { CombatV6WildStore } from '@server/combat/application/CombatV6WildStore';
+import { projectCombatV6Condition } from '@server/combat/application/CombatV6ConditionProjector.js';
+import { CombatV6RuntimeStore } from '@server/combat/application/CombatV6RuntimeStore.js';
+import { wildTerminal } from '@server/combat/application/CombatV6WildSessionService.js';
+import { CombatV6WildStore } from '@server/combat/application/CombatV6WildStore.js';
 
 /** Transfer continues only after the old battle's resource transaction committed. */
 export async function settleWildBeforeMembershipChange(cultivatorId: string) {

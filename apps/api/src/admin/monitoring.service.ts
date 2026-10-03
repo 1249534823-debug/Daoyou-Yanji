@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { getLlmMetricsSnapshot } from '@server/lib/llm/metricsStore';
-import { getOnlineUsersSnapshot } from '@server/realtime/infrastructure/onlinePresenceService';
+import { getLlmMetricsSnapshot } from '@server/lib/llm/metricsStore.js';
+import { getOnlineUsersSnapshot } from '@server/realtime/infrastructure/onlinePresenceService.js';
 
 @Injectable()
 export class MonitoringService {

@@ -1,9 +1,9 @@
 import { formatContentPackErrors } from '@daoyou/shared/lib/content-pack-errors';
 import { z } from 'zod';
-import { ATTR_NAMES, DamageOrigin, EffectType, FormulaFamily, SkillTag, StatusCategory, StatusTick, TargetSide, TickKind, UnitKind } from '../core';
-import { validateSectExpressions } from '../content/authoring-expressions';
-import type { CombatV6TrainingContentV1, PveCombatantDefV1 } from './types';
-import raw from './data/training.json';
+import { ATTR_NAMES, DamageOrigin, EffectType, FormulaFamily, SkillTag, StatusCategory, StatusTick, TargetSide, TickKind, UnitKind } from '../core/index.js';
+import { validateSectExpressions } from '../content/authoring-expressions.js';
+import type { CombatV6TrainingContentV1, PveCombatantDefV1 } from './types.js';
+import raw from './data/training.json' with { type: 'json' };
 
 const id = z.string().regex(/^combat\.training\.[a-z][a-z0-9.-]*$/);
 const text = z.string().min(1).max(200);

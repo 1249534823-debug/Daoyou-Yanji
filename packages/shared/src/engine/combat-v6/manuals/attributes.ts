@@ -1,4 +1,4 @@
-import type { CharacterManualDefV1 } from './types';
+import type { CharacterManualDefV1 } from './types.js';
 
 /** valueAt1 is the complete first-level bonus; growth starts at level two. */
 export function manualAttributeValue(

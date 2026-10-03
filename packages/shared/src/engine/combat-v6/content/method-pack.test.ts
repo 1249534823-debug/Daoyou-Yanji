@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from './data/methods.json';
-import schema from './data/methods.schema.json';
-import { loadSectMethodsPack, SectMethodsPackShape } from './method-pack';
-import { COMBAT_V6_SECT_DEFINITIONS } from './index';
-import { compileSectDefinitionV6 } from './compiler';
-import { createEmptySectCombatProgressV6, createFreshCombatV6MethodLevels } from '../build-state';
+import raw from './data/methods.json' with { type: 'json' };
+import schema from './data/methods.schema.json' with { type: 'json' };
+import { loadSectMethodsPack, SectMethodsPackShape } from './method-pack.js';
+import { COMBAT_V6_SECT_DEFINITIONS } from './index.js';
+import { compileSectDefinitionV6 } from './compiler.js';
+import { createEmptySectCombatProgressV6, createFreshCombatV6MethodLevels } from '../build-state/index.js';
 
 describe('宗门心法配置', () => {
   it('编辑器 Schema 与运行时结构一致', () => {

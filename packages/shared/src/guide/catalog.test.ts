@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getGuideLesson } from './catalog';
+import { getGuideLesson } from './catalog.js';
 
 describe('guide catalog production chains', () => {
   it('keeps the first weapon lesson independent from inventory contents', () => {

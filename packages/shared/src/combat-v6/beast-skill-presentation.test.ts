@@ -3,10 +3,10 @@ import {
   BEAST_ADVANCED_SKILL_IDS,
   BEAST_SKILL_CONTENT,
   BEAST_SUPERIOR_BOOK_SKILL_IDS,
-} from '../engine/combat-v6/beasts/content';
-import skills from '../engine/combat-v6/beasts/data/skills.json';
-import { BeastSkillsPackShape } from '../engine/combat-v6/beasts/pack';
-import { beastSkillPresentation } from './beast-skill-presentation';
+} from '../engine/combat-v6/beasts/content.js';
+import skills from '../engine/combat-v6/beasts/data/skills.json' with { type: 'json' };
+import { BeastSkillsPackShape } from '../engine/combat-v6/beasts/pack.js';
+import { beastSkillPresentation } from './beast-skill-presentation.js';
 it('技能格与传承灵印都读取技能配置的高级标记', () => {
   for (const skill of BEAST_SKILL_CONTENT) {
     const view = beastSkillPresentation(skill.id);

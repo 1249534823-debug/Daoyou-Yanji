@@ -1,9 +1,9 @@
-import type { DbExecutor } from '@server/lib/drizzle/db';
+import type { DbExecutor } from '@server/lib/drizzle/db.js';
 import {
   cultivatorBeastLineups,
   cultivatorBeasts,
   cultivators,
-} from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/schema.js';
 import type { WildSettlement } from '@daoyou/shared/contracts/combatV6Wild';
 import {
   BeastLineupSchema,

@@ -1,4 +1,4 @@
-import { STORY_MARK_FACT_IDS, type StoryFactId } from './schema';
+import { STORY_MARK_FACT_IDS, type StoryFactId } from './schema.js';
 
 export type StorySignal =
   | { type: 'alchemy.craft.completed' }

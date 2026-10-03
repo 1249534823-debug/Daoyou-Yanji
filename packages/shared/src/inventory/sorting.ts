@@ -1,4 +1,4 @@
-import { itemDefinition } from './index';
+import { itemDefinition } from './index.js';
 
 export const INVENTORY_KINDS = [
   ['all', '全部'],

@@ -1,4 +1,4 @@
-import { preGenerateMarket } from '@server/market/application/MarketService';
+import { preGenerateMarket } from '@server/market/application/MarketService.js';
 import {
   getEnabledMarketNodeIds,
   getMarketConfigByNodeId,

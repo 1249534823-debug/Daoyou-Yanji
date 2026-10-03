@@ -1,11 +1,11 @@
-import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db';
-import * as schema from '@server/lib/drizzle/schema';
+import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
+import * as schema from '@server/lib/drizzle/schema.js';
 import {
   redisLockKeys,
   withRedisLock,
   type RedisLeaseContext,
-} from '@server/lib/redis/lock';
-import { consumeConsumableById } from '@server/cultivator/application/readers/CultivatorInventoryRepository';
+} from '@server/lib/redis/lock.js';
+import { consumeConsumableById } from '@server/cultivator/application/readers/CultivatorInventoryRepository.js';
 import {
   ATTRIBUTE_RESET_TALISMAN_NAME,
   ATTRIBUTE_RESET_TALISMAN_SCENARIO,
@@ -14,7 +14,7 @@ import { getRealmStageNaturalAttributeValue } from '@daoyou/shared/config/realmP
 import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import type { Attributes } from '@daoyou/shared/types/cultivator';
 import { eq } from 'drizzle-orm';
-import { findBagTalisman } from '@server/inventory/application/BagConsumables';
+import { findBagTalisman } from '@server/inventory/application/BagConsumables.js';
 
 export class AttributeResetServiceError extends Error {
   constructor(

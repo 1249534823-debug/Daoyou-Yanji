@@ -1,6 +1,6 @@
 # 应用边界与迁移决策
 
-日期：2026-10-03。目标：NestJS 模块化单体、React SPA、内部 shared 源码包。
+日期：2026-10-03。目标：NestJS 模块化单体、React SPA、内部 shared 编译包（tsc 输出 JavaScript 和声明文件）。
 
 ## 依赖与所有权
 

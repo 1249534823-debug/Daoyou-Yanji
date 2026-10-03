@@ -1,7 +1,7 @@
-import type { publishedTowerEncounter } from '../engine/combat-v6/tower/published';
-import type { TowerSeasonMeta } from '../lib/tower/types';
-import type { TowerEnemyPreview } from '../lib/tower/weekly';
-import type { RealmType } from '../types/constants';
+import type { publishedTowerEncounter } from '../engine/combat-v6/tower/published.js';
+import type { TowerSeasonMeta } from '../lib/tower/types.js';
+import type { TowerEnemyPreview } from '../lib/tower/weekly.js';
+import type { RealmType } from '../types/constants.js';
 
 export interface AdminTowerWeekSummary {
   seasonKey: string;

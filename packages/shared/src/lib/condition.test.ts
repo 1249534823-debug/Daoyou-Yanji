@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { projectCharacterDisplay, rebaseCharacterResources } from './cultivatorDisplay';
+import { projectCharacterDisplay, rebaseCharacterResources } from './cultivatorDisplay.js';
 import type {
   ConditionStatusInstance,
   ConditionStatusKey,
@@ -10,7 +10,7 @@ import {
   getNextConditionStatusExpiryMs,
   NATURAL_RECOVERY_CONFIG,
   projectNaturalRecoveryResources,
-} from './condition';
+} from './condition.js';
 
 const BASELINE_AT = '2026-01-01T00:00:00.000Z';
 

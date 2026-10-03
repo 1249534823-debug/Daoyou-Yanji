@@ -6,7 +6,7 @@ import {
   getMarketNodeSwitchOptions,
   getMarketProfileHint,
   resolveMarketSwitchLayer,
-} from './marketConfig';
+} from './marketConfig.js';
 
 describe('marketConfig display helpers', () => {
   it('resolves dominant material types by region weight', () => {

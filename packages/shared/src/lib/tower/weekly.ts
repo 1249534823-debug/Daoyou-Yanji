@@ -1,14 +1,14 @@
-import generation from '../../engine/combat-v6/tower/data/generation.json';
-import { towerStrategyPreview } from '../../engine/combat-v6/tower/strategy';
-import { expandTowerFloor } from '../../engine/combat-v6/tower/strategy-templates';
+import generation from '../../engine/combat-v6/tower/data/generation.json' with { type: 'json' };
+import { towerStrategyPreview } from '../../engine/combat-v6/tower/strategy.js';
+import { expandTowerFloor } from '../../engine/combat-v6/tower/strategy-templates.js';
 import {
   allowedTowerFormations,
   type TowerEnemyRole,
   type TowerFormationId,
   type TowerKeyFormation,
-} from './formations';
-import { hashTowerSeed } from './helpers';
-import type { TowerSeasonMeta } from './types';
+} from './formations.js';
+import { hashTowerSeed } from './helpers.js';
+import type { TowerSeasonMeta } from './types.js';
 
 export const TOWER_CONTENT_VERSION = 'combat-v6-tower-v8' as const;
 export const TOWER_KEY_FLOORS = [5, 10, 15, 20] as const;

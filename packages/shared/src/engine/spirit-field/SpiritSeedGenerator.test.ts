@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { SpiritSeedGenerator } from './SpiritSeedGenerator';
+import { SpiritSeedGenerator } from './SpiritSeedGenerator.js';
 
 describe('SpiritSeedGenerator skeleton', () => {
   it('uses a seed-domain skeleton instead of MaterialSkeleton', () => {

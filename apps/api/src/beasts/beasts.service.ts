@@ -6,9 +6,9 @@ import type {
   BeastRestSchema,
 } from '@daoyou/shared/contracts/combatV6Beasts';
 import { Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { readBeastRoster } from '@server/lib/repositories/combatV6BeastRepository';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { readBeastRoster } from '@server/lib/repositories/combatV6BeastRepository.js';
 import {
   allocateBeastPoints,
   claimStarterBeast,
@@ -18,7 +18,7 @@ import {
   renameBeast,
   restBeast,
   updateBeastLineup,
-} from '@server/combat/application/CombatV6BeastService';
+} from '@server/combat/application/CombatV6BeastService.js';
 import type { z } from 'zod';
 
 @Injectable()

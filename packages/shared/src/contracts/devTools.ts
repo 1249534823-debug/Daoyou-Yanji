@@ -1,13 +1,13 @@
 import { z } from 'zod';
-import { COMPREHENSION_INSIGHT_CAP } from '../config/cultivationTuning';
-import { SECT_DISCIPLE_RANKS } from '../engine/sect/core/domain/organization';
-import { SPIRITUAL_ROOT_EFFECTIVE_STRENGTH_CAP } from '../lib/marrowWash';
+import { COMPREHENSION_INSIGHT_CAP } from '../config/cultivationTuning.js';
+import { SECT_DISCIPLE_RANKS } from '../engine/sect/core/domain/organization.js';
+import { SPIRITUAL_ROOT_EFFECTIVE_STRENGTH_CAP } from '../lib/marrowWash.js';
 import {
   ELEMENT_VALUES,
   QUALITY_VALUES,
   REALM_STAGE_VALUES,
   REALM_VALUES,
-} from '../types/constants';
+} from '../types/constants.js';
 
 const attribute = z.number().int().min(1).max(10000);
 export const DevCultivatorPatchSchema = z

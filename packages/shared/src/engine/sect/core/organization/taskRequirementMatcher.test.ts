@@ -5,7 +5,7 @@ import {
   matchSectMaterialDeliverySelection,
   projectSectPillTraits,
   type SectMaterialSubmissionFacts,
-} from './taskRequirementMatcher';
+} from './taskRequirementMatcher.js';
 
 describe('sect delivery requirement matcher', () => {
   it('matches pill operations projected as stable traits', () => {

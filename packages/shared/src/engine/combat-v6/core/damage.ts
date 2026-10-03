@@ -2,8 +2,8 @@
  * 单次打击：命中 → 公式 → 必杀/波动/防御 → 扣血。
  * 修炼、师门项、分灵都在 rules.baseDamage 里算，这里只把 skillLevel / 人数传过去。
  */
-import { combatModifiers, modifierValue, isReviveBlocked } from './modifiers';
-import { evalExpr } from './expr';
+import { combatModifiers, modifierValue, isReviveBlocked } from './modifiers.js';
+import { evalExpr } from './expr.js';
 import { skillOf, passiveSkills } from "./skills.ts"
 import { MIN_DAMAGE, MIN_HP } from "./constants.ts"
 import { absorbBarriers } from "./barriers.ts"

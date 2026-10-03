@@ -1,8 +1,8 @@
-import { createAndPublishWorldChatMessage } from '@server/social/application/chatDelivery';
-import { redis } from '@server/lib/redis';
-import { withRedisLock } from '@server/lib/redis/lock';
+import { createAndPublishWorldChatMessage } from '@server/social/application/chatDelivery.js';
+import { redis } from '@server/lib/redis/index.js';
+import { withRedisLock } from '@server/lib/redis/lock.js';
 import { HUNT_BOSSES, huntEventsAt } from '@daoyou/shared/hunts/config';
-import { cleanupHuntTeams } from '@server/hunts/application/HuntTeamService';
+import { cleanupHuntTeams } from '@server/hunts/application/HuntTeamService.js';
 export async function refreshHuntWorld() {
   await withRedisLock(
     {

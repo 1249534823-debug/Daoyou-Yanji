@@ -1,4 +1,4 @@
-import { hasActiveCombat } from '@server/combat/application/CombatOccupancy';
+import { hasActiveCombat } from '@server/combat/application/CombatOccupancy.js';
 
 const sensitive =
   /^(consumable_use|inn_recovery|body_cultivation|marrow_wash|fate_reshape|active_reincarnate|profile_attribute|task_challenge|tower_battle|retreat_|ranking_challenge|product_equip|artifact_equip|sect[._-]|dungeon|spirit_field)/;

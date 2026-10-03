@@ -5,7 +5,7 @@ import {
   listSectShopItems,
   SectShopError,
   updateSectShopItem,
-} from '@server/sects/application/SectShopService';
+} from '@server/sects/application/SectShopService.js';
 import {
   SectShopItemMutationSchema,
   SectShopListQuerySchema,

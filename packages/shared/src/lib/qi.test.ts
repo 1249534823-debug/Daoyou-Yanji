@@ -3,7 +3,7 @@ import {
   QI_NATURAL_RESTORE_INTERVAL_MS,
   QI_OVERFLOW_MAX,
 } from '@daoyou/shared/config/qiSystem';
-import { projectNaturalQiState } from './qi';
+import { projectNaturalQiState } from './qi.js';
 
 const BASE_MS = Date.parse('2026-07-30T00:00:00.000Z');
 

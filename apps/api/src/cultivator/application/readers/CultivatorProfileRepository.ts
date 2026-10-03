@@ -2,7 +2,7 @@ import {
   findActiveCultivatorIdByUserId,
   hasCultivatorOwnership,
   hasDeadCultivatorByUserId,
-} from '@server/lib/repositories/cultivatorRepository';
+} from '@server/lib/repositories/cultivatorRepository.js';
 import type { PlayerIdentityCultivator } from '@daoyou/shared/contracts/player';
 import {
   clampSpiritualRootEffectiveStrength,
@@ -24,13 +24,13 @@ import {
   runDbTasks,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
-import * as schema from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/db.js';
+import * as schema from '@server/lib/drizzle/schema.js';
 import { openingStoryProgress } from '@daoyou/shared/story/catalog';
-import { insertCultivatorStory } from '@server/lib/repositories/storyRepository';
-import { ConditionService } from '@server/cultivator/application/ConditionService';
-import { FateEngine } from '@server/reshape/application/FateEngine';
-import { assertCultivatorOwnership } from '@server/cultivator/application/readers/CultivatorStateRepository';
+import { insertCultivatorStory } from '@server/lib/repositories/storyRepository.js';
+import { ConditionService } from '@server/cultivator/application/ConditionService.js';
+import { FateEngine } from '@server/reshape/application/FateEngine.js';
+import { assertCultivatorOwnership } from '@server/cultivator/application/readers/CultivatorStateRepository.js';
 
 export function mapSpiritualRoots(
   roots: Array<typeof schema.spiritualRoots.$inferSelect>,

@@ -4,7 +4,7 @@ import {
   IDENTITY_RESHAPE_QUESTIONS,
   selectIdentityReshapeQuestions,
   validateIdentityReshapeAnswers,
-} from './identityReshape';
+} from './identityReshape.js';
 
 describe('identity reshape question bank', () => {
   it('uses unique question and option ids with complete content', () => {

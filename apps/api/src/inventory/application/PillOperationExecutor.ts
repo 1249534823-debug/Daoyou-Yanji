@@ -62,7 +62,7 @@ import type {
   CultivationProgress,
   Cultivator,
 } from '@daoyou/shared/types/cultivator';
-import { ConditionService } from '@server/cultivator/application/ConditionService';
+import { ConditionService } from '@server/cultivator/application/ConditionService.js';
 
 const EXECUTION_ORDER: ConditionOperation['type'][] = [
   'restore_resource',

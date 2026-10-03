@@ -1,15 +1,15 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
 import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import { eq } from 'drizzle-orm';
-import { SectError } from '@server/sects/application/SectError';
-import { StoryService } from '@server/story/application/StoryService';
-import { sectOrganizationFacade } from '@server/sects/organization';
-import { createPostgresSectMembershipCommandContext } from '@server/sects/organization/PostgresSectOrganizationAdapters';
+import { SectError } from '@server/sects/application/SectError.js';
+import { StoryService } from '@server/story/application/StoryService.js';
+import { sectOrganizationFacade } from '@server/sects/organization/index.js';
+import { createPostgresSectMembershipCommandContext } from '@server/sects/organization/PostgresSectOrganizationAdapters.js';
 import {
   executeSectPlayerCommand,
   type SectCommandArgs,
-} from '@server/sects/organization/commandSupport';
+} from '@server/sects/organization/commandSupport.js';
 
 export function executeSectPromotionCommand(args: SectCommandArgs) {
   return executeSectPlayerCommand(args, async (tx) => {

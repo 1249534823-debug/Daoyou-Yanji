@@ -1,16 +1,16 @@
-import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db';
+import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db.js';
 import {
   cultivatorEquipmentSlots,
   inventoryItems,
-} from '@server/lib/drizzle/schema';
-import { createPostgresDomainEventWriter } from '@server/lib/mq/domainEventWriter';
-import * as organization from '@server/lib/repositories/sectOrganizationRepository';
-import * as memberships from '@server/lib/repositories/sectRepository';
+} from '@server/lib/drizzle/schema.js';
+import { createPostgresDomainEventWriter } from '@server/lib/mq/domainEventWriter.js';
+import * as organization from '@server/lib/repositories/sectOrganizationRepository.js';
+import * as memberships from '@server/lib/repositories/sectRepository.js';
 import {
   materialLibraryEntryToMaterial,
   sampleMaterialLibraryEntryDeterministic,
-} from '@server/admin/application/MaterialLibraryService';
-import { updateCultivationExp } from '@server/cultivator/application/readers/CultivatorStateRepository';
+} from '@server/admin/application/MaterialLibraryService.js';
+import { updateCultivationExp } from '@server/cultivator/application/readers/CultivatorStateRepository.js';
 import {
   SectTaskRecordPayloadSchema,
   projectSectPillTraits,
@@ -30,14 +30,14 @@ import {
   grantInventory,
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/operations';
-import { SectError } from '@server/sects/application/SectError';
+} from '@server/inventory/operations.js';
+import { SectError } from '@server/sects/application/SectError.js';
 import {
   freezeSectTaskTarget,
   startSectTaskBattle,
-} from '@server/combat/application/CombatV6SectTaskAdmission';
-import { emptySectCommandEffects } from '@server/sects/organization/SectCommandEffects';
-import { getSectDateKey, getSectWeekKey } from '@server/sects/organization/SectOrganizationClock';
+} from '@server/combat/application/CombatV6SectTaskAdmission.js';
+import { emptySectCommandEffects } from '@server/sects/organization/SectCommandEffects.js';
+import { getSectDateKey, getSectWeekKey } from '@server/sects/organization/SectOrganizationClock.js';
 import type {
   Clock,
   IdGenerator,
@@ -61,7 +61,7 @@ import type {
   SectQueryContext,
   SectRewardGateway,
   SectTaskRecord,
-} from '@server/sects/organization/ports';
+} from '@server/sects/organization/ports.js';
 
 function mapTask(row: {
   id: string;

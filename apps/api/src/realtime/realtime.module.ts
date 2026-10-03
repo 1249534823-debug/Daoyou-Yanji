@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from '@server/database/database.module';
-import { AuthModule } from '../auth/auth.module';
-import { RealtimeController } from './realtime.controller';
-import { RealtimeGateway } from './realtime.gateway';
-import { RealtimeService } from './realtime.service';
+import { DatabaseModule } from '@server/database/database.module.js';
+import { AuthModule } from '../auth/auth.module.js';
+import { RealtimeController } from './realtime.controller.js';
+import { RealtimeGateway } from './realtime.gateway.js';
+import { RealtimeService } from './realtime.service.js';
 
 @Module({
   imports: [DatabaseModule, AuthModule],

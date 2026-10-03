@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { DivinationController } from './divination.controller';
-import { DivinationService } from './divination.service';
-import { DivineFortuneController } from './divine-fortune.controller';
-import { DivineFortuneService } from './divine-fortune.service';
+import { DivinationController } from './divination.controller.js';
+import { DivinationService } from './divination.service.js';
+import { DivineFortuneController } from './divine-fortune.controller.js';
+import { DivineFortuneService } from './divine-fortune.service.js';
 
 @Module({
   controllers: [DivinationController, DivineFortuneController],

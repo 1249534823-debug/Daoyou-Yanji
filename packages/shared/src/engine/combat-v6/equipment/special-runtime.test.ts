@@ -9,18 +9,18 @@ import {
   createBattle,
   type SkillDef,
   type StatusDef,
-} from '../core';
-import { createDaoyouRuleset } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_4B_VERSIONS } from '../version';
-import { compileDaoEquipmentSpecialLoadoutV1 } from './compiler';
-import { generateDaoEquipmentV2 } from './generator';
+} from '../core/index.js';
+import { createDaoyouRuleset } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_4B_VERSIONS } from '../version.js';
+import { compileDaoEquipmentSpecialLoadoutV1 } from './compiler.js';
+import { generateDaoEquipmentV2 } from './generator.js';
 import {
   DAO_EQUIPMENT_ARTS_V1,
   DAO_EQUIPMENT_ESSENCES_V1,
   DAO_RAGE_RESOURCE_ID,
   createDaoRageGainPassive,
-} from './special-content';
-import type { DaoEquipmentArtDefV1, DaoEquipmentSlot } from './types';
+} from './special-content.js';
+import type { DaoEquipmentArtDefV1, DaoEquipmentSlot } from './types.js';
 
 const ruleset = createDaoyouRuleset({
   formulas: {

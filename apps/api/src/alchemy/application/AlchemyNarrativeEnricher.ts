@@ -1,6 +1,6 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
-import { renderPrompt } from '@server/lib/prompts';
-import { generateAiObject } from '@server/utils/aiClient';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
+import { renderPrompt } from '@server/lib/prompts/index.js';
+import { generateAiObject } from '@server/utils/aiClient.js';
 import { formatAlchemyPropertyVector } from '@daoyou/shared/lib/alchemyProperties';
 import type { ElementType, Quality } from '@daoyou/shared/types/constants';
 import type {

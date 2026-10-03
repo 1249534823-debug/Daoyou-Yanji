@@ -35,7 +35,7 @@ export interface CharacterManualDefV1 {
   name: string;
   description: string;
   progressionId: string;
-  mechanism: import('./pack').ManualMechanism;
+  mechanism: import('./pack.js').ManualMechanism;
   effects: Array<{
     attribute: keyof import('@daoyou/shared/types/cultivator').Attributes;
     valueAt1: number;

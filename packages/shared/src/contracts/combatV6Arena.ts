@@ -8,11 +8,11 @@ import type {
   StatusDef,
 } from '@daoyou/shared/engine/combat-v6/core';
 import { z } from 'zod';
-import type { HuntEvent } from '../hunts/config';
-import type { HuntRewardSnapshot } from '../rewards/hunt';
-import type { CombatV6TrainingSessionViewV1 } from './combatV6';
-import { CombatV6CommandGroupSchema } from './combatV6';
-import type { CombatV6ReplayTimeline } from './combatV6Replay';
+import type { HuntEvent } from '../hunts/config.js';
+import type { HuntRewardSnapshot } from '../rewards/hunt.js';
+import type { CombatV6TrainingSessionViewV1 } from './combatV6.js';
+import { CombatV6CommandGroupSchema } from './combatV6.js';
+import type { CombatV6ReplayTimeline } from './combatV6Replay.js';
 
 export const ARENA_V6_PROTOCOL = 'combat_v6_arena_v1' as const;
 export const ARENA_PUBLIC_VIEW = '__spectator__';

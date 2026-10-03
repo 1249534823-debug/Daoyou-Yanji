@@ -1,7 +1,7 @@
 /**
  * 效果原语派发。新增效果 = 注册一个 handler，不要在 applyEffect 里继续堆 if。
  */
-import { combatModifiers, modifierValue, sealHitTakenFactor } from './modifiers';
+import { combatModifiers, modifierValue, sealHitTakenFactor } from './modifiers.js';
 import { DEFAULT_HITS } from "./constants.ts"
 import type { BattleContext } from "./context.ts"
 import { applyBarrier } from "./barriers.ts"

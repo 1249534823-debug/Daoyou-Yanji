@@ -1,17 +1,17 @@
-import { findJournalMutationRequest } from './playerJournalRepository';
+import { findJournalMutationRequest } from './playerJournalRepository.js';
 import {
   getExecutor,
   runDbTasks,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
+} from '@server/lib/drizzle/db.js';
 import {
   cultivators,
   playerMutationRequests,
   resourceEvents,
   resourceScopes,
   resourceVersions,
-} from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/schema.js';
 import {
   RESOURCE_TOPICS,
   ResourceChangeSchema,

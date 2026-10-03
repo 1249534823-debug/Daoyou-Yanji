@@ -1,7 +1,7 @@
 import { Controller, Get, Inject } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { Access, CurrentCultivator } from '../auth/access';
-import { CombatActivityService } from './combat-activity.service';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { CombatActivityService } from './combat-activity.service.js';
 
 @Controller('api/combat-v6/activity')
 @Access('active')

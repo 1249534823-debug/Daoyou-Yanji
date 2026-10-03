@@ -1,4 +1,4 @@
-import type { PlayerRaceId } from './definitions';
+import type { PlayerRaceId } from './definitions.js';
 
 export interface SectAdmissionContext {
   playerRace: PlayerRaceId;

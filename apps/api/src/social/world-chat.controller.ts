@@ -12,16 +12,16 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { ChatMessageApplicationError } from '@server/social/application/chatMessageApplication';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { ChatMessageApplicationError } from '@server/social/application/chatMessageApplication.js';
 import { ZodError } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { RejectRetiredBattleSharePipe } from '../http/chat-input.pipe';
-import { apiErrorFilter } from '../http/error-filter';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { WorldChatService } from './world-chat.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { RejectRetiredBattleSharePipe } from '../http/chat-input.pipe.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { WorldChatService } from './world-chat.service.js';
 
 const SendErrors = apiErrorFilter((error) => {
   if (error instanceof ZodError) return undefined;

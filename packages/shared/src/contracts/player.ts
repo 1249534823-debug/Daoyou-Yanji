@@ -1,12 +1,12 @@
 import type { ApiSuccess } from '@daoyou/shared/contracts/http';
 import type { CultivationProgress, Cultivator } from '@daoyou/shared/types/cultivator';
 import type { QiProjectionBaseline } from '@daoyou/shared/types/qi';
-import type { SectCombatView } from './combatV6';
+import type { SectCombatView } from './combatV6.js';
 import type {
   ResourceChange,
   ResourceReadMeta,
   ResourceScope,
-} from './resources';
+} from './resources/index.js';
 
 export type CultivatorInspectionData = Pick<
   Cultivator,

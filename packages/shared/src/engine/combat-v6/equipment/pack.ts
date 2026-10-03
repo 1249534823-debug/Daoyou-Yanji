@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { DAO_EQUIPMENT_SLOTS } from './types';
+import { DAO_EQUIPMENT_SLOTS } from './types.js';
 
 const panelAttribute = z.enum([
   'physicalAtk',

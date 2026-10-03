@@ -1,6 +1,6 @@
 import { and, desc, eq, ilike, sql, type SQL } from 'drizzle-orm';
-import { getExecutor } from '../drizzle/db';
-import * as schema from '../drizzle/schema';
+import { getExecutor } from '../drizzle/db.js';
+import * as schema from '../drizzle/schema.js';
 
 /**
  * 反馈类型

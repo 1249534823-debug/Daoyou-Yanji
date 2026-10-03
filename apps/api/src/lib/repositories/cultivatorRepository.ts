@@ -1,5 +1,5 @@
-import { getExecutor, type DbExecutor } from '@server/lib/drizzle/db';
-import * as schema from '@server/lib/drizzle/schema';
+import { getExecutor, type DbExecutor } from '@server/lib/drizzle/db.js';
+import * as schema from '@server/lib/drizzle/schema.js';
 import { and, eq, sql } from 'drizzle-orm';
 
 export interface CultivatorBreakthroughPillRecord {

@@ -1,6 +1,6 @@
 import { PRODUCTION_SECT_IDS } from '@daoyou/shared/engine/sect/content';
 import { describe, expect, it } from 'vitest';
-import type { DungeonDifficultyTier, MapNodeInfo } from './mapSystem';
+import type { DungeonDifficultyTier, MapNodeInfo } from './mapSystem.js';
 import {
   canChallengeDungeonRealm,
   clampDungeonEnemyRealmStage,
@@ -13,7 +13,7 @@ import {
   getSectLandmarkBySectId,
   resolveDungeonEnemyDifficulty,
   resolveDungeonMapConfig,
-} from './mapSystem';
+} from './mapSystem.js';
 
 function createNode(difficulty?: DungeonDifficultyTier): MapNodeInfo {
   return {

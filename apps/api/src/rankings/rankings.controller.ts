@@ -7,23 +7,23 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   RankingChallengeSchema,
   type RankingChallengeRequest,
 } from '@daoyou/shared/contracts/combatV6Ranking';
-import { Access, CurrentCultivator } from '../auth/access';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
 import {
   ItemRankingErrors,
   RankingChallengeErrors,
   RankingListErrors,
   RankingProbeErrors,
   WealthRankingErrors,
-} from './rankings-errors';
-import { RankingsService } from './rankings.service';
+} from './rankings-errors.js';
+import { RankingsService } from './rankings.service.js';
 
 // Hono's named query reads return the first value for repeated parameters.
 function first(value: string | string[] | undefined) {

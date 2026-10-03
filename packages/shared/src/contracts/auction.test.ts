@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { AUCTION_MAX_UNIT_PRICE } from '../config/auctionConfig';
-import { buildSpiritFruitSpec } from '../engine/spirit-field/spiritFruit';
-import { ITEM_DEFINITIONS } from '../items/registry';
+import { AUCTION_MAX_UNIT_PRICE } from '../config/auctionConfig.js';
+import { buildSpiritFruitSpec } from '../engine/spirit-field/spiritFruit.js';
+import { ITEM_DEFINITIONS } from '../items/registry.js';
 import {
   auctionBlockReason,
   AuctionBuySchema,
@@ -9,7 +9,7 @@ import {
   auctionItemQuality,
   AuctionListSchema,
   AuctionSnapshotSchema,
-} from './auction';
+} from './auction.js';
 
 describe('新版寄售规则', () => {
   it('所有无品质品类开放寄售，不合成品质或按旧品质限价', () => {

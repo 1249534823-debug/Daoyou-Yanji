@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { EnlightenmentRequestSchema } from '../contracts/enlightenment';
-import { CHARACTER_MANUALS_V1 } from '../engine/combat-v6/manuals/content';
-import { type InventoryItem } from '../inventory';
-import { inventoryStackIdentity } from '../inventory/stack-key';
+import { EnlightenmentRequestSchema } from '../contracts/enlightenment.js';
+import { CHARACTER_MANUALS_V1 } from '../engine/combat-v6/manuals/content.js';
+import { type InventoryItem } from '../inventory/index.js';
+import { inventoryStackIdentity } from '../inventory/stack-key.js';
 import {
   ENLIGHTENMENT_QUALITIES,
   enlightenmentDistribution,
@@ -10,7 +10,7 @@ import {
   prepareEnlightenment,
   previewEnlightenment,
   rollEnlightenment,
-} from './enlightenment';
+} from './enlightenment.js';
 
 const item = (quantity = 4): InventoryItem => ({
   id: 'book',

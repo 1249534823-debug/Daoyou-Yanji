@@ -1,5 +1,5 @@
-import type { SectMapHotspot, SectPresentationTheme } from '../../core';
-import { TIANYAN_SECT_ID } from './ids';
+import type { SectMapHotspot, SectPresentationTheme } from '../../core/index.js';
+import { TIANYAN_SECT_ID } from './ids.js';
 
 const hotspot = (
   id: string,

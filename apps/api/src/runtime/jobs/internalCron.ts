@@ -1,38 +1,38 @@
-import { db, getExecutor } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { redis } from '@server/lib/redis/index';
+import { db, getExecutor } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import { redis } from '@server/lib/redis/index.js';
 import {
   isRedisLockContention,
   redisLockKeys,
   withRedisLock,
-} from '@server/lib/redis/lock';
-import { getTopRankingCultivatorIds } from '@server/lib/redis/rankings';
-import { getItemLibraryDailyMaterialGenerationSettings } from '@server/lib/repositories/appSettingsRepository';
-import { pruneMessageConsumptions } from '@server/lib/repositories/messageConsumptionRepository';
+} from '@server/lib/redis/lock.js';
+import { getTopRankingCultivatorIds } from '@server/lib/redis/rankings.js';
+import { getItemLibraryDailyMaterialGenerationSettings } from '@server/lib/repositories/appSettingsRepository.js';
+import { pruneMessageConsumptions } from '@server/lib/repositories/messageConsumptionRepository.js';
 import {
   prunePlayerMutationRequestsOlderThan,
   pruneResourceEventsOlderThan,
-} from '@server/lib/repositories/playerStateRepository';
+} from '@server/lib/repositories/playerStateRepository.js';
 import {
   pruneExpiredData,
   type ExpiredDataCleanupResult,
-} from '@server/lib/repositories/retentionRepository';
-import { prunePublishedTransactionalMessages } from '@server/lib/repositories/transactionalMessageRepository';
-import { expireListings } from '@server/auction/application/AuctionService';
-import type { MailAttachment } from '@server/mail/application/MailService';
-import { runMarketRefreshJob } from '@server/market/application/MarketScheduler';
+} from '@server/lib/repositories/retentionRepository.js';
+import { prunePublishedTransactionalMessages } from '@server/lib/repositories/transactionalMessageRepository.js';
+import { expireListings } from '@server/auction/application/AuctionService.js';
+import type { MailAttachment } from '@server/mail/application/MailService.js';
+import { runMarketRefreshJob } from '@server/market/application/MarketScheduler.js';
 import {
   generateDailyMarketMaterialLibraryEntries,
   ITEM_LIBRARY_SYSTEM_USER_ID,
-} from '@server/admin/application/MaterialLibraryService';
-import { sendWeeklyRankingRewardCommand } from '@server/rankings/application/RankingApplicationService';
+} from '@server/admin/application/MaterialLibraryService.js';
+import { sendWeeklyRankingRewardCommand } from '@server/rankings/application/RankingApplicationService.js';
 import {
   cleanupSponsorshipSensitiveData,
   reconcileAfdianOrders,
   retryPendingSponsorshipWork,
   sendSponsorshipAdminDigest,
-} from '@server/sponsorship/application/SponsorshipApplicationService';
-import { getSponsorshipProvider } from '@server/lib/sponsorship/providerRegistry';
+} from '@server/sponsorship/application/SponsorshipApplicationService.js';
+import { getSponsorshipProvider } from '@server/lib/sponsorship/providerRegistry.js';
 import { RANKING_REWARDS, REALM_VALUES } from '@daoyou/shared/types/constants';
 import { eq } from 'drizzle-orm';
 

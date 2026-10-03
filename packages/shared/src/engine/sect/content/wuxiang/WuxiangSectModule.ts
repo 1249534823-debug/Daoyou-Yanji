@@ -1,6 +1,6 @@
-import { StandardSectModule } from '../../core';
-import { WUXIANG_DEFINITION } from './definition';
-import { WUXIANG_ORGANIZATION_THEME } from './organization';
+import { StandardSectModule } from '../../core/index.js';
+import { WUXIANG_DEFINITION } from './definition.js';
+import { WUXIANG_ORGANIZATION_THEME } from './organization.js';
 
 export class WuxiangSectModule extends StandardSectModule {
   constructor() {

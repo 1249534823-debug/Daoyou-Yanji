@@ -1,14 +1,14 @@
-import { BEAST_REFINEMENT } from '../engine/combat-v6/beasts/refinement-config';
-import { BOOKS } from './definitions/beast-books';
-import { BEAST_REJUVENATION } from './definitions/beast-rejuvenation';
-import { CONSUMABLE_ITEM } from './definitions/consumables';
-import { EQUIPMENT_ITEM } from './definitions/equipment';
-import { BLUEPRINTS } from './definitions/equipment-blueprints';
-import { MANUAL_JADES } from './definitions/manual-jades';
-import { MATERIAL_ITEM } from './definitions/materials';
-import { INSCRIPTION_ITEMS } from './definitions/inscriptions';
-import { SEED_ITEM } from './definitions/seeds';
-import type { ItemDefinition } from './types';
+import { BEAST_REFINEMENT } from '../engine/combat-v6/beasts/refinement-config.js';
+import { BOOKS } from './definitions/beast-books.js';
+import { BEAST_REJUVENATION } from './definitions/beast-rejuvenation.js';
+import { CONSUMABLE_ITEM } from './definitions/consumables.js';
+import { EQUIPMENT_ITEM } from './definitions/equipment.js';
+import { BLUEPRINTS } from './definitions/equipment-blueprints.js';
+import { MANUAL_JADES } from './definitions/manual-jades.js';
+import { MATERIAL_ITEM } from './definitions/materials.js';
+import { INSCRIPTION_ITEMS } from './definitions/inscriptions.js';
+import { SEED_ITEM } from './definitions/seeds.js';
+import type { ItemDefinition } from './types.js';
 export const ITEM_DEFINITIONS: readonly ItemDefinition[] = [
   ...BOOKS,
   ...BEAST_REFINEMENT.items.map((item) => ({

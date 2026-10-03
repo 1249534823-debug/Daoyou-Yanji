@@ -1,6 +1,6 @@
-import { JIUJIE_COMBAT } from "./jiujie-pack";
-import { JIUJIE_PATHS } from "./jiujie-path-pack";
-import { SECT_METHODS } from "./method-pack";
+import { JIUJIE_COMBAT } from "./jiujie-pack.js";
+import { JIUJIE_PATHS } from "./jiujie-path-pack.js";
+import { SECT_METHODS } from "./method-pack.js";
 import { StatusCategory } from "../core/index.ts"
 import type { CombatV6ProjectionDiagnostic } from "../projection/types.ts"
 import type { SectDefinitionV6 } from "./types.ts"

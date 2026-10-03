@@ -3,11 +3,11 @@ import { z } from 'zod';
 import {
   equipmentRealm,
   isOpenEquipmentLevel,
-} from '../engine/combat-v6/equipment/realm';
-import { combatCharacterLevel } from '../engine/combat-v6/projection/character-level';
-import { findItemDefinition } from '../items/registry';
-import { TOWER_MIN_REALM } from '../lib/tower/helpers';
-import raw from './data/tower.json';
+} from '../engine/combat-v6/equipment/realm.js';
+import { combatCharacterLevel } from '../engine/combat-v6/projection/character-level.js';
+import { findItemDefinition } from '../items/registry.js';
+import { TOWER_MIN_REALM } from '../lib/tower/helpers.js';
+import raw from './data/tower.json' with { type: 'json' };
 
 const integer = z.number().int().min(0).max(1000000);
 const drop = z.strictObject({

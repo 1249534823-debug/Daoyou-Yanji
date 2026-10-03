@@ -1,16 +1,16 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   getBodyCultivationBreakthroughPreviewData,
   loadPlayerBodyCultivationFacts,
-} from '@server/cultivator/application/BodyCultivationBreakthroughService';
+} from '@server/cultivator/application/BodyCultivationBreakthroughService.js';
 import {
   breakthroughBodyCultivation,
   breakthroughCultivatorMarrowWash,
   consumeCultivatorConsumable,
   recoverCultivatorAtInn,
-} from '@server/cultivator/application/CultivatorConditionApplicationService';
-import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
+} from '@server/cultivator/application/CultivatorConditionApplicationService.js';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
 import type { BodyCultivationBreakthroughReadinessResponse } from '@daoyou/shared/contracts/bodyCultivation';
 
 @Injectable()

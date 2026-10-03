@@ -1,6 +1,6 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
-import { afdianSponsorshipProvider } from './afdianProvider';
-import type { SponsorshipProvider } from './types';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
+import { afdianSponsorshipProvider } from './afdianProvider.js';
+import type { SponsorshipProvider } from './types.js';
 
 export function getSponsorshipProvider(): SponsorshipProvider | null {
   const provider = getRuntimeEnvironment().SPONSORSHIP_PROVIDER?.trim() || 'disabled';

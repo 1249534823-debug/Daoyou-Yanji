@@ -1,16 +1,16 @@
-import { SpiritSeedGenerator } from '@server/lib/generation/SpiritSeedGenerator';
-import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db';
+import { SpiritSeedGenerator } from '@server/lib/generation/SpiritSeedGenerator.js';
+import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
 import {
   cultivators,
   playerMutationRequests,
-} from '@server/lib/drizzle/schema';
-import { redis } from '@server/lib/redis';
-import { parseRedisJson } from '@server/lib/redis/json';
+} from '@server/lib/drizzle/schema.js';
+import { redis } from '@server/lib/redis/index.js';
+import { parseRedisJson } from '@server/lib/redis/json.js';
 import {
   isRedisLockContention,
   redisLockKeys,
   withRedisLock,
-} from '@server/lib/redis/lock';
+} from '@server/lib/redis/lock.js';
 import type { MarketPurchaseResult } from '@daoyou/shared/contracts/market';
 import {
   BASE_PRICES,
@@ -62,17 +62,17 @@ import type {
 import { MARKET_PRESET_FALLBACK_LAYERS } from '@daoyou/shared/types/market';
 import { and, eq, inArray, sql } from 'drizzle-orm';
 import { createHash } from 'node:crypto';
-import { grantInventory } from '@server/inventory/operations';
-import { deliverMarketMaterial } from '@server/market/application/MarketInventoryDelivery';
+import { grantInventory } from '@server/inventory/operations.js';
+import { deliverMarketMaterial } from '@server/market/application/MarketInventoryDelivery.js';
 import {
   sanitizeMaterialDetails,
   type HiddenMysteryReveal,
-} from '@server/inventory/material-privacy';
+} from '@server/inventory/material-privacy.js';
 import {
   materialLibraryEntryToMaterial,
   sampleMaterialLibraryEntries,
   type MaterialLibrarySampleRequest,
-} from '@server/admin/application/MaterialLibraryService';
+} from '@server/admin/application/MaterialLibraryService.js';
 
 // ─── Redis 键前缀 ───
 

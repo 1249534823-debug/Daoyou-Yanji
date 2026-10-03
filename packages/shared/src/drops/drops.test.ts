@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DropPoolSchema, rollDrops } from './index';
+import { DropPoolSchema, rollDrops } from './index.js';
 const pool = DropPoolSchema.parse({
   id: 'any-business',
   version: 1,

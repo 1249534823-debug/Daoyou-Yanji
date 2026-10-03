@@ -1,4 +1,4 @@
-import type { TowerSeasonMeta } from './types';
+import type { TowerSeasonMeta } from './types.js';
 
 const SHANGHAI_OFFSET_MS = 8 * 60 * 60 * 1000;
 const WEEK_MS = 7 * 24 * 60 * 60 * 1000;

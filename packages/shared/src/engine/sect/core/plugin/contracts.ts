@@ -2,8 +2,8 @@ import type {
   SectAdmissionContext,
   SectAdmissionResult,
   SectDefinition,
-} from '../domain';
-import type { SectOrganizationModule } from '../organization';
+} from '../domain/index.js';
+import type { SectOrganizationModule } from '../organization/index.js';
 
 export interface SectAdmissionPolicy {
   check(context: SectAdmissionContext): SectAdmissionResult;

@@ -8,8 +8,8 @@ import {
   summarizeSectBattleTarget,
   type SectTaskDefinition,
 } from '@daoyou/shared/engine/sect';
-import type { SectTaskRecord } from '@server/sects/organization/ports';
-import type { SectTaskExecutor } from '@server/sects/organization/task-executors/SectTaskExecutor';
+import type { SectTaskRecord } from '@server/sects/organization/ports.js';
+import type { SectTaskExecutor } from '@server/sects/organization/task-executors/SectTaskExecutor.js';
 
 function genericDialogue(
   definition: SectTaskDefinition,

@@ -4,7 +4,7 @@ import {
   getAllSectLandmarks,
   getWorldMapLocation,
   type WorldMapLocation,
-} from './mapSystem';
+} from './mapSystem.js';
 
 export const ATLAS_REGIONS = [
   { id: 'tiannan', name: '天南', x: 0.855, y: 0.79 },

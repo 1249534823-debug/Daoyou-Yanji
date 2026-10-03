@@ -18,7 +18,7 @@ import type {
   RealmStage,
   RealmType,
   SpiritualRootGrade,
-} from './constants';
+} from './constants.js';
 
 /**
  * 基础属性（仅六维）。

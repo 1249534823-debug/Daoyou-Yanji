@@ -4,11 +4,11 @@ import {
   TargetMode,
   TargetSide,
   UnitKind,
-} from '../engine/combat-v6/core/enums';
-import { createBattle } from '../engine/combat-v6/core/session';
-import type { CreateBattleInput } from '../engine/combat-v6/core/types';
-import { daoyouRulesetV5 } from '../engine/combat-v6/rules-daoyou';
-import { COMBAT_V6_PHASE_7D_VERSIONS } from '../engine/combat-v6/version';
+} from '../engine/combat-v6/core/enums.js';
+import { createBattle } from '../engine/combat-v6/core/session.js';
+import type { CreateBattleInput } from '../engine/combat-v6/core/types.js';
+import { daoyouRulesetV5 } from '../engine/combat-v6/rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_7D_VERSIONS } from '../engine/combat-v6/version.js';
 
 /** Deterministic workloads shared by presentation regression checks and the size benchmark. */
 export const presentationScenarios = [

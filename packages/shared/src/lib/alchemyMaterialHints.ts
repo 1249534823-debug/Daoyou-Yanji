@@ -3,7 +3,7 @@ import type {
   AlchemyPropertyKey,
   WeightedAlchemyProperty,
 } from '@daoyou/shared/types/consumable';
-import { normalizeWeightedAlchemyProperties } from './alchemyProperties';
+import { normalizeWeightedAlchemyProperties } from './alchemyProperties.js';
 
 interface AlchemyMaterialHintRule {
   property: AlchemyPropertyKey;

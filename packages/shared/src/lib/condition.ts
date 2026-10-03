@@ -6,11 +6,11 @@ import type {
   ConditionStatusInstance,
   CultivatorCondition,
 } from '@daoyou/shared/types/condition';
-import { getConditionStatusTemplate } from './conditionStatusRegistry';
+import { getConditionStatusTemplate } from './conditionStatusRegistry.js';
 import {
   createDefaultBodyCultivationState,
   normalizeBodyCultivationState,
-} from './bodyCultivation/normalize';
+} from './bodyCultivation/normalize.js';
 import { PILL_TOXICITY_CAP } from '@daoyou/shared/config/consumableSystem';
 
 export interface PillToxicityStage {

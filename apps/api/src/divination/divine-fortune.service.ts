@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { redis } from '@server/lib/redis';
-import { parseRedisJson } from '@server/lib/redis/json';
-import { generateAiObject } from '@server/utils/aiClient';
+import { redis } from '@server/lib/redis/index.js';
+import { parseRedisJson } from '@server/lib/redis/json.js';
+import { generateAiObject } from '@server/utils/aiClient.js';
 import {
   getDivineFortunePrompt,
   getRandomFallbackFortune,
-} from '@server/utils/divineFortune';
+} from '@server/utils/divineFortune.js';
 import {
   DivineFortuneSchema,
   type DivineFortune,

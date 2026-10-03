@@ -8,7 +8,7 @@ import type {
   WeightedAlchemyProperty,
 } from '@daoyou/shared/types/consumable';
 import { ALCHEMY_PROPERTY_KEY_VALUES } from '@daoyou/shared/types/consumable';
-import { getGameConceptLabel } from './gameConceptDisplay';
+import { getGameConceptLabel } from './gameConceptDisplay.js';
 
 export const ALCHEMY_PROPERTY_LABELS: Record<AlchemyPropertyKey, string> = {
   restore_hp: `补充${getGameConceptLabel('hp')}`,

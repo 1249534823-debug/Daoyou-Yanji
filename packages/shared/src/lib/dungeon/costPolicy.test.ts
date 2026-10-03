@@ -5,7 +5,7 @@ import {
   calculateDungeonStatLoss,
   DUNGEON_COST_RANK_VALUES,
   DUNGEON_LIFESPAN_COST_MAX,
-} from './costPolicy';
+} from './costPolicy.js';
 
 describe('dungeon cost policy', () => {
   it('keeps ranked resource costs deterministic and ordered', () => {

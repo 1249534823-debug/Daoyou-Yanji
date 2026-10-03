@@ -1,6 +1,6 @@
-import { removeFromAllRankingRealmsExcept } from '@server/lib/redis/rankings';
+import { removeFromAllRankingRealmsExcept } from '@server/lib/redis/rankings.js';
 import type { DomainEventEnvelope } from '@daoyou/shared/contracts/domainEvents';
-import type { FeatureCommandResult } from '@server/player/application/state/CommandExecutors';
+import type { FeatureCommandResult } from '@server/player/application/state/CommandExecutors.js';
 
 export async function projectRealmChangedRanking(
   event: DomainEventEnvelope<'cultivator.realm.changed'>,

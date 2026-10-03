@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from './data/tianyan-foundation.json';
-import schema from './data/tianyan-foundation.schema.json';
+import raw from './data/tianyan-foundation.json' with { type: 'json' };
+import schema from './data/tianyan-foundation.schema.json' with { type: 'json' };
 import {
   TianyanFoundationShape,
   loadTianyanFoundation,
-} from './tianyan-foundation';
+} from './tianyan-foundation.js';
 
 describe('天衍生克状态配置', () => {
   it('Schema 同步', () =>

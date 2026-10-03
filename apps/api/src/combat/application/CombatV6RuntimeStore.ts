@@ -1,4 +1,4 @@
-import { redis } from '@server/lib/redis';
+import { redis } from '@server/lib/redis/index.js';
 import {
   CombatV6BattleFinishedRecordV1Schema,
   parseCombatV6Runtime,

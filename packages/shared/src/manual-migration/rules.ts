@@ -3,13 +3,13 @@ import type {
   ManualMigrationGrant,
   ManualMigrationPolicy,
   ManualMigrationSource,
-} from '../contracts/manualMigration';
-import { ManualMigrationConfigSchema } from '../contracts/manualMigration';
-import { CHARACTER_MANUALS_V1 } from '../engine/combat-v6/manuals/content';
-import { BASE_PRICES } from '../engine/material/creation/config';
-import type { ItemGrant } from '../inventory';
-import { ConsumableFactsSchema } from '../items/definitions/consumables';
-import { QUALITY_VALUES, type Quality } from '../types/constants';
+} from '../contracts/manualMigration.js';
+import { ManualMigrationConfigSchema } from '../contracts/manualMigration.js';
+import { CHARACTER_MANUALS_V1 } from '../engine/combat-v6/manuals/content.js';
+import { BASE_PRICES } from '../engine/material/creation/config.js';
+import type { ItemGrant } from '../inventory/index.js';
+import { ConsumableFactsSchema } from '../items/definitions/consumables.js';
+import { QUALITY_VALUES, type Quality } from '../types/constants.js';
 
 export const manualMigrationInsightFacts = ConsumableFactsSchema.parse({
   name: '感悟果',

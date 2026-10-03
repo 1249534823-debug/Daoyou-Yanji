@@ -1,4 +1,4 @@
-import type { WorldMapLocation } from './mapSystem';
+import type { WorldMapLocation } from './mapSystem.js';
 
 export const ATLAS_CATEGORY_IDS = [
   'wild',

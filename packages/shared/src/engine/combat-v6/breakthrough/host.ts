@@ -1,16 +1,16 @@
-import { playerAppearances, type PresentedBattleInput } from '../../../combat-v6/unit-appearance';
-import { AUTO_POLICY_VERSION } from '../../../combat-v6/auto-policy';
-import { BEAST_STATUS_DEFS, BEAST_SKILLS, projectBeastRoster } from '../beasts';
-import type { CreateBattleInput } from '../core';
-import type { CombatV6TrainingPlayerInput } from '../encounter';
+import { playerAppearances, type PresentedBattleInput } from '../../../combat-v6/unit-appearance.js';
+import { AUTO_POLICY_VERSION } from '../../../combat-v6/auto-policy.js';
+import { BEAST_STATUS_DEFS, BEAST_SKILLS, projectBeastRoster } from '../beasts/index.js';
+import type { CreateBattleInput } from '../core/index.js';
+import type { CombatV6TrainingPlayerInput } from '../encounter/index.js';
 import {
   CombatV6PveHostSession,
   type PveRestoredState,
-} from '../encounter/host';
-import { projectCharacterToCombatV6 } from '../projection';
-import { daoyouRulesetV6 } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version';
-import { presetEnemyAttrs } from '../encounter/preset-enemy';
+} from '../encounter/host.js';
+import { projectCharacterToCombatV6 } from '../projection/index.js';
+import { daoyouRulesetV6 } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version.js';
+import { presetEnemyAttrs } from '../encounter/preset-enemy.js';
 
 export const BREAKTHROUGH_CHALLENGES = {
   heart_demon_nascent: { title: '心魔劫', name: '心魔化身', hp: 1, attack: 1 },

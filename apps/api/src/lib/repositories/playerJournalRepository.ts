@@ -2,8 +2,8 @@ import {
   getExecutor,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
-import { playerJournal } from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/db.js';
+import { playerJournal } from '@server/lib/drizzle/schema.js';
 import {
   JOURNAL_ACTIVITIES,
   PlayerJournalEventSchema,

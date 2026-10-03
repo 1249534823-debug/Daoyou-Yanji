@@ -3,7 +3,7 @@ import type {
   ConditionStatusKey,
   CultivatorCondition,
 } from '@daoyou/shared/types/condition';
-import { getGameConceptInfo } from './gameConceptDisplay';
+import { getGameConceptInfo } from './gameConceptDisplay.js';
 
 export interface ConditionStatusTemplate {
   key: ConditionStatusKey;

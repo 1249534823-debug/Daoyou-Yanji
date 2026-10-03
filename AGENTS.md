@@ -8,8 +8,8 @@ AI agents should read this first. Keep changes small, project-specific, and back
 
 - This repo is `NestJS + React SPA`, not Next.js or SSR.
 - Runtime stack: Node.js 24, NestJS 12 (Express/native ws), pnpm + Turborepo tooling, React 19, React Router 8, Vite, Tailwind CSS 4, PostgreSQL, Drizzle ORM, Better Auth, Redis, NATS, AI SDK.
-- Use the pinned `pnpm` version and `pnpm-lock.yaml` for development and deployment. Do not introduce Bun/npm/yarn lockfiles. Turborepo orchestrates package builds, typechecks and persistent development tasks.
-- pnpm workspaces: `apps/api`, `apps/web`, `packages/shared`. Each owns its runtime dependencies; root owns lint/test/maintenance tooling. Shared must not import either app; API and Web may import shared. ESLint enforces these boundaries, repository direction, and combat core independence.
+- Use the pinned `pnpm` version and `pnpm-lock.yaml` for development and deployment. Do not introduce Bun/npm/yarn lockfiles. Turborepo orchestrates package builds and typechecks; turbo watch rebuilds dependencies and restarts persistent development tasks.
+- pnpm workspaces: `apps/api`, `apps/web`, `packages/shared`. Each owns its runtime dependencies; root owns lint/test/maintenance tooling. Shared must not import either app; API and Web may import shared. ESLint (Web/shared/tools) and Oxlint (API) enforce these boundaries, repository direction, and combat core independence.
 - Path aliases are `@app` -> `apps/web/src`, `@server` -> `apps/api/src`, and `@daoyou/shared/*` resolves through the workspace package exports (no source alias bypass).
 
 ## Key Directories
@@ -38,7 +38,7 @@ pnpm run db:migrate
 ```
 
 - `dev[:api|:web]` selects `env/local.env`; `prd[:api|:web]` selects `env/staging.env`. Node/Nest explicitly loads the selected file; maintenance scripts use `node --env-file=... --import tsx`.
-- `pnpm run build` uses Turbo to build the independent API and Web packages; Nest CLI 12 builds `apps/api` with its ESM Rspack builder; Vite builds `apps/web`. The old V5 resolver Worker target was retired in Phase 10H. Preserve the remaining CI/CD entrypoints.
+- `pnpm run build` uses Turbo to build the independent API and Web packages; Nest CLI 12 builds `apps/api` with its default tsc builder; shared is compiled first with tsc and exports JavaScript/declarations from dist; Vite builds `apps/web`. The old V5 resolver Worker target was retired in Phase 10H. Preserve the remaining CI/CD entrypoints.
 - Vitest uses node environment and discovers tests only under `packages/shared/src`.
 - Docker runtime contains Node, the pnpm-deployed API production dependencies, package metadata and `dist`; ALTCHA uses the server-side `ALTCHA_HMAC_SECRET` and does not require a frontend site key.
 - GitHub Actions runs lint/typecheck/shared tests/build on PRs and master pushes; tag pushes build the API image and always publish latest.

@@ -1,21 +1,21 @@
 import { Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import * as auctionRepository from '@server/lib/repositories/auctionRepository';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import * as auctionRepository from '@server/lib/repositories/auctionRepository.js';
 import {
   buyAuctionListing,
   cancelAuctionListing,
   listAuctionBeast,
   listAuctionItem,
-} from '@server/auction/application/AuctionApplicationService';
-import { publicAuctionListing } from '@server/auction/application/AuctionService';
-import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
+} from '@server/auction/application/AuctionApplicationService.js';
+import { publicAuctionListing } from '@server/auction/application/AuctionService.js';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
 import type {
   AuctionBeastListRequest,
   AuctionBuySchema,
   AuctionListRequest,
 } from '@daoyou/shared/contracts/auction';
 import type { z } from 'zod';
-import type { ListingsSchema } from './auction-input';
+import type { ListingsSchema } from './auction-input.js';
 
 @Injectable()
 export class AuctionService {

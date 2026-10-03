@@ -31,7 +31,7 @@ import {
   type PillExpContext,
   type RetreatExpContext,
   type SystemRewardExpContext,
-} from './types';
+} from './types.js';
 
 export type {
   BattleVictoryExpContext,
@@ -50,7 +50,7 @@ export type {
   PillExpContext,
   RetreatExpContext,
   SystemRewardExpContext,
-} from './types';
+} from './types.js';
 
 function normalizeDungeonTier(tier: string | undefined): DungeonTier {
   return tier === 'S' ||

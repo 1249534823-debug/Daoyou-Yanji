@@ -3,13 +3,13 @@ import { COMBAT_V6_SECT_DEFINITIONS, type CombatV6SectId } from '@daoyou/shared/
 import {
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
+} from '@server/lib/drizzle/db.js';
 import {
   cultivators,
   sectMemberships,
   sectCombatStates,
   sectMethodProgress,
-} from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/schema.js';
 import { getOrInitCultivationProgress } from '@daoyou/shared/engine/cultivation/cultivationUtils';
 import type { ResourceDataMap } from '@daoyou/shared/contracts/resources';
 import {

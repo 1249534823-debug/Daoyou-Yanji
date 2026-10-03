@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from '@server/database/database.module';
-import { DungeonFlowService } from './application/flow/DungeonFlowService';
-import { generateDungeonRound } from './application/flow/DungeonRoundGenerator';
-import { DungeonBattleController } from './dungeon-battle.controller';
-import { DungeonController } from './dungeon.controller';
-import { DungeonService } from './dungeon.service';
+import { DatabaseModule } from '@server/database/database.module.js';
+import { DungeonFlowService } from './application/flow/DungeonFlowService.js';
+import { generateDungeonRound } from './application/flow/DungeonRoundGenerator.js';
+import { DungeonBattleController } from './dungeon-battle.controller.js';
+import { DungeonController } from './dungeon.controller.js';
+import { DungeonService } from './dungeon.service.js';
 
 @Module({
   imports: [DatabaseModule],

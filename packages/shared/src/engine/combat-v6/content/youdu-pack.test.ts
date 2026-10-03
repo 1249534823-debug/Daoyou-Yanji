@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from './data/youdu-combat.json';
-import schema from './data/youdu-combat.schema.json';
-import { YouduCombatPackShape, loadYouduCombatPack, compileYouduCombatPack } from './youdu-pack';
-import { CommandType, createBattle } from '../core';
-import { createDaoyouRuleset } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version';
+import raw from './data/youdu-combat.json' with { type: 'json' };
+import schema from './data/youdu-combat.schema.json' with { type: 'json' };
+import { YouduCombatPackShape, loadYouduCombatPack, compileYouduCombatPack } from './youdu-pack.js';
+import { CommandType, createBattle } from '../core/index.js';
+import { createDaoyouRuleset } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version.js';
 
 function cast(data: unknown, index = 0) {
   const pack = compileYouduCombatPack(loadYouduCombatPack(data));

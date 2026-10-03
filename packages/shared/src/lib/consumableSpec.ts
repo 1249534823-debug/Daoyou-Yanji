@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import type { ConsumableSpec } from '../types/consumable';
+import type { ConsumableSpec } from '../types/consumable.js';
 import {
   PILL_FAMILY_VALUES,
   PILL_QUOTA_CATEGORY_VALUES,
   TALISMAN_SESSION_MODE_VALUES,
-} from '../types/consumable';
+} from '../types/consumable.js';
 
 const amount = z.number().finite().nonnegative().max(2147483647);
 const status = z.enum([

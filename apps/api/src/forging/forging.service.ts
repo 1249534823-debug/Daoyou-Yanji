@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   forgeEquipment,
   readForge,
   readVault,
   withdrawMaterial,
   withdrawVaultPage,
-} from '@server/forging/application/ForgingService';
+} from '@server/forging/application/ForgingService.js';
 import type {
   ForgeRequest,
   VaultQuerySchema,

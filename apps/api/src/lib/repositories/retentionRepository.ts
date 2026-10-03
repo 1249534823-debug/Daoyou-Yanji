@@ -1,5 +1,5 @@
-import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db';
-import { getExecutor } from '@server/lib/drizzle/db';
+import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db.js';
+import { getExecutor } from '@server/lib/drizzle/db.js';
 import {
   auctionListings,
   dungeonHistories,
@@ -9,7 +9,7 @@ import {
   reputationShopPurchases,
   sectShopPurchases,
   sectStipendClaims,
-} from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/schema.js';
 import { and, inArray, isNull, lt, ne, sql } from 'drizzle-orm';
 
 export type ExpiredDataCleanupCutoffs = {

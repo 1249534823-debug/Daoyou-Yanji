@@ -1,8 +1,8 @@
 import { Controller, Get, Inject, Param, UseFilters } from '@nestjs/common';
-import type { AuthUser } from '@server/lib/auth/types';
-import { Access, CurrentUser } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { EnemiesService } from './enemies.service';
+import type { AuthUser } from '@server/lib/auth/types.js';
+import { Access, CurrentUser } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { EnemiesService } from './enemies.service.js';
 
 const EnemyErrors = apiErrorFilter((error, config) => {
   console.error('获取敌人数据 API 错误:', error);

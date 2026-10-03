@@ -4,10 +4,10 @@ import { z } from 'zod';
 import {
   TowerBlessingsPackShape,
   loadTowerBlessingsPack,
-} from './blessing-pack';
-import { compileTowerBlessingDefinitions } from './blessings';
-import raw from './data/blessings.json';
-import schema from './data/blessings.schema.json';
+} from './blessing-pack.js';
+import { compileTowerBlessingDefinitions } from './blessings.js';
+import raw from './data/blessings.json' with { type: 'json' };
+import schema from './data/blessings.schema.json' with { type: 'json' };
 
 const player = {
   cultivator: {

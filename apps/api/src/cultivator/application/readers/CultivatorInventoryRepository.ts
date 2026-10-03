@@ -1,5 +1,5 @@
-import * as creationProductRepository from '@server/lib/repositories/creationProductRepository';
-import { calculateSingleElixirScore } from '@server/utils/rankingUtils';
+import * as creationProductRepository from '@server/lib/repositories/creationProductRepository.js';
+import { calculateSingleElixirScore } from '@server/utils/rankingUtils.js';
 import { legacyProductForGrant } from '@daoyou/shared/legacy/products';
 import { buildConsumableStackKey } from '@daoyou/shared/lib/consumables';
 import {
@@ -30,15 +30,15 @@ import {
   getExecutor,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
-import * as schema from '@server/lib/drizzle/schema';
-import { consumeBagConsumable, getBagConsumable } from '@server/inventory/application/BagConsumables';
-import { mapConsumableRow } from '@server/inventory/application/consumablePersistence';
-import { toArtifactFromProduct } from '@server/legacy-items/application/creationProductArtifactSupport';
-import { sanitizeMaterialDetails } from '@server/inventory/application/materialDetailsPrivacy';
-import { addMaterialStackToInventory } from '@server/inventory/application/materialInventory';
+} from '@server/lib/drizzle/db.js';
+import * as schema from '@server/lib/drizzle/schema.js';
+import { consumeBagConsumable, getBagConsumable } from '@server/inventory/application/BagConsumables.js';
+import { mapConsumableRow } from '@server/inventory/application/consumablePersistence.js';
+import { toArtifactFromProduct } from '@server/legacy-items/application/creationProductArtifactSupport.js';
+import { sanitizeMaterialDetails } from '@server/inventory/application/materialDetailsPrivacy.js';
+import { addMaterialStackToInventory } from '@server/inventory/application/materialInventory.js';
 
-import { assertCultivatorOwnership } from '@server/cultivator/application/readers/CultivatorStateRepository';
+import { assertCultivatorOwnership } from '@server/cultivator/application/readers/CultivatorStateRepository.js';
 
 function hashConsumableStackSignature(signature: string): string {
   return createHash('sha256').update(signature).digest('hex');

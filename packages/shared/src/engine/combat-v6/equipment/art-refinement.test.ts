@@ -11,11 +11,11 @@ import {
   effectiveSpeed,
   type SkillDef,
   type StatusDef,
-} from '../core';
-import { createDaoyouRuleset } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_4B_VERSIONS } from '../version';
-import pack from './data/equipment-special.json';
-import { DAO_EQUIPMENT_ARTS_V1, DAO_RAGE_RESOURCE_ID } from './special-content';
+} from '../core/index.js';
+import { createDaoyouRuleset } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_4B_VERSIONS } from '../version.js';
+import pack from './data/equipment-special.json' with { type: 'json' };
+import { DAO_EQUIPMENT_ARTS_V1, DAO_RAGE_RESOURCE_ID } from './special-content.js';
 
 const art = (id: string) =>
   DAO_EQUIPMENT_ARTS_V1.find((a) => a.id === `dao_equipment.art.${id}`)!;

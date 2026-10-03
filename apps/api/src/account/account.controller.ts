@@ -6,9 +6,9 @@ import {
 } from '@daoyou/shared/contracts/account';
 import { fromNodeHeaders } from 'better-auth/node';
 import type { Request } from 'express';
-import { SessionService } from '../auth/session.service';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
+import { SessionService } from '../auth/session.service.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
 
 @Controller('api/account')
 export class AccountController {

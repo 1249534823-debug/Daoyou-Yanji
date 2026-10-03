@@ -1,29 +1,29 @@
-import { db } from '@server/lib/drizzle/db';
+import { db } from '@server/lib/drizzle/db.js';
 import {
   sectCombatStates,
   sectMeridianLoadouts,
   sectMeridianNodes,
   sectMethodProgress,
-} from '@server/lib/drizzle/schema';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
+} from '@server/lib/drizzle/schema.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
 import {
   characterIdentityRow,
   readActiveSectCombatProgress,
-} from '@server/lib/repositories/sectCombatRepository';
-import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository';
+} from '@server/lib/repositories/sectCombatRepository.js';
+import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
 import {
   loadSectCultivatorProgress,
   spendTrainingResources,
-} from '@server/lib/repositories/sectRepository';
+} from '@server/lib/repositories/sectRepository.js';
 import type { SectV6Action, SectV6View } from '@daoyou/shared/contracts/combatV6Sect';
 import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/shared/engine/combat-v6/content';
 import { combatCharacterLevel } from '@daoyou/shared/engine/combat-v6/projection/character-level';
 import { sectV6Change } from '@daoyou/shared/engine/combat-v6/sect-progression';
 import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import { and, eq } from 'drizzle-orm';
-import { assertInventoryIdle, InventoryError } from '@server/inventory/operations';
-import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
-import { getSectCombatView } from '@server/combat/application/CombatV6BuildService';
+import { assertInventoryIdle, InventoryError } from '@server/inventory/operations.js';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
+import { getSectCombatView } from '@server/combat/application/CombatV6BuildService.js';
 
 export async function readSectV6(owner: string): Promise<SectV6View> {
   return db.transaction(

@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import { readSpiritFieldSeedSpec } from '../../engine/spirit-field/seedMaterial';
+import { readSpiritFieldSeedSpec } from '../../engine/spirit-field/seedMaterial.js';
 import {
   ELEMENT_VALUES,
   QUALITY_VALUES,
   REALM_VALUES,
-} from '../../types/constants';
+} from '../../types/constants.js';
 
 export const SEED_ITEM = {
   id: 'seed.v1',

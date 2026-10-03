@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import { createEmptySectCombatProgressV6 } from '../build-state';
-import { compileSectDefinitionV6 } from './compiler';
-import raw from './data/tianyan-paths.json';
-import schema from './data/tianyan-paths.schema.json';
-import { TIANYAN_V6_DEFINITION as definition } from './tianyan';
-import { TianyanPathsShape, loadTianyanPaths } from './tianyan-path-pack';
+import { createEmptySectCombatProgressV6 } from '../build-state/index.js';
+import { compileSectDefinitionV6 } from './compiler.js';
+import raw from './data/tianyan-paths.json' with { type: 'json' };
+import schema from './data/tianyan-paths.schema.json' with { type: 'json' };
+import { TIANYAN_V6_DEFINITION as definition } from './tianyan.js';
+import { TianyanPathsShape, loadTianyanPaths } from './tianyan-path-pack.js';
 
 describe('天衍经脉连线', () => {
   it('Schema 同步', () =>

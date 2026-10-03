@@ -5,7 +5,7 @@ import {
   readTowerWeekRecord,
   regenerateTowerWeek,
   towerWeekFingerprint,
-} from '@server/lib/repositories/towerRepository';
+} from '@server/lib/repositories/towerRepository.js';
 import type { AdminTowerView } from '@daoyou/shared/contracts/adminTower';
 import {
   publishedTowerEncounter,
@@ -16,7 +16,7 @@ import {
   getTowerSeasonMeta,
 } from '@daoyou/shared/lib/tower/season';
 import { z } from 'zod';
-import { TowerQuerySchema, TowerRegenerateSchema } from './tower-input';
+import { TowerQuerySchema, TowerRegenerateSchema } from './tower-input.js';
 @Injectable()
 export class AdminTowerService {
   async read(query: z.infer<typeof TowerQuerySchema>) {

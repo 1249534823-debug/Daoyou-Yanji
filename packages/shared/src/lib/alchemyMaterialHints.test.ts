@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { inferAlchemyMaterialPropertyHints } from './alchemyMaterialHints';
+import { inferAlchemyMaterialPropertyHints } from './alchemyMaterialHints.js';
 
 describe('inferAlchemyMaterialPropertyHints', () => {
   it('recognizes marrow-wash material keywords', () => {

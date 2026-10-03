@@ -1,17 +1,17 @@
-import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db';
+import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db.js';
 import {
   sectMemberships,
   sectStipendClaims,
   sectTaskRecords,
-} from '@server/lib/drizzle/schema';
-import { ensureSectFacilities } from '@server/lib/repositories/sectOrganizationRepository';
+} from '@server/lib/drizzle/schema.js';
+import { ensureSectFacilities } from '@server/lib/repositories/sectOrganizationRepository.js';
 import {
   findMembership,
   findMembershipForSect,
   loadSectCultivatorProgress,
-} from '@server/lib/repositories/sectRepository';
-import { consumeConsumableById } from '@server/cultivator/application/readers/CultivatorInventoryRepository';
-import { SectError } from '@server/sects/application/SectError';
+} from '@server/lib/repositories/sectRepository.js';
+import { consumeConsumableById } from '@server/cultivator/application/readers/CultivatorInventoryRepository.js';
+import { SectError } from '@server/sects/application/SectError.js';
 import {
   CHEAT_HEAVEN_TALISMAN_NAME,
   CHEAT_HEAVEN_TALISMAN_SCENARIO,
@@ -28,13 +28,13 @@ import {
 } from '@daoyou/shared/engine/sect';
 import type { Consumable } from '@daoyou/shared/types/cultivator';
 import { and, eq } from 'drizzle-orm';
-import { findBagTalisman } from '@server/inventory/application/BagConsumables';
+import { findBagTalisman } from '@server/inventory/application/BagConsumables.js';
 import {
   carryV6SectBuild,
   planV6SectTransfer,
-} from '@server/combat/application/CombatV6SectTransfer';
-import { assertInventoryIdle } from '@server/inventory/operations';
-import { getSectDateKey, getSectWeekKey } from '@server/sects/organization/SectOrganizationClock';
+} from '@server/combat/application/CombatV6SectTransfer.js';
+import { assertInventoryIdle } from '@server/inventory/operations.js';
+import { getSectDateKey, getSectWeekKey } from '@server/sects/organization/SectOrganizationClock.js';
 
 async function loadTransferTalisman(
   cultivatorId: string,

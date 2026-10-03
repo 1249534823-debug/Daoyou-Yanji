@@ -2,13 +2,13 @@ import { describe, expect, it } from 'vitest';
 import {
   createEmptySectCombatProgressV6,
   createFreshCombatV6MethodLevels,
-} from '../engine/combat-v6/build-state';
-import { COMBAT_V6_SECT_DEFINITIONS_V4 } from '../engine/combat-v6/content';
+} from '../engine/combat-v6/build-state/index.js';
+import { COMBAT_V6_SECT_DEFINITIONS_V4 } from '../engine/combat-v6/content/index.js';
 import {
   projectCharacterDisplay,
   type CharacterDisplayBuild,
-} from '../lib/cultivatorDisplay';
-import { publicCombatV6Build } from './public-build';
+} from '../lib/cultivatorDisplay.js';
+import { publicCombatV6Build } from './public-build.js';
 
 describe('public V6 build', () => {
   const character = {

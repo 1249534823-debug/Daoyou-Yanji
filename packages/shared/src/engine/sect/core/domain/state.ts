@@ -1,5 +1,5 @@
-import type { SectId } from './definitions';
-import type { SectDiscipleRank, SectOffice } from './organization';
+import type { SectId } from './definitions.js';
+import type { SectDiscipleRank, SectOffice } from './organization.js';
 
 export type SectMembershipStatus = 'prospect' | 'active' | 'transferred';
 export interface CultivatorSectState {

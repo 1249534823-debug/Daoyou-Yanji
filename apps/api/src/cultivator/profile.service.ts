@@ -7,23 +7,23 @@ import {
   projectCharacterDisplay,
 } from '@daoyou/shared/lib/cultivatorDisplay';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import type { DbClient } from '@server/lib/drizzle/db';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
 import {
   isValidRedeemCodeFormat,
   normalizeRedeemCode,
-} from '@server/lib/redeem/code';
-import { loadPlayerRetreatFacts } from '@server/cultivator/application/readers/CultivatorConditionFactsReader';
+} from '@server/lib/redeem/code.js';
+import { loadPlayerRetreatFacts } from '@server/cultivator/application/readers/CultivatorConditionFactsReader.js';
 import {
   allocateCultivatorAttributes,
   reincarnateActiveCultivator,
   resetCultivatorAttributes,
   updateCultivatorTitle,
-} from '@server/cultivator/application/CultivatorProfileApplicationService';
-import { QiService } from '@server/cultivator/application/QiService';
-import { claimRedeemCode } from '@server/admin/application/RedeemCodeApplicationService';
-import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
+} from '@server/cultivator/application/CultivatorProfileApplicationService.js';
+import { QiService } from '@server/cultivator/application/QiService.js';
+import { claimRedeemCode } from '@server/admin/application/RedeemCodeApplicationService.js';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
 
 function parsePositiveInt(value: string | undefined, fallback: number) {
   if (!value) return fallback;

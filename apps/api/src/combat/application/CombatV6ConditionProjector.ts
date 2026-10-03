@@ -1,30 +1,30 @@
-import { runJournalSettlement, describeJournal } from '@server/player/application/JournalSettlement';
-import { db } from '@server/lib/drizzle/db';
-import { cultivators, messageConsumptions } from '@server/lib/drizzle/schema';
-import { createDomainEvent } from '@server/lib/mq/domainEventWriter';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
+import { runJournalSettlement, describeJournal } from '@server/player/application/JournalSettlement.js';
+import { db } from '@server/lib/drizzle/db.js';
+import { cultivators, messageConsumptions } from '@server/lib/drizzle/schema.js';
+import { createDomainEvent } from '@server/lib/mq/domainEventWriter.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
 import {
   settleBeastDeaths,
   settleBeastProgress,
-} from '@server/lib/repositories/combatV6BeastRepository';
+} from '@server/lib/repositories/combatV6BeastRepository.js';
 import {
   claimMessageForConsumer,
   COMBAT_V6_CONDITION_CONSUMER,
-} from '@server/lib/repositories/messageConsumptionRepository';
-import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository';
+} from '@server/lib/repositories/messageConsumptionRepository.js';
+import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
 import { beastTradePreview } from '@daoyou/shared/contracts/beastTrade';
 import { settleWildResources } from '@daoyou/shared/engine/combat-v6/wild/rules';
 import { storyMarkForSignal } from '@daoyou/shared/story/signals';
 import type { CultivatorCondition } from '@daoyou/shared/types/condition';
 import { and, eq } from 'drizzle-orm';
-import { ConditionService } from '@server/cultivator/application/ConditionService';
-import { grantInventory } from '@server/inventory/operations';
-import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
-import { StoryService } from '@server/story/application/StoryService';
-import { readCultivatorPublicIdentity } from '@server/cultivator/facts';
-import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
-import { CombatV6RuntimeStore } from '@server/combat/application/CombatV6RuntimeStore';
-import { CombatV6WildStore } from '@server/combat/application/CombatV6WildStore';
+import { ConditionService } from '@server/cultivator/application/ConditionService.js';
+import { grantInventory } from '@server/inventory/operations.js';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
+import { StoryService } from '@server/story/application/StoryService.js';
+import { readCultivatorPublicIdentity } from '@server/cultivator/facts.js';
+import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster.js';
+import { CombatV6RuntimeStore } from '@server/combat/application/CombatV6RuntimeStore.js';
+import { CombatV6WildStore } from '@server/combat/application/CombatV6WildStore.js';
 
 const store = new CombatV6WildStore();
 const common = new CombatV6RuntimeStore();

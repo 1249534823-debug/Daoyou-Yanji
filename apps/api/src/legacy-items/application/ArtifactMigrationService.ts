@@ -1,13 +1,13 @@
-import { db, type DbExecutor } from '@server/lib/drizzle/db';
-import { creationProducts, cultivators } from '@server/lib/drizzle/schema';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
-import { updateSpiritStones } from '@server/cultivator/application/readers/CultivatorStateRepository';
+import { db, type DbExecutor } from '@server/lib/drizzle/db.js';
+import { creationProducts, cultivators } from '@server/lib/drizzle/schema.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import { updateSpiritStones } from '@server/cultivator/application/readers/CultivatorStateRepository.js';
 import {
   assertInventoryIdle,
   grantInventory,
   InventoryError,
-} from '@server/inventory/operations';
+} from '@server/inventory/operations.js';
 import {
   artifactMigrationPlan,
   artifactMigrationRealm,

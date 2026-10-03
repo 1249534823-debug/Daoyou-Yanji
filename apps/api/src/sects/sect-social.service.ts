@@ -8,23 +8,23 @@ import type {
 } from '@daoyou/shared/contracts/world-chat';
 import type { SectDiscipleRank, SectOffice } from '@daoyou/shared/engine/sect';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { checkAndAcquireSectChatCooldown } from '@server/lib/redis/worldChatLimiter';
-import { listSectChatMessages } from '@server/lib/repositories/sectChatRepository';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { checkAndAcquireSectChatCooldown } from '@server/lib/redis/worldChatLimiter.js';
+import { listSectChatMessages } from '@server/lib/repositories/sectChatRepository.js';
 import {
   countSectMembersAboveLifetimeContribution,
   findSectContributionRankingMember,
   listTopSectContributionRanking,
-} from '@server/lib/repositories/sectOrganizationRepository';
-import { findMembership } from '@server/lib/repositories/sectRepository';
-import { readResourceWithResolvedScope } from '@server/player/application/state/ResourceReadService';
-import { createAndPublishSectChatMessage } from '@server/social/application/chatDelivery';
+} from '@server/lib/repositories/sectOrganizationRepository.js';
+import { findMembership } from '@server/lib/repositories/sectRepository.js';
+import { readResourceWithResolvedScope } from '@server/player/application/state/ResourceReadService.js';
+import { createAndPublishSectChatMessage } from '@server/social/application/chatDelivery.js';
 import {
   ChatMessageApplicationError,
   createCultivatorChatMessage,
-} from '@server/social/application/chatMessageApplication';
+} from '@server/social/application/chatMessageApplication.js';
 
 @Injectable()
 export class SectSocialService {

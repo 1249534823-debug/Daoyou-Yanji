@@ -5,11 +5,11 @@ import {
   type ExecutionContext,
   type NestInterceptor,
 } from '@nestjs/common';
-import { runWithContext } from '@server/lib/http/context';
+import { runWithContext } from '@server/lib/http/context.js';
 import type { Response } from 'express';
 import { Observable, finalize, of } from 'rxjs';
-import type { GameRequest } from './request';
-import { RequestWorkService } from './request-work.service';
+import type { GameRequest } from './request.js';
+import { RequestWorkService } from './request-work.service.js';
 
 @Injectable()
 export class RequestContextInterceptor implements NestInterceptor {

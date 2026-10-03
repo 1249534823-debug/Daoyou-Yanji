@@ -1,21 +1,21 @@
-import { SpiritSeedGenerator } from '@server/lib/generation/SpiritSeedGenerator';
+import { SpiritSeedGenerator } from '@server/lib/generation/SpiritSeedGenerator.js';
 import {
   getExecutor,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { createDomainEvent } from '@server/lib/mq/domainEventWriter';
+} from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import { createDomainEvent } from '@server/lib/mq/domainEventWriter.js';
 import {
   getOrCreateSpiritField,
   updateSpiritField,
-} from '@server/lib/repositories/SpiritFieldRepository';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
-import { ConditionService } from '@server/cultivator/application/ConditionService';
-import { qiCurrencyChange } from '@server/cultivator/application/QiResourceChanges';
-import { QiService } from '@server/cultivator/application/QiService';
-import { loadPlayerConsumableOperationFacts } from '@server/cultivator/application/readers/CultivatorConditionFactsReader';
-import { updateSpiritStones } from '@server/cultivator/application/readers/CultivatorStateRepository';
+} from '@server/lib/repositories/SpiritFieldRepository.js';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import { ConditionService } from '@server/cultivator/application/ConditionService.js';
+import { qiCurrencyChange } from '@server/cultivator/application/QiResourceChanges.js';
+import { QiService } from '@server/cultivator/application/QiService.js';
+import { loadPlayerConsumableOperationFacts } from '@server/cultivator/application/readers/CultivatorConditionFactsReader.js';
+import { updateSpiritStones } from '@server/cultivator/application/readers/CultivatorStateRepository.js';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
 import type {
   SpiritFieldCultivateRequest,
@@ -41,22 +41,22 @@ import type { InventoryItem } from '@daoyou/shared/inventory';
 import { consumableFactsOf } from '@daoyou/shared/items/definitions/consumables';
 import { MaterialFactsSchema } from '@daoyou/shared/items/definitions/materials';
 import { seedFactsOf } from '@daoyou/shared/items/definitions/seeds';
-import { SpiritFieldServiceError } from '@server/spirit-field/application/SpiritFieldError';
+import { SpiritFieldServiceError } from '@server/spirit-field/application/SpiritFieldError.js';
 import type { MaterialType, RealmType } from '@daoyou/shared/types/constants';
 import type { Consumable, Material } from '@daoyou/shared/types/cultivator';
 import { and, eq } from 'drizzle-orm';
-import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateRepository';
-import { grantInventory } from '@server/inventory/operations';
+import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateRepository.js';
+import { grantInventory } from '@server/inventory/operations.js';
 import {
   consumeFieldItem,
   fieldResource,
   readFieldBag,
-} from '@server/spirit-field/application/SpiritFieldInventory';
+} from '@server/spirit-field/application/SpiritFieldInventory.js';
 import {
   finalizeSpiritFieldIdentity,
   judgeSpiritFieldStage,
   stageJudgmentScore,
-} from '@server/spirit-field/application/SpiritFieldLlmService';
+} from '@server/spirit-field/application/SpiritFieldLlmService.js';
 
 export type SpiritFieldActor = { userId: string; cultivatorId: string };
 

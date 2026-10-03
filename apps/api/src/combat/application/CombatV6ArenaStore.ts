@@ -1,4 +1,4 @@
-import { redis } from '@server/lib/redis';
+import { redis } from '@server/lib/redis/index.js';
 import {
   ARENA_V6_PROTOCOL,
   type ArenaRuntime,

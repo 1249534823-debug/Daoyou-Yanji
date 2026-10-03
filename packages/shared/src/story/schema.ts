@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { getGuideLesson } from '../guide/catalog';
-import { hasStoryReward } from './grants';
+import { getGuideLesson } from '../guide/catalog.js';
+import { hasStoryReward } from './grants.js';
 
 export const STORY_FACT_IDS = [
   'starter_beast',

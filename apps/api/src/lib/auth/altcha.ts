@@ -1,5 +1,5 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
-import { redis } from '@server/lib/redis';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
+import { redis } from '@server/lib/redis/index.js';
 import {
   createChallenge,
   randomInt,

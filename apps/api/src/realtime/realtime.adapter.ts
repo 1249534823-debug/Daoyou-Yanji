@@ -9,14 +9,14 @@ import {
 } from 'node:http';
 import type { Duplex } from 'node:stream';
 import type { ServerOptions, WebSocketServer } from 'ws';
-import { ArenaRealtimeService } from '../arena/arena-realtime.service';
-import { ARENA_SOCKET_PATH, arenaSocketRoute } from '../arena/arena-socket';
-import { RequestWorkService } from '../http/request-work.service';
+import { ArenaRealtimeService } from '../arena/arena-realtime.service.js';
+import { ARENA_SOCKET_PATH, arenaSocketRoute } from '../arena/arena-socket.js';
+import { RequestWorkService } from '../http/request-work.service.js';
 import {
   verifyWebSocketRequest,
   type HandshakeError,
-} from '../http/websocket-request';
-import { RealtimeService } from './realtime.service';
+} from '../http/websocket-request.js';
+import { RealtimeService } from './realtime.service.js';
 
 export class RealtimeAdapter extends WsAdapter {
   private readonly handshakeHeaders = new WeakMap<IncomingMessage, Headers>();

@@ -1,5 +1,5 @@
 import type { SectConstructionMemberData } from '@daoyou/shared/contracts/sect';
-import { redis } from '.';
+import { redis } from './index.js';
 
 const KEY_PREFIX = 'sect:construction:daily';
 const KEY_TTL_SECONDS = 48 * 60 * 60;

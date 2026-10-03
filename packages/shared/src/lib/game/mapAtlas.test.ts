@@ -4,8 +4,8 @@ import {
   ATLAS_REGIONS,
   getAtlasLocations,
   getAtlasRegion,
-} from './mapAtlas';
-import { getWorldMapLocation } from './mapSystem';
+} from './mapAtlas.js';
+import { getWorldMapLocation } from './mapSystem.js';
 
 describe('world atlas location coverage', () => {
   it.each([

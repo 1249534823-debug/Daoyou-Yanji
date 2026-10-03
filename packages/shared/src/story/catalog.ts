@@ -1,11 +1,11 @@
-import arrivalChapter from '../content/story/arrival.json';
-import { getPerformanceScript } from '../performance/catalog';
+import arrivalChapter from '../content/story/arrival.json' with { type: 'json' };
+import { getPerformanceScript } from '../performance/catalog.js';
 import {
   StoryChapterSchema,
   StoryProgressSchema,
   type StoryChapter,
   type StoryProgress,
-} from './schema';
+} from './schema.js';
 
 function parseChapter(input: unknown): StoryChapter {
   const chapter = StoryChapterSchema.parse(input);

@@ -1,9 +1,9 @@
-import { isEquipmentLevel } from '../engine/combat-v6/equipment/realm';
-import { ConsumableFactsSchema } from '../items/definitions/consumables';
-import { SeedFactsSchema } from '../items/definitions/seeds';
-import { findItemDefinition } from '../items/registry';
-import { InventoryEquipmentSchema } from './equipment';
-import type { InventoryItem } from './index';
+import { isEquipmentLevel } from '../engine/combat-v6/equipment/realm.js';
+import { ConsumableFactsSchema } from '../items/definitions/consumables.js';
+import { SeedFactsSchema } from '../items/definitions/seeds.js';
+import { findItemDefinition } from '../items/registry.js';
+import { InventoryEquipmentSchema } from './equipment.js';
+import type { InventoryItem } from './index.js';
 
 export function recycleBlockingReason(
   item: Pick<

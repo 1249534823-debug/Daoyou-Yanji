@@ -5,7 +5,7 @@
  */
 
 import type { Quality, RealmType } from '@daoyou/shared/types/constants';
-import type { RewardRangeConfig, ValueRange } from '@server/dungeon/application/flow/reward/types';
+import type { RewardRangeConfig, ValueRange } from '@server/dungeon/application/flow/reward/types.js';
 
 /**
  * 境界 → 奖励数值范围配置

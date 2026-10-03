@@ -1,15 +1,15 @@
-import { db } from '@server/lib/drizzle/db';
-import { cultivators, messageConsumptions } from '@server/lib/drizzle/schema';
-import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
-import { claimMessageForConsumer } from '@server/lib/repositories/messageConsumptionRepository';
+import { db } from '@server/lib/drizzle/db.js';
+import { cultivators, messageConsumptions } from '@server/lib/drizzle/schema.js';
+import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
+import { claimMessageForConsumer } from '@server/lib/repositories/messageConsumptionRepository.js';
 import {
   claimJournalOperation,
   completeJournalOperation,
   findJournalOperation,
   journalOperationKey,
-} from '@server/lib/repositories/playerJournalRepository';
-import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository';
+} from '@server/lib/repositories/playerJournalRepository.js';
+import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
 import { getOrInitCultivationProgress } from '@daoyou/shared/engine/cultivation/cultivationUtils';
 import type { HuntBattleReward } from '@daoyou/shared/contracts/hunts';
 import type { JournalChange } from '@daoyou/shared/contracts/playerJournal';
@@ -25,18 +25,18 @@ import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import type { CultivationProgress } from '@daoyou/shared/types/cultivator';
 import { and, eq } from 'drizzle-orm';
 import { z } from 'zod';
-import { ArenaV6Error, ownedArenaV6 } from '@server/combat/application/CombatV6ArenaService';
-import { CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore';
-import { ConditionService } from '@server/cultivator/application/ConditionService';
+import { ArenaV6Error, ownedArenaV6 } from '@server/combat/application/CombatV6ArenaService.js';
+import { CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore.js';
+import { ConditionService } from '@server/cultivator/application/ConditionService.js';
 import {
   updateCultivationExp,
   updateSpiritStones,
-} from '@server/cultivator/application/readers/CultivatorStateRepository';
-import { MailService } from '@server/mail/application/MailService';
-import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
-import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
-import type { HuntActor } from '@server/hunts/application/HuntTeamService';
-import { finishHuntTeam } from '@server/hunts/application/HuntTeamService';
+} from '@server/cultivator/application/readers/CultivatorStateRepository.js';
+import { MailService } from '@server/mail/application/MailService.js';
+import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster.js';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
+import type { HuntActor } from '@server/hunts/application/HuntTeamService.js';
+import { finishHuntTeam } from '@server/hunts/application/HuntTeamService.js';
 const store = new CombatV6ArenaStore();
 export const HUNT_REWARD_CONSUMER = 'hunt-reward-v1';
 const HuntJournalResultSchema = z.object({

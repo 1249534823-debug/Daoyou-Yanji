@@ -1,6 +1,6 @@
 import {
 hasCultivatorOwnership
-} from '@server/lib/repositories/cultivatorRepository';
+} from '@server/lib/repositories/cultivatorRepository.js';
 import {
 getOrInitCultivationProgress,
 stripExpCapForStorage,
@@ -24,8 +24,8 @@ db,
 getExecutor,
 type DbExecutor,
 type DbTransaction
-} from '@server/lib/drizzle/db';
-import * as schema from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/db.js';
+import * as schema from '@server/lib/drizzle/schema.js';
 
 
 export async function updateCultivator(

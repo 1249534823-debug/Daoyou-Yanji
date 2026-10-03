@@ -3,7 +3,7 @@ import type {
   PerformanceCue,
   PerformanceScript,
   PerformanceTone,
-} from './schema';
+} from './schema.js';
 
 export interface PerformanceBackdrop {
   src: string;

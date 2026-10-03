@@ -1,4 +1,4 @@
-import { combatModifiers, modifierValue } from './modifiers';
+import { combatModifiers, modifierValue } from './modifiers.js';
 import { applyEntryStatuses } from "./status.ts"
 /**
  * 单次出手结算。按指令类型派发，避免 resolveAction 堆叠成长方法。

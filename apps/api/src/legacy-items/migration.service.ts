@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   artifactMigrationAvailability,
   exchangeArtifactMigration,
   readArtifactMigration,
-} from '@server/legacy-items/application/ArtifactMigrationService';
+} from '@server/legacy-items/application/ArtifactMigrationService.js';
 import {
   exchangeManualMigration,
   manualMigrationAvailability,
   readManualMigration,
   readManualMigrationAdmin,
-} from '@server/legacy-items/application/ManualMigrationService';
+} from '@server/legacy-items/application/ManualMigrationService.js';
 import type { ExchangeArtifact } from '@daoyou/shared/contracts/artifactMigration';
 import type { ExchangeManual } from '@daoyou/shared/contracts/manualMigration';
 

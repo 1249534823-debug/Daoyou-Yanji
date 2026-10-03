@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { MAX_CRAFT_MATERIAL_QUANTITY } from '../config/itemQuantity';
-import type { InscriptionCost } from '../inscriptions/rules';
-import type { ItemGrant } from '../inventory';
+import { MAX_CRAFT_MATERIAL_QUANTITY } from '../config/itemQuantity.js';
+import type { InscriptionCost } from '../inscriptions/rules.js';
+import type { ItemGrant } from '../inventory/index.js';
 
 const ref = z.strictObject({
   id: z.string().min(1).max(160),

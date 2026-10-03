@@ -5,7 +5,7 @@ import {
   type CharacterGenerationLimitedBy,
   type CharacterGenerationQuota,
 } from '@daoyou/shared/contracts/character-generation';
-import { redis } from './index';
+import { redis } from './index.js';
 
 const KEY_PREFIX = 'character_generation:daily';
 const KEY_TTL_SECONDS = 86400;

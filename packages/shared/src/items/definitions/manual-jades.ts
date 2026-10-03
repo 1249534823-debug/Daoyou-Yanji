@@ -1,4 +1,4 @@
-import { CHARACTER_MANUALS_V1 } from '../../engine/combat-v6/manuals/content';
+import { CHARACTER_MANUALS_V1 } from '../../engine/combat-v6/manuals/content.js';
 
 export const MANUAL_JADES = CHARACTER_MANUALS_V1.map((manual) => ({
   id: `jade.${manual.id}`,

@@ -6,9 +6,9 @@ import {
   type ExceptionFilter,
   type Type,
 } from '@nestjs/common';
-import { AppConfigService } from '@server/config/app-config.service';
+import { AppConfigService } from '@server/config/app-config.service.js';
 import type { Response as ExpressResponse } from 'express';
-import { ApiExceptionFilter } from './api-exception.filter';
+import { ApiExceptionFilter } from './api-exception.filter.js';
 
 /** Preserve each API's existing error contract while keeping controllers transport-only. */
 export function apiErrorFilter(

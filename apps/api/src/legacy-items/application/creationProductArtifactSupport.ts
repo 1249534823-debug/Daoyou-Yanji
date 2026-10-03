@@ -1,4 +1,4 @@
-import type { CreationProductRecord } from '@server/lib/repositories/creationProductRepository';
+import type { CreationProductRecord } from '@server/lib/repositories/creationProductRepository.js';
 import { legacyModifiers, legacyRecord } from '@daoyou/shared/legacy/products';
 import type { Artifact } from '@daoyou/shared/types/cultivator';
 

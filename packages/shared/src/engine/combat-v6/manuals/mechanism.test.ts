@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { JIUJIE_COMBAT } from '../content/jiujie-pack';
+import { JIUJIE_COMBAT } from '../content/jiujie-pack.js';
 import {
   CommandType,
   DamageOrigin,
@@ -10,14 +10,14 @@ import {
   createBattle,
   type SkillDef,
   type StatusDef,
-} from '../core';
-import { createDaoyouRuleset } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_1_VERSIONS } from '../version';
-import { compileCharacterManualsV1, manualSlot } from './compiler';
-import { CHARACTER_MANUALS_V1, MANUAL_PACK } from './content';
-import { compileManualSkill, manualMechanismValue } from './mechanism';
-import { loadManualPack } from './pack';
-import { manualEffectLines } from './presentation';
+} from '../core/index.js';
+import { createDaoyouRuleset } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_1_VERSIONS } from '../version.js';
+import { compileCharacterManualsV1, manualSlot } from './compiler.js';
+import { CHARACTER_MANUALS_V1, MANUAL_PACK } from './content.js';
+import { compileManualSkill, manualMechanismValue } from './mechanism.js';
+import { loadManualPack } from './pack.js';
+import { manualEffectLines } from './presentation.js';
 
 const statuses: StatusDef[] = [
   { id: 'dot', name: '毒', kind: 'dot', category: 'dot' },

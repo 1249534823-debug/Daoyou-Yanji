@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { EnlightenmentController } from './enlightenment.controller';
-import { EnlightenmentService } from './enlightenment.service';
+import { EnlightenmentController } from './enlightenment.controller.js';
+import { EnlightenmentService } from './enlightenment.service.js';
 
 @Module({
   controllers: [EnlightenmentController],

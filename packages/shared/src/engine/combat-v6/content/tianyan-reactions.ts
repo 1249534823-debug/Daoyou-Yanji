@@ -1,10 +1,10 @@
-import { type SkillEffect } from '../core';
-import type { CombatModifier } from '../core/types';
+import { type SkillEffect } from '../core/index.js';
+import type { CombatModifier } from '../core/types.js';
 import {
   TIANYAN_FOUNDATION,
   type TianyanElementV1,
   type loadTianyanFoundation,
-} from './tianyan-foundation';
+} from './tianyan-foundation.js';
 
 export function compileTianyanReactionEffects(
   element: TianyanElementV1,

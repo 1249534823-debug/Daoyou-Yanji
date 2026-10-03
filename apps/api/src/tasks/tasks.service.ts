@@ -1,12 +1,12 @@
 import { HttpException, Inject, Injectable } from '@nestjs/common';
-import { startBreakthroughBattle } from '@server/combat/application/CombatV6BreakthroughService';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
-import { readResourceWithMeta } from '@server/player/application/state/ResourceReadService';
-import { claimTaskRewardCommand } from '@server/tasks/application/TaskApplicationService';
-import { TaskService } from '@server/tasks/application/TaskService';
+import { startBreakthroughBattle } from '@server/combat/application/CombatV6BreakthroughService.js';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
+import { readResourceWithMeta } from '@server/player/application/state/ResourceReadService.js';
+import { claimTaskRewardCommand } from '@server/tasks/application/TaskApplicationService.js';
+import { TaskService } from '@server/tasks/application/TaskService.js';
 
 @Injectable()
 export class TasksService {

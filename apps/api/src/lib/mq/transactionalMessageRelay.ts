@@ -1,5 +1,5 @@
-import { listPendingTransactionalMessages } from '@server/lib/repositories/transactionalMessageRepository';
-import { publishTransactionalMessage } from './transactionalMessagePublisher';
+import { listPendingTransactionalMessages } from '@server/lib/repositories/transactionalMessageRepository.js';
+import { publishTransactionalMessage } from './transactionalMessagePublisher.js';
 
 const RECOVERY_INTERVAL_MS = 5_000;
 const RECOVERY_BATCH_SIZE = 100;

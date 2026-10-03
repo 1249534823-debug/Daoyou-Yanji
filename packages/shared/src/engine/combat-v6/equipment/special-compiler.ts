@@ -9,11 +9,11 @@ import {
   TargetSide,
   type SkillDef,
   type StatusDef,
-} from '../core';
-import { DaoyouRule } from '../rules-daoyou/constants';
-import { DAO_RAGE_PASSIVE_ID, DAO_RAGE_RESOURCE_ID } from './special-ids';
-import type { EquipmentSpecialPack } from './special-pack';
-import type { DaoEquipmentArtDefV1, DaoEquipmentEssenceDefV1 } from './types';
+} from '../core/index.js';
+import { DaoyouRule } from '../rules-daoyou/constants.js';
+import { DAO_RAGE_PASSIVE_ID, DAO_RAGE_RESOURCE_ID } from './special-ids.js';
+import type { EquipmentSpecialPack } from './special-pack.js';
+import type { DaoEquipmentArtDefV1, DaoEquipmentEssenceDefV1 } from './types.js';
 
 export function compileEquipmentEssence(
   entry: EquipmentSpecialPack['essences'][number],

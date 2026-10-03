@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { assertConsumableSpec } from '../../lib/consumables';
-import { CONSUMABLE_TYPE_VALUES, QUALITY_VALUES } from '../../types/constants';
-import type { Consumable } from '../../types/cultivator';
+import { assertConsumableSpec } from '../../lib/consumables.js';
+import { CONSUMABLE_TYPE_VALUES, QUALITY_VALUES } from '../../types/constants.js';
+import type { Consumable } from '../../types/cultivator.js';
 
 export const CONSUMABLE_ITEM = {
   id: 'consumable.v1',

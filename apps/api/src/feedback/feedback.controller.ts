@@ -1,15 +1,15 @@
 import { Controller, HttpCode, Inject, Post, UseFilters } from '@nestjs/common';
-import type { AuthUser } from '@server/lib/auth/types';
+import type { AuthUser } from '@server/lib/auth/types.js';
 import {
   FeedbackCreateRequestSchema,
   type FeedbackCreateRequest,
 } from '@daoyou/shared/contracts/feedback';
 import { ZodError } from 'zod';
-import { Access, CurrentUser } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { FeedbackService } from './feedback.service';
+import { Access, CurrentUser } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { FeedbackService } from './feedback.service.js';
 
 const FeedbackErrors = apiErrorFilter((error) => {
   if (error instanceof ZodError) return undefined;

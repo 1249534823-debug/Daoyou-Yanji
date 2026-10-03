@@ -3,7 +3,7 @@ import { DAO_EQUIPMENT_GENERATOR_VERSION, DAO_EQUIPMENT_TEMPLATE_ID, generateDao
 import { describe, expect, it } from 'vitest';
 import { COMBAT_V6_SECT_DEFINITIONS_V4 } from '@daoyou/shared/engine/combat-v6/content';
 import { projectCharacterToCombatV6 } from '@daoyou/shared/engine/combat-v6/projection';
-import { characterResourceMaxima, normalizeCharacterResource, projectCharacterDisplay, projectCharacterDisplaySnapshot, type CharacterDisplayBuild, type CultivatorDisplayInput } from './cultivatorDisplay';
+import { characterResourceMaxima, normalizeCharacterResource, projectCharacterDisplay, projectCharacterDisplaySnapshot, type CharacterDisplayBuild, type CultivatorDisplayInput } from './cultivatorDisplay.js';
 
 const player: CultivatorDisplayInput = {
   id: 'panel-player', name: '面板验收', realm: '炼气', realm_stage: '后期',

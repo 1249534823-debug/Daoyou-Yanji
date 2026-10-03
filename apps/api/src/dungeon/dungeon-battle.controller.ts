@@ -8,7 +8,7 @@ import {
   Put,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import { CombatAutoRequestSchema } from '@daoyou/shared/combat-v6/auto';
 import {
   CombatV6TrainingCommandRequestSchema,
@@ -17,18 +17,18 @@ import {
 } from '@daoyou/shared/contracts/combatV6';
 import { DungeonBeginBattleRequestSchema } from '@daoyou/shared/contracts/combatV6Dungeon';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { AutoErrors } from '../combat/auto-errors';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { AutoErrors } from '../combat/auto-errors.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
 import {
   DungeonBeginErrors,
   DungeonCompleteErrors,
   DungeonResolveErrors,
   DungeonSubmitErrors,
-} from './dungeon-errors';
-import { DungeonService } from './dungeon.service';
+} from './dungeon-errors.js';
+import { DungeonService } from './dungeon.service.js';
 
 const BattleIdSchema = z.object({
   battleId: z.string().min(1),

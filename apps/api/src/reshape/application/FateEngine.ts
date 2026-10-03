@@ -15,7 +15,7 @@ import {
   FATE_QUALITY_ORDER,
   FATE_QUALITY_WEIGHTS,
   FATE_SLOT_COUNT,
-} from '@server/reshape/application/FateConfig';
+} from '@server/reshape/application/FateConfig.js';
 import {
   buildFallbackFateName,
   buildFateEffectEntry,
@@ -24,7 +24,7 @@ import {
   getNegativeFateEffects,
   getPositiveFateEffects,
   isHighQualityFate,
-} from '@server/reshape/application/FateFragmentRegistry';
+} from '@server/reshape/application/FateFragmentRegistry.js';
 
 interface FateGenerationOptions {
   candidateCount?: number;

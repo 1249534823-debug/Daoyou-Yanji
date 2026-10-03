@@ -1,9 +1,9 @@
-import { COMBAT_V6_SECT_DEFINITIONS_V4, type CombatV6SectId } from '../content';
+import { COMBAT_V6_SECT_DEFINITIONS_V4, type CombatV6SectId } from '../content/index.js';
 import {
   createSectCombatView,
   createEmptySectCombatProgressV6,
   createFreshCombatV6MethodLevels,
-} from './index';
+} from './index.js';
 
 describe('combat-v6 Phase 7B build state', () => {
   test('defines six unique slot mappings for every sect', () => {

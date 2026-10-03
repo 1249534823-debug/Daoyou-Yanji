@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { BAG_CAPACITY, InventoryItemSchema } from '../../inventory';
-import type { InventoryView } from '../inventory';
+import { BAG_CAPACITY, InventoryItemSchema } from '../../inventory/index.js';
+import type { InventoryView } from '../inventory.js';
 
 export interface BagResourceDataMap {
   'inventory.bag': InventoryView;

@@ -7,15 +7,15 @@ import {
   Res,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors';
-import { InventoryError } from '@server/inventory/operations';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors.js';
+import { InventoryError } from '@server/inventory/operations.js';
 import {
   QiInsufficientError,
   QiServiceError,
-} from '@server/cultivator/application/QiService';
-import { SpiritFieldServiceError } from '@server/spirit-field/application/SpiritFieldError';
+} from '@server/cultivator/application/QiService.js';
+import { SpiritFieldServiceError } from '@server/spirit-field/application/SpiritFieldError.js';
 import {
   SpiritFieldCultivateRequestSchema,
   SpiritFieldHarvestRequestSchema,
@@ -23,12 +23,12 @@ import {
 } from '@daoyou/shared/contracts/spiritField';
 import type { Response as ExpressResponse } from 'express';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { JsonBody } from '../http/json-body';
-import { withRequestAbort } from '../http/request-abort';
-import { ZodPipe } from '../http/zod.pipe';
-import { SpiritFieldService } from './spirit-field.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { JsonBody } from '../http/json-body.js';
+import { withRequestAbort } from '../http/request-abort.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { SpiritFieldService } from './spirit-field.service.js';
 
 const SpiritFieldErrors = apiErrorFilter((error) => {
   const lock = redisLockErrorResponse(error);

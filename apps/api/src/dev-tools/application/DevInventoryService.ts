@@ -1,16 +1,16 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
 import { allowsLocalDevTools } from '@daoyou/shared/config/deployment';
 import { and, eq, inArray } from 'drizzle-orm';
-import { db } from '@server/lib/drizzle/db';
+import { db } from '@server/lib/drizzle/db.js';
 import {
   cultivatorEquipmentSlots,
   cultivators,
   inventoryItems,
-} from '@server/lib/drizzle/schema';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
-import { assertInventoryIdle, InventoryError } from '@server/inventory/operations';
-import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
-import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
+} from '@server/lib/drizzle/schema.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
+import { assertInventoryIdle, InventoryError } from '@server/inventory/operations.js';
+import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster.js';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
 
 /** Only the local bag and its equipment references are cleared; storage is retained. */
 export async function clearDevInventoryBag(owner: string) {

@@ -24,8 +24,8 @@ import {
   type Quality,
 } from '@daoyou/shared/types/constants';
 import type { Material } from '@daoyou/shared/types/cultivator';
-import { renderPromptSystem, renderPromptUser } from '@server/lib/prompts';
-import { generateAiArray } from '@server/utils/aiClient';
+import { renderPromptSystem, renderPromptUser } from '@server/lib/prompts/index.js';
+import { generateAiArray } from '@server/utils/aiClient.js';
 import { z } from 'zod';
 
 const SpiritSeedAISchema = z

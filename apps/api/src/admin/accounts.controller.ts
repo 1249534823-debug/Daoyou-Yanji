@@ -9,7 +9,7 @@ import {
   Res,
   UseFilters,
 } from '@nestjs/common';
-import type { AuthUser } from '@server/lib/auth/types';
+import type { AuthUser } from '@server/lib/auth/types.js';
 import {
   AdminAccountBanRequestSchema,
   AdminAccountChangeEmailRequestSchema,
@@ -20,12 +20,12 @@ import {
 } from '@daoyou/shared/contracts/adminAccounts';
 import { fromNodeHeaders } from 'better-auth/node';
 import type { Request, Response } from 'express';
-import { Access, CurrentUser } from '../auth/access';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { AccountsService } from './accounts.service';
-import { AdminErrors } from './admin-errors';
+import { Access, CurrentUser } from '../auth/access.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { AccountsService } from './accounts.service.js';
+import { AdminErrors } from './admin-errors.js';
 
 function authHeaders(response: Response) {
   return (headers: Headers) => {

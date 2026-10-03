@@ -3,9 +3,9 @@ import {
   REALM_VALUES,
   type Quality,
   type RealmType,
-} from '../types/constants';
-import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from './dungeon-material-quality';
-import { DUNGEON_REWARD_PACK } from './dungeon-pack';
+} from '../types/constants.js';
+import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from './dungeon-material-quality.js';
+import { DUNGEON_REWARD_PACK } from './dungeon-pack.js';
 
 const completion = DUNGEON_REWARD_PACK.sources.completion;
 const materialChance =

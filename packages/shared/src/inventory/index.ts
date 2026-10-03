@@ -1,11 +1,11 @@
 import { z } from 'zod';
-import { BeastSchema, type SummonedBeast } from '../engine/combat-v6/beasts';
-import { ConsumableFactsSchema } from '../items/definitions/consumables';
-import { MaterialFactsSchema } from '../items/definitions/materials';
-import { SeedFactsSchema } from '../items/definitions/seeds';
-import { findItemDefinition } from '../items/registry';
-import { InventoryEquipmentSchema } from './equipment';
-export { BOOKS } from '../items/definitions/beast-books';
+import { BeastSchema, type SummonedBeast } from '../engine/combat-v6/beasts/index.js';
+import { ConsumableFactsSchema } from '../items/definitions/consumables.js';
+import { MaterialFactsSchema } from '../items/definitions/materials.js';
+import { SeedFactsSchema } from '../items/definitions/seeds.js';
+import { findItemDefinition } from '../items/registry.js';
+import { InventoryEquipmentSchema } from './equipment.js';
+export { BOOKS } from '../items/definitions/beast-books.js';
 
 export const BAG_CAPACITY = 40;
 export class InventoryRuleError extends Error {}

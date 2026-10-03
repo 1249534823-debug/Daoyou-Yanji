@@ -1,8 +1,8 @@
-import { rollDrops, type DropPool } from '../drops';
-import { WILD_REGIONS } from '../engine/combat-v6/wild/content';
-import type { ItemGrant } from '../inventory';
-import { BOOKS } from '../items/definitions/beast-books';
-import { compileWildRewardPool } from './wild-pack';
+import { rollDrops, type DropPool } from '../drops/index.js';
+import { WILD_REGIONS } from '../engine/combat-v6/wild/content.js';
+import type { ItemGrant } from '../inventory/index.js';
+import { BOOKS } from '../items/definitions/beast-books.js';
+import { compileWildRewardPool } from './wild-pack.js';
 
 export const WILD_INHERITANCE_POOL = compileWildRewardPool();
 export const WILD_DROP_POOLS: Record<string, DropPool> = Object.fromEntries(

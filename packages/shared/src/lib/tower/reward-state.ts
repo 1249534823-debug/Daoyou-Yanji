@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import type { TowerReward } from '../../contracts/combatV6Tower';
-import { ItemGrantSchema } from '../../inventory';
+import type { TowerReward } from '../../contracts/combatV6Tower.js';
+import { ItemGrantSchema } from '../../inventory/index.js';
 
 export const TowerRewardSchema = z.strictObject({
   floor: z.number().int().min(1).max(20),

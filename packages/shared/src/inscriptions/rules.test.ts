@@ -1,19 +1,19 @@
 import { describe, expect, it } from 'vitest';
-import { InscriptionRequestSchema } from '../contracts/inscriptions';
-import { DAO_FORMATION_INSCRIPTIONS_V1 } from '../engine/combat-v6/equipment/content';
-import { generateForgedEquipment } from '../engine/combat-v6/equipment/forging';
+import { InscriptionRequestSchema } from '../contracts/inscriptions.js';
+import { DAO_FORMATION_INSCRIPTIONS_V1 } from '../engine/combat-v6/equipment/content.js';
+import { generateForgedEquipment } from '../engine/combat-v6/equipment/forging.js';
 import {
   addItems,
   InventoryItemSchema,
   type InventoryItem,
-} from '../inventory';
-import { InventoryEquipmentSchema } from '../inventory/equipment';
-import { inventoryStackIdentity } from '../inventory/stack-key';
+} from '../inventory/index.js';
+import { InventoryEquipmentSchema } from '../inventory/equipment.js';
+import { inventoryStackIdentity } from '../inventory/stack-key.js';
 import {
   INSCRIPTION_ITEMS,
   inscriptionItemId,
-} from '../items/definitions/inscriptions';
-import type { MaterialFacts } from '../items/definitions/materials';
+} from '../items/definitions/inscriptions.js';
+import type { MaterialFacts } from '../items/definitions/materials.js';
 import {
   inscriptionMaterialTenths,
   inscriptionStrengthenCost,
@@ -22,7 +22,7 @@ import {
   prepareInscriptionStrengthen,
   previewInscriptionDraw,
   rollInscriptionDraw,
-} from './rules';
+} from './rules.js';
 
 const xuanfeng = 'dao_inscription.xuanfeng';
 function glyph(

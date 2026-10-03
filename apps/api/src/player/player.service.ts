@@ -7,18 +7,18 @@ import {
   type ResourceScope,
 } from '@daoyou/shared/contracts/resources';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { cultivators, sectMemberships } from '@server/lib/drizzle/schema';
-import { listPlayerJournal } from '@server/lib/repositories/playerJournalRepository';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { cultivators, sectMemberships } from '@server/lib/drizzle/schema.js';
+import { listPlayerJournal } from '@server/lib/repositories/playerJournalRepository.js';
 import {
   readResourceEventWindow,
   RESOURCE_EVENT_PAGE_LIMIT,
-} from '@server/lib/repositories/playerStateRepository';
+} from '@server/lib/repositories/playerStateRepository.js';
 import {
   parsePlayerResourceKeys,
   readPlayerResourcesSnapshot,
-} from '@server/player/application/PlayerResourceReaderService';
+} from '@server/player/application/PlayerResourceReaderService.js';
 import { and, eq } from 'drizzle-orm';
 
 @Injectable()

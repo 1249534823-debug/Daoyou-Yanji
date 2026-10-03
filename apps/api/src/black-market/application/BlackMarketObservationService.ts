@@ -1,13 +1,13 @@
-import { renderPrompt } from '@server/lib/prompts';
-import { redis } from '@server/lib/redis';
-import { parseRedisJson } from '@server/lib/redis/json';
-import { generateAiObject } from '@server/utils/aiClient';
-import { stableCompactStringify, truncateText } from '@server/utils/llmPayload';
+import { renderPrompt } from '@server/lib/prompts/index.js';
+import { redis } from '@server/lib/redis/index.js';
+import { parseRedisJson } from '@server/lib/redis/json.js';
+import { generateAiObject } from '@server/utils/aiClient.js';
+import { stableCompactStringify, truncateText } from '@server/utils/llmPayload.js';
 import { sanitizeBlackMarketObservationText } from '@daoyou/shared/lib/blackMarketObservations';
 import type { Material } from '@daoyou/shared/types/cultivator';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
-import type { BlackMarketInternalObservation } from '@server/black-market/application/types';
+import type { BlackMarketInternalObservation } from '@server/black-market/application/types.js';
 
 const CACHE_TTL_SECONDS = 24 * 60 * 60;
 

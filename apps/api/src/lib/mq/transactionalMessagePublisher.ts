@@ -1,10 +1,10 @@
-import { getJetStreamClient } from '@server/lib/nats';
+import { getJetStreamClient } from '@server/lib/nats/index.js';
 import {
   findPendingTransactionalMessage,
   markTransactionalMessagePublished,
   recordTransactionalMessagePublishAttempt,
   recordTransactionalMessagePublishFailure,
-} from '@server/lib/repositories/transactionalMessageRepository';
+} from '@server/lib/repositories/transactionalMessageRepository.js';
 import { JSONCodec } from 'nats';
 
 const codec = JSONCodec();

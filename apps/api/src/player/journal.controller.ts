@@ -1,12 +1,12 @@
 import { Controller, Get, Header, Inject, UseFilters } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import { PlayerJournalQuerySchema } from '@daoyou/shared/contracts/playerJournal';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { FirstQuery } from '../http/first-query';
-import { ZodPipe } from '../http/zod.pipe';
-import { PlayerService } from './player.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { FirstQuery } from '../http/first-query.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { PlayerService } from './player.service.js';
 
 const JournalErrors = apiErrorFilter((error) => {
   if (error instanceof z.ZodError)

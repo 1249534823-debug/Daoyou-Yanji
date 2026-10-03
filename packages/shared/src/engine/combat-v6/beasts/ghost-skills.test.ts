@@ -5,11 +5,11 @@ import {
   createBattle,
   restoreBattle,
   type StatusDef,
-} from '../core';
-import { createDaoyouRuleset } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_7C_VERSIONS } from '../version';
-import { BEAST_SKILLS, BEAST_STATUS_DEFS } from './content';
-import { beastDeathIds } from './progression';
+} from '../core/index.js';
+import { createDaoyouRuleset } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_7C_VERSIONS } from '../version.js';
+import { BEAST_SKILLS, BEAST_STATUS_DEFS } from './content.js';
+import { beastDeathIds } from './progression.js';
 const extra: StatusDef[] = [
   {
     id: 'ban',

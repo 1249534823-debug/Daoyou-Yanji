@@ -1,8 +1,8 @@
-import { getLevelRealmStage } from '../config/realmProgression';
-import { DAO_EQUIPMENT_FORGING } from '../engine/combat-v6/equipment/forging-content';
-import { CHARACTER_MANUALS_V1 } from '../engine/combat-v6/manuals/content';
-import { BASE_PRICES } from '../engine/material/creation/config';
-import { REALM_VALUES, type Quality, type RealmType } from '../types/constants';
+import { getLevelRealmStage } from '../config/realmProgression.js';
+import { DAO_EQUIPMENT_FORGING } from '../engine/combat-v6/equipment/forging-content.js';
+import { CHARACTER_MANUALS_V1 } from '../engine/combat-v6/manuals/content.js';
+import { BASE_PRICES } from '../engine/material/creation/config.js';
+import { REALM_VALUES, type Quality, type RealmType } from '../types/constants.js';
 
 const BOOK_RECYCLE_PRICES = [5_000, 15_000, 50_000, 150_000, 300_000] as const;
 

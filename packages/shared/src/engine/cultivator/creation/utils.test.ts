@@ -1,6 +1,6 @@
 import { vi } from 'vitest';
 import { ELEMENT_VALUES } from '@daoyou/shared/types/constants';
-import { generateAttributes, generateSpiritualRoots } from './utils';
+import { generateAttributes, generateSpiritualRoots } from './utils.js';
 
 describe('generateSpiritualRoots', () => {
   it('filters invalid elements and never outputs values outside ELEMENT_VALUES', () => {

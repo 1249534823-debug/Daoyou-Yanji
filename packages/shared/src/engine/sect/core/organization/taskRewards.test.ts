@@ -1,16 +1,16 @@
 import { REALM_VALUES } from '@daoyou/shared/types/constants';
 import { describe, expect, it } from 'vitest';
-import { scaleMiningTaskReward } from '../mining/MiningRewards';
+import { scaleMiningTaskReward } from '../mining/MiningRewards.js';
 import {
   STANDARD_SECT_TASK_BASE_CONTRIBUTION,
   StandardSectOrganizationModule,
-} from './StandardSectOrganizationModule';
+} from './StandardSectOrganizationModule.js';
 import {
   SECT_TASK_DIFFICULTY_MULTIPLIER_BPS,
   STANDARD_SECT_TASK_REWARD_CURVE,
   calculateRealmSectTaskReward,
   resolveSectTaskDifficulty,
-} from './taskRewards';
+} from './taskRewards.js';
 
 describe('sect task rewards', () => {
   it('uses the standard cultivation and contribution curve', () => {

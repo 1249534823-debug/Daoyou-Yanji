@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { manualSlot, validateManualStateV1 } from './compiler';
-import { CHARACTER_MANUALS_V1 } from './content';
-import { changeManual } from './state';
-import type { CultivatorManualStateV1 } from './types';
+import { manualSlot, validateManualStateV1 } from './compiler.js';
+import { CHARACTER_MANUALS_V1 } from './content.js';
+import { changeManual } from './state.js';
+import type { CultivatorManualStateV1 } from './types.js';
 
 const manuals = CHARACTER_MANUALS_V1.filter(
   (manual) => manual.realm === '炼气',

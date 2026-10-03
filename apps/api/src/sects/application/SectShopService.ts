@@ -3,8 +3,8 @@ import {
   runDbTasks,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
-import { sectShopItems, sectShopPurchases } from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/db.js';
+import { sectShopItems, sectShopPurchases } from '@server/lib/drizzle/schema.js';
 import {
   RewardItemSchema,
   materializeRewardItem,
@@ -19,7 +19,7 @@ import { SECT_SHOP_MAX_PRICE } from '@daoyou/shared/contracts/sectShop';
 import { getItemExchangePurchaseWeek } from '@daoyou/shared/lib/itemExchangeShop';
 import { and, asc, desc, eq, sql, type SQL } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
-import { assertInventoryIdle, grantInventory } from '@server/inventory/operations';
+import { assertInventoryIdle, grantInventory } from '@server/inventory/operations.js';
 
 type ShopItemRow = typeof sectShopItems.$inferSelect;
 

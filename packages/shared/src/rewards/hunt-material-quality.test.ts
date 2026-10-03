@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { HUNT_REALMS } from '../hunts/config';
-import { QUALITY_VALUES } from '../types/constants';
-import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from './dungeon-material-quality';
-import { DUNGEON_REWARD_PACK } from './dungeon-pack';
-import { planHuntReward } from './hunt';
-import { HUNT_MATERIAL_QUALITY_CHANCE_BY_REALM } from './hunt-material-quality';
+import { HUNT_REALMS } from '../hunts/config.js';
+import { QUALITY_VALUES } from '../types/constants.js';
+import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from './dungeon-material-quality.js';
+import { DUNGEON_REWARD_PACK } from './dungeon-pack.js';
+import { planHuntReward } from './hunt.js';
+import { HUNT_MATERIAL_QUALITY_CHANCE_BY_REALM } from './hunt-material-quality.js';
 
 describe('讨伐材料综合概率', () => {
   it.each(HUNT_REALMS)(

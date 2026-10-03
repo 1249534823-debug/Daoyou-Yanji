@@ -1,5 +1,5 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import { getAfdianSponsorshipConfig } from '@server/lib/repositories/appSettingsRepository';
+import { getAfdianSponsorshipConfig } from '@server/lib/repositories/appSettingsRepository.js';
 import {
   getSponsorshipOrderForAdmin,
   grantManualSponsorshipMerit,
@@ -10,8 +10,8 @@ import {
   rotateSponsorshipClaimAsAdmin,
   SponsorshipApplicationError,
   updateSponsorshipConfigAsAdmin,
-} from '@server/sponsorship/application/SponsorshipApplicationService';
-import { requireSponsorshipProvider } from '@server/lib/sponsorship/providerRegistry';
+} from '@server/sponsorship/application/SponsorshipApplicationService.js';
+import { requireSponsorshipProvider } from '@server/lib/sponsorship/providerRegistry.js';
 import {
   AfdianSponsorshipConfigSchema,
   SPONSORSHIP_TIER_IDS,

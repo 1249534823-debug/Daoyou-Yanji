@@ -1,11 +1,11 @@
-import { lxEffect as effect, lxHook, lxModifier } from './lingxiao-shapes';
+import { lxEffect as effect, lxHook, lxModifier } from './lingxiao-shapes.js';
 import { formatContentPackErrors } from '@daoyou/shared/lib/content-pack-errors';
 import { z } from 'zod';
-import { ATTR_NAMES, CommandPolicy, EffectType, SkillTag, StatusCategory, TargetMode, TargetSide, UnitKind, type SkillDef, type StatusDef } from '../core';
-import { validateSectExpressions } from './authoring-expressions';
-import { sectSkillLearning } from './skill-learning';
-import type { SectSkillDefV6 } from './types';
-import raw from './data/lingxiao-combat.json';
+import { ATTR_NAMES, CommandPolicy, EffectType, SkillTag, StatusCategory, TargetMode, TargetSide, UnitKind, type SkillDef, type StatusDef } from '../core/index.js';
+import { validateSectExpressions } from './authoring-expressions.js';
+import { sectSkillLearning } from './skill-learning.js';
+import type { SectSkillDefV6 } from './types.js';
+import raw from './data/lingxiao-combat.json' with { type: 'json' };
 
 const id = z.string().regex(/^lingxiao\.[a-z][a-z0-9_.]*$/);
 const name = z.string().min(1).max(80);

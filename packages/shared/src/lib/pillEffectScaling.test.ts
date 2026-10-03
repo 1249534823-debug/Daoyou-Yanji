@@ -8,7 +8,7 @@ import {
   buildPillToxicity,
   buildPositivePillToxicity,
   buildProtectMeridiansReduction,
-} from './pillEffectScaling';
+} from './pillEffectScaling.js';
 
 describe('pillEffectScaling high quality curves', () => {
   it('makes immortal and divine longevity gains steeper than mid-tier pills', () => {

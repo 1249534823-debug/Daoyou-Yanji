@@ -1,5 +1,5 @@
 import type { BodyCultivationTrackKey } from '@daoyou/shared/types/condition';
-import { BODY_CULTIVATION_PACK, BODY_CULTIVATION_TRACK_KEYS } from './pack';
+import { BODY_CULTIVATION_PACK, BODY_CULTIVATION_TRACK_KEYS } from './pack.js';
 
 export function bodyCultivationBenefits(levels: Record<BodyCultivationTrackKey, number>, maxHp: number, pack = BODY_CULTIVATION_PACK) {
   const training = { attackCultivate: 0, defenseCultivate: 0, spellCultivate: 0, resistSpellCultivate: 0 };

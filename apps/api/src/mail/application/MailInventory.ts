@@ -12,9 +12,9 @@ import { seedFactsOf, SeedFactsSchema } from '@daoyou/shared/items/definitions/s
 import { assertCurrentRewardItem } from '@daoyou/shared/lib/retiredDraw';
 import type { Consumable, Material } from '@daoyou/shared/types/cultivator';
 import type { MailAttachment } from '@daoyou/shared/types/mail';
-import type { DbTransaction } from '@server/lib/drizzle/db';
-import { grantInventory } from '@server/inventory/operations';
-import { sanitizeMaterialForClient } from '@server/inventory/application/materialDetailsPrivacy';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
+import { grantInventory } from '@server/inventory/operations.js';
+import { sanitizeMaterialForClient } from '@server/inventory/application/materialDetailsPrivacy.js';
 
 /** Only used when producing new rewards; never converts stored mail on claim. */
 export function newRewardAttachment(item: MailAttachment): MailAttachment {

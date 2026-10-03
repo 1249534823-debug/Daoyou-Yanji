@@ -1,4 +1,4 @@
-import { SectError } from '@server/sects/application/SectError';
+import { SectError } from '@server/sects/application/SectError.js';
 import { SectIdempotencyKeySchema } from '@daoyou/shared/contracts/sect';
 import { createHash } from 'node:crypto';
 

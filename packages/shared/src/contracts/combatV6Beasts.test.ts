@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { createTextFilter } from '../text-filter';
-import { BeastNameSchema, BeastRenameSchema } from './combatV6Beasts';
+import { createTextFilter } from '../text-filter/index.js';
+import { BeastNameSchema, BeastRenameSchema } from './combatV6Beasts.js';
 
 describe('灵兽改名', () => {
   it.each([

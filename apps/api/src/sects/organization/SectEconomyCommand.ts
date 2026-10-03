@@ -1,11 +1,11 @@
-import { loadSectCultivatorProgress } from '@server/lib/repositories/sectRepository';
-import { sectOrganizationFacade } from '@server/sects/organization';
-import { SectError } from '@server/sects/application/SectError';
-import { createPostgresSectEconomyContext } from '@server/sects/organization/PostgresSectOrganizationAdapters';
+import { loadSectCultivatorProgress } from '@server/lib/repositories/sectRepository.js';
+import { sectOrganizationFacade } from '@server/sects/organization/index.js';
+import { SectError } from '@server/sects/application/SectError.js';
+import { createPostgresSectEconomyContext } from '@server/sects/organization/PostgresSectOrganizationAdapters.js';
 import {
   executeSectPlayerCommand,
   type SectCommandArgs,
-} from '@server/sects/organization/commandSupport';
+} from '@server/sects/organization/commandSupport.js';
 
 export function executeSectShopPurchaseCommand(
   args: SectCommandArgs & { itemId: string },

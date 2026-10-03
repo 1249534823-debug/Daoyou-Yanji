@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { QUALITY_VALUES, type Quality } from '../types/constants';
-import type { PillAppearanceGrade } from '../types/consumable';
-import { alchemyShowcaseSnapshot } from './alchemyShowcase';
-import { isInventoryShowcase } from './showcase';
+import { QUALITY_VALUES, type Quality } from '../types/constants.js';
+import type { PillAppearanceGrade } from '../types/consumable.js';
+import { alchemyShowcaseSnapshot } from './alchemyShowcase.js';
+import { isInventoryShowcase } from './showcase.js';
 
 function pill(quality: Quality, appearance?: PillAppearanceGrade) {
   return {

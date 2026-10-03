@@ -1,4 +1,4 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
 import {
   buildAfdianCheckoutUrl,
   buildAfdianWebhookSignedText,
@@ -12,7 +12,7 @@ import type {
   SponsorshipCheckoutRequest,
   SponsorshipProvider,
   VerifiedWebhook,
-} from './types';
+} from './types.js';
 
 const AFDIAN_API_BASE_URL = 'https://ifdian.net';
 const AFDIAN_PUBLIC_KEY = `-----BEGIN PUBLIC KEY-----

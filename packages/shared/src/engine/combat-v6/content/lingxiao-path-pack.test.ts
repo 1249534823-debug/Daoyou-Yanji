@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from './data/lingxiao-paths.json';
-import schema from './data/lingxiao-paths.schema.json';
-import { LingxiaoPathsPackShape, loadLingxiaoPathsPack, compileLingxiaoPaths } from './lingxiao-path-pack';
-import { LINGXIAO_V6_DEFINITION } from './lingxiao';
-import { compileSectDefinitionV6 } from './compiler';
-import type { SectCombatProgressV6, SectDefinitionV6 } from './types';
+import raw from './data/lingxiao-paths.json' with { type: 'json' };
+import schema from './data/lingxiao-paths.schema.json' with { type: 'json' };
+import { LingxiaoPathsPackShape, loadLingxiaoPathsPack, compileLingxiaoPaths } from './lingxiao-path-pack.js';
+import { LINGXIAO_V6_DEFINITION } from './lingxiao.js';
+import { compileSectDefinitionV6 } from './compiler.js';
+import type { SectCombatProgressV6, SectDefinitionV6 } from './types.js';
 
 function compile(definition: SectDefinitionV6, pathIndex: number, nodeId: string) {
   definition = structuredClone(definition);

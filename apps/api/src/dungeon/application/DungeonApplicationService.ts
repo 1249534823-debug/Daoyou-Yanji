@@ -9,22 +9,22 @@ import {
   getMapNode,
   isSatelliteNode,
 } from '@daoyou/shared/lib/game/mapSystem';
-import { dungeonPlayer } from '@server/dungeon/application/flow/combatV6';
+import { dungeonPlayer } from '@server/dungeon/application/flow/combatV6.js';
 import {
   type DungeonFlowService,
   type DungeonPersistenceSettlement,
-} from '@server/dungeon/application/flow/DungeonFlowService';
-import type { DbTransaction } from '@server/lib/drizzle/db';
-import { redis } from '@server/lib/redis';
+} from '@server/dungeon/application/flow/DungeonFlowService.js';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
+import { redis } from '@server/lib/redis/index.js';
 import {
   redisLockKeys,
   withRedisLock,
   type RedisLeaseContext,
-} from '@server/lib/redis/lock';
+} from '@server/lib/redis/lock.js';
 
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
 
-import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
 
 type DungeonCommand =
   | { kind: 'start'; mapNodeId: string }

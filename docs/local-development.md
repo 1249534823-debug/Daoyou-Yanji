@@ -1,6 +1,6 @@
 # 本地开发
 
-需要 pnpm 10.34.6、Node.js 24.18+ 和 Docker。pnpm管理workspace依赖，Turborepo编排任务，Node运行Nest API与Vite。先执行 `pnpm install --frozen-lockfile`。首次将 `env/local.example.env` 复制为 `env/local.env`；已有本地配置保留。模板只含专用本地容器凭据，实际文件被Git忽略。
+需要 pnpm 10.34.6、Node.js 24.18+ 和 Docker。独立运行维护命令前先执行 `pnpm --filter @daoyou/shared run build`；根 dev、build、typecheck、test 会自动安排 shared 构建。pnpm管理workspace依赖，Turborepo编排任务，Node运行Nest API与Vite。先执行 `pnpm install --frozen-lockfile`。首次将 `env/local.example.env` 复制为 `env/local.env`；已有本地配置保留。模板只含专用本地容器凭据，实际文件被Git忽略。
 
 启动本地服务：
 
@@ -23,12 +23,12 @@ pnpm run dev                    # 启动 API 与 Vite
 
 ## Workspace 与配置边界
 
-- `apps/api`：Nest 功能模块、服务端基础设施与维护命令；运行依赖、Nest CLI 和 Rspack 构建依赖在本包声明。
+- `apps/api`：Nest 功能模块、服务端基础设施与维护命令；运行依赖、Nest CLI 和 Oxlint 在本包声明；使用默认 tsc 构建。
 - `apps/web`：React SPA、静态资源与 Vite 配置；React、Vite 和 Tailwind 依赖在本包声明。
-- `packages/shared`：源码形式的契约、类型和纯计算。两端通过 `@daoyou/shared/*` 使用，主程序构建时打包；不独立部署。使用workspace包解析与明确的 `exports`；不得用TS／Vite源码别名绕过包边界。combat core／rules／content／projection的内部实现不向应用开放，轻量公开叶子入口需单独注册。
+- `packages/shared`：契约、类型和纯计算由 tsc 编译为 `dist` 中的 JavaScript 与声明文件，JSON 内容随编译复制。两端通过 `@daoyou/shared/*` 使用；API 在运行时加载该包，Web 由 Vite 打包，不独立部署。使用workspace包解析与明确的 `exports`；不得用TS／Vite源码别名绕过包边界。combat core／rules／content／projection的内部实现不向应用开放，轻量公开叶子入口需单独注册。
 - 根目录保留 `pnpm-workspace.yaml`、单一 `pnpm-lock.yaml`、`turbo.json`、lint/test/typecheck、迁移配置和部署入口。内部依赖使用 `workspace:*`，各包自行声明依赖。
 
-ESLint限制共享包导入API／Web，以及两端互相导入。LLM生成和提示词位于API的 `lib/generation`；共同的修为与突破计算位于共享包。
+Web/shared/根工具使用 ESLint，API 使用 `oxlint --type-aware`。两套检查保留应用边界，API 的仓储与 Service 约束位于 `apps/api/.oxlintrc.json`；Promise 检查保留类型信息。LLM生成和提示词位于API的 `lib/generation`；共同的修为与突破计算位于共享包。
 
 Nest `ConfigurationModule` 使用 `@nestjs/config`、关闭dotenv自动发现，并提供一次Zod校验后的不可变环境快照。Nest服务注入 `AppConfigService`，使用类型化的 `get()` 读取配置，独立仓储／基础库使用 `getRuntimeEnvironment()`。端口、数据库URL、连接池上限、认证配置和消息配置在启动时校验；production还要求Redis地址与cron密钥且禁止 `APP_ENV=local`。错误只报告字段与约束，不输出凭据。
 
@@ -46,7 +46,7 @@ pnpm run dev:web       # 另一个终端启动前端
 pnpm run build:server  # 类型检查并生成 apps/api/dist/main.js
 ```
 
-Nest使用 `nest start --watch --no-shell --env-file ...`（CLI 12 的 ESM Rspack 构建器）增量构建并通过SIGTERM重启Node进程，组合开发任务由Turbo管理。类型检查随 Nest 构建执行。API只清理 `apps/api/dist`，Vite只清理 `apps/web/dist`，两者可独立构建。Docker使用同一pnpm锁文件构建，再通过 `pnpm --filter @daoyou/api deploy --prod /out` 生成独立运行目录；最终镜像仅复制该目录，入口为 `dist/main.js`。Web及根开发工具不会进入运行镜像。workspace禁用自动安装peer依赖，必须显式声明所需peer。
+Nest 使用 `nest start --no-shell --env-file ...` 和默认 tsc 编译器。根 `dev`／`prd` 命令通过 `turbo watch` 先构建 shared，再启动应用；修改工作区源码时重建依赖并重启受影响的开发任务，CLI 通过 SIGTERM 排空旧 API。直接执行 API 包内的 dev 命令只启动 Nest，不替代根工作区 watch。类型检查随 Nest 构建执行。提示词通过 Nest CLI assets 复制到 `dist/prompts`，启动时读取和解析一次。API只清理 `apps/api/dist`，Vite只清理 `apps/web/dist`，两者可独立构建。Docker使用同一pnpm锁文件构建，再通过 `pnpm --filter @daoyou/api deploy --prod /out` 生成独立运行目录；最终镜像仅复制该目录，入口为 `dist/main.js`。Web及根开发工具不会进入运行镜像。workspace 禁用自动安装 peer 依赖；`syncInjectedDepsAfterScripts: [build]` 在 shared 构建后同步注入依赖，确保 API、Web 和 deploy 使用当前产物。
 
 当前HTTP入口已迁入Nest，特殊数据与生产验收仍有未完成项。长流程验证需要关闭watch时，先执行`pnpm run build:server`，再执行`APP_ENV=local NODE_ENV=development node --env-file=env/local.env apps/api/dist/main.js`。详情见 [迁移进度](nestjs-migration.md)。
 

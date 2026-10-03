@@ -6,19 +6,19 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { AttributeResetServiceError } from '@server/cultivator/application/AttributeResetService';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { AttributeResetServiceError } from '@server/cultivator/application/AttributeResetService.js';
 import {
   QiInsufficientError,
   QiServiceError,
-} from '@server/cultivator/application/QiService';
+} from '@server/cultivator/application/QiService.js';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { JsonBody, JsonBodyParseError } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { ConditionService } from './condition.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { JsonBody, JsonBodyParseError } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { ConditionService } from './condition.service.js';
 
 const ConsumeSchema = z.object({
   consumableId: z.string().uuid(),

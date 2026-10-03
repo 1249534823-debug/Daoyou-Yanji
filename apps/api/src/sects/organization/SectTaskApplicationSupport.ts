@@ -2,8 +2,8 @@ import type {
   SectTaskAvailabilityDecision,
   SectTaskDefinition,
 } from '@daoyou/shared/engine/sect';
-import { SectError } from '@server/sects/application/SectError';
-import type { SectMembershipRecord, SectQueryContext } from '@server/sects/organization/ports';
+import { SectError } from '@server/sects/application/SectError.js';
+import type { SectMembershipRecord, SectQueryContext } from '@server/sects/organization/ports.js';
 
 export function invalidSectTask(message: string, status = 409): never {
   throw new SectError('SECT_ORGANIZATION_INVALID', message, status);

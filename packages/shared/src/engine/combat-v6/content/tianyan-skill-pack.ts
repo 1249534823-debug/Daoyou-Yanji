@@ -1,17 +1,17 @@
 import { formatContentPackErrors } from '@daoyou/shared/lib/content-pack-errors';
 import { z } from 'zod';
-import { SkillTag, type SkillDef } from '../core';
-import { validateSectExpressions } from './authoring-expressions';
-import raw from './data/tianyan-skills.json';
-import { sectSkillLearning } from './skill-learning';
+import { SkillTag, type SkillDef } from '../core/index.js';
+import { validateSectExpressions } from './authoring-expressions.js';
+import raw from './data/tianyan-skills.json' with { type: 'json' };
+import { sectSkillLearning } from './skill-learning.js';
 import {
   TIANYAN_FOUNDATION,
   validateTianyanReferences,
-} from './tianyan-foundation';
+} from './tianyan-foundation.js';
 import {
   compileTianyanReactionEffects,
   compileTianyanReactionModifiers,
-} from './tianyan-reactions';
+} from './tianyan-reactions.js';
 import {
   tyEffect,
   tyElement,
@@ -19,8 +19,8 @@ import {
   tyId,
   tyModifier,
   tyTarget,
-} from './tianyan-shapes';
-import type { SectSkillDefV6 } from './types';
+} from './tianyan-shapes.js';
+import type { SectSkillDefV6 } from './types.js';
 const skill = z.strictObject({
   id: tyId,
   name: z.string().min(1),

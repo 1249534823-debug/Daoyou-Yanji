@@ -17,10 +17,10 @@ import {
 } from '@daoyou/shared/types/consumable';
 import type { MailAttachment } from '@daoyou/shared/types/mail';
 import { z } from 'zod';
-import { BeastTransferSchema } from '../contracts/beastTrade';
-import { MailInventoryGrantSchema } from '../contracts/mail';
-import { MaterialFactsSchema, INVENTORY_MATERIAL_TYPES } from '../items/definitions/materials';
-import { seedFactsOf } from '../items/definitions/seeds';
+import { BeastTransferSchema } from '../contracts/beastTrade.js';
+import { MailInventoryGrantSchema } from '../contracts/mail.js';
+import { MaterialFactsSchema, INVENTORY_MATERIAL_TYPES } from '../items/definitions/materials.js';
+import { seedFactsOf } from '../items/definitions/seeds.js';
 
 const ConditionStatusDurationSchema = z.union([
   z.object({

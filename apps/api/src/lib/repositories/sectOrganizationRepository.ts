@@ -2,7 +2,7 @@ import {
   runDbTasks,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
+} from '@server/lib/drizzle/db.js';
 import {
   consumables,
   creationProducts,
@@ -12,7 +12,7 @@ import {
   sectMemberships,
   sectStipendClaims,
   sectTaskRecords,
-} from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/schema.js';
 import type { SectDiscipleRank, SectOffice } from '@daoyou/shared/engine/sect';
 import {
   and,

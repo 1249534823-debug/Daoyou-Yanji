@@ -2,12 +2,12 @@ import {
   hasSectRank,
   SECT_RANK_LABELS,
   type SectDiscipleRank,
-} from '../domain/organization';
+} from '../domain/organization.js';
 import type {
   SectCapabilityKey,
   SectCapabilityPolicy,
   SectPermissionState,
-} from './contracts';
+} from './contracts.js';
 
 export class StandardSectCapabilityPolicy implements SectCapabilityPolicy {
   private readonly capabilityKeys: readonly SectCapabilityKey[];

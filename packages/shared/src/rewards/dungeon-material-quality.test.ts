@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { MaterialGenerator } from '../engine/material/creation/MaterialGenerator';
-import { QUALITY_VALUES, REALM_VALUES } from '../types/constants';
-import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from './dungeon-material-quality';
+import { MaterialGenerator } from '../engine/material/creation/MaterialGenerator.js';
+import { QUALITY_VALUES, REALM_VALUES } from '../types/constants.js';
+import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from './dungeon-material-quality.js';
 
 describe('副本材料品质概率', () => {
   it('每个境界的概率之和为 1，低于品质下限的材料不会产出', () => {

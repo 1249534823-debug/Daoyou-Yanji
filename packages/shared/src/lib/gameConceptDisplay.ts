@@ -1,4 +1,4 @@
-import { CHARACTER_ATTRIBUTE_LABELS } from './characterAttributeLabels';
+import { CHARACTER_ATTRIBUTE_LABELS } from './characterAttributeLabels.js';
 import type { ConditionResourceKey } from '@daoyou/shared/types/condition';
 import type {
   ConsumableType,

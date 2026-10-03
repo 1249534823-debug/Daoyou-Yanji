@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { BEAST_SKILLS, BEAST_SPECIES } from './content';
-import { beastPointBudget } from './identity';
+import { BEAST_SKILLS, BEAST_SPECIES } from './content.js';
+import { beastPointBudget } from './identity.js';
 
 export const BEAST_VERSION = 'summoned_beast_v3';
 const points = z.number().int().min(0).max(100000);

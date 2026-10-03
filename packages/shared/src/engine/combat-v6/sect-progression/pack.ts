@@ -1,6 +1,6 @@
 import { formatContentPackErrors } from '@daoyou/shared/lib/content-pack-errors';
 import { z } from 'zod';
-import raw from './data/progression.json';
+import raw from './data/progression.json' with { type: 'json' };
 
 const integer = z.number().int().nonnegative().max(100_000_000);
 const coefficient = z.number().nonnegative().max(100).multipleOf(0.000001);

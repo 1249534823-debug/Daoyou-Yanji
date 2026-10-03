@@ -6,7 +6,7 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   ExchangeArtifactSchema,
   type ExchangeArtifact,
@@ -15,11 +15,11 @@ import {
   ExchangeManualSchema,
   type ExchangeManual,
 } from '@daoyou/shared/contracts/manualMigration';
-import { Access, CurrentCultivator } from '../auth/access';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { migrationErrors } from './migration-errors';
-import { MigrationService } from './migration.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { migrationErrors } from './migration-errors.js';
+import { MigrationService } from './migration.service.js';
 
 const ManualErrors = migrationErrors('manual');
 const ArtifactErrors = migrationErrors('artifact');

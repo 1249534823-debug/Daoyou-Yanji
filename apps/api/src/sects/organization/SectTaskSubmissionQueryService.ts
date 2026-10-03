@@ -3,8 +3,8 @@ import {
   matchSectDeliveryCandidate,
   type SectTaskDefinition,
 } from '@daoyou/shared/engine/sect';
-import { SectError } from '@server/sects/application/SectError';
-import type { SectQueryContext } from '@server/sects/organization/ports';
+import { SectError } from '@server/sects/application/SectError.js';
+import type { SectQueryContext } from '@server/sects/organization/ports.js';
 
 function invalid(message: string, status = 409): never {
   throw new SectError('SECT_ORGANIZATION_INVALID', message, status);

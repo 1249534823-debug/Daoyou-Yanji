@@ -1,16 +1,16 @@
 import { compileTowerEncounter } from '@daoyou/shared/engine/combat-v6/tower/content';
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from './data/encounters.json';
-import schema from './data/encounters.schema.json';
+import raw from './data/encounters.json' with { type: 'json' };
+import schema from './data/encounters.schema.json' with { type: 'json' };
 import {
   TowerEncounterPackShape,
   loadTowerEncounterPack,
-} from './encounter-pack';
-import { allowedTowerFormations } from './formations';
-import { TOWER_ELIGIBLE_REALMS } from './helpers';
-import { getTowerSeasonMeta } from './season';
-import { createTowerWeek, towerCombination } from './weekly';
+} from './encounter-pack.js';
+import { allowedTowerFormations } from './formations.js';
+import { TOWER_ELIGIBLE_REALMS } from './helpers.js';
+import { getTowerSeasonMeta } from './season.js';
+import { createTowerWeek, towerCombination } from './weekly.js';
 
 describe('幻境内容与固定周表', () => {
   it('Schema 同步', () =>

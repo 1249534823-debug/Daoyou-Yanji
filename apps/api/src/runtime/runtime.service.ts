@@ -6,16 +6,16 @@ import {
   type OnApplicationShutdown,
 } from '@nestjs/common';
 import { HttpAdapterHost } from '@nestjs/core';
-import { CombatV6TrainingSessionService } from '@server/combat/application/CombatV6TrainingSessionService';
-import { closeRedisConnection } from '@server/lib/redis';
+import { CombatV6TrainingSessionService } from '@server/combat/application/CombatV6TrainingSessionService.js';
+import { closeRedisConnection } from '@server/lib/redis/index.js';
 import {
   registerMessageInfrastructure,
   shutdownMessageInfrastructure,
-} from '@server/runtime/messaging/domainEventRegistry';
+} from '@server/runtime/messaging/domainEventRegistry.js';
 import type { Server } from 'node:http';
-import { DatabaseService } from '../database/database.service';
-import { RequestWorkService } from '../http/request-work.service';
-import { CronService } from './cron.service';
+import { DatabaseService } from '../database/database.service.js';
+import { RequestWorkService } from '../http/request-work.service.js';
+import { CronService } from './cron.service.js';
 
 @Injectable()
 export class RuntimeService

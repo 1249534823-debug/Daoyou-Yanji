@@ -1,10 +1,10 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import {
   cultivators,
   playerJournal,
   sectMemberships,
-} from '@server/lib/drizzle/schema';
-import { journalOperationKey } from '@server/lib/repositories/playerJournalRepository';
+} from '@server/lib/drizzle/schema.js';
+import { journalOperationKey } from '@server/lib/repositories/playerJournalRepository.js';
 import {
   PlayerJournalEventSchema,
   type JournalActivity,

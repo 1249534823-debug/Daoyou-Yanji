@@ -1,22 +1,22 @@
-import { MAX_CRAFT_MATERIAL_QUANTITY } from '../config/itemQuantity';
-import { DAO_FORMATION_INSCRIPTIONS_V1 } from '../engine/combat-v6/equipment/content';
-import { daoFormationMaxLevel } from '../engine/combat-v6/equipment/inscriptions';
+import { MAX_CRAFT_MATERIAL_QUANTITY } from '../config/itemQuantity.js';
+import { DAO_FORMATION_INSCRIPTIONS_V1 } from '../engine/combat-v6/equipment/content.js';
+import { daoFormationMaxLevel } from '../engine/combat-v6/equipment/inscriptions.js';
 import {
   InventoryRuleError,
   itemDefinition,
   type InventoryItem,
   type ItemGrant,
-} from '../inventory';
-import { InventoryEquipmentSchema } from '../inventory/equipment';
+} from '../inventory/index.js';
+import { InventoryEquipmentSchema } from '../inventory/equipment.js';
 import {
   INSCRIPTION_MAX_LEVEL,
   inscriptionItemId,
-} from '../items/definitions/inscriptions';
+} from '../items/definitions/inscriptions.js';
 import {
   MaterialFactsSchema,
   type MaterialFacts,
-} from '../items/definitions/materials';
-import type { Quality } from '../types/constants';
+} from '../items/definitions/materials.js';
+import type { Quality } from '../types/constants.js';
 
 // 独立经济配置，不随坊市报价或材料描述变化。内部统一使用十分之一份。
 const QUALITY_SHARES: Record<Quality, number> = {

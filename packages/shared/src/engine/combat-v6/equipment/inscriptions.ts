@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import type { CombatV6ProjectionDiagnostic } from '../projection/types';
-import { daoFormationInscriptionOf } from './content';
-import type { DaoEquipmentInstanceV1, DaoEquipmentPanelRoll, DaoEquipmentSlot } from './types';
+import type { CombatV6ProjectionDiagnostic } from '../projection/types.js';
+import { daoFormationInscriptionOf } from './content.js';
+import type { DaoEquipmentInstanceV1, DaoEquipmentPanelRoll, DaoEquipmentSlot } from './types.js';
 
 const inscription = z.strictObject({
   patternId: z.string().min(1),

@@ -1,2 +1,2 @@
-export * from './SectRegistry';
-export * from './SectRuntime';
+export * from './SectRegistry.js';
+export * from './SectRuntime.js';

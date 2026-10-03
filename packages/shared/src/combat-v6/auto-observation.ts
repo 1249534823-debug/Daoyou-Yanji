@@ -1,5 +1,5 @@
-import type { BattleState, StatusDef, Unit } from '../engine/combat-v6/core';
-import { effectiveAttrs } from '../engine/combat-v6/core/units';
+import type { BattleState, StatusDef, Unit } from '../engine/combat-v6/core/index.js';
+import { effectiveAttrs } from '../engine/combat-v6/core/units.js';
 
 export type AutoObservation = { round: number; units: Unit[] };
 

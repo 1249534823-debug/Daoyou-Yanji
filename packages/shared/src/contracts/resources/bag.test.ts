@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { inventoryBagSchema } from './bag';
+import { inventoryBagSchema } from './bag.js';
 import {
   RESOURCE_DATA_SCHEMAS,
   RESOURCE_TOPIC_SCOPE_KIND,
   ResourceChangeSchema,
-} from './registry';
+} from './registry.js';
 
 describe('完整背包资源契约', () => {
   const data = {

@@ -3,7 +3,7 @@ import type { RealmType } from '@daoyou/shared/types/constants';
 import type {
   SectDiscipleRank,
   SectRankRequirement,
-} from '../domain/organization';
+} from '../domain/organization.js';
 
 export type SectCapabilityKey = string;
 /** @deprecated Use SectCapabilityKey. */

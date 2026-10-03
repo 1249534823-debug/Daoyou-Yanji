@@ -1,15 +1,15 @@
-import { runDbTasks, type DbTransaction } from '@server/lib/drizzle/db';
+import { runDbTasks, type DbTransaction } from '@server/lib/drizzle/db.js';
 import {
   cultivatorBeasts,
   cultivators,
   sectMemberships,
-} from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/schema.js';
 import {
   findCultivatorStory,
   insertCultivatorStory,
   updateCultivatorStory,
-} from '@server/lib/repositories/storyRepository';
-import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository';
+} from '@server/lib/repositories/storyRepository.js';
+import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
 import { getGuideLesson } from '@daoyou/shared/guide/catalog';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
 import { storyReward } from '@daoyou/shared/story/grants';
@@ -36,7 +36,7 @@ import {
   type StoryView,
 } from '@daoyou/shared/story/schema';
 import { and, eq, sql } from 'drizzle-orm';
-import { grantInventory } from '@server/inventory/operations';
+import { grantInventory } from '@server/inventory/operations.js';
 
 const MAIN_STORY_ID = 'arrival';
 

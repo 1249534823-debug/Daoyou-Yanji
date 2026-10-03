@@ -2,7 +2,7 @@
  * creationTagDescriptions: 造物标签语义描述 MAP。
  * 供 LLM 语义标签提取器使用，提升标签分配精度。
  */
-import { CreationTags } from './creationTags';
+import { CreationTags } from './creationTags.js';
 
 export interface TagDescription {
   name: string;

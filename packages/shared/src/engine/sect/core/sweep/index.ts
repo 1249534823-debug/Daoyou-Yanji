@@ -1,1 +1,1 @@
-export * from './SweepGameRules';
+export * from './SweepGameRules.js';

@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { InventoryEquipmentSchema } from '../../../inventory/equipment';
-import { ELEMENT_VALUES } from '../../../types/constants';
-import { compileDaoEquipmentSpecialLoadoutV1 } from './compiler';
-import { generateForgedEquipment } from './forging';
-import { generateDaoEquipmentV2 } from './generator';
+import { InventoryEquipmentSchema } from '../../../inventory/equipment.js';
+import { ELEMENT_VALUES } from '../../../types/constants.js';
+import { compileDaoEquipmentSpecialLoadoutV1 } from './compiler.js';
+import { generateForgedEquipment } from './forging.js';
+import { generateDaoEquipmentV2 } from './generator.js';
 
 const input = {
   id: 'element-weapon', createdAt: '2026-09-22', seed: 17,

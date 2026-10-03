@@ -1,4 +1,4 @@
-import { DAO_FORMATION_INSCRIPTIONS_V1 } from '../../engine/combat-v6/equipment/content';
+import { DAO_FORMATION_INSCRIPTIONS_V1 } from '../../engine/combat-v6/equipment/content.js';
 
 export const INSCRIPTION_MAX_LEVEL = 11;
 export const inscriptionItemId = (patternId: string, level: number) =>

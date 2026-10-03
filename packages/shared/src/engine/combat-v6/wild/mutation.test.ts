@@ -3,15 +3,15 @@ import {
   beastAppearance,
   playerAppearances,
   publicUnitAppearances,
-} from '../../../combat-v6/unit-appearance';
-import { wildEncounterView } from '../../../contracts/combatV6Wild';
-import type { CombatV6TrainingPlayerInput } from '../encounter/types';
+} from '../../../combat-v6/unit-appearance.js';
+import { wildEncounterView } from '../../../contracts/combatV6Wild.js';
+import type { CombatV6TrainingPlayerInput } from '../encounter/types.js';
 import {
   generateWildEncounter,
   generateWildIndividual,
   WildIndividualSchema,
-} from './generator';
-import { loadWildPack, WILD_PACK } from './pack';
+} from './generator.js';
+import { loadWildPack, WILD_PACK } from './pack.js';
 
 const id = '00000000-0000-4000-8000-000000000001';
 const nodeId = WILD_PACK.regions[0].nodeId;

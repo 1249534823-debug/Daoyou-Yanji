@@ -13,7 +13,7 @@ import {
   CombatV6ReplayTimelineSchema,
   type CombatV6ReplayDisplay,
   type CombatV6ReplayTimeline,
-} from './combatV6Replay';
+} from './combatV6Replay.js';
 
 export const COMBAT_V6_RUNTIME_VERSION = 'combat_v6_redis_runtime_v1' as const;
 export const COMBAT_V6_REPLAY_VERSION = 'combat_v6_replay_v2' as const;

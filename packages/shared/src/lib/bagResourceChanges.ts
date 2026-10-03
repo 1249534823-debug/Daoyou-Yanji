@@ -1,7 +1,7 @@
 import type {
   ResourceChangeDescriptor,
   ResourceScope,
-} from '../contracts/resources';
+} from '../contracts/resources/index.js';
 
 type ScopedChange = ResourceChangeDescriptor & { scope: ResourceScope };
 

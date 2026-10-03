@@ -1,6 +1,6 @@
-import type { SectModule } from '../plugin';
-import { SectDefinitionRule } from './SectDefinitionRule';
-import { ValidationPipeline } from './ValidationPipeline';
+import type { SectModule } from '../plugin/index.js';
+import { SectDefinitionRule } from './SectDefinitionRule.js';
+import { ValidationPipeline } from './ValidationPipeline.js';
 
 const pipeline = new ValidationPipeline<SectModule>([new SectDefinitionRule()]);
 

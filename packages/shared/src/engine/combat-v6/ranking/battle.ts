@@ -1,25 +1,25 @@
-import { playerAppearances, type PresentedBattleInput } from '../../../combat-v6/unit-appearance';
+import { playerAppearances, type PresentedBattleInput } from '../../../combat-v6/unit-appearance.js';
 import {
   AUTO_POLICY_VERSION,
   automaticCommands,
-} from '../../../combat-v6/auto';
+} from '../../../combat-v6/auto.js';
 import {
   replayRound,
   startReplayTimeline,
-} from '../../../combat-v6/replay-timeline';
-import { BEAST_STATUS_DEFS, BEAST_SKILLS, projectBeastRoster } from '../beasts';
+} from '../../../combat-v6/replay-timeline.js';
+import { BEAST_STATUS_DEFS, BEAST_SKILLS, projectBeastRoster } from '../beasts/index.js';
 import {
   createBattle,
   type CreateBattleInput,
   type SkillDef,
   type StatusDef,
-} from '../core';
-import type { CombatV6TrainingPlayerInput } from '../encounter';
-import { projectCharacterToCombatV6 } from '../projection';
-import { characterBattleSkills } from '../projection/character-battle-skills';
-import { daoyouRulesetV6 } from '../rules-daoyou';
-import type { AutoStrategy } from '../../../combat-v6/auto-strategy';
-import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version';
+} from '../core/index.js';
+import type { CombatV6TrainingPlayerInput } from '../encounter/index.js';
+import { projectCharacterToCombatV6 } from '../projection/index.js';
+import { characterBattleSkills } from '../projection/character-battle-skills.js';
+import { daoyouRulesetV6 } from '../rules-daoyou/index.js';
+import type { AutoStrategy } from '../../../combat-v6/auto-strategy.js';
+import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version.js';
 
 export type RankingBattleInput = PresentedBattleInput & {
   seed: number;

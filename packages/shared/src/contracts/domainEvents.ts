@@ -6,11 +6,11 @@ import {
 } from '@daoyou/shared/types/constants';
 import { ALCHEMY_MODE_VALUES } from '@daoyou/shared/types/consumable';
 import { z } from 'zod';
-import { ItemGrantSchema } from '../inventory';
-import { InventoryEquipmentSchema } from '../inventory/equipment';
-import { BeastTradePreviewSchema } from './beastTrade';
-import { CombatV6BattleFinishedDataV1Schema } from './combatV6Runtime';
-import { SystemMailAudienceSnapshotSchema } from './systemMail';
+import { ItemGrantSchema } from '../inventory/index.js';
+import { InventoryEquipmentSchema } from '../inventory/equipment.js';
+import { BeastTradePreviewSchema } from './beastTrade.js';
+import { CombatV6BattleFinishedDataV1Schema } from './combatV6Runtime.js';
+import { SystemMailAudienceSnapshotSchema } from './systemMail.js';
 
 export const DOMAIN_EVENT_STREAM = 'DAOYOU_DOMAIN_EVENTS';
 export const DOMAIN_EVENT_SUBJECT_PREFIX = 'daoyou.domain';

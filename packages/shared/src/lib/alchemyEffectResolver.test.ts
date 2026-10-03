@@ -4,7 +4,7 @@ import {
   normalizeAlchemyEffectRoute,
   resolveAlchemyEffects,
   validateAlchemyEffectRoute,
-} from './alchemyEffectResolver';
+} from './alchemyEffectResolver.js';
 
 describe('alchemy effect resolver v4', () => {
   it('keeps the complete design table in one source', () => {

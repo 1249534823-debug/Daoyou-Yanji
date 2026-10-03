@@ -1,5 +1,5 @@
 import type { Quality, RealmType } from '@daoyou/shared/types/constants';
-import type { SpiritFieldMethodDefinition, SpiritFieldStage } from './types';
+import type { SpiritFieldMethodDefinition, SpiritFieldStage } from './types.js';
 
 export const SPIRIT_FIELD_METHODS: readonly SpiritFieldMethodDefinition[] = [
   { id: 'seasonal_nurture', stage: 'germination', name: '顺时温养', description: '不强催灵机，依时令静候种体苏醒。', resourceKind: 'none', baseCost: 0 },

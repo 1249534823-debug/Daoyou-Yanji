@@ -1,5 +1,5 @@
-import { SeededRng } from '../core/rng';
-import type { SummonedBeast } from './schema';
+import { SeededRng } from '../core/rng.js';
+import type { SummonedBeast } from './schema.js';
 
 /** 平均分配后在每对属性间转移点数，各项不超出平均值的配置幅度。 */
 export function distributeBeastPoints(

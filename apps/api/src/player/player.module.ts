@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from '@server/database/database.module';
-import { JournalController } from './journal.controller';
-import { PlayerController } from './player.controller';
-import { PlayerService } from './player.service';
+import { DatabaseModule } from '@server/database/database.module.js';
+import { JournalController } from './journal.controller.js';
+import { PlayerController } from './player.controller.js';
+import { PlayerService } from './player.service.js';
 
 @Module({
   imports: [DatabaseModule],

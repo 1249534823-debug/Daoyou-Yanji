@@ -1,2 +1,2 @@
-export * from './facilityDialogue';
-export * from './sectPresentation';
+export * from './facilityDialogue.js';
+export * from './sectPresentation.js';

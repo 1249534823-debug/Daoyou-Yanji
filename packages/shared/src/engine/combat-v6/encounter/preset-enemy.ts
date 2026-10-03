@@ -1,8 +1,8 @@
 import {
   getLevelRealmStage,
   getRealmStageLevel,
-} from '../../../config/realmProgression';
-import { TOWER_ENCOUNTER_PACK } from '../../../lib/tower/encounter-pack';
+} from '../../../config/realmProgression.js';
+import { TOWER_ENCOUNTER_PACK } from '../../../lib/tower/encounter-pack.js';
 
 // The tower starts at Gold Core. These two baselines extend its encounter budget
 // to the realms used by early dungeons, breakthroughs and sect tasks.

@@ -1,27 +1,27 @@
-import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateRepository';
-import type { DbTransaction } from '@server/lib/drizzle/db';
-import { createDomainEvent } from '@server/lib/mq/domainEventWriter';
-import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher';
-import { normalizeFreeformLlmInput } from '@server/utils/llmPayload';
+import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateRepository.js';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
+import { createDomainEvent } from '@server/lib/mq/domainEventWriter.js';
+import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher.js';
+import { normalizeFreeformLlmInput } from '@server/utils/llmPayload.js';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
 import type { ResourceOperationSettlement } from '@daoyou/shared/engine/resource/types';
 import { QUALITY_ORDER, type Quality } from '@daoyou/shared/types/constants';
 import type { AlchemyMode } from '@daoyou/shared/types/consumable';
 import type { Consumable } from '@daoyou/shared/types/cultivator';
-import { assertAlchemyMaterialVersions } from '@server/alchemy/application/inventory/AlchemyInventory';
-import { prepareFormulaCraft } from '@server/alchemy/application/AlchemyFormulaService';
-import { prepareAlchemyCraft } from '@server/alchemy/application/alchemyServiceV2';
+import { assertAlchemyMaterialVersions } from '@server/alchemy/application/inventory/AlchemyInventory.js';
+import { prepareFormulaCraft } from '@server/alchemy/application/AlchemyFormulaService.js';
+import { prepareAlchemyCraft } from '@server/alchemy/application/alchemyServiceV2.js';
 import {
   playerCommandExecutor,
   type CommittedCommand,
-} from '@server/player/application/state/CommandExecutors';
-import { readCultivatorName } from '@server/cultivator/facts';
-import { assertInventoryIdle } from '@server/inventory/operations';
+} from '@server/player/application/state/CommandExecutors.js';
+import { readCultivatorName } from '@server/cultivator/facts.js';
+import { assertInventoryIdle } from '@server/inventory/operations.js';
 import {
   qiCurrencyChange,
   type QiSettlementBaseline,
-} from '@server/cultivator/application/QiResourceChanges';
-import { QiService } from '@server/cultivator/application/QiService';
+} from '@server/cultivator/application/QiResourceChanges.js';
+import { QiService } from '@server/cultivator/application/QiService.js';
 
 export type CraftCommandInput = {
   requestId: string;

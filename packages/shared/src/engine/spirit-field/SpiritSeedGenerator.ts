@@ -3,8 +3,8 @@ import {
   type ElementType,
   type Quality,
 } from '@daoyou/shared/types/constants';
-import { SPIRIT_SEED_QUALITY_CHANCE_MAP } from './config';
-import type { SpiritSeedRandomOptions, SpiritSeedSkeleton } from './types';
+import { SPIRIT_SEED_QUALITY_CHANCE_MAP } from './config.js';
+import type { SpiritSeedRandomOptions, SpiritSeedSkeleton } from './types.js';
 export interface SpiritSeedBatchSpec {
   rank: Quality;
   quantity: number;

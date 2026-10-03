@@ -1,5 +1,5 @@
-import type { InventoryView } from '../contracts/inventory';
-import type { WorldChatItemShowcasePayload } from '../types/world-chat';
+import type { InventoryView } from '../contracts/inventory.js';
+import type { WorldChatItemShowcasePayload } from '../types/world-chat.js';
 
 export type InventoryShowcaseSnapshot = Pick<
   InventoryView['items'][number],

@@ -1,12 +1,12 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import {
   sectCombatStates,
   sectMeridianLoadouts,
   sectMeridianNodes,
-} from '@server/lib/drizzle/schema';
-import { readActiveSectCombatProgress } from '@server/lib/repositories/sectCombatRepository';
+} from '@server/lib/drizzle/schema.js';
+import { readActiveSectCombatProgress } from '@server/lib/repositories/sectCombatRepository.js';
 import { eq, inArray, sql } from 'drizzle-orm';
-import { assertInventoryIdle } from '@server/inventory/operations';
+import { assertInventoryIdle } from '@server/inventory/operations.js';
 
 export class SectMeridianResetServiceError extends Error {
   constructor(message: string) {

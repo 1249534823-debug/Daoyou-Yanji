@@ -1,4 +1,4 @@
-import type { Consumable } from '../../types/cultivator';
+import type { Consumable } from '../../types/cultivator.js';
 
 export function isDungeonRecoveryPill(item: Pick<Consumable, 'spec'>) {
   return (

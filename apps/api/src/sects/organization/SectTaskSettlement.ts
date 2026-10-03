@@ -13,8 +13,8 @@ import {
 } from '@daoyou/shared/engine/sect';
 import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import { z, type ZodType } from 'zod';
-import { organizationError } from '@server/sects/organization/applicationSupport';
-import type { SectMembershipRecord, SectQueryContext } from '@server/sects/organization/ports';
+import { organizationError } from '@server/sects/organization/applicationSupport.js';
+import type { SectMembershipRecord, SectQueryContext } from '@server/sects/organization/ports.js';
 
 export interface SectTaskOfferPolicyContext {
   membershipId: string;

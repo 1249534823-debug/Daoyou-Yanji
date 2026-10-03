@@ -1,8 +1,8 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
-import { readPlayerTaskSummary } from '@server/player/application/PlayerResourceReaderService';
-import { TaskService } from '@server/tasks/application/TaskService';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import { readPlayerTaskSummary } from '@server/player/application/PlayerResourceReaderService.js';
+import { TaskService } from '@server/tasks/application/TaskService.js';
 
 export function claimTaskRewardCommand(args: {
   userId: string;

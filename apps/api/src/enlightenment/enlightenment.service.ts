@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   enlightenManual,
   readEnlightenment,
-} from '@server/enlightenment/application/EnlightenmentService';
+} from '@server/enlightenment/application/EnlightenmentService.js';
 import type { EnlightenmentRequest } from '@daoyou/shared/contracts/enlightenment';
 
 @Injectable()

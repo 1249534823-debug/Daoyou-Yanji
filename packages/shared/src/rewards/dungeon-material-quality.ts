@@ -1,4 +1,4 @@
-import type { Quality, RealmType } from '../types/constants';
+import type { Quality, RealmType } from '../types/constants.js';
 
 /** Dungeon materials follow map realm progression, independently of offline yield. */
 export const DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM: Record<

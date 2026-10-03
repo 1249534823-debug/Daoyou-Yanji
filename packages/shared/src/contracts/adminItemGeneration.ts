@@ -1,13 +1,13 @@
 import { z } from 'zod';
-import { isTalismanScenario } from '../config/talismanScenarios';
-import { isOpenEquipmentLevel } from '../engine/combat-v6/equipment/realm';
-import { DAO_WEAPON_TYPES } from '../engine/combat-v6/equipment/weapons';
-import { QUALITY_VALUES } from '../types/constants';
+import { isTalismanScenario } from '../config/talismanScenarios.js';
+import { isOpenEquipmentLevel } from '../engine/combat-v6/equipment/realm.js';
+import { DAO_WEAPON_TYPES } from '../engine/combat-v6/equipment/weapons.js';
+import { QUALITY_VALUES } from '../types/constants.js';
 import {
   ALCHEMY_PROPERTY_KEY_VALUES,
   PILL_APPEARANCE_GRADE_VALUES,
   PILL_FAMILY_VALUES,
-} from '../types/consumable';
+} from '../types/consumable.js';
 
 export const AdminItemGenerationSchema = z.discriminatedUnion('kind', [
   z

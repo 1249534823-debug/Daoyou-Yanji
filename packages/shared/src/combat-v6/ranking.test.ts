@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { rankingDay, rankingOrderAfterBattle } from './ranking';
+import { rankingDay, rankingOrderAfterBattle } from './ranking.js';
 
 describe('天骄榜结算规则', () => {
   it('按上海发起日计次，跨日不受进程时区影响', () => {

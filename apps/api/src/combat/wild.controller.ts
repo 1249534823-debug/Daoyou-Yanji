@@ -9,7 +9,7 @@ import {
   Put,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import { CombatAutoRequestSchema } from '@daoyou/shared/combat-v6/auto';
 import {
   CombatV6TrainingCommandParamsSchema,
@@ -23,13 +23,13 @@ import {
   WildStartRequestSchema,
 } from '@daoyou/shared/contracts/combatV6Wild';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { AutoErrors } from './auto-errors';
-import { CombatErrors } from './combat-errors';
-import { WildService } from './wild.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { AutoErrors } from './auto-errors.js';
+import { CombatErrors } from './combat-errors.js';
+import { WildService } from './wild.service.js';
 
 @Controller('api/combat-v6/wild')
 @Access('active')

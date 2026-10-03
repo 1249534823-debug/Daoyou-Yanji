@@ -3,7 +3,7 @@ import {
   createAltchaChallenge,
   isAltchaAction,
   isAltchaServerEnabled,
-} from '@server/lib/auth/altcha';
+} from '@server/lib/auth/altcha.js';
 
 @Injectable()
 export class CaptchaService {

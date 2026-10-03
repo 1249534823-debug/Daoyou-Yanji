@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { SectRegistry, type SectModule } from '..';
-import { FIXTURE_SECT_MODULE } from '../../testing/fixtures/FixtureSectModule';
+import { SectRegistry, type SectModule } from '../index.js';
+import { FIXTURE_SECT_MODULE } from '../../testing/fixtures/FixtureSectModule.js';
 
 function withDefinition(
   change: (d: SectModule['definition']) => void,

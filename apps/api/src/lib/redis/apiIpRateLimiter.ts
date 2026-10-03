@@ -1,5 +1,5 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
-import { redis } from './index';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
+import { redis } from './index.js';
 
 const KEY_PREFIX = 'api:rate-limit:ip';
 const DEFAULT_WINDOW_SECONDS = 60;

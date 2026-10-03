@@ -1,7 +1,7 @@
 import {
   SECT_RANK_LABELS,
   type SectDiscipleRank,
-} from '../domain/organization';
+} from '../domain/organization.js';
 
 export interface SectPromotionDialogueStatus {
   nextRank: SectDiscipleRank | null;

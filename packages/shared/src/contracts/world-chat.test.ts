@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { WorldChatCreateMessageSchema } from './world-chat';
+import { WorldChatCreateMessageSchema } from './world-chat.js';
 
 describe('chat message creation after legacy battle sharing retirement', () => {
   it('rejects old battle shares with an explicit retirement message', () => {

@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { createBattle } from '../engine/combat-v6/core';
-import { projectCharacterToCombatV6 } from '../engine/combat-v6/projection';
-import { daoyouRulesetV6 } from '../engine/combat-v6/rules-daoyou';
-import { towerReferenceBuild } from '../engine/combat-v6/tower/reference-fixtures';
-import { huntParticipantSucceeded, settleHuntResources } from './settlement';
+import { createBattle } from '../engine/combat-v6/core/index.js';
+import { projectCharacterToCombatV6 } from '../engine/combat-v6/projection/index.js';
+import { daoyouRulesetV6 } from '../engine/combat-v6/rules-daoyou/index.js';
+import { towerReferenceBuild } from '../engine/combat-v6/tower/reference-fixtures.js';
+import { huntParticipantSucceeded, settleHuntResources } from './settlement.js';
 
 function fixture() {
   const battle = createBattle({

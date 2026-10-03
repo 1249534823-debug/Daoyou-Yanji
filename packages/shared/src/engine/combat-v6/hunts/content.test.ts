@@ -3,23 +3,23 @@ import {
   HUNT_BOSSES,
   huntEventsAt,
   type HuntBossId,
-} from '../../../hunts/config';
+} from '../../../hunts/config.js';
 import {
   createBattle,
   restoreBattle,
   type Command,
   type LineupUnit,
   type Unit,
-} from '../core';
-import { presetEnemyAttrs } from '../encounter/preset-enemy';
-import { createDaoyouRuleset, daoyouRulesetV6 } from '../rules-daoyou';
-import { COMBAT_V6_SEAL_CURVE_ARENA_VERSIONS } from '../version';
+} from '../core/index.js';
+import { presetEnemyAttrs } from '../encounter/preset-enemy.js';
+import { createDaoyouRuleset, daoyouRulesetV6 } from '../rules-daoyou/index.js';
+import { COMBAT_V6_SEAL_CURVE_ARENA_VERSIONS } from '../version.js';
 import {
   HUNT_SKILLS,
   HUNT_STATUSES,
   huntEnemies,
   huntNpcCommand,
-} from './content';
+} from './content.js';
 const ruleset = createDaoyouRuleset({
   formulas: {
     physicalHitChance: () => 1,

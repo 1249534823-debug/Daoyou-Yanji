@@ -1,4 +1,4 @@
-import type { DaoEquipmentSlot } from '../engine/combat-v6/equipment/types';
+import type { DaoEquipmentSlot } from '../engine/combat-v6/equipment/types.js';
 
 export interface ItemDefinition {
   id: string;

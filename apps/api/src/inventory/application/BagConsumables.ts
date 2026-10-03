@@ -1,4 +1,4 @@
-import { recordJournalChange } from '@server/player/application/JournalSettlement';
+import { recordJournalChange } from '@server/player/application/JournalSettlement.js';
 import { ConsumableFactsSchema } from '@daoyou/shared/items/definitions/consumables';
 import type { Consumable } from '@daoyou/shared/types/cultivator';
 import { and, asc, eq } from 'drizzle-orm';
@@ -6,9 +6,9 @@ import {
   getExecutor,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
-import { inventoryItems } from '@server/lib/drizzle/schema';
-import { assertInventoryIdle } from '@server/inventory/application/InventoryService';
+} from '@server/lib/drizzle/db.js';
+import { inventoryItems } from '@server/lib/drizzle/schema.js';
+import { assertInventoryIdle } from '@server/inventory/application/InventoryService.js';
 
 export function bagConsumableOf(
   row: typeof inventoryItems.$inferSelect,

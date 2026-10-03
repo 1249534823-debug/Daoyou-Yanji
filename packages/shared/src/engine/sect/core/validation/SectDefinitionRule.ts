@@ -4,9 +4,9 @@ import {
   sectAbilityMethodId,
   type SectDefinition,
   type SectPathDefinition,
-} from '../domain';
-import type { SectModule } from '../plugin';
-import type { ValidationRule } from './ValidationPipeline';
+} from '../domain/index.js';
+import type { SectModule } from '../plugin/index.js';
+import type { ValidationRule } from './ValidationPipeline.js';
 
 function duplicateIds(values: readonly string[]): string[] {
   const seen = new Set<string>();

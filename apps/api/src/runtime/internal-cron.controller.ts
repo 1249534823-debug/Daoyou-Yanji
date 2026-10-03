@@ -1,8 +1,8 @@
 import { Controller, Get, Inject, UseFilters, UseGuards } from '@nestjs/common';
-import { Access } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { InternalCronGuard } from './internal-cron.guard';
-import { InternalCronService } from './internal-cron.service';
+import { Access } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { InternalCronGuard } from './internal-cron.guard.js';
+import { InternalCronService } from './internal-cron.service.js';
 const CronErrors = apiErrorFilter(() =>
   Response.json(
     { success: false, error: 'Cron job execution failed' },

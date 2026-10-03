@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { inventoryStackIdentity } from './stack-key';
+import { inventoryStackIdentity } from './stack-key.js';
 it('normalizes key order and defaults while preserving every material fact', () => {
   const facts = { name: '玄铁', type: 'ore', rank: '凡品' };
   const identity = inventoryStackIdentity('material.v1', facts);

@@ -1,7 +1,7 @@
 import { getRealmStageUnallocatedAttributeBudget } from '@daoyou/shared/config/realmProgression';
 import type { Cultivator } from '@daoyou/shared/types/cultivator';
-import { normalizeCultivatorAIData, type CultivatorAIRawData } from './types';
-import { generateAttributes, generateSpiritualRoots } from './utils';
+import { normalizeCultivatorAIData, type CultivatorAIRawData } from './types.js';
+import { generateAttributes, generateSpiritualRoots } from './utils.js';
 
 export function buildGeneratedCharacter(
   raw: CultivatorAIRawData,

@@ -1,5 +1,5 @@
 import { REALM_ORDER, type RealmType } from '@daoyou/shared/types/constants';
-import { acquireRedisCooldown } from './cooldownLimiter';
+import { acquireRedisCooldown } from './cooldownLimiter.js';
 
 const MAX_CHAT_COOLDOWN_SECONDS = 60;
 const MIN_CHAT_COOLDOWN_SECONDS = 15;

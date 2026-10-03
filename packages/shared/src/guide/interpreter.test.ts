@@ -4,8 +4,8 @@ import {
   createGuideState,
   currentGuideStep,
   restoreGuideState,
-} from './interpreter';
-import { parseGuideLesson } from './schema';
+} from './interpreter.js';
+import { parseGuideLesson } from './schema.js';
 
 const lesson = parseGuideLesson({
   id: 'sample',

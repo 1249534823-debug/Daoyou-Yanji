@@ -1,4 +1,4 @@
-import { GameplayTagContainer } from './GameplayTagContainer';
+import { GameplayTagContainer } from './GameplayTagContainer.js';
 
 /**
  * CreationTags: 造物系统作者侧与过程侧标签词表。

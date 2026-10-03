@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { redisLockErrorResponse } from '@server/lib/http/errors';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
 import {
   DivinationError,
   drawDivination,
   interpretDivination,
   readDivination,
-} from '@server/divination/application/DivinationService';
-import { InventoryError } from '@server/inventory/operations';
+} from '@server/divination/application/DivinationService.js';
+import { InventoryError } from '@server/inventory/operations.js';
 import type { DivinationStreamEvent } from '@daoyou/shared/contracts/divination';
 
 @Injectable()

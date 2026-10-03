@@ -1,5 +1,5 @@
-import type { DbExecutor } from '@server/lib/drizzle/db';
-import { cultivatorAutoStrategies } from '@server/lib/drizzle/schema';
+import type { DbExecutor } from '@server/lib/drizzle/db.js';
+import { cultivatorAutoStrategies } from '@server/lib/drizzle/schema.js';
 import {
   AutoStrategySchema,
   type AutoStrategy,

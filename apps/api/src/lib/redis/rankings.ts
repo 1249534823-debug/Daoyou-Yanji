@@ -1,5 +1,5 @@
-import { db } from '@server/lib/drizzle/db';
-import { cultivators, sectMemberships } from '@server/lib/drizzle/schema';
+import { db } from '@server/lib/drizzle/db.js';
+import { cultivators, sectMemberships } from '@server/lib/drizzle/schema.js';
 import {
   MAX_DAILY_RANKING_CHALLENGES,
   rankingDay,
@@ -11,8 +11,8 @@ import type { CultivatorCondition } from '@daoyou/shared/types/condition';
 import { REALM_VALUES, type RealmType } from '@daoyou/shared/types/constants';
 import type { BattleRankingItem } from '@daoyou/shared/types/rankings';
 import { and, eq, inArray } from 'drizzle-orm';
-import { redis } from './index';
-import { rankingQuotaKey } from './rankingChallenge';
+import { redis } from './index.js';
+import { rankingQuotaKey } from './rankingChallenge.js';
 
 const RANKING_LIST_PREFIX = 'golden_rank:list:';
 const LEGACY_RANKING_LIST_KEY = 'golden_rank:list';

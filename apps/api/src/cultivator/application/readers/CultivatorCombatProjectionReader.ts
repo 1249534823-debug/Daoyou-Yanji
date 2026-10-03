@@ -1,17 +1,17 @@
-import { readCharacterCombatBuild } from '@server/lib/repositories/characterLoadoutRepository';
+import { readCharacterCombatBuild } from '@server/lib/repositories/characterLoadoutRepository.js';
 import {
   db,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
+} from '@server/lib/drizzle/db.js';
 import {
   characterIdentityRow,
-} from '@server/lib/repositories/sectCombatRepository';
-import { findCultivatorOwnerStatusById } from '@server/lib/repositories/cultivatorRepository';
+} from '@server/lib/repositories/sectCombatRepository.js';
+import { findCultivatorOwnerStatusById } from '@server/lib/repositories/cultivatorRepository.js';
 import { publicCombatV6Build } from '@daoyou/shared/combat-v6/public-build';
 import type { CultivatorInspectionData } from '@daoyou/shared/contracts/player';
 import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import { getPlayerIdentityCultivatorById } from '@server/cultivator/application/readers/CultivatorProfileRepository';
+import { getPlayerIdentityCultivatorById } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 
 export async function loadCultivatorInspectionData(
   cultivatorId: string,

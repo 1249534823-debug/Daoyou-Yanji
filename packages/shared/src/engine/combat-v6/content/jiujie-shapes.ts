@@ -16,7 +16,7 @@ import {
   TargetSide,
   UnitKind,
   type SkillEffect,
-} from '../core';
+} from '../core/index.js';
 
 export const jjId = z.string().regex(/^jiujie\.[a-z][a-z0-9_.]*$/);
 const ref = z.string().min(1);

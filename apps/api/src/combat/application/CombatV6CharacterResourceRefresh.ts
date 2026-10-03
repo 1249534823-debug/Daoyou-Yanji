@@ -1,11 +1,11 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
 import { rebaseCharacterResources } from '@daoyou/shared/lib/cultivatorDisplay';
 import { evaluateFateContext } from '@daoyou/shared/lib/fates';
 import type { CultivatorCondition } from '@daoyou/shared/types/condition';
 import { eq } from 'drizzle-orm';
-import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository';
-import { readCombatV6ConditionAuthority } from '@server/combat/application/CombatV6ConditionAuthority';
+import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
+import { readCombatV6ConditionAuthority } from '@server/combat/application/CombatV6ConditionAuthority.js';
 
 /** Runs in the build/profile mutation transaction, before its condition invalidation is published. */
 export async function refreshCombatV6CharacterResources(id: string, tx: DbTransaction) {

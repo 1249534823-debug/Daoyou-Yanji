@@ -6,7 +6,7 @@ import {
   getMarketPurchasePriceMultiplier,
   getRefineSpiritStoneMultiplier,
   scaleFateAdjustedCost,
-} from './fates';
+} from './fates.js';
 
 function fate(
   effectType: FateEffectType,

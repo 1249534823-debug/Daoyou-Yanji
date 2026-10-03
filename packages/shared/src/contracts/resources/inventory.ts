@@ -18,8 +18,8 @@ import {
 } from '@daoyou/shared/types/consumable';
 import type { Artifact, Consumable, Material } from '@daoyou/shared/types/cultivator';
 import { z } from 'zod';
-import { applyResourceChange } from './core';
-import type { ResourceChange, ResourceDataMap } from './registry';
+import { applyResourceChange } from './core.js';
+import type { ResourceChange, ResourceDataMap } from './registry.js';
 
 export const INVENTORY_RESOURCE_TOPICS = [
   'inventory.artifacts',

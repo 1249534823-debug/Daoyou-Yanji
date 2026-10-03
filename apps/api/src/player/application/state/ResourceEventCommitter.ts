@@ -1,12 +1,12 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import {
   bumpResourceVersions,
   insertResourceChanges,
   type ScopedResourceChangeDescriptor,
   type ScopeVersionCommit,
-} from '@server/lib/repositories/playerStateRepository';
+} from '@server/lib/repositories/playerStateRepository.js';
 import type { PlayerResourceMutationMeta } from '@daoyou/shared/contracts/player';
-import { refreshCombatV6CharacterResources } from '@server/combat/character-resources';
+import { refreshCombatV6CharacterResources } from '@server/combat/character-resources.js';
 import { withCharacterPanelInvalidations } from '@daoyou/shared/lib/characterResourceChanges';
 import { withBagInvalidations } from '@daoyou/shared/lib/bagResourceChanges';
 import {

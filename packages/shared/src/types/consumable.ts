@@ -2,8 +2,8 @@ import type {
   ConditionStatusDuration,
   ConditionStatusKey,
   ConditionTrackPath,
-} from './condition';
-import type { ElementType, Quality, RealmType } from './constants';
+} from './condition.js';
+import type { ElementType, Quality, RealmType } from './constants.js';
 
 export const PILL_FAMILY_VALUES = [
   'healing',

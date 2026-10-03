@@ -18,8 +18,8 @@ import {
   getExecutor,
   type DbExecutor,
   type DbTransaction,
-} from '../drizzle/db';
-import * as schema from '../drizzle/schema';
+} from '../drizzle/db.js';
+import * as schema from '../drizzle/schema.js';
 
 /**
  * 拍卖列表项（从数据库读取）

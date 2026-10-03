@@ -3,8 +3,8 @@ import {
   BeastLineupSchema,
   type BeastRoster,
   type SummonedBeast,
-} from '../engine/combat-v6/beasts';
-import { BeastAllocationSchema } from '../engine/combat-v6/beasts/progression';
+} from '../engine/combat-v6/beasts/index.js';
+import { BeastAllocationSchema } from '../engine/combat-v6/beasts/progression.js';
 export const BeastClaimSchema = z
   .object({ speciesId: z.string().min(1).max(160) })
   .strict();

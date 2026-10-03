@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { InventoryQuerySchema } from '../contracts/inventory';
-import { ITEM_DEFINITIONS } from '../items/registry';
-import { INVENTORY_KINDS, sortInventoryItems } from './sorting';
+import { InventoryQuerySchema } from '../contracts/inventory.js';
+import { ITEM_DEFINITIONS } from '../items/registry.js';
+import { INVENTORY_KINDS, sortInventoryItems } from './sorting.js';
 
 const items = [
   {

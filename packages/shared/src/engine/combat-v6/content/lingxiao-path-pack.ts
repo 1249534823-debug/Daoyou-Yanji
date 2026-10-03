@@ -1,12 +1,12 @@
-import { lxEffect as actionEffect, lxHook as hook, lxModifier, lxPanel as panel } from './lingxiao-shapes';
+import { lxEffect as actionEffect, lxHook as hook, lxModifier, lxPanel as panel } from './lingxiao-shapes.js';
 import { formatContentPackErrors } from '@daoyou/shared/lib/content-pack-errors';
 import { z } from 'zod';
-import { BUILTIN_SKILL_ID, EffectType, SkillTag, TargetSide } from '../core';
-import { sectSkillLearning } from './skill-learning';
-import { LINGXIAO_COMBAT } from './lingxiao-pack';
-import { validateSectExpressions } from './authoring-expressions';
-import type { SectPathDefV6, SectSkillDefV6 } from './types';
-import raw from './data/lingxiao-paths.json';
+import { BUILTIN_SKILL_ID, EffectType, SkillTag, TargetSide } from '../core/index.js';
+import { sectSkillLearning } from './skill-learning.js';
+import { LINGXIAO_COMBAT } from './lingxiao-pack.js';
+import { validateSectExpressions } from './authoring-expressions.js';
+import type { SectPathDefV6, SectSkillDefV6 } from './types.js';
+import raw from './data/lingxiao-paths.json' with { type: 'json' };
 
 const id = z.string().regex(/^lingxiao\.[a-z][a-z0-9_.]*$/);
 const ids = z.array(id);

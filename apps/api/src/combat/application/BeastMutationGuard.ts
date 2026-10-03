@@ -1,4 +1,4 @@
-import { hasActiveCombat } from '@server/combat/application/CombatOccupancy';
+import { hasActiveCombat } from '@server/combat/application/CombatOccupancy.js';
 
 export class BeastError extends Error {
   readonly status = 409;

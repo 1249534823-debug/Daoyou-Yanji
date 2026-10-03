@@ -1,8 +1,8 @@
-import { db } from '@server/lib/drizzle/db';
-import { cultivators, playerJournal } from '@server/lib/drizzle/schema';
-import { redis } from '@server/lib/redis';
-import { withRedisLock, type RedisLeaseContext } from '@server/lib/redis/lock';
-import { journalOperationKey } from '@server/lib/repositories/playerJournalRepository';
+import { db } from '@server/lib/drizzle/db.js';
+import { cultivators, playerJournal } from '@server/lib/drizzle/schema.js';
+import { redis } from '@server/lib/redis/index.js';
+import { withRedisLock, type RedisLeaseContext } from '@server/lib/redis/lock.js';
+import { journalOperationKey } from '@server/lib/repositories/playerJournalRepository.js';
 import {
   ARENA_SPARRING_RULES_V1,
   type ArenaRoomV1,
@@ -25,9 +25,9 @@ import {
 } from '@daoyou/shared/hunts/rules';
 import { REALM_VALUES, type RealmType } from '@daoyou/shared/types/constants';
 import { and, eq } from 'drizzle-orm';
-import { hasActiveCombat } from '@server/combat/application/CombatOccupancy';
-import { ArenaV6Error, createArenaV6 } from '@server/combat/application/CombatV6ArenaService';
-import { CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore';
+import { hasActiveCombat } from '@server/combat/application/CombatOccupancy.js';
+import { ArenaV6Error, createArenaV6 } from '@server/combat/application/CombatV6ArenaService.js';
+import { CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore.js';
 export type HuntActor = { userId: string; cultivatorId: string };
 const teamKey = (id: string) => `hunt:v1:team:${id}`;
 const memberKey = (id: string) => `hunt:v1:member:${id}`;

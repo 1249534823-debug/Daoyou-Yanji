@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { addItems, InventoryItemSchema } from '../../inventory';
-import { inventoryStackIdentity } from '../../inventory/stack-key';
-import { seedFactsOf, SeedFactsSchema } from '../../items/definitions/seeds';
+import { addItems, InventoryItemSchema } from '../../inventory/index.js';
+import { inventoryStackIdentity } from '../../inventory/stack-key.js';
+import { seedFactsOf, SeedFactsSchema } from '../../items/definitions/seeds.js';
 import {
   buildSpiritFieldSeedMaterialFromPlant,
   readSpiritFieldSeedSpec,
-} from './seedMaterial';
-import type { SpiritFieldPlantSnapshot } from './types';
+} from './seedMaterial.js';
+import type { SpiritFieldPlantSnapshot } from './types.js';
 
 const plant: SpiritFieldPlantSnapshot = {
   id: 'fingerprint-seed',

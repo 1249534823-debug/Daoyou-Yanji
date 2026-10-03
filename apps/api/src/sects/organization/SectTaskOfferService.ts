@@ -9,11 +9,11 @@ import {
   type SectTaskRewardCadence,
 } from '@daoyou/shared/engine/sect';
 import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
-import { organizationError } from '@server/sects/organization/applicationSupport';
+import { organizationError } from '@server/sects/organization/applicationSupport.js';
 import type {
   SectTaskOfferPolicyRegistry,
   SectTaskRewardPolicyRegistry,
-} from '@server/sects/organization/SectTaskSettlement';
+} from '@server/sects/organization/SectTaskSettlement.js';
 
 function resolveRewardCadence(
   definition: SectTaskDefinition,

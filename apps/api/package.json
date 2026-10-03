@@ -8,8 +8,9 @@
   ],
   "scripts": {
     "build": "nest build",
-    "dev": "APP_ENV=local NODE_ENV=development nest start --watch --no-shell --env-file ../../env/local.env",
-    "prd": "APP_ENV=staging NODE_ENV=development nest start --watch --no-shell --env-file ../../env/staging.env",
+    "dev": "APP_ENV=local NODE_ENV=development nest start --no-shell --env-file ../../env/local.env",
+    "lint": "oxlint --type-aware -c .oxlintrc.json src/ scripts/",
+    "prd": "APP_ENV=staging NODE_ENV=development nest start --no-shell --env-file ../../env/staging.env",
     "start": "node dist/main.js",
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
@@ -46,15 +47,12 @@
   },
   "devDependencies": {
     "@nestjs/cli": "^12.0.8",
-    "@rspack/core": "^1.5.8",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/nodemailer": "^8.0.1",
     "@types/pg": "^8.23.1",
     "@types/ws": "^8.18.2",
-    "fork-ts-checker-webpack-plugin": "^9.1.0",
-    "tsconfig-paths-webpack-plugin": "^4.2.0",
-    "webpack": "^5.105.4",
-    "webpack-node-externals": "^3.0.0"
+    "oxlint": "^1.58.0",
+    "oxlint-tsgolint": "^7.0.2001"
   }
 }

@@ -8,28 +8,28 @@ import {
   Res,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { BlackMarketServiceError } from '@server/black-market/application/BlackMarketService';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { BlackMarketServiceError } from '@server/black-market/application/BlackMarketService.js';
 import {
   QiInsufficientError,
   QiServiceError,
-} from '@server/cultivator/application/QiService';
+} from '@server/cultivator/application/QiService.js';
 import type { Response as ExpressResponse } from 'express';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { JsonBody } from '../http/json-body';
-import { withRequestAbort } from '../http/request-abort';
-import { streamSseEvents } from '../http/sse';
-import { ZodPipe } from '../http/zod.pipe';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { JsonBody } from '../http/json-body.js';
+import { withRequestAbort } from '../http/request-abort.js';
+import { streamSseEvents } from '../http/sse.js';
+import { ZodPipe } from '../http/zod.pipe.js';
 import {
   CommitSchema,
   InteractSchema,
   LeaveSchema,
   OpenSessionSchema,
-} from './black-market-input';
-import { BlackMarketService } from './black-market.service';
+} from './black-market-input.js';
+import { BlackMarketService } from './black-market.service.js';
 
 const BlackMarketErrors = apiErrorFilter((error) => {
   const lock = redisLockErrorResponse(error);

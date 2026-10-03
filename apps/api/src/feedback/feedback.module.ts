@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from '@server/database/database.module';
-import { FeedbackController } from './feedback.controller';
-import { FeedbackService } from './feedback.service';
+import { DatabaseModule } from '@server/database/database.module.js';
+import { FeedbackController } from './feedback.controller.js';
+import { FeedbackService } from './feedback.service.js';
 
 @Module({
   imports: [DatabaseModule],

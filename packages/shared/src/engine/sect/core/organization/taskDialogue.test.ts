@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { StandardSectOrganizationModule } from './StandardSectOrganizationModule';
-import { resolveSectTaskExecutionLocationParameters } from './contracts';
-import { resolveSectTaskDialogue } from './taskDialogue';
-import { createSectTaskOfferSnapshot } from './taskOffer';
+import { StandardSectOrganizationModule } from './StandardSectOrganizationModule.js';
+import { resolveSectTaskExecutionLocationParameters } from './contracts.js';
+import { resolveSectTaskDialogue } from './taskDialogue.js';
+import { createSectTaskOfferSnapshot } from './taskOffer.js';
 
 function offer(args: {
   executorKey: string;

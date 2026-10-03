@@ -2,7 +2,7 @@ import type { ResourceOperation } from '@daoyou/shared/engine/resource/types';
 import type { CultivatorCondition } from '@daoyou/shared/types/condition';
 import type { EnemyRace, RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import type { Cultivator } from '@daoyou/shared/types/cultivator';
-import type { TowerBlessingId } from './blessings';
+import type { TowerBlessingId } from './blessings.js';
 
 export type TowerRunStatus =
   | 'READY'

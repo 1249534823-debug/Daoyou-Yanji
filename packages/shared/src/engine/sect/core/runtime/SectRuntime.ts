@@ -1,6 +1,6 @@
-import type { CultivatorSectState } from '../domain';
-import type { SectModule } from '../plugin';
-import { SectRegistry } from './SectRegistry';
+import type { CultivatorSectState } from '../domain/index.js';
+import type { SectModule } from '../plugin/index.js';
+import { SectRegistry } from './SectRegistry.js';
 
 export interface SectRuntime {
   registry: SectRegistry;

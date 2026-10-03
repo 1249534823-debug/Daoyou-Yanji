@@ -1,4 +1,4 @@
-import { AUTO_POLICY_VERSION } from '../../combat-v6/auto-policy';
+import { AUTO_POLICY_VERSION } from '../../combat-v6/auto-policy.js';
 import type { CombatV6VersionStamp } from './core/index.ts';
 
 /** Phase 1 的不可变版本戳；Host 和投影必须按值复制进战斗快照。 */

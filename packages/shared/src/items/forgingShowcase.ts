@@ -1,7 +1,7 @@
 import type { z } from 'zod';
-import type { InventoryEquipmentSchema } from '../inventory/equipment';
-import { EQUIPMENT_ITEM } from './definitions/equipment';
-import type { InventoryShowcaseSnapshot } from './showcase';
+import type { InventoryEquipmentSchema } from '../inventory/equipment.js';
+import { EQUIPMENT_ITEM } from './definitions/equipment.js';
+import type { InventoryShowcaseSnapshot } from './showcase.js';
 
 export function forgingShowcaseSnapshot(
   equipment: z.infer<typeof InventoryEquipmentSchema>,

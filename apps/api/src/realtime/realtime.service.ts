@@ -5,25 +5,25 @@ import {
 } from '@daoyou/shared/contracts/realtime';
 import type { ResourceScope } from '@daoyou/shared/contracts/resources';
 import { Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { cultivators, sectMemberships } from '@server/lib/drizzle/schema';
-import { isAllowedRealtimeOrigin } from '@server/lib/http/realtimeOrigin';
-import { getRequestIp } from '@server/lib/http/requestIp';
-import { subscribeArenaRoomChanges } from '@server/realtime/infrastructure/arenaRoomBroadcaster';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { cultivators, sectMemberships } from '@server/lib/drizzle/schema.js';
+import { isAllowedRealtimeOrigin } from '@server/lib/http/realtimeOrigin.js';
+import { getRequestIp } from '@server/lib/http/requestIp.js';
+import { subscribeArenaRoomChanges } from '@server/realtime/infrastructure/arenaRoomBroadcaster.js';
 import {
   recordRealtimeConnectionClose,
   recordRealtimeConnectionHeartbeat,
   recordRealtimeConnectionOpen,
-} from '@server/realtime/infrastructure/onlinePresenceService';
-import { subscribeResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
-import { subscribeSectChatMessages } from '@server/realtime/infrastructure/sectChatBroadcaster';
-import { subscribeWorldChatMessages } from '@server/realtime/infrastructure/worldChatBroadcaster';
+} from '@server/realtime/infrastructure/onlinePresenceService.js';
+import { subscribeResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster.js';
+import { subscribeSectChatMessages } from '@server/realtime/infrastructure/sectChatBroadcaster.js';
+import { subscribeWorldChatMessages } from '@server/realtime/infrastructure/worldChatBroadcaster.js';
 import { fromNodeHeaders } from 'better-auth/node';
 import { and, eq } from 'drizzle-orm';
 import type { IncomingMessage } from 'node:http';
 import { WebSocket } from 'ws';
-import { SessionService } from '../auth/session.service';
+import { SessionService } from '../auth/session.service.js';
 
 type Reservation = {
   userId: string;

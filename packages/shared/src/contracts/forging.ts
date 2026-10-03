@@ -1,13 +1,13 @@
 import { z } from 'zod';
-import { DAO_EQUIPMENT_SLOTS } from '../engine/combat-v6/equipment/types';
-import { DAO_WEAPON_TYPES } from '../engine/combat-v6/equipment/weapons';
-import { ForgeIntentSchema } from '../forging/narrative';
-import { ForgingLevelSchema } from '../forging/rules';
-import { ItemGrantSchema } from '../inventory';
-import { ConsumableFactsSchema } from '../items/definitions/consumables';
-import { MaterialFactsSchema } from '../items/definitions/materials';
-import { SeedFactsSchema } from '../items/definitions/seeds';
-import { MailAttachmentsSchema } from '../lib/itemLibrary';
+import { DAO_EQUIPMENT_SLOTS } from '../engine/combat-v6/equipment/types.js';
+import { DAO_WEAPON_TYPES } from '../engine/combat-v6/equipment/weapons.js';
+import { ForgeIntentSchema } from '../forging/narrative.js';
+import { ForgingLevelSchema } from '../forging/rules.js';
+import { ItemGrantSchema } from '../inventory/index.js';
+import { ConsumableFactsSchema } from '../items/definitions/consumables.js';
+import { MaterialFactsSchema } from '../items/definitions/materials.js';
+import { SeedFactsSchema } from '../items/definitions/seeds.js';
+import { MailAttachmentsSchema } from '../lib/itemLibrary.js';
 
 const ref = {
   id: z.string().min(1).max(160),

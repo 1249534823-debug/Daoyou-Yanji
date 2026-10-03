@@ -1,10 +1,10 @@
-import type { DbExecutor } from '@server/lib/drizzle/db';
+import type { DbExecutor } from '@server/lib/drizzle/db.js';
 import type { HuntEvent } from '@daoyou/shared/hunts/config';
 import { MaterialFactsSchema } from '@daoyou/shared/items/definitions/materials';
 import { HuntRewardSnapshotSchema, planHuntReward } from '@daoyou/shared/rewards/hunt';
 import { HUNT_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/shared/rewards/hunt-material-quality';
-import { generateRealmMaterials } from '@server/inventory/application/MaterialRewardService';
-import { computeItemLibrarySampleKey } from '@server/lib/utils/itemLibrarySampleKey';
+import { generateRealmMaterials } from '@server/inventory/application/MaterialRewardService.js';
+import { computeItemLibrarySampleKey } from '@server/lib/utils/itemLibrarySampleKey.js';
 
 /** Freeze resources and library facts before combat; settlement never rerolls. */
 export async function prepareHuntReward(

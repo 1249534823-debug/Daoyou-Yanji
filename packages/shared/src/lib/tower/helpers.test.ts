@@ -11,8 +11,8 @@ import {
   TOWER_ELIGIBLE_REALMS,
   TOWER_MAX_FLOOR,
   unpackTowerLeaderboardScore,
-} from './helpers';
-import { getTowerBlessingEffectPreview } from './presentation';
+} from './helpers.js';
+import { getTowerBlessingEffectPreview } from './presentation.js';
 
 describe('tower helpers', () => {
   it('limits tower eligibility to golden core and above', () => {

@@ -5,7 +5,7 @@ import type { ConsumableSpec } from '@daoyou/shared/types/consumable';
 import {
   realmMeetsSectRank,
   type SectRankRequirement,
-} from '../domain/organization';
+} from '../domain/organization.js';
 
 export interface PromotionCandidateFacts {
   realm: RealmType;

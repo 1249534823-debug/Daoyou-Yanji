@@ -9,7 +9,7 @@ import {
   StatusHit,
   TargetMode,
   TargetSide,
-} from '../core';
+} from '../core/index.js';
 
 export const tyId = z.string().regex(/^tianyan\.[a-z][a-z0-9_.]*$/);
 export const tyExpr = z.union([

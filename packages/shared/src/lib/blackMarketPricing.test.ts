@@ -6,7 +6,7 @@ import {
   flexibilityLevel,
   initialPatience,
   sampleCognitionMultiplier,
-} from './blackMarketPricing';
+} from './blackMarketPricing.js';
 
 describe('black market pricing', () => {
   it('computes true value from base price and type multiplier', () => {

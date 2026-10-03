@@ -14,7 +14,7 @@ import {
   requiresResourceEventReload,
   type ResourceChange,
   type ResourceScope,
-} from './resources';
+} from './resources/index.js';
 
 const cultivatorScope: ResourceScope = {
   kind: 'cultivator',

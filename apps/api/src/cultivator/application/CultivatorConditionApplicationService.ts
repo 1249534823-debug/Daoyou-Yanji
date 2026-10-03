@@ -1,10 +1,10 @@
-import { cultivators } from '@server/lib/drizzle/schema';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
-import { loadPlayerInnRecoveryFacts } from '@server/cultivator/application/readers/CultivatorConditionFactsReader';
-import { readMarrowWashFacts } from '@server/cultivator/application/readers/CultivatorFactsReader';
-import { getCultivatorConsumableById } from '@server/cultivator/application/readers/CultivatorInventoryRepository';
-import { setSpiritualRootMarrowWashBonus } from '@server/cultivator/application/readers/CultivatorProfileRepository';
-import { updateCultivator } from '@server/cultivator/application/readers/CultivatorStateRepository';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
+import { loadPlayerInnRecoveryFacts } from '@server/cultivator/application/readers/CultivatorConditionFactsReader.js';
+import { readMarrowWashFacts } from '@server/cultivator/application/readers/CultivatorFactsReader.js';
+import { getCultivatorConsumableById } from '@server/cultivator/application/readers/CultivatorInventoryRepository.js';
+import { setSpiritualRootMarrowWashBonus } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
+import { updateCultivator } from '@server/cultivator/application/readers/CultivatorStateRepository.js';
 import { stripExpCapForStorage } from '@daoyou/shared/engine/cultivation/cultivationUtils';
 import {
   breakthroughMarrowWash,
@@ -14,21 +14,21 @@ import {
 import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import { randomUUID } from 'crypto';
 import { and, eq, sql } from 'drizzle-orm';
-import { inventoryItems } from '@server/lib/drizzle/schema';
-import { loadPlayerBodyCultivationFacts } from '@server/cultivator/application/BodyCultivationBreakthroughService';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
-import { ConditionService } from '@server/cultivator/application/ConditionService';
-import { ConsumableUseEngine } from '@server/inventory/application/ConsumableUseEngine';
+import { inventoryItems } from '@server/lib/drizzle/schema.js';
+import { loadPlayerBodyCultivationFacts } from '@server/cultivator/application/BodyCultivationBreakthroughService.js';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import { ConditionService } from '@server/cultivator/application/ConditionService.js';
+import { ConsumableUseEngine } from '@server/inventory/application/ConsumableUseEngine.js';
 import {
   bodyBreakthroughChanges,
   conditionChangesAfterConsumable,
   innRecoveryChanges,
   marrowWashBreakthroughChanges,
-} from '@server/cultivator/application/CultivatorConditionResourceChanges';
-import { InnRecoveryService } from '@server/cultivator/application/InnRecoveryService';
-import { readPlayerTaskSummary } from '@server/player/application/PlayerResourceReaderService';
-import { QiService } from '@server/cultivator/application/QiService';
-import { TaskService } from '@server/tasks/application/TaskService';
+} from '@server/cultivator/application/CultivatorConditionResourceChanges.js';
+import { InnRecoveryService } from '@server/cultivator/application/InnRecoveryService.js';
+import { readPlayerTaskSummary } from '@server/player/application/PlayerResourceReaderService.js';
+import { QiService } from '@server/cultivator/application/QiService.js';
+import { TaskService } from '@server/tasks/application/TaskService.js';
 
 type Actor = { userId: string; cultivatorId: string };
 

@@ -9,8 +9,8 @@ import {
   Put,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { BeastError } from '@server/combat/application/CombatV6BeastService';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { BeastError } from '@server/combat/application/CombatV6BeastService.js';
 import {
   BeastAllocateSchema,
   BeastClaimSchema,
@@ -20,12 +20,12 @@ import {
   BeastRestSchema,
 } from '@daoyou/shared/contracts/combatV6Beasts';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { CombatErrors, combatErrorResponse } from '../combat/combat-errors';
-import { apiErrorFilter } from '../http/error-filter';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { BeastsService } from './beasts.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { CombatErrors, combatErrorResponse } from '../combat/combat-errors.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { BeastsService } from './beasts.service.js';
 
 const FusionErrors = apiErrorFilter((error) => {
   if (error instanceof BeastError)

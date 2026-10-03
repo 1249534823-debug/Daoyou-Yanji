@@ -3,18 +3,18 @@ import {
   ExpressAdapter,
   type NestExpressApplication,
 } from '@nestjs/platform-express';
-import { closeDatabase } from '@server/lib/drizzle/db';
-import { shutdownMessageInfrastructure } from '@server/runtime/messaging/domainEventRegistry';
-import { closeRedisConnection } from '@server/lib/redis';
+import { closeDatabase } from '@server/lib/drizzle/db.js';
+import { shutdownMessageInfrastructure } from '@server/runtime/messaging/domainEventRegistry.js';
+import { closeRedisConnection } from '@server/lib/redis/index.js';
 import express from 'express';
 import 'reflect-metadata';
-import { AppModule } from './app.module';
-import { ArenaRealtimeService } from './arena/arena-realtime.service';
-import { AppConfigService } from './config/app-config.service';
-import { configureHttp } from './http/configure-http';
-import { RequestWorkService } from './http/request-work.service';
-import { RealtimeAdapter } from './realtime/realtime.adapter';
-import { RealtimeService } from './realtime/realtime.service';
+import { AppModule } from './app.module.js';
+import { ArenaRealtimeService } from './arena/arena-realtime.service.js';
+import { AppConfigService } from './config/app-config.service.js';
+import { configureHttp } from './http/configure-http.js';
+import { RequestWorkService } from './http/request-work.service.js';
+import { RealtimeAdapter } from './realtime/realtime.adapter.js';
+import { RealtimeService } from './realtime/realtime.service.js';
 
 // ExpressAdapter installs middleware in its constructor, creating the router.
 // Configure matching before that first use so the API keeps Hono's strict paths.

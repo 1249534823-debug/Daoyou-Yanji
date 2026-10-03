@@ -2,7 +2,7 @@ import {
   buildDungeonPerformanceTags,
   getRequiredDungeonExtraRewards,
   normalizeDungeonRewardTier,
-} from './settlementPolicy';
+} from './settlementPolicy.js';
 
 describe('dungeon settlement policy', () => {
   it.each([

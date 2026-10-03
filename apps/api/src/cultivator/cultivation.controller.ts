@@ -6,15 +6,15 @@ import {
   Res,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { JournalIdempotencyError } from '@server/lib/repositories/playerJournalRepository';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { JournalIdempotencyError } from '@server/lib/repositories/playerJournalRepository.js';
 import {
   QiInsufficientError,
   QiServiceError,
-} from '@server/cultivator/application/QiService';
-import { RetreatCommandError } from '@server/cultivator/application/RetreatApplicationService';
-import { YieldCommandError } from '@server/cultivator/application/YieldApplicationService';
+} from '@server/cultivator/application/QiService.js';
+import { RetreatCommandError } from '@server/cultivator/application/RetreatApplicationService.js';
+import { YieldCommandError } from '@server/cultivator/application/YieldApplicationService.js';
 import { JournalRequestSchema } from '@daoyou/shared/contracts/playerJournal';
 import {
   RetreatRequestSchema,
@@ -22,14 +22,14 @@ import {
 } from '@daoyou/shared/contracts/retreat';
 import type { Response as ExpressResponse } from 'express';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { JsonBody } from '../http/json-body';
-import { withRequestAbort } from '../http/request-abort';
-import { streamSseEvents } from '../http/sse';
-import { ZodPipe } from '../http/zod.pipe';
-import { RetreatService } from './retreat.service';
-import { YieldService } from './yield.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { JsonBody } from '../http/json-body.js';
+import { withRequestAbort } from '../http/request-abort.js';
+import { streamSseEvents } from '../http/sse.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { RetreatService } from './retreat.service.js';
+import { YieldService } from './yield.service.js';
 
 const RetreatErrors = apiErrorFilter((error) => {
   const lock = redisLockErrorResponse(error);

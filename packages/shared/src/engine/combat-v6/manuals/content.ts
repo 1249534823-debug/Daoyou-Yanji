@@ -1,5 +1,5 @@
 import { SkillTag, TargetSide } from '../core/index.ts';
-import data from './data/manual-pack.json';
+import data from './data/manual-pack.json' with { type: 'json' };
 import { loadManualPack } from './pack.ts';
 import type { CharacterManualDefV1 } from './types.ts';
 

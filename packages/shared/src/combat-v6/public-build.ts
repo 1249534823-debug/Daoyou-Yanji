@@ -1,11 +1,11 @@
-import { COMBAT_V6_SECT_DEFINITIONS } from '../engine/combat-v6/content';
-import { projectCharacterToCombatV6 } from '../engine/combat-v6/projection';
+import { COMBAT_V6_SECT_DEFINITIONS } from '../engine/combat-v6/content/index.js';
+import { projectCharacterToCombatV6 } from '../engine/combat-v6/projection/index.js';
 import {
   projectCharacterDisplay,
   type CharacterDisplayBuild,
   type CultivatorDisplayInput,
-} from '../lib/cultivatorDisplay';
-import { combatV6SkillDetails } from './skill-details';
+} from '../lib/cultivatorDisplay.js';
+import { combatV6SkillDetails } from './skill-details.js';
 
 /** Only currently equipped and usable build facts, never the persistence/profile object. */
 export function publicCombatV6Build(

@@ -9,13 +9,13 @@ import {
 } from '@nestjs/common';
 import type { Response } from 'express';
 import type { z } from 'zod';
-import { Access } from '../auth/access';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { AdminErrors } from './admin-errors';
-import { TowerQuerySchema, TowerRegenerateSchema } from './tower-input';
-import { AdminTowerService } from './tower.service';
+import { Access } from '../auth/access.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { AdminErrors } from './admin-errors.js';
+import { TowerQuerySchema, TowerRegenerateSchema } from './tower-input.js';
+import { AdminTowerService } from './tower.service.js';
 
 @Controller('api/admin/tower-enemy-sets')
 @Access('admin')

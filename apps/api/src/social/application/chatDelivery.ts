@@ -1,7 +1,7 @@
-import { createSectChatMessage } from '@server/lib/repositories/sectChatRepository';
-import { createMessage } from '@server/lib/repositories/worldChatRepository';
-import { publishSectChatMessage } from '@server/realtime/infrastructure/sectChatBroadcaster';
-import { publishWorldChatMessage } from '@server/realtime/infrastructure/worldChatBroadcaster';
+import { createSectChatMessage } from '@server/lib/repositories/sectChatRepository.js';
+import { createMessage } from '@server/lib/repositories/worldChatRepository.js';
+import { publishSectChatMessage } from '@server/realtime/infrastructure/sectChatBroadcaster.js';
+import { publishWorldChatMessage } from '@server/realtime/infrastructure/worldChatBroadcaster.js';
 
 export async function createAndPublishWorldChatMessage(
   input: Parameters<typeof createMessage>[0],

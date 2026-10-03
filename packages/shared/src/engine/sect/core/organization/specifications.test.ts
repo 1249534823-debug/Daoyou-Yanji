@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { PromotionRequirementSpecification } from './specifications';
+import { PromotionRequirementSpecification } from './specifications.js';
 
 describe('PromotionRequirementSpecification', () => {
   it('evaluates configurable task tags without knowing concrete task ids', () => {

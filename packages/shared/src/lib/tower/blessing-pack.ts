@@ -1,6 +1,6 @@
 import { formatContentPackErrors } from '@daoyou/shared/lib/content-pack-errors';
 import { z } from 'zod';
-import raw from './data/blessings.json';
+import raw from './data/blessings.json' with { type: 'json' };
 
 export const TOWER_BLESSING_IDS = [
   'physical_power',

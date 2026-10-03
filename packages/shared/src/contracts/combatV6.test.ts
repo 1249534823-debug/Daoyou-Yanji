@@ -5,13 +5,13 @@ import {
   CombatV6TrainingCreateRequestSchema,
   CombatV6TrainingEventsQuerySchema,
   CombatV6TrainingSessionParamsSchema,
-} from './combatV6';
+} from './combatV6.js';
 import {
   CombatV6BattleFinishedDataV1Schema,
   CombatV6BattleFinishedRecordV1Schema,
   CombatV6ReplayArchiveMessageV1Schema,
   CombatV6TrainingBattleMetadataV1Schema,
-} from './combatV6Runtime';
+} from './combatV6Runtime.js';
 
 describe('combat-v6 Phase 7B contracts', () => {
   test('accepts only supported training tiers and strict build initialization', () => {

@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from '@server/database/database.module';
-import { PlayerStateModule } from '@server/player/player-state.module';
-import { InventoryRecycleService } from './inventory-recycle.service';
-import { InventoryController } from './inventory.controller';
-import { InventoryService } from './inventory.service';
+import { DatabaseModule } from '@server/database/database.module.js';
+import { PlayerStateModule } from '@server/player/player-state.module.js';
+import { InventoryRecycleService } from './inventory-recycle.service.js';
+import { InventoryController } from './inventory.controller.js';
+import { InventoryService } from './inventory.service.js';
 
 @Module({
   imports: [DatabaseModule, PlayerStateModule],

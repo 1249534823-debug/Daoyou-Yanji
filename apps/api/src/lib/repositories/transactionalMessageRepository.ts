@@ -1,6 +1,6 @@
-import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db';
-import { getExecutor } from '@server/lib/drizzle/db';
-import { transactionalMessages } from '@server/lib/drizzle/schema';
+import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db.js';
+import { getExecutor } from '@server/lib/drizzle/db.js';
+import { transactionalMessages } from '@server/lib/drizzle/schema.js';
 import { and, asc, eq, isNull, lt, sql } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
 

@@ -3,11 +3,11 @@ import { describe, expect, it } from 'vitest';
 import {
   SECT_MERIDIAN_RESET_TALISMAN_SCENARIO,
   isSectMeridianResetTalismanScenario,
-} from './sectMeridianResetTalisman';
+} from './sectMeridianResetTalisman.js';
 import {
   TALISMAN_SCENARIO_OPTIONS,
   isTalismanScenario,
-} from './talismanScenarios';
+} from './talismanScenarios.js';
 
 describe('talisman scenarios', () => {
   it('provides unique keywords with labels', () => {

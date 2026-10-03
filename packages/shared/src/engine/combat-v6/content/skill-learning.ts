@@ -1,8 +1,8 @@
 import { formatContentPackErrors } from '@daoyou/shared/lib/content-pack-errors';
 import { z } from 'zod';
-import raw from './data/skill-learning.json';
-import { SECT_METHODS } from './method-pack';
-import type { SectDefinitionV6 } from './types';
+import raw from './data/skill-learning.json' with { type: 'json' };
+import { SECT_METHODS } from './method-pack.js';
+import type { SectDefinitionV6 } from './types.js';
 
 export const SectSkillLearningShape = z.strictObject({
   $schema: z.string().optional(),

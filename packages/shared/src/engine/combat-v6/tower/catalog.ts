@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import raw from './data/enemies.json';
-import mechanics from './data/mechanics.json';
-import { TOWER_SKILLS, TOWER_STATUS_DEFS } from './data/skills';
+import raw from './data/enemies.json' with { type: 'json' };
+import mechanics from './data/mechanics.json' with { type: 'json' };
+import { TOWER_SKILLS, TOWER_STATUS_DEFS } from './data/skills.js';
 
 const modifiers = z.partialRecord(
   z.enum([

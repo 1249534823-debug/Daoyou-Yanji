@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   changeBreakthroughBattle,
   getBreakthroughBattle,
-} from '@server/combat/application/CombatV6BreakthroughService';
+} from '@server/combat/application/CombatV6BreakthroughService.js';
 
 @Injectable()
 export class BreakthroughService {

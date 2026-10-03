@@ -4,12 +4,12 @@ import {
   type ResolvedSectPresentation,
   type SectModule,
   type SectPresentationTheme,
-} from '../core';
-import { LINGXIAO_MODULE, LINGXIAO_SECT_PRESENTATION } from './lingxiao';
-import { WUXIANG_MODULE, WUXIANG_SECT_PRESENTATION } from './wuxiang';
-import { TIANYAN_MODULE, TIANYAN_SECT_PRESENTATION } from './tianyan';
-import { YOUDU_MODULE, YOUDU_SECT_PRESENTATION } from './youdu';
-import { JIUJIE_MODULE, JIUJIE_SECT_PRESENTATION } from './jiujie';
+} from '../core/index.js';
+import { LINGXIAO_MODULE, LINGXIAO_SECT_PRESENTATION } from './lingxiao/index.js';
+import { WUXIANG_MODULE, WUXIANG_SECT_PRESENTATION } from './wuxiang/index.js';
+import { TIANYAN_MODULE, TIANYAN_SECT_PRESENTATION } from './tianyan/index.js';
+import { YOUDU_MODULE, YOUDU_SECT_PRESENTATION } from './youdu/index.js';
+import { JIUJIE_MODULE, JIUJIE_SECT_PRESENTATION } from './jiujie/index.js';
 
 export interface ProductionSectEntry {
   module: SectModule;

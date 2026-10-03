@@ -5,7 +5,7 @@ import type {
 } from '@daoyou/shared/types/condition';
 import type { Quality } from '@daoyou/shared/types/constants';
 import type { AddStatusOperation } from '@daoyou/shared/types/consumable';
-import { isConditionStatusActive } from './condition';
+import { isConditionStatusActive } from './condition.js';
 
 export const CULTIVATION_BOOST_STATUS_KEY = 'cultivation_boost' as const;
 

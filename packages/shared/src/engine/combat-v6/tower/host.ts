@@ -1,27 +1,27 @@
-import { AUTO_POLICY_VERSION } from '../../../combat-v6/auto-policy';
+import { AUTO_POLICY_VERSION } from '../../../combat-v6/auto-policy.js';
 import {
   playerAppearances,
   type PresentedBattleInput,
-} from '../../../combat-v6/unit-appearance';
-import { TOWER_BLESSINGS_PACK } from '../../../lib/tower/blessing-pack';
-import type { TowerBlessingId } from '../../../lib/tower/blessings';
+} from '../../../combat-v6/unit-appearance.js';
+import { TOWER_BLESSINGS_PACK } from '../../../lib/tower/blessing-pack.js';
+import type { TowerBlessingId } from '../../../lib/tower/blessings.js';
 import {
   TOWER_CONTENT_VERSION,
   type TowerWeek,
-} from '../../../lib/tower/weekly';
-import type { RealmType } from '../../../types/constants';
-import { BEAST_SKILLS, BEAST_STATUS_DEFS, projectBeastRoster } from '../beasts';
-import { isStanding, type Attrs } from '../core';
-import type { CombatV6TrainingPlayerInput } from '../encounter';
+} from '../../../lib/tower/weekly.js';
+import type { RealmType } from '../../../types/constants.js';
+import { BEAST_SKILLS, BEAST_STATUS_DEFS, projectBeastRoster } from '../beasts/index.js';
+import { isStanding, type Attrs } from '../core/index.js';
+import type { CombatV6TrainingPlayerInput } from '../encounter/index.js';
 import {
   CombatV6PveHostSession,
   type PveRestoredState,
-} from '../encounter/host';
-import { projectCharacterToCombatV6 } from '../projection';
-import { daoyouRulesetV6 } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version';
-import { compileTowerEncounter, type TowerNpcPlan } from './content';
-import { publishedTowerEncounter, type PublishedTowerWeek } from './published';
+} from '../encounter/host.js';
+import { projectCharacterToCombatV6 } from '../projection/index.js';
+import { daoyouRulesetV6 } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version.js';
+import { compileTowerEncounter, type TowerNpcPlan } from './content.js';
+import { publishedTowerEncounter, type PublishedTowerWeek } from './published.js';
 
 export type TowerBlessings = Partial<Record<TowerBlessingId, number>>;
 export const TOWER_V6_VERSIONS = {

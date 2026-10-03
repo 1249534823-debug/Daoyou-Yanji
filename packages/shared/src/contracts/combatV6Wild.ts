@@ -2,18 +2,18 @@ import type { WildRuntimeSnapshot } from '@daoyou/shared/engine/combat-v6/wild/h
 import { AutoStrategySchema } from '@daoyou/shared/combat-v6/auto-strategy';
 import type { WildResources } from '@daoyou/shared/engine/combat-v6/wild/rules';
 import { z } from 'zod';
-import { DropPoolSchema, type DropPool } from '../drops';
-import { BeastSchema, type SummonedBeast } from '../engine/combat-v6/beasts';
+import { DropPoolSchema, type DropPool } from '../drops/index.js';
+import { BeastSchema, type SummonedBeast } from '../engine/combat-v6/beasts/index.js';
 import {
   WildCombatantSchema,
   WildIndividualSchema,
-} from '../engine/combat-v6/wild/generator';
-import type { WildRegion } from '../engine/combat-v6/wild/pack';
-import { ItemGrantSchema, type ItemGrant } from '../inventory';
-import type { CombatV6TrainingSessionViewV1 } from './combatV6';
-import { CombatV6ReplayTimelineSchema } from './combatV6Replay';
-import type { CombatV6RedisRuntimeV1 } from './combatV6Runtime';
-import { CombatV6BattleMetadataV1Schema } from './combatV6Runtime';
+} from '../engine/combat-v6/wild/generator.js';
+import type { WildRegion } from '../engine/combat-v6/wild/pack.js';
+import { ItemGrantSchema, type ItemGrant } from '../inventory/index.js';
+import type { CombatV6TrainingSessionViewV1 } from './combatV6.js';
+import { CombatV6ReplayTimelineSchema } from './combatV6Replay.js';
+import type { CombatV6RedisRuntimeV1 } from './combatV6Runtime.js';
+import { CombatV6BattleMetadataV1Schema } from './combatV6Runtime.js';
 
 export const WildExploreRequestSchema = z
   .object({ nodeId: z.string().min(1).max(100), requestId: z.uuid() })

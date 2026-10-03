@@ -1,4 +1,4 @@
-import type { Quality } from './constants';
+import type { Quality } from './constants.js';
 
 export interface QualityDisplayInfo {
   label: string;

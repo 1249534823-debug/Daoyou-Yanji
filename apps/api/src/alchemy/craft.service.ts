@@ -1,14 +1,14 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { assertAlchemyMaterialVersions } from '@server/alchemy/application/inventory/AlchemyInventory';
-import { previewFormulaCraft } from '@server/alchemy/application/AlchemyFormulaService';
-import { previewAlchemySelection } from '@server/alchemy/application/alchemyServiceV2';
-import { executeCraftCommand } from '@server/forging/application/CraftApplicationService';
-import { readCraftReadinessFacts } from '@server/cultivator/facts';
-import { getPlayerPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository';
-import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { assertAlchemyMaterialVersions } from '@server/alchemy/application/inventory/AlchemyInventory.js';
+import { previewFormulaCraft } from '@server/alchemy/application/AlchemyFormulaService.js';
+import { previewAlchemySelection } from '@server/alchemy/application/alchemyServiceV2.js';
+import { executeCraftCommand } from '@server/forging/application/CraftApplicationService.js';
+import { readCraftReadinessFacts } from '@server/cultivator/facts.js';
+import { getPlayerPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
 import type { z } from 'zod';
-import type { CraftCommandSchema, CraftSchema } from './alchemy-input';
+import type { CraftCommandSchema, CraftSchema } from './alchemy-input.js';
 
 @Injectable()
 export class CraftService {

@@ -1,7 +1,7 @@
 // Explicit authored strategy. Runtime interpretation never consults generation templates.
 import { z } from 'zod';
-import type { TowerEnemyPreview } from '../../../lib/tower/weekly';
-import { TOWER_CATALOG, TOWER_SKILLS, towerContentNote } from './catalog';
+import type { TowerEnemyPreview } from '../../../lib/tower/weekly.js';
+import { TOWER_CATALOG, TOWER_SKILLS, towerContentNote } from './catalog.js';
 
 export const TOWER_STRATEGY_VERSION = 'combat-v6-tower-v8' as const;
 const trait = z.strictObject({

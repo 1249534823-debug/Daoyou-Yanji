@@ -1,14 +1,14 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
-import { readResourceWithMeta } from '@server/player/application/state/ResourceReadService';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
+import { readResourceWithMeta } from '@server/player/application/state/ResourceReadService.js';
 import {
   completeStoryGuideCommand,
   completeStoryPerformanceCommand,
-} from '@server/story/application/StoryApplicationService';
-import { StoryService as StoryDomain } from '@server/story/application/StoryService';
+} from '@server/story/application/StoryApplicationService.js';
+import { StoryService as StoryDomain } from '@server/story/application/StoryService.js';
 
 @Injectable()
 export class StoryService {

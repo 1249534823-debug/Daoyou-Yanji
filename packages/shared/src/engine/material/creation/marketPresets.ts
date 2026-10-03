@@ -1,5 +1,5 @@
 import type { ElementType, MaterialType, Quality } from '@daoyou/shared/types/constants';
-import marketData from './data/marketPresets.json';
+import marketData from './data/marketPresets.json' with { type: 'json' };
 
 export interface MarketMaterialPreset {
   name: string;

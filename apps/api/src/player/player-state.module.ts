@@ -4,7 +4,7 @@ import {
   playerCommandExecutor,
   SystemCommandExecutor,
   systemCommandExecutor,
-} from '@server/player/application/state/CommandExecutors';
+} from '@server/player/application/state/CommandExecutors.js';
 
 // Framework-independent callers and Nest use cases share the same coordinators.
 @Module({

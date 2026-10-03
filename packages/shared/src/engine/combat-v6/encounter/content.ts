@@ -1,4 +1,4 @@
-import { compileTrainingContent, TRAINING_PACK } from "./pack";
+import { compileTrainingContent, TRAINING_PACK } from "./pack.js";
 
 export const TRAINING_ENCOUNTER_ID = {
   SingleDummy: "combat.training.encounter.single-dummy",

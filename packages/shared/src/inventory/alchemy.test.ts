@@ -2,19 +2,19 @@ import { describe, expect, it } from 'vitest';
 import {
   consumableFactsOf,
   ConsumableFactsSchema,
-} from '../items/definitions/consumables';
+} from '../items/definitions/consumables.js';
 import {
   FORGING_MATERIAL_TYPES,
   MaterialFactsSchema,
-} from '../items/definitions/materials';
-import { calculateAlchemyCost } from '../lib/alchemyCost';
+} from '../items/definitions/materials.js';
+import { calculateAlchemyCost } from '../lib/alchemyCost.js';
 import {
   groupAlchemyBagMaterials,
   groupAlchemyStorageMaterials,
-} from './alchemy';
-import { BAG_CAPACITY, InventoryItemSchema, sortBag, type InventoryItem } from './index';
-import { inventoryStackIdentity } from './stack-key';
-import { addItems } from './test-helpers';
+} from './alchemy.js';
+import { BAG_CAPACITY, InventoryItemSchema, sortBag, type InventoryItem } from './index.js';
+import { inventoryStackIdentity } from './stack-key.js';
+import { addItems } from './test-helpers.js';
 
 const herb = {
   name: '凝血草',

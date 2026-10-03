@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { describeSectPromotionStatus } from './promotionDialogue';
+import { describeSectPromotionStatus } from './promotionDialogue.js';
 
 describe('describeSectPromotionStatus', () => {
   it.each([

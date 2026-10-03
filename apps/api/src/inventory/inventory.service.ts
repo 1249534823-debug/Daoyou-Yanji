@@ -3,13 +3,13 @@ import type {
   InventoryQuerySchema,
 } from '@daoyou/shared/contracts/inventory';
 import { Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import {
   mutateInventory,
   readInventory,
-} from '@server/inventory/application/InventoryService';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { readResourceWithMeta } from '@server/player/application/state/ResourceReadService';
+} from '@server/inventory/application/InventoryService.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { readResourceWithMeta } from '@server/player/application/state/ResourceReadService.js';
 import type { z } from 'zod';
 
 @Injectable()

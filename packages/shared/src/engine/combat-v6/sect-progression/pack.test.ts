@@ -1,10 +1,10 @@
 import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from './data/progression.json';
-import schema from './data/progression.schema.json';
-import { SectProgressionPackShape, loadSectProgressionPack, configuredMethodCost, configuredMeridianCost } from './pack';
-import { methodTrainingCost, meridianUnlockCost } from './index';
+import raw from './data/progression.json' with { type: 'json' };
+import schema from './data/progression.schema.json' with { type: 'json' };
+import { SectProgressionPackShape, loadSectProgressionPack, configuredMethodCost, configuredMeridianCost } from './pack.js';
+import { methodTrainingCost, meridianUnlockCost } from './index.js';
 
 describe('宗门养成配置', () => {
   it('保留迁移前全部 180 级心法和七层经脉费用', () => {

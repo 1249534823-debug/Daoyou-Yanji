@@ -4,7 +4,7 @@ import {
   BEAST_MARKET_PACK,
   loadBeastMarketPack,
   sampleBeastMarketStock,
-} from './beastMarket';
+} from './beastMarket.js';
 
 describe('御灵集货架', () => {
   it('四种群体灵法进入上品货池', () => {

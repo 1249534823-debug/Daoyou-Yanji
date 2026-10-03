@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import type { CombatV6DisplayEvent } from '../contracts/combatV6';
+import type { CombatV6DisplayEvent } from '../contracts/combatV6.js';
 import {
   appendBattleEntries,
   compactLogLines,
   frameFeedback,
-} from './battle-log';
+} from './battle-log.js';
 
 const view = {
   units: [],

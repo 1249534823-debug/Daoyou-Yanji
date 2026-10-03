@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { forgingBoosts } from '../forging/rules';
-import { groupAlchemyBagMaterials } from '../inventory/alchemy';
-import { addItems } from '../inventory/test-helpers';
-import { MaterialFactsSchema } from './definitions/materials';
-import { legacyMaterialUnavailableReason } from './legacy-material';
+import { forgingBoosts } from '../forging/rules.js';
+import { groupAlchemyBagMaterials } from '../inventory/alchemy.js';
+import { addItems } from '../inventory/test-helpers.js';
+import { MaterialFactsSchema } from './definitions/materials.js';
+import { legacyMaterialUnavailableReason } from './legacy-material.js';
 
 describe('legacy material connectivity', () => {
   it('preserves both manual categories in ordinary inventory without granting crafting uses', () => {

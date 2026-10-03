@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto"
 import { describe, expect, it } from "vitest"
 import * as projections from "./index.ts"
-import baseline from "./fixtures/before-a1.json"
+import baseline from "./fixtures/before-a1.json" with { type: 'json' }
 
 // Retains A1 inputs; panel-dependent hashes follow the approved six-attribute formulas.
 describe("A1 assembly baseline with current character panel", () => {

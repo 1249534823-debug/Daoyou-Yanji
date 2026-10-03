@@ -1,4 +1,4 @@
-import type { Attrs } from '../core';
+import type { Attrs } from '../core/index.js';
 
 // Hunt-specific, frozen realm curve. Never scale stats from the actual party's gear.
 // Level 50 = 金丹中期; level 170 = 渡劫中期. Body training follows realm progression.

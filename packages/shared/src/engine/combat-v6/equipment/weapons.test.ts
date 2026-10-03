@@ -1,19 +1,19 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { validateForgeWeaponType } from '../../../forging/rules';
-import { InventoryEquipmentSchema } from '../../../inventory/equipment';
-import { SeededRng } from '../core';
-import { compileDaoEquipmentSpecialLoadoutV1 } from './compiler';
-import { daoEquipmentBaseRange, daoEquipmentTemplateOf } from './content';
-import { generateForgedEquipment } from './forging';
-import { generateDaoEquipmentV2 } from './generator';
-import { OPEN_EQUIPMENT_LEVELS } from './realm';
-import type { DaoEquipmentInstanceV1 } from './types';
+import { validateForgeWeaponType } from '../../../forging/rules.js';
+import { InventoryEquipmentSchema } from '../../../inventory/equipment.js';
+import { SeededRng } from '../core/index.js';
+import { compileDaoEquipmentSpecialLoadoutV1 } from './compiler.js';
+import { daoEquipmentBaseRange, daoEquipmentTemplateOf } from './content.js';
+import { generateForgedEquipment } from './forging.js';
+import { generateDaoEquipmentV2 } from './generator.js';
+import { OPEN_EQUIPMENT_LEVELS } from './realm.js';
+import type { DaoEquipmentInstanceV1 } from './types.js';
 import {
   DAO_WEAPONS,
   DAO_WEAPON_TYPES,
   daoWeaponTypeOf,
   type DaoWeaponType,
-} from './weapons';
+} from './weapons.js';
 
 const input = {
   id: 'weapon-type',

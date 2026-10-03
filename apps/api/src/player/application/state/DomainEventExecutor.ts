@@ -1,9 +1,9 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
-import { claimMessageForConsumer } from '@server/lib/repositories/messageConsumptionRepository';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
+import { claimMessageForConsumer } from '@server/lib/repositories/messageConsumptionRepository.js';
 import {
   systemCommandExecutor,
   type FeatureCommandResult,
-} from '@server/player/application/state/CommandExecutors';
+} from '@server/player/application/state/CommandExecutors.js';
 import type {
   DomainEventEnvelope,
   DomainEventType,

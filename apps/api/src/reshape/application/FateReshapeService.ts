@@ -1,17 +1,17 @@
-import { redis } from '@server/lib/redis';
-import { parseRedisJson } from '@server/lib/redis/json';
+import { redis } from '@server/lib/redis/index.js';
+import { parseRedisJson } from '@server/lib/redis/json.js';
 import {
   isRedisLockContention,
   redisLockKeys,
   withRedisLock,
   type RedisLeaseContext,
-} from '@server/lib/redis/lock';
-import { findActiveCultivatorOwnerId } from '@server/lib/repositories/cultivatorRepository';
-import { consumeConsumableById } from '@server/cultivator/application/readers/CultivatorInventoryRepository';
+} from '@server/lib/redis/lock.js';
+import { findActiveCultivatorOwnerId } from '@server/lib/repositories/cultivatorRepository.js';
+import { consumeConsumableById } from '@server/cultivator/application/readers/CultivatorInventoryRepository.js';
 import {
   getPlayerPreHeavenFates,
   replacePreHeavenFates,
-} from '@server/cultivator/application/readers/CultivatorProfileRepository';
+} from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 import type { Consumable } from '@daoyou/shared/types/cultivator';
 import type {
   FateReshapeSessionDTO,
@@ -21,10 +21,10 @@ import {
   getExecutor,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
-import { findBagTalisman } from '@server/inventory/application/BagConsumables';
-import { FATE_RESHAPE_CANDIDATE_COUNT } from '@server/reshape/application/FateConfig';
-import { FateEngine } from '@server/reshape/application/FateEngine';
+} from '@server/lib/drizzle/db.js';
+import { findBagTalisman } from '@server/inventory/application/BagConsumables.js';
+import { FATE_RESHAPE_CANDIDATE_COUNT } from '@server/reshape/application/FateConfig.js';
+import { FateEngine } from '@server/reshape/application/FateEngine.js';
 type ConsumableRow = Consumable & { id: string };
 
 const FATE_RESHAPE_SESSION_TTL_SEC = 3600;

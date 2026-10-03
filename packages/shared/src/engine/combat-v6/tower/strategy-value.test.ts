@@ -1,9 +1,9 @@
 import { expect, it } from 'vitest';
-import { automaticCommands } from '../../../combat-v6/auto';
-import { getTowerSeasonMeta } from '../../../lib/tower/season';
-import { createTowerWeek } from '../../../lib/tower/weekly';
-import { createTowerHost, type TowerBlessings } from './host';
-import { towerReferenceBuild } from './reference-fixtures';
+import { automaticCommands } from '../../../combat-v6/auto.js';
+import { getTowerSeasonMeta } from '../../../lib/tower/season.js';
+import { createTowerWeek } from '../../../lib/tower/weekly.js';
+import { createTowerHost, type TowerBlessings } from './host.js';
+import { towerReferenceBuild } from './reference-fixtures.js';
 
 const week = createTowerWeek(getTowerSeasonMeta(new Date('2026-09-19')));
 const seeds = [7, 19, 42, 73, 101, 211, 307, 401, 503, 601];

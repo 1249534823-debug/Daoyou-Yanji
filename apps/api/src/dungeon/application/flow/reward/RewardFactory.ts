@@ -26,13 +26,13 @@ import type {
 } from '@daoyou/shared/types/constants';
 import { QUALITY_VALUES } from '@daoyou/shared/types/constants';
 import type { Material } from '@daoyou/shared/types/cultivator';
-import type { PlayerInfo } from '@server/dungeon/application/flow/types';
+import type { PlayerInfo } from '@server/dungeon/application/flow/types.js';
 import {
   REALM_QUALITY_CAP,
   REALM_REWARD_CONFIG,
   TIER_MULTIPLIER,
-} from '@server/dungeon/application/flow/reward/rewardConfig';
-import type { RewardBlueprint, RewardRangeConfig, ValueRange } from '@server/dungeon/application/flow/reward/types';
+} from '@server/dungeon/application/flow/reward/rewardConfig.js';
+import type { RewardBlueprint, RewardRangeConfig, ValueRange } from '@server/dungeon/application/flow/reward/types.js';
 
 /**
  * 奖励工厂 - 将 AI 蓝图转化为实际物品

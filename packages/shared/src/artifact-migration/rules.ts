@@ -1,8 +1,8 @@
-import type { ArtifactMigrationPlan } from '../contracts/artifactMigration';
-import { EQUIPMENT_LEVELS } from '../engine/combat-v6/equipment/realm';
-import { DAO_EQUIPMENT_SLOTS } from '../engine/combat-v6/equipment/types';
-import { legacyRecord } from '../legacy/products';
-import { REALM_VALUES, type RealmType } from '../types/constants';
+import type { ArtifactMigrationPlan } from '../contracts/artifactMigration.js';
+import { EQUIPMENT_LEVELS } from '../engine/combat-v6/equipment/realm.js';
+import { DAO_EQUIPMENT_SLOTS } from '../engine/combat-v6/equipment/types.js';
+import { legacyRecord } from '../legacy/products.js';
+import { REALM_VALUES, type RealmType } from '../types/constants.js';
 
 /** Scores affect blueprint quantity only; every valid source grants one equipment. */
 export function artifactBlueprintCount(score: number): number {

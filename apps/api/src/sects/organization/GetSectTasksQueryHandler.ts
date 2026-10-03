@@ -1,16 +1,16 @@
 import type { SectTasksData, SectTaskViewData } from '@daoyou/shared/contracts/sect';
-import { SectCapabilityAuthorizer } from '@server/sects/organization/SectCapabilityAuthorizer';
+import { SectCapabilityAuthorizer } from '@server/sects/organization/SectCapabilityAuthorizer.js';
 import {
   requireSectMembership,
   resolveCurrentSectTaskExecution,
   sectTaskPeriodKey,
-} from '@server/sects/organization/SectTaskApplicationSupport';
+} from '@server/sects/organization/SectTaskApplicationSupport.js';
 import {
   toSectTaskView,
   toUnpersistedSectTaskView,
-} from '@server/sects/organization/SectTaskViewAssembler';
-import type { SectQueryContext } from '@server/sects/organization/ports';
-import type { SectTaskExecutorRegistry } from '@server/sects/organization/task-executors/SectTaskExecutor';
+} from '@server/sects/organization/SectTaskViewAssembler.js';
+import type { SectQueryContext } from '@server/sects/organization/ports.js';
+import type { SectTaskExecutorRegistry } from '@server/sects/organization/task-executors/SectTaskExecutor.js';
 
 export class GetSectTasksQueryHandler {
   constructor(

@@ -1,5 +1,5 @@
 import { compileSectDefinitionV6 } from "./compiler.ts"
-import { validateSectSkillLearningContent } from "./skill-learning"
+import { validateSectSkillLearningContent } from "./skill-learning.js"
 import { LINGXIAO_V6_DEFINITION } from "./lingxiao.ts"
 import { YOUDU_V6_DEFINITION } from "./youdu.ts"
 import { WUXIANG_V6_DEFINITION } from "./wuxiang.ts"

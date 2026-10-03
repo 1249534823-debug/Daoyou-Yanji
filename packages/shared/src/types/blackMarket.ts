@@ -1,5 +1,5 @@
-import type { ElementType, MaterialType, Quality } from './constants';
-import type { MarketAccessState } from './market';
+import type { ElementType, MaterialType, Quality } from './constants.js';
+import type { MarketAccessState } from './market.js';
 
 export const BLACK_MARKET_NPC_IDS = [
   'smiling-keeper',

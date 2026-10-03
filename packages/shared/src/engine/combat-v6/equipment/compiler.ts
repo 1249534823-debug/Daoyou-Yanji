@@ -1,12 +1,12 @@
 import { LEVELS_PER_REALM_STAGE } from '@daoyou/shared/config/realmProgression';
 import { ELEMENT_VALUES } from '@daoyou/shared/types/constants';
-import { equipmentRealm, isOpenEquipmentLevel } from './realm';
+import { equipmentRealm, isOpenEquipmentLevel } from './realm.js';
 import type { Attributes } from '@daoyou/shared/types/cultivator';
 import {
   EquipmentCrafterNameSchema,
   ForgedEquipmentDescSchema,
   ForgedEquipmentNameSchema,
-} from '../../../forging/narrative';
+} from '../../../forging/narrative.js';
 import type { CombatV6ProjectionDiagnostic } from '../projection/types.ts';
 import {
   daoEquipmentAttributeRange,
@@ -35,8 +35,8 @@ import {
   type DaoEquipmentLoadoutV1,
   type DaoEquipmentPanelRoll,
 } from './types.ts';
-import { daoWeaponTypeOf, equipmentWeaponTypeProblem } from './weapons';
-import { daoFormationPanel, validateFormationInscriptions } from './inscriptions';
+import { daoWeaponTypeOf, equipmentWeaponTypeProblem } from './weapons.js';
+import { daoFormationPanel, validateFormationInscriptions } from './inscriptions.js';
 
 const ATTRIBUTE_KEYS: DaoEquipmentAttribute[] = [
   'vitality',

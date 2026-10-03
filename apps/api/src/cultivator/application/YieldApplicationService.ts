@@ -1,13 +1,13 @@
-import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateRepository';
-import { describeJournal } from '@server/player/application/JournalSettlement';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { createDomainEvent } from '@server/lib/mq/domainEventWriter';
-import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
+import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateRepository.js';
+import { describeJournal } from '@server/player/application/JournalSettlement.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import { createDomainEvent } from '@server/lib/mq/domainEventWriter.js';
+import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
 import {
   updateCultivationExp,
   updateSpiritStones,
-} from '@server/cultivator/application/readers/CultivatorStateRepository';
+} from '@server/cultivator/application/readers/CultivatorStateRepository.js';
 import { getOrInitCultivationProgress } from '@daoyou/shared/engine/cultivation/cultivationUtils';
 import { MailInventoryGrantSchema } from '@daoyou/shared/contracts/mail';
 import type { GeneratedMaterial } from '@daoyou/shared/engine/material/creation/types';
@@ -16,11 +16,11 @@ import { planYieldRewards } from '@daoyou/shared/rewards/yield';
 import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import type { CultivationProgress } from '@daoyou/shared/types/cultivator';
 import { and, eq } from 'drizzle-orm';
-import { getExecutor } from '@server/lib/drizzle/db';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
-import { newRewardAttachment } from '@server/mail/application/MailInventory';
-import { generateYieldMaterials } from '@server/cultivator/application/YieldDomainEventProjector';
-import { computeItemLibrarySampleKey } from '@server/lib/utils/itemLibrarySampleKey';
+import { getExecutor } from '@server/lib/drizzle/db.js';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import { newRewardAttachment } from '@server/mail/application/MailInventory.js';
+import { generateYieldMaterials } from '@server/cultivator/application/YieldDomainEventProjector.js';
+import { computeItemLibrarySampleKey } from '@server/lib/utils/itemLibrarySampleKey.js';
 
 export class YieldCommandError extends Error {
   constructor(

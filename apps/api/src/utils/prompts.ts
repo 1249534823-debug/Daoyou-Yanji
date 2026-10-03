@@ -1,4 +1,4 @@
-import { renderPrompt } from '@server/lib/prompts';
+import { renderPrompt } from '@server/lib/prompts/index.js';
 import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import type { Attributes, Cultivator } from '@daoyou/shared/types/cultivator';
 import { getAttributeInfo } from '@daoyou/shared/lib/gameConceptDisplay';

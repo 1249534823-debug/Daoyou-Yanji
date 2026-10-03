@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import defaults from './auto-defaults.json';
-import type { AutoObservation } from './auto-observation';
-import type { AutoCandidate } from './auto-utility';
+import defaults from './auto-defaults.json' with { type: 'json' };
+import type { AutoObservation } from './auto-observation.js';
+import type { AutoCandidate } from './auto-utility.js';
 
 export const MAX_AUTO_STRATEGY_RULES = 10;
 const comparison = z.enum(['lt', 'lte', 'gt', 'gte']);

@@ -1,9 +1,9 @@
-import { db } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { createDomainEvent } from '@server/lib/mq/domainEventWriter';
-import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher';
-import { redis } from '@server/lib/redis';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
+import { db } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import { createDomainEvent } from '@server/lib/mq/domainEventWriter.js';
+import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher.js';
+import { redis } from '@server/lib/redis/index.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
 import {
   finishRanking,
   RANKING_COMPARE,
@@ -15,16 +15,16 @@ import {
   reserveRanking,
   saveRankingReplay,
   type RankingRun,
-} from '@server/lib/redis/rankingChallenge';
+} from '@server/lib/redis/rankingChallenge.js';
 import {
   getRankingList,
   getRankingListKey,
   getRemainingChallenges,
-} from '@server/lib/redis/rankings';
+} from '@server/lib/redis/rankings.js';
 import {
   archiveCombatV6Replay,
   combatV6ReplayExists,
-} from '@server/lib/repositories/combatV6ReplayRepository';
+} from '@server/lib/repositories/combatV6ReplayRepository.js';
 import {
   MAX_DAILY_RANKING_CHALLENGES,
   rankingDay,
@@ -40,8 +40,8 @@ import {
   simulateRankingBattle,
 } from '@daoyou/shared/engine/combat-v6/ranking/battle';
 import { and, eq } from 'drizzle-orm';
-import { assertInventoryIdle } from '@server/inventory/operations';
-import { assembleCombatV6TrainingPlayer } from '@server/combat/application/CombatV6BuildService';
+import { assertInventoryIdle } from '@server/inventory/operations.js';
+import { assembleCombatV6TrainingPlayer } from '@server/combat/application/CombatV6BuildService.js';
 
 export class RankingV6Error extends Error {}
 type Actor = { userId: string; cultivatorId: string };

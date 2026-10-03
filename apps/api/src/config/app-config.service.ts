@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import type { RuntimeEnvironment } from '@server/lib/config/environment';
+import type { RuntimeEnvironment } from '@server/lib/config/environment.js';
 
 @Injectable()
 export class AppConfigService {

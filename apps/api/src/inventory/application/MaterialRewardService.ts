@@ -1,5 +1,5 @@
-import type { DbExecutor } from '@server/lib/drizzle/db';
-import { MaterialGenerator } from '@server/lib/generation/MaterialGenerator';
+import type { DbExecutor } from '@server/lib/drizzle/db.js';
+import { MaterialGenerator } from '@server/lib/generation/MaterialGenerator.js';
 import { YieldCalculator } from '@daoyou/shared/engine/yield/YieldCalculator';
 import {
   MATERIAL_TYPE_VALUES,
@@ -13,8 +13,8 @@ import type { Material } from '@daoyou/shared/types/cultivator';
 import {
   materialLibraryEntryToMaterial,
   sampleMaterialLibraryEntryByPreferences,
-} from '@server/admin/application/MaterialLibraryService';
-import { computeItemLibrarySampleKey } from '@server/lib/utils/itemLibrarySampleKey';
+} from '@server/admin/application/MaterialLibraryService.js';
+import { computeItemLibrarySampleKey } from '@server/lib/utils/itemLibrarySampleKey.js';
 
 function createDeterministicRng(seed: string): () => number {
   let index = 0;

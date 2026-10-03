@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getTrackConfig } from './trackConfigRegistry';
+import { getTrackConfig } from './trackConfigRegistry.js';
 
 describe('trackConfigRegistry', () => {
   it('uses the tuned linear body cultivation thresholds', () => {

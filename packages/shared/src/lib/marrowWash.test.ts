@@ -6,7 +6,7 @@ import {
   getMarrowWashSummary,
   isMarrowWashBreakthroughRequired,
   normalizeMarrowWashState,
-} from './marrowWash';
+} from './marrowWash.js';
 
 function createCondition(
   marrowWash: CultivatorCondition['tracks']['marrowWash'],

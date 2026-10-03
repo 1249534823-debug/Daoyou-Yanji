@@ -1,18 +1,18 @@
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors';
-import { InventoryError } from '@server/inventory/operations';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors.js';
+import { InventoryError } from '@server/inventory/operations.js';
 import {
   QiInsufficientError,
   QiServiceError,
-} from '@server/cultivator/application/QiService';
-import { BeastError } from '@server/combat/application/CombatV6BeastService';
-import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService';
-import { CombatV6TrainingSessionError } from '@server/combat/application/CombatV6TrainingSessionService';
-import { WildError } from '@server/combat/application/CombatV6WildSessionService';
+} from '@server/cultivator/application/QiService.js';
+import { BeastError } from '@server/combat/application/CombatV6BeastService.js';
+import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService.js';
+import { CombatV6TrainingSessionError } from '@server/combat/application/CombatV6TrainingSessionService.js';
+import { WildError } from '@server/combat/application/CombatV6WildSessionService.js';
 import { TrainingHostError } from '@daoyou/shared/engine/combat-v6/encounter';
 import { InventoryRuleError } from '@daoyou/shared/inventory';
 import { ZodError } from 'zod';
-import { apiErrorFilter } from '../http/error-filter';
+import { apiErrorFilter } from '../http/error-filter.js';
 
 export function combatErrorResponse(error: unknown): Response {
   if (error instanceof QiInsufficientError)

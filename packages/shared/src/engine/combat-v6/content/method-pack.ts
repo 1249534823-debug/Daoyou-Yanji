@@ -1,8 +1,8 @@
 import { formatContentPackErrors } from '@daoyou/shared/lib/content-pack-errors';
 import { z } from 'zod';
-import { ATTR_NAMES } from '../core';
-import raw from './data/methods.json';
-import type { SectMethodDefV6, CombatV6SectId } from './types';
+import { ATTR_NAMES } from '../core/index.js';
+import raw from './data/methods.json' with { type: 'json' };
+import type { SectMethodDefV6, CombatV6SectId } from './types.js';
 
 const methods = z.array(z.strictObject({
   id: z.string().regex(/^[a-z]+\.method\.[a-z_]+$/),

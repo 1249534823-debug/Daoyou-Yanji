@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from './data/lingxiao-combat.json';
-import schema from './data/lingxiao-combat.schema.json';
-import { LingxiaoCombatPackShape, loadLingxiaoCombatPack, compileLingxiaoCombatPack } from './lingxiao-pack';
-import { CommandType, createBattle } from '../core';
-import { createDaoyouRuleset } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version';
+import raw from './data/lingxiao-combat.json' with { type: 'json' };
+import schema from './data/lingxiao-combat.schema.json' with { type: 'json' };
+import { LingxiaoCombatPackShape, loadLingxiaoCombatPack, compileLingxiaoCombatPack } from './lingxiao-pack.js';
+import { CommandType, createBattle } from '../core/index.js';
+import { createDaoyouRuleset } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version.js';
 
 describe('红尘剑宗技能、状态与资源配置', () => {
   it('Schema 同步', () => expect(z.toJSONSchema(LingxiaoCombatPackShape)).toEqual(schema));

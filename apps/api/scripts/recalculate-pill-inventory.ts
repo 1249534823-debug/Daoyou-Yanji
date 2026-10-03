@@ -2,18 +2,18 @@
 import { and, asc, eq, sql } from 'drizzle-orm';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
-import { db, type DbExecutor } from '../src/lib/drizzle/db';
-import { inventoryItems } from '../src/lib/drizzle/schema';
-import { redisLockKeys, withRedisLock } from '../src/lib/redis/lock';
-import { lockCultivatorForStateMutation } from '../src/lib/repositories/playerStateRepository';
+import { db, type DbExecutor } from '../src/lib/drizzle/db.js';
+import { inventoryItems } from '../src/lib/drizzle/schema.js';
+import { redisLockKeys, withRedisLock } from '../src/lib/redis/lock.js';
+import { lockCultivatorForStateMutation } from '../src/lib/repositories/playerStateRepository.js';
 import {
   assertInventoryIdle,
   inventoryItemOf,
   saveInventoryPlan,
-} from '../src/inventory/application/InventoryService';
-import { inventoryStackKey } from '../src/inventory/application/inventoryStackKey';
-import { ResourceEventCommitter } from '../src/player/application/state/ResourceEventCommitter';
-import { compactStorage, type InventoryItem } from '../../../packages/shared/src/inventory';
+} from '../src/inventory/application/InventoryService.js';
+import { inventoryStackKey } from '../src/inventory/application/inventoryStackKey.js';
+import { ResourceEventCommitter } from '../src/player/application/state/ResourceEventCommitter.js';
+import { compactStorage, type InventoryItem } from '../../../packages/shared/src/inventory/index.js';
 
 const args = process.argv.slice(2);
 const all = args.includes('--all');

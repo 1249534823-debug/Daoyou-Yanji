@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   changeSectTaskBattle,
   getSectTaskBattle,
-} from '@server/combat/application/CombatV6SectTaskService';
+} from '@server/combat/application/CombatV6SectTaskService.js';
 
 @Injectable()
 export class SectTaskBattleService {

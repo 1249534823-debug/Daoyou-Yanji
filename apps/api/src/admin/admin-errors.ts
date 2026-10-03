@@ -1,5 +1,5 @@
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { apiErrorFilter } from '../http/error-filter';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { apiErrorFilter } from '../http/error-filter.js';
 
 export const AdminErrors = apiErrorFilter((error) => {
   const lock = redisLockErrorResponse(error);

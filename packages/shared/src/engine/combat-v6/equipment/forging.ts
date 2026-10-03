@@ -1,17 +1,17 @@
-import { forgedName } from '../../../forging/names';
-import { ELEMENT_VALUES } from '../../../types/constants';
-import { SeededRng } from '../core';
-import { daoEquipmentAttributeRange, daoEquipmentBaseRange, daoEquipmentTemplateOf } from './content';
+import { forgedName } from '../../../forging/names.js';
+import { ELEMENT_VALUES } from '../../../types/constants.js';
+import { SeededRng } from '../core/index.js';
+import { daoEquipmentAttributeRange, daoEquipmentBaseRange, daoEquipmentTemplateOf } from './content.js';
 import {
   daoEquipmentGenerationRulesV2,
   generateDaoEquipmentV2,
-} from './generator';
-import { DAO_EQUIPMENT_FORGING, equipmentEssencePool } from './forging-content';
+} from './generator.js';
+import { DAO_EQUIPMENT_FORGING, equipmentEssencePool } from './forging-content.js';
 import type {
   DaoEquipmentGenerationResult,
   GenerateDaoEquipmentV2Input,
-} from './types';
-import { equipmentWeaponTypeProblem, type DaoWeaponType } from './weapons';
+} from './types.js';
+import { equipmentWeaponTypeProblem, type DaoWeaponType } from './weapons.js';
 
 export type ForgingBoosts = {
   ore: number;

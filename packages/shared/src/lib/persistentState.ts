@@ -1,1 +1,1 @@
-export { getBreakthroughPenalty } from './condition';
+export { getBreakthroughPenalty } from './condition.js';

@@ -1,17 +1,17 @@
 import type { NestExpressApplication } from '@nestjs/platform-express';
-import { handleAuthRequest } from '@server/lib/auth/handler';
-import { runWithContext } from '@server/lib/http/context';
-import { apiCorsOptions } from '@server/lib/http/cors';
-import { isAllowedWriteOrigin } from '@server/lib/http/originPolicy';
-import { getRequestIp } from '@server/lib/http/requestIp';
-import { checkApiIpRateLimit } from '@server/lib/redis/apiIpRateLimiter';
+import { handleAuthRequest } from '@server/lib/auth/handler.js';
+import { runWithContext } from '@server/lib/http/context.js';
+import { apiCorsOptions } from '@server/lib/http/cors.js';
+import { isAllowedWriteOrigin } from '@server/lib/http/originPolicy.js';
+import { getRequestIp } from '@server/lib/http/requestIp.js';
+import { checkApiIpRateLimit } from '@server/lib/redis/apiIpRateLimiter.js';
 import { LlmByokConfigSchema } from '@daoyou/shared/config/llm';
 import { fromNodeHeaders, toNodeHandler } from 'better-auth/node';
 import cors from 'cors';
 import type { NextFunction, Response } from 'express';
-import { readRequestBody } from './json-body';
-import type { GameRequest } from './request';
-import { RequestWorkService } from './request-work.service';
+import { readRequestBody } from './json-body.js';
+import type { GameRequest } from './request.js';
+import { RequestWorkService } from './request-work.service.js';
 
 export function configureHttp(app: NestExpressApplication): void {
   const work = app.get(RequestWorkService);

@@ -1,5 +1,5 @@
-import type { DbExecutor } from '@server/lib/drizzle/db';
-import { generateRealmMaterials } from '@server/inventory/application/MaterialRewardService';
+import type { DbExecutor } from '@server/lib/drizzle/db.js';
+import { generateRealmMaterials } from '@server/inventory/application/MaterialRewardService.js';
 import { getRealmStageLevel } from '@daoyou/shared/config/realmProgression';
 import { MaterialFactsSchema } from '@daoyou/shared/items/definitions/materials';
 import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/shared/rewards/dungeon-material-quality';
@@ -14,7 +14,7 @@ import {
   type DungeonRewardSource,
 } from '@daoyou/shared/rewards/dungeon';
 import type { RealmType } from '@daoyou/shared/types/constants';
-import type { DungeonState } from '@server/dungeon/application/flow/types';
+import type { DungeonState } from '@server/dungeon/application/flow/types.js';
 
 /** Resolve library facts before recording rewards; retries reuse recorded facts. */
 export async function resolveDungeonReward(

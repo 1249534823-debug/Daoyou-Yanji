@@ -7,7 +7,7 @@ import {
   selectArenaJoinTeam,
   type ArenaRoomSeatV1,
   type ArenaRoomV1,
-} from './arena';
+} from './arena.js';
 
 function seat(userId: string, ready = true): ArenaRoomSeatV1 {
   return {

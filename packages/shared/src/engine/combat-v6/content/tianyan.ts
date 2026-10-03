@@ -1,14 +1,14 @@
-import { SECT_METHODS } from './method-pack';
-import { TIANYAN_STATUSES } from './tianyan-foundation';
-import { TIANYAN_PATHS } from './tianyan-path-pack';
-import { TIANYAN_SKILLS } from './tianyan-skill-pack';
-import type { SectDefinitionV6 } from './types';
-export { TIANYAN_REACTIONS_V1 } from './tianyan-foundation';
+import { SECT_METHODS } from './method-pack.js';
+import { TIANYAN_STATUSES } from './tianyan-foundation.js';
+import { TIANYAN_PATHS } from './tianyan-path-pack.js';
+import { TIANYAN_SKILLS } from './tianyan-skill-pack.js';
+import type { SectDefinitionV6 } from './types.js';
+export { TIANYAN_REACTIONS_V1 } from './tianyan-foundation.js';
 export type {
   TianyanElementV1,
   TianyanReactionDefV1,
   TianyanReactionKindV1,
-} from './tianyan-foundation';
+} from './tianyan-foundation.js';
 export const TIANYAN_V6_ID = 'tianyan';
 export const TIANYAN_PATH_ID = {
   Hetu: 'tianyan.path.hetu',

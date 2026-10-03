@@ -16,19 +16,19 @@ import {
   type BattleState,
   type Command,
 } from '@daoyou/shared/engine/combat-v6/core';
-import { canCollectCommand } from '../engine/combat-v6/core/units';
+import { canCollectCommand } from '../engine/combat-v6/core/units.js';
 import { DAO_RAGE_RESOURCE_ID } from '@daoyou/shared/engine/combat-v6/equipment/special-ids';
 import { daoyouRulesetV6 } from '@daoyou/shared/engine/combat-v6/rules-daoyou';
 import { COMBAT_V6_SEAL_CURVE_ARENA_VERSIONS } from '@daoyou/shared/engine/combat-v6/version';
-import { huntParticipantSucceeded } from '../hunts/settlement';
-import { controlledUnits, validatePetCommand } from './controlled-commands';
-import { diffUnits } from './playback';
+import { huntParticipantSucceeded } from '../hunts/settlement.js';
+import { controlledUnits, validatePetCommand } from './controlled-commands.js';
+import { diffUnits } from './playback.js';
 import {
   combatV6Display,
   combatV6Units,
   visibleUnitNames,
-} from './presentation';
-import { replayRound } from './replay-timeline';
+} from './presentation.js';
+import { replayRound } from './replay-timeline.js';
 
 export function arenaBattle(
   runtime: Pick<ArenaRuntime, 'seed' | 'units' | 'skills' | 'statusDefs'> &

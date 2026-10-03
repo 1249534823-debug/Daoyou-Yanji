@@ -9,7 +9,7 @@ import {
   runSponsorshipAdminDigestJob,
   runSponsorshipCleanupJob,
   runSponsorshipReconcileJob,
-} from '@server/runtime/jobs/internalCron';
+} from '@server/runtime/jobs/internalCron.js';
 @Injectable()
 export class InternalCronService {
   auctionExpire() {

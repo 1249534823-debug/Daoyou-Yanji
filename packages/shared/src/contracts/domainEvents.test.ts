@@ -2,7 +2,7 @@ import {
   DOMAIN_EVENT_DEFINITIONS,
   DomainEventDataSchemas,
   parseDomainEventEnvelope,
-} from './domainEvents';
+} from './domainEvents.js';
 
 const EVENT_ID = '11111111-1111-4111-8111-111111111111';
 const CULTIVATOR_ID = '22222222-2222-4222-8222-222222222222';

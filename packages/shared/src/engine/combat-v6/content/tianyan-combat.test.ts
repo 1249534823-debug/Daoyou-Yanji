@@ -1,18 +1,18 @@
 import { describe, expect, it } from 'vitest';
-import { observeAutoBattle } from '../../../combat-v6/auto-observation';
-import { rankAutoActions } from '../../../combat-v6/auto-utility';
-import { createEmptySectCombatProgressV6 } from '../build-state';
+import { observeAutoBattle } from '../../../combat-v6/auto-observation.js';
+import { rankAutoActions } from '../../../combat-v6/auto-utility.js';
+import { createEmptySectCombatProgressV6 } from '../build-state/index.js';
 import {
   createBattle,
   effectiveAttrs,
   type Command,
   type CreateBattleInput,
-} from '../core';
-import { createDaoyouRuleset } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_6D_VERSIONS as versions } from '../version';
-import { compileSectDefinitionV6 } from './compiler';
-import { TIANYAN_V6_DEFINITION as definition } from './tianyan';
-import { TIANYAN_REACTIONS_V1 } from './tianyan-foundation';
+} from '../core/index.js';
+import { createDaoyouRuleset } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_6D_VERSIONS as versions } from '../version.js';
+import { compileSectDefinitionV6 } from './compiler.js';
+import { TIANYAN_V6_DEFINITION as definition } from './tianyan.js';
+import { TIANYAN_REACTIONS_V1 } from './tianyan-foundation.js';
 const S = (id: string) => 'tianyan.skill.' + id;
 const T = (id: string) => 'tianyan.status.' + id;
 const cmd = (id: string, targets = ['t']): Command => ({

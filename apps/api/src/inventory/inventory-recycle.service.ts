@@ -1,12 +1,12 @@
 import type { RecycleSelection } from '@daoyou/shared/contracts/recycle';
 import { Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { PlayerCommandExecutor } from '@server/player/application/state/CommandExecutors';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { PlayerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
 import {
   confirmBagRecycle,
   previewBagRecycle,
-} from './application/BagRecycleService';
+} from './application/BagRecycleService.js';
 
 /** Public inventory recycling use cases; quotations and writes keep their owner. */
 @Injectable()

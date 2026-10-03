@@ -7,18 +7,18 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   InventoryActionSchema,
   InventoryQuerySchema,
 } from '@daoyou/shared/contracts/inventory';
 import type { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { CombatErrors } from '../combat/combat-errors';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { InventoryService } from './inventory.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { CombatErrors } from '../combat/combat-errors.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { InventoryService } from './inventory.service.js';
 
 @Controller('api/combat-v6/inventory')
 @Access('active')

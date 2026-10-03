@@ -1,5 +1,5 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   claimSponsorshipOrder,
   createSponsorshipCheckoutIntent,
@@ -9,7 +9,7 @@ import {
   listPublicMeritProfiles,
   recordAfdianWebhook,
   updateMeritVisibility,
-} from '@server/sponsorship/application/SponsorshipApplicationService';
+} from '@server/sponsorship/application/SponsorshipApplicationService.js';
 import type {
   SponsorshipCheckoutRequest,
   SponsorshipClaimRequest,

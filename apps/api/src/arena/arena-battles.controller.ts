@@ -10,21 +10,21 @@ import {
   Req,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { isAllowedRealtimeOrigin } from '@server/lib/http/realtimeOrigin';
-import { ArenaV6Error } from '@server/combat/application/CombatV6ArenaService';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { isAllowedRealtimeOrigin } from '@server/lib/http/realtimeOrigin.js';
+import { ArenaV6Error } from '@server/combat/application/CombatV6ArenaService.js';
 import {
   ArenaV6SubmitSchema,
   type ArenaV6Submit,
 } from '@daoyou/shared/contracts/combatV6Arena';
 import type { Request } from 'express';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { ArenaBattlesService } from './arena-battles.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { ArenaBattlesService } from './arena-battles.service.js';
 
 const ArenaErrors = apiErrorFilter((error) => {
   if (error instanceof ArenaV6Error)

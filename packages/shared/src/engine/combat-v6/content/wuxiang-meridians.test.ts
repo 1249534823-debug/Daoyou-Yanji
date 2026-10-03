@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { createEmptySectCombatProgressV6 } from '../build-state';
+import { createEmptySectCombatProgressV6 } from '../build-state/index.js';
 import {
   createBattle,
   effectiveAttrs,
@@ -7,13 +7,13 @@ import {
   SeededRng,
   type Command,
   type CreateBattleInput,
-} from '../core';
-import { DAO_EQUIPMENT_ARTS_V1 } from '../equipment/special-content';
-import { createDaoyouRuleset } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_6D_VERSIONS as versions } from '../version';
-import { compileSectDefinitionV6 } from './compiler';
-import { WUXIANG_V6_DEFINITION as definition } from './wuxiang';
-import { YOUDU_COMBAT } from './youdu-pack';
+} from '../core/index.js';
+import { DAO_EQUIPMENT_ARTS_V1 } from '../equipment/special-content.js';
+import { createDaoyouRuleset } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_6D_VERSIONS as versions } from '../version.js';
+import { compileSectDefinitionV6 } from './compiler.js';
+import { WUXIANG_V6_DEFINITION as definition } from './wuxiang.js';
+import { YOUDU_COMBAT } from './youdu-pack.js';
 
 const S = (x: string) => `wuxiang.skill.${x}`;
 const T = (x: string) => `wuxiang.status.${x}`;

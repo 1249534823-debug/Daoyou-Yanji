@@ -4,14 +4,14 @@ import {
   ARENA_V6_PROTOCOL,
   ArenaV6SubmitSchema,
   type ArenaRuntime,
-} from '../contracts/combatV6Arena';
+} from '../contracts/combatV6Arena.js';
 import {
   parseCombatV6Replay,
   type CombatV6ReplayV1,
-} from '../contracts/combatV6Runtime';
-import { EffectType, SkillTag, TargetSide } from '../engine/combat-v6/core';
-import { DAO_RAGE_RESOURCE_ID } from '../engine/combat-v6/equipment/special-ids';
-import { huntEventsAt } from '../hunts/config';
+} from '../contracts/combatV6Runtime.js';
+import { EffectType, SkillTag, TargetSide } from '../engine/combat-v6/core/index.js';
+import { DAO_RAGE_RESOURCE_ID } from '../engine/combat-v6/equipment/special-ids.js';
+import { huntEventsAt } from '../hunts/config.js';
 import {
   arenaBattle,
   arenaDefaultCommand,
@@ -21,11 +21,11 @@ import {
   arenaWaitingUnits,
   resolveArena,
   validateArenaCommand,
-} from './arena';
-import { automaticCommands } from './auto';
-import { applyUnitDelta, contiguousEvents } from './playback';
-import { combatV6ReplayView, createCombatV6Replay } from './replay';
-import { startReplayTimeline } from './replay-timeline';
+} from './arena.js';
+import { automaticCommands } from './auto.js';
+import { applyUnitDelta, contiguousEvents } from './playback.js';
+import { combatV6ReplayView, createCombatV6Replay } from './replay.js';
+import { startReplayTimeline } from './replay-timeline.js';
 
 function fixture(count = 8): ArenaRuntime {
   const units = Array.from({ length: count }, (_, i) => ({

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   SECT_TASK_ABANDON_COOLDOWN_MS,
   resolveSectTaskAbandonAvailability,
-} from './taskAbandon';
+} from './taskAbandon.js';
 
 describe('sect task abandon availability', () => {
   const acceptedAt = new Date('2026-08-04T04:00:00.000Z');

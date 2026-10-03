@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { automaticCommands } from '../../../combat-v6/auto';
-import { getRealmStageAttributeBudget } from '../../../config/realmProgression';
+import { automaticCommands } from '../../../combat-v6/auto.js';
+import { getRealmStageAttributeBudget } from '../../../config/realmProgression.js';
 import {
   buildTowerBlessingChoices,
   TOWER_ELIGIBLE_REALMS,
-} from '../../../lib/tower/helpers';
-import { getTowerSeasonMeta } from '../../../lib/tower/season';
-import { createTowerWeek, TOWER_ENCOUNTERS } from '../../../lib/tower/weekly';
-import { createTowerHost, type TowerBlessings } from './host';
-import { towerReferenceBuild } from './reference-fixtures';
+} from '../../../lib/tower/helpers.js';
+import { getTowerSeasonMeta } from '../../../lib/tower/season.js';
+import { createTowerWeek, TOWER_ENCOUNTERS } from '../../../lib/tower/weekly.js';
+import { createTowerHost, type TowerBlessings } from './host.js';
+import { towerReferenceBuild } from './reference-fixtures.js';
 
 const week = createTowerWeek(getTowerSeasonMeta(new Date('2026-09-19')));
 const seeds = [7, 42, 101];

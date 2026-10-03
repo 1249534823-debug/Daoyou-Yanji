@@ -1,18 +1,18 @@
-import { playerAppearances } from '../../../combat-v6/unit-appearance';
+import { playerAppearances } from '../../../combat-v6/unit-appearance.js';
 import {
   AUTO_POLICY_VERSION,
   automaticCommands,
-} from '../../../combat-v6/auto';
+} from '../../../combat-v6/auto.js';
 import {
   controlledUnits,
   validateCommandGroup,
   validatePetCommand,
-} from '../../../combat-v6/controlled-commands';
+} from '../../../combat-v6/controlled-commands.js';
 import {
   replayRound,
   startReplayTimeline,
-} from '../../../combat-v6/replay-timeline';
-import type { CombatV6ReplayTimeline } from '../../../contracts/combatV6Replay';
+} from '../../../combat-v6/replay-timeline.js';
+import type { CombatV6ReplayTimeline } from '../../../contracts/combatV6Replay.js';
 import {
   BattlePhase,
   CommandType,
@@ -28,7 +28,7 @@ import {
   type SkillDef,
   type Unit,
 } from '../core/index.ts';
-import { canCollectCommand } from '../core/units';
+import { canCollectCommand } from '../core/units.js';
 import { compileCombatV6TrainingEncounterV1 } from './compiler.ts';
 import type {
   CombatV6EncounterTraceV1,

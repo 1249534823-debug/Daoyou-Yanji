@@ -1,4 +1,4 @@
-import { redis } from '@server/lib/redis';
+import { redis } from '@server/lib/redis/index.js';
 import type {
   WorldChatChannel,
   WorldChatMessageChannel,

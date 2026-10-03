@@ -1,8 +1,8 @@
 import { expect, it } from 'vitest';
-import { BEAST_SPECIES } from './content';
-import { generateCapturedBeast, generateStarterBeast } from './generator';
-import { canDeployBeast, projectBeastRoster } from './projection';
-import { CANDIDATE_SKILL_CHANCE, rollBeastTraits } from './trait-generator';
+import { BEAST_SPECIES } from './content.js';
+import { generateCapturedBeast, generateStarterBeast } from './generator.js';
+import { canDeployBeast, projectBeastRoster } from './projection.js';
+import { CANDIDATE_SKILL_CHANCE, rollBeastTraits } from './trait-generator.js';
 const id = '00000000-0000-4000-8000-000000000001';
 
 it.each([

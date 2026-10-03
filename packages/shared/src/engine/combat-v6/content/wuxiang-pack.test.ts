@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from './data/wuxiang-combat.json';
-import schema from './data/wuxiang-combat.schema.json';
+import raw from './data/wuxiang-combat.json' with { type: 'json' };
+import schema from './data/wuxiang-combat.schema.json' with { type: 'json' };
 import {
   loadWuxiangCombatPack,
   WUXIANG_COMBAT,
   WuxiangCombatPackShape,
-} from './wuxiang-pack';
+} from './wuxiang-pack.js';
 
 describe('无相天机技能包', () => {
   it('Schema 同步，递归效果使用引用', () =>

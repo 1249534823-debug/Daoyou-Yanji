@@ -1,6 +1,6 @@
-import type { CultivatorSectState, SectDefinition } from '../domain';
-import type { SectModule } from '../plugin';
-import { SectStateValidator, assertSectModule } from '../validation';
+import type { CultivatorSectState, SectDefinition } from '../domain/index.js';
+import type { SectModule } from '../plugin/index.js';
+import { SectStateValidator, assertSectModule } from '../validation/index.js';
 
 /** 注册时完成完整契约校验，运行期只按稳定宗门 ID 分派。 */
 export class SectRegistry {

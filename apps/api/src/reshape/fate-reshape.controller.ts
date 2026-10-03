@@ -6,13 +6,13 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { FateReshapeServiceError } from '@server/reshape/application/FateReshapeService';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { JsonBody } from '../http/json-body';
-import { FateReshapeService } from './fate-reshape.service';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { FateReshapeServiceError } from '@server/reshape/application/FateReshapeService.js';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { JsonBody } from '../http/json-body.js';
+import { FateReshapeService } from './fate-reshape.service.js';
 function fateErrors(fallback: string, lockAware = false) {
   return apiErrorFilter((error) => {
     if (lockAware) {

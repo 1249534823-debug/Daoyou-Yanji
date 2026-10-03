@@ -1,4 +1,4 @@
-import { CharacterGenerator } from '@server/lib/generation/CharacterGenerator';
+import { CharacterGenerator } from '@server/lib/generation/CharacterGenerator.js';
 import type { Cultivator } from '@daoyou/shared/types/cultivator';
 
 /**

@@ -6,7 +6,7 @@ import {
   type Config,
   type Lock,
 } from '@microfleet/ioredis-lock';
-import { redis } from '@server/lib/redis';
+import { redis } from '@server/lib/redis/index.js';
 
 export { LockAcquisitionError, LockExtendError, LockReleaseError };
 

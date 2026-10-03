@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { executeRetreatCommand } from '@server/cultivator/application/RetreatApplicationService';
-import { streamAiText } from '@server/utils/aiClient';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { executeRetreatCommand } from '@server/cultivator/application/RetreatApplicationService.js';
+import { streamAiText } from '@server/utils/aiClient.js';
 import {
   getBreakthroughStoryPrompt,
   getLifespanExhaustedStoryPrompt,
-} from '@server/utils/prompts';
+} from '@server/utils/prompts.js';
 import type {
   RetreatRequest,
   RetreatStreamEvent,

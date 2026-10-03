@@ -1,16 +1,16 @@
-import arrivalFall from '../content/performances/arrival-fall.json';
-import arrivalMouth from '../content/performances/arrival-mouth.json';
+import arrivalFall from '../content/performances/arrival-fall.json' with { type: 'json' };
+import arrivalMouth from '../content/performances/arrival-mouth.json' with { type: 'json' };
 import { describe, expect, it } from 'vitest';
 import {
   createPerformanceState,
   currentPerformanceCue,
   reducePerformance,
-} from './interpreter';
+} from './interpreter.js';
 import {
   fillPerformanceScript,
   parsePerformanceScript,
   type PerformanceScript,
-} from './schema';
+} from './schema.js';
 
 const script = parsePerformanceScript({
   id: 'sample',

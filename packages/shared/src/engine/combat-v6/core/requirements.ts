@@ -5,7 +5,7 @@ import { atLeast } from './math.ts';
 import { skillOf } from './skills.ts';
 import { commandBlockReason, hasBlock } from './status.ts';
 import type { SkillDef, Unit } from './types.ts';
-import { combatModifiers } from './modifiers';
+import { combatModifiers } from './modifiers.js';
 import { resourceOf } from './units.ts';
 
 export type SkillRequirementCheck = {

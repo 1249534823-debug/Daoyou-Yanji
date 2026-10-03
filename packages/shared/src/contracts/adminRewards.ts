@@ -1,13 +1,13 @@
 import { z } from 'zod';
-import { isTalismanScenario } from '../config/talismanScenarios';
+import { isTalismanScenario } from '../config/talismanScenarios.js';
 import {
   InventoryItemSchema,
   ItemGrantSchema,
   type ItemGrant,
-} from '../inventory';
-import { InventoryEquipmentSchema } from '../inventory/equipment';
-import { findItemDefinition } from '../items/registry';
-import type { MailAttachment } from '../types/mail';
+} from '../inventory/index.js';
+import { InventoryEquipmentSchema } from '../inventory/equipment.js';
+import { findItemDefinition } from '../items/registry.js';
+import type { MailAttachment } from '../types/mail.js';
 
 /** Uses bag validation; the quantity is a grant, possibly spanning several stacks. */
 export const RewardItemSchema = ItemGrantSchema.superRefine((grant, ctx) => {

@@ -2,14 +2,14 @@ import {
   getExecutor,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
-import * as schema from '@server/lib/drizzle/schema';
-import { renderPrompt } from '@server/lib/prompts';
-import { redis } from '@server/lib/redis';
-import { parseRedisJson } from '@server/lib/redis/json';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
-import { generateAiObject } from '@server/utils/aiClient';
-import { normalizeFreeformLlmInput } from '@server/utils/llmPayload';
+} from '@server/lib/drizzle/db.js';
+import * as schema from '@server/lib/drizzle/schema.js';
+import { renderPrompt } from '@server/lib/prompts/index.js';
+import { redis } from '@server/lib/redis/index.js';
+import { parseRedisJson } from '@server/lib/redis/json.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
+import { generateAiObject } from '@server/utils/aiClient.js';
+import { normalizeFreeformLlmInput } from '@server/utils/llmPayload.js';
 import {
   describeIdentityReshapeAnswers,
   getIdentityReshapeQuestions,
@@ -30,9 +30,9 @@ import {
   type IdentityReshapeSessionStore,
 } from '@daoyou/shared/types/identityReshape';
 import { and, eq, sql } from 'drizzle-orm';
-import { findBagTalisman } from '@server/inventory/application/BagConsumables';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
-import { consumeConsumableById } from '@server/cultivator/application/readers/CultivatorInventoryRepository';
+import { findBagTalisman } from '@server/inventory/application/BagConsumables.js';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import { consumeConsumableById } from '@server/cultivator/application/readers/CultivatorInventoryRepository.js';
 
 function sessionKey(cultivatorId: string) {
   return `identity-reshape-session:${cultivatorId}`;

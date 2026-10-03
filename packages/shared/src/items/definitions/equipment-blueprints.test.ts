@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { BLUEPRINTS } from './equipment-blueprints';
+import { BLUEPRINTS } from './equipment-blueprints.js';
 
 describe('图纸境界名称', () => {
   it('保留物品标识与档位，所有部位均使用无数字的境界名称', () => {

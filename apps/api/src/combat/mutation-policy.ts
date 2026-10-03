@@ -2,4 +2,4 @@
 export {
   CombatV6MutationLockedError,
   assertCombatV6MutationAllowed,
-} from './application/CombatV6MutationGuard';
+} from './application/CombatV6MutationGuard.js';

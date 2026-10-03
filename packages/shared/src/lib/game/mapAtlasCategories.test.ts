@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { getAtlasLocations } from './mapAtlas';
+import { getAtlasLocations } from './mapAtlas.js';
 import {
   ATLAS_CATEGORY_IDS,
   getAtlasCategory,
   getAtlasShortName,
   matchesAtlasCategories,
   parseAtlasCategories,
-} from './mapAtlasCategories';
-import { getWorldMapLocation } from './mapSystem';
+} from './mapAtlasCategories.js';
+import { getWorldMapLocation } from './mapSystem.js';
 
 const location = (id: string) => getWorldMapLocation(id)!;
 

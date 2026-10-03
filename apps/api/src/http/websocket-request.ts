@@ -1,6 +1,6 @@
-import { apiCorsOptions } from '@server/lib/http/cors';
-import { getRequestIp } from '@server/lib/http/requestIp';
-import { checkApiIpRateLimit } from '@server/lib/redis/apiIpRateLimiter';
+import { apiCorsOptions } from '@server/lib/http/cors.js';
+import { getRequestIp } from '@server/lib/http/requestIp.js';
+import { checkApiIpRateLimit } from '@server/lib/redis/apiIpRateLimiter.js';
 import { LlmByokConfigSchema } from '@daoyou/shared/config/llm';
 
 export type HandshakeError = {

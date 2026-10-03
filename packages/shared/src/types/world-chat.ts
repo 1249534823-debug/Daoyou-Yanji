@@ -1,6 +1,6 @@
-import type { BeastTradePreview } from '../contracts/beastTrade';
-import type { InventoryShowcaseSnapshot } from '../items/showcase';
-import type { BattleRecordUnitSummary } from './battle';
+import type { BeastTradePreview } from '../contracts/beastTrade.js';
+import type { InventoryShowcaseSnapshot } from '../items/showcase.js';
+import type { BattleRecordUnitSummary } from './battle.js';
 
 export type WorldChatMessageChannel = 'system' | 'world' | 'sect';
 

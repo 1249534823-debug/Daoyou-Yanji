@@ -2,7 +2,7 @@ import {
   BACKGROUND_COMMAND_DEFINITIONS,
   BACKGROUND_COMMAND_TYPES,
   parseBackgroundCommandEnvelope,
-} from './backgroundCommands';
+} from './backgroundCommands.js';
 
 describe('background command contracts', () => {
   it('parses a versioned scheduled command', () => {

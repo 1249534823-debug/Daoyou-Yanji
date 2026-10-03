@@ -2,8 +2,8 @@ import {
   StandardSectCapabilityPolicy,
   type SectModule,
   type SectOrganizationModule,
-} from '../../core';
-import { FIXTURE_SECT_MODULE } from './FixtureSectModule';
+} from '../../core/index.js';
+import { FIXTURE_SECT_MODULE } from './FixtureSectModule.js';
 
 const fixtureTaskDialogue = {
   offeredReply: '这趟巡山交给我',

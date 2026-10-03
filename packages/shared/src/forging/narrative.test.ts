@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { compileDaoEquipmentSpecialLoadoutV1 } from '../engine/combat-v6/equipment/compiler';
-import { generateForgedEquipment } from '../engine/combat-v6/equipment/forging';
-import { InventoryEquipmentSchema } from '../inventory/equipment';
-import { ForgeIntentSchema, ForgedEquipmentCopySchema } from './narrative';
+import { compileDaoEquipmentSpecialLoadoutV1 } from '../engine/combat-v6/equipment/compiler.js';
+import { generateForgedEquipment } from '../engine/combat-v6/equipment/forging.js';
+import { InventoryEquipmentSchema } from '../inventory/equipment.js';
+import { ForgeIntentSchema, ForgedEquipmentCopySchema } from './narrative.js';
 
 describe('forged equipment narrative', () => {
   it('counts intent and description by Unicode code points', () => {

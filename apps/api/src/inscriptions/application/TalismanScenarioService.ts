@@ -2,9 +2,9 @@ import {
   getExecutor,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
-import { consumeBagConsumable, findBagTalisman } from '@server/inventory/application/BagConsumables';
-import { mapConsumableRow } from '@server/inventory/application/consumablePersistence';
+} from '@server/lib/drizzle/db.js';
+import { consumeBagConsumable, findBagTalisman } from '@server/inventory/application/BagConsumables.js';
+import { mapConsumableRow } from '@server/inventory/application/consumablePersistence.js';
 
 export class TalismanScenarioError extends Error {
   constructor(message: string) {

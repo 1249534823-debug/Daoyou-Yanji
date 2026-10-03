@@ -1,9 +1,9 @@
-import { renderPrompt } from '@server/lib/prompts';
-import { generateAiObject, streamAiText } from '@server/utils/aiClient';
-import { truncateText } from '@server/utils/llmPayload';
+import { renderPrompt } from '@server/lib/prompts/index.js';
+import { generateAiObject, streamAiText } from '@server/utils/aiClient.js';
+import { truncateText } from '@server/utils/llmPayload.js';
 import type { BlackMarketNegotiationOutcome } from '@daoyou/shared/lib/blackMarketNegotiation';
 import { z } from 'zod';
-import type { BlackMarketTurnContext, BlackMarketTurnProposal } from '@server/black-market/application/types';
+import type { BlackMarketTurnContext, BlackMarketTurnProposal } from '@server/black-market/application/types.js';
 
 const turnProposalSchema = z.object({
   intent: z.enum([

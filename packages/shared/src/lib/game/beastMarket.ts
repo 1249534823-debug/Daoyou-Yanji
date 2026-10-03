@@ -2,7 +2,7 @@ import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '@daoyou/shared/engine/combat-v6/b
 import { BOOKS } from '@daoyou/shared/items/definitions/beast-books';
 import type { MarketLayer } from '@daoyou/shared/types/market';
 import { z } from 'zod';
-import data from './data/beast-market.json';
+import data from './data/beast-market.json' with { type: 'json' };
 
 const rarity = z.enum(['common', 'uncommon', 'rare']);
 const priceTier = z.number().int().min(1).max(10);

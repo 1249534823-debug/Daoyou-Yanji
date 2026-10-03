@@ -1,6 +1,6 @@
 import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import { BODY_REALM_LABELS } from './config';
-import { getBodyCultivationSummary } from './summary';
+import { BODY_REALM_LABELS } from './config.js';
+import { getBodyCultivationSummary } from './summary.js';
 
 export interface BodyCultivationRankingTag {
   realm: string;

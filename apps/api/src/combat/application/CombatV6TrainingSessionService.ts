@@ -1,7 +1,7 @@
 import { publicUnitAppearances } from '@daoyou/shared/combat-v6/unit-appearance';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
-import { findActiveSectMembership } from '@server/lib/repositories/sectCombatRepository';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
+import { findActiveSectMembership } from '@server/lib/repositories/sectCombatRepository.js';
 import { automaticCommands } from '@daoyou/shared/combat-v6/auto';
 import {
   combatV6Display,
@@ -38,12 +38,12 @@ import {
   type TrainingEncounterOutcome,
 } from '@daoyou/shared/engine/combat-v6/encounter';
 import { randomInt, randomUUID } from 'node:crypto';
-import { hasActiveCombat } from '@server/combat/application/CombatOccupancy';
+import { hasActiveCombat } from '@server/combat/application/CombatOccupancy.js';
 import {
   assembleCombatV6TrainingPlayer,
   CombatV6BuildError,
-} from '@server/combat/application/CombatV6BuildService';
-import { CombatV6RuntimeStore } from '@server/combat/application/CombatV6RuntimeStore';
+} from '@server/combat/application/CombatV6BuildService.js';
+import { CombatV6RuntimeStore } from '@server/combat/application/CombatV6RuntimeStore.js';
 
 
 const SESSION_TTL_MS = 2 * 60 * 60 * 1000;

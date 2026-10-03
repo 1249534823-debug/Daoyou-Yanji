@@ -20,17 +20,17 @@ import { inventoryStackIdentity } from '@daoyou/shared/inventory/stack-key';
 import { projectNaturalQiState } from '@daoyou/shared/lib/qi';
 import { and, eq, gte, inArray, or, sql } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
-import { db, type DbExecutor } from '@server/lib/drizzle/db';
-import { cultivators, inventoryItems } from '@server/lib/drizzle/schema';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
+import { db, type DbExecutor } from '@server/lib/drizzle/db.js';
+import { cultivators, inventoryItems } from '@server/lib/drizzle/schema.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
 import {
   assertInventoryIdle,
   InventoryError,
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/operations';
-import { QiService } from '@server/cultivator/application/QiService';
+} from '@server/inventory/operations.js';
+import { QiService } from '@server/cultivator/application/QiService.js';
 
 async function characterOf(actor: ActiveCultivatorRef, tx: DbExecutor) {
   const [character] = await tx

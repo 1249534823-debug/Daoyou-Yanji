@@ -18,29 +18,29 @@ import { SectBattleHost } from '@daoyou/shared/engine/combat-v6/sect/host';
 import { SectTaskRecordPayloadSchema } from '@daoyou/shared/engine/sect';
 import { productionSectRuntime } from '@daoyou/shared/engine/sect/content';
 import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import { db } from '@server/lib/drizzle/db';
+import { db } from '@server/lib/drizzle/db.js';
 import {
   combatReplayArchives,
   cultivators,
   sectMemberships,
   sectTaskRecords,
-} from '@server/lib/drizzle/schema';
-import { redis } from '@server/lib/redis';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
-import { settleBeastDeaths } from '@server/lib/repositories/combatV6BeastRepository';
-import { archiveCombatV6Replay } from '@server/lib/repositories/combatV6ReplayRepository';
-import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository';
+} from '@server/lib/drizzle/schema.js';
+import { redis } from '@server/lib/redis/index.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
+import { settleBeastDeaths } from '@server/lib/repositories/combatV6BeastRepository.js';
+import { archiveCombatV6Replay } from '@server/lib/repositories/combatV6ReplayRepository.js';
+import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
 import { and, eq } from 'drizzle-orm';
-import { ConditionService } from '@server/cultivator/application/ConditionService';
-import { describeJournal, runJournalSettlement } from '@server/player/application/JournalSettlement';
-import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
-import { createPostgresSectCommandContext } from '@server/sects/organization/PostgresSectOrganizationAdapters';
-import { fulfillSectV6Task } from '@server/sects/organization/productionSectOrganization';
+import { ConditionService } from '@server/cultivator/application/ConditionService.js';
+import { describeJournal, runJournalSettlement } from '@server/player/application/JournalSettlement.js';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
+import { createPostgresSectCommandContext } from '@server/sects/organization/PostgresSectOrganizationAdapters.js';
+import { fulfillSectV6Task } from '@server/sects/organization/productionSectOrganization.js';
 import {
   invalidSectTask,
   requireSectMembership,
-} from '@server/sects/organization/SectTaskApplicationSupport';
-import { activeSectTaskBattle } from '@server/combat/application/CombatV6SectTaskOccupancy';
+} from '@server/sects/organization/SectTaskApplicationSupport.js';
+import { activeSectTaskBattle } from '@server/combat/application/CombatV6SectTaskOccupancy.js';
 
 type Actor = { userId: string; cultivatorId: string };
 const key = (id: string) => `combat:v6:sect-task:${id}`;

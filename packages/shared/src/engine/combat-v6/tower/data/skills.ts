@@ -1,6 +1,6 @@
 // Authored V6 skills and statuses. No tower-specific engine execution lives here.
-import type { SkillDef, StatusDef } from '../../core';
-import mechanics from './mechanics.json';
+import type { SkillDef, StatusDef } from '../../core/index.js';
+import mechanics from './mechanics.json' with { type: 'json' };
 export const TOWER_STATUS_DEFS: StatusDef[] = [
   {
     id: 'tower.mirror-anchor',

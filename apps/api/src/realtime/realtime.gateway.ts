@@ -2,7 +2,7 @@ import { Inject } from '@nestjs/common';
 import { WebSocketGateway, type OnGatewayConnection } from '@nestjs/websockets';
 import type { IncomingMessage } from 'node:http';
 import type { WebSocket } from 'ws';
-import { RealtimeService } from './realtime.service';
+import { RealtimeService } from './realtime.service.js';
 
 @WebSocketGateway({ path: '/api/realtime', maxPayload: 2048 })
 export class RealtimeGateway implements OnGatewayConnection {

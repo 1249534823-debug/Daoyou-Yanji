@@ -4,16 +4,16 @@ import {
   isOpenEquipmentLevel,
 } from '@daoyou/shared/engine/combat-v6/equipment/realm';
 import { z } from 'zod';
-import type { ForgingBoosts } from '../engine/combat-v6/equipment/forging';
-import { DAO_EQUIPMENT_FORGING } from '../engine/combat-v6/equipment/forging-content';
-import type { DaoEquipmentSlot } from '../engine/combat-v6/equipment/types';
+import type { ForgingBoosts } from '../engine/combat-v6/equipment/forging.js';
+import { DAO_EQUIPMENT_FORGING } from '../engine/combat-v6/equipment/forging-content.js';
+import type { DaoEquipmentSlot } from '../engine/combat-v6/equipment/types.js';
 import {
   equipmentWeaponTypeProblem,
   type DaoWeaponType,
-} from '../engine/combat-v6/equipment/weapons';
-import { InventoryRuleError } from '../inventory';
-import type { MaterialFacts } from '../items/definitions/materials';
-import { QUALITY_ORDER, type Quality } from '../types/constants';
+} from '../engine/combat-v6/equipment/weapons.js';
+import { InventoryRuleError } from '../inventory/index.js';
+import type { MaterialFacts } from '../items/definitions/materials.js';
+import { QUALITY_ORDER, type Quality } from '../types/constants.js';
 
 /** 部位来自服务端实际图纸；不得信任客户端自行声明的部位。 */
 export function validateForgeWeaponType(

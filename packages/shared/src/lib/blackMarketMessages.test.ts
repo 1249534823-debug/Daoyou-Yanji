@@ -1,7 +1,7 @@
 import {
   blackMarketInspectionPlayerBody,
   normalizeBlackMarketPlayerBody,
-} from './blackMarketMessages';
+} from './blackMarketMessages.js';
 
 describe('black market player messages', () => {
   it.each([

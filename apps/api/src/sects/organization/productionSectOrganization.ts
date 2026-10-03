@@ -2,30 +2,30 @@ import {
   getExecutor,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
+} from '@server/lib/drizzle/db.js';
 import type { SectCraftContextKey } from '@daoyou/shared/engine/sect';
 import { productionSectRuntime } from '@daoyou/shared/engine/sect/content';
-import { ClaimSectTaskRewardHandler } from '@server/sects/organization/ClaimSectTaskRewardHandler';
-import { GetSectTasksQueryHandler } from '@server/sects/organization/GetSectTasksQueryHandler';
+import { ClaimSectTaskRewardHandler } from '@server/sects/organization/ClaimSectTaskRewardHandler.js';
+import { GetSectTasksQueryHandler } from '@server/sects/organization/GetSectTasksQueryHandler.js';
 import {
   createPostgresSectAdmissionRepository,
   createPostgresSectAdmissionResourceReader,
   createPostgresSectBenefitContext,
-} from '@server/sects/organization/PostgresSectOrganizationAdapters';
-import { SectBenefitService } from '@server/sects/organization/SectBenefitService';
-import { SectConstructionApplicationService } from '@server/sects/organization/SectConstructionApplicationService';
-import { SectEconomyApplicationService } from '@server/sects/organization/SectEconomyApplicationService';
-import { SectMembershipApplicationService } from '@server/sects/organization/SectMembershipApplicationService';
-import { SectOrganizationFacade } from '@server/sects/organization/SectOrganizationFacade';
+} from '@server/sects/organization/PostgresSectOrganizationAdapters.js';
+import { SectBenefitService } from '@server/sects/organization/SectBenefitService.js';
+import { SectConstructionApplicationService } from '@server/sects/organization/SectConstructionApplicationService.js';
+import { SectEconomyApplicationService } from '@server/sects/organization/SectEconomyApplicationService.js';
+import { SectMembershipApplicationService } from '@server/sects/organization/SectMembershipApplicationService.js';
+import { SectOrganizationFacade } from '@server/sects/organization/SectOrganizationFacade.js';
 import {
   CORE_SECT_ORGANIZATION_PLUGIN,
   composeSectOrganizationPlugins,
-} from '@server/sects/organization/SectOrganizationPlugins';
+} from '@server/sects/organization/SectOrganizationPlugins.js';
 import {
   ExecuteSectTaskActionHandler,
   FulfillSectTaskHandler,
-} from '@server/sects/organization/SectTaskApplicationService';
-import { SectTaskSubmissionQueryService } from '@server/sects/organization/SectTaskSubmissionQueryService';
+} from '@server/sects/organization/SectTaskApplicationService.js';
+import { SectTaskSubmissionQueryService } from '@server/sects/organization/SectTaskSubmissionQueryService.js';
 
 const benefits = new SectBenefitService();
 const plugins = composeSectOrganizationPlugins({

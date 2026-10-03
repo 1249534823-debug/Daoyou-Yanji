@@ -1,5 +1,5 @@
-import { ATTR_NAMES, createUnit, evalExpr } from '../core';
-import { ExprFn, ExprVar } from '../core/enums';
+import { ATTR_NAMES, createUnit, evalExpr } from '../core/index.js';
+import { ExprFn, ExprVar } from '../core/enums.js';
 
 const formulaFields = new Set(['barrierDamageBonus', 'healingPerRound', 'sealChanceFactor', 'allDamageTakenBonus', 'hitAdd', 'expression', 'requirement', 'extraCount', 'extraChance', 'hpRatio', 'hpCap', 'mpCap', 'costMp', 'costHp', 'targetCount', 'count', 'power', 'duration', 'speedMod', 'value', 'factor', 'maxGainPerAction', 'followPower', 'healingPower', 'sealChanceAdd', 'damageTakenAdd', 'damageTakenBonus', 'physicalFuryChanceAdd', 'sealResistanceAdd', 'damageBonus', 'damageAdd', 'physicalAttackAdd', 'critChanceAdd', 'critMultiplierAdd', 'defenseIgnoreAdd', 'protectedDamageBonus', 'recoverySkipChance', 'targetCountAdd', 'chance', 'amount', 'aimCount']);
 const allowedVariables = new Set<string>([

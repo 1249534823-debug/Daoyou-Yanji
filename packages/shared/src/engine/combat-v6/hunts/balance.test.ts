@@ -1,21 +1,21 @@
 import { describe, expect, it } from 'vitest';
-import { automaticCommands } from '../../../combat-v6/auto';
+import { automaticCommands } from '../../../combat-v6/auto.js';
 import {
   HUNT_BOSSES,
   huntEventsAt,
   type HuntBossId,
-} from '../../../hunts/config';
-import { BEAST_SKILLS, BEAST_STATUS_DEFS, projectBeastRoster } from '../beasts';
-import { createBattle, type CreateBattleInput } from '../core';
-import { projectCharacterToCombatV6 } from '../projection';
-import { daoyouRulesetV6 } from '../rules-daoyou';
-import { towerReferenceBuild } from '../tower/reference-fixtures';
+} from '../../../hunts/config.js';
+import { BEAST_SKILLS, BEAST_STATUS_DEFS, projectBeastRoster } from '../beasts/index.js';
+import { createBattle, type CreateBattleInput } from '../core/index.js';
+import { projectCharacterToCombatV6 } from '../projection/index.js';
+import { daoyouRulesetV6 } from '../rules-daoyou/index.js';
+import { towerReferenceBuild } from '../tower/reference-fixtures.js';
 import {
   HUNT_SKILLS,
   HUNT_STATUSES,
   huntEnemies,
   huntNpcCommand,
-} from './content';
+} from './content.js';
 
 const events = huntEventsAt(100000);
 function encounter(

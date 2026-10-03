@@ -1,4 +1,4 @@
-import { getJetStreamClient } from '@server/lib/nats';
+import { getJetStreamClient } from '@server/lib/nats/index.js';
 import {
   BACKGROUND_COMMAND_DEFINITIONS,
   BACKGROUND_COMMAND_STREAM,

@@ -1,16 +1,16 @@
 import { formatContentPackErrors } from '@daoyou/shared/lib/content-pack-errors';
 import { z } from 'zod';
-import { ATTR_NAMES } from '../core';
-import { validateSectExpressions } from './authoring-expressions';
-import raw from './data/tianyan-paths.json';
-import { sectSkillLearning } from './skill-learning';
+import { ATTR_NAMES } from '../core/index.js';
+import { validateSectExpressions } from './authoring-expressions.js';
+import raw from './data/tianyan-paths.json' with { type: 'json' };
+import { sectSkillLearning } from './skill-learning.js';
 import {
   TIANYAN_FOUNDATION,
   validateTianyanReferences,
-} from './tianyan-foundation';
-import { tyId, tyModifier } from './tianyan-shapes';
-import { TIANYAN_SKILLS } from './tianyan-skill-pack';
-import type { SectPathDefV6, SectSkillDefV6 } from './types';
+} from './tianyan-foundation.js';
+import { tyId, tyModifier } from './tianyan-shapes.js';
+import { TIANYAN_SKILLS } from './tianyan-skill-pack.js';
+import type { SectPathDefV6, SectSkillDefV6 } from './types.js';
 export const TianyanPathsShape = z.strictObject({
   $schema: z.string().optional(),
   formatVersion: z.literal(1),

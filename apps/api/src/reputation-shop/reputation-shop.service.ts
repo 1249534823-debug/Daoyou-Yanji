@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { readCultivatorReputation } from '@server/cultivator/facts';
-import { purchaseReputationShopItemCommand } from '@server/reputation-shop/application/ReputationShopApplicationService';
-import { listReputationShopItems } from '@server/reputation-shop/application/ReputationShopService';
-import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { readCultivatorReputation } from '@server/cultivator/facts.js';
+import { purchaseReputationShopItemCommand } from '@server/reputation-shop/application/ReputationShopApplicationService.js';
+import { listReputationShopItems } from '@server/reputation-shop/application/ReputationShopService.js';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
 
 @Injectable()
 export class ReputationShopService {

@@ -1,6 +1,6 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
-import { cultivatorBeasts } from '@server/lib/drizzle/schema';
-import { beastIndividualData } from '@server/lib/repositories/combatV6BeastRepository';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
+import { cultivatorBeasts } from '@server/lib/drizzle/schema.js';
+import { beastIndividualData } from '@server/lib/repositories/combatV6BeastRepository.js';
 import {
   BeastTransferSchema,
   planBeastMailClaims,
@@ -13,7 +13,7 @@ import {
   assertBeastIdle,
   BeastError,
   beastMutationOccupied,
-} from '@server/combat/application/BeastMutationGuard';
+} from '@server/combat/application/BeastMutationGuard.js';
 
 function beastTransfers(attachments: MailAttachment[]) {
   return attachments

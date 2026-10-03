@@ -1,8 +1,8 @@
-import type { MaterialFacts } from '../items/definitions/materials';
-import { materialFactsOf } from '../items/material';
-import { findItemDefinition } from '../items/registry';
-import type { InventoryItem } from './index';
-import { inventoryStackIdentity } from './stack-key';
+import type { MaterialFacts } from '../items/definitions/materials.js';
+import { materialFactsOf } from '../items/material.js';
+import { findItemDefinition } from '../items/registry.js';
+import type { InventoryItem } from './index.js';
+import { inventoryStackIdentity } from './stack-key.js';
 
 export type AlchemyBagMaterial = MaterialFacts & {
   id: string;

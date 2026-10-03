@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { FORMULA_FIT_POLICIES, getFormulaFitPolicy } from './alchemyFormulaFit';
+import { FORMULA_FIT_POLICIES, getFormulaFitPolicy } from './alchemyFormulaFit.js';
 
 describe('alchemy formula fit policy', () => {
   it('keeps stronger LLM verdicts strictly above weaker verdicts', () => {

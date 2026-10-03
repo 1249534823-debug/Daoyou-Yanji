@@ -1,4 +1,4 @@
-import { LLM_PROVIDER_DEFAULT_MODELS } from './llm';
+import { LLM_PROVIDER_DEFAULT_MODELS } from './llm.js';
 import {
   llmRouteKey,
   parseLlmRouteSpec,
@@ -6,7 +6,7 @@ import {
   pickLlmRouteByUserHash,
   resolveLlmRouteModels,
   resolveServerLlmRoutes,
-} from './llmRouting';
+} from './llmRouting.js';
 
 const BOTH_KEYS = { alibaba: true, deepseek: true };
 

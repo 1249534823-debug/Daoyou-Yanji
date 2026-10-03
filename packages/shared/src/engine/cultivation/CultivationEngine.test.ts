@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { COMPREHENSION_INSIGHT_CAP } from '@daoyou/shared/config/cultivationTuning';
 import type { Cultivator, FateEffectEntry } from '@daoyou/shared/types/cultivator';
 import { resolveLiveExpCap } from '@daoyou/shared/engine/cultivation/cultivationUtils';
-import { attemptBreakthrough, performCultivation } from './CultivationEngine';
+import { attemptBreakthrough, performCultivation } from './CultivationEngine.js';
 
 function createCultivator(): Cultivator {
   return {

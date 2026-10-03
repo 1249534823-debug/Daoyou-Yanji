@@ -1,4 +1,4 @@
-import { getNatsConnection } from '@server/lib/nats';
+import { getNatsConnection } from '@server/lib/nats/index.js';
 import { StringCodec, type Subscription } from 'nats';
 
 type NatsMessageHandler = (message: string) => void;

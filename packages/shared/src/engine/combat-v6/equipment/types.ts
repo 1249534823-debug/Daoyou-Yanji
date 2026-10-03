@@ -1,7 +1,7 @@
 import type { Attributes } from '@daoyou/shared/types/cultivator';
 import type { ElementType } from '@daoyou/shared/types/constants';
 import type { SkillDef, StatusDef } from '../core/index.ts';
-import type { DaoWeaponType } from './weapons';
+import type { DaoWeaponType } from './weapons.js';
 import type {
   CombatV6PanelContribution,
   CombatV6ProjectionDiagnostic,

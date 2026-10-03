@@ -5,7 +5,7 @@ import type {
 } from '@daoyou/shared/contracts/combatV6Ranking';
 import type { CombatV6ReplayV1 } from '@daoyou/shared/contracts/combatV6Runtime';
 import type { RankingBattleInput } from '@daoyou/shared/engine/combat-v6/ranking/battle';
-import { redis } from './index';
+import { redis } from './index.js';
 
 export const rankingQuotaKey = (owner: string, day: string) =>
   `golden_rank:v6:quota:${owner}:${day}`;

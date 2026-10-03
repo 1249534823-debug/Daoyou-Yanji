@@ -1,21 +1,21 @@
 import { describe, expect, it } from 'vitest';
-import { automaticCommands } from '../../../combat-v6/auto';
-import { buildTowerBlessingChoices } from '../../../lib/tower/helpers';
-import { getTowerSeasonMeta } from '../../../lib/tower/season';
-import { DaoyouRule } from '../rules-daoyou/constants';
-import { loadTowerCatalog, TOWER_CATALOG } from './catalog';
-import raw from './data/enemies.json';
-import generation from './data/generation.json';
-import { loadTowerGeneration } from './generation';
-import { createTowerHost, type TowerBlessings } from './host';
+import { automaticCommands } from '../../../combat-v6/auto.js';
+import { buildTowerBlessingChoices } from '../../../lib/tower/helpers.js';
+import { getTowerSeasonMeta } from '../../../lib/tower/season.js';
+import { DaoyouRule } from '../rules-daoyou/constants.js';
+import { loadTowerCatalog, TOWER_CATALOG } from './catalog.js';
+import raw from './data/enemies.json' with { type: 'json' };
+import generation from './data/generation.json' with { type: 'json' };
+import { loadTowerGeneration } from './generation.js';
+import { createTowerHost, type TowerBlessings } from './host.js';
 import {
   publishedTowerEncounter,
   publishedTowerPreviews,
   publishTowerWeek,
   validatePublishedTowerWeek,
-} from './published';
-import { towerReferenceBuild } from './reference-fixtures';
-import { towerStrategySignature } from './strategy';
+} from './published.js';
+import { towerReferenceBuild } from './reference-fixtures.js';
+import { towerStrategySignature } from './strategy.js';
 
 const season = getTowerSeasonMeta(new Date('2026-09-19'));
 describe('配置驱动与玩法节点', () => {

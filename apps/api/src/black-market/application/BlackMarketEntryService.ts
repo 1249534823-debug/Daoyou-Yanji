@@ -1,8 +1,8 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
-import { listPlayerMutationRequestsByPrefix } from '@server/lib/repositories/playerStateRepository';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
-import { qiCurrencyChange } from '@server/cultivator/application/QiResourceChanges';
-import { QiService } from '@server/cultivator/application/QiService';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
+import { listPlayerMutationRequestsByPrefix } from '@server/lib/repositories/playerStateRepository.js';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import { qiCurrencyChange } from '@server/cultivator/application/QiResourceChanges.js';
+import { QiService } from '@server/cultivator/application/QiService.js';
 import {
   blackMarketEntryCost,
   blackMarketEntryId,

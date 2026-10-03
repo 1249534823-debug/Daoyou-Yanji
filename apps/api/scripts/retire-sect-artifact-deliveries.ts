@@ -1,8 +1,8 @@
 /** Offline maintenance only. No conversion of old requirements into new equipment rules. */
 import { and, inArray, sql } from 'drizzle-orm';
 import { z } from 'zod';
-import { db } from '../src/lib/drizzle/db';
-import { sectTaskRecords } from '../src/lib/drizzle/schema';
+import { db } from '../src/lib/drizzle/db.js';
+import { sectTaskRecords } from '../src/lib/drizzle/schema.js';
 
 const args = process.argv.slice(2);
 const apply = args.includes('--apply');

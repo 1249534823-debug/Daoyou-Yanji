@@ -6,7 +6,7 @@ import {
   type StoryFacts,
   type StoryProgress,
   type StoryView,
-} from './schema';
+} from './schema.js';
 
 const markFacts = new Set<StoryFactId>(STORY_MARK_FACT_IDS);
 

@@ -1,6 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import * as products from '@server/lib/repositories/creationProductRepository';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import * as products from '@server/lib/repositories/creationProductRepository.js';
 import type { LegacyProductType } from '@daoyou/shared/legacy/products';
 
 @Injectable()

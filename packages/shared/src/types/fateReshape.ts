@@ -1,4 +1,4 @@
-import type { PreHeavenFate } from './cultivator';
+import type { PreHeavenFate } from './cultivator.js';
 
 export interface FateReshapeSessionStore {
   sessionId: string;

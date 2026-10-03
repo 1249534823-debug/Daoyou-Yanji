@@ -1,6 +1,6 @@
-import type { TowerBlessingId } from './blessing-pack';
-import { TOWER_BLESSINGS_PACK } from './blessing-pack';
-export { TOWER_BLESSING_IDS, type TowerBlessingId } from './blessing-pack';
+import type { TowerBlessingId } from './blessing-pack.js';
+import { TOWER_BLESSINGS_PACK } from './blessing-pack.js';
+export { TOWER_BLESSING_IDS, type TowerBlessingId } from './blessing-pack.js';
 
 export interface TowerBlessingDefinition {
   id: TowerBlessingId;

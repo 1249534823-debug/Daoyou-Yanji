@@ -1,8 +1,8 @@
 import { formatContentPackErrors } from '@daoyou/shared/lib/content-pack-errors';
 import { REALM_ORDER, type RealmType } from '@daoyou/shared/types/constants';
 import { z } from 'zod';
-import { BEAST_SPECIES } from '../beasts/content';
-import raw from './data/wild.json';
+import { BEAST_SPECIES } from '../beasts/content.js';
+import raw from './data/wild.json' with { type: 'json' };
 
 const text = z.string().min(1).max(200);
 export const WildRegionSchema = z.strictObject({

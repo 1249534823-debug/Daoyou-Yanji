@@ -6,16 +6,16 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   DungeonActionRequestSchema,
   DungeonFlowRequestSchema,
 } from '@daoyou/shared/contracts/combatV6Dungeon';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
 import {
   DungeonActionErrors,
   DungeonContinueErrors,
@@ -23,8 +23,8 @@ import {
   DungeonQuitErrors,
   DungeonRecoverErrors,
   DungeonStartErrors,
-} from './dungeon-errors';
-import { DungeonService } from './dungeon.service';
+} from './dungeon-errors.js';
+import { DungeonService } from './dungeon.service.js';
 
 const StartSchema = z.object({ mapNodeId: z.string().min(1) });
 const StateSchema = z.object({ runId: z.uuid().optional() }).strict();

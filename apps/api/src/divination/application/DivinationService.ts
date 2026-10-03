@@ -1,12 +1,12 @@
-import { db, type DbTransaction } from '@server/lib/drizzle/db';
-import { cultivators, dailyDivinations } from '@server/lib/drizzle/schema';
-import { renderPrompt } from '@server/lib/prompts';
+import { db, type DbTransaction } from '@server/lib/drizzle/db.js';
+import { cultivators, dailyDivinations } from '@server/lib/drizzle/schema.js';
+import { renderPrompt } from '@server/lib/prompts/index.js';
 import {
   redisLockKeys,
   withRedisLock,
   type RedisLeaseContext,
-} from '@server/lib/redis/lock';
-import { streamAiText } from '@server/utils/aiClient';
+} from '@server/lib/redis/lock.js';
+import { streamAiText } from '@server/utils/aiClient.js';
 import { QI_RESTORE_TALISMAN_SCENARIOS } from '@daoyou/shared/config/qiSystem';
 import type {
   DivinationRecord,
@@ -24,9 +24,9 @@ import {
 } from '@daoyou/shared/lib/divination';
 import { and, eq } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
-import { assertInventoryIdle, grantInventory } from '@server/inventory/operations';
-import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
-import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
+import { assertInventoryIdle, grantInventory } from '@server/inventory/operations.js';
+import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster.js';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
 
 type Actor = { userId: string; cultivatorId: string };
 type Row = typeof dailyDivinations.$inferSelect;

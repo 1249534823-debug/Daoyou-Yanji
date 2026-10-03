@@ -1,4 +1,4 @@
-import { seedFactsOf } from './definitions/seeds';
+import { seedFactsOf } from './definitions/seeds.js';
 
 /** Only migration eligibility; retired facts are never repaired or revealed. */
 export function legacyMaterialUnavailableReason(material: {

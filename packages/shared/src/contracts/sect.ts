@@ -14,7 +14,7 @@ import type {
 } from '@daoyou/shared/engine/sect';
 import type { CultivationProgress } from '@daoyou/shared/types/cultivator';
 import { z } from 'zod';
-import type { PlayerStateMutationResponse } from './player';
+import type { PlayerStateMutationResponse } from './player.js';
 
 export const SectTaskActionRequestSchema = z
   .object({
@@ -261,7 +261,7 @@ export interface SectSubmissionCandidatesData {
 export type SectTaskActionResponse =
   PlayerStateMutationResponse<SectTaskActionData>;
 
-export type { SectShopData, SectShopItemData } from './sectShop';
+export type { SectShopData, SectShopItemData } from './sectShop.js';
 
 export interface SectInfrastructureData {
   facilities: SectFacilityState[];

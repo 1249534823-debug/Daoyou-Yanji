@@ -2,20 +2,20 @@ import {
   db,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
+} from '@server/lib/drizzle/db.js';
 import {
   cultivatorBeastFusions,
   cultivatorBeastLineups,
   cultivatorBeasts,
-} from '@server/lib/drizzle/schema';
-import { createDomainEvent } from '@server/lib/mq/domainEventWriter';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
+} from '@server/lib/drizzle/schema.js';
+import { createDomainEvent } from '@server/lib/mq/domainEventWriter.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
 import {
   beastIndividualData,
   readBeastOwner,
   readBeastRoster,
-} from '@server/lib/repositories/combatV6BeastRepository';
-import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository';
+} from '@server/lib/repositories/combatV6BeastRepository.js';
+import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
 import { beastTradePreview } from '@daoyou/shared/contracts/beastTrade';
 import {
   BeastNameSchema,
@@ -42,13 +42,13 @@ import {
 import { and, eq, inArray } from 'drizzle-orm';
 import { createHash, randomInt, randomUUID } from 'node:crypto';
 import type { z } from 'zod';
-import { readCultivatorPublicIdentity } from '@server/cultivator/facts';
-import { updateSpiritStones } from '@server/cultivator/application/readers/CultivatorStateRepository';
-import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
-import { textFilter } from '@server/social/application/textFilter';
+import { readCultivatorPublicIdentity } from '@server/cultivator/facts.js';
+import { updateSpiritStones } from '@server/cultivator/application/readers/CultivatorStateRepository.js';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
+import { textFilter } from '@server/social/application/textFilter.js';
 
-import { assertBeastIdle, BeastError } from '@server/combat/application/BeastMutationGuard';
-export { BeastError } from '@server/combat/application/BeastMutationGuard';
+import { assertBeastIdle, BeastError } from '@server/combat/application/BeastMutationGuard.js';
+export { BeastError } from '@server/combat/application/BeastMutationGuard.js';
 
 async function fusionRecord(
   cultivatorId: string,

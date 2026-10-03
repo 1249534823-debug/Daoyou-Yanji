@@ -1,7 +1,7 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
-import { renderPrompt } from '@server/lib/prompts';
-import { generateAiObject } from '@server/utils/aiClient';
-import { truncateText } from '@server/utils/llmPayload';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
+import { renderPrompt } from '@server/lib/prompts/index.js';
+import { generateAiObject } from '@server/utils/aiClient.js';
+import { truncateText } from '@server/utils/llmPayload.js';
 import { equipmentRealm } from '@daoyou/shared/engine/combat-v6/equipment/realm';
 import type { DaoEquipmentSlot } from '@daoyou/shared/engine/combat-v6/equipment/types';
 import { DAO_WEAPONS, type DaoWeaponType } from '@daoyou/shared/engine/combat-v6/equipment/weapons';

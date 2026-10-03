@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { YieldCalculator } from '../engine/yield/YieldCalculator';
-import { HUNT_REALMS, huntEventsAt } from '../hunts/config';
-import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from './dungeon-material-quality';
-import { HUNT_DROP_POOL, HuntDropPoolSchema, planHuntReward } from './hunt';
+import { YieldCalculator } from '../engine/yield/YieldCalculator.js';
+import { HUNT_REALMS, huntEventsAt } from '../hunts/config.js';
+import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from './dungeon-material-quality.js';
+import { HUNT_DROP_POOL, HuntDropPoolSchema, planHuntReward } from './hunt.js';
 
 describe('讨伐奖励', () => {
   it('奖励档位跟随目标境界；渡劫目标不会降为金丹档奖励', () => {

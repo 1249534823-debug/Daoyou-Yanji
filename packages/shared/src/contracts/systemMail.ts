@@ -2,9 +2,9 @@ import { z } from 'zod';
 import {
   SPONSORSHIP_TIER_IDS,
   SPONSORSHIP_TIER_META,
-} from '../lib/sponsorship';
-import { REALM_STAGE_VALUES, REALM_VALUES } from '../types/constants';
-import { RewardSelectionsSchema } from './adminRewards';
+} from '../lib/sponsorship.js';
+import { REALM_STAGE_VALUES, REALM_VALUES } from '../types/constants.js';
+import { RewardSelectionsSchema } from './adminRewards.js';
 
 const InstantSchema = z.string().datetime({ offset: true });
 export const MailRealmSchema = z

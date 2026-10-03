@@ -1,4 +1,4 @@
-import { describeJournal } from '@server/player/application/JournalSettlement';
+import { describeJournal } from '@server/player/application/JournalSettlement.js';
 import {
   getOrInitCultivationProgress,
   stripExpCapForStorage,
@@ -20,18 +20,18 @@ import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import type { CultivationProgress } from '@daoyou/shared/types/cultivator';
 import { and, eq, inArray, or } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
-import { db, type DbExecutor } from '@server/lib/drizzle/db';
-import { cultivators, inventoryItems } from '@server/lib/drizzle/schema';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
-import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository';
+import { db, type DbExecutor } from '@server/lib/drizzle/db.js';
+import { cultivators, inventoryItems } from '@server/lib/drizzle/schema.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 import {
   assertInventoryIdle,
   InventoryError,
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/operations';
-import { QiService } from '@server/cultivator/application/QiService';
+} from '@server/inventory/operations.js';
+import { QiService } from '@server/cultivator/application/QiService.js';
 
 async function readFacts(actor: ActiveCultivatorRef, tx: DbExecutor) {
   const [character] = await tx

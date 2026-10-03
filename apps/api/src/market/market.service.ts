@@ -1,18 +1,18 @@
 import type { MarketBuyInput } from '@daoyou/shared/contracts/market';
 import type { RecycleRequestSchema } from '@daoyou/shared/contracts/recycle';
 import { Inject, Injectable } from '@nestjs/common';
-import { CultivatorQueriesService } from '@server/cultivator/cultivator-queries.service';
-import { InventoryRecycleService } from '@server/inventory/inventory-recycle.service';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import { CultivatorQueriesService } from '@server/cultivator/cultivator-queries.service.js';
+import { InventoryRecycleService } from '@server/inventory/inventory-recycle.service.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   getMarketListings,
   MarketServiceError,
   resolveLayer,
   resolveNodeId,
-} from '@server/market/application/MarketService';
-import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
+} from '@server/market/application/MarketService.js';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
 import type { z } from 'zod';
-import { MarketPurchaseService } from './application/MarketApplicationService';
+import { MarketPurchaseService } from './application/MarketApplicationService.js';
 
 @Injectable()
 export class MarketService {

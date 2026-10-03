@@ -1,4 +1,4 @@
-import type { SectOrganizationTheme } from '../../core';
+import type { SectOrganizationTheme } from '../../core/index.js';
 export const JIUJIE_ORGANIZATION_THEME: SectOrganizationTheme = {
   elderTrial: {
     name: '九劫宫主·试炼化身',

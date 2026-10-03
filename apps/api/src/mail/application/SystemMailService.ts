@@ -1,13 +1,13 @@
-import { db, type DbTransaction } from '@server/lib/drizzle/db';
+import { db, type DbTransaction } from '@server/lib/drizzle/db.js';
 import {
   cultivators,
   mails,
   sponsorshipMeritProfiles,
   systemMailCampaigns,
-} from '@server/lib/drizzle/schema';
-import { createDomainEvent } from '@server/lib/mq/domainEventWriter';
-import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher';
-import { redis } from '@server/lib/redis';
+} from '@server/lib/drizzle/schema.js';
+import { createDomainEvent } from '@server/lib/mq/domainEventWriter.js';
+import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher.js';
+import { redis } from '@server/lib/redis/index.js';
 import {
   materializeRewardAttachments,
   rewardAttachments,
@@ -21,7 +21,7 @@ import {
 } from '@daoyou/shared/contracts/systemMail';
 import { and, asc, eq, gt, lte, notExists, sql } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
-import { MailService } from '@server/mail/application/MailService';
+import { MailService } from '@server/mail/application/MailService.js';
 
 // A short lease suppresses concurrent connections; only committed observations
 // advance the cooldown. Failure leaves the next heartbeat free to retry.

@@ -7,7 +7,7 @@ import {
   blackMarketUnit,
   classifyBlackMarketReveal,
   BLACK_MARKET_QUALITIES,
-} from './blackMarketRules';
+} from './blackMarketRules.js';
 
 describe('black market rules', () => {
   it('uses a stable unit value while separating labels', () => {

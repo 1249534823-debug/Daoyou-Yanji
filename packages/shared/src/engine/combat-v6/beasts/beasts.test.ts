@@ -9,9 +9,9 @@ import {
   generateStarterBeast,
   loseBeastLifespan,
   projectBeastRoster,
-} from './index';
-import { beastAttributes } from './projection';
-import { GeneratedBeastSchema } from './schema';
+} from './index.js';
+import { beastAttributes } from './projection.js';
+import { GeneratedBeastSchema } from './schema.js';
 
 const owner = '00000000-0000-4000-8000-000000000001';
 const id = '00000000-0000-4000-8000-000000000002';

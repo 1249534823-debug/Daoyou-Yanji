@@ -1,7 +1,7 @@
-import type { CombatV6ReplayTimeline } from '../contracts/combatV6Replay';
-import type { BattleState, StatusDef } from '../engine/combat-v6/core';
-import { applyUnitDelta } from './playback';
-import { combatV6Playback, combatV6Units } from './presentation';
+import type { CombatV6ReplayTimeline } from '../contracts/combatV6Replay.js';
+import type { BattleState, StatusDef } from '../engine/combat-v6/core/index.js';
+import { applyUnitDelta } from './playback.js';
+import { combatV6Playback, combatV6Units } from './presentation.js';
 
 /** Incremental HTTP playback after server-driven rounds; recovery still loads the full baseline. */
 export function liveReplayDelta(

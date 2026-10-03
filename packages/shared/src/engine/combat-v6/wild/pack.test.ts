@@ -1,16 +1,16 @@
 import { getMapNode } from '@daoyou/shared/lib/game/mapSystem';
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import { BEAST_PROGRESSION, BEAST_SPECIES } from '../beasts/content';
-import { BeastSchema } from '../beasts/schema';
-import raw from './data/wild.json';
-import schema from './data/wild.schema.json';
+import { BEAST_PROGRESSION, BEAST_SPECIES } from '../beasts/content.js';
+import { BeastSchema } from '../beasts/schema.js';
+import raw from './data/wild.json' with { type: 'json' };
+import schema from './data/wild.schema.json' with { type: 'json' };
 import {
   generateWildEncounter,
   generateWildIndividual,
   wildAllocation,
-} from './generator';
-import { WildPackShape, loadWildPack } from './pack';
+} from './generator.js';
+import { WildPackShape, loadWildPack } from './pack.js';
 
 const nodeId = raw.regions[0].nodeId;
 describe('野外寻觅配置与个体生成', () => {

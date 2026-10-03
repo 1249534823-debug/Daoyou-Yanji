@@ -1,14 +1,14 @@
-import { SeededRng } from '../core/rng';
-import { distributeBeastPoints } from './allocation';
-import { BEAST_GENERATION, BEAST_SPECIES } from './content';
-import { BEAST_FUSION, BEAST_FUSION_VERSION } from './fusion-config';
-import { beastPointBudget } from './identity';
+import { SeededRng } from '../core/rng.js';
+import { distributeBeastPoints } from './allocation.js';
+import { BEAST_GENERATION, BEAST_SPECIES } from './content.js';
+import { BEAST_FUSION, BEAST_FUSION_VERSION } from './fusion-config.js';
+import { beastPointBudget } from './identity.js';
 import {
   BeastSchema,
   GeneratedBeastSchema,
   type BeastLineup,
   type SummonedBeast,
-} from './schema';
+} from './schema.js';
 
 export function beastFusionMaterialReason(
   beast: SummonedBeast,

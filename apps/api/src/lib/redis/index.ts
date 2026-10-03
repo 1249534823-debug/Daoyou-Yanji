@@ -1,5 +1,5 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
-import Redis from 'ioredis';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
+import { Redis } from 'ioredis';
 
 const REDIS_CONNECT_TIMEOUT_MS = 4_000;
 const REDIS_COMMAND_TIMEOUT_MS = 4_000;

@@ -1,4 +1,4 @@
-import { BEAST_BOOK_SKILLS } from '../../engine/combat-v6/beasts/content';
+import { BEAST_BOOK_SKILLS } from '../../engine/combat-v6/beasts/content.js';
 
 export const BOOKS = BEAST_BOOK_SKILLS.map((skill) => ({
   id: `book.${skill.id}`,

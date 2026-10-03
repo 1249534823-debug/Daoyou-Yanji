@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { describeSectFacilityStatus } from './facilityDialogue';
+import { describeSectFacilityStatus } from './facilityDialogue.js';
 
 const facility = (key: string, level: number) => ({
   key,

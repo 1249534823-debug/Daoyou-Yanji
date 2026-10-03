@@ -5,7 +5,7 @@ import {
   type DivinationOmen,
 } from '@daoyou/shared/lib/divination';
 import { z } from 'zod';
-import type { PlayerResourceMutationMeta } from './player';
+import type { PlayerResourceMutationMeta } from './player.js';
 
 export const DivinationDrawSchema = z
   .object({ direction: DivinationDirectionSchema })

@@ -1,4 +1,4 @@
-import type { SectOrganizationTheme } from '../../core';
+import type { SectOrganizationTheme } from '../../core/index.js';
 
 export const TIANYAN_ORGANIZATION_THEME: SectOrganizationTheme = {
   elderTrial: {

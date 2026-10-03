@@ -9,12 +9,12 @@ import {
   Req,
   UseFilters,
 } from '@nestjs/common';
-import { redisLockErrorResponse } from '@server/lib/http/errors';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
 import type { Request } from 'express';
-import { Access } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { readRequestBody } from '../http/json-body';
-import { DevToolsService } from './dev-tools.service';
+import { Access } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { readRequestBody } from '../http/json-body.js';
+import { DevToolsService } from './dev-tools.service.js';
 
 const DevToolsErrors = apiErrorFilter((error) => {
   const lock = redisLockErrorResponse(error);

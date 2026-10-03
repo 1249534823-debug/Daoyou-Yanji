@@ -4,7 +4,7 @@ import {
   legacyProductForGrant,
   legacyRecord,
   legacyText,
-} from './products';
+} from './products.js';
 
 describe('历史产物存档', () => {
   it('缺失和畸形数据不补造事实', () => {

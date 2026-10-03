@@ -21,7 +21,7 @@ description: Daoyou NestJS API、认证、授权、Better Auth、ALTCHA、admin�
 
 ## Configuration and Workspace Boundary
 
-- API builds with `nest build` (Nest CLI 12 ESM Rspack); Web builds with Vite. API may import `@daoyou/shared/*`, never Web; shared cannot import either host. LLM generators and prompt rendering belong in `apps/api/src/lib/generation`.
+- API builds with `nest build` (Nest CLI 12 default tsc, NodeNext ESM); shared builds first with tsc and exports dist JavaScript/declarations; Web builds with Vite. API lint uses Oxlint with type-aware Promise checks and import boundaries; Web/shared/tools retain ESLint. API may import `@daoyou/shared/*`, never Web; shared cannot import either host. LLM generators and prompt rendering belong in `apps/api/src/lib/generation`.
 - Nest services inject `AppConfigService`; independent libraries read `getRuntimeEnvironment()`. The snapshot is validated once with Zod; dotenv discovery is disabled. Never log credential values on validation failure.
 - `DatabaseModule` exports the existing Drizzle client, preserving one pool and transaction propagation. Runtime closes it after request/message drain.
 
@@ -36,7 +36,7 @@ description: Daoyou NestJS API、认证、授权、Better Auth、ALTCHA、admin�
   - `@Access('active')` resolves `user` / `activeCultivatorRef` through `SessionService`; it does not hydrate a full cultivator or inject a DB executor.
   - `@Access('admin')` uses `adminAccess.ts` (`ADMIN_USER_IDS` or legacy `ADMIN_EMAILS`); `account-admin` requires configured user ID authorization.
   - `JsonBody` reads raw bytes in its first Pipe after guards, then passes parsed JSON to validation pipes. Keep its parameter factory synchronous: Nest 12 does not await a factory's Promise before the first Pipe. The reader does not inflate content-encoding; the business ceiling is 128 MiB and the webhook's independent limit is 256 KiB. `FirstQuery` reads the original URL without a 1,000-key truncation: query objects keep the first decoded key, named reads prefer a literal key over encoded aliases, and malformed UTF-8 escapes remain intact. Express query parsing is disabled; use `FirstQuery` for business queries. Zod pipes retain the intended 400 versus legacy-unhandled 500 behavior.
-- Inspect each admin controller's access metadata; do not assume a filename or frontend loader supplies authorization. Use explicit constructor `@Inject` because the Nest CLI Rspack build disables implicit design-type metadata.
+- Inspect each admin controller's access metadata; do not assume a filename or frontend loader supplies authorization. Use explicit constructor `@Inject` because the API TypeScript configuration disables implicit design-type metadata. API/shared relative imports name emitted `.js` files; JSON imports use `with { type: 'json' }`. Nest CLI assets copy Markdown prompts; the registry reads them once at module initialization.
 - Keep `NotFoundModule` last in `AppModule.imports`: its fallback controllers preserve authorization for unknown paths in previously protected namespaces, after every concrete feature route. Do not broaden these fallbacks to all API or admin paths.
 - `/internal/cron/*` uses `Authorization: Bearer ${CRON_SECRET}`, not user sessions. In production, missing `CRON_SECRET` returns 500.
 

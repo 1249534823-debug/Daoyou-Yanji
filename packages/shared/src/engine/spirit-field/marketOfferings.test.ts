@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getSpiritFieldMarketSeedSlotCount } from './marketOfferings';
+import { getSpiritFieldMarketSeedSlotCount } from './marketOfferings.js';
 
 describe('spirit-field market offerings', () => {
   const ratios = { common: 0.75, treasure: 0.625, heaven: 0.5 } as const;

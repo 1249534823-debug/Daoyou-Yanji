@@ -1,8 +1,8 @@
-import { ConditionService } from '@server/cultivator/application/ConditionService';
+import { ConditionService } from '@server/cultivator/application/ConditionService.js';
 import { evaluateFateContext } from '@daoyou/shared/lib/fates';
-import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository';
+import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 import type { HuntTeam } from '@daoyou/shared/contracts/hunts';
-import { prepareHuntReward } from '@server/hunts/application/HuntRewardService';
+import { prepareHuntReward } from '@server/hunts/application/HuntRewardService.js';
 import { HUNT_BOSSES, huntIsOpen } from '@daoyou/shared/hunts/config';
 import { huntRealmAllowed } from '@daoyou/shared/hunts/rules';
 import type { RealmType } from '@daoyou/shared/types/constants';
@@ -14,17 +14,17 @@ import {
 } from '@daoyou/shared/engine/combat-v6/hunts/content';
 import { playerAppearances } from '@daoyou/shared/combat-v6/unit-appearance';
 import type { CombatV6UnitAppearance } from '@daoyou/shared/contracts/combatV6';
-import { db } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { getJetStreamClient } from '@server/lib/nats';
-import { redis } from '@server/lib/redis';
-import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
+import { db } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import { getJetStreamClient } from '@server/lib/nats/index.js';
+import { redis } from '@server/lib/redis/index.js';
+import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
 import {
   archiveCombatV6Replay,
   findOwnedCombatV6Replay,
-} from '@server/lib/repositories/combatV6ReplayRepository';
-import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository';
-import { hasActiveCombat } from '@server/combat/application/CombatOccupancy';
+} from '@server/lib/repositories/combatV6ReplayRepository.js';
+import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
+import { hasActiveCombat } from '@server/combat/application/CombatOccupancy.js';
 import {
   arenaBattle,
   arenaDefaultCommand,
@@ -61,11 +61,11 @@ import { projectCharacterToCombatV6 } from '@daoyou/shared/engine/combat-v6/proj
 import { characterBattleSkills } from '@daoyou/shared/engine/combat-v6/projection/character-battle-skills';
 import { and, eq } from 'drizzle-orm';
 import { JSONCodec } from 'nats';
-import { ArenaRoomService } from '@server/arena/application/ArenaRoomService';
-import { publishArenaRoomChanges } from '@server/realtime/infrastructure/arenaRoomBroadcaster';
-import { broadcastArenaV6 } from '@server/combat/application/CombatV6ArenaBroadcast';
-import { arenaDueKey, CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore';
-import { assembleCombatV6TrainingPlayer } from '@server/combat/application/CombatV6BuildService';
+import { ArenaRoomService } from '@server/arena/application/ArenaRoomService.js';
+import { publishArenaRoomChanges } from '@server/realtime/infrastructure/arenaRoomBroadcaster.js';
+import { broadcastArenaV6 } from '@server/combat/application/CombatV6ArenaBroadcast.js';
+import { arenaDueKey, CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore.js';
+import { assembleCombatV6TrainingPlayer } from '@server/combat/application/CombatV6BuildService.js';
 
 export class ArenaV6Error extends Error {
   constructor(

@@ -6,10 +6,10 @@ import {
   type MiddlewareConsumer,
   type NestModule,
 } from '@nestjs/common';
-import { AppConfigService } from '@server/config/app-config.service';
+import { AppConfigService } from '@server/config/app-config.service.js';
 import type { NextFunction, Request, Response } from 'express';
-import { DevToolsController } from './dev-tools.controller';
-import { DevToolsService } from './dev-tools.service';
+import { DevToolsController } from './dev-tools.controller.js';
+import { DevToolsService } from './dev-tools.service.js';
 
 @Module({ controllers: [DevToolsController], providers: [DevToolsService] })
 export class DevToolsModule implements NestModule {

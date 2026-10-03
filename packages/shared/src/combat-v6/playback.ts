@@ -3,7 +3,7 @@ import type {
   CombatV6OptionalUnitField,
   CombatV6UnitChanges,
   CombatV6TrainingUnitViewV1 as Unit,
-} from '../contracts/combatV6';
+} from '../contracts/combatV6.js';
 
 const fields = [
   'publicBars',

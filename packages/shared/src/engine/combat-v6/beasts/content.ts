@@ -1,9 +1,9 @@
-import { StatusCategory, StatusTick, TickKind, type StatusDef } from '../core';
-import progressionData from './data/progression.json';
-import skillsData from './data/skills.json';
-import speciesData from './data/species.json';
-import { loadBeastPacks } from './pack';
-import { compileBeastSkill } from './skill-compiler';
+import { StatusCategory, StatusTick, TickKind, type StatusDef } from '../core/index.js';
+import progressionData from './data/progression.json' with { type: 'json' };
+import skillsData from './data/skills.json' with { type: 'json' };
+import speciesData from './data/species.json' with { type: 'json' };
+import { loadBeastPacks } from './pack.js';
+import { compileBeastSkill } from './skill-compiler.js';
 
 const packs = loadBeastPacks(speciesData, skillsData, progressionData);
 export const BEAST_SPECIES_REVISION = packs.species.contentRevision;

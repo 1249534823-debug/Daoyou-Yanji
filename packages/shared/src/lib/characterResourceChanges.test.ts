@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { ResourceChangeDescriptor, ResourceScope } from '@daoyou/shared/contracts/resources';
-import { withCharacterPanelInvalidations } from './characterResourceChanges';
+import { withCharacterPanelInvalidations } from './characterResourceChanges.js';
 
 const scope: ResourceScope = { kind: 'cultivator', id: 'player-1' };
 const change = (resourceTopic: ResourceChangeDescriptor['resourceTopic'], id = scope.id) => ({ scope: { ...scope, id }, resourceTopic, operation: 'invalidate' as const, eventType: 'test.changed' });

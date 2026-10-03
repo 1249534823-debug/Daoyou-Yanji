@@ -10,8 +10,8 @@ import {
   QUANTITY_RANGE_MAP,
   RANK_TO_QUALITY,
   TYPE_CHANCE_MAP,
-} from './config';
-import { type MaterialRandomOptions, type MaterialSkeleton } from './types';
+} from './config.js';
+import { type MaterialRandomOptions, type MaterialSkeleton } from './types.js';
 
 export class MaterialGenerator {
   public static generateRandomSkeletons(

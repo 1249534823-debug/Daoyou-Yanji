@@ -1,5 +1,5 @@
-import { redis } from '@server/lib/redis';
-import * as auctionRepository from '@server/lib/repositories/auctionRepository';
+import { redis } from '@server/lib/redis/index.js';
+import * as auctionRepository from '@server/lib/repositories/auctionRepository.js';
 import {
   AUCTION_MAX_TRANSACTION_TOTAL,
   calculateAuctionSettlement,
@@ -22,31 +22,31 @@ import {
 import { itemDefinition, ItemGrantSchema } from '@daoyou/shared/inventory';
 import type { MailAttachment } from '@daoyou/shared/types/mail';
 import { and, eq, sql } from 'drizzle-orm';
-import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db';
-import * as schema from '@server/lib/drizzle/schema';
+import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
+import * as schema from '@server/lib/drizzle/schema.js';
 import {
   beastFromRow,
   beastIndividualData,
   readBeastRoster,
-} from '@server/lib/repositories/combatV6BeastRepository';
-import { assertBeastIdle, BeastError } from '@server/combat/application/BeastMutationGuard';
+} from '@server/lib/repositories/combatV6BeastRepository.js';
+import { assertBeastIdle, BeastError } from '@server/combat/application/BeastMutationGuard.js';
 import {
   assertFriend,
   FriendServiceError,
   getInviteTarget,
-} from '@server/social/application/FriendService';
+} from '@server/social/application/FriendService.js';
 import {
   assertInventoryIdle,
   InventoryError,
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/operations';
-import { publicMailAttachment } from '@server/mail/application/MailInventory';
-import { MailService } from '@server/mail/application/MailService';
+} from '@server/inventory/operations.js';
+import { publicMailAttachment } from '@server/mail/application/MailInventory.js';
+import { MailService } from '@server/mail/application/MailService.js';
 import {
   consumeFirstTalismanByScenario,
   TalismanScenarioError,
-} from '@server/inscriptions/application/TalismanScenarioService';
+} from '@server/inscriptions/application/TalismanScenarioService.js';
 
 export class AuctionServiceError extends Error {
   constructor(

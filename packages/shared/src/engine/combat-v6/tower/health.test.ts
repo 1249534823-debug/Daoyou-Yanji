@@ -1,20 +1,20 @@
 import { describe, expect, it } from 'vitest';
-import { automaticCommands } from '../../../combat-v6/auto';
+import { automaticCommands } from '../../../combat-v6/auto.js';
 import {
   buildTowerBlessingChoices,
   TOWER_ELIGIBLE_REALMS,
-} from '../../../lib/tower/helpers';
-import { getTowerSeasonMeta } from '../../../lib/tower/season';
-import { createTowerWeek, TOWER_ENCOUNTERS } from '../../../lib/tower/weekly';
-import { applyCultivate, physicalBase } from '../rules-daoyou/formulas';
-import { compileTowerEncounter } from './content';
-import mechanics from './data/mechanics.json';
+} from '../../../lib/tower/helpers.js';
+import { getTowerSeasonMeta } from '../../../lib/tower/season.js';
+import { createTowerWeek, TOWER_ENCOUNTERS } from '../../../lib/tower/weekly.js';
+import { applyCultivate, physicalBase } from '../rules-daoyou/formulas.js';
+import { compileTowerEncounter } from './content.js';
+import mechanics from './data/mechanics.json' with { type: 'json' };
 import {
   createTowerHost,
   projectTowerPlayer,
   type TowerBlessings,
-} from './host';
-import { towerReferenceBuild } from './reference-fixtures';
+} from './host.js';
+import { towerReferenceBuild } from './reference-fixtures.js';
 
 const week = createTowerWeek(getTowerSeasonMeta(new Date('2026-09-23')));
 

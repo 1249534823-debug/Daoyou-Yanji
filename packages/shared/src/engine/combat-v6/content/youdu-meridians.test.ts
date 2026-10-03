@@ -1,12 +1,12 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { createBattle, effectiveAttrs, restoreBattle, SeededRng, type Command, type SkillDef } from '../core';
-import { createDaoyouRuleset, daoyouFormulas } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_6D_VERSIONS as versions } from '../version';
-import { createEmptySectCombatProgressV6 } from '../build-state';
-import { compileSectDefinitionV6 } from './compiler';
-import { YOUDU_V6_DEFINITION as definition } from './youdu';
-import { DAO_EQUIPMENT_ARTS_V1 } from '../equipment/special-content';
-import { BEAST_SKILLS, BEAST_STATUS_DEFS } from '../beasts/content';
+import { createBattle, effectiveAttrs, restoreBattle, SeededRng, type Command, type SkillDef } from '../core/index.js';
+import { createDaoyouRuleset, daoyouFormulas } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_6D_VERSIONS as versions } from '../version.js';
+import { createEmptySectCombatProgressV6 } from '../build-state/index.js';
+import { compileSectDefinitionV6 } from './compiler.js';
+import { YOUDU_V6_DEFINITION as definition } from './youdu.js';
+import { DAO_EQUIPMENT_ARTS_V1 } from '../equipment/special-content.js';
+import { BEAST_SKILLS, BEAST_STATUS_DEFS } from '../beasts/content.js';
 
 const S = (x: string) => `youdu.skill.${x}`;
 const T = (x: string) => `youdu.status.${x}`;

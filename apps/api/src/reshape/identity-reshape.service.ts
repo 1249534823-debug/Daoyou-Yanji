@@ -1,5 +1,5 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   abandonIdentityReshape,
   confirmIdentityReshape,
@@ -8,8 +8,8 @@ import {
   getIdentityReshapeTalismanCount,
   saveIdentityReshapeDraft,
   startIdentityReshape,
-} from '@server/reshape/application/IdentityReshapeService';
-import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
+} from '@server/reshape/application/IdentityReshapeService.js';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
 import {
   IDENTITY_RESHAPE_DESCRIPTION_MAX_LENGTH,
   IDENTITY_RESHAPE_DESCRIPTION_MIN_LENGTH,

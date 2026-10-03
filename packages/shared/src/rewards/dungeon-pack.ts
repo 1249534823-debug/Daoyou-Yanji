@@ -1,8 +1,8 @@
 import { formatContentPackErrors } from '@daoyou/shared/lib/content-pack-errors';
 import { z } from 'zod';
-import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '../engine/combat-v6/beasts/content';
-import { findItemDefinition } from '../items/registry';
-import raw from './data/dungeon.json';
+import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '../engine/combat-v6/beasts/content.js';
+import { findItemDefinition } from '../items/registry.js';
+import raw from './data/dungeon.json' with { type: 'json' };
 
 const integer = z.number().int().min(0).max(1000000);
 const source = z.strictObject({

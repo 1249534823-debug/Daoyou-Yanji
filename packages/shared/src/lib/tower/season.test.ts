@@ -3,7 +3,7 @@ import {
   getNextTowerSeasonMeta,
   getTowerSeasonMeta,
   isTowerSeasonKeyCurrent,
-} from './season';
+} from './season.js';
 
 describe('tower season helpers', () => {
   it('ISO 周年跨年时领奖周键仍单调递增', () => {

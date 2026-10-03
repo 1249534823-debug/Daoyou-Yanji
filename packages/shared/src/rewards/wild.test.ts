@@ -1,12 +1,12 @@
 import { expect, it } from 'vitest';
-import { WILD_REGIONS } from '../engine/combat-v6/wild/content';
-import { ItemGrantSchema } from '../inventory';
-import { BOOKS } from '../items/definitions/beast-books';
+import { WILD_REGIONS } from '../engine/combat-v6/wild/content.js';
+import { ItemGrantSchema } from '../inventory/index.js';
+import { BOOKS } from '../items/definitions/beast-books.js';
 import {
   WILD_DROP_POOLS,
   WILD_INHERITANCE_POOL,
   wildItemRewards,
-} from './wild';
+} from './wild.js';
 
 it('所有野外只掉落传承灵印，未命中时无物品奖励', () => {
   expect(Object.keys(WILD_DROP_POOLS).sort()).toEqual(

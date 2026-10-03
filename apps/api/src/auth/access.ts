@@ -3,7 +3,7 @@ import {
   SetMetadata,
   type ExecutionContext,
 } from '@nestjs/common';
-import type { GameRequest } from '../http/request';
+import type { GameRequest } from '../http/request.js';
 
 export type AccessPolicy =
   'public' | 'user' | 'active' | 'admin' | 'account-admin';

@@ -45,37 +45,37 @@ import type { CultivatorCondition } from '@daoyou/shared/types/condition';
 import type { RealmType } from '@daoyou/shared/types/constants';
 import { eq, sql } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
-import { db } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { redis } from '@server/lib/redis/index';
-import { parseRedisJson } from '@server/lib/redis/json';
+import { db } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import { redis } from '@server/lib/redis/index.js';
+import { parseRedisJson } from '@server/lib/redis/json.js';
 import {
   redisLockKeys,
   withRedisLock,
   type RedisLeaseContext,
-} from '@server/lib/redis/lock';
+} from '@server/lib/redis/lock.js';
 import {
   archiveCombatV6Replay,
   combatV6ReplayExists,
-} from '@server/lib/repositories/combatV6ReplayRepository';
-import { claimMessageForConsumer } from '@server/lib/repositories/messageConsumptionRepository';
-import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository';
+} from '@server/lib/repositories/combatV6ReplayRepository.js';
+import { claimMessageForConsumer } from '@server/lib/repositories/messageConsumptionRepository.js';
+import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
 import {
   getOrPublishTowerWeek,
   readTowerPublishedWeek,
   readTowerRewardState,
   writeTowerRewardState,
-} from '@server/lib/repositories/towerRepository';
-import { assembleCombatV6TrainingPlayer } from '@server/combat/application/CombatV6BuildService';
-import { ConditionService } from '@server/cultivator/application/ConditionService';
+} from '@server/lib/repositories/towerRepository.js';
+import { assembleCombatV6TrainingPlayer } from '@server/combat/application/CombatV6BuildService.js';
+import { ConditionService } from '@server/cultivator/application/ConditionService.js';
 import {
   assertInventoryIdle,
   grantInventory,
-} from '@server/inventory/operations';
-import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
-import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
-import { updateTowerWeeklyRecord } from '@server/tower/application/runtime/leaderboard';
-import { hasActiveTower, towerRunKey } from '@server/tower/application/runtime/occupancy';
+} from '@server/inventory/operations.js';
+import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster.js';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
+import { updateTowerWeeklyRecord } from '@server/tower/application/runtime/leaderboard.js';
+import { hasActiveTower, towerRunKey } from '@server/tower/application/runtime/occupancy.js';
 
 export class TowerV6Error extends Error {}
 

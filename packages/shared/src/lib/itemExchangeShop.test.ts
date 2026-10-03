@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getItemExchangePurchaseWeek } from './itemExchangeShop';
+import { getItemExchangePurchaseWeek } from './itemExchangeShop.js';
 
 describe('item exchange shop rules', () => {
   it('uses Monday as the Shanghai weekly boundary', () => {

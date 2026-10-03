@@ -8,19 +8,19 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError';
-import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors';
-import { CraftCommandError } from '@server/forging/application/CraftApplicationService';
-import { QiServiceError } from '@server/cultivator/application/QiService';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError.js';
+import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors.js';
+import { CraftCommandError } from '@server/forging/application/CraftApplicationService.js';
+import { QiServiceError } from '@server/cultivator/application/QiService.js';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { FirstQuery } from '../http/first-query';
-import { JsonBody } from '../http/json-body';
-import { CraftCommandSchema, CraftSchema } from './alchemy-input';
-import { CraftService } from './craft.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { FirstQuery } from '../http/first-query.js';
+import { JsonBody } from '../http/json-body.js';
+import { CraftCommandSchema, CraftSchema } from './alchemy-input.js';
+import { CraftService } from './craft.service.js';
 
 const retired = new Set(['refine', 'create_skill', 'create_gongfa']);
 const retiredMessage = '旧功法、神通及装备生产已停用，历史物品保留在洞府宝库';

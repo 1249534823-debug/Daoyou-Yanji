@@ -1,17 +1,17 @@
 import { describe, expect, it } from 'vitest';
-import { manualJadeCost } from '../../../manuals/action';
-import { compileCharacterPanelV1 } from '../projection/character-panel-v1';
-import { resolveCombatCapabilitiesV1 } from './capabilities';
+import { manualJadeCost } from '../../../manuals/action.js';
+import { compileCharacterPanelV1 } from '../projection/character-panel-v1.js';
+import { resolveCombatCapabilitiesV1 } from './capabilities.js';
 import {
   compileCharacterManualsV1,
   getManualSlotCount,
   validateManualStateV1,
   withManualAttributes,
-} from './compiler';
-import { MANUAL_PACK } from './content';
-import { loadManualPack } from './pack';
-import { changeManual } from './state';
-import type { CultivatorManualStateV1 } from './types';
+} from './compiler.js';
+import { MANUAL_PACK } from './content.js';
+import { loadManualPack } from './pack.js';
+import { changeManual } from './state.js';
+import type { CultivatorManualStateV1 } from './types.js';
 
 const id = 'character_manual.changchun';
 const empty = (): CultivatorManualStateV1 => ({

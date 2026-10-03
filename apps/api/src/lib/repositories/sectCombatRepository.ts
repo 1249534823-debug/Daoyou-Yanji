@@ -1,4 +1,4 @@
-import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db';
+import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db.js';
 import {
   cultivators,
   sectCombatStates,
@@ -6,7 +6,7 @@ import {
   sectMeridianLoadouts,
   sectMeridianNodes,
   sectMethodProgress,
-} from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/schema.js';
 import { createFreshCombatV6MethodLevels } from '@daoyou/shared/engine/combat-v6/build-state';
 import {
   COMBAT_V6_SECT_DEFINITIONS,

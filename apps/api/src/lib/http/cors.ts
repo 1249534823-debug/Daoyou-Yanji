@@ -1,4 +1,4 @@
-import { resolveCorsOrigin } from './origins';
+import { resolveCorsOrigin } from './origins.js';
 
 export const apiCorsOptions = {
   origin: resolveCorsOrigin,

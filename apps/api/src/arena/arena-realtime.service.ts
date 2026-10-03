@@ -1,24 +1,24 @@
 import { Inject, Injectable, type OnModuleDestroy } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { isAllowedRealtimeOrigin } from '@server/lib/http/realtimeOrigin';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { isAllowedRealtimeOrigin } from '@server/lib/http/realtimeOrigin.js';
 import {
   arenaSocketState,
   subscribeArenaSpectators,
   subscribeArenaV6,
-} from '@server/combat/application/CombatV6ArenaBroadcast';
+} from '@server/combat/application/CombatV6ArenaBroadcast.js';
 import {
   ArenaV6Error,
   ownedArenaV6,
   watchedArenaV6,
-} from '@server/combat/application/CombatV6ArenaService';
-import { CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore';
+} from '@server/combat/application/CombatV6ArenaService.js';
+import { CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore.js';
 import { fromNodeHeaders } from 'better-auth/node';
 import type { IncomingMessage } from 'node:http';
 import { WebSocket } from 'ws';
 import { z } from 'zod';
-import { SessionService } from '../auth/session.service';
-import type { HandshakeError } from '../http/websocket-request';
-import { arenaSocketRoute } from './arena-socket';
+import { SessionService } from '../auth/session.service.js';
+import type { HandshakeError } from '../http/websocket-request.js';
+import { arenaSocketRoute } from './arena-socket.js';
 
 type ArenaConnection = {
   actor: ActiveCultivatorRef;

@@ -3,7 +3,7 @@ import type {
   CultivatorCondition,
 } from '@daoyou/shared/types/condition';
 import type { RealmType } from '@daoyou/shared/types/constants';
-import type { ApiSuccess } from './http';
+import type { ApiSuccess } from './http.js';
 
 export interface BodyCultivationBreakthroughReadinessData {
   currentRealm: BodyCultivationRealm;

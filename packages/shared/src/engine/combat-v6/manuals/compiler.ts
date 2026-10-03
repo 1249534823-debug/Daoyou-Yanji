@@ -3,10 +3,10 @@ import type {
   CombatV6ProjectionDiagnostic,
   CultivatorBaseCombatInput,
 } from '../projection/types.ts';
-import { DaoyouRule } from '../rules-daoyou/constants';
-import { manualAttributeValue } from './attributes';
+import { DaoyouRule } from '../rules-daoyou/constants.js';
+import { manualAttributeValue } from './attributes.js';
 import { CHARACTER_MANUALS_V1, manualRule } from './content.ts';
-import { compileManualSkill, manualMechanismValue } from './mechanism';
+import { compileManualSkill, manualMechanismValue } from './mechanism.js';
 import { MANUAL_REALMS } from './pack.ts';
 import type {
   CharacterManualDefV1,

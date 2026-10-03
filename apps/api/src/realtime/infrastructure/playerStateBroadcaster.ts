@@ -7,8 +7,8 @@ import {
   encodeNatsSubjectToken,
   publishNatsCoreMessage,
   subscribeNatsCoreSubject,
-} from '@server/realtime/infrastructure/natsCorePubSub';
-import { createPubSubEnvelope, parsePubSubEnvelope } from '@server/realtime/infrastructure/pubSubEnvelope';
+} from '@server/realtime/infrastructure/natsCorePubSub.js';
+import { createPubSubEnvelope, parsePubSubEnvelope } from '@server/realtime/infrastructure/pubSubEnvelope.js';
 
 type Listener = (changes: ResourceChange[]) => void;
 

@@ -1,11 +1,11 @@
 import { z } from 'zod';
-import { QUALITY_VALUES } from '../../../types/constants';
-import { EQUIPMENT_LEVELS } from './realm';
+import { QUALITY_VALUES } from '../../../types/constants.js';
+import { EQUIPMENT_LEVELS } from './realm.js';
 import {
   DAO_EQUIPMENT_SLOTS,
   type DaoEquipmentArtDefV1,
   type DaoEquipmentEssenceDefV1,
-} from './types';
+} from './types.js';
 
 const probability = z.number().min(0).max(1);
 export const EquipmentForgingPackShape = z.strictObject({

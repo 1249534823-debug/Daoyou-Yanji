@@ -4,7 +4,7 @@ import {
 } from '@daoyou/shared/engine/material/creation/config';
 import type { BlackMarketNpcId } from '@daoyou/shared/types/blackMarket';
 import type { MaterialType, Quality } from '@daoyou/shared/types/constants';
-import { blackMarketUnit } from './blackMarketRules';
+import { blackMarketUnit } from './blackMarketRules.js';
 
 export type BlackMarketDisposition =
   'unyielding' | 'shrewd' | 'flexible' | 'desperate';

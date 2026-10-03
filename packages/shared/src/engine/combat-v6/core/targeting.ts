@@ -1,4 +1,4 @@
-import { combatModifiers, modifierValue, isReviveBlocked } from './modifiers';
+import { combatModifiers, modifierValue, isReviveBlocked } from './modifiers.js';
 import { DEFAULT_TARGET_COUNT } from './constants.ts';
 import type { BattleContext } from './context.ts';
 import { TargetMode, TargetSide } from './enums.ts';

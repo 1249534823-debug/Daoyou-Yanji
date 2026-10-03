@@ -2,8 +2,8 @@ import {
   getExecutor,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
-import * as schema from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/db.js';
+import * as schema from '@server/lib/drizzle/schema.js';
 import type { BodyCultivationBreakthroughReadinessData } from '@daoyou/shared/contracts/bodyCultivation';
 import { previewBodyCultivationRealmBreakthrough } from '@daoyou/shared/lib/bodyCultivation/breakthrough';
 import type { Cultivator } from '@daoyou/shared/types/cultivator';

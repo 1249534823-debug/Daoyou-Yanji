@@ -6,7 +6,7 @@ import {
   type ExecutionContext,
 } from '@nestjs/common';
 import type { Request } from 'express';
-import { AppConfigService } from '../config/app-config.service';
+import { AppConfigService } from '../config/app-config.service.js';
 @Injectable()
 export class InternalCronGuard implements CanActivate {
   constructor(

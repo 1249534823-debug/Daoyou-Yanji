@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import type { SectCombatProgressV6 } from '../engine/combat-v6/content/types';
-import type { SectCombatView } from './combatV6';
+import type { SectCombatProgressV6 } from '../engine/combat-v6/content/types.js';
+import type { SectCombatView } from './combatV6.js';
 
 const reference = {
   membershipId: z.uuid(),

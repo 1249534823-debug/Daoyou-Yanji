@@ -8,15 +8,15 @@ import type {
   WorldChatMessageType,
   WorldChatPayload,
 } from '@daoyou/shared/types/world-chat';
-import { readCultivatorPublicIdentity } from '@server/cultivator/facts';
-import { readInventory } from '@server/inventory/operations';
-import { type DbClient } from '@server/lib/drizzle/db';
-import { readBeastRoster } from '@server/lib/repositories/combatV6BeastRepository';
+import { readCultivatorPublicIdentity } from '@server/cultivator/facts.js';
+import { readInventory } from '@server/inventory/operations.js';
+import { type DbClient } from '@server/lib/drizzle/db.js';
+import { readBeastRoster } from '@server/lib/repositories/combatV6BeastRepository.js';
 import {
   createCombatV6ReplayShare,
   findOwnedCombatV6Replay,
-} from '@server/lib/repositories/combatV6ReplayRepository';
-import { textFilter } from '@server/social/application/textFilter';
+} from '@server/lib/repositories/combatV6ReplayRepository.js';
+import { textFilter } from '@server/social/application/textFilter.js';
 
 export class ChatMessageApplicationError extends Error {
   constructor(

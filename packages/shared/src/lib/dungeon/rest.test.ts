@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import type { Consumable } from '../../types/cultivator';
-import { canUseDungeonRecoveryPill, isDungeonRecoveryPill } from './rest';
+import type { Consumable } from '../../types/cultivator.js';
+import { canUseDungeonRecoveryPill, isDungeonRecoveryPill } from './rest.js';
 
 const pill: Consumable = {
   name: '回灵丹',

@@ -5,10 +5,10 @@ import {
   EventType,
   createBattle,
   restoreBattle,
-} from '../core';
-import { createDaoyouRuleset } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_7C_VERSIONS } from '../version';
-import { BEAST_SKILLS } from './content';
+} from '../core/index.js';
+import { createDaoyouRuleset } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_7C_VERSIONS } from '../version.js';
+import { BEAST_SKILLS } from './content.js';
 
 const groupIds = [
   'beast.thunderstorm',

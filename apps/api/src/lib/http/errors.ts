@@ -1,10 +1,10 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
 import {
   isRedisLockContention,
   LockAcquisitionError,
   RedisLeaseLostError,
-} from '@server/lib/redis/lock';
-import { CombatV6MutationLockedError } from '@server/combat/mutation-policy';
+} from '@server/lib/redis/lock.js';
+import { CombatV6MutationLockedError } from '@server/combat/mutation-policy.js';
 
 export function errorBody(
   message: string,

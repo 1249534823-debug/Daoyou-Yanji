@@ -1,4 +1,4 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
 function parseCommaSeparatedEnv(name: 'ADMIN_EMAILS' | 'ADMIN_USER_IDS') {
   return (getRuntimeEnvironment()[name] ?? '')
     .split(',')

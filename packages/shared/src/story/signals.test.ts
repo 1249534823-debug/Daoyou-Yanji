@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { storyMarkForSignal } from './signals';
+import { storyMarkForSignal } from './signals.js';
 
 describe('story signals', () => {
   it('maps a finished craft and a cleared dungeon', () => {

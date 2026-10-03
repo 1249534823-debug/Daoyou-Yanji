@@ -1,23 +1,23 @@
-import { readCombatV6ConditionAuthority } from '@server/combat/application/CombatV6ConditionAuthority';
+import { readCombatV6ConditionAuthority } from '@server/combat/application/CombatV6ConditionAuthority.js';
 import {
   db,
   getExecutor,
   runDbTasks,
   type DbExecutor,
-} from '@server/lib/drizzle/db';
+} from '@server/lib/drizzle/db.js';
 import {
   cultivators,
   cultivatorTasks,
   mails,
   sectMemberships,
-} from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/schema.js';
 import {
   readResourceVersions,
   readScopeVersion,
-} from '@server/lib/repositories/playerStateRepository';
-import { getPlayerIdentityCultivatorById } from '@server/cultivator/application/readers/CultivatorProfileRepository';
-import { QiService } from '@server/cultivator/application/QiService';
-import { getSectCombatView } from '@server/combat/application/CombatV6BuildService';
+} from '@server/lib/repositories/playerStateRepository.js';
+import { getPlayerIdentityCultivatorById } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
+import { QiService } from '@server/cultivator/application/QiService.js';
+import { getSectCombatView } from '@server/combat/application/CombatV6BuildService.js';
 import { getOrInitCultivationProgress } from '@daoyou/shared/engine/cultivation/cultivationUtils';
 import {
   PLAYER_RESOURCE_KEYS,

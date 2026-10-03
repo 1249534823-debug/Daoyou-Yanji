@@ -4,7 +4,7 @@ import {
   divinationRewardFacts,
   resolveDivination,
   type DivinationDice,
-} from './divination';
+} from './divination.js';
 
 describe('每日求签', () => {
   it('全部216种结果覆盖26个卦象，只有六六六发大聚灵符，排列不改变卦象', () => {

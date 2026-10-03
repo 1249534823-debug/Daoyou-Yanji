@@ -2,9 +2,9 @@ import { z } from 'zod';
 import type {
   SectBattleOpponent,
   SectBattleSnapshot,
-} from '../engine/combat-v6/sect/host';
-import { REALM_STAGE_VALUES, REALM_VALUES } from '../types/constants';
-import type { CombatV6TrainingSessionViewV1 } from './combatV6';
+} from '../engine/combat-v6/sect/host.js';
+import { REALM_STAGE_VALUES, REALM_VALUES } from '../types/constants.js';
+import type { CombatV6TrainingSessionViewV1 } from './combatV6.js';
 
 export const SectV6TargetSchema = z
   .object({

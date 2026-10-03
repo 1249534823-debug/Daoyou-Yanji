@@ -1,6 +1,6 @@
-import { SeededRng } from '../engine/combat-v6/core';
-import type { DaoEquipmentSlot } from '../engine/combat-v6/equipment/types';
-import { DAO_WEAPONS, type DaoWeaponType } from '../engine/combat-v6/equipment/weapons';
+import { SeededRng } from '../engine/combat-v6/core/index.js';
+import type { DaoEquipmentSlot } from '../engine/combat-v6/equipment/types.js';
+import { DAO_WEAPONS, type DaoWeaponType } from '../engine/combat-v6/equipment/weapons.js';
 // One explicit naming tier per equipment level. Cosmetic draws never affect equipment RNG.
 const tiers = [
   '青石',

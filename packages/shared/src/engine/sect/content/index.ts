@@ -6,4 +6,4 @@ export {
   productionSectRuntime,
   sectRegistry,
   type ProductionSectEntry,
-} from './productionRuntime';
+} from './productionRuntime.js';

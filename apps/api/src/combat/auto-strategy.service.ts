@@ -3,7 +3,7 @@ import {
   readCombatAutoStrategy,
   resetCombatAutoStrategy,
   saveCombatAutoStrategy,
-} from '@server/combat/application/CombatV6AutoStrategyService';
+} from '@server/combat/application/CombatV6AutoStrategyService.js';
 import type { AutoStrategy } from '@daoyou/shared/combat-v6/auto-strategy';
 
 @Injectable()

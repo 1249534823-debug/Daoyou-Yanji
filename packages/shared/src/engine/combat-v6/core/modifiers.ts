@@ -1,9 +1,9 @@
-import type { BattleContext } from './context';
-import { evalExpr } from './expr';
-import { passiveSkills, skillOf } from './skills';
-import type { CombatModifier, SkillDef, Unit } from './types';
-import { isStanding } from './units';
-import { matchesWhen, type WhenScope } from './when';
+import type { BattleContext } from './context.js';
+import { evalExpr } from './expr.js';
+import { passiveSkills, skillOf } from './skills.js';
+import type { CombatModifier, SkillDef, Unit } from './types.js';
+import { isStanding } from './units.js';
+import { matchesWhen, type WhenScope } from './when.js';
 
 export function combatModifiers(ctx: BattleContext, source: Unit, scope: Omit<WhenScope, 'source'> = {}): CombatModifier[] {
   const result: CombatModifier[] = [];

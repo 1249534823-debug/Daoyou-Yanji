@@ -3,21 +3,21 @@ import {
   runDbTasks,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
-import * as schema from '@server/lib/drizzle/schema';
-import { hasActiveDungeon } from '@server/dungeon/occupancy';
-import { loadCultivatorSectState } from '@server/lib/repositories/sectRepository';
+} from '@server/lib/drizzle/db.js';
+import * as schema from '@server/lib/drizzle/schema.js';
+import { hasActiveDungeon } from '@server/dungeon/occupancy.js';
+import { loadCultivatorSectState } from '@server/lib/repositories/sectRepository.js';
 import { getOrInitCultivationProgress } from '@daoyou/shared/engine/cultivation/cultivationUtils';
 import type { CultivatorDisplayInput } from '@daoyou/shared/lib/cultivatorDisplay';
 import type { CultivatorCondition } from '@daoyou/shared/types/condition';
 import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import type { CultivationProgress, Cultivator } from '@daoyou/shared/types/cultivator';
 import { and, eq } from 'drizzle-orm';
-import { readCombatV6ConditionAuthority } from '@server/combat/application/CombatV6ConditionAuthority';
+import { readCombatV6ConditionAuthority } from '@server/combat/application/CombatV6ConditionAuthority.js';
 import {
   getCultivatorPreHeavenFates,
   mapSpiritualRoots,
-} from '@server/cultivator/application/readers/CultivatorProfileRepository';
+} from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 
 function activeOwnedCultivatorFilter(userId: string, cultivatorId: string) {
   return and(

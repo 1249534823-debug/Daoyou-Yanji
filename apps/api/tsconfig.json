@@ -8,7 +8,12 @@
     "paths": {
       "@server/*": ["./src/*"]
     },
-    "rootDir": "../.."
+    "rootDir": "./src",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "sourceMap": true,
+    "emitDecoratorMetadata": false,
+    "noEmitOnError": true
   },
   "include": ["src/**/*.ts"],
   "exclude": ["dist", "node_modules"]

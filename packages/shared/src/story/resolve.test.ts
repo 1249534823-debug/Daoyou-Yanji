@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getStoryChapter, openingStoryProgress } from './catalog';
+import { getStoryChapter, openingStoryProgress } from './catalog.js';
 import {
   acknowledgeGuide,
   acknowledgePerformance,
@@ -7,13 +7,13 @@ import {
   presentStory,
   resolveStory,
   rewindToUnwatchedPerformance,
-} from './resolve';
+} from './resolve.js';
 import {
   emptyStoryFacts,
   StoryChapterSchema,
   type StoryChapter,
   type StoryProgress,
-} from './schema';
+} from './schema.js';
 
 const chapter: StoryChapter = {
   id: 'sample',

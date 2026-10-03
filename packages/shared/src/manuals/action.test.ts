@@ -2,11 +2,11 @@ import { expect, it } from 'vitest';
 import {
   ManualActionSchema,
   type ManualAction,
-} from '../contracts/combatV6Manuals';
-import { MANUAL_PACK } from '../engine/combat-v6/manuals/content';
-import type { CultivatorManualStateV1 } from '../engine/combat-v6/manuals/types';
-import type { InventoryItem } from '../inventory';
-import { manualJadeCost, previewManualAction } from './action';
+} from '../contracts/combatV6Manuals.js';
+import { MANUAL_PACK } from '../engine/combat-v6/manuals/content.js';
+import type { CultivatorManualStateV1 } from '../engine/combat-v6/manuals/types.js';
+import type { InventoryItem } from '../inventory/index.js';
+import { manualJadeCost, previewManualAction } from './action.js';
 
 const state: CultivatorManualStateV1 = {
   version: 1,

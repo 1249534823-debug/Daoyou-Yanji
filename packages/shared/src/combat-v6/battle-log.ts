@@ -1,7 +1,7 @@
 import type {
   CombatV6DisplayEvent,
   CombatV6TrainingSessionViewV1,
-} from '../contracts/combatV6';
+} from '../contracts/combatV6.js';
 type CombatV6Unit = CombatV6TrainingSessionViewV1['units'][number];
 type SequencedEvent = CombatV6TrainingSessionViewV1['events'][number];
 type LogSession = Pick<CombatV6TrainingSessionViewV1, 'units' | 'display'> & {

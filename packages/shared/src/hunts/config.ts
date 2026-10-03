@@ -1,6 +1,6 @@
-import { getRealmStageLevel } from '../config/realmProgression';
-import { getWorldMapLocation } from '../lib/game/mapSystem';
-import { REALM_VALUES } from '../types/constants';
+import { getRealmStageLevel } from '../config/realmProgression.js';
+import { getWorldMapLocation } from '../lib/game/mapSystem.js';
+import { REALM_VALUES } from '../types/constants.js';
 
 export const HUNT_CYCLE_MS = 6 * 60 * 60 * 1000;
 const LEGACY_HUNT_CYCLE_MS = 2 * 60 * 60 * 1000;

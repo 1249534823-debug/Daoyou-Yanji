@@ -4,15 +4,15 @@ import {
 } from '@daoyou/shared/contracts/adminRewards';
 import type { MailAttachment } from '@daoyou/shared/types/mail';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { redeemCodes } from '@server/lib/drizzle/schema';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { redeemCodes } from '@server/lib/drizzle/schema.js';
 import {
   generateRedeemCode,
   isValidRedeemCodeFormat,
   normalizeRedeemCode,
-} from '@server/lib/redeem/code';
-import { describeRedeemCodeReward } from '@server/lib/redeem/reward';
+} from '@server/lib/redeem/code.js';
+import { describeRedeemCodeReward } from '@server/lib/redeem/reward.js';
 import { and, desc, eq, type SQL } from 'drizzle-orm';
 import { z } from 'zod';
 

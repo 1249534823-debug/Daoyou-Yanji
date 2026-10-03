@@ -16,7 +16,7 @@ import type {
   SectDeliveryRequirement,
   SectMaterialDeliveryRequirement,
   SectPillTraitKey,
-} from './taskRequirements';
+} from './taskRequirements.js';
 
 export interface SectPillSubmissionFacts {
   kind: 'pill';

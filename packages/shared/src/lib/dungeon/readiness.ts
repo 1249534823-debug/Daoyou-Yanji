@@ -1,5 +1,5 @@
 import type { RealmType } from '@daoyou/shared/types/constants';
-import { canChallengeDungeonRealm } from '../game/mapSystem';
+import { canChallengeDungeonRealm } from '../game/mapSystem.js';
 
 export function dungeonReadiness(input: {
   realm: RealmType;

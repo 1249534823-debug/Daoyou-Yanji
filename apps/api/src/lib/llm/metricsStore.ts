@@ -1,6 +1,6 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
-import { redis } from '@server/lib/redis';
-import type { LlmCallMetrics, LlmSceneId } from '@server/lib/llm/types';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
+import { redis } from '@server/lib/redis/index.js';
+import type { LlmCallMetrics, LlmSceneId } from '@server/lib/llm/types.js';
 
 const LLM_METRICS_REDIS_KEY = 'admin:llm-metrics:events:v1';
 const MAX_REDIS_EVENTS = 2000;

@@ -4,13 +4,13 @@
   "sourceRoot": "src",
   "entryFile": "main",
   "compilerOptions": {
-    "builder": {
-      "type": "rspack",
-      "options": {
-        "configPath": "rspack.config.mjs"
-      }
-    },
     "tsConfigPath": "tsconfig.build.json",
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "assets": [
+      {
+        "include": "prompts/*.md",
+        "watchAssets": true
+      }
+    ]
   }
 }

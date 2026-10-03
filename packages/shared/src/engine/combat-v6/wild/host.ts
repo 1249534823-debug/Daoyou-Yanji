@@ -2,10 +2,10 @@ import {
   beastAppearance,
   playerAppearances,
   type PresentedBattleInput,
-} from '../../../combat-v6/unit-appearance';
-import { BEAST_SKILLS, BEAST_STATUS_DEFS, projectBeastRoster } from '../beasts';
-import { captureSkill } from '../beasts/progression';
-import { activeBeastSkills, beastPanel } from '../beasts/projection';
+} from '../../../combat-v6/unit-appearance.js';
+import { BEAST_SKILLS, BEAST_STATUS_DEFS, projectBeastRoster } from '../beasts/index.js';
+import { captureSkill } from '../beasts/progression.js';
+import { activeBeastSkills, beastPanel } from '../beasts/projection.js';
 import { SkillTag, UnitKind, type LineupUnit } from '../core/index.ts';
 import {
   CombatV6PveHostSession,
@@ -21,8 +21,8 @@ import {
   COMBAT_V6_PHASE_6D_VERSIONS,
   COMBAT_V6_SEAL_CURVE_WILD_VERSIONS,
 } from '../version.ts';
-import { WildIndividualSchema, type WildIndividual } from './generator';
-export { generateWildEncounter, type WildCombatant } from './generator';
+import { WildIndividualSchema, type WildIndividual } from './generator.js';
+export { generateWildEncounter, type WildCombatant } from './generator.js';
 
 export const WILD_VERSIONS = COMBAT_V6_SEAL_CURVE_WILD_VERSIONS;
 export interface WildRuntimeSnapshot extends PveRestoredState {

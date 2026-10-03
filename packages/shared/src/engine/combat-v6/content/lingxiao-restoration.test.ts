@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { createBattle, restoreBattle, type Command, type LineupUnit, type SkillDef } from '../core';
-import { effectiveSpeed, healTakenFactor } from '../core/units';
-import { createDaoyouRuleset } from '../rules-daoyou';
-import { COMBAT_V6_PHASE_6D_VERSIONS as versions } from '../version';
-import { createEmptySectCombatProgressV6 } from '../build-state';
-import { compileSectDefinitionV6 } from './compiler';
-import { LINGXIAO_V6_DEFINITION } from './lingxiao';
+import { createBattle, restoreBattle, type Command, type LineupUnit, type SkillDef } from '../core/index.js';
+import { effectiveSpeed, healTakenFactor } from '../core/units.js';
+import { createDaoyouRuleset } from '../rules-daoyou/index.js';
+import { COMBAT_V6_PHASE_6D_VERSIONS as versions } from '../version.js';
+import { createEmptySectCombatProgressV6 } from '../build-state/index.js';
+import { compileSectDefinitionV6 } from './compiler.js';
+import { LINGXIAO_V6_DEFINITION } from './lingxiao.js';
 // 单独验证节点机制，不让前置节点的战斗效果干扰数值断言。
 const definition = structuredClone(LINGXIAO_V6_DEFINITION);
 for (const path of definition.paths) path.requiresConnectedNodes = false;

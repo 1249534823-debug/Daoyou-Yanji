@@ -6,15 +6,15 @@ import {
   type RealmType,
 } from '@daoyou/shared/types/constants';
 import { z } from 'zod';
-import { MINING_SCORE_TIERS } from '../mining/MiningGameRules';
+import { MINING_SCORE_TIERS } from '../mining/MiningGameRules.js';
 import {
   SectDeliveryRequirementSchema,
   type SectDeliveryRequirement,
-} from './taskRequirements';
+} from './taskRequirements.js';
 import {
   SectTaskRewardSnapshotSchema,
   type SectTaskRewardSnapshot,
-} from './taskRewards';
+} from './taskRewards.js';
 
 export const SectTaskOfferSnapshotSchema = z
   .object({

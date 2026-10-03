@@ -2,11 +2,11 @@ import type { SectContextData } from '@daoyou/shared/contracts/sect';
 import type { SectDiscipleRank } from '@daoyou/shared/engine/sect';
 import { productionSectRuntime } from '@daoyou/shared/engine/sect/content';
 import { Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { findMembership } from '@server/lib/repositories/sectRepository';
-import { readResourceWithMeta } from '@server/player/application/state/ResourceReadService';
-import { SectError } from '@server/sects/application/SectError';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { findMembership } from '@server/lib/repositories/sectRepository.js';
+import { readResourceWithMeta } from '@server/player/application/state/ResourceReadService.js';
+import { SectError } from '@server/sects/application/SectError.js';
 
 @Injectable()
 export class SectsService {

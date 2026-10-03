@@ -1,5 +1,5 @@
-import { BODY_CULTIVATION_PACK } from './pack';
-import { bodyCultivationEffectTexts } from './benefits';
+import { BODY_CULTIVATION_PACK } from './pack.js';
+import { bodyCultivationEffectTexts } from './benefits.js';
 import type {
   BodyCultivationRealm,
   BodyCultivationTrackKey,
@@ -15,8 +15,8 @@ import {
   getNextBodyCultivationRealm,
   getBodyCultivationThresholdByLevel,
   isCultivationRealmAtLeast,
-} from './config';
-import { normalizeBodyCultivationState } from './normalize';
+} from './config.js';
+import { normalizeBodyCultivationState } from './normalize.js';
 
 export interface BodyCultivationTrackSummary {
   key: BodyCultivationTrackKey;

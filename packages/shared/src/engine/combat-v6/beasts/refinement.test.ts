@@ -1,17 +1,17 @@
 import { expect, it } from 'vitest';
 import { z } from 'zod';
-import { BEAST_SPECIES } from './content';
-import schema from './data/refinement.schema.json';
-import { generateCapturedBeast } from './generator';
-import { gainBeastExp } from './progression';
-import { beastRefinementReason, refineBeast } from './refinement';
+import { BEAST_SPECIES } from './content.js';
+import schema from './data/refinement.schema.json' with { type: 'json' };
+import { generateCapturedBeast } from './generator.js';
+import { gainBeastExp } from './progression.js';
+import { beastRefinementReason, refineBeast } from './refinement.js';
 import {
   BEAST_REFINEMENT,
   BeastRefinementPackShape,
   loadBeastRefinementPack,
-} from './refinement-config';
-import { BeastSchema, GeneratedBeastSchema } from './schema';
-import { rollBeastTraits } from './trait-generator';
+} from './refinement-config.js';
+import { BeastSchema, GeneratedBeastSchema } from './schema.js';
+import { rollBeastTraits } from './trait-generator.js';
 const id = '00000000-0000-4000-8000-000000000001';
 const [normal, advanced] = BEAST_REFINEMENT.items;
 it('历史点数不足仍可洗炼，结果恢复宝宝点数并通过生成校验', () => {

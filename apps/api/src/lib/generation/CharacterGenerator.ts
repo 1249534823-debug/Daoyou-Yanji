@@ -1,10 +1,10 @@
 import { buildGeneratedCharacter } from '@daoyou/shared/engine/cultivator/creation/CharacterGenerator';
 import { CultivatorAIRawSchema } from '@daoyou/shared/engine/cultivator/creation/types';
-import { generateAiObject } from '@server/utils/aiClient';
+import { generateAiObject } from '@server/utils/aiClient.js';
 import {
   getCharacterGenerationPrompt,
   getCharacterGenerationUserPrompt,
-} from './character-prompts';
+} from './character-prompts.js';
 
 export class CharacterGenerator {
   static async generate(userInput: string) {

@@ -1,6 +1,6 @@
 import { formatContentPackErrors } from '@daoyou/shared/lib/content-pack-errors';
 import { z } from 'zod';
-import raw from './data/encounters.json';
+import raw from './data/encounters.json' with { type: 'json' };
 
 const positive = z.number().positive().max(1000000);
 const baseline = z.strictObject({

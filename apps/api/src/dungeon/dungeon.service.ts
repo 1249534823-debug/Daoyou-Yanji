@@ -1,24 +1,24 @@
 import type { CombatV6TrainingCommandRequestSchema } from '@daoyou/shared/contracts/combatV6';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import {
   executeDungeonCommand,
   readDungeonState,
-} from '@server/dungeon/application/DungeonApplicationService';
+} from '@server/dungeon/application/DungeonApplicationService.js';
 import {
   changeDungeonBattle,
   getDungeonBattle,
-} from '@server/dungeon/application/flow/combatV6';
+} from '@server/dungeon/application/flow/combatV6.js';
 import {
   checkDungeonLimit,
   getDungeonLimitConfig,
-} from '@server/dungeon/application/flow/dungeonLimiter';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { dungeonHistories } from '@server/lib/drizzle/schema';
+} from '@server/dungeon/application/flow/dungeonLimiter.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { dungeonHistories } from '@server/lib/drizzle/schema.js';
 import { desc, eq, sql } from 'drizzle-orm';
 import type { z } from 'zod';
-import { DungeonFlowService } from './application/flow/DungeonFlowService';
+import { DungeonFlowService } from './application/flow/DungeonFlowService.js';
 
 @Injectable()
 export class DungeonService {

@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { CommandType, EventType, createBattle, restoreBattle, type SkillDef, type UnitKind } from '../core';
-import { createDaoyouRuleset } from '../rules-daoyou';
-import { LINGXIAO_COMBAT } from './lingxiao-pack';
-import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version';
+import { CommandType, EventType, createBattle, restoreBattle, type SkillDef, type UnitKind } from '../core/index.js';
+import { createDaoyouRuleset } from '../rules-daoyou/index.js';
+import { LINGXIAO_COMBAT } from './lingxiao-pack.js';
+import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version.js';
 
 const skillId = (name: string) => `lingxiao.skill.${name}`;
 const ruleset = createDaoyouRuleset({ formulas: {

@@ -1,8 +1,8 @@
 import type { DungeonMaterialSelection } from '@daoyou/shared/contracts/combatV6Dungeon';
 import type { InventoryItem } from '@daoyou/shared/inventory';
 import { describe, expect, it } from 'vitest';
-import { consumeDungeonMaterials } from './materialCosts';
-import type { DungeonOptionCost } from './types';
+import { consumeDungeonMaterials } from './materialCosts.js';
+import type { DungeonOptionCost } from './types.js';
 
 const material = (
   id: string,

@@ -1,18 +1,18 @@
 import { describe, expect, it } from 'vitest';
-import { parseCombatV6Replay } from '../contracts/combatV6Runtime';
-import { projectReplayUnits } from './arena';
-import { applyUnitDelta } from './playback';
-import { combatV6Units } from './presentation';
+import { parseCombatV6Replay } from '../contracts/combatV6Runtime.js';
+import { projectReplayUnits } from './arena.js';
+import { applyUnitDelta } from './playback.js';
+import { combatV6Units } from './presentation.js';
 import {
   presentationBattle,
   presentationScenarios,
-} from './presentation-fixtures';
-import { combatV6ReplayView, createCombatV6Replay } from './replay';
+} from './presentation-fixtures.js';
+import { combatV6ReplayView, createCombatV6Replay } from './replay.js';
 import {
   replayRound,
   replaySeeker,
   startReplayTimeline,
-} from './replay-timeline';
+} from './replay-timeline.js';
 
 const id = 'c431d125-c61d-423a-9b2d-dde9dd94daac';
 function record(scenario: (typeof presentationScenarios)[number]) {

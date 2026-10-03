@@ -7,13 +7,13 @@ import {
   Post,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { IdentityReshapeServiceError } from '@server/reshape/application/IdentityReshapeService';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { JsonBody, JsonBodyParseError } from '../http/json-body';
-import { IdentityReshapeService } from './identity-reshape.service';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { IdentityReshapeServiceError } from '@server/reshape/application/IdentityReshapeService.js';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { JsonBody, JsonBodyParseError } from '../http/json-body.js';
+import { IdentityReshapeService } from './identity-reshape.service.js';
 const IdentityErrors = apiErrorFilter((error) => {
   // These routes decoded JSON outside their legacy domain error handler.
   if (error instanceof JsonBodyParseError) return undefined;

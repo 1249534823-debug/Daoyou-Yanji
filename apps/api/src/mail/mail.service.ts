@@ -1,20 +1,20 @@
 import type { SendMailRequest } from '@daoyou/shared/contracts/mail';
 import { Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { mails } from '@server/lib/drizzle/schema';
-import { publicMailAttachment } from '@server/mail/application/MailInventory';
-import type { MailAttachment } from '@server/mail/application/MailService';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { mails } from '@server/lib/drizzle/schema.js';
+import { publicMailAttachment } from '@server/mail/application/MailInventory.js';
+import type { MailAttachment } from '@server/mail/application/MailService.js';
 import {
   claimAllCultivatorMail,
   claimCultivatorMail,
   markAllCultivatorMailRead,
   markCultivatorMailRead,
   sendCultivatorMail,
-} from '@server/mail/application/PlayerMailApplicationService';
-import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
-import { scheduleSystemMailObservation } from '@server/mail/application/SystemMailService';
+} from '@server/mail/application/PlayerMailApplicationService.js';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
+import { scheduleSystemMailObservation } from '@server/mail/application/SystemMailService.js';
 import { and, desc, eq, sql } from 'drizzle-orm';
 
 @Injectable()

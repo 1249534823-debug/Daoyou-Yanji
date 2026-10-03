@@ -11,8 +11,8 @@ import {
   TargetMode,
   TargetSide,
   type SkillDef,
-} from '../core';
-import type { BeastSkillContent } from './pack';
+} from '../core/index.js';
+import type { BeastSkillContent } from './pack.js';
 
 export function compileBeastSkill(entry: BeastSkillContent): SkillDef {
   const { effect: e } = entry;

@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { REALM_VALUES } from '../../../types/constants';
-import data from './data/refinement.json';
+import { REALM_VALUES } from '../../../types/constants.js';
+import data from './data/refinement.json' with { type: 'json' };
 
 export const BeastRefinementPackShape = z.strictObject({
   $schema: z.string().optional(),

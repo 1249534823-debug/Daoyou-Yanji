@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { DomainEventDataSchemas } from '../contracts/domainEvents';
-import { generateForgedEquipment } from '../engine/combat-v6/equipment/forging';
-import { forgingShowcaseSnapshot } from './forgingShowcase';
-import { isInventoryShowcase } from './showcase';
+import { DomainEventDataSchemas } from '../contracts/domainEvents.js';
+import { generateForgedEquipment } from '../engine/combat-v6/equipment/forging.js';
+import { forgingShowcaseSnapshot } from './forgingShowcase.js';
+import { isInventoryShowcase } from './showcase.js';
 
 function equipment() {
   const result = generateForgedEquipment({

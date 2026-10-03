@@ -1,4 +1,4 @@
-import type { GuideLesson, GuideStep } from './schema';
+import type { GuideLesson, GuideStep } from './schema.js';
 
 export interface GuideState {
   cursor: number;

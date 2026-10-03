@@ -1,5 +1,5 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   advanceTower,
   changeTowerBattle,
@@ -7,8 +7,8 @@ import {
   getTowerBattle,
   getTowerView,
   startTower,
-} from '@server/tower/application/runtime/combatV6';
-import { getTowerLeaderboard } from '@server/tower/application/runtime/leaderboard';
+} from '@server/tower/application/runtime/combatV6.js';
+import { getTowerLeaderboard } from '@server/tower/application/runtime/leaderboard.js';
 import type { CombatV6TrainingCommandRequestSchema } from '@daoyou/shared/contracts/combatV6';
 import { getTowerSeasonMeta } from '@daoyou/shared/lib/tower/season';
 import type { z } from 'zod';

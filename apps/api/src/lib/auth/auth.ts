@@ -1,22 +1,22 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
 import { drizzleAdapter } from '@better-auth/drizzle-adapter';
 import { i18n, type TranslationDictionary } from '@better-auth/i18n';
 import { betterAuth } from 'better-auth';
 import { admin } from 'better-auth/plugins/admin';
 import { emailOTP } from 'better-auth/plugins/email-otp';
-import { sendViaSmtp } from '../admin/smtp';
-import { db } from '../drizzle/db';
-import { getPublicWebOrigins } from '../http/origins';
+import { sendViaSmtp } from '../admin/smtp.js';
+import { db } from '../drizzle/db.js';
+import { getPublicWebOrigins } from '../http/origins.js';
 import {
   markAccountDeletionCompleted,
   recordPendingAccountDeletion,
-} from '../repositories/accountDeletionRepository';
-import { getAdminUserIds } from './adminAccess';
+} from '../repositories/accountDeletionRepository.js';
+import { getAdminUserIds } from './adminAccess.js';
 import {
   getCookieDomainConfig,
   getCrossSiteCookieConfig,
-} from './cookieDomain';
-import { BETTER_AUTH_SCHEMA_NAME, betterAuthSchema } from './schema';
+} from './cookieDomain.js';
+import { BETTER_AUTH_SCHEMA_NAME, betterAuthSchema } from './schema.js';
 
 function getRequiredEnv(name: 'BETTER_AUTH_SECRET' | 'BETTER_AUTH_URL') {
   const value = getRuntimeEnvironment()[name];

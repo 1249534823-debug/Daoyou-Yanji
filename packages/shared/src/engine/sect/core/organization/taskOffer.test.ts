@@ -3,8 +3,8 @@ import {
   SectTaskRecordPayloadSchema,
   createSectTaskOfferSnapshot,
   resolveSectTaskClaimReward,
-} from './taskOffer';
-import { calculateRealmSectTaskReward } from './taskRewards';
+} from './taskOffer.js';
+import { calculateRealmSectTaskReward } from './taskRewards.js';
 
 describe('sect task offer snapshot', () => {
   const build = (rulesVersion: number) =>

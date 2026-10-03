@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import data from './data/fusion.json';
+import data from './data/fusion.json' with { type: 'json' };
 const weights = z
   .array(
     z.strictObject({

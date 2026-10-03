@@ -1,11 +1,11 @@
 import { createHash } from 'node:crypto';
 import { expect, it } from 'vitest';
-import { beastPanel, generateStarterBeast, projectBeastRoster } from './index';
+import { beastPanel, generateStarterBeast, projectBeastRoster } from './index.js';
 import {
   beastRestCost,
   gainBeastExp,
   generateCapturedBeast,
-} from './progression';
+} from './progression.js';
 // Species revision 11 rolls each candidate skill independently at 1/2.
 // Individual v3 adds baby free points and a permanent wild point deficit.
 // Aptitude/growth draw order and progression revision 3 remain unchanged.

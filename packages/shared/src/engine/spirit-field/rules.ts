@@ -1,6 +1,6 @@
 import { QUALITY_ORDER, QUALITY_VALUES, REALM_ORDER, type Quality, type RealmType } from '@daoyou/shared/types/constants';
-import { SPIRIT_FIELD_METHOD_MAP } from './config';
-import { SPIRIT_FIELD_STAGES, type SpiritFieldCultivationMethod, type SpiritFieldHarvestSettlement, type SpiritFieldOutcomeKind, type SpiritFieldPlantSnapshot, type SpiritFieldPlotRuntimeStatus, type SpiritFieldPlotState, type SpiritFieldStageAffinity } from './types';
+import { SPIRIT_FIELD_METHOD_MAP } from './config.js';
+import { SPIRIT_FIELD_STAGES, type SpiritFieldCultivationMethod, type SpiritFieldHarvestSettlement, type SpiritFieldOutcomeKind, type SpiritFieldPlantSnapshot, type SpiritFieldPlotRuntimeStatus, type SpiritFieldPlotState, type SpiritFieldStageAffinity } from './types.js';
 
 export function deterministicUnit(seed: string): number {
   let hash = 2166136261;

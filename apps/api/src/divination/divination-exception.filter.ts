@@ -3,7 +3,7 @@ import {
   type ArgumentsHost,
   type ExceptionFilter,
 } from '@nestjs/common';
-import { DivinationError } from '@server/divination/application/DivinationService';
+import { DivinationError } from '@server/divination/application/DivinationService.js';
 import type { Response } from 'express';
 
 @Catch(DivinationError)

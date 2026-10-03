@@ -8,8 +8,8 @@ import {
   getBodyTrackKeyFromPath,
   isBodyCultivationTrackPath,
   isLegacyTemperingTrackPath,
-} from './bodyCultivation/config';
-import { getMarrowWashThresholdByLevel } from './marrowWash';
+} from './bodyCultivation/config.js';
+import { getMarrowWashThresholdByLevel } from './marrowWash.js';
 
 export type TrackReward =
   | {

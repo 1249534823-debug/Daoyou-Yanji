@@ -10,10 +10,10 @@ import {
 import { StoryViewSchema, type StoryView } from '@daoyou/shared/story/schema';
 import type { TaskInstance } from '@daoyou/shared/types/task';
 import { z } from 'zod';
-import { SectCombatReadinessSchema } from '../combatV6';
-import { BreakthroughBattlePointerSchema } from '../combatV6Breakthrough';
-import type { PlayerResourceMap } from '../player';
-import type { ResourceChange } from './registry';
+import { SectCombatReadinessSchema } from '../combatV6.js';
+import { BreakthroughBattlePointerSchema } from '../combatV6Breakthrough.js';
+import type { PlayerResourceMap } from '../player.js';
+import type { ResourceChange } from './registry.js';
 
 const combatV6SlotSchema = z.union([
   z.literal(1),

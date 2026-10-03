@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import type { EnlightenmentPreview } from '../manuals/enlightenment';
-import { REALM_VALUES, type RealmType } from '../types/constants';
+import type { EnlightenmentPreview } from '../manuals/enlightenment.js';
+import { REALM_VALUES, type RealmType } from '../types/constants.js';
 
 export const EnlightenmentRequestSchema = z
   .object({

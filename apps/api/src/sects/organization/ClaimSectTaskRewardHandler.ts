@@ -7,16 +7,16 @@ import {
   SectTask,
   type SectTaskDefinition,
 } from '@daoyou/shared/engine/sect';
-import type { SectCommandEffects } from '@server/sects/organization/SectCommandEffects';
-import type { SectDomainEventDispatcherFactory } from '@server/sects/organization/SectDomainEventDispatcher';
-import { invalidSectTask } from '@server/sects/organization/SectTaskApplicationSupport';
-import { toSectTaskView } from '@server/sects/organization/SectTaskViewAssembler';
+import type { SectCommandEffects } from '@server/sects/organization/SectCommandEffects.js';
+import type { SectDomainEventDispatcherFactory } from '@server/sects/organization/SectDomainEventDispatcher.js';
+import { invalidSectTask } from '@server/sects/organization/SectTaskApplicationSupport.js';
+import { toSectTaskView } from '@server/sects/organization/SectTaskViewAssembler.js';
 import type {
   SectCommandContext,
   SectMembershipRecord,
   SectTaskRecord,
-} from '@server/sects/organization/ports';
-import type { SectTaskExecutor } from '@server/sects/organization/task-executors/SectTaskExecutor';
+} from '@server/sects/organization/ports.js';
+import type { SectTaskExecutor } from '@server/sects/organization/task-executors/SectTaskExecutor.js';
 
 export class ClaimSectTaskRewardHandler {
   constructor(private readonly events: SectDomainEventDispatcherFactory) {}

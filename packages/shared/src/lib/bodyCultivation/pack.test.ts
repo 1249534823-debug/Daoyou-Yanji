@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from './data/body-cultivation.json';
-import schema from './data/body-cultivation.schema.json';
-import { BodyCultivationPackShape, BODY_CULTIVATION_TRACK_KEYS, loadBodyCultivationPack, bodyCultivationThreshold } from './pack';
-import { bodyCultivationEffectTexts } from './benefits';
-import { compileBodyCultivationV6 } from '../../engine/combat-v6/projection/body-cultivation-v6';
-import { compileCharacterPanelV1 } from '../../engine/combat-v6/projection/character-panel-v1';
+import raw from './data/body-cultivation.json' with { type: 'json' };
+import schema from './data/body-cultivation.schema.json' with { type: 'json' };
+import { BodyCultivationPackShape, BODY_CULTIVATION_TRACK_KEYS, loadBodyCultivationPack, bodyCultivationThreshold } from './pack.js';
+import { bodyCultivationEffectTexts } from './benefits.js';
+import { compileBodyCultivationV6 } from '../../engine/combat-v6/projection/body-cultivation-v6.js';
+import { compileCharacterPanelV1 } from '../../engine/combat-v6/projection/character-panel-v1.js';
 import type { BodyCultivationState } from '@daoyou/shared/types/condition';
 
 function state(level: number): BodyCultivationState {

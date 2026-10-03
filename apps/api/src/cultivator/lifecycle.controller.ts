@@ -1,10 +1,10 @@
 import { Controller, Delete, Get, Inject, UseFilters } from '@nestjs/common';
-import type { AuthUser } from '@server/lib/auth/types';
-import { isRedisLockContention } from '@server/lib/redis/lock';
-import { Access, CurrentUser } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { FirstQuery } from '../http/first-query';
-import { LifecycleService } from './lifecycle.service';
+import type { AuthUser } from '@server/lib/auth/types.js';
+import { isRedisLockContention } from '@server/lib/redis/lock.js';
+import { Access, CurrentUser } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { FirstQuery } from '../http/first-query.js';
+import { LifecycleService } from './lifecycle.service.js';
 const DeleteErrors = apiErrorFilter((error) =>
   isRedisLockContention(error)
     ? Response.json(

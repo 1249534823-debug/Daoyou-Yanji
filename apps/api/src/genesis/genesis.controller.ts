@@ -7,17 +7,17 @@ import {
   Req,
   UseFilters,
 } from '@nestjs/common';
-import type { AuthUser } from '@server/lib/auth/types';
-import { getRequestIp } from '@server/lib/http/requestIp';
-import { CultivatorCreationCommandError } from '@server/genesis/application/CultivatorCreationApplicationService';
+import type { AuthUser } from '@server/lib/auth/types.js';
+import { getRequestIp } from '@server/lib/http/requestIp.js';
+import { CultivatorCreationCommandError } from '@server/genesis/application/CultivatorCreationApplicationService.js';
 import { fromNodeHeaders } from 'better-auth/node';
 import type { Request } from 'express';
 import type { z } from 'zod';
-import { Access, CurrentUser } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { GenesisService, SaveCharacterSchema } from './genesis.service';
+import { Access, CurrentUser } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { GenesisService, SaveCharacterSchema } from './genesis.service.js';
 
 const SaveErrors = apiErrorFilter((error) =>
   error instanceof CultivatorCreationCommandError

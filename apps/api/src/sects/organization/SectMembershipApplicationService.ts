@@ -11,21 +11,21 @@ import {
   SectMembership,
 } from '@daoyou/shared/engine/sect';
 import type { Cultivator } from '@daoyou/shared/types/cultivator';
-import type { SectBenefitService } from '@server/sects/organization/SectBenefitService';
-import type { SectDomainEventDispatcherFactory } from '@server/sects/organization/SectDomainEventDispatcher';
+import type { SectBenefitService } from '@server/sects/organization/SectBenefitService.js';
+import type { SectDomainEventDispatcherFactory } from '@server/sects/organization/SectDomainEventDispatcher.js';
 import {
   mapFacilities,
   organizationError,
   organizationFor,
   quoteSectStipend,
   requireMembership,
-} from '@server/sects/organization/applicationSupport';
+} from '@server/sects/organization/applicationSupport.js';
 import type {
   SectMembershipCommandContext,
   SectMembershipQueryContext,
   SectMembershipRecord,
-} from '@server/sects/organization/ports';
-import { getOnlineCultivatorIds } from '@server/realtime/infrastructure/onlinePresenceService';
+} from '@server/sects/organization/ports.js';
+import { getOnlineCultivatorIds } from '@server/realtime/infrastructure/onlinePresenceService.js';
 
 const SHANGHAI_DATE_FORMATTER = new Intl.DateTimeFormat('en-CA', {
   timeZone: 'Asia/Shanghai',

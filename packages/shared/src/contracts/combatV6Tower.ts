@@ -1,9 +1,9 @@
-import type { TowerBlessings } from '../engine/combat-v6/tower/host';
-import type { ItemGrant } from '../inventory';
-import type { TowerBlessingChoice, TowerSeasonMeta } from '../lib/tower/types';
-import type { TowerEnemyPreview } from '../lib/tower/weekly';
-import type { RealmType } from '../types/constants';
-import type { CombatV6TrainingSessionViewV1 } from './combatV6';
+import type { TowerBlessings } from '../engine/combat-v6/tower/host.js';
+import type { ItemGrant } from '../inventory/index.js';
+import type { TowerBlessingChoice, TowerSeasonMeta } from '../lib/tower/types.js';
+import type { TowerEnemyPreview } from '../lib/tower/weekly.js';
+import type { RealmType } from '../types/constants.js';
+import type { CombatV6TrainingSessionViewV1 } from './combatV6.js';
 
 export type TowerSessionView = Omit<
   CombatV6TrainingSessionViewV1,

@@ -3,7 +3,7 @@ import {
   TYPE_DESCRIPTIONS,
 } from '@daoyou/shared/engine/material/creation/config';
 import type { MaterialSkeleton } from '@daoyou/shared/engine/material/creation/types';
-import { renderPromptSystem, renderPromptUser } from '@server/lib/prompts';
+import { renderPromptSystem, renderPromptUser } from '@server/lib/prompts/index.js';
 
 export function getMaterialGenerationPrompt(): string {
   return renderPromptSystem('material-generation');

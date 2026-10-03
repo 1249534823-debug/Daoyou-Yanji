@@ -2,17 +2,17 @@ import { describe, expect, it } from 'vitest';
 import {
   BEAST_STARTER_SPECIES,
   generateStarterBeast,
-} from '../engine/combat-v6/beasts';
-import { generateCapturedBeast } from '../engine/combat-v6/beasts/generator';
-import { MailAttachmentSchema } from '../lib/itemLibrary';
-import { AuctionBeastListSchema, AuctionSnapshotSchema } from './auction';
+} from '../engine/combat-v6/beasts/index.js';
+import { generateCapturedBeast } from '../engine/combat-v6/beasts/generator.js';
+import { MailAttachmentSchema } from '../lib/itemLibrary.js';
+import { AuctionBeastListSchema, AuctionSnapshotSchema } from './auction.js';
 import {
   BeastTransferSchema,
   beastAuctionBlockReason,
   beastTradePreview,
   planBeastMailClaims,
   receiveTradedBeast,
-} from './beastTrade';
+} from './beastTrade.js';
 
 const owner = '00000000-0000-4000-8000-000000000001';
 const buyer = '00000000-0000-4000-8000-000000000002';

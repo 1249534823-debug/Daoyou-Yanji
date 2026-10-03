@@ -8,8 +8,8 @@ import {
   COMMAND_DEAD_LETTER_STREAM,
   COMMAND_DEAD_LETTER_SUBJECT_PREFIX,
   consumerRetryDelayMs,
-} from '@server/lib/mq/natsTopology';
-import { getJetStreamClient } from '@server/lib/nats/index';
+} from '@server/lib/mq/natsTopology.js';
+import { getJetStreamClient } from '@server/lib/nats/index.js';
 import {
   runAuctionExpireJob,
   runExpiredDataCleanupJob,
@@ -20,7 +20,7 @@ import {
   runSponsorshipAdminDigestJob,
   runSponsorshipCleanupJob,
   runSponsorshipReconcileJob,
-} from '@server/runtime/jobs/internalCron';
+} from '@server/runtime/jobs/internalCron.js';
 import { JSONCodec, type ConsumerMessages, type JsMsg } from 'nats';
 
 const MAX_PROCESSING_ATTEMPTS = 10;

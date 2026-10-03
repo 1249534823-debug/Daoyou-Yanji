@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import { getBodyCultivationRankingTag } from './ranking';
+import { getBodyCultivationRankingTag } from './ranking.js';
 
 describe('body cultivation ranking tag', () => {
   it('summarizes body realm and total level for public ranking display', () => {

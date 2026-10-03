@@ -1,4 +1,4 @@
-import { calculateSingleElixirScore } from '@server/utils/rankingUtils';
+import { calculateSingleElixirScore } from '@server/utils/rankingUtils.js';
 import { resolveAlchemyEffects } from '@daoyou/shared/lib/alchemyEffectResolver';
 import type {
   AlchemyEffectRoute,

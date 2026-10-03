@@ -3,8 +3,8 @@ import { describe, expect, it } from 'vitest';
 import {
   calculateStandardSectStipendBase,
   STANDARD_SECT_STIPEND_CURVE,
-} from './stipend';
-import { calculateRealmSectTaskReward } from './taskRewards';
+} from './stipend.js';
+import { calculateRealmSectTaskReward } from './taskRewards.js';
 
 describe('sect stipend', () => {
   it('uses realm-scaled weekly value and rank multipliers', () => {

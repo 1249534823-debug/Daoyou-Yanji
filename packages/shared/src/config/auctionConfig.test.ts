@@ -1,11 +1,11 @@
 import { buildSpiritFieldSeedMaterialFromPlant } from '@daoyou/shared/engine/spirit-field/seedMaterial';
-import { auctionBlockReason, auctionItemPriceCap } from '../contracts/auction';
-import { seedFactsOf } from '../items/definitions/seeds';
+import { auctionBlockReason, auctionItemPriceCap } from '../contracts/auction.js';
+import { seedFactsOf } from '../items/definitions/seeds.js';
 import {
   calculateAuctionSettlement,
   getAuctionUnitPriceCap,
   isAuctionListableQuality,
-} from './auctionConfig';
+} from './auctionConfig.js';
 
 describe('auctionConfig', () => {
   it('按单价超额累进计税并乘以成交数量', () => {

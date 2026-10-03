@@ -1,7 +1,7 @@
-import type { ItemGrant } from '../inventory';
-import type { ItemLibraryEntry } from '../lib/itemLibrary';
-import { MaterialFactsSchema } from './definitions/materials';
-import { seedFactsOf } from './definitions/seeds';
+import type { ItemGrant } from '../inventory/index.js';
+import type { ItemLibraryEntry } from '../lib/itemLibrary.js';
+import { MaterialFactsSchema } from './definitions/materials.js';
+import { seedFactsOf } from './definitions/seeds.js';
 
 /** The library is only a source: the selected facts are frozen in the reward. */
 export function libraryMaterialGrant(entry: ItemLibraryEntry): ItemGrant {

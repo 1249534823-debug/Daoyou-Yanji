@@ -1,5 +1,5 @@
 import type { SectOrganizationModule } from '@daoyou/shared/engine/sect';
-import { createStandardSectDomainEventDispatcher } from '@server/sects/organization/SectDomainEventDispatcher';
+import { createStandardSectDomainEventDispatcher } from '@server/sects/organization/SectDomainEventDispatcher.js';
 import {
   CompletedDailyTaskProgressStrategy,
   DeliverySectTaskOfferPolicy,
@@ -13,7 +13,7 @@ import {
   type SectTaskOfferPolicy,
   type SectTaskProgressStrategy,
   type SectTaskRewardPolicy,
-} from '@server/sects/organization/SectTaskSettlement';
+} from '@server/sects/organization/SectTaskSettlement.js';
 import {
   BattleTaskExecutor,
   EquipmentDeliveryTaskExecutor,
@@ -24,12 +24,12 @@ import {
   SectTaskExecutorRegistry,
   SweepGameTaskExecutor,
   type SectTaskExecutor,
-} from '@server/sects/organization/task-executors/SectTaskExecutor';
+} from '@server/sects/organization/task-executors/SectTaskExecutor.js';
 import {
   SectTaskItemRewardGrantStrategyRegistry,
   SectTaskMaterialRewardGrantStrategy,
   type SectTaskItemRewardGrantStrategy,
-} from '@server/sects/organization/TaskRewardStrategies';
+} from '@server/sects/organization/TaskRewardStrategies.js';
 
 export interface SectOrganizationPluginManifest {
   /** `*` contributes reusable application mechanics; other ids belong to one sect. */

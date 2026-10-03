@@ -7,16 +7,16 @@ import {
   Put,
   UseFilters,
 } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { AutoStrategyError } from '@server/combat/application/CombatV6AutoStrategyService';
-import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
+import { AutoStrategyError } from '@server/combat/application/CombatV6AutoStrategyService.js';
+import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService.js';
 import { SaveAutoStrategySchema } from '@daoyou/shared/combat-v6/auto-strategy';
 import { z } from 'zod';
-import { Access, CurrentCultivator } from '../auth/access';
-import { apiErrorFilter } from '../http/error-filter';
-import { JsonBody } from '../http/json-body';
-import { ZodPipe } from '../http/zod.pipe';
-import { AutoStrategyService } from './auto-strategy.service';
+import { Access, CurrentCultivator } from '../auth/access.js';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { JsonBody } from '../http/json-body.js';
+import { ZodPipe } from '../http/zod.pipe.js';
+import { AutoStrategyService } from './auto-strategy.service.js';
 
 const MutationSchema = z.strictObject({
   pathId: z.string().min(1).max(160),

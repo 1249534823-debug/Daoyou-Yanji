@@ -1,13 +1,13 @@
-import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
+import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
 import {
   buildAlchemyPropertyTags,
   describeAlchemyPropertyVector,
   getQuotaCategoryForFamily,
   synthesizeAlchemyFromPlan,
   type PreparedAlchemyMaterial,
-} from '@server/alchemy/application/AlchemyRecipeRules';
-import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository';
+} from '@server/alchemy/application/AlchemyRecipeRules.js';
+import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 import { ELEMENT_PREFIX_MAP } from '@daoyou/shared/config/alchemyConfig';
 import { ALCHEMY_MAX_DOSE } from '@daoyou/shared/config/alchemyInput';
 import type { ResourceOperationSettlement } from '@daoyou/shared/engine/resource/types';
@@ -45,22 +45,22 @@ import {
   consumeAlchemyMaterials,
   grantAlchemyOutput,
   loadAlchemyMaterials,
-} from '@server/alchemy/application/inventory/AlchemyInventory';
+} from '@server/alchemy/application/inventory/AlchemyInventory.js';
 import {
   assembleAlchemyOutputConsumables,
   type AlchemyOutputDraft,
-} from '@server/alchemy/application/inventory/AlchemyOutputAssembler';
-import { buildDiscoveryCandidate } from '@server/alchemy/application/AlchemyFormulaService';
-import { AlchemyNarrativeEnricher } from '@server/alchemy/application/AlchemyNarrativeEnricher';
+} from '@server/alchemy/application/inventory/AlchemyOutputAssembler.js';
+import { buildDiscoveryCandidate } from '@server/alchemy/application/AlchemyFormulaService.js';
+import { AlchemyNarrativeEnricher } from '@server/alchemy/application/AlchemyNarrativeEnricher.js';
 import {
   alchemyRecipePlanner,
   type AlchemyRecipePlanner,
-} from '@server/alchemy/application/AlchemyRecipePlanner';
-import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError';
-import { sectOrganizationFacade } from '@server/sects/organization';
+} from '@server/alchemy/application/AlchemyRecipePlanner.js';
+import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError.js';
+import { sectOrganizationFacade } from '@server/sects/organization/index.js';
 
-export { synthesizeAlchemyFromPlan as synthesizeAlchemy } from '@server/alchemy/application/AlchemyRecipeRules';
-export { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError';
+export { synthesizeAlchemyFromPlan as synthesizeAlchemy } from '@server/alchemy/application/AlchemyRecipeRules.js';
+export { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError.js';
 
 type MaterialRow = AlchemyBagMaterial;
 

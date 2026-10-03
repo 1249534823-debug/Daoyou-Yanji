@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { RewardItemSchema, rewardDisplayItem } from './adminRewards';
+import { RewardItemSchema, rewardDisplayItem } from './adminRewards.js';
 
 export const ItemExchangeShopItemStatusSchema = z.enum(['active', 'archived']);
 

@@ -2,8 +2,8 @@ import { describe, expect, it } from 'vitest';
 import type {
   ResourceChangeDescriptor,
   ResourceScope,
-} from '../contracts/resources';
-import { withBagInvalidations } from './bagResourceChanges';
+} from '../contracts/resources/index.js';
+import { withBagInvalidations } from './bagResourceChanges.js';
 
 const scope: ResourceScope = { kind: 'cultivator', id: 'one' };
 const change = (

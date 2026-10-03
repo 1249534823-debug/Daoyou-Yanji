@@ -8,14 +8,14 @@ import {
   getExecutor,
   type DbExecutor,
   type DbTransaction,
-} from '@server/lib/drizzle/db';
-import { inventoryItems } from '@server/lib/drizzle/schema';
+} from '@server/lib/drizzle/db.js';
+import { inventoryItems } from '@server/lib/drizzle/schema.js';
 import {
   assertInventoryIdle,
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/operations';
-import { SpiritFieldServiceError } from '@server/spirit-field/application/SpiritFieldError';
+} from '@server/inventory/operations.js';
+import { SpiritFieldServiceError } from '@server/spirit-field/application/SpiritFieldError.js';
 
 export async function readFieldBag(
   owner: string,

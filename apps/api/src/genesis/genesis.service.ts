@@ -1,22 +1,22 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import type { AuthUser } from '@server/lib/auth/types';
+import type { AuthUser } from '@server/lib/auth/types.js';
 import {
   consumeCharacterGenerationQuota,
   getCharacterGenerationQuota,
-} from '@server/lib/redis/characterGenerationLimiter';
+} from '@server/lib/redis/characterGenerationLimiter.js';
 import {
   checkAndIncrementReroll,
   getTempCharacter,
   getTempFates,
   saveTempCharacter,
   saveTempFates,
-} from '@server/lib/repositories/redisCultivatorRepository';
-import { createCultivatorFromTemp } from '@server/genesis/application/CultivatorCreationApplicationService';
-import { FATE_REROLL_LIMIT } from '@server/reshape/application/FateConfig';
-import { FateEngine } from '@server/reshape/application/FateEngine';
-import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
-import { generateCultivatorFromAI } from '@server/utils/characterEngine';
-import { normalizeFreeformLlmInput } from '@server/utils/llmPayload';
+} from '@server/lib/repositories/redisCultivatorRepository.js';
+import { createCultivatorFromTemp } from '@server/genesis/application/CultivatorCreationApplicationService.js';
+import { FATE_REROLL_LIMIT } from '@server/reshape/application/FateConfig.js';
+import { FateEngine } from '@server/reshape/application/FateEngine.js';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
+import { generateCultivatorFromAI } from '@server/utils/characterEngine.js';
+import { normalizeFreeformLlmInput } from '@server/utils/llmPayload.js';
 import {
   CHARACTER_GENERATION_LIMIT_REACHED_CODE,
   type CharacterGenerationQuota,

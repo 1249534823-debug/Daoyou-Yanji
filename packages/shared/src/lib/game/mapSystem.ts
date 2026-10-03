@@ -1,7 +1,7 @@
 import type { RealmStage } from '@daoyou/shared/types/constants';
 import { REALM_ORDER, type RealmType } from '@daoyou/shared/types/constants';
 import type { MarketLayer, RegionProfileKey } from '@daoyou/shared/types/market';
-import mapData from '../../data/map.json';
+import mapData from '../../data/map.json' with { type: 'json' };
 
 export type DungeonDifficultyTier =
   'easy' | 'normal' | 'hard' | 'elite' | 'boss';

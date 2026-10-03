@@ -7,9 +7,9 @@ import type { RealmType } from '@daoyou/shared/types/constants';
 import {
   BODY_CULTIVATION_REALM_REQUIREMENTS,
   getNextBodyCultivationRealm,
-} from './config';
-import { normalizeBodyCultivationState } from './normalize';
-import { getBodyCultivationSummary } from './summary';
+} from './config.js';
+import { normalizeBodyCultivationState } from './normalize.js';
+import { getBodyCultivationSummary } from './summary.js';
 
 export interface BodyCultivationRealmBreakthroughPreview {
   currentRealm: BodyCultivationRealm;

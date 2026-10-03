@@ -1,18 +1,18 @@
 import { describe, expect, it } from 'vitest';
-import { allowsLocalDevTools } from '../config/deployment';
-import { compileDaoEquipmentSpecialLoadoutV1 } from '../engine/combat-v6/equipment/compiler';
+import { allowsLocalDevTools } from '../config/deployment.js';
+import { compileDaoEquipmentSpecialLoadoutV1 } from '../engine/combat-v6/equipment/compiler.js';
 import {
   generateForgedEquipment,
   rollHigher,
-} from '../engine/combat-v6/equipment/forging';
-import { generateDaoEquipmentV2 } from '../engine/combat-v6/equipment/generator';
-import { DAO_EQUIPMENT_SLOTS } from '../engine/combat-v6/equipment/types';
-import { sameStack, sortBag } from '../inventory';
-import { addItems } from '../inventory/test-helpers';
-import { BLUEPRINTS } from '../items/definitions/equipment-blueprints';
-import { MaterialFactsSchema } from '../items/definitions/materials';
-import { forgedName } from './names';
-import { forgingBoosts, forgingCost } from './rules';
+} from '../engine/combat-v6/equipment/forging.js';
+import { generateDaoEquipmentV2 } from '../engine/combat-v6/equipment/generator.js';
+import { DAO_EQUIPMENT_SLOTS } from '../engine/combat-v6/equipment/types.js';
+import { sameStack, sortBag } from '../inventory/index.js';
+import { addItems } from '../inventory/test-helpers.js';
+import { BLUEPRINTS } from '../items/definitions/equipment-blueprints.js';
+import { MaterialFactsSchema } from '../items/definitions/materials.js';
+import { forgedName } from './names.js';
+import { forgingBoosts, forgingCost } from './rules.js';
 
 const facts = MaterialFactsSchema.parse({
   name: '玄铁',

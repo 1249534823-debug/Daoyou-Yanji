@@ -3,7 +3,7 @@ import {
   SECT_RANK_METHOD_CAP,
   getEffectiveSectMethodLevelCap,
   hasSectRank,
-} from '../domain';
+} from '../domain/index.js';
 
 describe('宗门组织成长', () => {
   it('四种弟子身份均匀开放至180级', () => {

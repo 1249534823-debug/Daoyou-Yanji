@@ -2,9 +2,9 @@ import type {
   SectBenefitSnapshot,
   SectCraftContextKey,
   SectOrganizationModule,
-} from './contracts';
-import type { SectDiscipleRank } from '../domain';
-import { SECT_CRAFT_CONTEXTS } from './contracts';
+} from './contracts.js';
+import type { SectDiscipleRank } from '../domain/index.js';
+import { SECT_CRAFT_CONTEXTS } from './contracts.js';
 
 export type ResolvedSectBenefitSnapshot = SectBenefitSnapshot & {
   archiveLevel: number;

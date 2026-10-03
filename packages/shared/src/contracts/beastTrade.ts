@@ -3,7 +3,7 @@ import {
   BeastSchema,
   type BeastLineup,
   type SummonedBeast,
-} from '../engine/combat-v6/beasts/schema';
+} from '../engine/combat-v6/beasts/schema.js';
 
 // Ownership is supplied by the listing/mail container, never by its payload.
 const transferOwner = '00000000-0000-4000-8000-000000000000';

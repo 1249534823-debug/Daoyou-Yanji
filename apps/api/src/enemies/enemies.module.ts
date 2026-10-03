@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from '@server/database/database.module';
-import { EnemiesController } from './enemies.controller';
-import { EnemiesService } from './enemies.service';
+import { DatabaseModule } from '@server/database/database.module.js';
+import { EnemiesController } from './enemies.controller.js';
+import { EnemiesService } from './enemies.service.js';
 
 @Module({
   imports: [DatabaseModule],

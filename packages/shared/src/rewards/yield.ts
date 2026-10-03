@@ -1,16 +1,16 @@
 import { z } from 'zod';
-import { getRealmStageLevel } from '../config/realmProgression';
-import { rollDrops, type DropPool } from '../drops';
+import { getRealmStageLevel } from '../config/realmProgression.js';
+import { rollDrops, type DropPool } from '../drops/index.js';
 import {
   equipmentRealm,
   OPEN_EQUIPMENT_LEVELS,
-} from '../engine/combat-v6/equipment/realm';
-import { YieldCalculator } from '../engine/yield/YieldCalculator';
-import type { ItemGrant } from '../inventory';
-import { BLUEPRINTS } from '../items/definitions/equipment-blueprints';
-import { findItemDefinition } from '../items/registry';
-import type { RealmStage, RealmType } from '../types/constants';
-import raw from './data/yield.json';
+} from '../engine/combat-v6/equipment/realm.js';
+import { YieldCalculator } from '../engine/yield/YieldCalculator.js';
+import type { ItemGrant } from '../inventory/index.js';
+import { BLUEPRINTS } from '../items/definitions/equipment-blueprints.js';
+import { findItemDefinition } from '../items/registry.js';
+import type { RealmStage, RealmType } from '../types/constants.js';
+import raw from './data/yield.json' with { type: 'json' };
 
 const weight = z.number().finite().positive().max(1000000);
 export const YieldRewardPackSchema = z

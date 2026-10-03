@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { DAO_EQUIPMENT_SLOTS } from './types';
+import { DAO_EQUIPMENT_SLOTS } from './types.js';
 
 const ratio = z.number().min(0).max(1).multipleOf(0.000001);
 const positive = z.number().positive().max(1_000_000).multipleOf(0.000001);

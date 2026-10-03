@@ -2,19 +2,19 @@ import { Injectable } from '@nestjs/common';
 import {
   assertAlchemyMaterialVersions,
   readAlchemyMaterials,
-} from '@server/alchemy/application/inventory/AlchemyInventory';
+} from '@server/alchemy/application/inventory/AlchemyInventory.js';
 import {
   analyzeFormulaMaterials,
   confirmDiscoveryCandidate,
   deleteCultivatorFormula,
   listCultivatorFormulasPage,
-} from '@server/alchemy/application/AlchemyFormulaService';
+} from '@server/alchemy/application/AlchemyFormulaService.js';
 import type { z } from 'zod';
 import type {
   DiscoveryConfirmSchema,
   FormulaAnalyzeSchema,
   FormulaListQuerySchema,
-} from './alchemy-input';
+} from './alchemy-input.js';
 
 @Injectable()
 export class AlchemyFormulasService {

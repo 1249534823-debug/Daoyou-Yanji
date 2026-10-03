@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { generateForgedEquipment } from '../engine/combat-v6/equipment/forging';
-import { changeEquipmentLocation } from './equipment-location';
+import { generateForgedEquipment } from '../engine/combat-v6/equipment/forging.js';
+import { changeEquipmentLocation } from './equipment-location.js';
 import {
   emptySlot,
   InventoryItemSchema,
   sortBag,
   type InventoryItem,
-} from './index';
+} from './index.js';
 
 function equipment(id: string, slotIndex: number | null): InventoryItem {
   const generated = generateForgedEquipment({

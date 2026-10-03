@@ -1,6 +1,6 @@
-import { redisLockErrorResponse } from '@server/lib/http/errors';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
 import { ZodError } from 'zod';
-import { apiErrorFilter } from '../http/error-filter';
+import { apiErrorFilter } from '../http/error-filter.js';
 
 export function taskBattleErrors(invalidMessage: string) {
   return apiErrorFilter(

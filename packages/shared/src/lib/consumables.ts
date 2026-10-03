@@ -1,4 +1,4 @@
-import { parseConsumableSpec } from './consumableSpec';
+import { parseConsumableSpec } from './consumableSpec.js';
 import type {
   AddStatusOperation,
   AdvanceTrackOperation,

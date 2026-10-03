@@ -17,14 +17,14 @@ import { describe, expect, it } from 'vitest';
 import {
   rollAlchemyYieldProfile,
   type AlchemyYieldFactors,
-} from './alchemyYield';
+} from './alchemyYield.js';
 import {
   calculateMinimumMaterialAnchorCostPerEssence,
   calculatePillRecycleEconomicAnchor,
   calculatePillRecycleUnitPrice,
   calculateSpiritFruitRecycleUnitPrice,
-} from './pillRecyclePrice';
-import { PILL_QUALITY_BASE_SCORE } from './pillScore';
+} from './pillRecyclePrice.js';
+import { PILL_QUALITY_BASE_SCORE } from './pillScore.js';
 
 describe('calculatePillRecycleUnitPrice', () => {
   const expectedByQuality: Record<Quality, number> = {

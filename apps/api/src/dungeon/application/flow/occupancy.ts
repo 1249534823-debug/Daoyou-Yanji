@@ -1,5 +1,5 @@
-import { db, type DbExecutor } from '@server/lib/drizzle/db';
-import { dungeonRuns } from '@server/lib/drizzle/schema';
+import { db, type DbExecutor } from '@server/lib/drizzle/db.js';
+import { dungeonRuns } from '@server/lib/drizzle/schema.js';
 import { and, eq, inArray, isNotNull, ne, or } from 'drizzle-orm';
 
 export async function hasActiveDungeon(owner: string) {

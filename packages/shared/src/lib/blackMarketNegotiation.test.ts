@@ -1,7 +1,7 @@
 import {
   applyBlackMarketPriceDecision,
   assessOffer,
-} from './blackMarketNegotiation';
+} from './blackMarketNegotiation.js';
 
 describe('black market negotiation', () => {
   it('assesses offers relative to the hidden owner floor', () => {

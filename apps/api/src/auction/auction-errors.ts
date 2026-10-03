@@ -1,10 +1,10 @@
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { AuctionServiceError } from '@server/auction/application/AuctionService';
-import { BeastError } from '@server/combat/application/BeastMutationGuard';
-import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors';
-import { InventoryError } from '@server/inventory/operations';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { AuctionServiceError } from '@server/auction/application/AuctionService.js';
+import { BeastError } from '@server/combat/application/BeastMutationGuard.js';
+import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors.js';
+import { InventoryError } from '@server/inventory/operations.js';
 import { z } from 'zod';
-import { apiErrorFilter } from '../http/error-filter';
+import { apiErrorFilter } from '../http/error-filter.js';
 
 const statusMap: Record<string, number> = {
   INSUFFICIENT_FUNDS: 400,

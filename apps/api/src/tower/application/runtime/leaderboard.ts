@@ -1,6 +1,6 @@
-import { db } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { redis } from '@server/lib/redis/index';
+import { db } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
+import { redis } from '@server/lib/redis/index.js';
 import {
   packTowerLeaderboardScore,
   unpackTowerLeaderboardScore,

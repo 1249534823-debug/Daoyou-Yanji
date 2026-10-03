@@ -4,7 +4,7 @@ import {
   SectMembership,
   SectStipendClaim,
   SectTask,
-} from './domain';
+} from './domain.js';
 
 describe('sect organization domain', () => {
   const stipendSnapshot = { spiritStones: 500 };

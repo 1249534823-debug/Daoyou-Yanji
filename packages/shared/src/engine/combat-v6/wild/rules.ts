@@ -1,4 +1,4 @@
-import { WILD_PACK } from './pack';
+import { WILD_PACK } from './pack.js';
 export const WILD_EXPLORATION_COOLDOWN_MS =
   WILD_PACK.activity.explorationCooldownMs;
 export type WildResources = {

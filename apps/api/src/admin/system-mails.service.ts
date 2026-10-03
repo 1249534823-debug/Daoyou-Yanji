@@ -1,8 +1,8 @@
 import { SystemMailInputSchema } from '@daoyou/shared/contracts/systemMail';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { mails, systemMailCampaigns } from '@server/lib/drizzle/schema';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { mails, systemMailCampaigns } from '@server/lib/drizzle/schema.js';
 import { and, desc, eq, ilike, sql } from 'drizzle-orm';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
@@ -11,7 +11,7 @@ import {
   ListSchema,
   RevisionSchema,
   UpdateSchema,
-} from './system-mails-input';
+} from './system-mails-input.js';
 const countDeliveries = sql<number>`(select count(*)::int from ${mails} delivered where delivered.system_mail_campaign_id = ${systemMailCampaigns}.id)`;
 function values(input: z.infer<typeof SystemMailInputSchema>) {
   return {

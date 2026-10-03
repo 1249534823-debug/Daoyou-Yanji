@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { getRealmStageLevel } from '../config/realmProgression';
-import { SeededRng } from '../engine/combat-v6/core';
-import { equipmentRealm } from '../engine/combat-v6/equipment/realm';
-import { findItemDefinition } from '../items/registry';
-import { REALM_STAGE_VALUES, REALM_VALUES } from '../types/constants';
+import { getRealmStageLevel } from '../config/realmProgression.js';
+import { SeededRng } from '../engine/combat-v6/core/index.js';
+import { equipmentRealm } from '../engine/combat-v6/equipment/realm.js';
+import { findItemDefinition } from '../items/registry.js';
+import { REALM_STAGE_VALUES, REALM_VALUES } from '../types/constants.js';
 import {
   planYieldRewards,
   YIELD_REWARD_PACK,
   YieldRewardPackSchema,
-} from './yield';
+} from './yield.js';
 
 const input = { realm: '炼气', realmStage: '初期', hoursElapsed: 24 } as const;
 const constant = (value: number) => () => () => value;

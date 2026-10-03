@@ -1,5 +1,5 @@
-import type { CombatV6ReplayTimeline } from '../../../contracts/combatV6Replay';
-import type { AutoStrategy } from '../../../combat-v6/auto-strategy';
+import type { CombatV6ReplayTimeline } from '../../../contracts/combatV6Replay.js';
+import type { AutoStrategy } from '../../../combat-v6/auto-strategy.js';
 import type {
   Attrs,
   BattleEvent,
@@ -77,7 +77,7 @@ export type CombatV6TrainingPlayerInput = Omit<
   CharacterCombatInput,
   'side' | 'slot' | 'resourcePolicy'
 > & {
-  beasts?: import('../beasts').BeastRoster;
+  beasts?: import('../beasts/index.js').BeastRoster;
   portrait?: 'icon:cultivator-male-avatar' | 'icon:cultivator-female-avatar';
   autoStrategy?: AutoStrategy;
 };

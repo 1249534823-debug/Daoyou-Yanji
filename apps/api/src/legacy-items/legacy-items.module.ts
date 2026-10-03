@@ -4,19 +4,19 @@ import {
   type MiddlewareConsumer,
   type NestModule,
 } from '@nestjs/common';
-import { DatabaseModule } from '@server/database/database.module';
+import { DatabaseModule } from '@server/database/database.module.js';
 import type { NextFunction, Request, Response } from 'express';
-import { LegacyBattleRecordsController } from './battle-records.controller';
-import { LegacyInventoryController } from './inventory.controller';
-import { LegacyInventoryService } from './inventory.service';
+import { LegacyBattleRecordsController } from './battle-records.controller.js';
+import { LegacyInventoryController } from './inventory.controller.js';
+import { LegacyInventoryService } from './inventory.service.js';
 import {
   ArtifactMigrationController,
   ManualMigrationAdminController,
   ManualMigrationController,
-} from './migration.controller';
-import { MigrationService } from './migration.service';
-import { ProductsController } from './products.controller';
-import { ProductsService } from './products.service';
+} from './migration.controller.js';
+import { MigrationService } from './migration.service.js';
+import { ProductsController } from './products.controller.js';
+import { ProductsService } from './products.service.js';
 
 @Module({
   imports: [DatabaseModule],

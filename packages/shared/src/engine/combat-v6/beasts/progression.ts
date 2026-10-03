@@ -1,17 +1,17 @@
 import { z } from 'zod';
-import type { BattleEvent } from '../core';
+import type { BattleEvent } from '../core/index.js';
 import {
   SkillTag,
   TargetMode,
   TargetSide,
   type BattleState,
   type SkillDef,
-} from '../core';
-import { isStanding } from '../core/units';
-import { BEAST_PROGRESSION, BEAST_SPECIES } from './content';
-import { beastPointBudget } from './identity';
-import { BeastSchema, type SummonedBeast } from './schema';
-export { generateCapturedBeast } from './generator';
+} from '../core/index.js';
+import { isStanding } from '../core/units.js';
+import { BEAST_PROGRESSION, BEAST_SPECIES } from './content.js';
+import { beastPointBudget } from './identity.js';
+import { BeastSchema, type SummonedBeast } from './schema.js';
+export { generateCapturedBeast } from './generator.js';
 
 export const BEAST_CAPACITY = 24;
 export const CAPTURE_SKILL_ID = 'beast.capture';

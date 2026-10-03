@@ -1,8 +1,8 @@
 import { z } from 'zod';
-import { DropPoolSchema, type DropPool } from '../drops';
-import { BOOKS } from '../items/definitions/beast-books';
-import { formatContentPackErrors } from '../lib/content-pack-errors';
-import raw from './data/wild.json';
+import { DropPoolSchema, type DropPool } from '../drops/index.js';
+import { BOOKS } from '../items/definitions/beast-books.js';
+import { formatContentPackErrors } from '../lib/content-pack-errors.js';
+import raw from './data/wild.json' with { type: 'json' };
 
 const bookIds = new Set(BOOKS.map((book) => book.id));
 export const WildRewardPackShape = z.strictObject({

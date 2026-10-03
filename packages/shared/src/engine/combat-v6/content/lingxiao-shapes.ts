@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ATTR_NAMES, EffectType, HookAim, HookName, SkillTag, StatusCategory, TargetMode, UnitKind } from '../core';
+import { ATTR_NAMES, EffectType, HookAim, HookName, SkillTag, StatusCategory, TargetMode, UnitKind } from '../core/index.js';
 
 export const lxId = z.string().regex(/^lingxiao\.[a-z][a-z0-9_.]*$/);
 const ref = z.string().min(1);

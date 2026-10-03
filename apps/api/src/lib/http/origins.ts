@@ -1,4 +1,4 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
 export function normalizeOrigin(value: string | undefined | null) {
   const trimmed = value?.trim();
   if (!trimmed) {

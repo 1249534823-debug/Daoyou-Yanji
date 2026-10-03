@@ -5,7 +5,7 @@
 import { ATTR_NAMES } from "./constants.ts"
 import { ExprFn, ExprVar } from "./enums.ts"
 import type { Expr, ExprEnv, Unit } from "./types.ts"
-import { effectiveAttrs } from './units'
+import { effectiveAttrs } from './units.js'
 
 export function evalExpr(expr: Expr | undefined, env: ExprEnv): number {
   if (expr === undefined) return 0

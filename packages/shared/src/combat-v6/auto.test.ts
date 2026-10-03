@@ -1,24 +1,24 @@
 import { describe, expect, it } from 'vitest';
-import { COMBAT_V6_SECT_DEFINITIONS_V4 } from '../engine/combat-v6/content';
+import { COMBAT_V6_SECT_DEFINITIONS_V4 } from '../engine/combat-v6/content/index.js';
 import {
   createBattle,
   type SkillDef,
   type StatusDef,
-} from '../engine/combat-v6/core';
-import type { CombatV6TrainingPlayerInput } from '../engine/combat-v6/encounter';
-import { CombatV6PveHostSession } from '../engine/combat-v6/encounter/host';
-import { projectCharacterToCombatV6 } from '../engine/combat-v6/projection';
+} from '../engine/combat-v6/core/index.js';
+import type { CombatV6TrainingPlayerInput } from '../engine/combat-v6/encounter/index.js';
+import { CombatV6PveHostSession } from '../engine/combat-v6/encounter/host.js';
+import { projectCharacterToCombatV6 } from '../engine/combat-v6/projection/index.js';
 import {
   compileRankingBattle,
   simulateRankingBattle,
-} from '../engine/combat-v6/ranking/battle';
-import { daoyouRulesetV6 } from '../engine/combat-v6/rules-daoyou';
-import { towerReferenceBuild } from '../engine/combat-v6/tower/reference-fixtures';
-import { COMBAT_V6_PHASE_6D_VERSIONS } from '../engine/combat-v6/version';
-import { automaticCommands, CombatAutoRequestSchema } from './auto';
-import { observeAutoBattle } from './auto-observation';
-import { AUTO_POLICY_VERSION } from './auto-policy';
-import { autoStatusChoices } from './auto-status-options';
+} from '../engine/combat-v6/ranking/battle.js';
+import { daoyouRulesetV6 } from '../engine/combat-v6/rules-daoyou/index.js';
+import { towerReferenceBuild } from '../engine/combat-v6/tower/reference-fixtures.js';
+import { COMBAT_V6_PHASE_6D_VERSIONS } from '../engine/combat-v6/version.js';
+import { automaticCommands, CombatAutoRequestSchema } from './auto.js';
+import { observeAutoBattle } from './auto-observation.js';
+import { AUTO_POLICY_VERSION } from './auto-policy.js';
+import { autoStatusChoices } from './auto-status-options.js';
 import {
   AutoStrategySchema,
   DEFAULT_AUTO_STRATEGIES,
@@ -26,8 +26,8 @@ import {
   SaveAutoStrategySchema,
   type AutoComparison,
   type AutoStrategy,
-} from './auto-strategy';
-import { rankAutoActions } from './auto-utility';
+} from './auto-strategy.js';
+import { rankAutoActions } from './auto-utility.js';
 
 const skills: SkillDef[] = [
   {

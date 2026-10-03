@@ -1,16 +1,16 @@
 import { SectV6TargetSchema } from '@daoyou/shared/contracts/combatV6SectTask';
 import type { CultivatorCondition } from '@daoyou/shared/types/condition';
 import { describe, expect, it } from 'vitest';
-import { automaticCommands } from '../../../combat-v6/auto';
-import { generateStarterBeast } from '../beasts';
-import { COMBAT_V6_SECT_DEFINITIONS_V4 } from '../content';
-import type { CombatV6TrainingPlayerInput } from '../encounter';
+import { automaticCommands } from '../../../combat-v6/auto.js';
+import { generateStarterBeast } from '../beasts/index.js';
+import { COMBAT_V6_SECT_DEFINITIONS_V4 } from '../content/index.js';
+import type { CombatV6TrainingPlayerInput } from '../encounter/index.js';
 import {
   createSectBattleHost,
   freezeSectBattleOpponent,
   freezeSectNpcOpponent,
   SectBattleHost,
-} from './host';
+} from './host.js';
 
 function player(id: string): CombatV6TrainingPlayerInput {
   const definition = COMBAT_V6_SECT_DEFINITIONS_V4.youdu;

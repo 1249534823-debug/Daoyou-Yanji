@@ -1,4 +1,4 @@
-import type { TagPath } from './types';
+import type { TagPath } from './types.js';
 
 /**
  * 标签容器：管理单位、技能、Buff 等对象的标签集合。

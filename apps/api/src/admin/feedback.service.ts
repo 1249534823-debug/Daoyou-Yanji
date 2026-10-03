@@ -1,16 +1,16 @@
 import { HttpException, Inject, Injectable } from '@nestjs/common';
-import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
+import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
+import type { DbClient } from '@server/lib/drizzle/db.js';
+import { cultivators } from '@server/lib/drizzle/schema.js';
 import {
   findFeedbackById,
   findFeedbacks,
   updateFeedbackStatus,
   type FeedbackStatus,
   type FeedbackType,
-} from '@server/lib/repositories/feedbackRepository';
-import { MailService } from '@server/mail/application/MailService';
-import { updateSpiritStones } from '@server/cultivator/application/readers/CultivatorStateRepository';
+} from '@server/lib/repositories/feedbackRepository.js';
+import { MailService } from '@server/mail/application/MailService.js';
+import { updateSpiritStones } from '@server/cultivator/application/readers/CultivatorStateRepository.js';
 import { and, eq, inArray } from 'drizzle-orm';
 import { z } from 'zod';
 

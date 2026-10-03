@@ -5,9 +5,9 @@ import { describe, expect, it } from 'vitest';
 import {
   compileDaoEquipmentLoadoutV1,
   compileDaoEquipmentSpecialLoadoutV1,
-} from './compiler';
-import { generateDaoEquipmentV1 } from './generator';
-import { EQUIPMENT_LEVELS, OPEN_EQUIPMENT_LEVELS, equipmentRealm, isEquipmentLevel } from './realm';
+} from './compiler.js';
+import { generateDaoEquipmentV1 } from './generator.js';
+import { EQUIPMENT_LEVELS, OPEN_EQUIPMENT_LEVELS, equipmentRealm, isEquipmentLevel } from './realm.js';
 
 describe('九境界道装门槛', () => {
   it.each(OPEN_EQUIPMENT_LEVELS)(

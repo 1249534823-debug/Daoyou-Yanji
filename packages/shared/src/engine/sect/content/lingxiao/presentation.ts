@@ -1,5 +1,5 @@
-import type { SectPresentationTheme } from '../../core';
-import { LINGXIAO_SECT_ID } from './ids';
+import type { SectPresentationTheme } from '../../core/index.js';
+import { LINGXIAO_SECT_ID } from './ids.js';
 
 export const LINGXIAO_SECT_PRESENTATION: SectPresentationTheme = {
   sectId: LINGXIAO_SECT_ID,

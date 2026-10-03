@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import type { HuntEvent } from '../hunts/config';
-import type { HuntRewardSnapshot } from '../rewards/hunt';
-import { REALM_VALUES, type RealmType } from '../types/constants';
+import type { HuntEvent } from '../hunts/config.js';
+import type { HuntRewardSnapshot } from '../rewards/hunt.js';
+import { REALM_VALUES, type RealmType } from '../types/constants.js';
 
 export const HuntEventIdSchema = z
   .string()

@@ -1,13 +1,13 @@
-import { DungeonFlowError } from '@server/dungeon/application/flow/DungeonFlowService';
-import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { DungeonStartError } from '@server/dungeon/application/DungeonApplicationService';
+import { DungeonFlowError } from '@server/dungeon/application/flow/DungeonFlowService.js';
+import { redisLockErrorResponse } from '@server/lib/http/errors.js';
+import { DungeonStartError } from '@server/dungeon/application/DungeonApplicationService.js';
 import {
   QiInsufficientError,
   QiServiceError,
-} from '@server/cultivator/application/QiService';
+} from '@server/cultivator/application/QiService.js';
 import { ZodError } from 'zod';
-import { apiErrorFilter } from '../http/error-filter';
-import { JsonBodyParseError } from '../http/json-body';
+import { apiErrorFilter } from '../http/error-filter.js';
+import { JsonBodyParseError } from '../http/json-body.js';
 
 function flowError(error: unknown): Response | undefined {
   return (

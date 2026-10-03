@@ -1,8 +1,8 @@
 import { z } from 'zod';
-import { BAG_CAPACITY, type InventoryItem } from '../inventory';
-import { INVENTORY_SORT_VALUES } from '../inventory/sorting';
-import { INVENTORY_MATERIAL_TYPES } from '../items/definitions/materials';
-import { ELEMENT_VALUES, QUALITY_VALUES } from '../types/constants';
+import { BAG_CAPACITY, type InventoryItem } from '../inventory/index.js';
+import { INVENTORY_SORT_VALUES } from '../inventory/sorting.js';
+import { INVENTORY_MATERIAL_TYPES } from '../items/definitions/materials.js';
+import { ELEMENT_VALUES, QUALITY_VALUES } from '../types/constants.js';
 const ref = {
   id: z.string().min(1).max(160),
   revision: z.number().int().nonnegative(),

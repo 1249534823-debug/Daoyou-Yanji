@@ -1,4 +1,4 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
+import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
 import {
   QI_ACTION_COSTS,
   QI_DAILY_RESTORE_ITEM_LIMIT,
@@ -17,8 +17,8 @@ import type {
   QiRestoreSource,
 } from '@daoyou/shared/types/qi';
 import { and, desc, eq, sql } from 'drizzle-orm';
-import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db';
-import { cultivators, qiLogs } from '@server/lib/drizzle/schema';
+import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
+import { cultivators, qiLogs } from '@server/lib/drizzle/schema.js';
 
 const RESTORE_STATUS: QiLogStatus = 'restore_committed';
 

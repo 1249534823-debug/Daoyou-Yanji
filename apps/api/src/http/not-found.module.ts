@@ -1,6 +1,6 @@
 import { All, Controller, HttpCode, Module, Req, Res } from '@nestjs/common';
 import type { Request, Response } from 'express';
-import { Access } from '../auth/access';
+import { Access } from '../auth/access.js';
 
 // These legacy routers authorized every method and child path, including misses.
 // Keep the fallback module last so concrete feature routes always win.

@@ -1,12 +1,12 @@
-import { ydHook as hook, ydModifier } from './youdu-shapes';
+import { ydHook as hook, ydModifier } from './youdu-shapes.js';
 import { formatContentPackErrors } from '@daoyou/shared/lib/content-pack-errors';
 import { z } from 'zod';
-import { ATTR_NAMES, SkillTag, TargetSide } from '../core';
-import { sectSkillLearning } from './skill-learning';
-import { YOUDU_COMBAT } from './youdu-pack';
-import { validateSectExpressions } from './authoring-expressions';
-import type { SectPathDefV6, SectSkillDefV6 } from './types';
-import raw from './data/youdu-paths.json';
+import { ATTR_NAMES, SkillTag, TargetSide } from '../core/index.js';
+import { sectSkillLearning } from './skill-learning.js';
+import { YOUDU_COMBAT } from './youdu-pack.js';
+import { validateSectExpressions } from './authoring-expressions.js';
+import type { SectPathDefV6, SectSkillDefV6 } from './types.js';
+import raw from './data/youdu-paths.json' with { type: 'json' };
 
 const id = z.string().regex(/^youdu\.[a-z][a-z0-9_.]*$/);
 const ids = z.array(id);

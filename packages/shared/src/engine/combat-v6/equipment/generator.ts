@@ -1,4 +1,4 @@
-import { equipmentRealm, isOpenEquipmentLevel } from "./realm"
+import { equipmentRealm, isOpenEquipmentLevel } from "./realm.js"
 import { SeededRng } from "../core/index.ts"
 import type { CombatV6ProjectionDiagnostic } from "../projection/types.ts"
 import { DAO_EQUIPMENT_BASE_GENERATION, daoEquipmentBaseRange, daoEquipmentAttributeRange, daoEquipmentTemplateOf } from "./content.ts"

@@ -1,6 +1,6 @@
-import { divinationRewardFacts } from '../lib/divination';
-import { addItems, BAG_CAPACITY, type ItemGrant } from './index';
-import { inventoryStackIdentity } from './stack-key';
+import { divinationRewardFacts } from '../lib/divination.js';
+import { addItems, BAG_CAPACITY, type ItemGrant } from './index.js';
+import { inventoryStackIdentity } from './stack-key.js';
 
 const reward: ItemGrant = {
   definitionId: 'consumable.v1',
