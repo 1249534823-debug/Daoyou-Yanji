@@ -5,7 +5,6 @@ import {
   Inject,
   Param,
   Post,
-  Put,
   Req,
   UseFilters,
 } from '@nestjs/common';
@@ -28,15 +27,6 @@ import type { SectCommandRequest } from './sect-idempotency.js';
 import { SectOrganizationService } from './sect-organization.service.js';
 import { SectsService } from './sects.service.js';
 
-const retiredPaths = [
-  'current/methods/:methodId/train',
-  'current/paths/:pathId/layers/:layerId/unlock',
-  'current/paths/:pathId/activate',
-  'current/paths/:pathId/meridian-loadouts/:slot',
-  'current/paths/:pathId/meridian-loadouts/:slot/activate',
-  'current/ability-loadout',
-  'current/paths/:pathId/tactic',
-];
 function commandRequest(request: Request): SectCommandRequest {
   return {
     key: request.get('Idempotency-Key'),
@@ -204,22 +194,4 @@ export class SectsController {
     return this.organization.join(actor, commandRequest(request), sectId);
   }
 
-  @Post(retiredPaths)
-  @HttpCode(410)
-  retiredPost() {
-    return this.retired();
-  }
-
-  @Put(retiredPaths)
-  @HttpCode(410)
-  retiredPut() {
-    return this.retired();
-  }
-
-  private retired() {
-    return {
-      success: false,
-      error: '旧宗门战斗养成已停用，请刷新使用新版心法与经脉',
-    };
-  }
 }

@@ -9,7 +9,7 @@ import {
 import { projectCharacterToCombatV6 } from '../projection/index.ts';
 import { daoyouRulesetV6 } from '../rules-daoyou/index.ts';
 import {
-  COMBAT_V6_PHASE_6D_VERSIONS,
+  COMBAT_V6_CHARACTER_BUILD_VERSIONS,
   COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS,
 } from '../version.ts';
 import { COMBAT_V6_TRAINING_CONTENT_V1 } from './content.ts';
@@ -351,7 +351,7 @@ export function compileCombatV6TrainingEncounterV1(
       seed: input.seed,
       playerId: player.unit.id!,
       npcStrategies,
-      sourceProjectionVersions: { ...COMBAT_V6_PHASE_6D_VERSIONS },
+      sourceProjectionVersions: { ...COMBAT_V6_CHARACTER_BUILD_VERSIONS },
       sourcePlayerInput: clone(input.player),
       playerAutoStrategy: input.player.autoStrategy,
       battleInput: {

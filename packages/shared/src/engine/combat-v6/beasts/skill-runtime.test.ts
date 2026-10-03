@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
 import { CommandType, DamageKind, EventType, createBattle } from '../core/index.js';
 import { createDaoyouRuleset } from '../rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_7C_VERSIONS } from '../version.js';
+import { COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS } from '../version.js';
 import { BEAST_SKILLS } from './content.js';
 import { captureMp, captureSkill, nextBeastExp } from './progression.js';
 
@@ -13,7 +13,7 @@ it.each([
   expect(skill).toBeDefined();
   const battle = createBattle({
     seed: 42,
-    versions: COMBAT_V6_PHASE_7C_VERSIONS,
+    versions: COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS,
     ruleset: createDaoyouRuleset({
       formulas: {
         spellHitChance: () => 1,

@@ -1,7 +1,6 @@
 import type { ResourceOperation } from '@daoyou/shared/engine/resource/types';
 import type { CultivatorCondition } from '@daoyou/shared/types/condition';
 import type { EnemyRace, RealmStage, RealmType } from '@daoyou/shared/types/constants';
-import type { Cultivator } from '@daoyou/shared/types/cultivator';
 import type { TowerBlessingId } from './blessings.js';
 
 export type TowerRunStatus =
@@ -38,24 +37,6 @@ export interface TowerEncounter {
   realm: RealmType;
   realmStage: RealmStage;
   isBoss: boolean;
-}
-
-export interface TowerBattleContext {
-  battleId: string;
-  encounter: TowerEncounter;
-  enemy: Cultivator;
-}
-
-/** @deprecated 仅用于 towerEnemyFloors 历史 JSON，不参与 V6 敌人生成。 */
-export interface TowerPreparedEnemy {
-  floor: number;
-  encounter: TowerEncounter;
-  enemy: Cultivator;
-  generationMeta: {
-    variantSeed: string;
-    source: 'llm' | 'fallback';
-    generatedAt: string;
-  };
 }
 
 export interface TowerMilestoneReward {

@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { createBattle, effectiveAttrs, restoreBattle, SeededRng, type Command, type SkillDef } from '../core/index.js';
 import { createDaoyouRuleset, daoyouFormulas } from '../rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_6D_VERSIONS as versions } from '../version.js';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '../version.js';
 import { createEmptySectCombatProgressV6 } from '../build-state/index.js';
 import { compileSectDefinitionV6 } from './compiler.js';
 import { YOUDU_V6_DEFINITION as definition } from './youdu.js';

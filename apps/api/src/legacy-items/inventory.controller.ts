@@ -50,9 +50,4 @@ export class LegacyInventoryController {
     return this.inventory.discard(actor, body);
   }
 
-  @Post('identify')
-  @HttpCode(410)
-  identify() {
-    return { error: '未鉴定材料已弃用，无法鉴定或迁移' };
-  }
 }

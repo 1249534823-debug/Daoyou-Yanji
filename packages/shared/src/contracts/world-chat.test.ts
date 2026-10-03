@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { WorldChatCreateMessageSchema } from './world-chat.js';
 
-describe('chat message creation after legacy battle sharing retirement', () => {
-  it('rejects old battle shares with an explicit retirement message', () => {
+describe('chat message creation', () => {
+  it('rejects unsupported message types', () => {
     const result = WorldChatCreateMessageSchema.safeParse({
       messageType: 'battle_showcase',
       battleRecordId: '00000000-0000-4000-8000-000000000001',
@@ -10,7 +10,7 @@ describe('chat message creation after legacy battle sharing retirement', () => {
     });
     expect(result.success).toBe(false);
     if (!result.success)
-      expect(result.error.issues[0].message).toContain('旧版战报分享已停用');
+      expect(result.error.issues[0].message).toContain('仅支持文字、道具、灵兽与战绩消息');
   });
   it('accepts text, item and beast showcases', () => {
     expect(

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
 import {
-  COMBAT_V6_PHASE_1_VERSIONS,
+  COMBAT_V6_BASE_PROJECTION_VERSIONS,
   CommandType,
   EffectType,
   EventType,
@@ -57,7 +57,7 @@ function skill(overrides: Partial<SkillDef> = {}): SkillDef {
 function battleWith(skillDef = skill()) {
   return createBattle({
     seed: 1,
-    versions: COMBAT_V6_PHASE_1_VERSIONS,
+    versions: COMBAT_V6_BASE_PROJECTION_VERSIONS,
     ruleset,
     skills: [skillDef],
     units: [

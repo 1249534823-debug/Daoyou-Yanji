@@ -9,7 +9,6 @@ import {
   exchangeManualMigration,
   manualMigrationAvailability,
   readManualMigration,
-  readManualMigrationAdmin,
 } from '@server/legacy-items/application/ManualMigrationService.js';
 import type { ExchangeArtifact } from '@daoyou/shared/contracts/artifactMigration';
 import type { ExchangeManual } from '@daoyou/shared/contracts/manualMigration';
@@ -43,7 +42,4 @@ export class MigrationService {
     return { success: true, ...(await exchangeManualMigration(actor, input)) };
   }
 
-  async manualAdmin() {
-    return { success: true, data: await readManualMigrationAdmin() };
-  }
 }

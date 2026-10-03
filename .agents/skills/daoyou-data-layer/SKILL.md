@@ -56,8 +56,8 @@ Repository names resolve under `apps/api/src/lib/repositories`; V6 service names
 
 - `creation_products`, `materials` and `consumables` still have residual code paths. Inspect their actual callers before modifying or deleting them; they are not fallback sources for V6 equipment/manuals or the unified bag.
 - Legacy product views use `packages/shared/src/legacy/products.ts`. Do not restore creation-v2 rehydration / `battleProjection` or treat `creation_products.is_equipped` as current V6 equipment state.
-- `/api/battle-records/*` returns 410. V6 history uses the combat replay repository, not `battle_records_v2`.
-- `battle_records_v3`, `battle_replay_archives` and `bet_battles` are deprecated historical schema, with deletion deferred by release policy. Read `docs/combat-v6-legacy-table-retirement.md` for that policy, but verify exact table names against schema. Do not generate DROP migrations simply while cleaning up skills or legacy references.
+- `/api/battle-records/*` has been removed. V6 history uses the combat replay repository, not `battle_records_v2`.
+- `battle_records_v3`, `battle_replay_archives` and `bet_battles` are deprecated historical schema, with physical deletion deferred to a separate future migration. Read `docs/combat-v6-legacy-table-retirement.md` for that policy, but verify exact table names against schema. Do not generate DROP migrations simply while cleaning up skills or legacy references.
 - Do not infer that every older table is still present, or already physically deleted, from a DTO, directory or migration file alone.
 
 ## Verify

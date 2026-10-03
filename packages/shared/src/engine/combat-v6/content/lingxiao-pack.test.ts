@@ -5,7 +5,7 @@ import schema from './data/lingxiao-combat.schema.json' with { type: 'json' };
 import { LingxiaoCombatPackShape, loadLingxiaoCombatPack, compileLingxiaoCombatPack } from './lingxiao-pack.js';
 import { CommandType, createBattle } from '../core/index.js';
 import { createDaoyouRuleset } from '../rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version.js';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '../version.js';
 
 describe('红尘剑宗技能、状态与资源配置', () => {
   it('Schema 同步', () => expect(z.toJSONSchema(LingxiaoCombatPackShape)).toEqual(schema));
@@ -28,7 +28,7 @@ describe('红尘剑宗技能、状态与资源配置', () => {
       const pack = compileLingxiaoCombatPack(loadLingxiaoCombatPack(data));
       const skill = pack.skill('lingxiao.skill.shadow_strike').definition;
       const battle = createBattle({
-        seed: 5, versions: COMBAT_V6_PHASE_6D_VERSIONS, ruleset: createDaoyouRuleset(),
+        seed: 5, versions: COMBAT_V6_CHARACTER_BUILD_VERSIONS, ruleset: createDaoyouRuleset(),
         skills: [skill], statusDefs: pack.statuses,
         units: [
           { id: 'source', name: '剑修', side: 0, kind: 'player', skills: [skill.id], resources: pack.resources, skillLevels: { [skill.id]: 10 }, attrs: { hp: 1000, mp: 100, maxMp: 100, speed: 100, physicalAtk: 100, physicalDef: 10 } },

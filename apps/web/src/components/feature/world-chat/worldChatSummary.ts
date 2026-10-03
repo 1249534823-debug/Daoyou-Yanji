@@ -1,6 +1,5 @@
 import { isInventoryShowcase } from '@daoyou/shared/items/showcase';
 import type {
-  WorldChatBattleShowcasePayload,
   WorldChatMessageDTO,
 } from '@daoyou/shared/types/world-chat';
 
@@ -15,26 +14,6 @@ function isTextPayload(
   );
 }
 
-function isBattleShowcasePayload(
-  payload: WorldChatMessageDTO['payload'],
-): payload is WorldChatBattleShowcasePayload {
-  return (
-    typeof payload === 'object' &&
-    payload !== null &&
-    'shareCode' in payload &&
-    'winner' in payload &&
-    'loser' in payload &&
-    'turns' in payload &&
-    typeof payload.winner === 'object' &&
-    payload.winner !== null &&
-    typeof payload.winner.name === 'string' &&
-    typeof payload.loser === 'object' &&
-    payload.loser !== null &&
-    typeof payload.loser.name === 'string' &&
-    typeof payload.turns === 'number'
-  );
-}
-
 export function getWorldChatMessageBody(message: WorldChatMessageDTO) {
   if (message.messageType === 'combat_v6_replay' && 'version' in message.payload && message.payload.version === 1 && 'sides' in message.payload && Array.isArray(message.payload.sides) && Array.isArray(message.payload.sides[0]) && Array.isArray(message.payload.sides[1])) {
     return `分享战绩：${message.payload.sides[0].join('、')} 对阵 ${message.payload.sides[1].join('、')}（${message.payload.roundCount} 回）`;
@@ -43,16 +22,6 @@ export function getWorldChatMessageBody(message: WorldChatMessageDTO) {
     const beast = message.payload.beast;
     return `${beast.isMutant ? '变异灵兽' : '灵兽'}「${beast.name}」${message.payload.text ? ` ${message.payload.text}` : ''}`;
   }
-  if (
-    message.messageType === 'battle_showcase' &&
-    isBattleShowcasePayload(message.payload)
-  ) {
-    const summary = `展示战谱：${message.payload.winner.name}胜${message.payload.loser.name}（${message.payload.turns}回）`;
-    return message.payload.text
-      ? `${summary} ${message.payload.text}`
-      : summary;
-  }
-
   if (
     message.messageType === 'item_showcase' &&
     isInventoryShowcase(message.payload)

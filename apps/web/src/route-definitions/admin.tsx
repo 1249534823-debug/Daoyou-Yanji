@@ -19,11 +19,6 @@ export const adminRoutes = (
       handle={title('用户反馈')}
     />
     <Route
-      path="manual-migration"
-      lazy={lazyRoute(() => import('@app/routes/admin/manual-migration/route'))}
-      handle={title('旧功法迁移')}
-    />
-    <Route
       path="accounts"
       lazy={lazyRoute(() => import('@app/routes/admin/accounts/route'))}
       handle={title('账号管理')}

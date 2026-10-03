@@ -7,7 +7,6 @@ import type { StoredTowerWeek } from '@daoyou/shared/engine/combat-v6/tower/publ
 import type { TowerClaims } from '@daoyou/shared/lib/tower/reward-state';
 import type { DivinationDice, DivinationDirection } from '@daoyou/shared/lib/divination';
 import type { WildEncounter, WildRuntime } from '@daoyou/shared/contracts/combatV6Wild';
-import type { BattleReplayV1 } from '@daoyou/shared/contracts/battleReplay';
 import type { AutoStrategy } from '@daoyou/shared/combat-v6/auto-strategy';
 import type { CombatV6ReplayV1 } from '@daoyou/shared/contracts/combatV6Runtime';
 import type {
@@ -25,8 +24,6 @@ import type {
   ItemLibraryPayload,
 } from '@daoyou/shared/lib/itemLibrary';
 import type { SponsorshipTierId } from '@daoyou/shared/lib/sponsorship';
-import type { TowerPreparedEnemy } from '@daoyou/shared/lib/tower';
-import type { BattleRecordV3 } from '@daoyou/shared/types/battle';
 import type {
   AlchemyFormulaBlueprint,
   AlchemyFormulaMastery,
@@ -794,7 +791,7 @@ export const preHeavenFates = pgTable(
   (table) => [index('pre_heaven_fates_cultivator_idx').on(table.cultivatorId)],
 );
 
-// 材料表（1对多）
+/** @deprecated 旧藏宝库材料；仅供历史查询和丢弃，当前背包使用 inventoryItems。保留表结构，后续单独退役。 */
 export const materials = pgTable(
   'wanjiedaoyou_materials',
   {
@@ -822,7 +819,7 @@ export const materials = pgTable(
   ],
 );
 
-// 消耗品表（1对多，不在创建时生成，由用户后续添加）
+/** @deprecated 旧藏宝库消耗品；不作为当前背包权威。保留历史查询和丢弃，后续单独退役。 */
 export const consumables = pgTable(
   'wanjiedaoyou_consumables',
   {
@@ -1038,7 +1035,7 @@ export const battleRecordsV3 = pgTable(
     battleType: varchar('battle_type', { length: 20 })
       .notNull()
       .default('normal'),
-    battleResult: jsonb('battle_result').$type<BattleRecordV3>().notNull(),
+    battleResult: jsonb('battle_result').$type<Record<string, unknown>>().notNull(),
     shareCode: uuid('share_code'),
     sharedAt: timestamp('shared_at'),
     createdAt: timestamp('created_at').defaultNow().notNull(),
@@ -1074,11 +1071,11 @@ export const battleReplayArchives = pgTable(
     rulesetVersion: varchar('ruleset_version', { length: 60 }).notNull(),
     startedAt: timestamp('started_at').notNull(),
     finishedAt: timestamp('finished_at').notNull(),
-    outcome: jsonb('outcome').$type<BattleReplayV1['outcome']>().notNull(),
+    outcome: jsonb('outcome').$type<unknown>().notNull(),
     participants: jsonb('participants')
-      .$type<BattleReplayV1['participants']>()
+      .$type<unknown>()
       .notNull(),
-    replay: jsonb('replay').$type<BattleReplayV1>().notNull(),
+    replay: jsonb('replay').$type<Record<string, unknown>>().notNull(),
     archivedAt: timestamp('archived_at').defaultNow().notNull(),
   },
   (table) => [
@@ -1794,7 +1791,7 @@ export const towerEnemyFloors = pgTable(
     floor: integer('floor').notNull(),
     status: varchar('status', { length: 20 }).notNull().default('ready'),
     schemaVersion: integer('schema_version').notNull().default(1),
-    enemy: jsonb('enemy').$type<TowerPreparedEnemy>(),
+    enemy: jsonb('enemy').$type<Record<string, unknown>>(),
     generatedAt: timestamp('generated_at').defaultNow().notNull(),
     errorMessage: text('error_message'),
     updatedAt: timestamp('updated_at')
@@ -2014,8 +2011,7 @@ export const feedbacks = pgTable(
   ],
 );
 
-// ===== 造物引擎 V2 统一产物表 =====
-// 所有 v2 产物（skill/artifact/gongfa）存入同一张表，通过 product_type 区分
+/** @deprecated 旧造物存档；仅供旧藏宝库及法宝、功法兑换。当前道装和功法使用独立 V6 模型。保留表结构。 */
 export const creationProducts = pgTable(
   'wanjiedaoyou_creation_products',
   {

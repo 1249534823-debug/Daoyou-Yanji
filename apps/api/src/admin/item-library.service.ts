@@ -188,12 +188,6 @@ export class AdminItemLibraryService {
       );
     }
   }
-  async retiredPreview() {
-    throw new HttpException(
-      { error: '旧法宝与消耗品库已停用，请直接配置新版奖励' },
-      410,
-    );
-  }
   async archive(userId: string, idParam: string) {
     const existing = await findItemLibraryById(idParam);
     if (!existing || existing.type !== 'material')

@@ -2,13 +2,13 @@ import { expect, it } from 'vitest';
 import { applyUnitDelta } from '../../../combat-v6/playback.js';
 import { combatV6Units } from '../../../combat-v6/presentation.js';
 import { BEAST_SPECIES, generateStarterBeast } from '../beasts/index.js';
-import { COMBAT_V6_SECT_DEFINITIONS_V4 } from '../content/index.js';
+import { COMBAT_V6_SECT_DEFINITIONS } from '../content/index.js';
 import type { CombatV6TrainingPlayerInput } from '../encounter/index.js';
 import { compileRankingBattle, simulateRankingBattle } from './battle.js';
 import { projectCharacterToCombatV6 } from '../projection/index.js';
 
 function player(id: string): CombatV6TrainingPlayerInput {
-  const def = COMBAT_V6_SECT_DEFINITIONS_V4.youdu;
+  const def = COMBAT_V6_SECT_DEFINITIONS.youdu;
   return {
     cultivator: {
       id,
@@ -119,7 +119,7 @@ it('同宗不同道途的技能按角色隔离，保留补丁与原始构筑', (
   const b = player('b');
   a.sect.meridianDepth = 1;
   a.sect.meridianLoadouts[0].nodeIds = ['youdu.node.soul_judge.yanluo'];
-  b.sect.activePathId = COMBAT_V6_SECT_DEFINITIONS_V4.youdu.paths[1].id;
+  b.sect.activePathId = COMBAT_V6_SECT_DEFINITIONS.youdu.paths[1].id;
   const original = structuredClone([a, b]);
   const projections = [a, b].map((p, side) => projectCharacterToCombatV6({ ...p, side: side as 0 | 1, slot: 0, resourcePolicy: 'full' }));
   const input = compileRankingBattle([a, b], 24);

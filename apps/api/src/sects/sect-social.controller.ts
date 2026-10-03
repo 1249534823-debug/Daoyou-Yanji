@@ -14,7 +14,6 @@ import {
   type WorldChatCreateMessageRequest,
 } from '@daoyou/shared/contracts/world-chat';
 import { Access, CurrentCultivator } from '../auth/access.js';
-import { RejectRetiredBattleSharePipe } from '../http/chat-input.pipe.js';
 import { apiErrorFilter } from '../http/error-filter.js';
 import { FirstQuery } from '../http/first-query.js';
 import { JsonBody } from '../http/json-body.js';
@@ -56,7 +55,6 @@ export class SectSocialController {
     @CurrentCultivator() actor: ActiveCultivatorRef,
     @JsonBody(
       { fallback: undefined },
-      new RejectRetiredBattleSharePipe(),
       new ZodPipe(WorldChatCreateMessageSchema, 'legacy-unhandled'),
     )
     body: WorldChatCreateMessageRequest,

@@ -69,20 +69,3 @@ export type ManualMigrationView = {
   })[];
   learned: { manualId: string; level: number }[];
 };
-export type ManualMigrationAdminView = {
-  policy: ManualMigrationPolicy | null;
-  stats: {
-    quality: string;
-    count: number;
-    min: number;
-    median: number;
-    p90: number;
-    max: number;
-  }[];
-  owners: {
-    ownerId: string;
-    name: string;
-    pending: number;
-    problems: number;
-  }[];
-};

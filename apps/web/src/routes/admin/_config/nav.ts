@@ -6,11 +6,6 @@ export interface AdminNavItem {
 
 export const adminNavItems: AdminNavItem[] = [
   {
-    title: '旧功法迁移',
-    description: '查看待兑换功法与异常记录',
-    href: '/admin/manual-migration',
-  },
-  {
     title: '总览',
     description: '后台入口与能力地图',
     href: '/admin',

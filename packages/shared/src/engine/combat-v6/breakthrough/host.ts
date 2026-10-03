@@ -9,7 +9,7 @@ import {
 } from '../encounter/host.js';
 import { projectCharacterToCombatV6 } from '../projection/index.js';
 import { daoyouRulesetV6 } from '../rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version.js';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '../version.js';
 import { presetEnemyAttrs } from '../encounter/preset-enemy.js';
 
 export const BREAKTHROUGH_CHALLENGES = {
@@ -47,7 +47,7 @@ export const BREAKTHROUGH_CHALLENGES = {
 } as const;
 export type BreakthroughChallengeId = keyof typeof BREAKTHROUGH_CHALLENGES;
 export const BREAKTHROUGH_VERSIONS = {
-  ...COMBAT_V6_PHASE_6D_VERSIONS,
+  ...COMBAT_V6_CHARACTER_BUILD_VERSIONS,
   autoPolicyVersion: AUTO_POLICY_VERSION,
   rulesetVersion: 'daoyou_rules_v11',
   contentVersion: 'combat-v6-breakthrough-v1',
@@ -85,7 +85,7 @@ export class BreakthroughHost extends CombatV6PveHostSession {
             .filter((unit) => unit.side === 1)
             .map((unit) => [unit.id!, { type: 'automatic' as const }]),
         ),
-        sourceProjectionVersions: COMBAT_V6_PHASE_6D_VERSIONS,
+        sourceProjectionVersions: COMBAT_V6_CHARACTER_BUILD_VERSIONS,
         playerAutoStrategy: source.input.autoStrategy,
       },
       restored,

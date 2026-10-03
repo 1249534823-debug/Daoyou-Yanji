@@ -1,7 +1,5 @@
 import { describe, expect, it } from 'vitest';
 import {
-  SECT_BATTLE_TARGET_SCHEMA_VERSION,
-  SectBattleTargetSnapshotSchema,
   readSectBattleTargetSnapshot,
   resolveSectBattleTargetRealmCandidates,
   summarizeSectBattleTarget,
@@ -24,9 +22,9 @@ describe('sect battle target snapshot', () => {
     },
   );
 
-  it('reads historical target metadata without retaining a battle build', () => {
-    const snapshot = SectBattleTargetSnapshotSchema.parse({
-      schemaVersion: SECT_BATTLE_TARGET_SCHEMA_VERSION,
+  it('reads current V6 target metadata', () => {
+    const target = {
+      schemaVersion: 2,
       kind: 'cultivator',
       sourceCultivatorId: '1e05106f-b997-4c77-a523-4a5191dc3f24',
       sourceSectId: 'source-sect',
@@ -37,40 +35,29 @@ describe('sect battle target snapshot', () => {
       description: '领取时锁定的外宗目标。',
       realm: '金丹',
       realmStage: '后期',
-      combatant: { legacy: 'discard this entire battle build' },
-    });
-    const restored = readSectBattleTargetSnapshot({
-      battleTarget: JSON.parse(JSON.stringify(snapshot)),
-    });
-
-    expect(restored).toEqual(snapshot);
+      seed: 1,
+      contentVersion: 'combat-v6-sect-task-v1',
+      resourcePolicy: 'full',
+      opponent: {
+        version: 'sect-v6-opponent-v1',
+        units: [{ id: 'opponent', side: 1 }],
+        skills: [],
+        statusDefs: [],
+      },
+    };
+    const restored = readSectBattleTargetSnapshot({ battleTarget: target });
+    expect(restored).toEqual(target);
     expect(summarizeSectBattleTarget(restored!)).toEqual({
-      kind: 'cultivator',
-      name: '锁定目标',
+      kind: 'cultivator', name: '锁定目标',
       description: '领取时锁定的外宗目标。',
-      realm: '金丹',
-      realmStage: '后期',
-      sectId: 'source-sect',
-      sectName: '来源宗门',
+      realm: '金丹', realmStage: '后期',
+      sectId: 'source-sect', sectName: '来源宗门',
     });
   });
 
-  it('discards the complete legacy combat build', () => {
-    const summary = readSectBattleTargetSnapshot({
-      battleTarget: {
-        schemaVersion: 1,
-        kind: 'preset',
-        presetId: 'old',
-        rulesVersion: 1,
-        challengeTitle: '历史试炼',
-        name: '旧对手',
-        description: '已停用',
-        realm: '金丹',
-        realmStage: '后期',
-        combatant: { malformed: true },
-      },
-    });
-    expect(summary).toBeDefined();
-    expect(summary).not.toHaveProperty('combatant');
+  it('does not accept retired task builds', () => {
+    expect(readSectBattleTargetSnapshot({ battleTarget: {
+      schemaVersion: 1, kind: 'preset', combatant: { legacy: true },
+    } })).toBeUndefined();
   });
 });

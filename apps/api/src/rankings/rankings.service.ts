@@ -40,11 +40,6 @@ export class RankingsService {
     return { success: true, data: await getRankingList(realm), realm };
   }
   async items(type: string | undefined) {
-    if (type && ['artifact', 'skill', 'technique'].includes(type))
-      throw new HttpException(
-        { success: false, error: '旧装备、功法、神通榜单已停用' },
-        410,
-      );
     if (type !== 'elixir')
       throw new HttpException({ success: false, error: '无效的榜单类型' }, 400);
     const score = sql<number>`(${inventoryItems.instanceData}->>'score')::double precision`;

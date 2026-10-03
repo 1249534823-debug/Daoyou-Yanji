@@ -10,7 +10,6 @@ import {
 } from '@server/inventory/operations.js';
 import type {
   ExchangeManual,
-  ManualMigrationAdminView,
   ManualMigrationPolicy,
   ManualMigrationResult,
   ManualMigrationSource,
@@ -23,7 +22,7 @@ import {
   manualMigrationPlan,
   validateManualSelection,
 } from '@daoyou/shared/manual-migration/rules';
-import { and, eq, sql } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 import { randomInt } from 'node:crypto';
 
 const policy = buildManualMigrationPolicy(MANUAL_MIGRATION_CONFIG);
@@ -192,57 +191,4 @@ export async function exchangeManualMigration(
       },
     });
   return { data: committed.result, state: committed.state };
-}
-
-export async function readManualMigrationAdmin(): Promise<ManualMigrationAdminView> {
-  return db.transaction(
-    async (tx) => {
-      const sources = await tx
-        .select({
-          ...sourceColumns,
-          ownerId: creationProducts.cultivatorId,
-          ownerName: cultivators.name,
-        })
-        .from(creationProducts)
-        .innerJoin(
-          cultivators,
-          eq(cultivators.id, creationProducts.cultivatorId),
-        )
-        .where(
-          and(
-            eq(creationProducts.productType, 'gongfa'),
-            eq(cultivators.status, 'active'),
-          ),
-        );
-      const stats =
-        await tx.execute(sql`SELECT COALESCE(p.quality, '缺失') AS quality, count(*)::integer AS count,
-      min(p.score)::integer AS min, percentile_disc(0.5) WITHIN GROUP (ORDER BY p.score)::integer AS median,
-      percentile_disc(0.9) WITHIN GROUP (ORDER BY p.score)::integer AS p90, max(p.score)::integer AS max
-      FROM wanjiedaoyou_creation_products p JOIN wanjiedaoyou_cultivators c ON c.id = p.cultivator_id
-      WHERE p.product_type = 'gongfa' AND c.status = 'active' GROUP BY p.quality`);
-      const owners = new Map<
-        string,
-        ManualMigrationAdminView['owners'][number]
-      >();
-      for (const source of sources) {
-        const owner = owners.get(source.ownerId) ?? {
-          ownerId: source.ownerId,
-          name: source.ownerName,
-          pending: 0,
-          problems: 0,
-        };
-        owner.pending++;
-        if (preview(source, policy).problem) owner.problems++;
-        owners.set(source.ownerId, owner);
-      }
-      return {
-        policy,
-        stats: stats.rows as ManualMigrationAdminView['stats'],
-        owners: [...owners.values()].sort((a, b) =>
-          a.ownerId.localeCompare(b.ownerId),
-        ),
-      };
-    },
-    { isolationLevel: 'repeatable read', accessMode: 'read only' },
-  );
 }

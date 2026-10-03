@@ -2,7 +2,6 @@ import {
   Controller,
   Get,
   HttpCode,
-  HttpException,
   Inject,
   Post,
   UseFilters,
@@ -91,10 +90,6 @@ export class ProfileController {
     return this.profile.reincarnate(actor);
   }
 
-  @Post('equip')
-  retiredEquip() {
-    throw new HttpException({ error: '旧产物装配已停用' }, 410);
-  }
 
   @Get('qi/logs')
   qiLogs(

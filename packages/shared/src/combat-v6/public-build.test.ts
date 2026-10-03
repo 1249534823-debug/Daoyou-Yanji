@@ -3,7 +3,7 @@ import {
   createEmptySectCombatProgressV6,
   createFreshCombatV6MethodLevels,
 } from '../engine/combat-v6/build-state/index.js';
-import { COMBAT_V6_SECT_DEFINITIONS_V4 } from '../engine/combat-v6/content/index.js';
+import { COMBAT_V6_SECT_DEFINITIONS } from '../engine/combat-v6/content/index.js';
 import {
   projectCharacterDisplay,
   type CharacterDisplayBuild,
@@ -29,7 +29,7 @@ describe('public V6 build', () => {
     return {
       sect: createEmptySectCombatProgressV6(
         'lingxiao',
-        COMBAT_V6_SECT_DEFINITIONS_V4.lingxiao.paths[0].id,
+        COMBAT_V6_SECT_DEFINITIONS.lingxiao.paths[0].id,
         createFreshCombatV6MethodLevels('lingxiao'),
       ),
       equipment: {},

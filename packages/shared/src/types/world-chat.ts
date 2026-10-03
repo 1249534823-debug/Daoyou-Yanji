@@ -1,13 +1,14 @@
 import type { BeastTradePreview } from '../contracts/beastTrade.js';
 import type { InventoryShowcaseSnapshot } from '../items/showcase.js';
-import type { BattleRecordUnitSummary } from './battle.js';
 
 export type WorldChatMessageChannel = 'system' | 'world' | 'sect';
 
 export type WorldChatChannel = WorldChatMessageChannel;
 
-export type WorldChatMessageType =
-  'hunt_rumor' | 'text' | 'item_showcase' | 'beast_showcase' | 'battle_showcase' | 'combat_v6_replay';
+export const WORLD_CHAT_MESSAGE_TYPES = [
+  'hunt_rumor', 'text', 'item_showcase', 'beast_showcase', 'combat_v6_replay',
+] as const;
+export type WorldChatMessageType = (typeof WORLD_CHAT_MESSAGE_TYPES)[number];
 
 export interface WorldChatCombatV6ReplayPayload {
   version: 1;
@@ -33,21 +34,11 @@ export interface WorldChatBeastShowcasePayload {
   text?: string;
 }
 
-export interface WorldChatBattleShowcasePayload {
-  shareCode: string;
-  winner: BattleRecordUnitSummary;
-  loser: BattleRecordUnitSummary;
-  turns: number;
-  battleCreatedAt: string;
-  text?: string;
-}
-
 export interface WorldChatPayloadMap {
   hunt_rumor: { text: string; eventId: string; nodeId: string };
   text: WorldChatTextPayload;
   item_showcase: WorldChatItemShowcasePayload;
   beast_showcase: WorldChatBeastShowcasePayload;
-  battle_showcase: WorldChatBattleShowcasePayload;
   combat_v6_replay: WorldChatCombatV6ReplayPayload;
 }
 

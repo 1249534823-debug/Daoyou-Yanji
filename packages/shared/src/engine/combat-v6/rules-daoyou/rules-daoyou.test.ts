@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
 import {
-  COMBAT_V6_PHASE_1_VERSIONS,
+  COMBAT_V6_BASE_PROJECTION_VERSIONS,
   CommandType,
   EffectType,
   FormulaFamily,
@@ -272,7 +272,7 @@ describe("Daoyou ruleset integration", () => {
   it("applies fury, critical hit, deterministic fluctuation, and defend in order", () => {
     const battle = createBattle({
       seed: 1,
-      versions: COMBAT_V6_PHASE_1_VERSIONS,
+      versions: COMBAT_V6_BASE_PROJECTION_VERSIONS,
       ruleset: daoyouDeterministicRuleset,
       units: [
         lineup({
@@ -320,7 +320,7 @@ describe("Daoyou ruleset integration", () => {
     for (const kind of [UnitKind.Pet, UnitKind.Npc]) {
       const battle = createBattle({
         seed: 1,
-        versions: COMBAT_V6_PHASE_1_VERSIONS,
+        versions: COMBAT_V6_BASE_PROJECTION_VERSIONS,
         ruleset: daoyouDeterministicRuleset,
         units: [
           lineup({
@@ -342,7 +342,7 @@ describe("Daoyou ruleset integration", () => {
 
     const playerBattle = createBattle({
       seed: 1,
-      versions: COMBAT_V6_PHASE_1_VERSIONS,
+      versions: COMBAT_V6_BASE_PROJECTION_VERSIONS,
       ruleset: daoyouDeterministicRuleset,
       units: [
         lineup({
@@ -373,7 +373,7 @@ describe("Daoyou ruleset integration", () => {
     }
     const battle = createBattle({
       seed: 1,
-      versions: COMBAT_V6_PHASE_1_VERSIONS,
+      versions: COMBAT_V6_BASE_PROJECTION_VERSIONS,
       ruleset: daoyouDeterministicRuleset,
       skills: [heal],
       units: [
@@ -406,7 +406,7 @@ describe("Daoyou ruleset integration", () => {
     const fleeRules = createDaoyouRuleset({ formulas: { fleeChance: () => 1 } })
     const fleeBattle = createBattle({
       seed: 1,
-      versions: COMBAT_V6_PHASE_1_VERSIONS,
+      versions: COMBAT_V6_BASE_PROJECTION_VERSIONS,
       ruleset: fleeRules,
       units: [lineup({ id: "a", side: 0 }), lineup({ id: "b", side: 1 })],
     })
@@ -416,7 +416,7 @@ describe("Daoyou ruleset integration", () => {
 
     const roundBattle = createBattle({
       seed: 1,
-      versions: COMBAT_V6_PHASE_1_VERSIONS,
+      versions: COMBAT_V6_BASE_PROJECTION_VERSIONS,
       ruleset: createDaoyouRuleset({
         maxRounds: 1,
         formulas: { fluctuationMin: 1, fluctuationMax: 1 },

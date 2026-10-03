@@ -94,7 +94,7 @@ pnpm run db:migrate
 - Character persistent state is `cultivators.condition`. Bag consumable facts (including `spec`) are stored in `inventory_items.instance_data`; residual old tables are not the V6 bag authority.
 - Character permanent attributes remain vitality, strength, spirit, endurance, speed, willpower. Current projection is `projectCharacterToCombatV6`; display shares that V6 pipeline.
 - V6 core must stay independent of rules/projection/content and must not import battle-v5 or creation-v2. Do not restore old ability/tag/product projection machinery for new V6 behavior.
-- Legacy tables/types can remain without being current authorities. Check runtime callers and `docs/combat-v6-legacy-table-retirement.md` before migration/deletion; `/api/battle-records/*` is retired with 410.
+- Legacy tables/types can remain without being current authorities. Check runtime callers and `docs/combat-v6-legacy-table-retirement.md` before migration/deletion; `/api/battle-records/*` is removed; do not restore legacy history routes.
 
 ## High-Risk Areas
 

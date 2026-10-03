@@ -16,7 +16,6 @@ import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import { ChatMessageApplicationError } from '@server/social/application/chatMessageApplication.js';
 import { ZodError } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
-import { RejectRetiredBattleSharePipe } from '../http/chat-input.pipe.js';
 import { apiErrorFilter } from '../http/error-filter.js';
 import { FirstQuery } from '../http/first-query.js';
 import { JsonBody } from '../http/json-body.js';
@@ -67,7 +66,6 @@ export class WorldChatController {
     @CurrentCultivator() actor: ActiveCultivatorRef,
     @JsonBody(
       { fallback: undefined },
-      new RejectRetiredBattleSharePipe(),
       new ZodPipe(WorldChatCreateMessageSchema),
     )
     body: WorldChatCreateMessageRequest,

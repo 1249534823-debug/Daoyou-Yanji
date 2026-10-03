@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { combatV6SkillDetails } from '../../../combat-v6/skill-details.js';
 import { CommandType, EventType, createBattle, type LineupUnit } from '../core/index.js';
 import { createDaoyouRuleset } from '../rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_7C_VERSIONS } from '../version.js';
+import { COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS } from '../version.js';
 import { BEAST_SKILLS, BEAST_SKILL_FAMILIES, BEAST_SPECIES } from './content.js';
 import { generateStarterBeast } from './generator.js';
 import {
@@ -37,7 +37,7 @@ function battle(
 ) {
   return createBattle({
     seed,
-    versions: COMBAT_V6_PHASE_7C_VERSIONS,
+    versions: COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS,
     ruleset,
     skills: BEAST_SKILLS,
     units: [

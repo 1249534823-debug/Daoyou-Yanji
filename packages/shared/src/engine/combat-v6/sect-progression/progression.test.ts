@@ -4,8 +4,8 @@ import {
   createFreshCombatV6MethodLevels,
 } from '../build-state/index.js';
 import {
-  COMBAT_V6_SECT_DEFINITIONS_V4,
-  compileSectCombatV6V4,
+  COMBAT_V6_SECT_DEFINITIONS,
+  compileCurrentSectCombatV6,
 } from '../content/index.js';
 import {
   MERIDIAN_LEVELS,
@@ -20,7 +20,7 @@ const reference = {
   membershipId: '00000000-0000-4000-8000-000000000001',
   expectedRevision: 0,
 };
-const definitions = Object.values(COMBAT_V6_SECT_DEFINITIONS_V4);
+const definitions = Object.values(COMBAT_V6_SECT_DEFINITIONS);
 function fresh() {
   const d = definitions[0];
   return createEmptySectCombatProgressV6(
@@ -159,7 +159,7 @@ describe('v6 sect progression', () => {
     expect(activated.progress.activePathId).toBe(path.id);
     expect(Object.values(activated.cost)).toEqual([0, 0, 0]);
     expect(
-      compileSectCombatV6V4({
+      compileCurrentSectCombatV6({
         progress: activated.progress,
         characterLevel: 180,
       }).ok,
@@ -189,7 +189,7 @@ describe('v6 sect progression', () => {
               p.methods[source.methods.find((m) => m.slot === method.slot)!.id],
             );
           expect(
-            compileSectCombatV6V4({ progress: next, characterLevel: 180 }).ok,
+            compileCurrentSectCombatV6({ progress: next, characterLevel: 180 }).ok,
           ).toBe(true);
         }
   });

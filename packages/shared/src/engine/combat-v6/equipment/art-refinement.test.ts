@@ -13,7 +13,7 @@ import {
   type StatusDef,
 } from '../core/index.js';
 import { createDaoyouRuleset } from '../rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_4B_VERSIONS } from '../version.js';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '../version.js';
 import pack from './data/equipment-special.json' with { type: 'json' };
 import { DAO_EQUIPMENT_ARTS_V1, DAO_RAGE_RESOURCE_ID } from './special-content.js';
 
@@ -56,7 +56,7 @@ const ruleset = createDaoyouRuleset({
 function battle(statusDefs: StatusDef[] = [], extras: SkillDef[] = []) {
   return createBattle({
     seed: 17,
-    versions: COMBAT_V6_PHASE_4B_VERSIONS,
+    versions: COMBAT_V6_CHARACTER_BUILD_VERSIONS,
     ruleset,
     skills: [
       ...DAO_EQUIPMENT_ARTS_V1.map((a) => a.skill),

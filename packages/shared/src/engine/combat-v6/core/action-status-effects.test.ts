@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { createDaoyouRuleset } from '../rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_6D_VERSIONS as versions } from '../version.js';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '../version.js';
 import {
   createBattle,
   type Command,

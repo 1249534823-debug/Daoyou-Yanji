@@ -73,11 +73,6 @@ export class RankingsController {
     return this.rankings.probe(input);
   }
 
-  @Post(['challenge', 'challenge-battle', 'challenge-battle/v5'])
-  @HttpCode(410)
-  retired() {
-    return { success: false, error: '旧天骄榜战斗已停用，请刷新使用新版挑战' };
-  }
 
   @Get('challenge/current')
   @Header('Cache-Control', 'no-store')

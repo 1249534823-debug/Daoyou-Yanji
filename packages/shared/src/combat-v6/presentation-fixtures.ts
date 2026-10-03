@@ -7,8 +7,8 @@ import {
 } from '../engine/combat-v6/core/enums.js';
 import { createBattle } from '../engine/combat-v6/core/session.js';
 import type { CreateBattleInput } from '../engine/combat-v6/core/types.js';
-import { daoyouRulesetV5 } from '../engine/combat-v6/rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_7D_VERSIONS } from '../engine/combat-v6/version.js';
+import { daoyouRulesetV6 } from '../engine/combat-v6/rules-daoyou/index.js';
+import { COMBAT_V6_SEAL_CURVE_WILD_VERSIONS } from '../engine/combat-v6/version.js';
 
 /** Deterministic workloads shared by presentation regression checks and the size benchmark. */
 export const presentationScenarios = [
@@ -24,8 +24,8 @@ export function presentationBattle(
   const special = scenario === '16-area' || scenario === '16-status';
   const input: CreateBattleInput = {
     seed: 42,
-    versions: COMBAT_V6_PHASE_7D_VERSIONS,
-    ruleset: daoyouRulesetV5,
+    versions: COMBAT_V6_SEAL_CURVE_WILD_VERSIONS,
+    ruleset: daoyouRulesetV6,
     statusDefs: [
       {
         id: 'guard',

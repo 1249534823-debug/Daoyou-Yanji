@@ -69,48 +69,9 @@ export const daoyouDeterministicRuleset = createDaoyouRuleset({
 
 export const daoyouRuleset = createDaoyouRuleset()
 
-export function createDaoyouRulesetV2(options: DaoyouRulesetOptions = {}): Ruleset {
-  return { ...createDaoyouRuleset(options), name: "daoyou-rules-v2" }
+/** Current runtime rules; configurable base rules above support pure formula checks. */
+export const daoyouRulesetV6: Ruleset = {
+  ...createDaoyouRuleset({ formulas: daoyouFormulasV3, maxRounds: 100 }),
+  name: 'daoyou-rules-v6',
+  deferredPlayerCommands: true,
 }
-
-export const daoyouDeterministicRulesetV2 = createDaoyouRulesetV2({
-  formulas: { fluctuationMin: 1, fluctuationMax: 1 },
-})
-
-export const daoyouRulesetV2 = createDaoyouRulesetV2()
-
-export function createDaoyouRulesetV3(options: DaoyouRulesetOptions = {}): Ruleset {
-  const rules = createDaoyouRuleset({
-    ...options,
-    formulas: { ...daoyouFormulasV3, ...(options.formulas ?? {}) },
-  })
-  return { ...rules, name: "daoyou-rules-v3" }
-}
-
-export const daoyouDeterministicRulesetV3 = createDaoyouRulesetV3({
-  formulas: { fluctuationMin: 1, fluctuationMax: 1 },
-})
-
-export const daoyouRulesetV3 = createDaoyouRulesetV3()
-
-export function createDaoyouRulesetV4(options: DaoyouRulesetOptions = {}): Ruleset {
-  return { ...createDaoyouRulesetV3(options), name: "daoyou-rules-v4" }
-}
-
-export const daoyouDeterministicRulesetV4 = createDaoyouRulesetV4({
-  formulas: { fluctuationMin: 1, fluctuationMax: 1 },
-})
-
-export const daoyouRulesetV4 = createDaoyouRulesetV4()
-
-export function createDaoyouRulesetV5(options: DaoyouRulesetOptions = {}): Ruleset {
-  return { ...createDaoyouRulesetV4(options), name: "daoyou-rules-v5" }
-}
-
-export const daoyouDeterministicRulesetV5 = createDaoyouRulesetV5({
-  formulas: { fluctuationMin: 1, fluctuationMax: 1 },
-})
-
-export const daoyouRulesetV5 = createDaoyouRulesetV5()
-
-export const daoyouRulesetV6: Ruleset = { ...daoyouRulesetV5, name: 'daoyou-rules-v6', maxRounds: 100, deferredPlayerCommands: true }

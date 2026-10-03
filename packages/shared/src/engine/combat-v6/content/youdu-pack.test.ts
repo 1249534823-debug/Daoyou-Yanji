@@ -5,13 +5,13 @@ import schema from './data/youdu-combat.schema.json' with { type: 'json' };
 import { YouduCombatPackShape, loadYouduCombatPack, compileYouduCombatPack } from './youdu-pack.js';
 import { CommandType, createBattle } from '../core/index.js';
 import { createDaoyouRuleset } from '../rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version.js';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '../version.js';
 
 function cast(data: unknown, index = 0) {
   const pack = compileYouduCombatPack(loadYouduCombatPack(data));
   const skill = pack.baseSkills[index].definition;
   const battle = createBattle({
-    seed: 7, versions: COMBAT_V6_PHASE_6D_VERSIONS, ruleset: createDaoyouRuleset(),
+    seed: 7, versions: COMBAT_V6_CHARACTER_BUILD_VERSIONS, ruleset: createDaoyouRuleset(),
     skills: [skill], statusDefs: pack.statuses,
     units: [
       { id: 'caster', name: '施法者', side: 0, kind: 'player', skills: [skill.id], skillLevels: { [skill.id]: 10 }, attrs: { hp: 10000, mp: 1000, maxMp: 1000, speed: 100, physicalAtk: 10, physicalDef: 10 } },

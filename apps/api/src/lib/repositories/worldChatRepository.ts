@@ -1,3 +1,4 @@
+import { WORLD_CHAT_MESSAGE_TYPES } from '@daoyou/shared/types/world-chat';
 import { redis } from '@server/lib/redis/index.js';
 import type {
   WorldChatChannel,
@@ -51,7 +52,8 @@ function parseStoredMessage(raw: unknown): WorldChatMessageDTO | null {
     if (
       typeof parsed.id === 'string' &&
       typeof parsed.senderName === 'string' &&
-      typeof parsed.createdAt === 'string'
+      typeof parsed.createdAt === 'string' &&
+      WORLD_CHAT_MESSAGE_TYPES.includes(parsed.messageType as WorldChatMessageType)
     ) {
       return {
         ...parsed,
@@ -65,7 +67,7 @@ function parseStoredMessage(raw: unknown): WorldChatMessageDTO | null {
   if (typeof raw === 'string') {
     try {
       const parsed = JSON.parse(raw) as StoredWorldChatMessage;
-      if (!parsed || typeof parsed.id !== 'string') return null;
+      if (!parsed || typeof parsed.id !== 'string' || !WORLD_CHAT_MESSAGE_TYPES.includes(parsed.messageType)) return null;
       return {
         ...parsed,
         channel: resolveStoredChannel(parsed),

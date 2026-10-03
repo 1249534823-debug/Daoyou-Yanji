@@ -1,5 +1,4 @@
 import {
-  All,
   Controller,
   Get,
   HttpCode,
@@ -117,21 +116,6 @@ export class TowerController {
     return this.tower.auto(actor, id, input.expectedRevision, input.round);
   }
 
-  @All(['battle', 'battle/*path'])
-  @HttpCode(410)
-  retiredBattle() {
-    return { error: '旧幻境战斗已下线，请刷新页面' };
-  }
 
-  @Post('reset')
-  @HttpCode(410)
-  retiredReset() {
-    return { error: '旧幻境接口已下线，请刷新页面' };
-  }
 
-  @Post('blessing/choose')
-  @HttpCode(410)
-  retiredBlessing() {
-    return { error: '旧幻境接口已下线，请刷新页面' };
-  }
 }

@@ -5,7 +5,7 @@ import {
   compileCharacterPanelV1,
   compileBodyCultivationV6,
   projectCultivatorBaseToCombatV6,
-  projectCultivatorWithTrainingToCombatV6,
+  projectCharacterToCombatV6,
   type CultivatorBaseCombatInput,
 } from "./index.ts"
 
@@ -260,7 +260,7 @@ describe("base cultivator projection", () => {
   })
 })
 
-describe("character_training_v1", () => {
+describe("current body cultivation projection", () => {
   it.each([
     [0, 0, 0],
     [10, 24, 5],
@@ -307,7 +307,9 @@ describe("character_training_v1", () => {
       milestones: { legacy: true },
     }
     const before = structuredClone(condition)
-    const result = projectCultivatorWithTrainingToCombatV6({
+    const result = projectCharacterToCombatV6({
+      equipment: {},
+      manuals: { version: 1, revision: 0, learned: [], build: { slots: [] } },
       cultivator: cultivator({ condition }),
       side: 0,
       slot: 0,
@@ -325,13 +327,15 @@ describe("character_training_v1", () => {
       spellCultivate: 14,
       resistSpellCultivate: 16,
     })
-    expect(result.versions.projectionVersion).toBe("character_training_v1")
+    expect(result.versions.projectionVersion).toBe("character_build_v5")
     expect(condition).toEqual(before)
   })
 
   it("defaults missing cultivation to zero and preserves persistent hp", () => {
     const condition = createCondition(400, 200)
-    const result = projectCultivatorWithTrainingToCombatV6({
+    const result = projectCharacterToCombatV6({
+      equipment: {},
+      manuals: { version: 1, revision: 0, learned: [], build: { slots: [] } },
       cultivator: cultivator({ condition }),
       side: 0,
       slot: 0,
@@ -362,7 +366,9 @@ describe("character_training_v1", () => {
       },
       milestones: {},
     }
-    const result = projectCultivatorWithTrainingToCombatV6({
+    const result = projectCharacterToCombatV6({
+      equipment: {},
+      manuals: { version: 1, revision: 0, learned: [], build: { slots: [] } },
       cultivator: cultivator({ condition }),
       side: 0,
       slot: 0,
@@ -389,7 +395,9 @@ describe("character_training_v1", () => {
       },
       milestones: {},
     }
-    const result = projectCultivatorWithTrainingToCombatV6({
+    const result = projectCharacterToCombatV6({
+      equipment: {},
+      manuals: { version: 1, revision: 0, learned: [], build: { slots: [] } },
       cultivator: cultivator({ condition }),
       side: 0,
       slot: 0,

@@ -7,7 +7,7 @@ import {
   type StatusDef,
 } from '../core/index.js';
 import { createDaoyouRuleset } from '../rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_7C_VERSIONS } from '../version.js';
+import { COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS } from '../version.js';
 import { BEAST_SKILLS, BEAST_STATUS_DEFS } from './content.js';
 import { beastDeathIds } from './progression.js';
 const extra: StatusDef[] = [
@@ -30,7 +30,7 @@ const extra: StatusDef[] = [
 function input(own = ['beast.ghost'], enemy: string[] = []) {
   return {
     seed: 1,
-    versions: COMBAT_V6_PHASE_7C_VERSIONS,
+    versions: COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS,
     ruleset: createDaoyouRuleset({
       formulas: {
         physicalHitChance: () => 1,

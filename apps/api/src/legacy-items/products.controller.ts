@@ -1,11 +1,8 @@
 import {
   Controller,
-  Delete,
   Get,
-  HttpCode,
   Inject,
   Param,
-  Post,
   UseFilters,
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
@@ -41,11 +38,6 @@ export class ProductsController {
     return this.products.list(actor, query);
   }
 
-  @Post('equip')
-  @HttpCode(410)
-  equip() {
-    return { error: '旧产物装配已停用' };
-  }
 
   @Get(':id')
   read(
@@ -55,9 +47,4 @@ export class ProductsController {
     return this.products.read(actor, id);
   }
 
-  @Delete(':id')
-  @HttpCode(410)
-  delete() {
-    return { error: '历史产物直接删除已停用' };
-  }
 }

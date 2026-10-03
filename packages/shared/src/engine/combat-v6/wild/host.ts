@@ -18,7 +18,7 @@ import type {
 import { projectCharacterToCombatV6 } from '../projection/index.ts';
 import { daoyouRulesetV6 } from '../rules-daoyou/index.ts';
 import {
-  COMBAT_V6_PHASE_6D_VERSIONS,
+  COMBAT_V6_CHARACTER_BUILD_VERSIONS,
   COMBAT_V6_SEAL_CURVE_WILD_VERSIONS,
 } from '../version.ts';
 import { WildIndividualSchema, type WildIndividual } from './generator.js';
@@ -55,7 +55,7 @@ export class WildHost extends CombatV6PveHostSession {
           ruleset: daoyouRulesetV6,
         },
         npcStrategies: compiled.npcStrategies,
-        sourceProjectionVersions: COMBAT_V6_PHASE_6D_VERSIONS,
+        sourceProjectionVersions: COMBAT_V6_CHARACTER_BUILD_VERSIONS,
         playerAutoStrategy: compiled.input.autoStrategy,
       },
       restored,

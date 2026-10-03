@@ -40,7 +40,7 @@ export const WorldChatCreateMessageSchema = z.discriminatedUnion(
     WorldChatBeastShowcaseMessageSchema,
     WorldChatCombatV6ReplayMessageSchema,
   ],
-  { error: '仅支持文字、道具、灵兽与新版战绩消息，旧版战报分享已停用' },
+  { error: '仅支持文字、道具、灵兽与战绩消息' },
 );
 
 export const WorldChatListQuerySchema = z.object({

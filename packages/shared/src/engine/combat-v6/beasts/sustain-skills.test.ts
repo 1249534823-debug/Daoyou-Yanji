@@ -11,7 +11,7 @@ import {
   type SkillDef,
 } from '../core/index.js';
 import { createDaoyouRuleset } from '../rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_7C_VERSIONS } from '../version.js';
+import { COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS } from '../version.js';
 import { BEAST_SKILLS, BEAST_SKILL_CONTENT } from './content.js';
 import { beastDeathIds } from './progression.js';
 import { compileBeastSkill } from './skill-compiler.js';
@@ -60,7 +60,7 @@ function create(
   });
   return createBattle({
     seed,
-    versions: COMBAT_V6_PHASE_7C_VERSIONS,
+    versions: COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS,
     ruleset,
     skills: [...skills, hit, magic],
     statusDefs: [

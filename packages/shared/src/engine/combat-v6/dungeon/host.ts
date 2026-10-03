@@ -10,11 +10,11 @@ import {
 } from '../encounter/host.js';
 import { projectCharacterToCombatV6 } from '../projection/index.js';
 import { daoyouRulesetV6 } from '../rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version.js';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '../version.js';
 import { presetEnemyAttrs } from '../encounter/preset-enemy.js';
 
 export const DUNGEON_VERSIONS = {
-  ...COMBAT_V6_PHASE_6D_VERSIONS,
+  ...COMBAT_V6_CHARACTER_BUILD_VERSIONS,
   autoPolicyVersion: AUTO_POLICY_VERSION,
   rulesetVersion: 'daoyou_rules_v11' as const,
   contentVersion: 'combat-v6-dungeon-v1' as const,
@@ -85,7 +85,7 @@ export class DungeonHost extends CombatV6PveHostSession {
             .filter((u) => u.side === 1)
             .map((u) => [u.id!, { type: 'attack' as const }]),
         ),
-        sourceProjectionVersions: COMBAT_V6_PHASE_6D_VERSIONS,
+        sourceProjectionVersions: COMBAT_V6_CHARACTER_BUILD_VERSIONS,
         playerAutoStrategy: source.input.autoStrategy,
       },
       restored,

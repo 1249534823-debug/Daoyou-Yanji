@@ -10,7 +10,7 @@ import {
 import type { CultivatorCondition } from '@daoyou/shared/types/condition';
 import { describe, expect, it } from 'vitest';
 import {
-  COMBAT_V6_SECT_DEFINITIONS_V4,
+  COMBAT_V6_SECT_DEFINITIONS,
   type CombatV6SectId,
   type SectCombatProgressV6,
 } from '../content/index.js';
@@ -21,7 +21,7 @@ import {
   createDungeonHost,
 } from './host.js';
 function player(sectId: CombatV6SectId) {
-  const def = COMBAT_V6_SECT_DEFINITIONS_V4[sectId];
+  const def = COMBAT_V6_SECT_DEFINITIONS[sectId];
   const track = { level: 0, progress: 0 };
   const condition: CultivatorCondition = {
     version: 1,

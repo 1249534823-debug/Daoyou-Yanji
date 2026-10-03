@@ -19,7 +19,7 @@ import { projectCharacterToCombatV6 } from '../projection/index.js';
 import { characterBattleSkills } from '../projection/character-battle-skills.js';
 import { daoyouRulesetV6 } from '../rules-daoyou/index.js';
 import type { AutoStrategy } from '../../../combat-v6/auto-strategy.js';
-import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version.js';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '../version.js';
 
 export type RankingBattleInput = PresentedBattleInput & {
   seed: number;
@@ -76,7 +76,7 @@ export function compileRankingBattle(
     statusDefs: [...statuses.values()],
     autoStrategies,
     versions: {
-      ...COMBAT_V6_PHASE_6D_VERSIONS,
+      ...COMBAT_V6_CHARACTER_BUILD_VERSIONS,
       autoPolicyVersion: AUTO_POLICY_VERSION,
       rulesetVersion: 'daoyou_rules_v11',
       contentVersion: 'combat-v6-ranking-v1',

@@ -1,7 +1,7 @@
 import { CHARACTER_MANUALS_V1, manualRule } from '@daoyou/shared/engine/combat-v6/manuals/content';
 import { DAO_EQUIPMENT_GENERATOR_VERSION, DAO_EQUIPMENT_TEMPLATE_ID, generateDaoEquipmentV1 } from '@daoyou/shared/engine/combat-v6/equipment';
 import { describe, expect, it } from 'vitest';
-import { COMBAT_V6_SECT_DEFINITIONS_V4 } from '@daoyou/shared/engine/combat-v6/content';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/shared/engine/combat-v6/content';
 import { projectCharacterToCombatV6 } from '@daoyou/shared/engine/combat-v6/projection';
 import { characterResourceMaxima, normalizeCharacterResource, projectCharacterDisplay, projectCharacterDisplaySnapshot, type CharacterDisplayBuild, type CultivatorDisplayInput } from './cultivatorDisplay.js';
 
@@ -10,7 +10,7 @@ const player: CultivatorDisplayInput = {
   attributes: { vitality: 10, strength: 10, spirit: 10, endurance: 10, speed: 10, willpower: 10 },
   cultivations: [], equipped: { weapon: null, armor: null, accessory: null }, inventory: { artifacts: [] },
 };
-const definition = COMBAT_V6_SECT_DEFINITIONS_V4.youdu;
+const definition = COMBAT_V6_SECT_DEFINITIONS.youdu;
 const build: CharacterDisplayBuild = {
   sect: {
     version: 1, sectId: 'youdu', methods: Object.fromEntries(definition.methods.map(m => [m.id, 1])),

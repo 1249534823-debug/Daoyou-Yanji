@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { COMBAT_V6_SECT_DEFINITIONS_V4 } from '../engine/combat-v6/content/index.js';
+import { COMBAT_V6_SECT_DEFINITIONS } from '../engine/combat-v6/content/index.js';
 import {
   createBattle,
   type SkillDef,
@@ -14,7 +14,7 @@ import {
 } from '../engine/combat-v6/ranking/battle.js';
 import { daoyouRulesetV6 } from '../engine/combat-v6/rules-daoyou/index.js';
 import { towerReferenceBuild } from '../engine/combat-v6/tower/reference-fixtures.js';
-import { COMBAT_V6_PHASE_6D_VERSIONS } from '../engine/combat-v6/version.js';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '../engine/combat-v6/version.js';
 import { automaticCommands, CombatAutoRequestSchema } from './auto.js';
 import { observeAutoBattle } from './auto-observation.js';
 import { AUTO_POLICY_VERSION } from './auto-policy.js';
@@ -86,7 +86,7 @@ function fixture(
   };
   return createBattle({
     seed: 42,
-    versions: { ...COMBAT_V6_PHASE_6D_VERSIONS, autoPolicyVersion: AUTO_POLICY_VERSION },
+    versions: { ...COMBAT_V6_CHARACTER_BUILD_VERSIONS, autoPolicyVersion: AUTO_POLICY_VERSION },
     ruleset: daoyouRulesetV6,
     skills: definitions,
     statusDefs: [
@@ -188,7 +188,7 @@ function conditionedDefend(
 }
 describe('当前场次托管', () => {
   it('可配置的宗门状态都来自现行状态定义', () => {
-    for (const definition of Object.values(COMBAT_V6_SECT_DEFINITIONS_V4)) {
+    for (const definition of Object.values(COMBAT_V6_SECT_DEFINITIONS)) {
       const statuses = definition.statuses;
       for (const path of definition.paths) {
         const choices = autoStatusChoices(path.id);
@@ -833,11 +833,11 @@ describe('当前场次托管', () => {
     expect(chooseWithStrategy(battle, strategy).type).toBe('defend');
   });
   it('每个现行宗门流派都有有效的默认规则和已定义技能', () => {
-    const paths = Object.values(COMBAT_V6_SECT_DEFINITIONS_V4).flatMap(
+    const paths = Object.values(COMBAT_V6_SECT_DEFINITIONS).flatMap(
       (definition) => definition.paths.map((path) => path.id),
     );
     expect(Object.keys(DEFAULT_AUTO_STRATEGIES).sort()).toEqual(paths.sort());
-    for (const definition of Object.values(COMBAT_V6_SECT_DEFINITIONS_V4)) {
+    for (const definition of Object.values(COMBAT_V6_SECT_DEFINITIONS)) {
       for (const [index, path] of definition.paths.entries()) {
         const skillIds = new Set(
           [
@@ -1249,12 +1249,12 @@ describe('通用效用策略与观察边界', () => {
       const host = new CombatV6PveHostSession({
         playerId: 'player',
         npcStrategies: { enemy: { type } },
-        sourceProjectionVersions: COMBAT_V6_PHASE_6D_VERSIONS,
+        sourceProjectionVersions: COMBAT_V6_CHARACTER_BUILD_VERSIONS,
         battleInput: {
           seed: 1,
           ruleset: daoyouRulesetV6,
           versions: {
-            ...COMBAT_V6_PHASE_6D_VERSIONS,
+            ...COMBAT_V6_CHARACTER_BUILD_VERSIONS,
             autoPolicyVersion: AUTO_POLICY_VERSION,
           },
           skills: [strong],
@@ -1534,7 +1534,7 @@ describe('通用效用策略与观察边界', () => {
   });
 });
 
-for (const definition of Object.values(COMBAT_V6_SECT_DEFINITIONS_V4)) {
+for (const definition of Object.values(COMBAT_V6_SECT_DEFINITIONS)) {
   for (const path of definition.paths) {
     it(`${definition.id}/${path.id} 默认战术可连续托管且指令可复现`, () => {
       const player = (id: string): CombatV6TrainingPlayerInput => ({

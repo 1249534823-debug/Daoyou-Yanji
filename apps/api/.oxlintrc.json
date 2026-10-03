@@ -116,7 +116,14 @@
             "patterns": ["@app/*", "@daoyou/web*", "**/apps/web/**"]
           }
         ]
-      }
+      },
+      "excludeFiles": [
+        "src/lib/repositories/**/*.ts",
+        "src/**/*.service.ts",
+        "src/market/**/*.ts",
+        "src/inventory/**/*.ts",
+        "src/lib/mq/**/*.ts"
+      ]
     },
     {
       "files": ["src/lib/repositories/**/*.ts"],
@@ -182,7 +189,8 @@
             ]
           }
         ]
-      }
+      },
+      "excludeFiles": ["src/**/*.service.ts"]
     },
     {
       "files": ["src/inventory/**/*.ts"],
@@ -201,7 +209,8 @@
             ]
           }
         ]
-      }
+      },
+      "excludeFiles": ["src/**/*.service.ts"]
     },
     {
       "files": ["src/market/**/*.service.ts"],

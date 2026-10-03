@@ -10,7 +10,6 @@ import { BeastTradePreviewSchema } from '@daoyou/shared/contracts/beastTrade';
 import { isInventoryShowcase } from '@daoyou/shared/items/showcase';
 import { cn } from '@app/lib/cn';
 import type {
-  WorldChatBattleShowcasePayload,
   WorldChatMessageDTO,
 } from '@daoyou/shared/types/world-chat';
 import { useMemo, useState } from 'react';
@@ -52,56 +51,6 @@ function renderTextMessage(message: WorldChatMessageDTO): string {
   return message.textContent || payloadText;
 }
 
-function isBattleShowcasePayload(
-  payload: WorldChatMessageDTO['payload'],
-): payload is WorldChatBattleShowcasePayload {
-  return (
-    typeof payload === 'object' &&
-    payload !== null &&
-    'shareCode' in payload &&
-    'winner' in payload &&
-    'loser' in payload &&
-    'turns' in payload &&
-    typeof payload.shareCode === 'string' &&
-    typeof payload.winner === 'object' &&
-    payload.winner !== null &&
-    typeof payload.winner.name === 'string' &&
-    typeof payload.loser === 'object' &&
-    payload.loser !== null &&
-    typeof payload.loser.name === 'string' &&
-    typeof payload.turns === 'number'
-  );
-}
-
-function BattleShowcaseCard({
-  payload,
-}: {
-  payload: WorldChatBattleShowcasePayload;
-}) {
-  return (
-    <div className="border-ink/15 mt-1 border border-dashed bg-white/55 px-3 py-2">
-      <div className="flex min-w-0 items-center gap-2">
-        <span className="text-teal min-w-0 flex-1 truncate font-semibold">
-          {payload.winner.name}
-        </span>
-        <span className="text-ink-secondary shrink-0 text-xs">胜</span>
-        <span className="text-crimson min-w-0 flex-1 truncate text-right">
-          {payload.loser.name}
-        </span>
-      </div>
-      <div className="text-ink-secondary mt-1 flex items-center justify-between gap-3 text-xs">
-        <span>鏖战 {payload.turns} 回</span>
-        <span className="text-ink">旧版战报已停用</span>
-      </div>
-      {payload.text ? (
-        <p className="text-ink border-ink/10 mt-1.5 border-t border-dashed pt-1.5 text-sm leading-6 break-all">
-          {payload.text}
-        </p>
-      ) : null}
-    </div>
-  );
-}
-
 interface WorldChatMessageItemProps {
   message: WorldChatMessageDTO;
   compact?: boolean;
@@ -139,11 +88,6 @@ export function WorldChatMessageItem({
     'eventId' in message.payload
       ? huntEventById(message.payload.eventId)
       : undefined;
-  const battleShowcase =
-    message.messageType === 'battle_showcase' &&
-    isBattleShowcasePayload(message.payload)
-      ? message.payload
-      : null;
   const beastShowcase =
     message.messageType === 'beast_showcase' &&
     'version' in message.payload &&
@@ -205,10 +149,6 @@ export function WorldChatMessageItem({
               <span className="text-ink-secondary ml-2 text-xs">{message.payload.roundCount} 回合 · 点击查看</span>
               {message.payload.text ? <p className="mt-1">{message.payload.text}</p> : null}
             </Link>
-          ) : message.messageType === 'battle_showcase' && battleShowcase ? (
-            <BattleShowcaseCard payload={battleShowcase} />
-          ) : message.messageType === 'battle_showcase' ? (
-            '旧版战报已停用'
           ) : beastShowcase ? (
             <span>
               <button

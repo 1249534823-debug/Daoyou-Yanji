@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { CommandType, EventType, createBattle, restoreBattle, type SkillDef, type UnitKind } from '../core/index.js';
 import { createDaoyouRuleset } from '../rules-daoyou/index.js';
 import { LINGXIAO_COMBAT } from './lingxiao-pack.js';
-import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version.js';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '../version.js';
 
 const skillId = (name: string) => `lingxiao.skill.${name}`;
 const ruleset = createDaoyouRuleset({ formulas: {
@@ -11,7 +11,7 @@ const ruleset = createDaoyouRuleset({ formulas: {
 } });
 function setup(hp = 1000, kind: UnitKind = 'npc', extraSkills: SkillDef[] = [], passives: string[] = []) {
   const skills = [...LINGXIAO_COMBAT.baseSkills.map(s => s.definition), ...extraSkills];
-  return createBattle({ seed: 12, versions: COMBAT_V6_PHASE_6D_VERSIONS, ruleset: { ...ruleset, deferredPlayerCommands: true },
+  return createBattle({ seed: 12, versions: COMBAT_V6_CHARACTER_BUILD_VERSIONS, ruleset: { ...ruleset, deferredPlayerCommands: true },
     skills, statusDefs: LINGXIAO_COMBAT.statuses,
     units: [{ id: 's', name: '剑修', side: 0, kind: 'player', level: 120,
       skills: skills.map(s => s.id), passives, attrs: { hp, maxHp: 1000, mp: 1000, speed: 500, physicalAtk: 200, critRate: 0 } },
@@ -111,7 +111,7 @@ describe('基础模组状态与回合边界', () => {
         expect(state.units.find(u => u.id === 's')!.statuses).toEqual([expect.objectContaining({ id: 'lingxiao.status.preparing', attrMods: {}, speedMod: 0, transitionSkillLevel: 120 })]);
       }
     });
-    const restored = restoreBattle({ seed: 12, versions: COMBAT_V6_PHASE_6D_VERSIONS, ruleset,
+    const restored = restoreBattle({ seed: 12, versions: COMBAT_V6_CHARACTER_BUILD_VERSIONS, ruleset,
       units: [], skills: LINGXIAO_COMBAT.baseSkills.map(s => s.definition), statusDefs: LINGXIAO_COMBAT.statuses }, b.snapshot(), [...b.log()]);
     round(b); round(restored);
     expect(hits(b)).toEqual([expect.objectContaining({ targetId: 't2' })]);

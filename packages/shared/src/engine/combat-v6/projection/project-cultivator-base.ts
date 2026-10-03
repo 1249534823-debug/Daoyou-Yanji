@@ -1,7 +1,7 @@
 import { REALM_STAGE_VALUES, REALM_VALUES } from '@daoyou/shared/types/constants';
 import type { Attributes } from '@daoyou/shared/types/cultivator';
 import { UnitKind, type LineupUnit } from '../core/index.ts';
-import { COMBAT_V6_PHASE_1_VERSIONS } from '../version.ts';
+import { COMBAT_V6_BASE_PROJECTION_VERSIONS } from '../version.ts';
 import { combatCharacterLevel } from './character-level.js';
 import { compileCharacterPanelV1 } from './character-panel-v1.ts';
 import type {
@@ -120,7 +120,7 @@ export function projectCultivatorBaseToCombatV6(
     return {
       ok: false,
       diagnostics,
-      versions: { ...COMBAT_V6_PHASE_1_VERSIONS },
+      versions: { ...COMBAT_V6_BASE_PROJECTION_VERSIONS },
     };
   }
 
@@ -203,7 +203,7 @@ export function projectCultivatorBaseToCombatV6(
     return {
       ok: false,
       diagnostics,
-      versions: { ...COMBAT_V6_PHASE_1_VERSIONS },
+      versions: { ...COMBAT_V6_BASE_PROJECTION_VERSIONS },
     };
   }
 
@@ -250,6 +250,6 @@ export function projectCultivatorBaseToCombatV6(
     skills: [],
     statusDefs: [],
     diagnostics,
-    versions: { ...COMBAT_V6_PHASE_1_VERSIONS },
+    versions: { ...COMBAT_V6_BASE_PROJECTION_VERSIONS },
   };
 }

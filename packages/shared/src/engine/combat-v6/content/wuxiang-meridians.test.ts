@@ -10,7 +10,7 @@ import {
 } from '../core/index.js';
 import { DAO_EQUIPMENT_ARTS_V1 } from '../equipment/special-content.js';
 import { createDaoyouRuleset } from '../rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_6D_VERSIONS as versions } from '../version.js';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '../version.js';
 import { compileSectDefinitionV6 } from './compiler.js';
 import { WUXIANG_V6_DEFINITION as definition } from './wuxiang.js';
 import { YOUDU_COMBAT } from './youdu-pack.js';

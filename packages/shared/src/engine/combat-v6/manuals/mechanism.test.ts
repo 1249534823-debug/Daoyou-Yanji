@@ -12,7 +12,7 @@ import {
   type StatusDef,
 } from '../core/index.js';
 import { createDaoyouRuleset } from '../rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_1_VERSIONS } from '../version.js';
+import { COMBAT_V6_BASE_PROJECTION_VERSIONS } from '../version.js';
 import { compileCharacterManualsV1, manualSlot } from './compiler.js';
 import { CHARACTER_MANUALS_V1, MANUAL_PACK } from './content.js';
 import { compileManualSkill, manualMechanismValue } from './mechanism.js';
@@ -60,7 +60,7 @@ function setup(ids: string[], level = 9, skill = attack) {
   );
   const session = createBattle({
     seed: 42,
-    versions: COMBAT_V6_PHASE_1_VERSIONS,
+    versions: COMBAT_V6_BASE_PROJECTION_VERSIONS,
     ruleset: createDaoyouRuleset({
       formulas: {
         baseDamage: () => 1000,

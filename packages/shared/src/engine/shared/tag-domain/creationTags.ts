@@ -1,11 +1,7 @@
-import { GameplayTagContainer } from './GameplayTagContainer.js';
-
 /**
  * CreationTags: 造物系统作者侧与过程侧标签词表。
  * 这些标签只应参与输入、筛选与结果归类，不应直接作为战斗运行时标签消费。
  */
-export class CreationTagContainer extends GameplayTagContainer {}
-
 export const CreationTags = {
   MATERIAL: {
     ROOT: 'Material',

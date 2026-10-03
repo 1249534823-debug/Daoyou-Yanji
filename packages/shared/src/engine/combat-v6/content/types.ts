@@ -17,10 +17,7 @@ export type SectMethodDefV6 = {
   panel?: CombatV6PanelContribution
 }
 
-export type CombatV6SectIdV1 = "lingxiao" | "youdu"
-export type CombatV6SectIdV2 = CombatV6SectIdV1 | "wuxiang"
-export type CombatV6SectIdV3 = CombatV6SectIdV2 | "tianyan"
-export type CombatV6SectId = CombatV6SectIdV3 | "jiujie"
+export type CombatV6SectId = "lingxiao" | "youdu" | "wuxiang" | "tianyan" | "jiujie"
 
 export type SectSkillDefV6 = {
   sourceMethodId: string

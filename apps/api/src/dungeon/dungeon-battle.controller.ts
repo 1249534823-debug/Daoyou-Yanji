@@ -97,11 +97,6 @@ export class DungeonBattleController {
     return this.dungeon.resolve(actor, id, input.expectedRevision);
   }
 
-  @Get('probe')
-  @HttpCode(410)
-  retiredProbe() {
-    return { error: '旧查探入口已停用' };
-  }
 
   @Post('begin')
   @HttpCode(200)
@@ -114,11 +109,6 @@ export class DungeonBattleController {
     return this.dungeon.execute(actor, { kind: 'battle-begin', ...input });
   }
 
-  @Post('abandon')
-  @HttpCode(410)
-  retiredAbandon() {
-    return { error: '旧放弃入口已停用，请使用战斗内逃跑' };
-  }
 
   @Post('complete')
   @HttpCode(200)
@@ -131,9 +121,4 @@ export class DungeonBattleController {
     return this.dungeon.execute(actor, { kind: 'battle-execute', ...input });
   }
 
-  @Post('execute/v5')
-  @HttpCode(410)
-  retiredExecute() {
-    return { error: '旧战斗已停用，请刷新页面' };
-  }
 }

@@ -19,13 +19,13 @@ import {
 } from '../encounter/host.js';
 import { projectCharacterToCombatV6 } from '../projection/index.js';
 import { daoyouRulesetV6 } from '../rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_6D_VERSIONS } from '../version.js';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '../version.js';
 import { compileTowerEncounter, type TowerNpcPlan } from './content.js';
 import { publishedTowerEncounter, type PublishedTowerWeek } from './published.js';
 
 export type TowerBlessings = Partial<Record<TowerBlessingId, number>>;
 export const TOWER_V6_VERSIONS = {
-  ...COMBAT_V6_PHASE_6D_VERSIONS,
+  ...COMBAT_V6_CHARACTER_BUILD_VERSIONS,
   autoPolicyVersion: AUTO_POLICY_VERSION,
   rulesetVersion: 'daoyou_rules_v11',
   contentVersion: TOWER_CONTENT_VERSION,
@@ -93,7 +93,7 @@ export class TowerHost extends CombatV6PveHostSession {
           ruleset: daoyouRulesetV6,
         },
         npcStrategies: {},
-        sourceProjectionVersions: COMBAT_V6_PHASE_6D_VERSIONS,
+        sourceProjectionVersions: COMBAT_V6_CHARACTER_BUILD_VERSIONS,
         playerAutoStrategy: source.input.autoStrategy,
       },
       restored,

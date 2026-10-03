@@ -7,7 +7,7 @@ import {
   restoreBattle,
 } from '../core/index.js';
 import { createDaoyouRuleset } from '../rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_7C_VERSIONS } from '../version.js';
+import { COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS } from '../version.js';
 import { BEAST_SKILLS } from './content.js';
 
 const groupIds = [
@@ -28,7 +28,7 @@ const ruleset = createDaoyouRuleset({
 function input(level = 60, passives: string[] = [], reflection = false) {
   return {
     seed: 42,
-    versions: COMBAT_V6_PHASE_7C_VERSIONS,
+    versions: COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS,
     ruleset,
     skills: BEAST_SKILLS.map((skill) =>
       reflection && skill.id === 'beast.spell-reflection'

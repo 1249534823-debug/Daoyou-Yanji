@@ -48,6 +48,6 @@
 - 验收后通过角色锁和资源事务删除本次奖励及 17 件占位道装。原有 19 条库存逐字段恢复一致；普通资源事件及递增版本保留。
 - `bun run test packages/shared/src/artifact-migration`：6 项通过，覆盖九境界映射、异常 fallback、评分边界、六部位抽取、所有映射档位的道装生成及输入校验。`bun run lint`、`bun run build:server`、`bunx vite build` 通过。`bunx tsc -b apps/web/tsconfig.json` 仍有两处既有 `.at()` 编译目标错误（PerformancePlayer、guide/schema），未修改这些文件。
 
-## 迁移结束后删除
+## 保留边界
 
-确认有效角色的待兑换资产及异常来源均处理完毕后，可删除 `apps/api/src/routes/api/artifact-migration/`、`packages/shared/src/artifact-migration/`、`packages/shared/src/contracts/artifactMigration.ts`、玩家页面，并移除 API 注册、React 路由、gameNavigation 和 CaveQuickGrid 中对应入口。无需清理专属余额或状态表；已发放的道装、图纸和符箓均为普通既有物品，不依赖工具。旧成品表还有其他类型来源，不能随本工具整表删除。
+2026-10-04 清理后继续保留主页旧法宝焕新入口、Nest `legacy-items` 兑换服务及共享规则。`creation_products` 标记弃用但保留结构；道装、图纸和灵石发放保持原事务规则。后续入口或表退役需单独安排。

@@ -9,7 +9,7 @@ import {
 import { WILD_DROP_POOLS } from '../../../rewards/wild.js';
 import { BEAST_SKILLS } from '../beasts/content.js';
 import { activeBeastSkills, beastPanel } from '../beasts/projection.js';
-import { COMBAT_V6_SECT_DEFINITIONS_V4 } from '../content/index.js';
+import { COMBAT_V6_SECT_DEFINITIONS } from '../content/index.js';
 import { SkillTag } from '../core/index.js';
 import type { CombatV6TrainingPlayerInput } from '../encounter/index.js';
 import { WILD_REGIONS } from './content.js';
@@ -17,7 +17,7 @@ import { generateWildEncounter, generateWildIndividual } from './generator.js';
 import { createWildHost, WildHost } from './host.js';
 
 function player(id: string): CombatV6TrainingPlayerInput {
-  const definition = COMBAT_V6_SECT_DEFINITIONS_V4.youdu;
+  const definition = COMBAT_V6_SECT_DEFINITIONS.youdu;
   const track = { level: 0, progress: 0 };
   const condition: CultivatorCondition = {
     version: 1,

@@ -38,70 +38,6 @@ export interface ProjectCultivatorBaseInput {
   resourcePolicy: CombatV6ResourcePolicy
 }
 
-export type ProjectCultivatorWithTrainingInput = ProjectCultivatorBaseInput
-
-export interface ProjectCultivatorWithTrainingAndSectInput
-  extends ProjectCultivatorWithTrainingInput {
-  sect: SectCombatProgressV6
-}
-
-export interface ProjectCultivatorWithEquipmentInput
-  extends ProjectCultivatorWithTrainingAndSectInput {
-  equipment: DaoEquipmentLoadoutV1
-}
-
-export type ProjectCultivatorWithEquipmentSpecialInput =
-  ProjectCultivatorWithEquipmentInput
-
-export interface ProjectCultivatorToCombatV6Input
-  extends ProjectCultivatorWithEquipmentSpecialInput {
-  manuals: CultivatorManualStateV1
-}
-
-export type ProjectCultivatorMultiSectToCombatV6Input = ProjectCultivatorToCombatV6Input
-
-export interface CompareDaoEquipmentLoadoutsV1Input
-  extends Omit<ProjectCultivatorWithEquipmentInput, "equipment"> {
-  before: DaoEquipmentLoadoutV1
-  after: DaoEquipmentLoadoutV1
-}
-
-export type CompareDaoEquipmentLoadoutsV1Result =
-  | {
-      ok: true
-      effectiveAttributeDiffs: Attributes
-      panelDiffs: Partial<Record<AttrName, number>>
-      beforeDiagnostics: CombatV6ProjectionDiagnostic[]
-      afterDiagnostics: CombatV6ProjectionDiagnostic[]
-    }
-  | {
-      ok: false
-      beforeDiagnostics: CombatV6ProjectionDiagnostic[]
-      afterDiagnostics: CombatV6ProjectionDiagnostic[]
-    }
-
-export interface CompareDaoEquipmentSpecialLoadoutsV1Input
-  extends Omit<ProjectCultivatorWithEquipmentSpecialInput, "equipment"> {
-  before: DaoEquipmentLoadoutV1
-  after: DaoEquipmentLoadoutV1
-}
-
-export type CompareDaoEquipmentSpecialLoadoutsV1Result =
-  | {
-      ok: true
-      effectiveAttributeDiffs: Attributes
-      panelDiffs: Partial<Record<AttrName, number>>
-      effectiveEssenceChanges: { added: string[]; removed: string[] }
-      grantedArtChanges: { added: string[]; removed: string[] }
-      beforeDiagnostics: CombatV6ProjectionDiagnostic[]
-      afterDiagnostics: CombatV6ProjectionDiagnostic[]
-    }
-  | {
-      ok: false
-      beforeDiagnostics: CombatV6ProjectionDiagnostic[]
-      afterDiagnostics: CombatV6ProjectionDiagnostic[]
-    }
-
 export interface CombatV6TrainingProjection {
   attackCultivate: number
   defenseCultivate: number
@@ -239,4 +175,8 @@ export type CombatV6ProjectionResult =
     })
 
 /** Personal equipment and manuals exist independently of sect membership. */
-export type CharacterCombatInput = Omit<ProjectCultivatorMultiSectToCombatV6Input, 'sect'> & { sect?: SectCombatProgressV6 };
+export interface CharacterCombatInput extends ProjectCultivatorBaseInput {
+  sect?: SectCombatProgressV6
+  equipment: DaoEquipmentLoadoutV1
+  manuals: CultivatorManualStateV1
+}

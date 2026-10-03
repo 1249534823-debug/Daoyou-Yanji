@@ -1,9 +1,7 @@
 import {
-  All,
   Controller,
   Get,
   HttpCode,
-  HttpException,
   Inject,
   Post,
   UseFilters,
@@ -22,8 +20,6 @@ import { JsonBody } from '../http/json-body.js';
 import { CraftCommandSchema, CraftSchema } from './alchemy-input.js';
 import { CraftService } from './craft.service.js';
 
-const retired = new Set(['refine', 'create_skill', 'create_gongfa']);
-const retiredMessage = '旧功法、神通及装备生产已停用，历史物品保留在洞府宝库';
 const CraftErrors = apiErrorFilter((error) => {
   const lock = redisLockErrorResponse(error);
   if (lock) return lock;
@@ -60,8 +56,6 @@ export class CraftController {
     @CurrentCultivator() actor: ActiveCultivatorRef,
     @FirstQuery() query: Record<string, string | undefined>,
   ) {
-    if (query.craftType && retired.has(query.craftType))
-      throw new HttpException({ error: retiredMessage }, 410);
     const input = CraftSchema.parse({
       craftType: query.craftType,
       alchemyMode: query.alchemyMode,
@@ -83,26 +77,7 @@ export class CraftController {
     @CurrentCultivator() actor: ActiveCultivatorRef,
     @JsonBody() body: unknown,
   ) {
-    if (
-      body &&
-      typeof body === 'object' &&
-      'craftType' in body &&
-      typeof body.craftType === 'string' &&
-      retired.has(body.craftType)
-    )
-      throw new HttpException({ error: retiredMessage }, 410);
     return this.craft.execute(actor, CraftCommandSchema.parse(body));
   }
 
-  @All('pending')
-  @HttpCode(410)
-  pending() {
-    return { error: retiredMessage };
-  }
-
-  @All('confirm')
-  @HttpCode(410)
-  confirm() {
-    return { error: retiredMessage };
-  }
 }

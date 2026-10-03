@@ -13,7 +13,7 @@ import {
 import type { CultivatorCondition } from '../../../types/condition.js';
 import { BEAST_SPECIES, generateStarterBeast } from '../beasts/index.js';
 import {
-  COMBAT_V6_SECT_DEFINITIONS_V4,
+  COMBAT_V6_SECT_DEFINITIONS,
   type CombatV6SectId,
   type SectCombatProgressV6,
 } from '../content/index.js';
@@ -21,7 +21,7 @@ import { compileTowerEncounter } from './content.js';
 import { createTowerHost, projectTowerPlayer, TowerHost } from './host.js';
 import { publishTowerWeek } from './published.js';
 function player(sectId: CombatV6SectId) {
-  const def = COMBAT_V6_SECT_DEFINITIONS_V4[sectId];
+  const def = COMBAT_V6_SECT_DEFINITIONS[sectId];
   const track = { level: 0, progress: 0 };
   const condition: CultivatorCondition = {
     version: 1,

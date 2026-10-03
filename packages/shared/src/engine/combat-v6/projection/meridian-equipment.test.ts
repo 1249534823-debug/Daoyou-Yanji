@@ -4,7 +4,7 @@ import type { DaoEquipmentInstanceV1 } from '../equipment/types.js';
 import { generateForgedEquipment } from '../equipment/forging.js';
 import { generateDaoEquipmentV2 } from '../equipment/generator.js';
 import { projectCharacterToCombatV6, type CharacterCombatInput } from './index.js';
-import baseline from './fixtures/before-a1.json' with { type: 'json' };
+import baseline from './fixtures/character-build.json' with { type: 'json' };
 
 const input = baseline.inputs[0] as unknown as CharacterCombatInput;
 const weaponInput = {

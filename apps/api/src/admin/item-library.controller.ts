@@ -70,11 +70,6 @@ export class AdminItemLibraryController {
   ) {
     return this.service.update(user.id, id, body);
   }
-  @Post('artifact/preview')
-  @HttpCode(200)
-  retiredPreview() {
-    return this.service.retiredPreview();
-  }
   @Post(':id/archive')
   @HttpCode(200)
   archive(@CurrentUser() user: AuthUser, @Param('id') id: string) {

@@ -11,7 +11,7 @@ import {
   type StatusDef,
 } from '../core/index.js';
 import { createDaoyouRuleset } from '../rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_4B_VERSIONS } from '../version.js';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '../version.js';
 import { compileDaoEquipmentSpecialLoadoutV1 } from './compiler.js';
 import { generateDaoEquipmentV2 } from './generator.js';
 import {
@@ -43,7 +43,7 @@ function runArt(art: DaoEquipmentArtDefV1) {
   };
   const battle = createBattle({
     seed: 123,
-    versions: COMBAT_V6_PHASE_4B_VERSIONS,
+    versions: COMBAT_V6_CHARACTER_BUILD_VERSIONS,
     ruleset,
     skills: [art.skill],
     statusDefs: [...(art.statusDefs ?? []), seedStatus],
@@ -128,7 +128,7 @@ it('grants rage to the damaged target across multiple hits without an action cap
     };
     const battle = createBattle({
       seed: 1,
-      versions: COMBAT_V6_PHASE_4B_VERSIONS,
+      versions: COMBAT_V6_CHARACTER_BUILD_VERSIONS,
       ruleset,
       skills: [attack, passive],
       units: [

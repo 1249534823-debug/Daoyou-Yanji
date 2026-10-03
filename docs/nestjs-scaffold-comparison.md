@@ -2,6 +2,25 @@
 
 > 后续工具链调整：API 已切换到 Nest CLI 默认 tsc 和 Oxlint，shared 独立编译并通过 dist 入口交付；开发命令使用 Turbo watch。下文的 Rspack／源码包描述保留为切换前审查记录，现行操作见 [本地开发](local-development.md)。
 
+## 切换结果与验收（2026-10-04）
+
+用户确认的前两项已完成：API 使用 Nest CLI 默认 tsc，移除 Rspack 配置及相关直接依赖；API 使用带类型检查的 Oxlint，Web、shared 与根工具继续使用 ESLint。ExpressAdapter 和直接 Express 依赖保留。
+
+为使编译产物能由 Node 原生运行，API 与 shared 使用 NodeNext，内部 ESM 导入补齐 `.js` 路径，JSON 导入声明类型。shared 独立生成 JavaScript、声明文件和 JSON，通过 package exports 提供 `dist` 入口；提示词改为运行时读取，并由 Nest assets 复制到产物。依赖注入继续使用显式 `@Inject`，不启用隐式设计类型元数据。这些路径调整未改变游戏规则。
+
+根开发命令由 Turbo watch 编排 shared 构建及应用重启；已验证 shared 修改后会重新编译、同步 pnpm 注入依赖并重启 API。现有开发、构建及 Docker 入口继续使用。
+
+已通过以下验证：
+
+- `pnpm install --frozen-lockfile`、`pnpm run lint`、`pnpm run typecheck`、`pnpm run build`。
+- `pnpm run test`：237 个文件、2403 项测试全部通过。
+- `pnpm --filter @daoyou/api deploy --prod` 产物检查，以及原 Dockerfile 的实际镜像构建；镜像内能加载 shared 的投影模块和全部 22 份提示词。
+- 本地 API 健康检查、匿名资源请求返回 401、SIGTERM 有序停机；组合开发启动和 shared 修改后的重新加载。
+- 复用本地测试账号浏览洞府与背包，页面资源显示正常，浏览器错误日志为空。
+
+未启动连接远程服务的 `prd:api`，未推送镜像、执行数据库迁移或部署生产。特殊业务流程及生产发布验收仍按 [迁移进度](nestjs-migration.md) 跟踪。
+
+## 切换前分析
 
 分析日期：2026-10-03。
 

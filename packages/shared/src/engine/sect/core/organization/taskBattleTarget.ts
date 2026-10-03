@@ -1,6 +1,5 @@
 import { SectV6TargetSchema } from '@daoyou/shared/contracts/combatV6SectTask';
 import {
-  REALM_STAGE_VALUES,
   REALM_VALUES,
   type RealmStage,
   type RealmType,
@@ -8,45 +7,7 @@ import {
 import { z } from 'zod';
 import type { SectBattleTargetAcquisition } from './contracts.js';
 
-export const SECT_BATTLE_TARGET_SCHEMA_VERSION = 1;
-
-const baseTargetSchema = z.object({
-  schemaVersion: z.literal(SECT_BATTLE_TARGET_SCHEMA_VERSION),
-  challengeTitle: z.string().min(1).max(100),
-  name: z.string().min(1).max(100),
-  description: z.string().min(1).max(500),
-  realm: z.enum(REALM_VALUES),
-  realmStage: z.enum(REALM_STAGE_VALUES),
-});
-
-export const SectPresetBattleTargetSnapshotSchema = baseTargetSchema.extend({
-  kind: z.literal('preset'),
-  presetId: z.string().min(1).max(128),
-  rulesVersion: z.number().int().positive(),
-});
-
-export const SectCultivatorBattleTargetSnapshotSchema = baseTargetSchema.extend(
-  {
-    kind: z.literal('cultivator'),
-    sourceCultivatorId: z.string().uuid(),
-    sourceSectId: z.string().min(1).max(64),
-    sourceSectName: z.string().min(1).max(100),
-    lockedAt: z.string().datetime(),
-  },
-);
-
-const legacyTargetSchema = z.discriminatedUnion('kind', [
-  SectPresetBattleTargetSnapshotSchema,
-  SectCultivatorBattleTargetSnapshotSchema,
-]);
-export const SectBattleTargetSnapshotSchema = z.union([
-  SectV6TargetSchema,
-  legacyTargetSchema,
-]);
-
-export type SectBattleTargetSnapshot = z.infer<
-  typeof SectBattleTargetSnapshotSchema
->;
+export type SectBattleTargetSnapshot = z.infer<typeof SectV6TargetSchema>;
 
 export interface SectBattleTargetSummary {
   kind: SectBattleTargetSnapshot['kind'];
@@ -72,7 +33,7 @@ export function resolveSectBattleTargetRealmCandidates(
 export function readSectBattleTargetSnapshot(
   executorData: Record<string, unknown>,
 ): SectBattleTargetSnapshot | undefined {
-  const parsed = SectBattleTargetSnapshotSchema.safeParse(
+  const parsed = SectV6TargetSchema.safeParse(
     executorData.battleTarget,
   );
   return parsed.success ? parsed.data : undefined;

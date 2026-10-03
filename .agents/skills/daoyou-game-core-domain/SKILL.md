@@ -33,7 +33,7 @@ Current combat is `packages/shared/src/engine/combat-v6`. Read the affected modu
 ## Character and Build Boundary
 
 - Current `Cultivator.attributes` still stores six permanent attributes: vitality, strength, spirit, endurance, speed, willpower. Read `packages/shared/src/types/cultivator.ts` and `projection/character-panel-v1.ts` before changing formulas. Future numerical design does not establish an implemented five-attribute model.
-- Current complete projection is `projectCharacterToCombatV6(CharacterCombatInput)`. Historical `projectCultivator*` phase entrypoints are adapters, not the default for new business code.
+- Current complete projection is `projectCharacterToCombatV6(CharacterCombatInput)`. Historical `projectCultivator*` phase adapters have been removed; use the current entrypoint.
 - `CharacterCombatInput.sect` is optional. Personal display applies equipment and manuals without sect membership. Reuse `projectCharacterDisplay` and resource helpers in `packages/shared/src/lib/cultivatorDisplay.ts`.
 - Battle admission is a separate server rule: `CombatV6BuildService.ts` assembles authoritative inputs and checks membership / selected path. Do not remove admission checks merely because pure projection permits a sectless character.
 - Personal manuals, equipment and beasts belong to the character; sect methods and meridians belong to membership. Keep their revisions separate, and derive readiness from current membership/path. See `docs/combat-domain-ownership.md`.

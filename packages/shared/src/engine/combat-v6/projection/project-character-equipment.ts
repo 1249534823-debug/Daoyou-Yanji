@@ -1,7 +1,7 @@
 import type { Attributes } from "@daoyou/shared/types/cultivator"
 import { DAO_RAGE_RESOURCE } from "../equipment/special-content.ts"
-import { compileSectCombatV6, compileSectCombatV6V2, compileSectCombatV6V3, compileCurrentSectCombatV6 } from "../content/index.ts"
-import { ATTR_NAMES, type AttrName, type CombatV6VersionStamp, type LineupUnit } from "../core/index.ts"
+import { compileCurrentSectCombatV6 } from "../content/index.ts"
+import { type CombatV6VersionStamp, type LineupUnit } from "../core/index.ts"
 import {
   DAO_EQUIPMENT_ARTS_V1,
   daoFormationInscriptionOf,
@@ -11,7 +11,6 @@ import {
   DAO_RAGE_RESOURCE_ID,
   compileDaoEquipmentSpecialLoadoutV1,
 } from "../equipment/index.ts"
-import { COMBAT_V6_PHASE_4B_VERSIONS } from "../version.ts"
 import { compileBodyCultivationV6 } from "./body-cultivation-v6.ts"
 import { compileCharacterPanelV1 } from "./character-panel-v1.ts"
 import { projectCultivatorBaseToCombatV6 } from "./project-cultivator-base.ts"
@@ -19,8 +18,6 @@ import type {
   CombatV6PanelContribution,
   CombatV6ProjectionDiagnostic,
   CombatV6ProjectionResult,
-  CompareDaoEquipmentSpecialLoadoutsV1Input,
-  CompareDaoEquipmentSpecialLoadoutsV1Result,
   CharacterCombatInput,
 } from "./types.ts"
 
@@ -104,7 +101,7 @@ function applyResources(
 }
 
 function contentConflicts(
-  sect: Extract<ReturnType<typeof compileSectCombatV6>, { ok: true }>["projection"],
+  sect: Extract<ReturnType<typeof compileCurrentSectCombatV6>, { ok: true }>["projection"],
   equipment: Extract<ReturnType<typeof compileDaoEquipmentSpecialLoadoutV1>, { ok: true }>["projection"],
 ): CombatV6ProjectionDiagnostic[] {
   const diagnostics: CombatV6ProjectionDiagnostic[] = []
@@ -126,20 +123,11 @@ function contentConflicts(
   return diagnostics
 }
 
-export function projectCultivatorWithEquipmentSpecialInternal(
+export function projectCharacterEquipment(
   input: Omit<CharacterCombatInput, "manuals">,
   versions: CombatV6VersionStamp,
-  stage: "single-sect" | "two-sects" | "three-sects" | "four-sects" | "current",
   includeEffectiveAttributes = false,
 ): CombatV6ProjectionResult {
-  const allowMultiSect = stage !== "single-sect"
-  const allowWuxiang = stage === "three-sects" || stage === "four-sects" || stage === "current"
-  const allowTianyan = stage === "four-sects" || stage === "current"
-  const allowJiujie = stage === "current"
-  if (input.sect?.sectId === "jiujie" && !allowJiujie) return { ok: false, diagnostics: [{ severity: "error", code: "INVALID_SECT_ID", message: `${versions.projectionVersion} 不接受九劫天宫`, path: "sect.sectId" }], versions }
-  if (input.sect?.sectId === "tianyan" && !allowTianyan) return { ok: false, diagnostics: [{ severity: "error", code: "INVALID_SECT_ID", message: `${versions.projectionVersion} 不接受天衍圣地`, path: "sect.sectId" }], versions }
-  if (input.sect?.sectId === "wuxiang" && !allowWuxiang) return { ok: false, diagnostics: [{ severity: "error", code: "INVALID_SECT_ID", message: `${versions.projectionVersion} 不接受无相禅宗`, path: "sect.sectId" }], versions }
-  if (!allowMultiSect && input.sect?.sectId !== "lingxiao") return { ok: false, diagnostics: [{ severity: "error", code: "INVALID_SECT_ID", message: "character_equipment_special_v1 只接受红尘剑宗", path: "sect.sectId" }], versions }
   const base = projectCultivatorBaseToCombatV6({ ...input, resourcePolicy: "full" })
   if (!base.ok) return { ok: false, diagnostics: base.diagnostics, versions }
   const equipment = compileDaoEquipmentSpecialLoadoutV1(input.equipment, base.unit.level ?? 0)
@@ -154,13 +142,9 @@ export function projectCultivatorWithEquipmentSpecialInternal(
     formation?.patternId === DAO_FORMATION_INSCRIPTION_ID.Xuanfeng ? [formation] : []) ?? []
 
   const training = compileBodyCultivationV6(input.cultivator.condition?.tracks.bodyCultivation, characterPanel)
-  const sect = !input.sect ? undefined : allowJiujie
+  const sect = input.sect
     ? compileCurrentSectCombatV6({ progress: input.sect, characterLevel: base.unit.level ?? 0 })
-    : allowTianyan
-    ? compileSectCombatV6V3({ progress: input.sect, characterLevel: base.unit.level ?? 0 })
-    : allowWuxiang
-      ? compileSectCombatV6V2({ progress: input.sect, characterLevel: base.unit.level ?? 0 })
-    : compileSectCombatV6({ progress: input.sect, characterLevel: base.unit.level ?? 0 })
+    : undefined
   const diagnostics = [
     ...base.diagnostics,
     ...equipment.projection.diagnostics,
@@ -223,51 +207,5 @@ export function projectCultivatorWithEquipmentSpecialInternal(
     statusDefs: [...(sect?.projection.statusDefs ?? []), ...equipment.projection.statusDefs],
     diagnostics,
     versions,
-  }
-}
-
-export function projectCultivatorWithEquipmentSpecialToCombatV6(
-  input: Omit<CharacterCombatInput, "manuals">,
-): CombatV6ProjectionResult {
-  return projectCultivatorWithEquipmentSpecialInternal(input, { ...COMBAT_V6_PHASE_4B_VERSIONS }, "single-sect")
-}
-
-function setChanges(before: string[], after: string[]): { added: string[]; removed: string[] } {
-  return {
-    added: after.filter((id) => !before.includes(id)),
-    removed: before.filter((id) => !after.includes(id)),
-  }
-}
-
-export function compareDaoEquipmentSpecialLoadoutsV1(
-  input: CompareDaoEquipmentSpecialLoadoutsV1Input,
-): CompareDaoEquipmentSpecialLoadoutsV1Result {
-  const { before, after, ...common } = input
-  const beforeResult = projectCultivatorWithEquipmentSpecialToCombatV6({ ...common, equipment: before })
-  const afterResult = projectCultivatorWithEquipmentSpecialToCombatV6({ ...common, equipment: after })
-  if (!beforeResult.ok || !afterResult.ok) return { ok: false, beforeDiagnostics: beforeResult.diagnostics, afterDiagnostics: afterResult.diagnostics }
-
-  const level = beforeResult.unit.level ?? 0
-  const beforeEquipment = compileDaoEquipmentSpecialLoadoutV1(before, level)
-  const afterEquipment = compileDaoEquipmentSpecialLoadoutV1(after, level)
-  if (!beforeEquipment.ok || !afterEquipment.ok) return {
-    ok: false,
-    beforeDiagnostics: beforeEquipment.ok ? beforeEquipment.projection.diagnostics : beforeEquipment.diagnostics,
-    afterDiagnostics: afterEquipment.ok ? afterEquipment.projection.diagnostics : afterEquipment.diagnostics,
-  }
-  const effectiveAttributeDiffs = Object.fromEntries(ATTRIBUTE_KEYS.map((key) => [key, afterEquipment.projection.attributeBonuses[key] - beforeEquipment.projection.attributeBonuses[key]])) as unknown as Attributes
-  const panelDiffs: Partial<Record<AttrName, number>> = {}
-  for (const attr of ATTR_NAMES) {
-    const difference = (afterResult.unit.attrs[attr] ?? 0) - (beforeResult.unit.attrs[attr] ?? 0)
-    if (difference !== 0) panelDiffs[attr] = difference
-  }
-  return {
-    ok: true,
-    effectiveAttributeDiffs,
-    panelDiffs,
-    effectiveEssenceChanges: setChanges(beforeEquipment.projection.effectiveEssenceIds, afterEquipment.projection.effectiveEssenceIds),
-    grantedArtChanges: setChanges(beforeEquipment.projection.grantedArtIds, afterEquipment.projection.grantedArtIds),
-    beforeDiagnostics: beforeResult.diagnostics,
-    afterDiagnostics: afterResult.diagnostics,
   }
 }

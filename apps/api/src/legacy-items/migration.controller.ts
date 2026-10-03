@@ -81,17 +81,3 @@ export class ManualMigrationController {
     return this.migration.exchangeManual(actor, input);
   }
 }
-
-@Controller('api/admin/manual-migration')
-@Access('admin')
-@UseFilters(ManualErrors)
-export class ManualMigrationAdminController {
-  constructor(
-    @Inject(MigrationService) private readonly migration: MigrationService,
-  ) {}
-
-  @Get()
-  read() {
-    return this.migration.manualAdmin();
-  }
-}

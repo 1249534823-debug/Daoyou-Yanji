@@ -1,4 +1,4 @@
-import { COMBAT_V6_SECT_DEFINITIONS_V4, type CombatV6SectId } from '../content/index.js';
+import { COMBAT_V6_SECT_DEFINITIONS, type CombatV6SectId } from '../content/index.js';
 import {
   createSectCombatView,
   createEmptySectCombatProgressV6,
@@ -7,15 +7,15 @@ import {
 
 describe('combat-v6 Phase 7B build state', () => {
   test('defines six unique slot mappings for every sect', () => {
-    for (const sectId of Object.keys(COMBAT_V6_SECT_DEFINITIONS_V4) as CombatV6SectId[]) {
-      expect(COMBAT_V6_SECT_DEFINITIONS_V4[sectId].methods.map((method) => method.slot).sort()).toEqual([1, 2, 3, 4, 5, 6]);
+    for (const sectId of Object.keys(COMBAT_V6_SECT_DEFINITIONS) as CombatV6SectId[]) {
+      expect(COMBAT_V6_SECT_DEFINITIONS[sectId].methods.map((method) => method.slot).sort()).toEqual([1, 2, 3, 4, 5, 6]);
     }
   });
 
   test('creates a fresh level-one, empty two-path build without mutating levels', () => {
     const levels = createFreshCombatV6MethodLevels('youdu');
     const before = structuredClone(levels);
-    const pathId = COMBAT_V6_SECT_DEFINITIONS_V4.youdu.paths[1].id;
+    const pathId = COMBAT_V6_SECT_DEFINITIONS.youdu.paths[1].id;
     const progress = createEmptySectCombatProgressV6('youdu', pathId, levels);
     expect(progress.activePathId).toBe(pathId);
     expect(progress.meridianDepth).toBe(0);

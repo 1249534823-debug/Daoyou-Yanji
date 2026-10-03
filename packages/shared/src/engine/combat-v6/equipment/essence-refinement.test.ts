@@ -12,7 +12,7 @@ import {
   type SkillDef,
 } from '../core/index.js';
 import { createDaoyouRuleset } from '../rules-daoyou/index.js';
-import { COMBAT_V6_PHASE_4B_VERSIONS } from '../version.js';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '../version.js';
 import {
   compileDaoEquipmentSpecialLoadoutV1,
   daoEquipmentRequiredLevel,
@@ -59,7 +59,7 @@ function battleWith(
 ) {
   return createBattle({
     seed,
-    versions: COMBAT_V6_PHASE_4B_VERSIONS,
+    versions: COMBAT_V6_CHARACTER_BUILD_VERSIONS,
     ruleset: createDaoyouRuleset({
       formulas: {
         physicalHitChance: () => 1,
