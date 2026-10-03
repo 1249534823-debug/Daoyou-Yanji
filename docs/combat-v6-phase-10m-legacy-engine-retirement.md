@@ -13,7 +13,7 @@
 ## 实施结果
 
 - 删除 battle-v5、creation-v2 全目录及其专属测试、旧模拟调用、战后消费者、condition 战斗桥接和旧法宝境界缩放。
-- 历史读取改用 src/shared/legacy/products.ts 的存档工具。未知词缀和额外存档字段原样保留，附件入库移除 battleProjection，不再 rehydrate、编译能力或重新评分。
+- 历史读取改用 packages/shared/src/legacy/products.ts 的存档工具。未知词缀和额外存档字段原样保留，附件入库移除 battleProjection，不再 rehydrate、编译能力或重新评分。
 - 旧装配读取保留既有记录用于历史展示，移除运行投影。旧表 JSON 列使用不透明归档类型；schema 与迁移目录没有修改。
 - 神通、功法页面共用历史列表，保留分页和详情，移除启用、遗忘操作；宝库法宝列表仅保留详情。
 - 移除旧战斗投影展示组件与消费者，历史详情直接展示已有属性和词缀说明。

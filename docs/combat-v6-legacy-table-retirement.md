@@ -45,7 +45,7 @@
 ### 本次验证
 
 - `bun run lint`、`bun run build` 通过；构建保留已有的大 chunk／混合静动态导入提示。
-- `bun run test src/shared/engine/combat-v6/tower src/shared/lib/tower src/shared/contracts/backgroundCommands.test.ts`：155 项通过，1 项战斗矩阵超出默认 5 秒限制；随后 `bun run test src/shared/engine/combat-v6/tower/phase-two.test.ts --testTimeout=30000`，该文件 10 项全部通过。未运行全仓测试。
+- `bun run test packages/shared/src/engine/combat-v6/tower packages/shared/src/lib/tower packages/shared/src/contracts/backgroundCommands.test.ts`：155 项通过，1 项战斗矩阵超出默认 5 秒限制；随后 `bun run test packages/shared/src/engine/combat-v6/tower/phase-two.test.ts --testTimeout=30000`，该文件 10 项全部通过。未运行全仓测试。
 - 纯本地服务与现有管理员账号验证：本周配置重生成并发布成功，切换境界与首领层正常，历史周没有发布按钮，下周未发布空态正确；1280px／360px 页面无横向溢出，浏览器无 error／warn 日志。
 - 游戏邮件仅执行人数预览（9 名活跃角色），未发送邮件；菜单及表单已移除邮箱群发和模板入口。匿名读取／重生成接口返回 401，已删除模板与邮箱群发 API 返回 404。
 - 验收后恢复原本地登录账号与浏览器尺寸。未执行数据库迁移、生产操作或外部调度变更；多管理员并发冲突分支经代码检查，未进行多人运行验收。

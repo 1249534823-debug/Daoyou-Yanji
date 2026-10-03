@@ -16,8 +16,8 @@
 > 建立日期：2026-09-01  
 > 适用分支：`codex/combat-v6`  
 > 建立时基线提交：`f9510ab5`  
-> 核心目录：`src/shared/engine/combat-v6`  
-> 角色面板：[`combat-v6 角色六维与战斗面板设计`](./combat-v6-character-panel-design.md) 修炼系统：[`combat-v6 新版修炼系统设计`](./combat-v6-training-system-design.md) 宗门系统：[`combat-v6 宗门心法、技能与经脉系统设计`](./combat-v6-sect-skill-meridian-system-design.md) 红尘剑宗纵切：[`combat-v6 红尘剑宗纵切设计`](./combat-v6-lingxiao-datang-sect-design.md) 九劫天宫纵切：[`combat-v6 九劫天宫经典双流派纵切`](./combat-v6-jiujie-sect-design.md) 召唤兽系统：[`combat-v6 召唤兽系统设计`](./combat-v6-summoned-beast-system-design.md) 兼容性明细：`src/shared/engine/combat-v6/CHARACTER_COMPATIBILITY.md`
+> 核心目录：`packages/shared/src/engine/combat-v6`
+> 角色面板：[`combat-v6 角色六维与战斗面板设计`](./combat-v6-character-panel-design.md) 修炼系统：[`combat-v6 新版修炼系统设计`](./combat-v6-training-system-design.md) 宗门系统：[`combat-v6 宗门心法、技能与经脉系统设计`](./combat-v6-sect-skill-meridian-system-design.md) 红尘剑宗纵切：[`combat-v6 红尘剑宗纵切设计`](./combat-v6-lingxiao-datang-sect-design.md) 九劫天宫纵切：[`combat-v6 九劫天宫经典双流派纵切`](./combat-v6-jiujie-sect-design.md) 召唤兽系统：[`combat-v6 召唤兽系统设计`](./combat-v6-summoned-beast-system-design.md) 兼容性明细：`packages/shared/src/engine/combat-v6/CHARACTER_COMPATIBILITY.md`
 
 本文档是 combat-v6 后续设计和实现的方向基线。代码实现、数据模型、内容配置和迁移策略若与本文冲突，应先修改本文并记录决策，再修改代码，避免实现过程中重新滑回 battle-v5 / SPA + GAS 的设计方式。
 
@@ -106,10 +106,10 @@ Host / PVE / Online Battle
 
 ### 3.2 禁止依赖
 
-`src/shared/engine/combat-v6/**` 的生产代码不得导入：
+`packages/shared/src/engine/combat-v6/**` 的生产代码不得导入：
 
-- `src/shared/engine/battle-v5/**`
-- `src/shared/engine/creation-v2/**`
+- `packages/shared/src/engine/battle-v5/**`
+- `packages/shared/src/engine/creation-v2/**`
 - 旧宗门的 v5 战斗投影和编译产物
 - v5 `AbilityConfig`、`AttributeModifierConfig`、Buff、Listener、GameplayTags
 
@@ -1143,7 +1143,7 @@ V6 擂台仍使用的 ArenaRoomService、ArenaBattleStartOrchestrator、NATS 共
 
 ### 14.1 共享引擎测试
 
-测试只放在 `src/shared`。至少覆盖：
+测试只放在 `packages/shared/src`。至少覆盖：
 
 - core 指令锁定、速度顺序、状态、死亡/倒地和 RNG。
 - rules-daoyou 物理、法术、固伤、治疗、封印和修炼差公式。

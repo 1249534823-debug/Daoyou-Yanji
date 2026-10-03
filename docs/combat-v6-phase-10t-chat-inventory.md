@@ -37,7 +37,7 @@
 | 异主物品 | 使用只读查询得到的其他角色真实物品ID，宗门接口404 |
 | 纯共享测试 | 旧协议／伪造快照拒绝、revision契约、快照隔离及版本识别通过 |
 
-静态验证：bun run lint、bunx tsc -b tsconfig.app.json tsconfig.node.json、bun run build（两端）、bun run test（130文件／874项）通过；最终契约收简后再次通过lint、类型检查和5项相关测试。构建有既有大chunk提示。git diff --check通过。
+静态验证：bun run lint、bunx tsc -b apps/web/tsconfig.json tsconfig.node.json、bun run build（两端）、bun run test（130文件／874项）通过；最终契约收简后再次通过lint、类型检查和5项相关测试。构建有既有大chunk提示。git diff --check通过。
 
 界面通过真实本地浏览器检查，交互包含DOM点击和360px视口模拟，不等同于真机触控验收。道装发送期间捕获的页面错误／未处理拒绝列表为空，发送请求一次200；未持续采集整个验收过程的完整控制台日志。
 

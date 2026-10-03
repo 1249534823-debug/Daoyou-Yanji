@@ -42,8 +42,8 @@ run：`f1d6b5f5-60f4-45cc-a406-cbcfce4b981a`。
 
 ### 静态检查与未覆盖项
 
-- `bun run test src/shared/lib/dungeon src/shared/engine/combat-v6/dungeon src/shared/rewards/dungeon.test.ts`：4文件27项通过；8项选物用例覆盖高品质自主选择、跨堆叠、漏选／多交／少交、revision、位置／类型／品质／名称、跨要求共享数量、重复引用和固定／转换物品。
-- `bunx tsc -b tsconfig.app.json tsconfig.node.json --pretty false`、`bun run lint`、`bun run build`通过；最终入口超时调整后重新lint/build，重启API后健康检查200、已完成秘境重复退出409。保留既有构建大chunk提示。
+- `bun run test packages/shared/src/lib/dungeon packages/shared/src/engine/combat-v6/dungeon packages/shared/src/rewards/dungeon.test.ts`：4文件27项通过；8项选物用例覆盖高品质自主选择、跨堆叠、漏选／多交／少交、revision、位置／类型／品质／名称、跨要求共享数量、重复引用和固定／转换物品。
+- `bunx tsc -b apps/web/tsconfig.json tsconfig.node.json --pretty false`、`bun run lint`、`bun run build`通过；最终入口超时调整后重新lint/build，重启API后健康检查200、已完成秘境重复退出409。保留既有构建大chunk提示。
 - 检查 `git diff --check` 与本阶段Markdown链接。未新增前端／服务端／数据库单测、一次性验收脚本；未执行迁移或部署，未重复全仓共享测试。
 - 尚未真实覆盖：仅旧宝库／storage有物、混合品质跨堆叠提交、多个材料要求、全部构筑入口占用、数据库提交故障、Redis确认失败与多实例竞争。共享测试和代码核对不冒充这些运行证据，相关G01／G11／R02／R06子项继续待验。
 - 10X空响应的原始网络原因未原样复现；本轮验证了真实服务中断及结算请求发出后刷新恢复，未声称覆盖所有代理／网络故障。

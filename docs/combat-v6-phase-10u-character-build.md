@@ -36,7 +36,7 @@
 | 视口 | 1280px桌面与360px页面检查；窄屏文档宽度360，无横向溢出 |
 | 共享逻辑 | 公开构筑面板与现有角色投影一致、无私有构筑字段、装备／功法深复制；旧功法品质不再影响闭关收益 |
 
-通过：bun run lint、bunx tsc -b tsconfig.app.json tsconfig.node.json、bun run test（131文件／877项）、bun run build（两端）、git diff --check。构建仅既有大chunk提示。
+通过：bun run lint、bunx tsc -b apps/web/tsconfig.json tsconfig.node.json、bun run test（131文件／877项）、bun run build（两端）、git diff --check。构建仅既有大chunk提示。
 
 检索确认 src 中不再存在 player.loadout、usePlayerLoadout、CultivatorLoadoutReader、loadCultivatorDungeonPromptFacts、getCultivationTechniqueMultiplier 或旧功法倍率表。
 

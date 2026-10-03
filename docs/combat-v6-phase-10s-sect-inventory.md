@@ -41,8 +41,8 @@
 在选定环境、停机并备份后执行。环境文件需显式指定，以下仅以本地为例：
 
 ```bash
-bun --env-file=env/local.env scripts/retire-sect-artifact-deliveries.ts --dry-run
-bun --env-file=env/local.env scripts/retire-sect-artifact-deliveries.ts --apply <已核对的记录UUID> ...
+node --env-file=env/local.env --import tsx apps/api/scripts/retire-sect-artifact-deliveries.ts --dry-run
+node --env-file=env/local.env --import tsx apps/api/scripts/retire-sect-artifact-deliveries.ts --apply <已核对的记录UUID> ...
 ```
 
 应用前保留盘点输出；工具只处理指定 ID 且仍带旧 artifact 要求的记录。active 改为 abandoned，非 abandoned 记录计数因而释放；其他状态不变。移除全部旧法宝要求并更新执行器名，奖励快照和交付历史不变。重复执行不会再命中已处理记录。全部处理后再次无参数盘点，应为0，再启动新版。旧拍卖货单仍由用户用旧版本下架返还，不在此工具内处理。

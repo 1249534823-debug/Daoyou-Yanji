@@ -102,7 +102,7 @@ Redis 保存会话及终局事实。使用稳定 battleId 幂等，在同一 Pos
 
 ### 9.2 简化改造验证
 
-- 本轮 `bun run test`：224 个文件、2048 项通过；`bun run lint`、`bunx tsc -b tsconfig.app.json tsconfig.node.json --pretty false`、`bun run build` 和 `git diff --check` 通过。
+- 本轮 `bun run test`：224 个文件、2048 项通过；`bun run lint`、`bunx tsc -b apps/web/tsconfig.json tsconfig.node.json --pretty false`、`bun run build` 和 `git diff --check` 通过。
 - 本地练功房实际网络记录确认按回合提交 POST AUTO（type、round、expectedRevision），每次只推进一回合；人物与在场灵兽正常出招，没有开关写入和自动状态轮询。
 - 页面实测：连续自动、动画期间取消后不再提交、开启后刷新恢复手动、开启后离页停止并在返回时保持原回合；取消前已发请求允许完成。
 - 暂停本地 API 后，AUTO 失败使开关关闭；恢复服务并重新载入仍保持手动。
@@ -177,7 +177,7 @@ Redis 保存会话及终局事实。使用稳定 battleId 幂等，在同一 Pos
 
 测试准备仅将本地道友1的力量、速度50临时改为1000，两项已恢复50；没有补满HP/MP或修改弟子职阶。保留实际任务奖励、战败消耗和回放。没有遗留本轮活动战斗。
 
-维护工具 `scripts/migrate-sect-task-battles-v6.ts` 默认只读；本地 dry-run 为0条。`bun --env-file=env/local.env scripts/migrate-sect-task-battles-v6.ts --dry-run` 可核对数量及逐条记录；正式维护需在对应环境停机、核对后以 `--apply <record-uuid> ...` 指定记录。只撤销 active 且携带旧 combatant 的战斗任务，保留 completed 待领奖、非战斗和新版活动任务。领取名额由非 abandoned 记录占用，没有独立额度计数或领取货币扣款，因此撤销即释放实际占用；重复执行不额外发资源。本轮未执行 apply，不能标记迁移幂等已运行验收。
+维护工具 `apps/api/scripts/migrate-sect-task-battles-v6.ts` 默认只读；本地 dry-run 为0条。`node --env-file=env/local.env --import tsx apps/api/scripts/migrate-sect-task-battles-v6.ts --dry-run` 可核对数量及逐条记录；正式维护需在对应环境停机、核对后以 `--apply <record-uuid> ...` 指定记录。只撤销 active 且携带旧 combatant 的战斗任务，保留 completed 待领奖、非战斗和新版活动任务。领取名额由非 abandoned 记录占用，没有独立额度计数或领取货币扣款，因此撤销即释放实际占用；重复执行不额外发资源。本轮未执行 apply，不能标记迁移幂等已运行验收。
 
 验证：`bun run test` 224文件／2051测试通过；相关宗门 Host 测试覆盖资源隔离、目标与首发宠冻结、恢复确定性、NPC缺法力回退、版本拒绝、原生快照和JSON字段顺序。`bun run lint`、`bun run build`、`git diff --check` 通过；构建仍有既有大chunk提示。没有添加数据库或网络 mock 测试。
 

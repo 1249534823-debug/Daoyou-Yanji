@@ -25,7 +25,7 @@
 2. 上线后，玩家从洞府进入传承页。待兑换列表直接读取当前角色在原表持有的 `gongfa`；品质、评分及归属以兑换事务锁定的原记录为准。兑换成功才删除原记录，失败保留。旧玩法已停用，不再产生新的旧功法成品。
 3. 玩家先选好该本旧功法的全部额外玉简，再确认兑换。随机抽取、自选及神品感悟果发放和原记录删除一次完成。后台仅统计原表中尚未兑换的功法及异常来源，不保留已兑换数量或历史凭证。
 
-补偿配置集中在 `src/shared/manual-migration/rules.ts`，迁移期间保持不变。不使用 `app_settings`，不新增迁移表、余额、凭证或请求结果存储，也不需要提前为玩家创建记录。
+补偿配置集中在 `packages/shared/src/manual-migration/rules.ts`，迁移期间保持不变。不使用 `app_settings`，不新增迁移表、余额、凭证或请求结果存储，也不需要提前为玩家创建记录。
 
 抽取在服务端进行，完整事务提交后才向玩家返回本次随机和自选结果。若请求中断，刷新原功法列表并检查背包／仓库：原记录仍在时可重试；已经成功兑换则原记录已删除，重复请求无法再发奖。工具不保存或重放上次抽取结果。
 
@@ -35,9 +35,9 @@
 
 原表中有效角色的旧功法兑换完成且异常处理完毕后，可删除：
 
-- `src/server/routes/api/manual-migration/`
-- `src/react-app/routes/game/manual-migration/`、`src/react-app/routes/admin/manual-migration/`
-- `src/shared/manual-migration/`、`src/shared/contracts/manualMigration.ts`、本文档
+- `apps/api/src/routes/api/manual-migration/`
+- `apps/web/src/routes/game/manual-migration/`、`apps/web/src/routes/admin/manual-migration/`
+- `packages/shared/src/manual-migration/`、`packages/shared/src/contracts/manualMigration.ts`、本文档
 - API、admin、React router、后台 nav、gameNavigation 的入口，以及 CaveQuickGrid 的快捷入口配置
 
 未兑换完不得直接删除工具，需要另行确定收尾方案。补偿玉简为普通既有物品，感悟果的完整效果存于通用消耗品实例；领取后均不依赖本工具，没有新增永久道具定义、货币或 SQL 表，也没有专属状态需要清理。

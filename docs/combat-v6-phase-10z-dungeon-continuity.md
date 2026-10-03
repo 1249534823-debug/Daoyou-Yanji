@@ -52,8 +52,8 @@ run `6fd2c4a2-cab8-442f-86b9-d82f2992c0bf`，battle `125bf89f-3cba-4ab3-a54a-be7
 
 ## 检查与剩余边界
 
-- 聚焦共享测试：`bun run test src/shared/lib/dungeon src/shared/engine/combat-v6/dungeon src/shared/rewards/dungeon.test.ts`，5文件29项通过。
-- `bunx tsc -b tsconfig.app.json tsconfig.node.json --pretty false`、`bun run lint`通过；`bun run build`通过，沿用已有大chunk提示。末次界面读取错误禁用调整后复跑静态检查。
+- 聚焦共享测试：`bun run test packages/shared/src/lib/dungeon packages/shared/src/engine/combat-v6/dungeon packages/shared/src/rewards/dungeon.test.ts`，5文件29项通过。
+- `bunx tsc -b apps/web/tsconfig.json tsconfig.node.json --pretty false`、`bun run lint`通过；`bun run build`通过，沿用已有大chunk提示。末次界面读取错误禁用调整后复跑静态检查。
 - 本阶段diff检查通过。没有新增服务端／前端单测、数据库测试或一次性验收脚本，没有迁移、发布或提交代码。保留并行装备治理与既有eslint配置变更。
 - 最终浏览器控制台错误／警告读取为空；本地API保持运行，测试创建的两个秘境均已结束。
 - 未覆盖：恢复药读取／提交时真实服务中断、仅storage／旧宝库有材料、混合品质跨堆叠与多要求的真实提交；这些仍有共享规则证据，但没有本轮正式页面正向样本。

@@ -1,0 +1,25 @@
+import { Injectable } from '@nestjs/common';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import {
+  changeSectTaskBattle,
+  getSectTaskBattle,
+} from '@server/lib/services/combat-v6/CombatV6SectTaskService';
+
+@Injectable()
+export class SectTaskBattleService {
+  async read(owner: string, id?: string, after?: number) {
+    return { success: true, data: await getSectTaskBattle(owner, id, after) };
+  }
+  async change(
+    actor: ActiveCultivatorRef,
+    id: string,
+    revision: number,
+    command?: Parameters<typeof changeSectTaskBattle>[3],
+    round?: number,
+  ) {
+    return {
+      success: true,
+      data: await changeSectTaskBattle(actor, id, revision, command, round),
+    };
+  }
+}

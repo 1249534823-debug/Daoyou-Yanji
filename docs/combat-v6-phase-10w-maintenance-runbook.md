@@ -24,15 +24,15 @@
 以下命令是模板。先在受控维护终端设置 `RELEASE_ENV_FILE` 为已核对目标的绝对路径；本轮只运行过明确的 `env/local.env --dry-run`。
 
 ```bash
-bun --env-file="$RELEASE_ENV_FILE" scripts/migrate-sect-task-battles-v6.ts --dry-run
-bun --env-file="$RELEASE_ENV_FILE" scripts/retire-sect-artifact-deliveries.ts --dry-run
+node --env-file="$RELEASE_ENV_FILE" --import tsx apps/api/scripts/migrate-sect-task-battles-v6.ts --dry-run
+node --env-file="$RELEASE_ENV_FILE" --import tsx apps/api/scripts/retire-sect-artifact-deliveries.ts --dry-run
 ```
 
 保存盘点输出及备份，逐条核对UUID后才执行。下例 `RECORD_ID_1` 必须是对应脚本盘点出的任务记录UUID，可追加明确核对的UUID；空列表不会允许apply。
 
 ```bash
-bun --env-file="$RELEASE_ENV_FILE" scripts/migrate-sect-task-battles-v6.ts --apply "$RECORD_ID_1"
-bun --env-file="$RELEASE_ENV_FILE" scripts/retire-sect-artifact-deliveries.ts --apply "$RECORD_ID_1"
+node --env-file="$RELEASE_ENV_FILE" --import tsx apps/api/scripts/migrate-sect-task-battles-v6.ts --apply "$RECORD_ID_1"
+node --env-file="$RELEASE_ENV_FILE" --import tsx apps/api/scripts/retire-sect-artifact-deliveries.ts --apply "$RECORD_ID_1"
 ```
 
 两个命令的UUID列表必须分别准备，不能直接复用另一脚本的清单。

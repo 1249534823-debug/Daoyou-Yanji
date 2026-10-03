@@ -55,8 +55,8 @@
 - `bun run lint`：通过。
 - `bun run test`：114个文件、759项通过。此为当前代码基线；10V历史131/876对应外部删除17份测试之前，不沿用旧数量。
 - `bun run build`：类型检查与两端构建通过；保留既有较大chunk提示。
-- `bun --env-file=env/local.env scripts/migrate-sect-task-battles-v6.ts --dry-run`：通过，0条。
-- `bun --env-file=env/local.env scripts/retire-sect-artifact-deliveries.ts --dry-run`：通过，0条。
+- `bun --env-file=env/local.env apps/api/scripts/migrate-sect-task-battles-v6.ts --dry-run`：通过，0条。
+- `bun --env-file=env/local.env apps/api/scripts/retire-sect-artifact-deliveries.ts --dry-run`：通过，0条。
 - 上述应用检查后没有修改业务代码，不为后续纯文档编辑重复全量测试。没有新增服务端、前端、数据库测试或一次性验收脚本。
 - local1保留真实学习进度、已消费丹药效果、野外掉落与宗门奖励；原流派和青石袍装备状态已恢复。历史邮件样本已领且药品已消耗，周勤务奖励保持未领。
 - 未提交Git、执行迁移、删表、停机维护或部署；既有 `eslint.config.js` 修改保持原样。

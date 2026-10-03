@@ -25,7 +25,7 @@
 ## 静态验证
 
 - bun run lint：通过。
-- bunx tsc -p tsconfig.app.json --noEmit、bunx tsc -p tsconfig.node.json --noEmit：通过；最终 build 再次覆盖两端类型检查。
+- bunx tsc -p apps/web/tsconfig.json --noEmit、bunx tsc -p tsconfig.node.json --noEmit：通过；最终 build 再次覆盖两端类型检查。
 - bun run test：126 文件 / 848 项通过，含四项回收输入与可售范围纯规则测试，以及既有丹药价格与经济约束测试。
 - bun run build：客户端、服务端通过，保留既有大分块提示。
 - git diff --check：通过。

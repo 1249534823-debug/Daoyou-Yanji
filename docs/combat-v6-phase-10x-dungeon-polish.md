@@ -20,7 +20,7 @@
 
 ### 已实现
 
-- `src/shared/lib/dungeon/materialCosts.ts` 负责纯材料匹配与扣量规划；固定材料与历史取出的转换材料共用事实读取。服务端 `costs.ts` 只查询bag，通过既有库存revision校验保存，与资源、状态和费用账本一起提交。
+- `packages/shared/src/lib/dungeon/materialCosts.ts` 负责纯材料匹配与扣量规划；固定材料与历史取出的转换材料共用事实读取。服务端 `costs.ts` 只查询bag，通过既有库存revision校验保存，与资源、状态和费用账本一起提交。
 - `prepareDungeonEncounter` 固定人物、携带灵兽与敌方输入，保存在既有run的私有battlePayload中。公开state只包含确认所需摘要；`POST /api/dungeon/battle/begin` 才创建战局，同一遭遇重复迎战返回同一battleId。
 - 探索请求携带runId、round和稳定actionId；已提交行动重放返回当前状态，陈旧轮次的新操作及不允许行动的状态拒绝执行。
 - 新增战前正文并复用秘境壳层。实测修复了退出结算后旧WAITING_BATTLE分支遮挡结算页的问题。
@@ -37,7 +37,7 @@
 
 ### 检查与剩余范围
 
-- `bun run test src/shared/lib/dungeon src/shared/engine/combat-v6/dungeon src/shared/rewards/dungeon.test.ts`：4文件24项通过。其中5项新增纯逻辑用例覆盖跨堆叠／品质顺序、指定名称保留、重叠不足不改输入、storage排除、固定与转换材料。
-- `bunx tsc -b tsconfig.app.json tsconfig.node.json --pretty false`、`bun run lint`、`bun run build`、`git diff --check`通过；退出页面修复后重新运行lint／build。未重复全仓共享测试，未新增前后端或数据库单测、一次性验收脚本；未执行迁移或发布。
+- `bun run test packages/shared/src/lib/dungeon packages/shared/src/engine/combat-v6/dungeon packages/shared/src/rewards/dungeon.test.ts`：4文件24项通过。其中5项新增纯逻辑用例覆盖跨堆叠／品质顺序、指定名称保留、重叠不足不改输入、storage排除、固定与转换材料。
+- `bunx tsc -b apps/web/tsconfig.json tsconfig.node.json --pretty false`、`bun run lint`、`bun run build`、`git diff --check`通过；退出页面修复后重新运行lint／build。未重复全仓共享测试，未新增前后端或数据库单测、一次性验收脚本；未执行迁移或发布。
 - 真实浏览器未覆盖仅旧宝库有物／storage有物、跨堆叠混合品质、材料不足重选、支付事务故障／并发竞争，以及战前全部构筑入口互斥。匹配规则已有共享测试与事务代码检查，但不能替代这些运行验收；G01相应子项继续待验，G11其余秘境矩阵保持原状态。
 - 本地首次场景生成被既有LLM结构校验拒绝，重试正常成功，未放宽校验；继续探索曾出现一次空响应JSON解析提示，服务端完成HTTP 200后刷新恢复到下一轮，原因未定位。该恢复体验留作后续排查，不声称本次修复。

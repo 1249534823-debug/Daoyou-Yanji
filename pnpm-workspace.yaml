@@ -1,0 +1,8 @@
+packages:
+  - apps/*
+  - packages/*
+
+injectWorkspacePackages: true
+autoInstallPeers: false
+onlyBuiltDependencies:
+  - esbuild

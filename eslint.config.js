@@ -5,7 +5,7 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['dist'] },
+  { ignores: ['**/dist/**'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
@@ -22,6 +22,53 @@ export default tseslint.config(
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true, allowExportNames: ['loader'] },
+      ],
+    },
+  },
+  {
+    files: ['packages/shared/src/**/*.{ts,tsx}', 'apps/web/src/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            '@server/*',
+            '@daoyou/api',
+            '@daoyou/api/*',
+            '@daoyou/web',
+            '@daoyou/web/*',
+            '**/apps/api/**',
+            '**/apps/web/**',
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ['packages/shared/src/**/*.{ts,tsx}'],
+    ignores: ['**/*.test.*', '**/*.spec.*'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            '@server/*',
+            '@app/*',
+            '@daoyou/api*',
+            '@daoyou/web*',
+            'node:*',
+            '**/apps/**',
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ['apps/api/src/**/*.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        { patterns: ['@app/*', '@daoyou/web*', '**/apps/web/**'] },
       ],
     },
   },

@@ -52,7 +52,7 @@
 
 - 复用新版炼器的设施入口、桌面炉阵与物品栏双栏布局、移动端材料抽屉、开炉确认及结果交互。
 - 保留即兴炼丹、丹方炼丹、剂量调整、推演及结果信息，材料格数量遵循原炼丹上限。
-- 新炼丹炉采用独立透明背景素材。2026-09-20与炼器炉统一重制为写意国画水墨，现用 `public/assets/icons/xuanfire-furnace-ink.png`，通过 `GameIcon` 接入；[素材与提示词](art/craft-furnaces.md)。
+- 新炼丹炉采用独立透明背景素材。2026-09-20与炼器炉统一重制为写意国画水墨，现用 `apps/web/public/assets/icons/xuanfire-furnace-ink.png`，通过 `GameIcon` 接入；[素材与提示词](art/craft-furnaces.md)。
 - 数字沿用 Tailwind `font-mono`，不添加全局数字字体变量。
 
 ### 旧生产清理
@@ -104,7 +104,7 @@
 
 ## 静态验证
 
-已执行并通过：`bun run lint`、`bunx tsc -p tsconfig.app.json --noEmit --pretty false`、`bunx tsc -p tsconfig.node.json --noEmit --pretty false`、`bun run build`、`git diff --check`。共享全量测试 178 个文件 / 1289 项通过（含完整材料事实、拆堆、草药与炼器边界、历史 rehydrate）；后续仅缓存通知、文案及格式调整，未重复全量测试。构建仍提示既有 Phaser 大分块警告，没有数据库迁移。
+已执行并通过：`bun run lint`、`bunx tsc -p apps/web/tsconfig.json --noEmit --pretty false`、`bunx tsc -p tsconfig.node.json --noEmit --pretty false`、`bun run build`、`git diff --check`。共享全量测试 178 个文件 / 1289 项通过（含完整材料事实、拆堆、草药与炼器边界、历史 rehydrate）；后续仅缓存通知、文案及格式调整，未重复全量测试。构建仍提示既有 Phaser 大分块警告，没有数据库迁移。
 
 ## 2026-09-09 炼丹界面精修
 
@@ -116,7 +116,7 @@
 - 预览保留炉阵和简短药效／成丹范围摘要；逐味判断可在材料格详情查看，详细信息折叠。修改材料、份量或模式会使旧预览失效。
 - 炼制中仅保留炉图反馈与状态行；成丹使用公共 ItemSlot 及药效详情，保留丹方发现保存、熟练度和继续炼制操作。
 - 运行验收：桌面 1280×900、移动端 360×800；完整物品栏、逐份追加、批量份量输入、模式切换保留材料、丹方选择与预览、改份量使预览失效、确认炼制、成丹详情入口、再炼一炉和返回。一次真实丹方炼制投入两味各两份，生成一枚丹药、熟练度 +2。
-- 验证通过：bun run lint、bunx tsc -p tsconfig.app.json --noEmit --pretty false、bun run build、git diff --check。此次仅前端交互与视图调整，没有新增单元测试或重复运行共享引擎测试。构建仍有既有大分块提示。
+- 验证通过：bun run lint、bunx tsc -p apps/web/tsconfig.json --noEmit --pretty false、bun run build、git diff --check。此次仅前端交互与视图调整，没有新增单元测试或重复运行共享引擎测试。构建仍有既有大分块提示。
 
 ## 2026-09-09 第二轮视觉修正
 
