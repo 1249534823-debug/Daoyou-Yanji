@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { GameIcon } from '@app/components/ui/GameIcon';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkNotice } from '@app/components/ui/InkNotice';
@@ -44,7 +45,7 @@ export default function TowerEnemySetsRoute() {
     if (seasonKey) query.set('seasonKey', seasonKey);
     void (async () => {
       try {
-        const response = await fetch(`/api/admin/tower-enemy-sets?${query}`, {
+        const response = await apiFetch(`/api/admin/tower-enemy-sets?${query}`, {
           signal: controller.signal,
           cache: 'no-store',
         });
@@ -76,7 +77,7 @@ export default function TowerEnemySetsRoute() {
     setError('');
     setMessage('');
     try {
-      const response = await fetch('/api/admin/tower-enemy-sets/regenerate', {
+      const response = await apiFetch('/api/admin/tower-enemy-sets/regenerate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

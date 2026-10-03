@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { DatabaseModule } from '@server/database/database.module';
 import { AccountsController } from './accounts.controller';
 import { AccountsService } from './accounts.service';
 import { AdminController } from './admin.controller';
@@ -23,6 +24,7 @@ import { AdminTowerController } from './tower.controller';
 import { AdminTowerService } from './tower.service';
 
 @Module({
+  imports: [DatabaseModule],
   controllers: [
     AdminSystemMailsController,
     AdminItemLibraryController,

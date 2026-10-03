@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
 import type {
   TaskChallengeResponse,
@@ -20,7 +21,7 @@ async function readJsonOrThrow<T>(response: Response): Promise<T> {
 }
 
 export async function startTaskChallenge(taskId: string) {
-  const response = await fetch(`/api/tasks/${taskId}/challenge`, {
+  const response = await apiFetch(`/api/tasks/${taskId}/challenge`, {
     method: 'POST',
   });
   const payload = await readJsonOrThrow<TaskChallengeResponse>(response);
@@ -45,7 +46,7 @@ export async function startTaskChallengeOnce(taskId: string) {
 }
 
 export async function claimTaskReward(taskId: string) {
-  const response = await fetch(`/api/tasks/${taskId}/claim-reward`, {
+  const response = await apiFetch(`/api/tasks/${taskId}/claim-reward`, {
     method: 'POST',
   });
   const payload = await readJsonOrThrow<TaskRewardClaimResponse>(response);

@@ -10,12 +10,12 @@ import {
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
 import { PlayerCommandIdempotencyError } from '@server/lib/services/CommandExecutors';
-import { InventoryError } from '@server/lib/services/InventoryService';
+import { InventoryError } from '@server/inventory/application/InventoryService';
 import {
   QiInsufficientError,
   QiServiceError,
-} from '@server/lib/services/QiService';
-import { SpiritFieldServiceError } from '@server/lib/services/spirit-field/SpiritFieldService';
+} from '@server/cultivator/application/QiService';
+import { SpiritFieldServiceError } from '@server/spirit-field/application/SpiritFieldError';
 import {
   SpiritFieldCultivateRequestSchema,
   SpiritFieldHarvestRequestSchema,

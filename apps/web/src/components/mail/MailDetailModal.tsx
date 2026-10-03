@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { InkModal } from '@app/components/layout';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton } from '@app/components/ui/InkButton';
@@ -32,7 +33,7 @@ export function MailDetailModal({
     try {
       setIsClaiming(true);
       const result = await mutate<{ locations?: string[] }>(
-        fetch('/api/cultivator/mail/claim', {
+        apiFetch('/api/cultivator/mail/claim', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ mailId: mail.id }),

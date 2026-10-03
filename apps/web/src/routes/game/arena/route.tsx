@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   NpcConversation,
   RoomView,
@@ -647,7 +648,7 @@ function jsonRequest(body: Record<string, unknown>): RequestInit {
 }
 
 async function requestArena<T>(url: string, init?: RequestInit): Promise<T> {
-  const response = await fetch(url, {
+  const response = await apiFetch(url, {
     credentials: 'include',
     cache: 'no-store',
     ...init,

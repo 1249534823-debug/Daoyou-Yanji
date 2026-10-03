@@ -45,6 +45,13 @@ const environmentSchema = z
   })
   .catchall(z.string().optional())
   .superRefine((env, ctx) => {
+    if (env.NODE_ENV === 'production' && !env.REDIS_URL) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['REDIS_URL'],
+        message: 'is required in production',
+      });
+    }
     if (env.NODE_ENV === 'production' && !env.CRON_SECRET?.trim()) {
       ctx.addIssue({
         code: 'custom',

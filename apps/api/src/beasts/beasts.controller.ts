@@ -10,7 +10,7 @@ import {
   UseFilters,
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { BeastError } from '@server/lib/services/combat-v6/CombatV6BeastService';
+import { BeastError } from '@server/combat/application/CombatV6BeastService';
 import {
   BeastAllocateSchema,
   BeastClaimSchema,

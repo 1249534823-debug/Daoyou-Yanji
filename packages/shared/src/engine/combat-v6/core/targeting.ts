@@ -3,7 +3,7 @@ import { DEFAULT_TARGET_COUNT } from './constants.ts';
 import type { BattleContext } from './context.ts';
 import { TargetMode, TargetSide } from './enums.ts';
 import { evalExpr, skillLevelOf } from './expr.ts';
-import { alliesOf, enemiesOf } from './query.ts';
+import { alliesOf, enemiesOf } from './unit-query.ts';
 import { passiveSkills, skillOf } from './skills.ts';
 import type { SkillDef, Unit } from './types.ts';
 import { isStanding, resourceOf } from './units.ts';

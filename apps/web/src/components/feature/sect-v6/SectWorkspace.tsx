@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton } from '@app/components/ui/InkButton';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
@@ -52,7 +53,7 @@ export function SectWorkspace({
     reader.current?.abort();
     try {
       await consumeResourceMutation(
-        await fetch(url, {
+        await apiFetch(url, {
           ...mutationBody(input),
           headers: { 'Content-Type': 'application/json' },
         }),

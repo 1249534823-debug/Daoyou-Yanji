@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   GameSceneAsideSection,
   GameSceneFrame,
@@ -27,7 +28,7 @@ export default function RedeemCodePage() {
     setLoading(true);
     try {
       await mutate(
-        fetch('/api/cultivator/redeem-code/claim', {
+        apiFetch('/api/cultivator/redeem-code/claim', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ code: normalizedCode }),

@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import type { AuthUser } from '@server/lib/auth/types';
 import { getRequestIp } from '@server/lib/http/requestIp';
-import { CultivatorCreationCommandError } from '@server/lib/services/CultivatorCreationApplicationService';
+import { CultivatorCreationCommandError } from '@server/genesis/application/CultivatorCreationApplicationService';
 import { fromNodeHeaders } from 'better-auth/node';
 import type { Request } from 'express';
 import type { z } from 'zod';

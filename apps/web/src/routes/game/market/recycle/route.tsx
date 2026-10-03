@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { InventoryItems } from '@app/components/feature/items/InventoryItems';
 import type { MaterialType } from '@app/components/feature/items/inventoryFilterModel';
 import { GameSceneFrame } from '@app/components/game-shell/GameSceneFrame';
@@ -100,7 +101,7 @@ async function readStorage(
   });
 }
 async function readJson<T>(url: string, init?: RequestInit): Promise<T> {
-  const response = await fetch(url, init);
+  const response = await apiFetch(url, init);
   const body = await response.json();
   if (!response.ok || !body.success)
     throw new Error(body.error ?? '暂时无法读取，请稍后再试。');
@@ -458,7 +459,7 @@ export default function MarketRecyclePage() {
     quoteReader.current?.abort();
     try {
       const result = await consumeResourceMutation<RecycleResult>(
-        await fetch('/api/market/recycle', {
+        await apiFetch('/api/market/recycle', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ phase: 'confirm', quoteId: currentQuote.id }),

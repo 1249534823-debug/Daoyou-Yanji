@@ -4,7 +4,7 @@ import {
   LockAcquisitionError,
   RedisLeaseLostError,
 } from '@server/lib/redis/lock';
-import { CombatV6MutationLockedError } from '@server/lib/services/combat-v6/CombatV6MutationGuard';
+import { CombatV6MutationLockedError } from '@server/combat/application/CombatV6MutationGuard';
 
 export function errorBody(
   message: string,

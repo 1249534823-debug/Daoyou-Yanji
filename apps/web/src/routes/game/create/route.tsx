@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { FateDetailModal } from '@app/components/feature/fates/FateDetailModal';
 import { toFateDisplayModel } from '@app/components/feature/fates/FateDisplayAdapter';
 import { FateEffectInlineList } from '@app/components/feature/fates/FateEffectInlineList';
@@ -26,7 +27,7 @@ import {
   type CharacterGenerationQuotaResponse,
   type GenerateCharacterResponse,
 } from '@daoyou/shared/contracts/character-generation';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import {
   characterDisplayRows,
   formatCharacterAttributeValue as formatAttributeValue,
@@ -110,7 +111,7 @@ export default function CreatePage() {
 
     async function loadGenerationQuota() {
       try {
-        const response = await fetch('/api/generate-character/quota');
+        const response = await apiFetch('/api/generate-character/quota');
         const result = (await response.json()) as
           CharacterGenerationQuotaResponse | { success: false; error?: string };
 
@@ -142,7 +143,7 @@ export default function CreatePage() {
     setSelectedFateIndices([]);
 
     try {
-      const response = await fetch('/api/generate-fates', {
+      const response = await apiFetch('/api/generate-fates', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ tempId }),
@@ -208,7 +209,7 @@ export default function CreatePage() {
 
     try {
       // 调用AI生成角色
-      const aiResponse = await fetch('/api/generate-character', {
+      const aiResponse = await apiFetch('/api/generate-character', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -281,7 +282,7 @@ export default function CreatePage() {
 
     try {
       // 调用保存角色API
-      const saveResponse = await fetch('/api/save-character', {
+      const saveResponse = await apiFetch('/api/save-character', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

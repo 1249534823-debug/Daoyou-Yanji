@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton } from '@app/components/ui';
 import type {
@@ -16,7 +17,7 @@ function formatDateTime(value: string | null): string {
 }
 
 async function fetchOnlineUsersSnapshot(): Promise<AdminOnlineUsersSnapshot> {
-  const response = await fetch('/api/admin/online-users', {
+  const response = await apiFetch('/api/admin/online-users', {
     cache: 'no-store',
   });
   const payload = (await response.json()) as

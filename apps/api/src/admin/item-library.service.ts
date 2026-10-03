@@ -14,7 +14,7 @@ import {
 import {
   generateMaterialLibraryEntries,
   generateSpiritSeedLibraryEntries,
-} from '@server/lib/services/MaterialLibraryService';
+} from '@server/admin/application/MaterialLibraryService';
 import { ItemLibraryDailyMaterialGenerationSettingsSchema } from '@daoyou/shared/lib/constants/appSettings';
 import {
   CreateItemLibraryEntrySchema,

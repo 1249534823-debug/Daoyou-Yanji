@@ -6,7 +6,7 @@ import {
   readVault,
   withdrawMaterial,
   withdrawVaultPage,
-} from '@server/lib/services/ForgingService';
+} from '@server/forging/application/ForgingService';
 import type {
   ForgeRequest,
   VaultQuerySchema,

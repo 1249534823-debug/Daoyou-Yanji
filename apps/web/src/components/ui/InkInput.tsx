@@ -1,4 +1,4 @@
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import type { ChangeEvent, KeyboardEvent } from 'react';
 import type { HTMLInputTypeAttribute } from 'react';
 import {

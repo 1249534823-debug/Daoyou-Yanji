@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { ItemExchangeShelf } from '@app/components/feature/item-shop/ItemExchangeShelf';
 import { NpcConversation } from '@app/components/feature/room';
 import {
@@ -61,7 +62,7 @@ function TreasuryConversation({
     setBuyingId(item.id);
     try {
       const result = await mutate<SectShopBuyResponse>(
-        fetch(`/api/sects/current/shop/${item.id}/buy`, postJson(undefined, requestId)),
+        apiFetch(`/api/sects/current/shop/${item.id}/buy`, postJson(undefined, requestId)),
       );
       attempts.current.delete(item.id);
       pushToast({

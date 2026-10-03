@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { getSectIdentityLabels } from '@app/components/feature/sect/sectIdentityDisplay';
 import { useActiveSectContextQuery } from '@app/components/feature/sect/sectResources';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
@@ -30,7 +31,7 @@ export function CultivatorIdentity({
     try {
       setIsSavingTitle(true);
       await mutate(
-        fetch('/api/cultivator/title', {
+        apiFetch('/api/cultivator/title', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ title: editingTitle || null }),

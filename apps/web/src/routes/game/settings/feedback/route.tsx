@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   GameSceneAsideSection,
   GameSceneFrame,
@@ -36,7 +37,7 @@ export default function FeedbackPage() {
     setMessage(null);
 
     try {
-      const res = await fetch('/api/feedback', {
+      const res = await apiFetch('/api/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ type, content: content.trim() }),

@@ -1,10 +1,10 @@
 import { DungeonFlowError } from '@server/lib/dungeon/service_v2';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { DungeonStartError } from '@server/lib/services/DungeonApplicationService';
+import { DungeonStartError } from '@server/dungeon/application/DungeonApplicationService';
 import {
   QiInsufficientError,
   QiServiceError,
-} from '@server/lib/services/QiService';
+} from '@server/cultivator/application/QiService';
 import { ZodError } from 'zod';
 import { apiErrorFilter } from '../http/error-filter';
 import { JsonBodyParseError } from '../http/json-body';

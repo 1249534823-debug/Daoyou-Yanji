@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { authClient } from '@app/lib/auth/client';
 import { replace, type LoaderFunctionArgs } from 'react-router';
 import type {
@@ -77,7 +78,7 @@ export async function authLayoutLoader({
   }
 
   try {
-    const response = await fetch('/api/community/announcement', {
+    const response = await apiFetch('/api/community/announcement', {
       cache: 'no-store',
       credentials: 'include',
       signal: request.signal,
@@ -112,7 +113,7 @@ export async function requireAdminLoader({
     return replace('/login');
   }
 
-  const response = await fetch('/api/admin/session', {
+  const response = await apiFetch('/api/admin/session', {
     cache: 'no-store',
     credentials: 'include',
     signal: request.signal,

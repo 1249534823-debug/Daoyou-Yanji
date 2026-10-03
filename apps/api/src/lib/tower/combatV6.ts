@@ -66,13 +66,13 @@ import {
   readTowerRewardState,
   writeTowerRewardState,
 } from '../repositories/towerRepository';
-import { assembleCombatV6TrainingPlayer } from '../services/combat-v6/CombatV6BuildService';
-import { ConditionService } from '../services/ConditionService';
+import { assembleCombatV6TrainingPlayer } from '@server/combat/application/CombatV6BuildService';
+import { ConditionService } from '@server/cultivator/application/ConditionService';
 import {
   assertInventoryIdle,
   grantInventory,
-} from '../services/InventoryService';
-import { publishResourceEvents } from '../services/playerStateBroadcaster';
+} from '@server/inventory/application/InventoryService';
+import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
 import { ResourceEventCommitter } from '../services/ResourceEventCommitter';
 import { updateTowerWeeklyRecord } from './leaderboard';
 import { hasActiveTower, towerRunKey } from './occupancy';

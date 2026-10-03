@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   BodyCultivationSummaryContent,
   MarrowWashSummaryContent,
@@ -26,7 +27,7 @@ import {
   QI_NATURAL_RESTORE_PER_INTERVAL,
   QI_OVERFLOW_MAX,
 } from '@daoyou/shared/config/qiSystem';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import { getGameConceptInfo } from '@daoyou/shared/lib/gameConceptDisplay';
 import type { SponsorshipTierId } from '@daoyou/shared/lib/sponsorship';
 import type { ReactNode } from 'react';
@@ -48,7 +49,7 @@ function usePlayerMeritTier(
     if (!cultivatorId) return;
 
     let cancelled = false;
-    fetch('/api/sponsorship/me')
+    apiFetch('/api/sponsorship/me')
       .then(async (response) => {
         const data = (await response.json()) as
           MeritProfileResponse | { error?: string };

@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   GameLoadingState,
   GameSceneAsideSection,
@@ -159,7 +160,7 @@ export default function DungeonHistoryPage() {
 
     const loadHistory = async () => {
       try {
-        const res = await fetch('/api/dungeon/history?page=1&pageSize=10');
+        const res = await apiFetch('/api/dungeon/history?page=1&pageSize=10');
         const data = await res.json();
         if (!cancelled && data.success) {
           setRecords(data.data.records);
@@ -185,7 +186,7 @@ export default function DungeonHistoryPage() {
 
   const fetchHistory = async (page: number) => {
     try {
-      const res = await fetch(
+      const res = await apiFetch(
         `/api/dungeon/history?page=${page}&pageSize=${pagination.pageSize}`,
       );
       const data = await res.json();

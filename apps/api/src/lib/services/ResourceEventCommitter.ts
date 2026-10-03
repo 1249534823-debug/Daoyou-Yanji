@@ -6,7 +6,7 @@ import {
   type ScopeVersionCommit,
 } from '@server/lib/repositories/playerStateRepository';
 import type { PlayerResourceMutationMeta } from '@daoyou/shared/contracts/player';
-import { refreshCombatV6CharacterResources } from './combat-v6/CombatV6CharacterResourceRefresh';
+import { refreshCombatV6CharacterResources } from '@server/combat/application/CombatV6CharacterResourceRefresh';
 import { withCharacterPanelInvalidations } from '@daoyou/shared/lib/characterResourceChanges';
 import { withBagInvalidations } from '@daoyou/shared/lib/bagResourceChanges';
 import {

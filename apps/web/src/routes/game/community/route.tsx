@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { GameSceneAsideSection, GameSceneFrame } from '@app/components/game-shell';
 import { InkButton } from '@app/components/ui/InkButton';
@@ -17,7 +18,7 @@ export default function CommunityPage() {
   const [joinHint, setJoinHint] = useState('请复制群号后前往 QQ 搜索并申请加群');
 
   const loadGroupNumber = useCallback(async () => {
-    const response = await fetch('/api/community/qq-group');
+    const response = await apiFetch('/api/community/qq-group');
     const data = (await response.json()) as CommunityGroupState;
     if (!response.ok) {
       throw new Error(data.error ?? '加载 QQ 群号失败');

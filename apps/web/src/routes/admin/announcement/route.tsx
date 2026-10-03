@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkInput } from '@app/components/ui/InkInput';
@@ -14,7 +15,7 @@ export default function AuthAnnouncementAdminPage() {
   const [saving, setSaving] = useState(false);
 
   const load = useCallback(async () => {
-    const response = await fetch('/api/admin/announcement');
+    const response = await apiFetch('/api/admin/announcement');
     const data = (await response.json()) as LoadState & { error?: string };
     if (!response.ok) {
       throw new Error(data.error ?? '加载公告失败');
@@ -47,7 +48,7 @@ export default function AuthAnnouncementAdminPage() {
   const submit = async () => {
     setSaving(true);
     try {
-      const response = await fetch('/api/admin/announcement', {
+      const response = await apiFetch('/api/admin/announcement', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ announcement }),

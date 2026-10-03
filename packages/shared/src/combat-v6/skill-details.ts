@@ -2,12 +2,12 @@ import {
   BEAST_COMBO_SKILL_IDS,
   BEAST_SKILL_CONTENT,
 } from '@daoyou/shared/engine/combat-v6/beasts/content';
-import { EffectType, HookName } from '@daoyou/shared/engine/combat-v6/core/enums';
+import { EffectType, HookName } from '../engine/combat-v6/core/enums';
 import type {
   SkillDef,
   SkillEffect,
   StatusDef,
-} from '@daoyou/shared/engine/combat-v6/core/types';
+} from '../engine/combat-v6/core/types';
 import { DAO_EQUIPMENT_ARTS_V1 } from '@daoyou/shared/engine/combat-v6/equipment/special-content';
 
 const arts = new Map(DAO_EQUIPMENT_ARTS_V1.map((art) => [art.skill.id, art]));

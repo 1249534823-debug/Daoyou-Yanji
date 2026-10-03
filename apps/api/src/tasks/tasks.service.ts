@@ -1,18 +1,22 @@
-import { HttpException, Injectable } from '@nestjs/common';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
+import { startBreakthroughBattle } from '@server/combat/application/CombatV6BreakthroughService';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { DbClient } from '@server/lib/drizzle/db';
 import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
 import { readResourceWithMeta } from '@server/lib/services/ResourceReadService';
-import { claimTaskRewardCommand } from '@server/lib/services/TaskApplicationService';
-import { TaskService } from '@server/lib/services/TaskService';
-import { startBreakthroughBattle } from '@server/lib/services/combat-v6/CombatV6BreakthroughService';
+import { claimTaskRewardCommand } from '@server/tasks/application/TaskApplicationService';
+import { TaskService } from '@server/tasks/application/TaskService';
 
 @Injectable()
 export class TasksService {
+  constructor(@Inject(DRIZZLE_DATABASE) private readonly database: DbClient) {}
   list(actor: ActiveCultivatorRef, status?: 'active' | 'completed') {
     return readResourceWithMeta(
       { kind: 'cultivator', id: actor.cultivatorId },
       'player.tasks',
       (tx) => TaskService.readCultivatorTasks(actor.cultivatorId, status, tx),
+      this.database,
     );
   }
 

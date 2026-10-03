@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import {
   getQiErrorMessage,
@@ -286,7 +287,7 @@ export function useRetreatViewModel(): UseRetreatViewModelReturn {
       try {
         const requestId = window.sessionStorage.getItem(storageKey) ?? crypto.randomUUID();
         window.sessionStorage.setItem(storageKey, requestId);
-        const response = await fetch('/api/cultivator/retreat', {
+        const response = await apiFetch('/api/cultivator/retreat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ ...body, requestId }),

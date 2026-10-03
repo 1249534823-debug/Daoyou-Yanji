@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { InventoryHeader } from '@app/components/feature/items/InventoryHeader';
 import { InventoryItems } from '@app/components/feature/items/InventoryItems';
 import {
@@ -41,7 +42,7 @@ type Snapshot = {
   marketFlavor: { title: string; description: string } | null;
 };
 async function read<T>(url: string, signal: AbortSignal): Promise<T> {
-  const response = await fetch(url, { signal });
+  const response = await apiFetch(url, { signal });
   const body = await response.json();
   if (!response.ok) throw new Error(body.error ?? '暂时无法读取');
   return (body.data ?? body) as T;
@@ -170,7 +171,7 @@ function MarketWorkspace({
     setError('');
     try {
       const result = await consumeResourceMutation<MarketPurchaseResult>(
-        await fetch(`/api/market/${nodeId}/buy`, {
+        await apiFetch(`/api/market/${nodeId}/buy`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(attempt.current.input),

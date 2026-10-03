@@ -2,13 +2,13 @@ import { Injectable } from '@nestjs/common';
 import {
   assertAlchemyMaterialVersions,
   readAlchemyMaterials,
-} from '@server/lib/services/alchemy/AlchemyInventory';
+} from '@server/alchemy/application/inventory/AlchemyInventory';
 import {
   analyzeFormulaMaterials,
   confirmDiscoveryCandidate,
   deleteCultivatorFormula,
   listCultivatorFormulasPage,
-} from '@server/lib/services/AlchemyFormulaService';
+} from '@server/alchemy/application/AlchemyFormulaService';
 import type { z } from 'zod';
 import type {
   DiscoveryConfirmSchema,

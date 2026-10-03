@@ -1,4 +1,4 @@
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import type { ReactNode } from 'react';
 import { useInkUI } from '../providers/InkUIProvider';
 

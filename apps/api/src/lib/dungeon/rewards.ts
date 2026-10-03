@@ -1,5 +1,5 @@
 import type { DbExecutor } from '@server/lib/drizzle/db';
-import { generateRealmMaterials } from '@server/lib/services/MaterialRewardService';
+import { generateRealmMaterials } from '@server/inventory/application/MaterialRewardService';
 import { getRealmStageLevel } from '@daoyou/shared/config/realmProgression';
 import { MaterialFactsSchema } from '@daoyou/shared/items/definitions/materials';
 import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/shared/rewards/dungeon-material-quality';

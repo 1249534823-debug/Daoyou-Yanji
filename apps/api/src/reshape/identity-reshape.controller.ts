@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { IdentityReshapeServiceError } from '@server/lib/services/IdentityReshapeService';
+import { IdentityReshapeServiceError } from '@server/reshape/application/IdentityReshapeService';
 import { Access, CurrentCultivator } from '../auth/access';
 import { apiErrorFilter } from '../http/error-filter';
 import { JsonBody, JsonBodyParseError } from '../http/json-body';

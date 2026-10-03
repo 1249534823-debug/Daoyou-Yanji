@@ -2,7 +2,7 @@ import { GameIcon } from '@app/components/ui/GameIcon';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
 import { findBeastSkillPresentation } from '@daoyou/shared/combat-v6/beast-skill-presentation';
-import type { CombatV6SkillCommandOption } from '@daoyou/shared/engine/combat-v6/core/types';
+import type { CombatV6SkillCommandOption } from '@daoyou/shared/engine/combat-v6/core';
 import { useState, type ReactNode } from 'react';
 import { reasonText, skillNeedsTarget } from './presentation';
 import type { CombatV6Session } from './session';

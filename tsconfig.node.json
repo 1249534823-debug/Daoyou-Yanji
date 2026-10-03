@@ -5,8 +5,7 @@
     "noEmit": true,
     "types": ["node"],
     "paths": {
-      "@server/*": ["./apps/api/src/*"],
-      "@daoyou/shared/*": ["./packages/shared/src/*"]
+      "@server/*": ["./apps/api/src/*"]
     }
   },
   "include": [

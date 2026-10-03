@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { VaultWithdrawal } from '@app/components/feature/forging/VaultWithdrawal';
 import { CraftInventoryPanel } from '@app/components/feature/items/CraftInventoryPanel';
 import { InventoryItems } from '@app/components/feature/items/InventoryItems';
@@ -148,7 +149,7 @@ export default function SpiritFieldPage() {
   const attempt = useRef<{ key: string; id: string } | undefined>(undefined);
   const refresh = useCallback(async () => {
     try {
-      const response = await fetch('/api/spirit-field');
+      const response = await apiFetch('/api/spirit-field');
       const field = await response.json();
       if (!response.ok) throw new Error(field.error ?? '灵田读取失败');
       setSnapshot(field.data);
@@ -205,7 +206,7 @@ export default function SpiritFieldPage() {
         affinity?: string;
         durationMs?: number;
       }>(
-        fetch(url, {
+        apiFetch(url, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ ...body, requestId: attempt.current.id }),

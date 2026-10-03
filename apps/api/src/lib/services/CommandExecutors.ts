@@ -1,5 +1,5 @@
 import { db, type DbTransaction } from '@server/lib/drizzle/db';
-import { assertCombatV6MutationAllowed } from './combat-v6/CombatV6MutationGuard';
+import { assertCombatV6MutationAllowed } from '@server/combat/application/CombatV6MutationGuard';
 import {
   findPlayerMutationRequest,
   insertPlayerMutationRequest,
@@ -12,11 +12,11 @@ import {
   withRedisLock,
   type RedisLeaseContext,
 } from '@server/lib/redis/lock';
-import { publishResourceEvents } from '@server/lib/services/playerStateBroadcaster';
+import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
 import type { PlayerResourceMutationMeta } from '@daoyou/shared/contracts/player';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
 import { createHash } from 'node:crypto';
-import { captureJournalSettlement } from './JournalSettlement';
+import { captureJournalSettlement } from '@server/player/application/JournalSettlement';
 import { claimJournalOperation, completeJournalOperation, isJournalActivity, journalOperationKey } from '@server/lib/repositories/playerJournalRepository';
 import type { PlayerJournalEvent } from '@daoyou/shared/contracts/playerJournal';
 import {

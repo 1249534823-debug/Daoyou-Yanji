@@ -10,8 +10,8 @@ import {
   assertInventoryIdle,
   inventoryItemOf,
   saveInventoryPlan,
-} from '../src/lib/services/InventoryService';
-import { inventoryStackKey } from '../src/lib/services/inventoryStackKey';
+} from '../src/inventory/application/InventoryService';
+import { inventoryStackKey } from '../src/inventory/application/inventoryStackKey';
 import { ResourceEventCommitter } from '../src/lib/services/ResourceEventCommitter';
 import { compactStorage, type InventoryItem } from '../../../packages/shared/src/inventory';
 

@@ -1,5 +1,5 @@
 import type { CombatV6HistoryItem } from '@daoyou/shared/contracts/combatV6Replay';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import { Link } from 'react-router';
 
 import { combatV6HistorySources } from './presentation';

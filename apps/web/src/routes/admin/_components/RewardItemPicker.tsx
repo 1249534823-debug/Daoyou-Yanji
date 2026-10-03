@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   InventoryGrid,
   ItemSlot,
@@ -115,7 +116,7 @@ export function RewardItemPicker({
           q: query,
           materialType: kind === 'seed' ? 'seed' : materialType,
         });
-        const response = await fetch(`/api/admin/item-library?${params}`, {
+        const response = await apiFetch(`/api/admin/item-library?${params}`, {
           signal: controller.signal,
         });
         const data = await response.json();
@@ -194,7 +195,7 @@ export function RewardItemPicker({
                   effects: [effect, secondary, tertiary].filter(Boolean),
                   appearance,
                 };
-      const response = await fetch('/api/admin/reward-items/generate', {
+      const response = await apiFetch('/api/admin/reward-items/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(input),

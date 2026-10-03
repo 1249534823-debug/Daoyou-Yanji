@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
 import type {
   SectSubmissionCandidatesData,
@@ -10,7 +11,7 @@ export function fetchSectSubmissionCandidates(
   taskId: string,
   signal?: AbortSignal,
 ): Promise<SectSubmissionCandidatesData> {
-  return fetch(
+  return apiFetch(
     `/api/sects/current/tasks/${encodeURIComponent(taskId)}/submission-candidates`,
     { signal },
   ).then(async (response) => {
@@ -28,7 +29,7 @@ export function startSectTaskBattleOnce(
   const key = `${taskId}:${attemptId}`;
   const current = taskBattleRequests.get(key);
   if (current) return current;
-  const request = fetch(
+  const request = apiFetch(
     `/api/sects/current/tasks/${encodeURIComponent(taskId)}/actions/execute`,
     {
       method: 'POST',

@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { GameSceneFrame } from '@app/components/game-shell';
 import { InkButton } from '@app/components/ui';
 import { usePlayerSession } from '@app/lib/resources/player';
@@ -27,7 +28,7 @@ export function LegacyProductList({ type }: { type: LegacyProductType }) {
   useEffect(() => {
     const controller = new AbortController();
     if (owner)
-      void fetch(`/api/v2/products?type=${type}&page=${page}&pageSize=20`, {
+      void apiFetch(`/api/v2/products?type=${type}&page=${page}&pageSize=20`, {
         signal: controller.signal,
       })
         .then(async (response) => {

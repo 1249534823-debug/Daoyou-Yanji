@@ -1,5 +1,5 @@
 import Link from '@app/components/router/AppLink';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import { cva, type VariantProps } from 'class-variance-authority';
 import type { ReactNode } from 'react';
 

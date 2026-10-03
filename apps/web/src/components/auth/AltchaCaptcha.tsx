@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { resolveApiUrl } from '@app/lib/api/url';
 import 'altcha';
 import type { AltchaWidgetElement } from 'altcha';
@@ -37,7 +38,7 @@ const AltchaCaptcha = forwardRef<AltchaCaptchaHandle, AltchaCaptchaProps>(
     const [configError, setConfigError] = useState(false);
     useEffect(() => {
       const controller = new AbortController();
-      fetch(resolveApiUrl('/api/captcha/config'), { signal: controller.signal })
+      apiFetch(resolveApiUrl('/api/captcha/config'), { signal: controller.signal })
         .then(async (response) => {
           if (!response.ok) throw new Error('Captcha config unavailable');
           const config = await response.json();

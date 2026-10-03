@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { PerformancePlayer } from '@app/components/feature/performance/PerformancePlayer';
 import { GameLoadingState } from '@app/components/game-shell/GameLoadingState';
 import { InkButton } from '@app/components/ui';
@@ -60,7 +61,7 @@ export default function StoryRoute() {
       onFinish={(outcome) => {
         setBusy(true);
         setError(undefined);
-        void fetch(`/api/story/performances/${encodeURIComponent(scriptId)}/complete`, {
+        void apiFetch(`/api/story/performances/${encodeURIComponent(scriptId)}/complete`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ outcome }),

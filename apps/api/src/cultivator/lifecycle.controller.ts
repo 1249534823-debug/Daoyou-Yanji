@@ -1,4 +1,3 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
 import { Controller, Delete, Get, Inject, UseFilters } from '@nestjs/common';
 import type { AuthUser } from '@server/lib/auth/types';
 import { isRedisLockContention } from '@server/lib/redis/lock';
@@ -14,12 +13,12 @@ const DeleteErrors = apiErrorFilter((error) =>
       )
     : undefined,
 );
-const ContextErrors = apiErrorFilter((error) => {
+const ContextErrors = apiErrorFilter((error, config) => {
   console.error('获取转世上下文 API 错误:', error);
   return Response.json(
     {
       error:
-        getRuntimeEnvironment().NODE_ENV === 'development'
+        config.get('NODE_ENV') === 'development'
           ? error instanceof Error
             ? error.message
             : '获取转世上下文失败'

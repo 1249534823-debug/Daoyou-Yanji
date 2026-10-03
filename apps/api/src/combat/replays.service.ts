@@ -6,7 +6,7 @@ import {
   findSharedCombatV6Replay,
   listOwnedCombatV6Replays,
 } from '@server/lib/repositories/combatV6ReplayRepository';
-import { CombatV6ArenaStore } from '@server/lib/services/combat-v6/CombatV6ArenaStore';
+import { CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore';
 import { combatV6ReplayView } from '@daoyou/shared/combat-v6/replay';
 import { COMBAT_V6_REPLAY_ERROR_CODE } from '@daoyou/shared/contracts/combatV6';
 import type { CombatV6HistoryQuerySchema } from '@daoyou/shared/contracts/combatV6Replay';

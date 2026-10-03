@@ -18,20 +18,20 @@ import {
   type ExpiredDataCleanupResult,
 } from '@server/lib/repositories/retentionRepository';
 import { prunePublishedTransactionalMessages } from '@server/lib/repositories/transactionalMessageRepository';
-import { expireListings } from '@server/lib/services/AuctionService';
-import type { MailAttachment } from '@server/lib/services/MailService';
-import { runMarketRefreshJob } from '@server/lib/services/MarketScheduler';
+import { expireListings } from '@server/auction/application/AuctionService';
+import type { MailAttachment } from '@server/mail/application/MailService';
+import { runMarketRefreshJob } from '@server/market/application/MarketScheduler';
 import {
   generateDailyMarketMaterialLibraryEntries,
   ITEM_LIBRARY_SYSTEM_USER_ID,
-} from '@server/lib/services/MaterialLibraryService';
-import { sendWeeklyRankingRewardCommand } from '@server/lib/services/RankingApplicationService';
+} from '@server/admin/application/MaterialLibraryService';
+import { sendWeeklyRankingRewardCommand } from '@server/rankings/application/RankingApplicationService';
 import {
   cleanupSponsorshipSensitiveData,
   reconcileAfdianOrders,
   retryPendingSponsorshipWork,
   sendSponsorshipAdminDigest,
-} from '@server/lib/services/SponsorshipApplicationService';
+} from '@server/sponsorship/application/SponsorshipApplicationService';
 import { getSponsorshipProvider } from '@server/lib/sponsorship/providerRegistry';
 import { RANKING_REWARDS, REALM_VALUES } from '@daoyou/shared/types/constants';
 import { eq } from 'drizzle-orm';

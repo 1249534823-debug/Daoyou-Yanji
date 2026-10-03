@@ -11,7 +11,7 @@ import { QI_ACTION_COSTS } from '@daoyou/shared/config/qiSystem';
 import { getGameConceptLabel } from '@daoyou/shared/lib/gameConceptDisplay';
 import type { TaskInstance } from '@daoyou/shared/types/task';
 
-import { cn } from '@daoyou/shared/lib/utils';
+import { cn } from '@app/lib/cn';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { BreakthroughChanceDetails } from './BreakthroughChanceDetails';

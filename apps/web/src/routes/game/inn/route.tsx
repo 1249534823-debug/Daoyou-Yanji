@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { useCultivatorDisplayProjection } from '@app/components/feature/cultivator/useCultivatorDisplayProjection';
 import {
   GameSceneFrame,
@@ -117,7 +118,7 @@ export default function InnRecoveryPage() {
     setIsSubmitting(true);
     try {
       const result = await mutate<NonNullable<InnRecoveryResponse['data']>>(
-        fetch('/api/cultivator/inn-recovery', {
+        apiFetch('/api/cultivator/inn-recovery', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({}),

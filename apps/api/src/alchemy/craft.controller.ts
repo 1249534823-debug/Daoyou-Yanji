@@ -10,10 +10,10 @@ import {
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { AlchemyServiceError } from '@server/lib/services/AlchemyServiceError';
+import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError';
 import { PlayerCommandIdempotencyError } from '@server/lib/services/CommandExecutors';
-import { CraftCommandError } from '@server/lib/services/CraftApplicationService';
-import { QiServiceError } from '@server/lib/services/QiService';
+import { CraftCommandError } from '@server/forging/application/CraftApplicationService';
+import { QiServiceError } from '@server/cultivator/application/QiService';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access';
 import { apiErrorFilter } from '../http/error-filter';

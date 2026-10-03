@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkInput } from '@app/components/ui/InkInput';
@@ -16,7 +17,7 @@ export default function CommunityQqGroupAdminPage() {
   const [saving, setSaving] = useState(false);
 
   const load = useCallback(async () => {
-    const response = await fetch('/api/admin/community-group');
+    const response = await apiFetch('/api/admin/community-group');
     const data = (await response.json()) as LoadState & { error?: string };
     if (!response.ok) {
       throw new Error(data.error ?? '加载配置失败');
@@ -56,7 +57,7 @@ export default function CommunityQqGroupAdminPage() {
 
     setSaving(true);
     try {
-      const response = await fetch('/api/admin/community-group', {
+      const response = await apiFetch('/api/admin/community-group', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ groupNumber: trimmed }),

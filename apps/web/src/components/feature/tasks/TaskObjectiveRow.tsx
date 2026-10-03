@@ -1,4 +1,4 @@
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import type { TaskObjectiveProgress } from '@daoyou/shared/types/task';
 
 export function TaskObjectiveRow({

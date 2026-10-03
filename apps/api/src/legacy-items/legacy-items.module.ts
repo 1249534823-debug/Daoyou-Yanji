@@ -4,6 +4,7 @@ import {
   type MiddlewareConsumer,
   type NestModule,
 } from '@nestjs/common';
+import { DatabaseModule } from '@server/database/database.module';
 import type { NextFunction, Request, Response } from 'express';
 import { LegacyBattleRecordsController } from './battle-records.controller';
 import { LegacyInventoryController } from './inventory.controller';
@@ -18,6 +19,7 @@ import { ProductsController } from './products.controller';
 import { ProductsService } from './products.service';
 
 @Module({
+  imports: [DatabaseModule],
   controllers: [
     LegacyBattleRecordsController,
     LegacyInventoryController,

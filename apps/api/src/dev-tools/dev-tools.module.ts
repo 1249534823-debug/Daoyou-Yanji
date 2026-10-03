@@ -1,21 +1,30 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
+import { allowsLocalDevTools } from '@daoyou/shared/config/deployment';
 import {
+  Inject,
   Module,
   RequestMethod,
   type MiddlewareConsumer,
   type NestModule,
 } from '@nestjs/common';
-import { allowsLocalDevTools } from '@daoyou/shared/config/deployment';
+import { AppConfigService } from '@server/config/app-config.service';
 import type { NextFunction, Request, Response } from 'express';
 import { DevToolsController } from './dev-tools.controller';
 import { DevToolsService } from './dev-tools.service';
 
 @Module({ controllers: [DevToolsController], providers: [DevToolsService] })
 export class DevToolsModule implements NestModule {
+  constructor(
+    @Inject(AppConfigService) private readonly config: AppConfigService,
+  ) {}
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply((_request: Request, response: Response, next: NextFunction) => {
-        if (!allowsLocalDevTools(getRuntimeEnvironment().APP_ENV, getRuntimeEnvironment().NODE_ENV)) {
+        if (
+          !allowsLocalDevTools(
+            this.config.get('APP_ENV'),
+            this.config.get('NODE_ENV'),
+          )
+        ) {
           response.status(404).json({ success: false, error: '接口不存在' });
           return;
         }

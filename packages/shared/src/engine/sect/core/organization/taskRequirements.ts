@@ -1,6 +1,6 @@
 import { getLevelRealmStage } from '@daoyou/shared/config/realmProgression';
 import { DAO_EQUIPMENT_SLOTS } from '@daoyou/shared/engine/combat-v6/equipment/types';
-import { combatCharacterLevel } from '@daoyou/shared/engine/combat-v6/projection/character-level';
+import { combatCharacterLevel } from '../../../combat-v6/projection/character-level';
 import type { DailyTaskDifficulty } from '@daoyou/shared/engine/cultivation/exp-gain-strategies/types';
 import { EQUIPMENT_SLOT_NAMES } from '@daoyou/shared/items/definitions/equipment-blueprints';
 import { getMaterialTypeLabel } from '@daoyou/shared/lib/gameConceptDisplay';

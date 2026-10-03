@@ -1,3 +1,4 @@
+import { FRIEND_SEARCH_COOLDOWN_SECONDS } from '@daoyou/shared/config/socialConfig';
 import { HttpException, Injectable } from '@nestjs/common';
 import { acquireRedisCooldown } from '@server/lib/redis/cooldownLimiter';
 import {
@@ -6,8 +7,7 @@ import {
   listFriends,
   removeFriendPair,
   searchActiveCultivatorsByExactName,
-} from '@server/lib/services/FriendService';
-import { FRIEND_SEARCH_COOLDOWN_SECONDS } from '@daoyou/shared/config/socialConfig';
+} from '@server/social/application/FriendService';
 
 @Injectable()
 export class FriendsService {

@@ -9,7 +9,7 @@ import {
   UseFilters,
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { SponsorshipApplicationError } from '@server/lib/services/SponsorshipApplicationService';
+import { SponsorshipApplicationError } from '@server/sponsorship/application/SponsorshipApplicationService';
 import {
   SponsorshipCheckoutRequestSchema,
   SponsorshipClaimRequestSchema,

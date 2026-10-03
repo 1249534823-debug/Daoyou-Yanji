@@ -9,7 +9,7 @@ import { GameImage } from '@app/components/ui/GameImage';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
 import { CHARACTER_MANUALS_V1 } from '@daoyou/shared/engine/combat-v6/manuals/content';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import {
   ENLIGHTENMENT_REALMS,
   enlightenmentQualityCap,

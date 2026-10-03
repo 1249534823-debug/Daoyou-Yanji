@@ -1,20 +1,3 @@
-import { HttpException, Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { db } from '@server/lib/drizzle/db';
-import {
-  isValidRedeemCodeFormat,
-  normalizeRedeemCode,
-} from '@server/lib/redeem/code';
-import { loadPlayerRetreatFacts } from '@server/lib/services/cultivator/CultivatorConditionFactsReader';
-import {
-  allocateCultivatorAttributes,
-  reincarnateActiveCultivator,
-  resetCultivatorAttributes,
-  updateCultivatorTitle,
-} from '@server/lib/services/CultivatorProfileApplicationService';
-import { QiService } from '@server/lib/services/QiService';
-import { claimRedeemCode } from '@server/lib/services/RedeemCodeApplicationService';
-import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
 import type {
   AttributeAllocationRequest,
   AttributePreviewData,
@@ -23,6 +6,24 @@ import {
   CHARACTER_ATTRIBUTE_LABELS,
   projectCharacterDisplay,
 } from '@daoyou/shared/lib/cultivatorDisplay';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { DbClient } from '@server/lib/drizzle/db';
+import {
+  isValidRedeemCodeFormat,
+  normalizeRedeemCode,
+} from '@server/lib/redeem/code';
+import { loadPlayerRetreatFacts } from '@server/cultivator/application/readers/CultivatorConditionFactsReader';
+import {
+  allocateCultivatorAttributes,
+  reincarnateActiveCultivator,
+  resetCultivatorAttributes,
+  updateCultivatorTitle,
+} from '@server/cultivator/application/CultivatorProfileApplicationService';
+import { QiService } from '@server/cultivator/application/QiService';
+import { claimRedeemCode } from '@server/admin/application/RedeemCodeApplicationService';
+import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
 
 function parsePositiveInt(value: string | undefined, fallback: number) {
   if (!value) return fallback;
@@ -32,6 +33,8 @@ function parsePositiveInt(value: string | undefined, fallback: number) {
 
 @Injectable()
 export class ProfileService {
+  constructor(@Inject(DRIZZLE_DATABASE) private readonly database: DbClient) {}
+
   async reincarnate(actor: ActiveCultivatorRef) {
     return toPlayerStateMutationResponse(
       await reincarnateActiveCultivator({ actor }),
@@ -55,7 +58,7 @@ export class ProfileService {
   }
 
   async preview(actor: ActiveCultivatorRef, delta: AttributeAllocationRequest) {
-    const data = await db.transaction(
+    const data = await this.database.transaction(
       async (tx): Promise<AttributePreviewData> => {
         const facts = await loadPlayerRetreatFacts(
           actor.userId,

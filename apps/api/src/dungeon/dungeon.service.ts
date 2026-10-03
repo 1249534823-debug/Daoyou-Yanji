@@ -1,6 +1,8 @@
-import { HttpException, Injectable } from '@nestjs/common';
+import type { CombatV6TrainingCommandRequestSchema } from '@daoyou/shared/contracts/combatV6';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { getExecutor } from '@server/lib/drizzle/db';
+import type { DbClient } from '@server/lib/drizzle/db';
 import { dungeonHistories } from '@server/lib/drizzle/schema';
 import {
   changeDungeonBattle,
@@ -13,13 +15,14 @@ import {
 import {
   executeDungeonCommand,
   readDungeonState,
-} from '@server/lib/services/DungeonApplicationService';
-import type { CombatV6TrainingCommandRequestSchema } from '@daoyou/shared/contracts/combatV6';
+} from '@server/dungeon/application/DungeonApplicationService';
 import { desc, eq, sql } from 'drizzle-orm';
 import type { z } from 'zod';
 
 @Injectable()
 export class DungeonService {
+  constructor(@Inject(DRIZZLE_DATABASE) private readonly database: DbClient) {}
+
   execute(
     actor: ActiveCultivatorRef,
     command: Parameters<typeof executeDungeonCommand>[0]['command'],
@@ -42,12 +45,12 @@ export class DungeonService {
       Math.max(1, parseInt(pageSizeQuery || '10', 10)),
     );
     const offset = (page - 1) * pageSize;
-    const countResult = await getExecutor()
+    const countResult = await this.database
       .select({ count: sql<number>`count(*)` })
       .from(dungeonHistories)
       .where(eq(dungeonHistories.cultivatorId, owner));
     const total = Number(countResult[0]?.count || 0);
-    const records = await getExecutor()
+    const records = await this.database
       .select({
         id: dungeonHistories.id,
         theme: dungeonHistories.theme,

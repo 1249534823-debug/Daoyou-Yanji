@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { BlackMarketConversationService } from '@server/lib/services/black-market/BlackMarketConversationService';
+import { BlackMarketConversationService } from '@server/black-market/application/BlackMarketConversationService';
 import {
   commitBlackMarketPurchase,
   completeBlackMarketReply,
@@ -8,7 +8,7 @@ import {
   leaveBlackMarketSession,
   openBlackMarketSession,
   prepareBlackMarketInteraction,
-} from '@server/lib/services/black-market/BlackMarketService';
+} from '@server/black-market/application/BlackMarketService';
 import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
 import type { BlackMarketInteractStreamEvent } from '@daoyou/shared/types/blackMarket';
 import type { z } from 'zod';

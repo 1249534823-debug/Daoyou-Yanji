@@ -9,6 +9,9 @@ importers:
 
   .:
     devDependencies:
+      '@daoyou/shared':
+        specifier: workspace:*
+        version: link:packages/shared
       '@eslint/js':
         specifier: 10.0.1
         version: 10.0.1(eslint@10.10.0(jiti@2.7.0))
@@ -211,6 +214,9 @@ importers:
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       d3-format:
         specifier: ^3.1.2
         version: 3.1.2
@@ -232,6 +238,9 @@ importers:
       react-zoom-pan-pinch:
         specifier: ^4.2.0
         version: 4.2.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      tailwind-merge:
+        specifier: ^3.7.0
+        version: 3.7.0
       zod:
         specifier: ^4.6.4
         version: 4.6.4
@@ -263,15 +272,9 @@ importers:
 
   packages/shared:
     dependencies:
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
       d3-format:
         specifier: ^3.1.2
         version: 3.1.2
-      tailwind-merge:
-        specifier: ^3.7.0
-        version: 3.7.0
       zod:
         specifier: ^4.6.4
         version: 4.6.4

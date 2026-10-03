@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 export class CombatV6RequestError extends Error {
   constructor(
     message: string,
@@ -13,7 +14,7 @@ export async function combatV6Request<T>(
 ): Promise<T> {
   const headers = new Headers(init?.headers);
   if (init?.body) headers.set('Content-Type', 'application/json');
-  const response = await fetch(url, { ...init, headers });
+  const response = await apiFetch(url, { ...init, headers });
   const body = (await response.json().catch(() => ({
     error: '战斗服务暂时不可用，请稍后刷新重试',
   }))) as {

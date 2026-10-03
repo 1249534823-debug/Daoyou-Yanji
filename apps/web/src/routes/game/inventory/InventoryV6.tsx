@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   combatV6Request,
   mutationBody,
@@ -135,7 +136,7 @@ export default function InventoryV6() {
     try {
       if (action.action === 'use') {
         await consumeResourceMutation(
-          await fetch(
+          await apiFetch(
             '/api/cultivator/consume',
             mutationBody({
               consumableId: action.id,
@@ -146,7 +147,7 @@ export default function InventoryV6() {
         );
       } else
         await consumeResourceMutation(
-          await fetch(endpoint, mutationBody(action)),
+          await apiFetch(endpoint, mutationBody(action)),
         );
       if (!mounted.current) return;
       pushToast({

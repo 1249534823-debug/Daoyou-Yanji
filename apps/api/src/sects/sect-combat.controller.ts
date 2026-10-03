@@ -9,8 +9,8 @@ import {
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { InventoryError } from '@server/lib/services/InventoryService';
-import { CombatV6BuildError } from '@server/lib/services/combat-v6/CombatV6BuildService';
+import { InventoryError } from '@server/inventory/application/InventoryService';
+import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService';
 import {
   SectPathSelectionRequestSchema,
   type SectPathSelectionRequest,

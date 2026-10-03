@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { AddPoint } from '@app/components/feature/attributes/AttributeAllocation';
 import { InkModal } from '@app/components/layout/InkModal';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
@@ -104,7 +105,7 @@ export function CultivatorStatsPanel({
     const timer = setTimeout(() => {
       void (async () => {
         try {
-          const response = await fetch('/api/cultivator/attributes/preview', {
+          const response = await apiFetch('/api/cultivator/attributes/preview', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: requestKey,
@@ -167,7 +168,7 @@ export function CultivatorStatsPanel({
       busy.current = true;
       setIsAllocatingAttributes(true);
       await mutate(
-        fetch('/api/cultivator/attributes/allocate', {
+        apiFetch('/api/cultivator/attributes/allocate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -201,7 +202,7 @@ export function CultivatorStatsPanel({
         refunded_attribute_points: number;
         consumed_talisman_name: string;
       }>(
-        fetch('/api/cultivator/attributes/reset', {
+        apiFetch('/api/cultivator/attributes/reset', {
           method: 'POST',
         }),
       );

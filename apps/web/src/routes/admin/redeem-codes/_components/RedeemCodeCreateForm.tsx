@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton, InkInput } from '@app/components/ui';
 import { useState } from 'react';
@@ -54,7 +55,7 @@ export function RedeemCodeCreateForm() {
     setError('');
     setLoading(true);
     try {
-      const response = await fetch('/api/admin/redeem-codes', {
+      const response = await apiFetch('/api/admin/redeem-codes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

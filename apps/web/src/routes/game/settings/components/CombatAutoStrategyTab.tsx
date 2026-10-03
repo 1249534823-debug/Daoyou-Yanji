@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { InkButton } from '@app/components/ui/InkButton';
 import { autoStatusChoices } from '@daoyou/shared/combat-v6/auto-status-options';
 import {
@@ -153,7 +154,7 @@ async function request(
   method: 'GET' | 'PUT' | 'DELETE',
   body?: unknown,
 ): Promise<View> {
-  const response = await fetch('/api/combat-v6/auto-strategy', {
+  const response = await apiFetch('/api/combat-v6/auto-strategy', {
     method,
     ...(body === undefined
       ? {}

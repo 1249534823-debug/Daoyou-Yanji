@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   CombatActivityNoticeSchema,
   type CombatActivityNotice,
@@ -12,7 +13,7 @@ export function useCombatActivityNotice(enabled: boolean) {
     if (!enabled) return;
     let cancelled = false;
     const load = () => {
-      fetch('/api/combat-v6/activity', { cache: 'no-store' })
+      apiFetch('/api/combat-v6/activity', { cache: 'no-store' })
         .then(async (response) => {
           const body = (await response.json()) as {
             success?: boolean;

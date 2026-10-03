@@ -2,7 +2,7 @@ import { cultivators } from '@server/lib/drizzle/schema';
 import type { DbTransaction } from '@server/lib/drizzle/db';
 import { invalidateActiveCultivatorRef } from '@server/lib/auth/activeCultivator';
 import { findActiveCultivatorOwnerId } from '@server/lib/repositories/cultivatorRepository';
-import { updateCultivator } from '@server/lib/services/cultivator/CultivatorStateRepository';
+import { updateCultivator } from '@server/cultivator/application/readers/CultivatorStateRepository';
 import type { BreakthroughModifiers } from '@daoyou/shared/engine/cultivation/breakthroughCalculator';
 import type {
   LifespanExhaustedStoryPayload,

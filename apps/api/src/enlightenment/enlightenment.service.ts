@@ -3,7 +3,7 @@ import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import {
   enlightenManual,
   readEnlightenment,
-} from '@server/lib/services/EnlightenmentService';
+} from '@server/enlightenment/application/EnlightenmentService';
 import type { EnlightenmentRequest } from '@daoyou/shared/contracts/enlightenment';
 
 @Injectable()

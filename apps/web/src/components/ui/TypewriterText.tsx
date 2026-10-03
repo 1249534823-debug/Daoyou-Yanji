@@ -1,5 +1,5 @@
 import { TypewriterOptions, useTypewriter } from '@app/lib/hooks/useTypewriter';
-import { cn } from '@daoyou/shared/lib/utils';
+import { cn } from '@app/lib/cn';
 
 interface TypewriterTextProps extends Omit<TypewriterOptions, 'onComplete'> {
   className?: string;

@@ -7,7 +7,7 @@ import {
   getSpiritFieldSnapshot,
   harvestSpiritField,
   sowSpiritField,
-} from '@server/lib/services/spirit-field/SpiritFieldService';
+} from '@server/spirit-field/application/SpiritFieldService';
 import type {
   SpiritFieldCultivateRequest,
   SpiritFieldHarvestRequest,

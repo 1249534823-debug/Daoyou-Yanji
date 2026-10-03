@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { CombatV6Battle } from '@app/components/feature/combat-v6/CombatV6Battle';
 import { CombatV6Page } from '@app/components/feature/combat-v6/CombatV6Page';
 import {
@@ -164,7 +165,7 @@ function WildRegion({ nodeId }: { nodeId: string }) {
       setSearching(true);
       requestId.current ??= crypto.randomUUID();
       try {
-        const response = fetch('/api/combat-v6/wild/explorations', {
+        const response = apiFetch('/api/combat-v6/wild/explorations', {
           ...mutationBody({ nodeId, requestId: requestId.current }),
           headers: { 'Content-Type': 'application/json' },
         }).then(async (response) => {

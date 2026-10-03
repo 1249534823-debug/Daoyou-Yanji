@@ -10,8 +10,8 @@ import {
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
 import { PlayerCommandIdempotencyError } from '@server/lib/services/CommandExecutors';
-import { InventoryError } from '@server/lib/services/InventoryService';
-import { QiServiceError } from '@server/lib/services/QiService';
+import { InventoryError } from '@server/inventory/application/InventoryService';
+import { QiServiceError } from '@server/cultivator/application/QiService';
 import {
   EnlightenmentRequestSchema,
   type EnlightenmentRequest,

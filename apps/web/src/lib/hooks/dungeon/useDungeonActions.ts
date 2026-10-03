@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
 import type { DungeonMaterialSelection } from '@daoyou/shared/contracts/combatV6Dungeon';
@@ -31,7 +32,7 @@ export function useDungeonActions(
     setProcessing(true);
     let message = '尚未确认探索结果，正在重新读取';
     try {
-      const response = await fetch(`/api/dungeon/${path}`, {
+      const response = await apiFetch(`/api/dungeon/${path}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: body === undefined ? undefined : JSON.stringify(body),

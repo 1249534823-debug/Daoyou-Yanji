@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { AuctionListingActions } from '@app/components/auction/AuctionListingActions';
 import { AuctionListings } from '@app/components/auction/AuctionListings';
 import { ListBeastModal } from '@app/components/auction/ListBeastModal';
@@ -168,7 +169,7 @@ export default function AuctionPage() {
 
   useEffect(() => {
     const controller = new AbortController();
-    void fetch(listUrl, { signal: controller.signal })
+    void apiFetch(listUrl, { signal: controller.signal })
       .then(async (response) => {
         const payload = await response.json();
         if (!response.ok) throw new Error(payload.error || '获取拍卖列表失败');
@@ -211,7 +212,7 @@ export default function AuctionPage() {
     setPendingId(listing.id);
     try {
       const response = await mutate<{ message: string }>(
-        fetch('/api/auction/buy', {
+        apiFetch('/api/auction/buy', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -326,7 +327,7 @@ export default function AuctionPage() {
     setPendingId(listing.id);
     try {
       const response = await mutate<{ message: string }>(
-        fetch(`/api/auction/${listing.id}`, { method: 'DELETE' }),
+        apiFetch(`/api/auction/${listing.id}`, { method: 'DELETE' }),
       );
       pushToast({ message: response.message, tone: 'success' });
       return true;

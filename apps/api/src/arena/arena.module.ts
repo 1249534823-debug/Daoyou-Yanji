@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
-import { ArenaBattleStartOrchestrator } from '@server/lib/services/ArenaBattleStartOrchestrator';
-import { ArenaRoomService } from '@server/lib/services/ArenaRoomService';
-import { CombatV6ArenaStore } from '@server/lib/services/combat-v6/CombatV6ArenaStore';
+import { DatabaseModule } from '@server/database/database.module';
+import { ArenaBattleStartOrchestrator } from '@server/arena/application/ArenaBattleStartOrchestrator';
+import { ArenaRoomService } from '@server/arena/application/ArenaRoomService';
+import { CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore';
 import { AuthModule } from '../auth/auth.module';
 import { ArenaBattlesController } from './arena-battles.controller';
 import { ArenaBattlesService } from './arena-battles.service';
@@ -11,7 +12,7 @@ import { ArenaRoomsService } from './arena-rooms.service';
 import { ArenaGateway } from './arena.gateway';
 
 @Module({
-  imports: [AuthModule],
+  imports: [DatabaseModule, AuthModule],
   controllers: [ArenaRoomsController, ArenaBattlesController],
   providers: [
     { provide: ArenaRoomService, useFactory: () => new ArenaRoomService() },

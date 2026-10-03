@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import type { AlchemyFormula, PillFamily } from '@daoyou/shared/types/consumable';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -67,7 +68,7 @@ export function useAlchemyFormulaLibrary({
         if (requestId !== requestIdRef.current) return;
         setLoading(true);
         setError(null);
-        return fetch(`/api/alchemy/formulas?${params.toString()}`, {
+        return apiFetch(`/api/alchemy/formulas?${params.toString()}`, {
           signal: controller.signal,
         });
       })
@@ -127,7 +128,7 @@ export function useAlchemyFormulaLibrary({
         cancelLabel: '保留',
         onConfirm: async () => {
           try {
-            const response = await fetch(
+            const response = await apiFetch(
               `/api/alchemy/formulas/${formula.id}`,
               { method: 'DELETE' },
             );

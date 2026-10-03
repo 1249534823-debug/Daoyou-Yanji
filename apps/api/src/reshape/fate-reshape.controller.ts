@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { FateReshapeServiceError } from '@server/lib/services/FateReshapeService';
+import { FateReshapeServiceError } from '@server/reshape/application/FateReshapeService';
 import { Access, CurrentCultivator } from '../auth/access';
 import { apiErrorFilter } from '../http/error-filter';
 import { JsonBody } from '../http/json-body';

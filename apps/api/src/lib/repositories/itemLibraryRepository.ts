@@ -1,6 +1,6 @@
 import { getExecutor, type DbExecutor } from '@server/lib/drizzle/db';
 import { itemLibrary } from '@server/lib/drizzle/schema';
-import { computeItemLibrarySampleKey } from '@server/lib/services/itemLibrarySampleKey';
+import { computeItemLibrarySampleKey } from '@server/lib/utils/itemLibrarySampleKey';
 import {
   ItemLibraryEntrySchema,
   type CreateItemLibraryEntry,

@@ -1,11 +1,11 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { assertAlchemyMaterialVersions } from '@server/lib/services/alchemy/AlchemyInventory';
-import { previewFormulaCraft } from '@server/lib/services/AlchemyFormulaService';
-import { previewAlchemySelection } from '@server/lib/services/alchemyServiceV2';
-import { executeCraftCommand } from '@server/lib/services/CraftApplicationService';
-import { readCraftReadinessFacts } from '@server/lib/services/cultivator/CultivatorFactsReader';
-import { getPlayerPreHeavenFates } from '@server/lib/services/cultivator/CultivatorProfileRepository';
+import { assertAlchemyMaterialVersions } from '@server/alchemy/application/inventory/AlchemyInventory';
+import { previewFormulaCraft } from '@server/alchemy/application/AlchemyFormulaService';
+import { previewAlchemySelection } from '@server/alchemy/application/alchemyServiceV2';
+import { executeCraftCommand } from '@server/forging/application/CraftApplicationService';
+import { readCraftReadinessFacts } from '@server/cultivator/application/readers/CultivatorFactsReader';
+import { getPlayerPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository';
 import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
 import type { z } from 'zod';
 import type { CraftCommandSchema, CraftSchema } from './alchemy-input';

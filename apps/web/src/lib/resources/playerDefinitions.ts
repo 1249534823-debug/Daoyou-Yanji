@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import type {
   PlayerResourceKey,
   PlayerResourceMap,
@@ -81,7 +82,7 @@ async function flushPlayerResourceBatch(): Promise<void> {
   }
   const keys = Array.from(new Set(active.map((item) => item.key)));
   try {
-    const response = await fetch(
+    const response = await apiFetch(
       `/api/player/resources?keys=${encodeURIComponent(keys.join(','))}`,
       { signal: controller.signal },
     );

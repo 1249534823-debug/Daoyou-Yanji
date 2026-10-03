@@ -1,13 +1,16 @@
-import { HttpException, Injectable } from '@nestjs/common';
-import { getExecutor } from '@server/lib/drizzle/db';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
+import type { DbClient } from '@server/lib/drizzle/db';
 import { cultivators, spiritualRoots } from '@server/lib/drizzle/schema';
 import { and, eq } from 'drizzle-orm';
 
 @Injectable()
 export class EnemiesService {
+  constructor(@Inject(DRIZZLE_DATABASE) private readonly database: DbClient) {}
+
   async read(userId: string, id: string) {
     if (!id) throw new HttpException({ error: '请提供有效的敌人ID' }, 400);
-    const q = getExecutor();
+    const q = this.database;
     const [enemy] = await q
       .select({
         id: cultivators.id,

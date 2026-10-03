@@ -6,8 +6,7 @@
     "noEmit": true,
     "types": ["node"],
     "paths": {
-      "@server/*": ["./src/*"],
-      "@daoyou/shared/*": ["../../packages/shared/src/*"]
+      "@server/*": ["./src/*"]
     },
     "rootDir": "../.."
   },

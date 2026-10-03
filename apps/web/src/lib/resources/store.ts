@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { realtimeClient } from '@app/lib/realtime/realtimeClient';
 import type { ApiFailure } from '@daoyou/shared/contracts/http';
 import type {
@@ -557,7 +558,7 @@ export class ResourceStore {
         scopeKind: scope.kind,
         scopeId: scope.id,
       });
-      const response = await fetch(`/api/player/resources/events?${query}`);
+      const response = await apiFetch(`/api/player/resources/events?${query}`);
       const json = (await response.json()) as
         | PlayerResourceEventsResponse
         | ApiFailure;

@@ -1,4 +1,10 @@
 import {
+  WorldChatCreateMessageSchema,
+  WorldChatListQuerySchema,
+  type WorldChatCreateMessageRequest,
+  type WorldChatListQuery,
+} from '@daoyou/shared/contracts/world-chat';
+import {
   Controller,
   Get,
   HttpCode,
@@ -7,13 +13,7 @@ import {
   UseFilters,
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { ChatMessageApplicationError } from '@server/lib/services/chatMessageApplication';
-import {
-  WorldChatCreateMessageSchema,
-  WorldChatListQuerySchema,
-  type WorldChatCreateMessageRequest,
-  type WorldChatListQuery,
-} from '@daoyou/shared/contracts/world-chat';
+import { ChatMessageApplicationError } from '@server/social/application/chatMessageApplication';
 import { ZodError } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access';
 import { RejectRetiredBattleSharePipe } from '../http/chat-input.pipe';

@@ -9,7 +9,7 @@ import type {
   SkillDef,
   StatusDef,
 } from '@daoyou/shared/engine/combat-v6/core';
-import { effectiveAttrs } from '@daoyou/shared/engine/combat-v6/core/units';
+import { effectiveAttrs } from '../engine/combat-v6/core/units';
 import { combatV6SkillDetails } from './skill-details';
 
 /** Keep the generation RNG output in the authority/archive, never in live playback. */

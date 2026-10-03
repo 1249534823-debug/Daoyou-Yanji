@@ -31,7 +31,7 @@ import {
   InventoryEquipmentSchema,
 } from '@daoyou/shared/inventory/equipment';
 import { inscriptionItemId } from '@daoyou/shared/items/definitions/inscriptions';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import { useState } from 'react';
 import { CraftInventoryPanel } from '../items/CraftInventoryPanel';
 import { InventoryItems } from '../items/InventoryItems';

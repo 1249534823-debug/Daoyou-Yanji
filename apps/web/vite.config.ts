@@ -6,9 +6,6 @@ import { defineConfig, type Plugin, type UserConfig } from 'vite';
 
 const alias = {
   '@app': fileURLToPath(new URL('./src', import.meta.url)),
-  '@daoyou/shared': fileURLToPath(
-    new URL('../../packages/shared/src', import.meta.url),
-  ),
 };
 const devApiTarget = () => `http://127.0.0.1:${process.env.PORT ?? 3000}`;
 

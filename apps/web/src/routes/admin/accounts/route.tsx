@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton, InkInput, InkSelect } from '@app/components/ui';
 import { authClient } from '@app/lib/auth/client';
@@ -94,7 +95,7 @@ export default function AdminAccountsPage() {
         });
         if (search) query.set('search', search);
 
-        const response = await fetch(
+        const response = await apiFetch(
           `/api/admin/accounts?${query.toString()}`,
           {
             cache: 'no-store',
@@ -206,7 +207,7 @@ export default function AdminAccountsPage() {
 
     setSaving(true);
     try {
-      const response = await fetch(
+      const response = await apiFetch(
         `/api/admin/accounts/${editingAccount.userId}/change-email`,
         {
           method: 'POST',
@@ -279,7 +280,7 @@ export default function AdminAccountsPage() {
     setRevokingUserId(userId);
 
     try {
-      const response = await fetch(
+      const response = await apiFetch(
         `/api/admin/accounts/${userId}/revoke-sessions`,
         {
           method: 'POST',
@@ -351,7 +352,7 @@ export default function AdminAccountsPage() {
 
     setModeratingUserId(account.userId);
     try {
-      const response = await fetch(
+      const response = await apiFetch(
         `/api/admin/accounts/${account.userId}/ban`,
         {
           method: 'POST',
@@ -400,7 +401,7 @@ export default function AdminAccountsPage() {
     setModeratingUserId(account.userId);
 
     try {
-      const response = await fetch(
+      const response = await apiFetch(
         `/api/admin/accounts/${account.userId}/unban`,
         {
           method: 'POST',

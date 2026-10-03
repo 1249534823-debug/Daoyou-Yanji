@@ -1,14 +1,14 @@
 import { redisLockErrorResponse } from '@server/lib/http/errors';
 import { PlayerCommandIdempotencyError } from '@server/lib/services/CommandExecutors';
-import { InventoryError } from '@server/lib/services/InventoryService';
+import { InventoryError } from '@server/inventory/application/InventoryService';
 import {
   QiInsufficientError,
   QiServiceError,
-} from '@server/lib/services/QiService';
-import { BeastError } from '@server/lib/services/combat-v6/CombatV6BeastService';
-import { CombatV6BuildError } from '@server/lib/services/combat-v6/CombatV6BuildService';
-import { CombatV6TrainingSessionError } from '@server/lib/services/combat-v6/CombatV6TrainingSessionService';
-import { WildError } from '@server/lib/services/combat-v6/CombatV6WildSessionService';
+} from '@server/cultivator/application/QiService';
+import { BeastError } from '@server/combat/application/CombatV6BeastService';
+import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService';
+import { CombatV6TrainingSessionError } from '@server/combat/application/CombatV6TrainingSessionService';
+import { WildError } from '@server/combat/application/CombatV6WildSessionService';
 import { TrainingHostError } from '@daoyou/shared/engine/combat-v6/encounter';
 import { InventoryRuleError } from '@daoyou/shared/inventory';
 import { ZodError } from 'zod';

@@ -8,7 +8,7 @@ import {
   resolveDungeonMapConfig,
   type MapNodeInfo,
 } from '@daoyou/shared/lib/game/mapSystem';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import type { RealmType } from '@daoyou/shared/types/constants';
 
 export function MapNodeCard({

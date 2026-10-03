@@ -3,8 +3,8 @@ import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import {
   confirmFateReshapeCommand,
   startFateReshapeCommand,
-} from '@server/lib/services/FateReshapeApplicationService';
-import { FateReshapeService as FateSessions } from '@server/lib/services/FateReshapeService';
+} from '@server/reshape/application/FateReshapeApplicationService';
+import { FateReshapeService as FateSessions } from '@server/reshape/application/FateReshapeService';
 import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
 import { z } from 'zod';
 const ConfirmSchema = z.object({

@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   NpcConversation,
   useConversationSession,
@@ -125,7 +126,7 @@ function DonationConversation({
     perform: async () => {
       if (!facility || !quote) throw new Error('请先选择设施和灵石档位。');
       await mutate(
-        fetch(
+        apiFetch(
           '/api/sects/current/construction/donate',
           postJson({
             facilityKey: facility.key,

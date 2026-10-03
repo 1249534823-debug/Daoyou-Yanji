@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { GameLoadingState } from '@app/components/game-shell/GameLoadingState';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton } from '@app/components/ui';
@@ -95,7 +96,7 @@ export default function IdentityReshapePage() {
 
   useEffect(() => {
     let cancelled = false;
-    void fetch('/api/identity-reshape/session')
+    void apiFetch('/api/identity-reshape/session')
       .then(async (response) => {
         const result = (await response.json()) as ApiResult<SessionPayload>;
         if (!response.ok || !result.success || !result.data) {
@@ -136,7 +137,7 @@ export default function IdentityReshapePage() {
   ) => {
     setPending('draft');
     try {
-      const response = await fetch('/api/identity-reshape/session', {
+      const response = await apiFetch('/api/identity-reshape/session', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -172,7 +173,7 @@ export default function IdentityReshapePage() {
   const start = async () => {
     setPending('start');
     try {
-      const response = await fetch('/api/identity-reshape/session', {
+      const response = await apiFetch('/api/identity-reshape/session', {
         method: 'POST',
       });
       const result = (await response.json()) as ApiResult<SessionPayload>;
@@ -217,7 +218,7 @@ export default function IdentityReshapePage() {
     if (!(await saveDraft(answers, trimmed))) return;
     setPending('generate');
     try {
-      const response = await fetch('/api/identity-reshape/generate', {
+      const response = await apiFetch('/api/identity-reshape/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ answers, description: trimmed }),
@@ -242,7 +243,7 @@ export default function IdentityReshapePage() {
   const confirm = async () => {
     setPending('confirm');
     try {
-      await mutate(fetch('/api/identity-reshape/confirm', { method: 'POST' }));
+      await mutate(apiFetch('/api/identity-reshape/confirm', { method: 'POST' }));
       pushToast({ message: '新身份已落定。', tone: 'success' });
       navigate('/game/cultivator', { replace: true });
     } catch (error) {
@@ -258,7 +259,7 @@ export default function IdentityReshapePage() {
   const abandon = async () => {
     setPending('abandon');
     try {
-      const response = await fetch('/api/identity-reshape/abandon', {
+      const response = await apiFetch('/api/identity-reshape/abandon', {
         method: 'POST',
       });
       const result = (await response.json()) as ApiResult<never>;

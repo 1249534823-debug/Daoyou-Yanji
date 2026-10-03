@@ -8,7 +8,7 @@ import { InkBadge } from '@app/components/ui/InkBadge';
 import { useCultivatorIdentity } from '@app/lib/resources/player';
 import { BeastTradePreviewSchema } from '@daoyou/shared/contracts/beastTrade';
 import { isInventoryShowcase } from '@daoyou/shared/items/showcase';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import type {
   WorldChatBattleShowcasePayload,
   WorldChatMessageDTO,

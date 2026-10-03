@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { pendingCommandRequest } from '@app/lib/pendingCommandRequest';
 import { FriendTargetModal } from '@app/components/feature/friends';
 import {
@@ -94,7 +95,7 @@ export default function MailPage() {
         if (options.showLoading) {
           setFriendsLoading(true);
         }
-        const res = await fetch('/api/friends');
+        const res = await apiFetch('/api/friends');
         const data = await res.json();
         if (!res.ok) {
           throw new Error(data.error || '获取好友名录失败');
@@ -127,7 +128,7 @@ export default function MailPage() {
         } else {
           setLoading(true);
         }
-        const res = await fetch(
+        const res = await apiFetch(
           `/api/cultivator/mail?page=${targetPage}&pageSize=${PAGE_SIZE}`,
           { signal: controller.signal },
         );
@@ -158,7 +159,7 @@ export default function MailPage() {
 
     const loadInitialMails = async () => {
       try {
-        const res = await fetch(
+        const res = await apiFetch(
           `/api/cultivator/mail?page=1&pageSize=${PAGE_SIZE}`,
           { signal: controller.signal },
         );
@@ -213,7 +214,7 @@ export default function MailPage() {
   }, [fetchMails]);
 
   useEffect(() => {
-    fetch('/api/friends')
+    apiFetch('/api/friends')
       .then(async (response) => {
         const data = await response.json();
         if (!response.ok) {
@@ -240,7 +241,7 @@ export default function MailPage() {
     if (!mail.isRead) {
       try {
         await mutate(
-          fetch('/api/cultivator/mail/read', {
+          apiFetch('/api/cultivator/mail/read', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ mailId: mail.id }),
@@ -287,7 +288,7 @@ export default function MailPage() {
         claimedMailIds: string[];
         unreadMailCount: number;
       }>(
-        fetch('/api/cultivator/mail/claim-all', {
+        apiFetch('/api/cultivator/mail/claim-all', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ requestId: pending.requestId }),
@@ -337,7 +338,7 @@ export default function MailPage() {
         updatedCount: number;
         unreadMailCount: number;
       }>(
-        fetch('/api/cultivator/mail/read-all', {
+        apiFetch('/api/cultivator/mail/read-all', {
           method: 'POST',
         }),
       );
@@ -419,7 +420,7 @@ export default function MailPage() {
     try {
       setFriendSearching(true);
       setFriendSearchAttempted(true);
-      const response = await fetch(
+      const response = await apiFetch(
         `/api/friends/search?name=${encodeURIComponent(name)}`,
       );
       const data = (await response.json()) as FriendSearchResponse & {
@@ -456,7 +457,7 @@ export default function MailPage() {
 
   const handleRemoveFriend = async (friendId: string) => {
     try {
-      const res = await fetch(`/api/friends/${friendId}`, {
+      const res = await apiFetch(`/api/friends/${friendId}`, {
         method: 'DELETE',
       });
       const data = await res.json();

@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 /* eslint-disable react-refresh/only-export-components -- scene components and their tightly coupled hooks share one private module */
 import {
   getSectDefinition,
@@ -173,7 +174,7 @@ export function useSectMutation() {
     async <T,>(url: string, init: RequestInit, successMessage: string) => {
       setBusy(true);
       try {
-        const result = await mutate<T>(fetch(url, init));
+        const result = await mutate<T>(apiFetch(url, init));
         pushToast({ message: successMessage, tone: 'success' });
         return result;
       } catch (reason) {

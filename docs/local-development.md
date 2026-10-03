@@ -25,14 +25,16 @@ pnpm run dev                    # 启动 API 与 Vite
 
 - `apps/api`：Nest 功能模块、服务端基础设施与维护命令；运行依赖、Nest CLI 和 Rspack 构建依赖在本包声明。
 - `apps/web`：React SPA、静态资源与 Vite 配置；React、Vite 和 Tailwind 依赖在本包声明。
-- `packages/shared`：源码形式的契约、类型和纯计算。两端通过 `@daoyou/shared/*` 使用，主程序构建时打包；不独立部署。新增带 `index.ts` 的目录入口需要在本包 `exports` 注册。
+- `packages/shared`：源码形式的契约、类型和纯计算。两端通过 `@daoyou/shared/*` 使用，主程序构建时打包；不独立部署。使用workspace包解析与明确的 `exports`；不得用TS／Vite源码别名绕过包边界。combat core／rules／content／projection的内部实现不向应用开放，轻量公开叶子入口需单独注册。
 - 根目录保留 `pnpm-workspace.yaml`、单一 `pnpm-lock.yaml`、`turbo.json`、lint/test/typecheck、迁移配置和部署入口。内部依赖使用 `workspace:*`，各包自行声明依赖。
 
 ESLint限制共享包导入API／Web，以及两端互相导入。LLM生成和提示词位于API的 `lib/generation`；共同的修为与突破计算位于共享包。
 
-Nest `ConfigurationModule` 使用 `@nestjs/config`、关闭dotenv自动发现，并提供一次Zod校验后的不可变环境快照。Nest服务可注入 `runtimeConfig`，独立仓储／基础库使用 `getRuntimeEnvironment()`。端口、数据库URL、连接池上限、认证配置和消息配置在启动时校验；production还要求cron密钥且禁止 `APP_ENV=local`。错误只报告字段与约束，不输出凭据。
+Nest `ConfigurationModule` 使用 `@nestjs/config`、关闭dotenv自动发现，并提供一次Zod校验后的不可变环境快照。Nest服务注入 `AppConfigService`，使用类型化的 `get()` 读取配置，独立仓储／基础库使用 `getRuntimeEnvironment()`。端口、数据库URL、连接池上限、认证配置和消息配置在启动时校验；production还要求Redis地址与cron密钥且禁止 `APP_ENV=local`。错误只报告字段与约束，不输出凭据。
 
-`DatabaseModule`导出既有Drizzle客户端和 `DatabaseService`，与独立仓储共用一个pg.Pool，事务继续使用 `DbExecutor`／`DbTransaction`。Runtime在请求及消息排空后关闭连接；健康检查同时探测PostgreSQL、Redis、NATS及消息设施。
+`DatabaseModule`以 `DRIZZLE_DATABASE` Provider 导出既有Drizzle客户端和 `DatabaseService`，Nest SQL／资源读取入口显式注入并向下传递客户端，与独立仓储共用一个pg.Pool，事务继续使用 `DbExecutor`／`DbTransaction`。Runtime在请求及消息排空后关闭连接；健康检查同时探测PostgreSQL、Redis、NATS及消息设施。
+
+业务实现归所属feature的 `application/`（宗门组织为 `sects/organization/`），实时广播归 `realtime/infrastructure/`。`lib/services`只保留跨领域资源读取、提交和命令协调；避免新增集中式业务实现。浏览器业务HTTP请求使用 `apps/web/src/lib/api/fetch.ts` 的 `apiFetch`，不修改全局fetch。完整边界和发布顺序见 [架构审查与规范](monorepo-architecture.md)。
 
 ## NestJS API
 

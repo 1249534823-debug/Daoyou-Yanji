@@ -1,4 +1,4 @@
-import type { CombatV6SkillCommandOption } from '@daoyou/shared/engine/combat-v6/core/types';
+import type { CombatV6SkillCommandOption } from '@daoyou/shared/engine/combat-v6/core';
 
 export {
   appendBattleEntries,

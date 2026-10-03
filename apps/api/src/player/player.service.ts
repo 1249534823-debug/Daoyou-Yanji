@@ -1,5 +1,14 @@
-import { HttpException, Injectable } from '@nestjs/common';
-import { db } from '@server/lib/drizzle/db';
+import type {
+  PlayerResourceEventsResponse,
+  PlayerResourcesResponse,
+} from '@daoyou/shared/contracts/player';
+import {
+  requiresResourceEventReload,
+  type ResourceScope,
+} from '@daoyou/shared/contracts/resources';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
+import type { DbClient } from '@server/lib/drizzle/db';
 import { cultivators, sectMemberships } from '@server/lib/drizzle/schema';
 import { listPlayerJournal } from '@server/lib/repositories/playerJournalRepository';
 import {
@@ -9,19 +18,13 @@ import {
 import {
   parsePlayerResourceKeys,
   readPlayerResourcesSnapshot,
-} from '@server/lib/services/PlayerResourceReaderService';
-import type {
-  PlayerResourceEventsResponse,
-  PlayerResourcesResponse,
-} from '@daoyou/shared/contracts/player';
-import {
-  requiresResourceEventReload,
-  type ResourceScope,
-} from '@daoyou/shared/contracts/resources';
+} from '@server/player/application/PlayerResourceReaderService';
 import { and, eq } from 'drizzle-orm';
 
 @Injectable()
 export class PlayerService {
+  constructor(@Inject(DRIZZLE_DATABASE) private readonly database: DbClient) {}
+
   async journal(
     cultivatorId: string,
     query: Parameters<typeof listPlayerJournal>[1],
@@ -59,7 +62,7 @@ export class PlayerService {
     scope: ResourceScope,
     after: number,
   ): Promise<PlayerResourceEventsResponse> {
-    const active = await db.query.cultivators.findFirst({
+    const active = await this.database.query.cultivators.findFirst({
       columns: { id: true },
       where: and(
         eq(cultivators.userId, userId),
@@ -102,7 +105,7 @@ export class PlayerService {
       return Boolean(ref.cultivatorId && scope.id === ref.cultivatorId);
     if (scope.kind === 'global') return scope.id === 'global';
     if (!ref.cultivatorId) return false;
-    const membership = await db.query.sectMemberships.findFirst({
+    const membership = await this.database.query.sectMemberships.findFirst({
       columns: { id: true },
       where: and(
         eq(sectMemberships.cultivatorId, ref.cultivatorId),

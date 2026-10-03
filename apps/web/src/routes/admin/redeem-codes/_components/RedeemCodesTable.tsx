@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton, InkInput, InkNotice, InkSelect } from '@app/components/ui';
 import { MailAttachmentsSchema } from '@daoyou/shared/lib/itemLibrary';
@@ -93,7 +94,7 @@ export function RedeemCodesTable() {
       try {
         const params = new URLSearchParams();
         if (status !== 'all') params.set('status', status);
-        const res = await fetch(`/api/admin/redeem-codes?${params}`, {
+        const res = await apiFetch(`/api/admin/redeem-codes?${params}`, {
           signal: controller.signal,
         });
         const data = await res.json();
@@ -116,7 +117,7 @@ export function RedeemCodesTable() {
     setDetailError('');
     setPending(true);
     try {
-      const res = await fetch(`/api/admin/redeem-codes/${item.id}/toggle`, {
+      const res = await apiFetch(`/api/admin/redeem-codes/${item.id}/toggle`, {
         method: 'POST',
       });
       const data = await res.json();

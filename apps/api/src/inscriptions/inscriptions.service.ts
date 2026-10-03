@@ -3,7 +3,7 @@ import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import {
   mutateInscriptions,
   readInscriptions,
-} from '@server/lib/services/InscriptionService';
+} from '@server/inscriptions/application/InscriptionService';
 import type { InscriptionRequest } from '@daoyou/shared/contracts/inscriptions';
 
 @Injectable()

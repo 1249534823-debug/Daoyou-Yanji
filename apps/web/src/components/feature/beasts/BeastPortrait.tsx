@@ -1,5 +1,5 @@
 import { GameIcon, type GameIconProps } from '@app/components/ui/GameIcon';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 
 /** Shared by owned beasts and frozen battle/replay appearances. */
 export function BeastPortrait({

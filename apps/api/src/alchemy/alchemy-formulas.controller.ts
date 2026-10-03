@@ -9,7 +9,7 @@ import {
   UseFilters,
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { AlchemyServiceError } from '@server/lib/services/AlchemyServiceError';
+import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access';
 import { apiErrorFilter } from '../http/error-filter';

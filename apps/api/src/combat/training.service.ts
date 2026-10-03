@@ -3,7 +3,7 @@ import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import {
   COMBAT_V6_TRAINING_CONTENT_VIEW,
   combatV6TrainingSessionStore,
-} from '@server/lib/services/combat-v6/CombatV6TrainingSessionService';
+} from '@server/combat/application/CombatV6TrainingSessionService';
 import type {
   CombatV6TrainingCommandRequestSchema,
   CombatV6TrainingCreateRequest,

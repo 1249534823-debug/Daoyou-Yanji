@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { BeastIcon } from '@app/components/feature/beasts/BeastIcon';
 import { BeastTradeDetails } from '@app/components/feature/beasts/BeastTradePreview';
 import { InventoryHeader } from '@app/components/feature/items/InventoryHeader';
@@ -34,7 +35,7 @@ export function WorldChatShowcaseDialog({
   const [source, setSource] = useState<'items' | 'beasts'>('items');
   useEffect(() => {
     const controller = new AbortController();
-    void fetch('/api/combat-v6/beasts', { signal: controller.signal })
+    void apiFetch('/api/combat-v6/beasts', { signal: controller.signal })
       .then(async (response) => {
         const result = await response.json();
         if (!response.ok || !result.success)

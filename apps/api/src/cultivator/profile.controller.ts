@@ -9,8 +9,8 @@ import {
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { AttributeResetServiceError } from '@server/lib/services/AttributeResetService';
-import { RedeemClaimError } from '@server/lib/services/RedeemCodeApplicationService';
+import { AttributeResetServiceError } from '@server/cultivator/application/AttributeResetService';
+import { RedeemClaimError } from '@server/admin/application/RedeemCodeApplicationService';
 import {
   AttributeAllocationSchema,
   type AttributeAllocationRequest,

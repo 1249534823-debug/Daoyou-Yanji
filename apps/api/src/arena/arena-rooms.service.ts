@@ -1,13 +1,17 @@
-import { HttpException, Inject, Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { getExecutor } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { ArenaBattleStartOrchestrator } from '@server/lib/services/ArenaBattleStartOrchestrator';
-import { ArenaRoomService } from '@server/lib/services/ArenaRoomService';
-import { publishArenaRoomChanges } from '@server/lib/services/arenaRoomBroadcaster';
-import { CombatV6BuildError } from '@server/lib/services/combat-v6/CombatV6BuildService';
 import type { ArenaRoomV1 } from '@daoyou/shared/contracts/arena';
-import { REALM_STAGE_VALUES, REALM_VALUES } from '@daoyou/shared/types/constants';
+import {
+  REALM_STAGE_VALUES,
+  REALM_VALUES,
+} from '@daoyou/shared/types/constants';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { DbClient } from '@server/lib/drizzle/db';
+import { cultivators } from '@server/lib/drizzle/schema';
+import { ArenaBattleStartOrchestrator } from '@server/arena/application/ArenaBattleStartOrchestrator';
+import { ArenaRoomService } from '@server/arena/application/ArenaRoomService';
+import { publishArenaRoomChanges } from '@server/realtime/infrastructure/arenaRoomBroadcaster';
+import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService';
 import { and, eq } from 'drizzle-orm';
 import { z } from 'zod';
 
@@ -44,13 +48,14 @@ function publish(room: ArenaRoomV1): void {
 @Injectable()
 export class ArenaRoomsService {
   constructor(
+    @Inject(DRIZZLE_DATABASE) private readonly database: DbClient,
     @Inject(ArenaRoomService) private readonly rooms: ArenaRoomService,
     @Inject(ArenaBattleStartOrchestrator)
     private readonly starts: ArenaBattleStartOrchestrator,
   ) {}
 
   private async identity(actor: ActiveCultivatorRef) {
-    const row = await getExecutor().query.cultivators.findFirst({
+    const row = await this.database.query.cultivators.findFirst({
       columns: {
         id: true,
         userId: true,

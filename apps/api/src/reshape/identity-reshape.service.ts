@@ -8,7 +8,7 @@ import {
   getIdentityReshapeTalismanCount,
   saveIdentityReshapeDraft,
   startIdentityReshape,
-} from '@server/lib/services/IdentityReshapeService';
+} from '@server/reshape/application/IdentityReshapeService';
 import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
 import {
   IDENTITY_RESHAPE_DESCRIPTION_MAX_LENGTH,

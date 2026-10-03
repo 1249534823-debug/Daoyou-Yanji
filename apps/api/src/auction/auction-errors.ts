@@ -1,8 +1,8 @@
 import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { AuctionServiceError } from '@server/lib/services/AuctionService';
-import { BeastError } from '@server/lib/services/combat-v6/BeastMutationGuard';
+import { AuctionServiceError } from '@server/auction/application/AuctionService';
+import { BeastError } from '@server/combat/application/BeastMutationGuard';
 import { PlayerCommandIdempotencyError } from '@server/lib/services/CommandExecutors';
-import { InventoryError } from '@server/lib/services/InventoryService';
+import { InventoryError } from '@server/inventory/application/InventoryService';
 import { z } from 'zod';
 import { apiErrorFilter } from '../http/error-filter';
 

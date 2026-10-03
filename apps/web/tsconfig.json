@@ -9,8 +9,7 @@
     "jsx": "react-jsx",
     "types": ["vite/client", "node"],
     "paths": {
-      "@app/*": ["./src/*"],
-      "@daoyou/shared/*": ["../../packages/shared/src/*"]
+      "@app/*": ["./src/*"]
     }
   },
   "include": ["src", "../../packages/shared/src"],

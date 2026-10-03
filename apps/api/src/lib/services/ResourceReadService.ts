@@ -1,12 +1,3 @@
-import {
-  db,
-  runDbTasks,
-  type DbTransaction,
-} from '@server/lib/drizzle/db';
-import {
-  readResourceVersions,
-  readScopeVersion,
-} from '@server/lib/repositories/playerStateRepository';
 import type {
   ResourceDataMap,
   ResourceReadResponse,
@@ -14,14 +5,25 @@ import type {
   ResourceTopic,
 } from '@daoyou/shared/contracts/resources';
 import { RESOURCE_DATA_SCHEMAS } from '@daoyou/shared/contracts/resources';
+import {
+  db,
+  runDbTasks,
+  type DbClient,
+  type DbTransaction,
+} from '@server/lib/drizzle/db';
+import {
+  readResourceVersions,
+  readScopeVersion,
+} from '@server/lib/repositories/playerStateRepository';
 import { sql } from 'drizzle-orm';
 
 export async function readResourceWithMeta<TTopic extends ResourceTopic>(
   scope: ResourceScope,
   topic: TTopic,
   read: (tx: DbTransaction) => Promise<ResourceDataMap[TTopic]>,
+  database: DbClient = db,
 ): Promise<ResourceReadResponse<TTopic>> {
-  return db.transaction(async (tx) => {
+  return database.transaction(async (tx) => {
     await tx.execute(
       sql`set transaction isolation level repeatable read read only`,
     );
@@ -48,14 +50,13 @@ export async function readResourceWithResolvedScope<
   TTopic extends ResourceTopic,
 >(
   topic: TTopic,
-  read: (
-    tx: DbTransaction,
-  ) => Promise<{
+  read: (tx: DbTransaction) => Promise<{
     scope: ResourceScope;
     data: ResourceDataMap[TTopic];
   }>,
+  database: DbClient = db,
 ): Promise<ResourceReadResponse<TTopic>> {
-  return db.transaction(async (tx) => {
+  return database.transaction(async (tx) => {
     await tx.execute(
       sql`set transaction isolation level repeatable read read only`,
     );

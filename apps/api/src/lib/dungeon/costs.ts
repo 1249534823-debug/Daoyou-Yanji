@@ -12,7 +12,7 @@ import { inventoryItems } from '../drizzle/schema';
 import {
   inventoryItemOf,
   saveInventoryPlan,
-} from '../services/InventoryService';
+} from '@server/inventory/application/InventoryService';
 import { resourceEngine } from '../services/resource/ResourceEngine';
 
 async function materialPlan(

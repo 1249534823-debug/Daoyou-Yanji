@@ -1,8 +1,8 @@
 import { redisLockErrorResponse } from '@server/lib/http/errors';
 import { PlayerCommandIdempotencyError } from '@server/lib/services/CommandExecutors';
-import { InventoryError } from '@server/lib/services/InventoryService';
-import { SectError } from '@server/lib/services/SectError';
-import { SectShopError } from '@server/lib/services/SectShopService';
+import { InventoryError } from '@server/inventory/application/InventoryService';
+import { SectError } from '@server/sects/application/SectError';
+import { SectShopError } from '@server/sects/application/SectShopService';
 import { apiErrorFilter } from '../http/error-filter';
 
 export const SectErrors = apiErrorFilter((error) => {

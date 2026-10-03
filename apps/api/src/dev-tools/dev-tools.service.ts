@@ -1,11 +1,11 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import { patchDevCultivator } from '@server/lib/services/DevCultivatorService';
-import { resetDevDivination } from '@server/lib/services/DevDivinationService';
-import { clearDevInventoryBag } from '@server/lib/services/DevInventoryService';
-import { DivinationError } from '@server/lib/services/DivinationService';
-import { grantDevResources } from '@server/lib/services/ForgingService';
-import { InventoryError } from '@server/lib/services/InventoryService';
-import { QiServiceError } from '@server/lib/services/QiService';
+import { patchDevCultivator } from '@server/dev-tools/application/DevCultivatorService';
+import { resetDevDivination } from '@server/dev-tools/application/DevDivinationService';
+import { clearDevInventoryBag } from '@server/dev-tools/application/DevInventoryService';
+import { DivinationError } from '@server/divination/application/DivinationService';
+import { grantDevResources } from '@server/forging/application/ForgingService';
+import { InventoryError } from '@server/inventory/application/InventoryService';
+import { QiServiceError } from '@server/cultivator/application/QiService';
 import { DevCultivatorPatchSchema } from '@daoyou/shared/contracts/devTools';
 import { DevGrantSchema } from '@daoyou/shared/contracts/forging';
 import { InventoryRuleError } from '@daoyou/shared/inventory';

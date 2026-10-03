@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   GameSceneFrame,
   GameSceneLoading,
@@ -19,7 +20,7 @@ async function fetchPreview(targetSectId: string, reversePaths: boolean) {
     targetSectId,
     reversePaths: String(reversePaths),
   });
-  const response = await fetch(`/api/sects/current/transfer/preview?${query}`);
+  const response = await apiFetch(`/api/sects/current/transfer/preview?${query}`);
   const json = (await response.json()) as
     | { success: true; data: SectTransferPreviewData }
     | { success: false; error: string };
@@ -87,7 +88,7 @@ export default function SectTransferPage() {
     setTransferring(true);
     try {
       await mutate(
-        fetch('/api/sects/current/transfer', {
+        apiFetch('/api/sects/current/transfer', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

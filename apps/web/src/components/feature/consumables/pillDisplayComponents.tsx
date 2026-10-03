@@ -4,7 +4,7 @@ import {
 } from '@app/components/feature/products/affixPresentation';
 import { InkBadge } from '@app/components/ui/InkBadge';
 import { getPillAppearanceColorClass } from '@daoyou/shared/lib/pillAppearance';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import type { PillDetailGroup, PillDisplayModel } from './pillDisplayModel';
 
 type PillAppearanceDisplay = NonNullable<PillDisplayModel['appearance']>;

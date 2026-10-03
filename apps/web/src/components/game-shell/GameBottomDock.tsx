@@ -1,6 +1,6 @@
 import Link from '@app/components/router/AppLink';
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import {
   getCoreDockItemBadge,
   shouldShowGameDockBadge,

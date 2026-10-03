@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { InkModal } from '@app/components/layout';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton, InkNotice } from '@app/components/ui';
@@ -33,7 +34,7 @@ export function FriendTargetModal({
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch(`/api/friends/invite/${targetId}`);
+        const response = await apiFetch(`/api/friends/invite/${targetId}`);
         const data = (await response.json()) as FriendTargetResponse & {
           error?: string;
         };
@@ -69,7 +70,7 @@ export function FriendTargetModal({
 
     try {
       setAdding(true);
-      const response = await fetch(`/api/friends/${target.id}`, {
+      const response = await apiFetch(`/api/friends/${target.id}`, {
         method: 'POST',
       });
       const data = (await response.json()) as {

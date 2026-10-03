@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   GameSceneFrame,
   GameSceneLoading,
@@ -19,7 +20,7 @@ import {
 import type { BodyCultivationBreakthroughResultData } from '@daoyou/shared/contracts/bodyCultivation';
 import { previewBodyCultivationRealmBreakthrough } from '@daoyou/shared/lib/bodyCultivation/breakthrough';
 import { BODY_REALM_LABELS } from '@daoyou/shared/lib/bodyCultivation/config';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
@@ -50,7 +51,7 @@ export default function BodyCultivationBreakthroughPage() {
 
     setSubmitting(true);
     try {
-      const response = await fetch(
+      const response = await apiFetch(
         '/api/cultivator/body-cultivation/breakthrough',
         { method: 'POST' },
       );

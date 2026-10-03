@@ -8,10 +8,9 @@ import { shutdownMessageInfrastructure } from '@server/lib/mq/domainEventRegistr
 import { closeRedisConnection } from '@server/lib/redis';
 import express from 'express';
 import 'reflect-metadata';
-import { runtimeConfig } from './config/runtime.config';
-import type { ConfigType } from '@nestjs/config';
 import { AppModule } from './app.module';
 import { ArenaRealtimeService } from './arena/arena-realtime.service';
+import { AppConfigService } from './config/app-config.service';
 import { configureHttp } from './http/configure-http';
 import { RequestWorkService } from './http/request-work.service';
 import { RealtimeAdapter } from './realtime/realtime.adapter';
@@ -60,11 +59,8 @@ try {
   );
   await app.init();
   if (!startupSignal) {
-    const config = app.get<ConfigType<typeof runtimeConfig>>(runtimeConfig.KEY);
-    await app.listen(
-      Number(config.PORT),
-      config.HOST,
-    );
+    const config = app.get(AppConfigService);
+    await app.listen(Number(config.get('PORT')), config.get('HOST'));
   }
   if (startupSignal) {
     console.info(`[runtime] ${startupSignal} received during startup; closing`);

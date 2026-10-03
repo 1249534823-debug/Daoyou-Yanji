@@ -22,7 +22,7 @@ description: Daoyou NestJS API、认证、授权、Better Auth、ALTCHA、admin�
 ## Configuration and Workspace Boundary
 
 - API builds with `nest build` (Nest CLI 12 ESM Rspack); Web builds with Vite. API may import `@daoyou/shared/*`, never Web; shared cannot import either host. LLM generators and prompt rendering belong in `apps/api/src/lib/generation`.
-- Nest services inject `runtimeConfig`; independent libraries read `getRuntimeEnvironment()`. The snapshot is validated once with Zod; dotenv discovery is disabled. Never log credential values on validation failure.
+- Nest services inject `AppConfigService`; independent libraries read `getRuntimeEnvironment()`. The snapshot is validated once with Zod; dotenv discovery is disabled. Never log credential values on validation failure.
 - `DatabaseModule` exports the existing Drizzle client, preserving one pool and transaction propagation. Runtime closes it after request/message drain.
 
 ## API Boundary Facts
@@ -42,7 +42,7 @@ description: Daoyou NestJS API、认证、授权、Better Auth、ALTCHA、admin�
 
 ## LLM Security Facts
 
-- The browser patches `window.fetch` in `apps/web/src/main.tsx` to add `x-llm-provider`, `x-llm-api-key` and `x-llm-model` headers for `/api/` requests.
+- Browser API calls use `apiFetch` from `apps/web/src/lib/api/fetch.ts` to add `x-llm-provider`, `x-llm-api-key` and `x-llm-model` headers for `/api/` requests.
 - Server LLM calls should use `apps/api/src/utils/aiClient.ts` (`generateAiText`, `streamAiText`, `generateAiObject`, `generateAiArray`) so provider resolution, metrics, structured output, and retry behavior stay in one path.
 - Server-side `LLM_PROVIDER` is a route table: `provider[/model][:weight],...`. It covers one or many providers and one or many models. Multiple routes are sticky by user id hash on the full `provider + model`. BYOK request config still wins and does not enter the split. Read/parse in `packages/shared/src/config/llmRouting.ts`; `aiClient.ts` only maps env and picks.
 - Server accepts request-level BYOK only when provider, API key, and model pass `packages/shared/src/config/llm.ts`; partial or invalid configuration returns 400 without falling back to the server key.
@@ -53,7 +53,7 @@ description: Daoyou NestJS API、认证、授权、Better Auth、ALTCHA、admin�
 
 ## V6 Authority and Mutation Boundaries
 
-- Start with `apps/api/src/combat` and mode-specific feature modules, `packages/shared/src/contracts/combatV6*.ts`, and `apps/api/src/lib/services/combat-v6`.
+- Start with `apps/api/src/combat` and mode-specific feature modules, `packages/shared/src/contracts/combatV6*.ts`, and `apps/api/src/combat/application`.
 - Resolve the actor from `activeCultivatorRef`; derive combat attributes, equipment, manuals and beasts server-side through `CombatV6BuildService.ts`. Client commands do not authorize client-supplied combat units, results or rewards.
 - Preserve session ownership/participant checks, `expectedRevision` validation, legal-command queries and Redis CAS. Spectator and replay views must retain their existing visibility checks.
 - State changes use the owning service's mutation/occupancy guards, transaction and resource response path (`CommandExecutors.ts`, `ResourceMutationResponse.ts`, `InventoryService.ts`). Check mode-specific exceptions such as dungeon recovery before reusing a blanket combat lock.
@@ -63,7 +63,7 @@ description: Daoyou NestJS API、认证、授权、Better Auth、ALTCHA、admin�
 ## External Service Facts
 
 - Redis access must go through `apps/api/src/lib/redis`; do not instantiate `new Redis()` in feature code.
-- Redis is not optional for many runtime paths even though health-check reports `disabled` when `REDIS_URL` is absent.
+- Production requires `REDIS_URL`; readiness fails unless Redis is up. Non-production may omit Redis for limited tooling, but must not report game readiness.
 - NATS access uses `apps/api/src/lib/nats`; Nest `RuntimeService` owns shared messaging startup and shutdown. Drain handlers and pending publications before closing database/Redis. Health checks include Redis, NATS and message infrastructure.
 - Native WS upgrades bypass Express: `RealtimeAdapter` owns API admission, response headers and pending-handshake tracking; feature services own identity and connection quotas. Preserve individual Set-Cookie headers on both successful and rejected handshakes.
 - SMTP mail uses `apps/api/src/lib/admin/smtp.ts`; required env includes `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, and `MAIL_FROM`.

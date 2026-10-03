@@ -1,5 +1,11 @@
-import { HttpException, Injectable } from '@nestjs/common';
-import { getExecutor } from '@server/lib/drizzle/db';
+import {
+  RewardSelectionsSchema,
+  rewardAttachments as buildRewardAttachments,
+} from '@daoyou/shared/contracts/adminRewards';
+import type { MailAttachment } from '@daoyou/shared/types/mail';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
+import type { DbClient } from '@server/lib/drizzle/db';
 import { redeemCodes } from '@server/lib/drizzle/schema';
 import {
   generateRedeemCode,
@@ -7,11 +13,6 @@ import {
   normalizeRedeemCode,
 } from '@server/lib/redeem/code';
 import { describeRedeemCodeReward } from '@server/lib/redeem/reward';
-import {
-  RewardSelectionsSchema,
-  rewardAttachments as buildRewardAttachments,
-} from '@daoyou/shared/contracts/adminRewards';
-import type { MailAttachment } from '@daoyou/shared/types/mail';
 import { and, desc, eq, type SQL } from 'drizzle-orm';
 import { z } from 'zod';
 
@@ -73,16 +74,18 @@ function isUniqueViolation(error: unknown): boolean {
   };
   return maybe.code === '23505';
 }
-async function createWithAutoCode(params: {
-  rewardAttachments: MailAttachment[];
-  mailTitle: string;
-  mailContent: string;
-  totalLimit: number | null;
-  startsAt: Date | null;
-  endsAt: Date | null;
-  userId: string;
-}) {
-  const q = getExecutor();
+async function createWithAutoCode(
+  params: {
+    rewardAttachments: MailAttachment[];
+    mailTitle: string;
+    mailContent: string;
+    totalLimit: number | null;
+    startsAt: Date | null;
+    endsAt: Date | null;
+    userId: string;
+  },
+  q: DbClient,
+) {
   for (let attempt = 0; attempt < 8; attempt += 1) {
     const code = generateRedeemCode();
     try {
@@ -112,8 +115,10 @@ async function createWithAutoCode(params: {
 }
 @Injectable()
 export class AdminRedeemCodesService {
+  constructor(@Inject(DRIZZLE_DATABASE) private readonly database: DbClient) {}
+
   async list(query: Record<string, string | undefined>) {
-    const q = getExecutor();
+    const q = this.database;
     const status = query['status'];
     const whereConditions: SQL<unknown>[] = [];
     if (status === 'active' || status === 'disabled') {
@@ -152,7 +157,7 @@ export class AdminRedeemCodesService {
     return { redeemCodes: rows };
   }
   async create(userId: string, inputBody: unknown) {
-    const q = getExecutor();
+    const q = this.database;
     const body = inputBody;
     const parsed = CreateRedeemCodeSchema.safeParse(body);
     if (!parsed.success) {
@@ -198,15 +203,18 @@ export class AdminRedeemCodesService {
           .returning();
         return { success: true, redeemCode: inserted };
       }
-      const inserted = await createWithAutoCode({
-        rewardAttachments,
-        mailTitle: parsed.data.mailTitle,
-        mailContent: parsed.data.mailContent,
-        totalLimit,
-        startsAt,
-        endsAt,
-        userId: userId,
-      });
+      const inserted = await createWithAutoCode(
+        {
+          rewardAttachments,
+          mailTitle: parsed.data.mailTitle,
+          mailContent: parsed.data.mailContent,
+          totalLimit,
+          startsAt,
+          endsAt,
+          userId: userId,
+        },
+        this.database,
+      );
       return { success: true, redeemCode: inserted };
     } catch (error) {
       if (error instanceof HttpException) throw error;
@@ -218,7 +226,7 @@ export class AdminRedeemCodesService {
     }
   }
   async toggle(userId: string, idParam: string) {
-    const q = getExecutor();
+    const q = this.database;
     const id = idParam;
     const item = await q.query.redeemCodes.findFirst({
       where: eq(redeemCodes.id, id),

@@ -8,8 +8,8 @@ import {
   UseFilters,
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { AutoStrategyError } from '@server/lib/services/combat-v6/CombatV6AutoStrategyService';
-import { CombatV6BuildError } from '@server/lib/services/combat-v6/CombatV6BuildService';
+import { AutoStrategyError } from '@server/combat/application/CombatV6AutoStrategyService';
+import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService';
 import { SaveAutoStrategySchema } from '@daoyou/shared/combat-v6/auto-strategy';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access';

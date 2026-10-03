@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import type { DungeonState } from '@daoyou/shared/lib/dungeon/types';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -17,7 +18,7 @@ export function useDungeonState(cultivatorId: string | undefined) {
     const request = ++sequence.current;
     setLoading(true);
     async function read(runId?: string): Promise<DungeonState | null> {
-      const res = await fetch(
+      const res = await apiFetch(
         `/api/dungeon/state${runId ? `?runId=${encodeURIComponent(runId)}` : ''}`,
         { signal: AbortSignal.timeout(15000) },
       );

@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
@@ -76,7 +77,7 @@ function VaultList({ onChanged }: { onChanged?: () => void }) {
     setPending(true);
     try {
       const result = await consumeResourceMutation<{ stored: boolean }>(
-        await fetch(
+        await apiFetch(
           items.length === 1
             ? '/api/combat-v6/forging/vault/withdraw'
             : '/api/combat-v6/forging/vault/withdraw-page',

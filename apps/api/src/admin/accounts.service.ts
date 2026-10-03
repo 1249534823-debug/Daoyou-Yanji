@@ -1,9 +1,3 @@
-import { HttpException, Injectable } from '@nestjs/common';
-import { auth } from '@server/lib/auth/auth';
-import { authAccounts, authSessions } from '@server/lib/auth/schema';
-import type { AuthUser } from '@server/lib/auth/types';
-import { getExecutor, runDbTasks } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
 import {
   AdminAccountParamsSchema,
   type AdminAccountBanDuration,
@@ -13,6 +7,13 @@ import {
   type AdminAccountListItem,
   type AdminAccountListQuery,
 } from '@daoyou/shared/contracts/adminAccounts';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
+import { auth } from '@server/lib/auth/auth';
+import { authAccounts, authSessions } from '@server/lib/auth/schema';
+import type { AuthUser } from '@server/lib/auth/types';
+import { runDbTasks, type DbClient } from '@server/lib/drizzle/db';
+import { cultivators } from '@server/lib/drizzle/schema';
 import { APIError } from 'better-auth/api';
 import { and, eq, inArray } from 'drizzle-orm';
 type AuthHeaders = (headers: Headers) => void;
@@ -146,6 +147,8 @@ function logAccountModerationOperation(event: {
 
 @Injectable()
 export class AccountsService {
+  constructor(@Inject(DRIZZLE_DATABASE) private readonly database: DbClient) {}
+
   async list(
     headers: Headers,
     query: AdminAccountListQuery,
@@ -198,7 +201,7 @@ export class AccountsService {
     >();
 
     if (userIds.length > 0) {
-      const executor = getExecutor();
+      const executor = this.database;
       const now = new Date();
       const [accountRows, sessionRows, cultivatorRows] = await runDbTasks(
         executor,

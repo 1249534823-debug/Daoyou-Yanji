@@ -171,7 +171,7 @@ describe('blueprint forging', () => {
     const nextId = () => `m-${++id}`;
     let bag = addItems(
       [],
-      { definitionId: 'material.v1', quantity: 98, instanceData: facts },
+      { definitionId: 'material.v1', quantity: 998, instanceData: facts },
       'bag',
       false,
       nextId,
@@ -183,7 +183,7 @@ describe('blueprint forging', () => {
       false,
       nextId,
     );
-    expect(bag.map((i) => i.quantity)).toEqual([99, 2]);
+    expect(bag.map((i) => i.quantity)).toEqual([999, 2]);
     bag = addItems(
       bag,
       {
@@ -196,7 +196,7 @@ describe('blueprint forging', () => {
       nextId,
     );
     expect(sameStack(bag[0], bag[2])).toBe(false);
-    expect(sortBag(bag).reduce((n, i) => n + i.quantity, 0)).toBe(103);
+    expect(sortBag(bag).reduce((n, i) => n + i.quantity, 0)).toBe(1003);
     expect(() =>
       addItems(
         [],

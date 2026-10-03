@@ -9,7 +9,7 @@ import {
   UseFilters,
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { FriendServiceError } from '@server/lib/services/FriendService';
+import { FriendServiceError } from '@server/social/application/FriendService';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access';
 import { apiErrorFilter } from '../http/error-filter';

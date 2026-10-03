@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { FateDetailModal } from '@app/components/feature/fates/FateDetailModal';
 import { toFateDisplayModel } from '@app/components/feature/fates/FateDisplayAdapter';
 import { FateEffectInlineList } from '@app/components/feature/fates/FateEffectInlineList';
@@ -86,7 +87,7 @@ export default function FateReshapePage() {
 
       setIsBooting(true);
       try {
-        const response = await fetch('/api/fate-reshape/session');
+        const response = await apiFetch('/api/fate-reshape/session');
         const result = (await response.json()) as SessionResponse;
 
         if (!response.ok || !result.success || !result.data) {
@@ -120,7 +121,7 @@ export default function FateReshapePage() {
 
     const bootSession = async () => {
       try {
-        const response = await fetch('/api/fate-reshape/session');
+        const response = await apiFetch('/api/fate-reshape/session');
         const result = (await response.json()) as SessionResponse;
 
         if (cancelled) return;
@@ -170,7 +171,7 @@ export default function FateReshapePage() {
     setPendingAction('start');
     try {
       const result = await mutate<NonNullable<SessionMutationResponse['data']>>(
-        fetch('/api/fate-reshape/session', {
+        apiFetch('/api/fate-reshape/session', {
           method: 'POST',
         }),
       );
@@ -199,7 +200,7 @@ export default function FateReshapePage() {
   const handleReroll = async () => {
     setPendingAction('reroll');
     try {
-      const response = await fetch('/api/fate-reshape/reroll', {
+      const response = await apiFetch('/api/fate-reshape/reroll', {
         method: 'POST',
       });
       const result = (await response.json()) as SessionMutationResponse;
@@ -233,7 +234,7 @@ export default function FateReshapePage() {
     setPendingAction('confirm');
     try {
       await mutate<NonNullable<ConfirmResponse['data']>>(
-        fetch('/api/fate-reshape/confirm', {
+        apiFetch('/api/fate-reshape/confirm', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ selectedIndices }),
@@ -260,7 +261,7 @@ export default function FateReshapePage() {
   const handleAbandon = async () => {
     setPendingAction('abandon');
     try {
-      const response = await fetch('/api/fate-reshape/abandon', {
+      const response = await apiFetch('/api/fate-reshape/abandon', {
         method: 'POST',
       });
       const result = (await response.json()) as ConfirmResponse;

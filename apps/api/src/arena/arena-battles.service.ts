@@ -5,7 +5,7 @@ import {
   ownedArenaV6,
   submitArenaV6,
   watchedArenaV6,
-} from '@server/lib/services/combat-v6/CombatV6ArenaService';
+} from '@server/combat/application/CombatV6ArenaService';
 import { arenaView } from '@daoyou/shared/combat-v6/arena';
 import type { ArenaV6Submit } from '@daoyou/shared/contracts/combatV6Arena';
 

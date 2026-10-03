@@ -9,7 +9,7 @@ import {
   listPublicMeritProfiles,
   recordAfdianWebhook,
   updateMeritVisibility,
-} from '@server/lib/services/SponsorshipApplicationService';
+} from '@server/sponsorship/application/SponsorshipApplicationService';
 import type {
   SponsorshipCheckoutRequest,
   SponsorshipClaimRequest,

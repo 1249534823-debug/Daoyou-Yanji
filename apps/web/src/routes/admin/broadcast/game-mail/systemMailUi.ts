@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import type { RewardSelection } from '@daoyou/shared/contracts/adminRewards';
 import type { RewardSelectionDraft } from '../../_components/RewardSelectionEditor.helpers';
 
@@ -16,7 +17,7 @@ export async function systemMailRequest<T>(
   body?: unknown,
   signal?: AbortSignal,
 ): Promise<T> {
-  const response = await fetch(`/api/admin/system-mails${path}`, {
+  const response = await apiFetch(`/api/admin/system-mails${path}`, {
     method,
     signal,
     ...(body === undefined

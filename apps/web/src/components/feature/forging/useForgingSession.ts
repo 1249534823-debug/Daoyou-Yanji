@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import type { InventoryFilter } from '@app/components/feature/items/inventoryFilterModel';
 import { useInventoryBag } from '@app/lib/resources/bag';
 import { useCraftStorage } from '@app/lib/resources/craftStorage';
@@ -228,7 +229,7 @@ export function useForgingSession(filter: InventoryFilter) {
           equipment: DaoEquipmentInstanceV1;
           destination: 'bag' | 'storage';
         }>(
-          await fetch(endpoint, {
+          await apiFetch(endpoint, {
             ...mutationBody(input),
             headers: { 'Content-Type': 'application/json' },
           }),

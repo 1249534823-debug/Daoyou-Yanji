@@ -1,22 +1,3 @@
-import { HttpException, Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { getExecutor } from '@server/lib/drizzle/db';
-import { checkAndAcquireSectChatCooldown } from '@server/lib/redis/worldChatLimiter';
-import {
-  createSectChatMessage,
-  listSectChatMessages,
-} from '@server/lib/repositories/sectChatRepository';
-import {
-  countSectMembersAboveLifetimeContribution,
-  findSectContributionRankingMember,
-  listTopSectContributionRanking,
-} from '@server/lib/repositories/sectOrganizationRepository';
-import { findMembership } from '@server/lib/repositories/sectRepository';
-import {
-  ChatMessageApplicationError,
-  createCultivatorChatMessage,
-} from '@server/lib/services/chatMessageApplication';
-import { readResourceWithResolvedScope } from '@server/lib/services/ResourceReadService';
 import type {
   SectContributionRankingData,
   SectContributionRankingEntry,
@@ -26,9 +7,29 @@ import type {
   WorldChatCreateMessageRequest,
 } from '@daoyou/shared/contracts/world-chat';
 import type { SectDiscipleRank, SectOffice } from '@daoyou/shared/engine/sect';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { DbClient } from '@server/lib/drizzle/db';
+import { checkAndAcquireSectChatCooldown } from '@server/lib/redis/worldChatLimiter';
+import { listSectChatMessages } from '@server/lib/repositories/sectChatRepository';
+import {
+  countSectMembersAboveLifetimeContribution,
+  findSectContributionRankingMember,
+  listTopSectContributionRanking,
+} from '@server/lib/repositories/sectOrganizationRepository';
+import { findMembership } from '@server/lib/repositories/sectRepository';
+import { readResourceWithResolvedScope } from '@server/lib/services/ResourceReadService';
+import { createAndPublishSectChatMessage } from '@server/social/application/chatDelivery';
+import {
+  ChatMessageApplicationError,
+  createCultivatorChatMessage,
+} from '@server/social/application/chatMessageApplication';
 
 @Injectable()
 export class SectSocialService {
+  constructor(@Inject(DRIZZLE_DATABASE) private readonly database: DbClient) {}
+
   async list(actor: ActiveCultivatorRef, query: SectChatListQuery) {
     const membership = await this.membership(actor);
     const result = await listSectChatMessages({
@@ -56,12 +57,13 @@ export class SectSocialService {
     try {
       const message = await createCultivatorChatMessage({
         request,
+        database: this.database,
         userId: actor.userId,
         cultivatorId: actor.cultivatorId,
         channel: 'sect',
         sectId: membership.sectId,
         acquireCooldown: checkAndAcquireSectChatCooldown,
-        persist: createSectChatMessage,
+        persist: createAndPublishSectChatMessage,
       });
       return { success: true, data: message };
     } catch (error) {
@@ -85,7 +87,7 @@ export class SectSocialService {
   }
 
   private async membership(actor: ActiveCultivatorRef) {
-    const membership = await findMembership(actor.cultivatorId, getExecutor());
+    const membership = await findMembership(actor.cultivatorId, this.database);
     if (!membership)
       throw new HttpException({ success: false, error: '尚未拜入宗门' }, 404);
     return membership;
@@ -152,6 +154,7 @@ export class SectSocialService {
           } satisfies SectContributionRankingData,
         };
       },
+      this.database,
     );
   }
 }

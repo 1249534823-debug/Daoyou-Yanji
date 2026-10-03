@@ -1,23 +1,26 @@
-import { Injectable } from '@nestjs/common';
+import type { SendMailRequest } from '@daoyou/shared/contracts/mail';
+import { Inject, Injectable } from '@nestjs/common';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { getExecutor } from '@server/lib/drizzle/db';
+import type { DbClient } from '@server/lib/drizzle/db';
 import { mails } from '@server/lib/drizzle/schema';
-import { publicMailAttachment } from '@server/lib/services/MailInventory';
-import type { MailAttachment } from '@server/lib/services/MailService';
+import { publicMailAttachment } from '@server/mail/application/MailInventory';
+import type { MailAttachment } from '@server/mail/application/MailService';
 import {
   claimAllCultivatorMail,
   claimCultivatorMail,
   markAllCultivatorMailRead,
   markCultivatorMailRead,
   sendCultivatorMail,
-} from '@server/lib/services/PlayerMailApplicationService';
+} from '@server/mail/application/PlayerMailApplicationService';
 import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
-import { scheduleSystemMailObservation } from '@server/lib/services/SystemMailService';
-import type { SendMailRequest } from '@daoyou/shared/contracts/mail';
+import { scheduleSystemMailObservation } from '@server/mail/application/SystemMailService';
 import { and, desc, eq, sql } from 'drizzle-orm';
 
 @Injectable()
 export class MailService {
+  constructor(@Inject(DRIZZLE_DATABASE) private readonly database: DbClient) {}
+
   async list(cultivatorId: string, pageValue?: string, pageSizeValue?: string) {
     scheduleSystemMailObservation(cultivatorId, 'mailbox');
     const pageRaw = parseInt(pageValue || '1', 10);
@@ -26,7 +29,7 @@ export class MailService {
     const pageSize = Number.isNaN(pageSizeRaw)
       ? 20
       : Math.min(100, Math.max(1, pageSizeRaw));
-    const rows = await getExecutor().query.mails.findMany({
+    const rows = await this.database.query.mails.findMany({
       where: eq(mails.cultivatorId, cultivatorId),
       orderBy: [desc(mails.createdAt)],
       limit: pageSize + 1,
@@ -46,7 +49,7 @@ export class MailService {
   }
 
   async unreadCount(cultivatorId: string) {
-    const [result] = await getExecutor()
+    const [result] = await this.database
       .select({ count: sql<number>`count(*)::int` })
       .from(mails)
       .where(

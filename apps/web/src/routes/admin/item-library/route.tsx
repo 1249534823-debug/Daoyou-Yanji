@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   InventoryGrid,
   ItemSlot,
@@ -93,7 +94,7 @@ export default function ItemLibraryAdminPage() {
       params.set('pageSize', '24');
       if (materialFilter) params.set('materialType', materialFilter);
 
-      const response = await fetch(
+      const response = await apiFetch(
         `/api/admin/item-library?${params.toString()}`,
         { signal },
       );
@@ -137,7 +138,7 @@ export default function ItemLibraryAdminPage() {
     (async () => {
       setDailySettingsLoading(true);
       try {
-        const response = await fetch(
+        const response = await apiFetch(
           '/api/admin/item-library/materials/daily-generation-settings',
         );
         const data =
@@ -191,7 +192,7 @@ export default function ItemLibraryAdminPage() {
             return copy;
           })()
         : body;
-      const response = await fetch(
+      const response = await apiFetch(
         isUpdate
           ? `/api/admin/item-library/${draft.rowId}`
           : '/api/admin/item-library',
@@ -222,7 +223,7 @@ export default function ItemLibraryAdminPage() {
     setDialogError('');
     setSaving(true);
     try {
-      const response = await fetch(
+      const response = await apiFetch(
         `/api/admin/item-library/${draft.rowId}/archive`,
         { method: 'POST' },
       );
@@ -250,7 +251,7 @@ export default function ItemLibraryAdminPage() {
     setDialogError('');
     setSaving(true);
     try {
-      const response = await fetch(
+      const response = await apiFetch(
         '/api/admin/item-library/materials/generate',
         {
           method: 'POST',
@@ -292,7 +293,7 @@ export default function ItemLibraryAdminPage() {
     setDialogError('');
     setSaving(true);
     try {
-      const response = await fetch('/api/admin/item-library/seeds/generate', {
+      const response = await apiFetch('/api/admin/item-library/seeds/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -332,7 +333,7 @@ export default function ItemLibraryAdminPage() {
     setDialogError('');
     setDailySettingsSaving(true);
     try {
-      const response = await fetch(
+      const response = await apiFetch(
         '/api/admin/item-library/materials/daily-generation-settings',
         {
           method: 'PUT',

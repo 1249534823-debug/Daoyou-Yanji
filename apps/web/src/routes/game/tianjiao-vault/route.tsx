@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { ItemExchangeShelf } from '@app/components/feature/item-shop/ItemExchangeShelf';
 import {
   GameSceneAsideSection,
@@ -17,7 +18,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 const REPUTATION_INFO = getGameConceptInfo('reputation');
 
 async function fetchVaultItems(): Promise<ReputationShopListResponse> {
-  const response = await fetch('/api/reputation-shop', { cache: 'no-store' });
+  const response = await apiFetch('/api/reputation-shop', { cache: 'no-store' });
   const data = await response.json();
   if (!response.ok) throw new Error(data.error ?? '万界商行暂不可入');
   return data as ReputationShopListResponse;
@@ -72,7 +73,7 @@ export default function TianjiaoVaultPage() {
     setBuyingId(item.id);
     try {
       const result = await mutate<ReputationShopBuyResponse>(
-        fetch(`/api/reputation-shop/${item.id}/buy`, {
+        apiFetch(`/api/reputation-shop/${item.id}/buy`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ requestId: attempts.current.get(item.id) }),

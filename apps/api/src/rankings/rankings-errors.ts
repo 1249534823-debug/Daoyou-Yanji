@@ -1,17 +1,16 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { InventoryError } from '@server/lib/services/InventoryService';
-import { CombatV6BuildError } from '@server/lib/services/combat-v6/CombatV6BuildService';
-import { RankingV6Error } from '@server/lib/services/combat-v6/CombatV6RankingService';
+import { InventoryError } from '@server/inventory/application/InventoryService';
+import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService';
+import { RankingV6Error } from '@server/combat/application/CombatV6RankingService';
 import { z } from 'zod';
 import { apiErrorFilter } from '../http/error-filter';
 
-export const RankingListErrors = apiErrorFilter((error) => {
+export const RankingListErrors = apiErrorFilter((error, config) => {
   console.error('获取排行榜 API 错误:', error);
   return Response.json(
     {
       error:
-        getRuntimeEnvironment().NODE_ENV === 'development' && error instanceof Error
+        config.get('NODE_ENV') === 'development' && error instanceof Error
           ? error.message
           : '获取排行榜失败，请稍后重试',
     },
@@ -32,10 +31,10 @@ export const WealthRankingErrors = apiErrorFilter((error) => {
     { status: 500 },
   );
 });
-export const RankingProbeErrors = apiErrorFilter((error) => {
+export const RankingProbeErrors = apiErrorFilter((error, config) => {
   console.error('神识查探错误:', error);
   const message =
-    getRuntimeEnvironment().NODE_ENV === 'development'
+    config.get('NODE_ENV') === 'development'
       ? error instanceof Error
         ? error.message
         : '神识查探失败'

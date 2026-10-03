@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { realtimeClient } from '@app/lib/realtime/realtimeClient';
 import { usePlayerSession } from '@app/lib/resources/player';
@@ -110,7 +111,7 @@ export function WorldChatFeedProvider({ children }: { children: ReactNode }) {
           channel === 'sect'
             ? `/api/sects/current/chat/messages?page=${targetPage}&pageSize=${PAGE_SIZE}`
             : `/api/world-chat/messages?channel=${channel}&page=${targetPage}&pageSize=${PAGE_SIZE}`;
-        const response = await fetch(endpoint, { cache: 'no-store' });
+        const response = await apiFetch(endpoint, { cache: 'no-store' });
         const payload = await response.json();
         if (!response.ok || !payload.success) {
           throw new Error(payload.error || '获取传音失败');
@@ -168,7 +169,7 @@ export function WorldChatFeedProvider({ children }: { children: ReactNode }) {
 
   const fetchLatestPreview = useCallback(async () => {
     try {
-      const response = await fetch(
+      const response = await apiFetch(
         '/api/world-chat/messages?channel=all&limit=1',
         { cache: 'no-store' },
       );
@@ -407,7 +408,7 @@ export function WorldChatFeedProvider({ children }: { children: ReactNode }) {
           activeChannel === 'sect'
             ? '/api/sects/current/chat/messages'
             : '/api/world-chat/messages';
-        const response = await fetch(endpoint, {
+        const response = await apiFetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body),

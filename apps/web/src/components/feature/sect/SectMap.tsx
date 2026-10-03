@@ -8,7 +8,7 @@ import type {
   SectPermissionState,
   SectSceneKey,
 } from '@daoyou/shared/engine/sect';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import {
   useCallback,
   useRef,

@@ -3,7 +3,7 @@ import { InkBadge, InkNotice } from '@app/components/ui';
 import { GameIcon } from '@app/components/ui/GameIcon';
 import { tierColorMap } from '@app/components/ui/inkBadgeTiers';
 import { useCultivatorIdentity } from '@app/lib/resources/player';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import { getElementInfo } from '@daoyou/shared/lib/gameConceptDisplay';
 import type { Cultivator } from '@daoyou/shared/types/cultivator';
 import { useState } from 'react';

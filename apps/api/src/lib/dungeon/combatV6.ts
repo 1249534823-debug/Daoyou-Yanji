@@ -13,9 +13,9 @@ import {
 } from '@server/lib/repositories/combatV6BeastRepository';
 import { archiveCombatV6Replay } from '@server/lib/repositories/combatV6ReplayRepository';
 import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository';
-import { assembleCombatV6TrainingPlayer } from '@server/lib/services/combat-v6/CombatV6BuildService';
-import { ConditionService } from '@server/lib/services/ConditionService';
-import { getCultivatorPreHeavenFates } from '@server/lib/services/cultivator/CultivatorProfileRepository';
+import { assembleCombatV6TrainingPlayer } from '@server/combat/application/CombatV6BuildService';
+import { ConditionService } from '@server/cultivator/application/ConditionService';
+import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository';
 import { ResourceEventCommitter } from '@server/lib/services/ResourceEventCommitter';
 import { automaticCommands } from '@daoyou/shared/combat-v6/auto';
 import {

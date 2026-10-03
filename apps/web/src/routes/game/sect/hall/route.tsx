@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   NpcConversation,
   useConversationSession,
@@ -343,7 +344,7 @@ function HallStipendConversation({
     snapshot: current.data,
     perform: async ({ intent }: { intent: 'claim'; signal: AbortSignal }) => {
       if (intent !== 'claim') return undefined;
-      await mutate(fetch('/api/sects/current/stipend/claim', postJson()));
+      await mutate(apiFetch('/api/sects/current/stipend/claim', postJson()));
       return 'claimed' as const;
     },
   });

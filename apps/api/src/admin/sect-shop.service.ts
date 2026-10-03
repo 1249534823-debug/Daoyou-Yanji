@@ -5,7 +5,7 @@ import {
   listSectShopItems,
   SectShopError,
   updateSectShopItem,
-} from '@server/lib/services/SectShopService';
+} from '@server/sects/application/SectShopService';
 import {
   SectShopItemMutationSchema,
   SectShopListQuerySchema,

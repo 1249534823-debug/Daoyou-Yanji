@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { GameImage } from '@app/components/ui/GameImage';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
@@ -100,7 +101,7 @@ export function ManualRoom() {
     let succeeded = false;
     try {
       await consumeResourceMutation(
-        await fetch(endpoint, {
+        await apiFetch(endpoint, {
           ...mutationBody(action),
           headers: { 'Content-Type': 'application/json' },
         }),

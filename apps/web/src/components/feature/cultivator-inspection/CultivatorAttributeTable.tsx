@@ -1,5 +1,5 @@
 import type { CultivatorInspectionData } from '@daoyou/shared/contracts/player';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import {
   characterDisplayRows,
   formatCharacterAttributeValue as formatAttributeValue,

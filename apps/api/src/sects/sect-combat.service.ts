@@ -1,26 +1,30 @@
-import { Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
-import { readResourceWithMeta } from '@server/lib/services/ResourceReadService';
+import type { SectPathSelectionRequest } from '@daoyou/shared/contracts/combatV6';
+import type { SectV6ActionSchema } from '@daoyou/shared/contracts/combatV6Sect';
+import { Inject, Injectable } from '@nestjs/common';
 import {
   getSectCombatView,
   selectInitialSectPath,
-} from '@server/lib/services/combat-v6/CombatV6BuildService';
+} from '@server/combat/application/CombatV6BuildService';
 import {
   mutateSectV6,
   readSectV6,
-} from '@server/lib/services/combat-v6/CombatV6SectService';
-import type { SectPathSelectionRequest } from '@daoyou/shared/contracts/combatV6';
-import type { SectV6ActionSchema } from '@daoyou/shared/contracts/combatV6Sect';
+} from '@server/combat/application/CombatV6SectService';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { DbClient } from '@server/lib/drizzle/db';
+import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
+import { readResourceWithMeta } from '@server/lib/services/ResourceReadService';
 import type { z } from 'zod';
 
 @Injectable()
 export class SectCombatService {
+  constructor(@Inject(DRIZZLE_DATABASE) private readonly database: DbClient) {}
   state(owner: string) {
     return readResourceWithMeta(
       { kind: 'cultivator', id: owner },
       'player.sect-combat',
       (tx) => getSectCombatView(owner, tx),
+      this.database,
     );
   }
   async selectPath(

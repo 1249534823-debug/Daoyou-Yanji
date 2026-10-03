@@ -25,7 +25,7 @@ Table names below omit the `wanjiedaoyou_` prefix. The exact names and constrain
 
 | Domain | Storage | Runtime entrypoints |
 | --- | --- | --- |
-| Character identity, permanent six attributes, condition | `cultivators` | `cultivatorRepository.ts`, `services/cultivator`, V6 condition services |
+| Character identity, permanent six attributes, condition | `cultivators` | `cultivatorRepository.ts`, `cultivator/application/readers`, V6 condition services |
 | Personal manuals and active slots | `cultivator_manual_states`, `cultivator_manual_slots` | `characterLoadoutRepository.ts`, `CombatV6ManualService.ts` |
 | Bag/storage item instances | `inventory_items` | `InventoryService.ts`, `packages/shared/src/inventory`, `packages/shared/src/items` |
 | Equipped V6 equipment | `cultivator_equipment_slots` | `characterLoadoutRepository.ts`, `InventoryService.ts` |
@@ -33,7 +33,7 @@ Table names below omit the `wanjiedaoyou_` prefix. The exact names and constrain
 | Sect progression | `sect_combat_states`, `sect_method_progress`, `sect_meridian_loadouts`, `sect_meridian_nodes` | `sectCombatRepository.ts` |
 | V6 history/replays | `combat_replay_archives`, `combat_replay_participants` | `combatV6ReplayRepository.ts` |
 
-Repository names resolve under `apps/api/src/lib/repositories`; V6 service names resolve under `apps/api/src/lib/services/combat-v6`.
+Repository names resolve under `apps/api/src/lib/repositories`; V6 service names resolve under `apps/api/src/combat/application`.
 
 ### Ownership and JSON
 

@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { InventoryHeader } from '@app/components/feature/items/InventoryHeader';
 import { InventoryItems } from '@app/components/feature/items/InventoryItems';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
@@ -72,7 +73,7 @@ export function DungeonRunPanel({
     setPending(true);
     try {
       await mutate(
-        fetch('/api/cultivator/consume', {
+        apiFetch('/api/cultivator/consume', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

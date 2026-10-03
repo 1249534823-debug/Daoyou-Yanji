@@ -28,6 +28,7 @@
     "typecheck": "turbo run typecheck && tsc --noEmit -p tsconfig.node.json"
   },
   "devDependencies": {
+    "@daoyou/shared": "workspace:*",
     "@eslint/js": "10.0.1",
     "@types/d3-format": "^3.0.4",
     "@types/node": "^26.5.1",

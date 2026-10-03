@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   buildEmailOtpTarget,
   toErrorMessage,
@@ -146,7 +147,7 @@ export function AccountSettingsTab() {
           throw toAuthActionError(error);
         }
       } else {
-        const response = await fetch('/api/account/password', {
+        const response = await apiFetch('/api/account/password', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ newPassword }),

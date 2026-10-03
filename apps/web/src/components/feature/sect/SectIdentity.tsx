@@ -5,7 +5,7 @@ import type {
   SectPromotionEvaluationData,
 } from '@daoyou/shared/contracts/sect';
 import { SECT_RANK_LABELS } from '@daoyou/shared/engine/sect';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import type { ReactNode } from 'react';
 import { getSectIdentityLabels } from './sectIdentityDisplay';
 import {

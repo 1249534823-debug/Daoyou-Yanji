@@ -17,6 +17,7 @@
     "better-auth": "^1.7.4",
     "canvas-confetti": "^1.9.4",
     "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "d3-format": "^3.1.2",
     "phaser": "^4.2.1",
     "phaser4-rex-plugins": "^4.2.0",
@@ -24,6 +25,7 @@
     "react-dom": "19.3.0",
     "react-router": "^8.3.1",
     "react-zoom-pan-pinch": "^4.2.0",
+    "tailwind-merge": "^3.7.0",
     "zod": "^4.6.4"
   },
   "devDependencies": {

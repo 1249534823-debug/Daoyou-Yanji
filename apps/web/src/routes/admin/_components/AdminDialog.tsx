@@ -1,5 +1,5 @@
 import { InkButton } from '@app/components/ui/InkButton';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import { useEffect, useId, useRef, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 

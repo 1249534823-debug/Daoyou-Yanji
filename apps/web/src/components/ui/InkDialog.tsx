@@ -1,5 +1,5 @@
 import { InkModal } from '@app/components/layout/InkModal';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import type { ReactNode } from 'react';
 import { useState } from 'react';
 import { InkButton } from './InkButton';

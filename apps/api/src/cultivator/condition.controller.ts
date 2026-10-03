@@ -8,11 +8,11 @@ import {
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { AttributeResetServiceError } from '@server/lib/services/AttributeResetService';
+import { AttributeResetServiceError } from '@server/cultivator/application/AttributeResetService';
 import {
   QiInsufficientError,
   QiServiceError,
-} from '@server/lib/services/QiService';
+} from '@server/cultivator/application/QiService';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access';
 import { apiErrorFilter } from '../http/error-filter';

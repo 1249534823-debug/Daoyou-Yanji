@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   applyResourceChange,
   RESOURCE_DATA_SCHEMAS,
@@ -55,7 +56,7 @@ export async function loadResourceEndpoint<TTopic extends ResourceTopic>(
   resourceVersion: number;
   scopeVersion: number;
 }> {
-  const response = await fetch(endpoint, { signal });
+  const response = await apiFetch(endpoint, { signal });
   const json = (await response.json()) as
     | ResourceReadResponse<TTopic>
     | { success: false; error: string };

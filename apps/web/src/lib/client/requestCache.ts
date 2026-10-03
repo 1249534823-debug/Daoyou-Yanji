@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 type CacheEntry<T> = {
   data: T;
   expiresAt: number;
@@ -51,7 +52,7 @@ export async function fetchJsonCached<T>(
   const inflight = sharesInflightRequest ? inflightCache.get(key) : undefined;
   if (inflight) return inflight as Promise<T>;
 
-  const request = fetch(input, init)
+  const request = apiFetch(input, init)
     .then(async (res) => {
       const json = await res.json();
       if (!res.ok) {

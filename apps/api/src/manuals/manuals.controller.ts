@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { InventoryError } from '@server/lib/services/InventoryService';
+import { InventoryError } from '@server/inventory/application/InventoryService';
 import { ManualActionSchema } from '@daoyou/shared/contracts/combatV6Manuals';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access';

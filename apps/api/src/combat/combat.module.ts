@@ -12,7 +12,7 @@ import {
 import { ReplaysService } from './replays.service';
 import { SectTaskBattleController } from './sect-task.controller';
 import { SectTaskBattleService } from './sect-task.service';
-import { TrainingController } from './training.controller';
+import { TraceParamsPipe, TrainingController } from './training.controller';
 import { TrainingService } from './training.service';
 import { WildController } from './wild.controller';
 import { WildService } from './wild.service';
@@ -29,6 +29,7 @@ import { WildService } from './wild.service';
     SectTaskBattleController,
   ],
   providers: [
+    TraceParamsPipe,
     CombatActivityService,
     ReplaysService,
     TrainingService,

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import {
   mutateManuals,
   readManuals,
-} from '@server/lib/services/combat-v6/CombatV6ManualService';
+} from '@server/combat/application/CombatV6ManualService';
 import type { ManualActionSchema } from '@daoyou/shared/contracts/combatV6Manuals';
 import type { z } from 'zod';
 

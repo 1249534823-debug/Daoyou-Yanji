@@ -1,6 +1,6 @@
 import { GameIcon } from '@app/components/ui/GameIcon';
 import { InkButton } from '@app/components/ui/InkButton';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import { FurnaceGatherEffect } from '../craft/FurnaceGatherEffect';
 import { ItemSlot } from '../items/ItemSlot';
 import type { ForgingSession } from './useForgingSession';

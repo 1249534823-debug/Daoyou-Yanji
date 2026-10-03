@@ -15,7 +15,7 @@ const ManualRoom = lazy(() =>
   })),
 );
 const BodyTrainingPanel = lazy(() =>
-  import('@app/components/feature/cultivator/BodyCultivationPanels').then(
+  import('@app/components/feature/cultivator/BodyCultivationDetailPanel').then(
     (module) => ({ default: module.BodyCultivationDetailPanel }),
   ),
 );

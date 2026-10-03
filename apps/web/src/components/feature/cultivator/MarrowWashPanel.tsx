@@ -1,8 +1,9 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   getQiErrorMessage,
   useQiActionConfirm,
 } from '@app/components/feature/cultivator/useQiActionConfirm';
-import { GameSceneLoading } from '@app/components/game-shell';
+import { GameSceneLoading } from '@app/components/game-shell/GameSceneFrame';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton, InkNotice } from '@app/components/ui';
 import { GameIcon } from '@app/components/ui/GameIcon';
@@ -118,7 +119,7 @@ export function MarrowWashPanel() {
         toRealm: number;
         breakthroughLevel: number;
       }>(
-        fetch('/api/cultivator/marrow-wash/breakthrough', {
+        apiFetch('/api/cultivator/marrow-wash/breakthrough', {
           method: 'POST',
         }),
       );

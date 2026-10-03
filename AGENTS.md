@@ -9,13 +9,13 @@ AI agents should read this first. Keep changes small, project-specific, and back
 - This repo is `NestJS + React SPA`, not Next.js or SSR.
 - Runtime stack: Node.js 24, NestJS 12 (Express/native ws), pnpm + Turborepo tooling, React 19, React Router 8, Vite, Tailwind CSS 4, PostgreSQL, Drizzle ORM, Better Auth, Redis, NATS, AI SDK.
 - Use the pinned `pnpm` version and `pnpm-lock.yaml` for development and deployment. Do not introduce Bun/npm/yarn lockfiles. Turborepo orchestrates package builds, typechecks and persistent development tasks.
-- pnpm workspaces: `apps/api`, `apps/web`, `packages/shared`. Each owns its runtime dependencies; root owns lint/test/maintenance tooling. Shared must not import either app; API and Web may import shared. ESLint enforces these boundaries.
-- Path aliases are `@app` -> `apps/web/src`, `@server` -> `apps/api/src`, and `@daoyou/shared` -> `packages/shared/src`.
+- pnpm workspaces: `apps/api`, `apps/web`, `packages/shared`. Each owns its runtime dependencies; root owns lint/test/maintenance tooling. Shared must not import either app; API and Web may import shared. ESLint enforces these boundaries, repository direction, and combat core independence.
+- Path aliases are `@app` -> `apps/web/src`, `@server` -> `apps/api/src`, and `@daoyou/shared/*` resolves through the workspace package exports (no source alias bypass).
 
 ## Key Directories
 
 - `apps/api/src/main.ts`: Node/Nest entrypoint, HTTP/WS adapters and shutdown coordination; runtime module owns cron and messaging lifecycle.
-- `apps/api/src`: Nest feature modules, auth, services, repositories, jobs, Redis, LLM, SMTP.
+- `apps/api/src`: Nest feature modules. Each feature owns its `application/` implementations (sects uses `organization/`); `lib` retains shared infrastructure and resource coordination.
 - `apps/web/src`: React SPA routes, layouts, game shell, UI, hooks, providers.
 - `packages/shared/src`: shared contracts, game engines, config, pure logic, domain types.
 - `apps/api/src/lib/drizzle/schema.ts`: Drizzle schema for `wanjiedaoyou_*` business tables.
@@ -41,7 +41,7 @@ pnpm run db:migrate
 - `pnpm run build` uses Turbo to build the independent API and Web packages; Nest CLI 12 builds `apps/api` with its ESM Rspack builder; Vite builds `apps/web`. The old V5 resolver Worker target was retired in Phase 10H. Preserve the remaining CI/CD entrypoints.
 - Vitest uses node environment and discovers tests only under `packages/shared/src`.
 - Docker runtime contains Node, the pnpm-deployed API production dependencies, package metadata and `dist`; ALTCHA uses the server-side `ALTCHA_HMAC_SECRET` and does not require a frontend site key.
-- GitHub Actions currently builds and pushes the Docker image on tag pushes; it is not a lint/test quality gate.
+- GitHub Actions runs lint/typecheck/shared tests/build on PRs and master pushes; tag pushes build the API image and always publish latest.
 
 ## Skills To Use
 
@@ -64,7 +64,7 @@ pnpm run db:migrate
 - Shared request/response contracts live in `packages/shared/src/contracts`; domain DTO/types live in `packages/shared/src/types`.
 - LLM calls should use `apps/api/src/utils/aiClient.ts`; BYOK validation truth is `packages/shared/src/config/llm.ts`. Server routing is one `LLM_PROVIDER` table (`provider[/model][:weight]`) parsed in `packages/shared/src/config/llmRouting.ts`; multiple routes are sticky by user id hash. Request BYOK still wins.
 - Treat all LLM output as untrusted. Resource, reward, cost, drop, and other state-changing numbers need deterministic service/schema/resource-layer guards.
-- Server config: `apps/api/src/config/configuration.module.ts` uses `@nestjs/config`, ignores dotenv discovery, and publishes the validated immutable environment from `lib/config/environment.ts`. Use injected `runtimeConfig` in Nest services and that snapshot in framework-independent libraries; do not add direct `process.env` reads outside it.
+- Server config: `apps/api/src/config/configuration.module.ts` uses `@nestjs/config`, ignores dotenv discovery, and publishes the validated immutable environment from `lib/config/environment.ts`. Use injected `AppConfigService` in Nest services and that snapshot in framework-independent libraries; do not add direct `process.env` reads outside it.
 - Redis access must go through `apps/api/src/lib/redis`; do not instantiate feature-local Redis clients.
 - SMTP mail goes through `apps/api/src/lib/admin/smtp.ts`.
 

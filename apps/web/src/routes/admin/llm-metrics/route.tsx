@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { InkButton, InkSelect } from '@app/components/ui';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -87,7 +88,7 @@ async function fetchMetricsSnapshot(
     query.set('sceneId', nextSceneId);
   }
 
-  const response = await fetch(`/api/admin/llm-metrics?${query.toString()}`, {
+  const response = await apiFetch(`/api/admin/llm-metrics?${query.toString()}`, {
     cache: 'no-store',
   });
   const payload = (await response.json()) as MetricsResponse;

@@ -22,7 +22,7 @@ export class HealthController {
     const messaging = getMessageInfrastructureHealthStatus();
     if (
       database === 'down' ||
-      redis === 'down' ||
+      redis !== 'up' ||
       nats === 'down' ||
       messaging === 'down'
     ) {
@@ -32,7 +32,7 @@ export class HealthController {
           error:
             database === 'down'
               ? 'Database unavailable'
-              : redis === 'down'
+              : redis !== 'up'
                 ? 'Redis unavailable'
                 : nats === 'down'
                   ? 'NATS unavailable'

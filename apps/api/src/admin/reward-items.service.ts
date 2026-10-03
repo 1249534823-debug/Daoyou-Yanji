@@ -1,5 +1,5 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import { getQuotaCategoryForFamily } from '@server/lib/services/AlchemyRecipeRules';
+import { getQuotaCategoryForFamily } from '@server/alchemy/application/AlchemyRecipeRules';
 import { TALISMAN_SCENARIO_OPTIONS } from '@daoyou/shared/config/talismanScenarios';
 import { AdminItemGenerationSchema } from '@daoyou/shared/contracts/adminItemGeneration';
 import { RewardItemSchema } from '@daoyou/shared/contracts/adminRewards';

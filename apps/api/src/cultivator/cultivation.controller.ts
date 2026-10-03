@@ -12,9 +12,9 @@ import { JournalIdempotencyError } from '@server/lib/repositories/playerJournalR
 import {
   QiInsufficientError,
   QiServiceError,
-} from '@server/lib/services/QiService';
-import { RetreatCommandError } from '@server/lib/services/RetreatApplicationService';
-import { YieldCommandError } from '@server/lib/services/YieldApplicationService';
+} from '@server/cultivator/application/QiService';
+import { RetreatCommandError } from '@server/cultivator/application/RetreatApplicationService';
+import { YieldCommandError } from '@server/cultivator/application/YieldApplicationService';
 import { JournalRequestSchema } from '@daoyou/shared/contracts/playerJournal';
 import {
   RetreatRequestSchema,

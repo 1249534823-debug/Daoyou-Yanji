@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { huntBattleReward } from '@server/lib/services/hunts/HuntRewardProjector';
+import { huntBattleReward } from '@server/hunts/application/HuntRewardProjector';
 import {
   commandHuntTeam,
   createHuntTeam,
   huntLobby,
   joinHuntTeam,
-} from '@server/lib/services/hunts/HuntTeamService';
+} from '@server/hunts/application/HuntTeamService';
 import type {
   HuntCreateTeamSchema,
   HuntEventIdSchema,

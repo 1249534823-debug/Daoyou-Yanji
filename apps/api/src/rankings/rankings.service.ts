@@ -1,18 +1,3 @@
-import { HttpException, Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { getExecutor } from '@server/lib/drizzle/db';
-import { cultivators, inventoryItems } from '@server/lib/drizzle/schema';
-import {
-  getCultivatorRank,
-  getRankingList,
-  getRemainingChallenges,
-} from '@server/lib/redis/rankings';
-import {
-  pendingRanking,
-  runRankingChallenge,
-} from '@server/lib/services/combat-v6/CombatV6RankingService';
-import { loadCultivatorInspectionData } from '@server/lib/services/cultivator/CultivatorCombatProjectionReader';
-import { readCultivatorRealm } from '@server/lib/services/cultivator/CultivatorFactsReader';
 import type { RankingChallengeRequest } from '@daoyou/shared/contracts/combatV6Ranking';
 import { ConsumableFactsSchema } from '@daoyou/shared/items/definitions/consumables';
 import {
@@ -24,6 +9,22 @@ import type {
   ItemRankingEntry,
   WealthRankingEntry,
 } from '@daoyou/shared/types/rankings';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { DbClient } from '@server/lib/drizzle/db';
+import { cultivators, inventoryItems } from '@server/lib/drizzle/schema';
+import {
+  getCultivatorRank,
+  getRankingList,
+  getRemainingChallenges,
+} from '@server/lib/redis/rankings';
+import {
+  pendingRanking,
+  runRankingChallenge,
+} from '@server/combat/application/CombatV6RankingService';
+import { loadCultivatorInspectionData } from '@server/cultivator/application/readers/CultivatorCombatProjectionReader';
+import { readCultivatorRealm } from '@server/cultivator/application/readers/CultivatorFactsReader';
 import { and, desc, eq, inArray, sql } from 'drizzle-orm';
 
 function parseRealm(raw: string | undefined): RealmType | null {
@@ -32,6 +33,8 @@ function parseRealm(raw: string | undefined): RealmType | null {
 
 @Injectable()
 export class RankingsService {
+  constructor(@Inject(DRIZZLE_DATABASE) private readonly database: DbClient) {}
+
   async list(rawRealm: string | undefined) {
     const realm = parseRealm(rawRealm) ?? '炼气';
     return { success: true, data: await getRankingList(realm), realm };
@@ -46,7 +49,7 @@ export class RankingsService {
       throw new HttpException({ success: false, error: '无效的榜单类型' }, 400);
     const score = sql<number>`(${inventoryItems.instanceData}->>'score')::double precision`;
     const groupId = sql<string>`concat('pill:', ${inventoryItems.cultivatorId}, ':', md5(${inventoryItems.instanceData}::text))`;
-    const rows = await getExecutor()
+    const rows = await this.database
       .select({
         id: groupId,
         ownerName: cultivators.name,
@@ -98,7 +101,7 @@ export class RankingsService {
   }
   async wealth() {
     const limit = 100;
-    const rows = await getExecutor()
+    const rows = await this.database
       .select({
         id: cultivators.id,
         name: cultivators.name,

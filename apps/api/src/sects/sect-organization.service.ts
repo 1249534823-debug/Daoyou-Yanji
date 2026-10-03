@@ -1,35 +1,3 @@
-import { HttpException, Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { getExecutor } from '@server/lib/drizzle/db';
-import { cultivators } from '@server/lib/drizzle/schema';
-import { findMembership } from '@server/lib/repositories/sectRepository';
-import type { CommittedCommand } from '@server/lib/services/CommandExecutors';
-import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
-import {
-  readResourceWithMeta,
-  readResourceWithResolvedScope,
-} from '@server/lib/services/ResourceReadService';
-import { SectError } from '@server/lib/services/SectError';
-import { sectOrganizationFacade } from '@server/lib/services/sect-organization';
-import {
-  createPostgresSectConstructionQueryContext,
-  createPostgresSectEconomyContext,
-  createPostgresSectMembershipQueryContext,
-  createPostgresSectQueryContext,
-} from '@server/lib/services/sect-organization/PostgresSectOrganizationAdapters';
-import { executeSectConstructionDonationCommand } from '@server/lib/services/sect-organization/SectConstructionCommand';
-import {
-  executeSectShopPurchaseCommand,
-  executeSectStipendClaimCommand,
-} from '@server/lib/services/sect-organization/SectEconomyCommand';
-import {
-  executeSectJoinCommand,
-  executeSectPromotionCommand,
-} from '@server/lib/services/sect-organization/SectMembershipCommand';
-import { executeSectTaskActionCommand } from '@server/lib/services/sect-organization/SectTaskCommand';
-import { previewSectTransfer } from '@server/lib/services/sect-organization/SectTransferApplicationService';
-import { executeSectTransferCommand } from '@server/lib/services/sect-organization/SectTransferCommand';
-import type { SectCommandArgs } from '@server/lib/services/sect-organization/commandSupport';
 import type {
   SectDonationRequestSchema,
   SectTaskActionRequestSchema,
@@ -39,39 +7,84 @@ import type {
 import { SectShopBuyParamsSchema } from '@daoyou/shared/contracts/sectShop';
 import { productionSectRuntime as runtime } from '@daoyou/shared/engine/sect/content';
 import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { DbClient } from '@server/lib/drizzle/db';
+import { cultivators } from '@server/lib/drizzle/schema';
+import { findMembership } from '@server/lib/repositories/sectRepository';
+import type { CommittedCommand } from '@server/lib/services/CommandExecutors';
+import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
+import {
+  readResourceWithMeta,
+  readResourceWithResolvedScope,
+} from '@server/lib/services/ResourceReadService';
+import { SectError } from '@server/sects/application/SectError';
+import {
+  createPostgresSectConstructionQueryContext,
+  createPostgresSectEconomyContext,
+  createPostgresSectMembershipQueryContext,
+  createPostgresSectQueryContext,
+} from '@server/sects/organization/PostgresSectOrganizationAdapters';
+import { executeSectConstructionDonationCommand } from '@server/sects/organization/SectConstructionCommand';
+import {
+  executeSectShopPurchaseCommand,
+  executeSectStipendClaimCommand,
+} from '@server/sects/organization/SectEconomyCommand';
+import {
+  executeSectJoinCommand,
+  executeSectPromotionCommand,
+} from '@server/sects/organization/SectMembershipCommand';
+import { executeSectTaskActionCommand } from '@server/sects/organization/SectTaskCommand';
+import { previewSectTransfer } from '@server/sects/organization/SectTransferApplicationService';
+import { executeSectTransferCommand } from '@server/sects/organization/SectTransferCommand';
+import type { SectCommandArgs } from '@server/sects/organization/commandSupport';
 import { eq } from 'drizzle-orm';
 import type { z } from 'zod';
 import {
   requireSectIdempotency,
   type SectCommandRequest,
 } from './sect-idempotency';
+import {
+  SECT_ORGANIZATION,
+  type SectOrganization,
+} from './sect-organization.provider';
 
 @Injectable()
 export class SectOrganizationService {
+  constructor(
+    @Inject(DRIZZLE_DATABASE) private readonly database: DbClient,
+    @Inject(SECT_ORGANIZATION) private readonly organization: SectOrganization,
+  ) {}
+
   infrastructure(actor: ActiveCultivatorRef) {
-    return readResourceWithResolvedScope('sect.infrastructure', async (q) => {
-      const membership = await findMembership(actor.cultivatorId, q);
-      if (!membership)
-        throw new SectError('SECT_MEMBERSHIP_REQUIRED', '尚未拜入宗门', 404);
-      return {
-        scope: { kind: 'sect', id: membership.sectId },
-        data: await sectOrganizationFacade.membership.getInfrastructureResource(
-          actor.cultivatorId,
-          createPostgresSectMembershipQueryContext({ q, runtime }),
-        ),
-      };
-    });
+    return readResourceWithResolvedScope(
+      'sect.infrastructure',
+      async (q) => {
+        const membership = await findMembership(actor.cultivatorId, q);
+        if (!membership)
+          throw new SectError('SECT_MEMBERSHIP_REQUIRED', '尚未拜入宗门', 404);
+        return {
+          scope: { kind: 'sect', id: membership.sectId },
+          data: await this.organization.membership.getInfrastructureResource(
+            actor.cultivatorId,
+            createPostgresSectMembershipQueryContext({ q, runtime }),
+          ),
+        };
+      },
+      this.database,
+    );
   }
 
   async stipend(actor: ActiveCultivatorRef) {
-    const q = getExecutor();
+    const q = this.database;
     const cultivator = await q.query.cultivators.findFirst({
       columns: { id: true, realm: true },
       where: eq(cultivators.id, actor.cultivatorId),
     });
     if (!cultivator)
       throw new SectError('SECT_MEMBERSHIP_REQUIRED', '角色不存在', 404);
-    const data = await sectOrganizationFacade.membership.getStipendResource(
+    const data = await this.organization.membership.getStipendResource(
       { id: cultivator.id, realm: cultivator.realm as RealmType },
       createPostgresSectMembershipQueryContext({ q, runtime }),
     );
@@ -79,7 +92,7 @@ export class SectOrganizationService {
   }
 
   async promotionEvaluation(actor: ActiveCultivatorRef) {
-    const q = getExecutor();
+    const q = this.database;
     const cultivator = await q.query.cultivators.findFirst({
       columns: { id: true, realm: true, realm_stage: true },
       where: eq(cultivators.id, actor.cultivatorId),
@@ -87,7 +100,7 @@ export class SectOrganizationService {
     if (!cultivator)
       throw new SectError('SECT_MEMBERSHIP_REQUIRED', '角色不存在', 404);
     const data =
-      await sectOrganizationFacade.membership.getPromotionEvaluationResource(
+      await this.organization.membership.getPromotionEvaluationResource(
         {
           id: cultivator.id,
           realm: cultivator.realm as RealmType,
@@ -103,10 +116,11 @@ export class SectOrganizationService {
       { kind: 'cultivator', id: actor.cultivatorId },
       'sect.tasks',
       (q) =>
-        sectOrganizationFacade.tasks.queries.execute(
+        this.organization.tasks.queries.execute(
           { cultivatorId: actor.cultivatorId },
           createPostgresSectQueryContext({ q, runtime }),
         ),
+      this.database,
     );
   }
 
@@ -115,9 +129,9 @@ export class SectOrganizationService {
       throw new HttpException({ success: false, error: '任务编号无效' }, 400);
     return {
       success: true,
-      data: await sectOrganizationFacade.tasks.submissions.execute(
+      data: await this.organization.tasks.submissions.execute(
         { cultivatorId: actor.cultivatorId, taskId },
-        createPostgresSectQueryContext({ q: getExecutor(), runtime }),
+        createPostgresSectQueryContext({ q: this.database, runtime }),
       ),
     };
   }
@@ -127,10 +141,11 @@ export class SectOrganizationService {
       { kind: 'cultivator', id: actor.cultivatorId },
       'sect.shop',
       (q) =>
-        sectOrganizationFacade.economy.getShop(
+        this.organization.economy.getShop(
           actor.cultivatorId,
           createPostgresSectEconomyContext({ q, runtime }),
         ),
+      this.database,
     );
   }
 
@@ -139,11 +154,12 @@ export class SectOrganizationService {
       { kind: 'cultivator', id: actor.cultivatorId },
       'sect.construction-member',
       (q) =>
-        sectOrganizationFacade.construction.getConstructionMember(
+        this.organization.construction.getConstructionMember(
           actor.userId,
           actor.cultivatorId,
           createPostgresSectConstructionQueryContext({ q, runtime }),
         ),
+      this.database,
     );
   }
 
@@ -151,20 +167,24 @@ export class SectOrganizationService {
     actor: ActiveCultivatorRef,
     query: { page: number; pageSize: number },
   ) {
-    return readResourceWithResolvedScope('sect.members', async (q) => {
-      const membership = await findMembership(actor.cultivatorId, q);
-      if (!membership)
-        throw new SectError('SECT_MEMBERSHIP_REQUIRED', '尚未拜入宗门', 404);
-      return {
-        scope: { kind: 'sect', id: membership.sectId },
-        data: await sectOrganizationFacade.membership.listMembers(
-          actor.cultivatorId,
-          query.page,
-          query.pageSize,
-          createPostgresSectMembershipQueryContext({ q, runtime }),
-        ),
-      };
-    });
+    return readResourceWithResolvedScope(
+      'sect.members',
+      async (q) => {
+        const membership = await findMembership(actor.cultivatorId, q);
+        if (!membership)
+          throw new SectError('SECT_MEMBERSHIP_REQUIRED', '尚未拜入宗门', 404);
+        return {
+          scope: { kind: 'sect', id: membership.sectId },
+          data: await this.organization.membership.listMembers(
+            actor.cultivatorId,
+            query.page,
+            query.pageSize,
+            createPostgresSectMembershipQueryContext({ q, runtime }),
+          ),
+        };
+      },
+      this.database,
+    );
   }
 
   async transferPreview(
@@ -177,7 +197,7 @@ export class SectOrganizationService {
         cultivatorId: actor.cultivatorId,
         ...query,
         runtime,
-        q: getExecutor(),
+        q: this.database,
       }),
     };
   }
@@ -277,7 +297,7 @@ export class SectOrganizationService {
       executeSectJoinCommand({
         ...args,
         sectId,
-        admission: (q) => sectOrganizationFacade.admission(q, runtime),
+        admission: (q) => this.organization.admission(q, runtime),
       }),
     );
   }

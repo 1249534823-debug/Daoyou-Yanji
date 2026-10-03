@@ -6,8 +6,8 @@ import {
   drawDivination,
   interpretDivination,
   readDivination,
-} from '@server/lib/services/DivinationService';
-import { InventoryError } from '@server/lib/services/InventoryService';
+} from '@server/divination/application/DivinationService';
+import { InventoryError } from '@server/inventory/application/InventoryService';
 import type { DivinationStreamEvent } from '@daoyou/shared/contracts/divination';
 
 @Injectable()

@@ -1,20 +1,19 @@
-import { runtimeConfig } from '../config/runtime.config';
-import type { ConfigType } from '@nestjs/config';
 import { Inject, Injectable } from '@nestjs/common';
 import { SchedulerRegistry } from '@nestjs/schedule';
 import { BACKGROUND_SCHEDULES } from '@server/lib/jobs/schedules';
 import { publishScheduledBackgroundCommand } from '@server/lib/mq/backgroundCommandPublisher';
 import { CronJob } from 'cron';
+import { AppConfigService } from '../config/app-config.service';
 
 @Injectable()
 export class CronService {
   constructor(
-    @Inject(runtimeConfig.KEY) private readonly config: ConfigType<typeof runtimeConfig>,
+    @Inject(AppConfigService) private readonly config: AppConfigService,
     @Inject(SchedulerRegistry) private readonly scheduler: SchedulerRegistry,
   ) {}
 
   start(): void {
-    if (this.config.NODE_ENV !== 'production') return;
+    if (this.config.get('NODE_ENV') !== 'production') return;
     for (const { type, expression } of BACKGROUND_SCHEDULES) {
       const job = CronJob.from({
         cronTime: expression,

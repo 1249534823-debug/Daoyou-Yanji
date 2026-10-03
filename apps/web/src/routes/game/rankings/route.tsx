@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { combatV6Request } from '@app/components/feature/combat-v6/request';
 import { CultivatorInspectionModal } from '@app/components/feature/cultivator-inspection';
 import {
@@ -28,7 +29,7 @@ import {
 import { MAX_DAILY_RANKING_CHALLENGES } from '@daoyou/shared/combat-v6/ranking';
 import type { RankingChallengeRequest } from '@daoyou/shared/contracts/combatV6Ranking';
 import type { CultivatorInspectionData } from '@daoyou/shared/contracts/player';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import { getGameConceptInfo } from '@daoyou/shared/lib/gameConceptDisplay';
 import {
   RANKING_REWARDS,
@@ -250,7 +251,7 @@ export default function RankingsPage() {
           url = `/api/rankings/items?type=${activeTab}`;
         }
 
-        const response = await fetch(url);
+        const response = await apiFetch(url);
         const result = await response.json();
         if (!response.ok || !result.success) {
           throw new Error(result.error || '榜单暂不可用');
@@ -291,7 +292,7 @@ export default function RankingsPage() {
     const loadInitialMyRank = async () => {
       try {
         const [response, recovery] = await Promise.all([
-          fetch(
+          apiFetch(
             `/api/rankings/my-rank?realm=${encodeURIComponent(activeRealm)}`,
           ),
           combatV6Request<RankingChallengeRequest | null>(
@@ -337,7 +338,7 @@ export default function RankingsPage() {
     if (!cultivator?.id) return;
     setProbing(targetId);
     try {
-      const response = await fetch('/api/rankings/probe', {
+      const response = await apiFetch('/api/rankings/probe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -11,9 +11,9 @@ import {
   saveTempCharacter,
   saveTempFates,
 } from '@server/lib/repositories/redisCultivatorRepository';
-import { createCultivatorFromTemp } from '@server/lib/services/CultivatorCreationApplicationService';
-import { FATE_REROLL_LIMIT } from '@server/lib/services/FateConfig';
-import { FateEngine } from '@server/lib/services/FateEngine';
+import { createCultivatorFromTemp } from '@server/genesis/application/CultivatorCreationApplicationService';
+import { FATE_REROLL_LIMIT } from '@server/reshape/application/FateConfig';
+import { FateEngine } from '@server/reshape/application/FateEngine';
 import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
 import { generateCultivatorFromAI } from '@server/utils/characterEngine';
 import { normalizeFreeformLlmInput } from '@server/utils/llmPayload';

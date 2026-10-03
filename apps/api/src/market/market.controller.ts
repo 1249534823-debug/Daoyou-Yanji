@@ -10,8 +10,8 @@ import {
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
 import { PlayerCommandIdempotencyError } from '@server/lib/services/CommandExecutors';
-import { MarketRecycleError } from '@server/lib/services/MarketRecycleService';
-import { MarketServiceError } from '@server/lib/services/MarketService';
+import { MarketRecycleError } from '@server/market/application/MarketRecycleService';
+import { MarketServiceError } from '@server/market/application/MarketService';
 import { MarketBuySchema } from '@daoyou/shared/contracts/market';
 import { RecycleRequestSchema } from '@daoyou/shared/contracts/recycle';
 import { z } from 'zod';

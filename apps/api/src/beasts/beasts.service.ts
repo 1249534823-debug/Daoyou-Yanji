@@ -1,5 +1,13 @@
-import { Injectable } from '@nestjs/common';
-import { db } from '@server/lib/drizzle/db';
+import type {
+  BeastAllocateSchema,
+  BeastFusionRequest,
+  BeastLineupRequestSchema,
+  BeastRenameSchema,
+  BeastRestSchema,
+} from '@daoyou/shared/contracts/combatV6Beasts';
+import { Inject, Injectable } from '@nestjs/common';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
+import type { DbClient } from '@server/lib/drizzle/db';
 import { readBeastRoster } from '@server/lib/repositories/combatV6BeastRepository';
 import {
   allocateBeastPoints,
@@ -10,20 +18,15 @@ import {
   renameBeast,
   restBeast,
   updateBeastLineup,
-} from '@server/lib/services/combat-v6/CombatV6BeastService';
-import type {
-  BeastAllocateSchema,
-  BeastFusionRequest,
-  BeastLineupRequestSchema,
-  BeastRenameSchema,
-  BeastRestSchema,
-} from '@daoyou/shared/contracts/combatV6Beasts';
+} from '@server/combat/application/CombatV6BeastService';
 import type { z } from 'zod';
 
 @Injectable()
 export class BeastsService {
+  constructor(@Inject(DRIZZLE_DATABASE) private readonly database: DbClient) {}
+
   async read(owner: string) {
-    return { success: true, data: await readBeastRoster(owner, db) };
+    return { success: true, data: await readBeastRoster(owner, this.database) };
   }
   async fusion(owner: string, requestId: string) {
     return { success: true, data: await readBeastFusion(owner, requestId) };

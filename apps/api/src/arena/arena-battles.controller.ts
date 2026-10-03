@@ -12,7 +12,7 @@ import {
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { isAllowedRealtimeOrigin } from '@server/lib/http/realtimeOrigin';
-import { ArenaV6Error } from '@server/lib/services/combat-v6/CombatV6ArenaService';
+import { ArenaV6Error } from '@server/combat/application/CombatV6ArenaService';
 import {
   ArenaV6SubmitSchema,
   type ArenaV6Submit,

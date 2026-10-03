@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   sectConstructionMemberResource,
   sectContributionRankingResource,
@@ -203,7 +204,7 @@ function useSectInteractionQuery<T>(
       error: undefined,
     }));
     try {
-      const response = await fetch(endpoint, { signal: controller.signal });
+      const response = await apiFetch(endpoint, { signal: controller.signal });
       const json = (await response.json()) as
         { success: true; data: unknown } | { success: false; error: string };
       if (!response.ok || !json.success) {

@@ -2,7 +2,7 @@ import { GameSceneSection } from '@app/components/game-shell/GameSceneSection';
 import { InkButton } from '@app/components/ui';
 import { useCultivatorProgress } from '@app/lib/resources/player';
 import { getBodyCultivationSummary } from '@daoyou/shared/lib/bodyCultivation/summary';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import {
   getBreakthroughPenaltyPercent,
   getPillToxicityRecoveryMultiplier,

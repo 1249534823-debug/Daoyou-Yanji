@@ -3,7 +3,7 @@ import {
   toPillDisplayModel,
 } from '@app/components/feature/consumables';
 import { InkBadge, InkButton, type Tier } from '@app/components/ui';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import { isPillSpec } from '@daoyou/shared/lib/consumables';
 import { CONSUMABLE_TYPE_DISPLAY_MAP } from '@daoyou/shared/lib/gameConceptDisplay';
 import {

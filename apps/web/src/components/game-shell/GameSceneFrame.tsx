@@ -1,6 +1,6 @@
 import { InkButton } from '@app/components/ui';
 import { resolveGameScene } from '@app/lib/router/routeTitle';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import type { ReactNode } from 'react';
 import { useStory } from '@app/lib/story/useStory';
 import { useMatches } from 'react-router';

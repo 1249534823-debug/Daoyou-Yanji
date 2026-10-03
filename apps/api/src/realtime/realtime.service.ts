@@ -1,23 +1,24 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { db } from '@server/lib/drizzle/db';
-import { cultivators, sectMemberships } from '@server/lib/drizzle/schema';
-import { isAllowedRealtimeOrigin } from '@server/lib/http/realtimeOrigin';
-import { getRequestIp } from '@server/lib/http/requestIp';
-import { subscribeArenaRoomChanges } from '@server/lib/services/arenaRoomBroadcaster';
-import {
-  recordRealtimeConnectionClose,
-  recordRealtimeConnectionHeartbeat,
-  recordRealtimeConnectionOpen,
-} from '@server/lib/services/onlinePresenceService';
-import { subscribeResourceEvents } from '@server/lib/services/playerStateBroadcaster';
-import { subscribeSectChatMessages } from '@server/lib/services/sectChatBroadcaster';
-import { subscribeWorldChatMessages } from '@server/lib/services/worldChatBroadcaster';
 import {
   REALTIME_CHANNELS,
   type RealtimeChannel,
   type RealtimeServerEvent,
 } from '@daoyou/shared/contracts/realtime';
 import type { ResourceScope } from '@daoyou/shared/contracts/resources';
+import { Inject, Injectable } from '@nestjs/common';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
+import type { DbClient } from '@server/lib/drizzle/db';
+import { cultivators, sectMemberships } from '@server/lib/drizzle/schema';
+import { isAllowedRealtimeOrigin } from '@server/lib/http/realtimeOrigin';
+import { getRequestIp } from '@server/lib/http/requestIp';
+import { subscribeArenaRoomChanges } from '@server/realtime/infrastructure/arenaRoomBroadcaster';
+import {
+  recordRealtimeConnectionClose,
+  recordRealtimeConnectionHeartbeat,
+  recordRealtimeConnectionOpen,
+} from '@server/realtime/infrastructure/onlinePresenceService';
+import { subscribeResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
+import { subscribeSectChatMessages } from '@server/realtime/infrastructure/sectChatBroadcaster';
+import { subscribeWorldChatMessages } from '@server/realtime/infrastructure/worldChatBroadcaster';
 import { fromNodeHeaders } from 'better-auth/node';
 import { and, eq } from 'drizzle-orm';
 import type { IncomingMessage } from 'node:http';
@@ -43,6 +44,7 @@ export class RealtimeService {
   private readonly pending = new WeakMap<IncomingMessage, Reservation>();
 
   constructor(
+    @Inject(DRIZZLE_DATABASE) private readonly database: DbClient,
     @Inject(SessionService) private readonly sessions: SessionService,
   ) {}
 
@@ -69,7 +71,7 @@ export class RealtimeService {
     const user = session.response?.user;
     if (!user)
       return { status: 401, message: '未授权访问', headers: session.headers };
-    const active = await db.query.cultivators.findFirst({
+    const active = await this.database.query.cultivators.findFirst({
       columns: { id: true },
       where: and(
         eq(cultivators.userId, user.id),
@@ -77,7 +79,7 @@ export class RealtimeService {
       ),
     });
     const sect = active
-      ? await db.query.sectMemberships.findFirst({
+      ? await this.database.query.sectMemberships.findFirst({
           columns: { sectId: true },
           where: and(
             eq(sectMemberships.cultivatorId, active.id),

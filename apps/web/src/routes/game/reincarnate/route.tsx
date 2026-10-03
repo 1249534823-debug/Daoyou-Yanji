@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { InkSection } from '@app/components/layout';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkNotice } from '@app/components/ui/InkNotice';
@@ -40,7 +41,7 @@ export default function ReincarnatePage() {
       }
 
       try {
-        const res = await fetch('/api/cultivators/reincarnate-context');
+        const res = await apiFetch('/api/cultivators/reincarnate-context');
         const json = await res.json();
         if (!res.ok || !json.success || !json.data) return;
         if (!cancelled) {

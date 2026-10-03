@@ -3,17 +3,17 @@ import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import {
   confirmBagRecycle,
   previewBagRecycle,
-} from '@server/lib/services/BagRecycleService';
-import { purchaseMarketItems } from '@server/lib/services/MarketApplicationService';
+} from '@server/inventory/application/BagRecycleService';
+import { purchaseMarketItems } from '@server/market/application/MarketApplicationService';
 import {
   getMarketListings,
   MarketServiceError,
   resolveLayer,
   resolveNodeId,
-} from '@server/lib/services/MarketService';
+} from '@server/market/application/MarketService';
 import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
-import { readCultivatorRealm } from '@server/lib/services/cultivator/CultivatorFactsReader';
-import { getPlayerPreHeavenFates } from '@server/lib/services/cultivator/CultivatorProfileRepository';
+import { readCultivatorRealm } from '@server/cultivator/application/readers/CultivatorFactsReader';
+import { getPlayerPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository';
 import type { MarketBuyInput } from '@daoyou/shared/contracts/market';
 import type { RecycleRequestSchema } from '@daoyou/shared/contracts/recycle';
 import type { z } from 'zod';

@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { useInventoryBag } from '@app/lib/resources/bag';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
 import {
@@ -84,7 +85,7 @@ export function useInscriptionSession(ownerId: string) {
     try {
       sessionStorage.setItem(storageKey, JSON.stringify(input));
       setUnresolved(input);
-      const response = await fetch(endpoint, {
+      const response = await apiFetch(endpoint, {
         ...mutationBody(input),
         headers: { 'Content-Type': 'application/json' },
         signal: AbortSignal.timeout(30000),

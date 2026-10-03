@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { CombatV6Battle } from '@app/components/feature/combat-v6/CombatV6Battle';
 import { CombatV6Page } from '@app/components/feature/combat-v6/CombatV6Page';
 import { useArenaV6Session } from '@app/components/feature/combat-v6/useArenaV6Session';
@@ -36,7 +37,7 @@ function ArenaBattle({
     setLeaving(true);
     try {
       if (spectator && state.session) {
-        const response = await fetch(
+        const response = await apiFetch(
           `/api/arena/rooms/${state.session.roomId}/leave`,
           {
             method: 'POST',

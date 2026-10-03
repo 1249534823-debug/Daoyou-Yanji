@@ -1,7 +1,7 @@
 import { InkButton, InkChoiceButton } from '@app/components/ui';
 import { GameImage } from '@app/components/ui/GameImage';
 import { useTypewriter } from '@app/lib/hooks/useTypewriter';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import {
   currentPerformanceCue,
   createPerformanceState,

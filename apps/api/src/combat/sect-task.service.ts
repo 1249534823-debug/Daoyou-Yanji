@@ -3,7 +3,7 @@ import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import {
   changeSectTaskBattle,
   getSectTaskBattle,
-} from '@server/lib/services/combat-v6/CombatV6SectTaskService';
+} from '@server/combat/application/CombatV6SectTaskService';
 
 @Injectable()
 export class SectTaskBattleService {

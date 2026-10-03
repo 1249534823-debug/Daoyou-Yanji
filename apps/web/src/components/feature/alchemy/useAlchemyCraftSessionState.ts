@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { pendingCommandRequest } from '@app/lib/pendingCommandRequest';
 import { useQiActionConfirm } from '@app/components/feature/cultivator/useQiActionConfirm';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
@@ -375,7 +376,7 @@ export function useAlchemyCraftSessionState(sectContext?: AlchemySectContext) {
       loading: true,
       error: null,
     }));
-    void fetch(`/api/craft?${params.toString()}`, {
+    void apiFetch(`/api/craft?${params.toString()}`, {
       signal: controller.signal,
     })
       .then(async (response) => ({
@@ -445,7 +446,7 @@ export function useAlchemyCraftSessionState(sectContext?: AlchemySectContext) {
       return false;
     setAnalysis((current) => ({ ...current, loading: true, error: null }));
     try {
-      const response = await fetch(
+      const response = await apiFetch(
         `/api/alchemy/formulas/${formula.id}/analyze`,
         {
           method: 'POST',
@@ -539,7 +540,7 @@ export function useAlchemyCraftSessionState(sectContext?: AlchemySectContext) {
       const discovery = result.formulaDiscovery;
       if (!discovery) return;
       try {
-        const response = await fetch(
+        const response = await apiFetch(
           '/api/alchemy/formulas/discovery/confirm',
           {
             method: 'POST',
@@ -634,7 +635,7 @@ export function useAlchemyCraftSessionState(sectContext?: AlchemySectContext) {
           try {
             const pending = pendingCommandRequest(cultivator.id, 'alchemy', submitPayload);
             const body = await mutate<CraftResult>(
-              fetch('/api/craft', {
+              apiFetch('/api/craft', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...submitPayload, requestId: pending.requestId }),

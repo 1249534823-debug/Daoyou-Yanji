@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton, InkDialog, type InkDialogState } from '@app/components/ui';
 import { useResourceMutation } from '@app/lib/resources/mutations';
@@ -12,7 +13,7 @@ export function CultivatorReincarnation() {
   const handleReincarnate = async () => {
     try {
       await mutate(
-        fetch('/api/cultivator/active-reincarnate', {
+        apiFetch('/api/cultivator/active-reincarnate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({}),

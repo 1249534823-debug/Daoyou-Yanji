@@ -1,4 +1,4 @@
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import { useEffect, useRef, type ReactNode } from 'react';
 
 export type RoomActorStatusTone = 'neutral' | 'active' | 'attention' | 'muted';

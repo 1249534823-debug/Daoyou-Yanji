@@ -1,4 +1,4 @@
-import { recordJournalChange } from '../JournalSettlement';
+import { recordJournalChange } from '@server/player/application/JournalSettlement';
 import type { DbExecutor, DbTransaction } from '@server/lib/drizzle/db';
 import * as schema from '@server/lib/drizzle/schema';
 import {
@@ -6,13 +6,13 @@ import {
   addConsumableToInventoryInTransaction,
   addMaterialToInventoryInTransaction,
   removeMaterialFromInventoryInTransaction,
-} from '@server/lib/services/cultivator/CultivatorInventoryRepository';
+} from '@server/cultivator/application/readers/CultivatorInventoryRepository';
 import {
   updateCultivationExp,
   updateLifespan,
   updateReputation,
   updateSpiritStones,
-} from '@server/lib/services/cultivator/CultivatorStateRepository';
+} from '@server/cultivator/application/readers/CultivatorStateRepository';
 import { calculateSingleElixirScore } from '@server/utils/rankingUtils';
 import type {
   ResourceOperation,

@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { CombatV6Battle } from '@app/components/feature/combat-v6/CombatV6Battle';
 import { CombatV6Page } from '@app/components/feature/combat-v6/CombatV6Page';
 import { combatV6Request as request } from '@app/components/feature/combat-v6/request';
@@ -213,7 +214,7 @@ export default function TrainingRoomPage() {
           pending={pending}
           onInitialize={(activePathId) =>
             void run(async () => {
-              const response = await fetch('/api/combat-v6/sect/path', {
+              const response = await apiFetch('/api/combat-v6/sect/path', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

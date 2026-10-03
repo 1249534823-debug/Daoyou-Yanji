@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { NarrativePerformanceLoading } from '@app/components/feature/narrative/NarrativePerformanceLoading';
 import { NarrativePerformanceStage } from '@app/components/feature/narrative/NarrativePerformanceStage';
 import { InkButton } from '@app/components/ui';
@@ -202,7 +203,7 @@ export default function SectOnboardingPage() {
     setJoinError(undefined);
     try {
       await mutate(
-        fetch(`/api/sects/${encodeURIComponent(selected.id)}/join`, {
+        apiFetch(`/api/sects/${encodeURIComponent(selected.id)}/join`, {
           method: 'POST',
           headers: { 'Idempotency-Key': attempt.key },
         }),

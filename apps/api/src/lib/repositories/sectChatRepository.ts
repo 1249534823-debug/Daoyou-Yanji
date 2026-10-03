@@ -1,5 +1,4 @@
 import { redis } from '@server/lib/redis';
-import { publishSectChatMessage } from '@server/lib/services/sectChatBroadcaster';
 import type {
   WorldChatMessageDTO,
   WorldChatMessageType,
@@ -67,7 +66,6 @@ export async function createSectChatMessage(data: {
   };
   await redis.lpush(listKey(data.sectId), JSON.stringify(message));
   await redis.ltrim(listKey(data.sectId), 0, SECT_CHAT_MAX_MESSAGES - 1);
-  publishSectChatMessage(data.sectId, message);
   return message;
 }
 

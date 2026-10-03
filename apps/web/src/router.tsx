@@ -1,17 +1,6 @@
 import App, { RootRouteErrorBoundary } from '@app/App';
 import { AppBootScreen } from '@app/components/feature/app-boot/AppBootScreen';
 import { getGameSceneMeta } from '@app/components/game-shell/gameNavigation';
-import { CombatV6Layout } from '@app/layouts/combat-v6-layout';
-import {
-  GameActivityLayout,
-  GameCombatLayout,
-  GameDungeonLayout,
-  GameGenesisLayout,
-  GameMapLayout,
-  GameNarrativeLayout,
-  GameViewportLayout,
-  PlayerShellLayout,
-} from '@app/layouts/game-layout';
 import { lazyRoute } from '@app/lib/router/lazyRoute';
 import { AUTH_LAYOUT_ROUTE_ID, GAME_ROUTE_ID } from '@app/lib/router/routeData';
 import type {
@@ -130,7 +119,12 @@ export const router = createBrowserRouter(
         path="/game"
         lazy={lazyRoute(() => import('@app/routes/game/layout'))}
       >
-        <Route element={<GameGenesisLayout />}>
+        <Route
+          lazy={async () => ({
+            Component: (await import('@app/layouts/game-layout'))
+              .GameGenesisLayout,
+          })}
+        >
           <Route
             path="create"
             lazy={lazyRoute(() => import('@app/routes/game/create/route'))}
@@ -143,8 +137,18 @@ export const router = createBrowserRouter(
           />
         </Route>
 
-        <Route element={<PlayerShellLayout />}>
-          <Route element={<GameNarrativeLayout />}>
+        <Route
+          lazy={async () => ({
+            Component: (await import('@app/layouts/game-layout'))
+              .PlayerShellLayout,
+          })}
+        >
+          <Route
+            lazy={async () => ({
+              Component: (await import('@app/layouts/game-layout'))
+                .GameNarrativeLayout,
+            })}
+          >
             <Route
               path="identity-reshape"
               lazy={lazyRoute(
@@ -203,7 +207,12 @@ export const router = createBrowserRouter(
             />
           </Route>
 
-          <Route element={<GameViewportLayout />}>
+          <Route
+            lazy={async () => ({
+              Component: (await import('@app/layouts/game-layout'))
+                .GameViewportLayout,
+            })}
+          >
             <Route
               index
               lazy={lazyRoute(() => import('@app/routes/game/route'))}
@@ -415,8 +424,13 @@ export const router = createBrowserRouter(
             />
             <Route
               path="divination"
-              lazy={lazyRoute(() => import('@app/routes/game/divination/route'))}
-              handle={scene({ id: 'divination', presentation: 'workflow' }, '每日占卜')}
+              lazy={lazyRoute(
+                () => import('@app/routes/game/divination/route'),
+              )}
+              handle={scene(
+                { id: 'divination', presentation: 'workflow' },
+                '每日占卜',
+              )}
             />
             <Route
               path="inn"
@@ -437,7 +451,8 @@ export const router = createBrowserRouter(
                 {
                   id: 'tasks',
                   presentation: 'archive',
-                  summary: '查看破境任务和试炼进度。宗门任务请到宗门事务中查看。',
+                  summary:
+                    '查看破境任务和试炼进度。宗门任务请到宗门事务中查看。',
                 },
                 '任务中心',
               )}
@@ -808,8 +823,16 @@ export const router = createBrowserRouter(
             />
             <Route
               path="inscriptions"
-              lazy={lazyRoute(() => import('@app/routes/game/inscriptions/route'))}
-              handle={scene({ id: 'inscriptions', summary: '研材绘纹，合纹升阶，将阵法烙入道装。' }, '【阵纹室】')}
+              lazy={lazyRoute(
+                () => import('@app/routes/game/inscriptions/route'),
+              )}
+              handle={scene(
+                {
+                  id: 'inscriptions',
+                  summary: '研材绘纹，合纹升阶，将阵法烙入道装。',
+                },
+                '【阵纹室】',
+              )}
             />
             <Route
               path="enlightenment/gongfa"
@@ -942,7 +965,9 @@ export const router = createBrowserRouter(
             />
             <Route
               path="beast-room"
-              lazy={lazyRoute(() => import('@app/routes/game/beast-room/route'))}
+              lazy={lazyRoute(
+                () => import('@app/routes/game/beast-room/route'),
+              )}
               handle={scene(
                 {
                   id: 'beast-room',
@@ -1098,7 +1123,12 @@ export const router = createBrowserRouter(
             />
           </Route>
 
-          <Route element={<GameActivityLayout />}>
+          <Route
+            lazy={async () => ({
+              Component: (await import('@app/layouts/game-layout'))
+                .GameActivityLayout,
+            })}
+          >
             <Route
               path="sect/gate/sweep"
               lazy={lazyRoute(
@@ -1129,8 +1159,22 @@ export const router = createBrowserRouter(
             />
           </Route>
 
-          <Route element={<CombatV6Layout />}>
-            <Route path="combat-v6/hunt/:battleId" lazy={lazyRoute(() => import('@app/routes/game/combat-v6/arena/route'))} handle={scene({ id: 'hunt', chrome: 'immersive', dock: 'hidden' }, '结伴讨伐')} />
+          <Route
+            lazy={async () => ({
+              Component: (await import('@app/layouts/combat-v6-layout'))
+                .CombatV6Layout,
+            })}
+          >
+            <Route
+              path="combat-v6/hunt/:battleId"
+              lazy={lazyRoute(
+                () => import('@app/routes/game/combat-v6/arena/route'),
+              )}
+              handle={scene(
+                { id: 'hunt', chrome: 'immersive', dock: 'hidden' },
+                '结伴讨伐',
+              )}
+            />
             <Route
               path="combat-v6/arena/:battleId"
               lazy={lazyRoute(
@@ -1164,7 +1208,12 @@ export const router = createBrowserRouter(
               )}
             />
           </Route>
-          <Route element={<GameCombatLayout />}>
+          <Route
+            lazy={async () => ({
+              Component: (await import('@app/layouts/game-layout'))
+                .GameCombatLayout,
+            })}
+          >
             <Route
               path="battle/challenge"
               lazy={lazyRoute(
@@ -1237,7 +1286,12 @@ export const router = createBrowserRouter(
             />
           </Route>
 
-          <Route element={<GameMapLayout />}>
+          <Route
+            lazy={async () => ({
+              Component: (await import('@app/layouts/game-layout'))
+                .GameMapLayout,
+            })}
+          >
             <Route
               path="map-v2"
               lazy={lazyRoute(() => import('@app/routes/game/map-v2/route'))}
@@ -1282,7 +1336,12 @@ export const router = createBrowserRouter(
             />
           </Route>
 
-          <Route element={<GameDungeonLayout />}>
+          <Route
+            lazy={async () => ({
+              Component: (await import('@app/layouts/game-layout'))
+                .GameDungeonLayout,
+            })}
+          >
             <Route
               path="dungeon"
               lazy={lazyRoute(() => import('@app/routes/game/dungeon/route'))}

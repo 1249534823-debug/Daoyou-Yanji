@@ -1,6 +1,7 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { InkButton, InkSelect, inkFieldVariants } from '@app/components/ui';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import { useEffect, useState } from 'react';
 
 type FeedbackType = 'bug' | 'feature' | 'balance' | 'other';
@@ -65,7 +66,7 @@ export function FeedbackTable() {
       if (type !== 'all') query.set('type', type);
       if (search.trim()) query.set('search', search.trim());
 
-      const res = await fetch(`/api/admin/feedback?${query.toString()}`);
+      const res = await apiFetch(`/api/admin/feedback?${query.toString()}`);
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? '加载反馈失败');
       setItems(data.feedbacks ?? []);
@@ -92,7 +93,7 @@ export function FeedbackTable() {
         if (type !== 'all') query.set('type', type);
         if (search.trim()) query.set('search', search.trim());
 
-        const res = await fetch(`/api/admin/feedback?${query.toString()}`);
+        const res = await apiFetch(`/api/admin/feedback?${query.toString()}`);
         const data = await res.json();
         if (!res.ok) throw new Error(data.error ?? '加载反馈失败');
         if (cancelled) return;
@@ -127,7 +128,7 @@ export function FeedbackTable() {
     try {
       setUpdatingId(id);
       const adminMessage = adminMessages[id]?.trim();
-      const res = await fetch(`/api/admin/feedback/${id}/status`, {
+      const res = await apiFetch(`/api/admin/feedback/${id}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -1,28 +1,28 @@
 import { db } from '@server/lib/drizzle/db';
 import { closeNatsConnection, getNatsConnection } from '@server/lib/nats';
 import { claimMessageForConsumer } from '@server/lib/repositories/messageConsumptionRepository';
-import { projectCombatV6Condition } from '@server/lib/services/combat-v6/CombatV6ConditionProjector';
-import { projectMailCreated } from '@server/lib/services/MailDomainEventProjector';
+import { projectCombatV6Condition } from '@server/combat/application/CombatV6ConditionProjector';
+import { projectMailCreated } from '@server/mail/application/MailDomainEventProjector';
 import {
   areNatsCoreSubscriptionsHealthy,
   stopNatsCoreSubscriptions,
-} from '@server/lib/services/natsCorePubSub';
-import { projectRealmChangedRanking } from '@server/lib/services/RealmChangedDomainEventProjector';
-import { projectSectConstructionDonation } from '@server/lib/services/sect-organization/SectConstructionSettlementService';
-import { processSponsorshipOrder } from '@server/lib/services/SponsorshipApplicationService';
-import { projectStoryDomainEvent } from '@server/lib/services/StoryDomainEventProjector';
-import { projectSystemMailAudience } from '@server/lib/services/SystemMailService';
-import { projectTaskDomainEvent } from '@server/lib/services/TaskDomainEventProjector';
-import { projectWorldRumorDomainEvent } from '@server/lib/services/WorldRumorDomainEventProjector';
+} from '@server/realtime/infrastructure/natsCorePubSub';
+import { projectRealmChangedRanking } from '@server/story/application/RealmChangedDomainEventProjector';
+import { projectSectConstructionDonation } from '@server/sects/organization/SectConstructionSettlementService';
+import { processSponsorshipOrder } from '@server/sponsorship/application/SponsorshipApplicationService';
+import { projectStoryDomainEvent } from '@server/story/application/StoryDomainEventProjector';
+import { projectSystemMailAudience } from '@server/mail/application/SystemMailService';
+import { projectTaskDomainEvent } from '@server/tasks/application/TaskDomainEventProjector';
+import { projectWorldRumorDomainEvent } from '@server/social/application/WorldRumorDomainEventProjector';
 import {
   generateYieldRewardAttachments,
   projectYieldReward,
-} from '@server/lib/services/YieldDomainEventProjector';
+} from '@server/cultivator/application/YieldDomainEventProjector';
 import {
   isDomainEventType,
   type DomainEventEnvelope,
 } from '@daoyou/shared/contracts/domainEvents';
-import { projectHuntReward } from '../services/hunts/HuntRewardProjector';
+import { projectHuntReward } from '@server/hunts/application/HuntRewardProjector';
 import {
   isBackgroundCommandConsumerHealthy,
   startBackgroundCommandConsumer,

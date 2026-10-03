@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { isRedisLockContention } from '@server/lib/redis/lock';
-import { ArenaV6Error } from '@server/lib/services/combat-v6/CombatV6ArenaService';
+import { ArenaV6Error } from '@server/combat/application/CombatV6ArenaService';
 import {
   HuntCreateTeamSchema,
   HuntEventIdSchema,

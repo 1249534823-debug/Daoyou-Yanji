@@ -1,5 +1,3 @@
-import { runtimeConfig } from '../config/runtime.config';
-import type { ConfigType } from '@nestjs/config';
 import {
   HttpException,
   Inject,
@@ -8,13 +6,16 @@ import {
   type ExecutionContext,
 } from '@nestjs/common';
 import type { Request } from 'express';
+import { AppConfigService } from '../config/app-config.service';
 @Injectable()
 export class InternalCronGuard implements CanActivate {
-  constructor(@Inject(runtimeConfig.KEY) private readonly config: ConfigType<typeof runtimeConfig>) {}
+  constructor(
+    @Inject(AppConfigService) private readonly config: AppConfigService,
+  ) {}
   canActivate(context: ExecutionContext): boolean {
-    const secret = this.config.CRON_SECRET;
+    const secret = this.config.get('CRON_SECRET');
     if (!secret) {
-      if (this.config.NODE_ENV === 'production')
+      if (this.config.get('NODE_ENV') === 'production')
         throw new HttpException(
           { success: false, error: 'CRON_SECRET is required in production' },
           500,

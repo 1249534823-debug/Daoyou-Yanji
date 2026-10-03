@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { hasPendingCommandRequest, pendingCommandRequest } from '@app/lib/pendingCommandRequest';
 import { usePlayerSession } from '@app/lib/resources/player';
 import { HomeUrgentRow } from '@app/components/feature/home/HomeUrgentRow';
@@ -46,7 +47,7 @@ export function YieldCard({
     onInteractionActiveChange?.(true);
 
     try {
-      const response = await fetch('/api/cultivator/yield', {
+      const response = await apiFetch('/api/cultivator/yield', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ requestId: pending.requestId }),

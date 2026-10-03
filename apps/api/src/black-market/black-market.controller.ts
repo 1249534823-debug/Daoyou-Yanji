@@ -10,11 +10,11 @@ import {
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { BlackMarketServiceError } from '@server/lib/services/black-market/BlackMarketService';
+import { BlackMarketServiceError } from '@server/black-market/application/BlackMarketService';
 import {
   QiInsufficientError,
   QiServiceError,
-} from '@server/lib/services/QiService';
+} from '@server/cultivator/application/QiService';
 import type { Response as ExpressResponse } from 'express';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access';

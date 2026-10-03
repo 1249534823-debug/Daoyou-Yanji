@@ -1,8 +1,10 @@
+import { removeStatus } from './status-removal.ts';
+export { removeStatus, breakStatusesOnDamage, clearCombatStatuses } from './status-removal.ts';
 /**
  * 状态机。kind 相同则后覆盖先（端游同类法术规则）；持续回合在 roundEnd 扣，
  * 施加当回合默认不扣，避免「休息 1 回合」当场被清掉。
  */
-import { DEFAULT_DAMAGE_TAKEN, MIN_MAX_HP } from "./constants.ts"
+import { DEFAULT_DAMAGE_TAKEN } from "./constants.ts"
 import type { BattleContext } from "./context.ts"
 import {
   CommandPolicy,
@@ -11,7 +13,6 @@ import {
   EventType,
   FailReason,
   failDetail,
-  HookName,
   StatusCategory,
   StatusFlag,
   StatusRemoveReason,
@@ -20,9 +21,9 @@ import {
 } from "./enums.ts"
 import { evalExpr, skillLevelOf } from "./expr.ts"
 import { skillOf, passiveSkills } from "./skills.ts"
-import { standingUnits } from "./query.ts"
+import { standingUnits } from "./unit-query.ts"
 import type { Attrs, Command, CommandPolicy as CommandPolicyType, ExprEnv, StatusDef, StatusId, StatusInstance, Unit, UnitId } from "./types.ts"
-import { effectiveAttrs, isStanding, recoverableHp } from "./units.ts"
+import { effectiveAttrs, isStanding } from "./units.ts"
 import { combatModifiers } from "./modifiers.ts"
 import { applyDamage, applyMpDamage, applyHeal } from "./damage.ts"
 
@@ -178,19 +179,6 @@ export function applyStatus(
   ctx.emit({ type: EventType.StatusApplied, unitId: unit.id, statusId: def.id, duration })
 }
 
-export function removeStatus(ctx: BattleContext, unit: Unit, statusId: StatusId, reason: string, sourceId?: string): void {
-  const inst = unit.statuses.find((s) => s.id === statusId && (!sourceId || s.sourceId === sourceId))
-  if (!inst) return
-  if (inst.attrMods.maxHp) {
-    unit.attrs.maxHp = Math.max(MIN_MAX_HP, unit.attrs.maxHp - inst.attrMods.maxHp)
-    unit.wound = Math.min(unit.wound, unit.attrs.maxHp - 1)
-    if (unit.attrs.hp > recoverableHp(unit)) unit.attrs.hp = recoverableHp(unit)
-  }
-  unit.statuses = unit.statuses.filter((s) => s.id !== statusId || (sourceId !== undefined && s.sourceId !== sourceId))
-  ctx.emit({ type: EventType.StatusRemoved, unitId: unit.id, statusId, reason })
-  ctx.hooks.emit(HookName.OnStatusRemoved, { source: ctx.state.units.find(u => u.id === inst.sourceId), target: unit, removedStatusKind: inst.kind, statusRemoveReason: reason })
-}
-
 /** 复制当前运行时快照；sourceId 仅改为本次施法者，不参与后续资格判断。 */
 export function copyStatusInstance(
   ctx: BattleContext,
@@ -213,11 +201,6 @@ export function copyStatusInstance(
   target.statuses.push(copy)
   if (copy.attrMods.maxHp) target.attrs.maxHp += copy.attrMods.maxHp
   ctx.emit({ type: EventType.StatusApplied, unitId: target.id, statusId: copy.id, duration: copy.remainingRounds })
-}
-
-export function breakStatusesOnDamage(ctx: BattleContext, unit: Unit): void {
-  const broken = unit.statuses.filter((s) => statusDef(ctx, s.id)?.breakOnDamage)
-  for (const s of broken) removeStatus(ctx, unit, s.id, StatusRemoveReason.Damage)
 }
 
 export function tickStatuses(ctx: BattleContext): void {
@@ -280,14 +263,6 @@ function tickStatusDuration(ctx: BattleContext, unit: Unit, inst: StatusInstance
       storedTargetId: inst.storedTargetId,
       env: { skillLevel: inst.transitionSkillLevel ?? 0, targets: 1, source, target: unit },
     })
-  }
-}
-
-/** 倒地清异常；persistWhenDowned（锢魂）留下。 */
-export function clearCombatStatuses(ctx: BattleContext, unit: Unit): void {
-  for (const inst of [...unit.statuses]) {
-    if (statusDef(ctx, inst.id)?.persistWhenDowned) continue
-    removeStatus(ctx, unit, inst.id, StatusRemoveReason.Downed)
   }
 }
 

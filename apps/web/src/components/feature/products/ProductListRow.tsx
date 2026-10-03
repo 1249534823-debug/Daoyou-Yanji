@@ -1,6 +1,6 @@
 import { InkBadge } from '@app/components/ui/InkBadge';
 import { getElementInfo } from '@daoyou/shared/lib/gameConceptDisplay';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import type { ElementType, Quality } from '@daoyou/shared/types/constants';
 import type { ReactNode } from 'react';
 import { getScoreMark } from './scoreMeta';

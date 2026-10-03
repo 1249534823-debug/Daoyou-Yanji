@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { ItemSlot } from '@app/components/feature/items/ItemSlot';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton, InkInput, InkNotice, InkSelect } from '@app/components/ui';
@@ -88,7 +89,7 @@ export function ItemExchangeShopAdminPage({
   const load = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch(endpoint, { cache: 'no-store' });
+      const response = await apiFetch(endpoint, { cache: 'no-store' });
       const data = (await response.json()) as {
         items?: ItemExchangeShopItemView[];
         error?: string;
@@ -137,7 +138,7 @@ export function ItemExchangeShopAdminPage({
     setEditorError('');
     setSaving(true);
     try {
-      const response = await fetch(
+      const response = await apiFetch(
         draft.id ? `${endpoint}/${draft.id}` : endpoint,
         {
           method: draft.id ? 'PUT' : 'POST',
@@ -161,7 +162,7 @@ export function ItemExchangeShopAdminPage({
   const archive = async (item: ItemExchangeShopItemView) => {
     setSaving(true);
     try {
-      const response = await fetch(`${endpoint}/${item.id}/archive`, {
+      const response = await apiFetch(`${endpoint}/${item.id}/archive`, {
         method: 'POST',
       });
       const data = await response.json();

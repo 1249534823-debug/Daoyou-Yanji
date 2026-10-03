@@ -1,6 +1,6 @@
 import { GameIcon } from '@app/components/ui/GameIcon';
 import type { GameSettings } from '@app/lib/game-setting';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import { getAtlasRegion } from '@daoyou/shared/lib/game/mapAtlas';
 import {
   ATLAS_CATEGORY_IDS,

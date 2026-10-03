@@ -3,7 +3,7 @@ import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import {
   changeBreakthroughBattle,
   getBreakthroughBattle,
-} from '@server/lib/services/combat-v6/CombatV6BreakthroughService';
+} from '@server/combat/application/CombatV6BreakthroughService';
 
 @Injectable()
 export class BreakthroughService {

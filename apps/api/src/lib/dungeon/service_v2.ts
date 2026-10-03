@@ -2,11 +2,11 @@ import { createDomainEvent } from '@server/lib/mq/domainEventWriter';
 import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher';
 import { renderPrompt } from '@server/lib/prompts';
 import { findActiveCultivatorOwnerId } from '@server/lib/repositories/cultivatorRepository';
-import { grantInventory } from '@server/lib/services/InventoryService';
-import { assertCombatV6MutationAllowed } from '@server/lib/services/combat-v6/CombatV6MutationGuard';
-import { readCraftReadinessFacts } from '@server/lib/services/cultivator/CultivatorFactsReader';
-import { getPlayerIdentityCultivatorById } from '@server/lib/services/cultivator/CultivatorProfileRepository';
-import { updateCultivator } from '@server/lib/services/cultivator/CultivatorStateRepository';
+import { grantInventory } from '@server/inventory/application/InventoryService';
+import { assertCombatV6MutationAllowed } from '@server/combat/application/CombatV6MutationGuard';
+import { readCraftReadinessFacts } from '@server/cultivator/application/readers/CultivatorFactsReader';
+import { getPlayerIdentityCultivatorById } from '@server/cultivator/application/readers/CultivatorProfileRepository';
+import { updateCultivator } from '@server/cultivator/application/readers/CultivatorStateRepository';
 import { resourceEngine } from '@server/lib/services/resource/ResourceEngine';
 import { generateAiObject } from '@server/utils/aiClient';
 import { stableCompactStringify } from '@server/utils/llmPayload';
@@ -54,8 +54,8 @@ import {
   withRedisLock,
   type RedisLeaseContext,
 } from '../redis/lock';
-import { ConditionService } from '../services/ConditionService';
-import { QiService } from '../services/QiService';
+import { ConditionService } from '@server/cultivator/application/ConditionService';
+import { QiService } from '@server/cultivator/application/QiService';
 import {
   beginDungeonBattle,
   dungeonPlayer,

@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { CombatV6Battle } from '@app/components/feature/combat-v6/CombatV6Battle';
 import { CombatV6Page } from '@app/components/feature/combat-v6/CombatV6Page';
 import { useCombatV6Session } from '@app/components/feature/combat-v6/useCombatV6Session';
@@ -31,7 +32,7 @@ export function DungeonBattle({
   const finish = () => {
     if (!combat.session?.outcome || combat.playing) return;
     void combat.run(async () => {
-      const response = await fetch('/api/dungeon/battle/complete', {
+      const response = await apiFetch('/api/dungeon/battle/complete', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ battleId, requestId: battleId }),

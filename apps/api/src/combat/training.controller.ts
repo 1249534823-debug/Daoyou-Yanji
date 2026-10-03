@@ -1,17 +1,3 @@
-import { getRuntimeEnvironment } from '@server/lib/config/environment';
-import {
-  Controller,
-  Delete,
-  Get,
-  HttpCode,
-  HttpException,
-  Inject,
-  Param,
-  Post,
-  Put,
-  UseFilters,
-} from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { CombatAutoRequestSchema } from '@daoyou/shared/combat-v6/auto';
 import {
   CombatV6TrainingCommandParamsSchema,
@@ -21,6 +7,21 @@ import {
   CombatV6TrainingRevisionRequestSchema,
   CombatV6TrainingSessionParamsSchema,
 } from '@daoyou/shared/contracts/combatV6';
+import {
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  HttpException,
+  Inject,
+  Injectable,
+  Param,
+  Post,
+  Put,
+  UseFilters,
+} from '@nestjs/common';
+import { AppConfigService } from '@server/config/app-config.service';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access';
 import { FirstQuery } from '../http/first-query';
@@ -30,14 +31,17 @@ import { AutoErrors } from './auto-errors';
 import { CombatErrors } from './combat-errors';
 import { TrainingService } from './training.service';
 
-class TraceParamsPipe extends ZodPipe<
+@Injectable()
+export class TraceParamsPipe extends ZodPipe<
   z.infer<typeof CombatV6TrainingSessionParamsSchema>
 > {
-  constructor() {
+  constructor(
+    @Inject(AppConfigService) private readonly config: AppConfigService,
+  ) {
     super(CombatV6TrainingSessionParamsSchema);
   }
   override transform(value: unknown) {
-    if (getRuntimeEnvironment().NODE_ENV === 'production')
+    if (this.config.get('NODE_ENV') === 'production')
       throw new HttpException(
         {
           success: false,
@@ -155,7 +159,7 @@ export class TrainingController {
   @Get('sessions/:sessionId/trace')
   trace(
     @CurrentCultivator() actor: ActiveCultivatorRef,
-    @Param(new TraceParamsPipe())
+    @Param(TraceParamsPipe)
     params: z.infer<typeof CombatV6TrainingSessionParamsSchema>,
   ) {
     return this.training.trace(actor, params.sessionId);

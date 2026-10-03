@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   combatV6Request,
   mutationBody,
@@ -218,7 +219,7 @@ export function BeastBookDrawer({
         oldSkillCount?: number;
         newSkillCount?: number;
       }>(
-        await fetch('/api/combat-v6/inventory', {
+        await apiFetch('/api/combat-v6/inventory', {
           ...mutationBody({
             action: mode,
             id: selected!.id,

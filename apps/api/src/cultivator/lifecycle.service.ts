@@ -1,6 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import { deleteCultivatorCommand } from '@server/lib/services/CultivatorProfileApplicationService';
-import { getLastDeadCultivatorSummary } from '@server/lib/services/cultivator/CultivatorProfileRepository';
+import { deleteCultivatorCommand } from '@server/cultivator/application/CultivatorProfileApplicationService';
+import { getLastDeadCultivatorSummary } from '@server/cultivator/application/readers/CultivatorProfileRepository';
 @Injectable()
 export class LifecycleService {
   async delete(userId: string, cultivatorId: string | undefined) {

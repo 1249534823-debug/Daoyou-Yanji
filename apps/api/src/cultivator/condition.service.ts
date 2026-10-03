@@ -3,13 +3,13 @@ import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import {
   getBodyCultivationBreakthroughPreviewData,
   loadPlayerBodyCultivationFacts,
-} from '@server/lib/services/BodyCultivationBreakthroughService';
+} from '@server/cultivator/application/BodyCultivationBreakthroughService';
 import {
   breakthroughBodyCultivation,
   breakthroughCultivatorMarrowWash,
   consumeCultivatorConsumable,
   recoverCultivatorAtInn,
-} from '@server/lib/services/CultivatorConditionApplicationService';
+} from '@server/cultivator/application/CultivatorConditionApplicationService';
 import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
 import type { BodyCultivationBreakthroughReadinessResponse } from '@daoyou/shared/contracts/bodyCultivation';
 

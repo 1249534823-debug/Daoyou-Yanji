@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { BeastTradeCard } from '@app/components/feature/beasts/BeastTradeCard';
 import { BeastTradeDetails } from '@app/components/feature/beasts/BeastTradePreview';
 import { InkModal } from '@app/components/layout';
@@ -53,7 +54,7 @@ export function ListBeastModal({
   useEffect(() => {
     if (visibility !== 'private') return;
     const controller = new AbortController();
-    void fetch('/api/friends', { signal: controller.signal })
+    void apiFetch('/api/friends', { signal: controller.signal })
       .then(async (r) => {
         const data = await r.json();
         if (!r.ok) throw new Error(data.error ?? '好友读取失败');
@@ -110,7 +111,7 @@ export function ListBeastModal({
     setError('');
     try {
       const result = await mutate<{ message: string }>(
-        fetch('/api/auction/list-beast', {
+        apiFetch('/api/auction/list-beast', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(request.data),

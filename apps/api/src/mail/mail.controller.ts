@@ -8,11 +8,11 @@ import {
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { BeastError } from '@server/lib/services/combat-v6/BeastMutationGuard';
+import { BeastError } from '@server/combat/application/BeastMutationGuard';
 import { PlayerCommandIdempotencyError } from '@server/lib/services/CommandExecutors';
-import { InventoryError } from '@server/lib/services/InventoryService';
-import { PlayerMailCommandError } from '@server/lib/services/PlayerMailApplicationService';
-import { PlayerMailServiceError } from '@server/lib/services/PlayerMailService';
+import { InventoryError } from '@server/inventory/application/InventoryService';
+import { PlayerMailCommandError } from '@server/mail/application/PlayerMailApplicationService';
+import { PlayerMailServiceError } from '@server/mail/application/PlayerMailService';
 import { SendMailSchema, type SendMailRequest } from '@daoyou/shared/contracts/mail';
 import { JournalRequestSchema } from '@daoyou/shared/contracts/playerJournal';
 import { z } from 'zod';

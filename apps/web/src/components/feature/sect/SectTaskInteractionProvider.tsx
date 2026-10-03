@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 /* eslint-disable react-refresh/only-export-components -- provider and hook form one feature boundary */
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { useResourceMutation } from '@app/lib/resources/mutations';
@@ -62,7 +63,7 @@ export function SectTaskInteractionProvider({
       setBusy(true);
       setError(undefined);
       try {
-        const result = await mutate<T>(fetch(url, init));
+        const result = await mutate<T>(apiFetch(url, init));
         if (successMessage)
           pushToast({ message: successMessage, tone: 'success' });
         return result;

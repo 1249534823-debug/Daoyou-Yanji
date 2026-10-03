@@ -4,13 +4,13 @@ import {
   artifactMigrationAvailability,
   exchangeArtifactMigration,
   readArtifactMigration,
-} from '@server/lib/services/legacy/ArtifactMigrationService';
+} from '@server/legacy-items/application/ArtifactMigrationService';
 import {
   exchangeManualMigration,
   manualMigrationAvailability,
   readManualMigration,
   readManualMigrationAdmin,
-} from '@server/lib/services/legacy/ManualMigrationService';
+} from '@server/legacy-items/application/ManualMigrationService';
 import type { ExchangeArtifact } from '@daoyou/shared/contracts/artifactMigration';
 import type { ExchangeManual } from '@daoyou/shared/contracts/manualMigration';
 

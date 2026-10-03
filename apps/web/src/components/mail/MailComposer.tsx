@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { InventoryHeader } from '@app/components/feature/items/InventoryHeader';
 import { InventoryItems } from '@app/components/feature/items/InventoryItems';
 import { ItemSlot } from '@app/components/feature/items/ItemSlot';
@@ -86,7 +87,7 @@ export function MailComposer({
     setBusy(true);
     try {
       await mutate(
-        fetch('/api/cultivator/mail/send', {
+        apiFetch('/api/cultivator/mail/send', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(parsed.data),

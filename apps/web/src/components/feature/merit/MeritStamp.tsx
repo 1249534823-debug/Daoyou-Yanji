@@ -1,5 +1,5 @@
 import { GameImage } from '@app/components/ui/GameImage';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import type { SponsorshipTierId } from '@daoyou/shared/lib/sponsorship';
 import { SPONSORSHIP_TIER_META } from '@daoyou/shared/lib/sponsorship';
 

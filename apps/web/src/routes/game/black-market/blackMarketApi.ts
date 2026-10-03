@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import type {
   BlackMarketInteractCommand,
   BlackMarketInteractionResult,
@@ -20,7 +21,7 @@ export async function fetchBlackMarketOverview(
   signal?: AbortSignal,
 ): Promise<BlackMarketOverview> {
   return readJson(
-    await fetch(`/api/black-market/${encodeURIComponent(nodeId)}`, {
+    await apiFetch(`/api/black-market/${encodeURIComponent(nodeId)}`, {
       cache: 'no-store',
       signal,
     }),
@@ -31,7 +32,7 @@ export async function openBlackMarketSession(
   nodeId: string,
   npcId: BlackMarketNpcId,
 ): Promise<Response> {
-  return fetch(`/api/black-market/${encodeURIComponent(nodeId)}/sessions`, {
+  return apiFetch(`/api/black-market/${encodeURIComponent(nodeId)}/sessions`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ npcId }),
@@ -50,7 +51,7 @@ export async function interactWithBlackMarket(
   } = {},
   signal?: AbortSignal,
 ): Promise<BlackMarketInteractionResult> {
-  const response = await fetch(
+  const response = await apiFetch(
     `/api/black-market/${encodeURIComponent(nodeId)}/sessions/${sessionId}/interact`,
     {
       method: 'POST',
@@ -110,7 +111,7 @@ export function commitBlackMarketPurchase(
   version: number,
   expectedPrice: number,
 ): Promise<Response> {
-  return fetch(
+  return apiFetch(
     `/api/black-market/${encodeURIComponent(nodeId)}/sessions/${sessionId}/commit`,
     {
       method: 'POST',
@@ -126,7 +127,7 @@ export async function leaveBlackMarketSession(
   version: number,
 ): Promise<BlackMarketSessionView> {
   return readJson(
-    await fetch(
+    await apiFetch(
       `/api/black-market/${encodeURIComponent(nodeId)}/sessions/${sessionId}/leave`,
       {
         method: 'POST',

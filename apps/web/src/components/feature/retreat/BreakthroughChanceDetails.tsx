@@ -1,4 +1,4 @@
-import { cn } from '@daoyou/shared/lib/utils';
+import { cn } from '@app/lib/cn';
 import { format } from 'd3-format';
 import type { BreakthroughChancePresentation } from './breakthroughChancePresentation';
 

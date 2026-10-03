@@ -10,7 +10,7 @@ import {
   rotateSponsorshipClaimAsAdmin,
   SponsorshipApplicationError,
   updateSponsorshipConfigAsAdmin,
-} from '@server/lib/services/SponsorshipApplicationService';
+} from '@server/sponsorship/application/SponsorshipApplicationService';
 import { requireSponsorshipProvider } from '@server/lib/sponsorship/providerRegistry';
 import {
   AfdianSponsorshipConfigSchema,

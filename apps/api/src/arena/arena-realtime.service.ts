@@ -5,13 +5,13 @@ import {
   arenaSocketState,
   subscribeArenaSpectators,
   subscribeArenaV6,
-} from '@server/lib/services/combat-v6/CombatV6ArenaBroadcast';
+} from '@server/combat/application/CombatV6ArenaBroadcast';
 import {
   ArenaV6Error,
   ownedArenaV6,
   watchedArenaV6,
-} from '@server/lib/services/combat-v6/CombatV6ArenaService';
-import { CombatV6ArenaStore } from '@server/lib/services/combat-v6/CombatV6ArenaStore';
+} from '@server/combat/application/CombatV6ArenaService';
+import { CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore';
 import { fromNodeHeaders } from 'better-auth/node';
 import type { IncomingMessage } from 'node:http';
 import { WebSocket } from 'ws';

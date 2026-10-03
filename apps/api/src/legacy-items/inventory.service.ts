@@ -1,9 +1,3 @@
-import { HttpException, Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { discardInventoryItem } from '@server/lib/services/InventoryApplicationService';
-import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
-import { readResourceWithMeta } from '@server/lib/services/ResourceReadService';
-import { getPaginatedInventoryByType } from '@server/lib/services/cultivator/CultivatorInventoryRepository';
 import {
   ELEMENT_VALUES,
   MATERIAL_TYPE_VALUES,
@@ -12,6 +6,14 @@ import {
   type MaterialType,
   type Quality,
 } from '@daoyou/shared/types/constants';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
+import { getPaginatedInventoryByType } from '@server/cultivator/application/readers/CultivatorInventoryRepository';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
+import { discardInventoryItem } from '@server/inventory/application/InventoryApplicationService';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { DbClient } from '@server/lib/drizzle/db';
+import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
+import { readResourceWithMeta } from '@server/lib/services/ResourceReadService';
 import { z } from 'zod';
 const DiscardSchema = z.object({
   itemId: z.string(),
@@ -36,6 +38,7 @@ function parseList<T extends string>(
 }
 @Injectable()
 export class LegacyInventoryService {
+  constructor(@Inject(DRIZZLE_DATABASE) private readonly database: DbClient) {}
   async list(
     actor: ActiveCultivatorRef,
     query: Record<string, string | undefined>,
@@ -154,32 +157,44 @@ export class LegacyInventoryService {
     };
     const scope = { kind: 'cultivator' as const, id: actor.cultivatorId };
     if (type === 'artifacts') {
-      return await readResourceWithMeta(scope, 'inventory.artifacts', (q) =>
-        getPaginatedInventoryByType(
-          actor.userId,
-          actor.cultivatorId,
-          { ...options, type: 'artifacts' },
-          q,
-        ),
+      return await readResourceWithMeta(
+        scope,
+        'inventory.artifacts',
+        (q) =>
+          getPaginatedInventoryByType(
+            actor.userId,
+            actor.cultivatorId,
+            { ...options, type: 'artifacts' },
+            q,
+          ),
+        this.database,
       );
     }
     if (type === 'materials') {
-      return await readResourceWithMeta(scope, 'inventory.materials', (q) =>
+      return await readResourceWithMeta(
+        scope,
+        'inventory.materials',
+        (q) =>
+          getPaginatedInventoryByType(
+            actor.userId,
+            actor.cultivatorId,
+            { ...options, type: 'materials' },
+            q,
+          ),
+        this.database,
+      );
+    }
+    return await readResourceWithMeta(
+      scope,
+      'inventory.consumables',
+      (q) =>
         getPaginatedInventoryByType(
           actor.userId,
           actor.cultivatorId,
-          { ...options, type: 'materials' },
+          { ...options, type: 'consumables' },
           q,
         ),
-      );
-    }
-    return await readResourceWithMeta(scope, 'inventory.consumables', (q) =>
-      getPaginatedInventoryByType(
-        actor.userId,
-        actor.cultivatorId,
-        { ...options, type: 'consumables' },
-        q,
-      ),
+      this.database,
     );
   }
   async discard(actor: ActiveCultivatorRef, body: unknown) {

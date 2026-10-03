@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { useEffect, useState } from 'react';
 
 /**
@@ -32,7 +33,7 @@ export function useDungeonLimit(hasCultivator: boolean) {
     try {
       setIsLoading(true);
       setError(null);
-      const res = await fetch('/api/dungeon/limit');
+      const res = await apiFetch('/api/dungeon/limit');
       const data = await res.json();
 
       if (data.error) {
@@ -60,7 +61,7 @@ export function useDungeonLimit(hasCultivator: boolean) {
 
     const loadLimit = async () => {
       try {
-        const res = await fetch('/api/dungeon/limit');
+        const res = await apiFetch('/api/dungeon/limit');
         const data = await res.json();
 
         if (cancelled) return;

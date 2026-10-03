@@ -4,6 +4,27 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
+const sharedImportBoundaries = [
+  '@server/*',
+  '@app/*',
+  '@daoyou/api*',
+  '@daoyou/web*',
+  'node:*',
+  '**/apps/**',
+  '@nestjs/**',
+  'express',
+  'pg',
+  'drizzle-orm',
+  'drizzle-orm/**',
+  'ioredis',
+  'nats',
+  'react',
+  'react-dom',
+  'react-dom/**',
+  'clsx',
+  'tailwind-merge',
+];
+
 export default tseslint.config(
   { ignores: ['**/dist/**'] },
   {
@@ -51,14 +72,7 @@ export default tseslint.config(
       'no-restricted-imports': [
         'error',
         {
-          patterns: [
-            '@server/*',
-            '@app/*',
-            '@daoyou/api*',
-            '@daoyou/web*',
-            'node:*',
-            '**/apps/**',
-          ],
+          patterns: sharedImportBoundaries,
         },
       ],
     },
@@ -69,6 +83,92 @@ export default tseslint.config(
       'no-restricted-imports': [
         'error',
         { patterns: ['@app/*', '@daoyou/web*', '**/apps/web/**'] },
+      ],
+    },
+  },
+  {
+    files: ['packages/shared/src/engine/combat-v6/**/*.ts'],
+    ignores: ['**/*.test.*', '**/*.spec.*'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            { group: sharedImportBoundaries },
+            {
+              regex: '(?:^|/)(?:battle-v5|creation-v2)(?:/|$)',
+              message: 'V6 must not depend on retired engines.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ['packages/shared/src/engine/combat-v6/core/**/*.ts'],
+    ignores: ['**/*.test.*', '**/*.spec.*'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            { group: sharedImportBoundaries },
+            {
+              regex:
+                '(?:^|/)(?:rules-daoyou|projection|content|battle-v5|creation-v2)(?:/|$)',
+              message: 'Combat core receives rules and content from its host.',
+            },
+          ],
+        },
+      ],
+      'no-restricted-properties': [
+        'error',
+        { object: 'Math', property: 'random', message: 'Use the battle RNG.' },
+        {
+          object: 'Date',
+          property: 'now',
+          message: 'Pass time from the host.',
+        },
+      ],
+    },
+  },
+  {
+    files: ['apps/api/src/lib/repositories/**/*.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            { group: ['@app/*', '@daoyou/web*', '**/apps/web/**'] },
+            {
+              group: [
+                '@server/*/application/**',
+                '@server/sects/organization/**',
+                '@server/lib/services/**',
+              ],
+              message: 'Repositories must not call application services.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ['apps/api/src/**/*.service.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: ['@app/*', '@daoyou/web*', '**/apps/web/**'],
+          paths: [
+            {
+              name: '@server/lib/drizzle/db',
+              importNames: ['db', 'getExecutor'],
+              message:
+                'Inject DRIZZLE_DATABASE in Nest services; pass it to repository calls.',
+            },
+          ],
+        },
       ],
     },
   },

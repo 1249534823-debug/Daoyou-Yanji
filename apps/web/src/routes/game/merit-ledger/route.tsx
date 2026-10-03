@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { MeritStamp } from '@app/components/feature/merit/MeritStamp';
 import { GameSceneFrame } from '@app/components/game-shell';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
@@ -60,13 +61,13 @@ async function readJson<T>(response: Response): Promise<T> {
 async function fetchWorld(): Promise<MeritPublicRow[]> {
   const pageSize = 50;
   const first = await readJson<{ items: MeritPublicRow[]; total: number }>(
-    await fetch(`/api/sponsorship/public?page=1&pageSize=${pageSize}`),
+    await apiFetch(`/api/sponsorship/public?page=1&pageSize=${pageSize}`),
   );
   const totalPages = Math.ceil(first.total / pageSize);
   const remaining = await Promise.all(
     Array.from({ length: totalPages - 1 }, async (_, index) =>
       readJson<{ items: MeritPublicRow[]; total: number }>(
-        await fetch(
+        await apiFetch(
           `/api/sponsorship/public?page=${index + 2}&pageSize=${pageSize}`,
         ),
       ),
@@ -92,8 +93,8 @@ export default function MeritLedgerPage() {
 
   const load = useCallback(async () => {
     const [nextConfig, nextMine, nextWorld] = await Promise.all([
-      readJson<ClientConfig>(await fetch('/api/sponsorship/config')),
-      readJson<MeritState>(await fetch('/api/sponsorship/me')),
+      readJson<ClientConfig>(await apiFetch('/api/sponsorship/config')),
+      readJson<MeritState>(await apiFetch('/api/sponsorship/me')),
       fetchWorld(),
     ]);
     setConfig(nextConfig);
@@ -127,7 +128,7 @@ export default function MeritLedgerPage() {
     if (!mine?.profile) return;
     try {
       await readJson(
-        await fetch('/api/sponsorship/me/visibility', {
+        await apiFetch('/api/sponsorship/me/visibility', {
           method: 'PATCH',
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify({ isPublic: checked }),
@@ -148,7 +149,7 @@ export default function MeritLedgerPage() {
     setBusy(true);
     try {
       await readJson(
-        await fetch('/api/sponsorship/claims', {
+        await apiFetch('/api/sponsorship/claims', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify({ code: claimCode.trim(), publicListing }),
@@ -174,7 +175,7 @@ export default function MeritLedgerPage() {
     setBusy(true);
     try {
       const intent = await readJson<{ id: string; checkoutUrl: string }>(
-        await fetch('/api/sponsorship/checkout-intents', {
+        await apiFetch('/api/sponsorship/checkout-intents', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify({ tier, publicListing }),
@@ -190,7 +191,7 @@ export default function MeritLedgerPage() {
         await new Promise((resolve) => window.setTimeout(resolve, 3_000));
         if (pollingGeneration.current !== generation) return;
         const status = await readJson<{ status: string }>(
-          await fetch(`/api/sponsorship/checkout-intents/${intent.id}`),
+          await apiFetch(`/api/sponsorship/checkout-intents/${intent.id}`),
         );
         if (status.status === 'fulfilled') {
           await load();

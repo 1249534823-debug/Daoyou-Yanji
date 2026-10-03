@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { InventoryHeader } from '@app/components/feature/items/InventoryHeader';
 import { InventoryItems } from '@app/components/feature/items/InventoryItems';
 import { ItemSlot } from '@app/components/feature/items/ItemSlot';
@@ -54,7 +55,7 @@ export function ListItemModal({
   useEffect(() => {
     if (visibility !== 'private') return;
     let cancelled = false;
-    void fetch('/api/friends')
+    void apiFetch('/api/friends')
       .then(async (r) => {
         const data = await r.json();
         if (!r.ok) throw new Error(data.error ?? '好友读取失败');
@@ -107,7 +108,7 @@ export function ListItemModal({
     setBusy(true);
     try {
       const result = await mutate<{ message: string }>(
-        fetch('/api/auction/list', {
+        apiFetch('/api/auction/list', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(parsed.data),

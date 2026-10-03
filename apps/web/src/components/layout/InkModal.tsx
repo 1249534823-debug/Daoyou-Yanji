@@ -1,4 +1,4 @@
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import { type ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 

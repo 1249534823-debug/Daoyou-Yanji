@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { renderPrompt } from '@server/lib/prompts';
-import { executeYieldCommand } from '@server/lib/services/YieldApplicationService';
+import { executeYieldCommand } from '@server/cultivator/application/YieldApplicationService';
 import { streamAiText } from '@server/utils/aiClient';
 import { getGameConceptLabel } from '@daoyou/shared/lib/gameConceptDisplay';
 

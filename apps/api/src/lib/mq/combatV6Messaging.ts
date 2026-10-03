@@ -6,11 +6,11 @@ import {
 import {
   startArenaV6Coordinator,
   stopArenaV6Coordinator,
-} from '@server/lib/services/combat-v6/CombatV6ArenaService';
-import { retryCombatV6Settlements } from '@server/lib/services/combat-v6/CombatV6ConditionProjector';
-import { CombatV6RuntimeStore } from '@server/lib/services/combat-v6/CombatV6RuntimeStore';
-import { combatV6TrainingSessionStore } from '@server/lib/services/combat-v6/CombatV6TrainingSessionService';
-import { wildSessions } from '@server/lib/services/combat-v6/CombatV6WildSessionService';
+} from '@server/combat/application/CombatV6ArenaService';
+import { retryCombatV6Settlements } from '@server/combat/application/CombatV6ConditionProjector';
+import { CombatV6RuntimeStore } from '@server/combat/application/CombatV6RuntimeStore';
+import { combatV6TrainingSessionStore } from '@server/combat/application/CombatV6TrainingSessionService';
+import { wildSessions } from '@server/combat/application/CombatV6WildSessionService';
 import {
   COMBAT_V6_REPLAY_STREAM,
   COMBAT_V6_REPLAY_SUBJECT,
@@ -27,7 +27,7 @@ import { JSONCodec, type ConsumerMessages, type JsMsg } from 'nats';
 import {
   startHuntWorld,
   stopHuntWorld,
-} from '../services/hunts/HuntWorldService';
+} from '@server/hunts/application/HuntWorldService';
 import {
   COMBAT_V6_REPLAY_ARCHIVE_CONSUMER,
   consumerRetryDelayMs,

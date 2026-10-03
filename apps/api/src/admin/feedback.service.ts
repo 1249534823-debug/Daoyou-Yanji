@@ -1,5 +1,6 @@
-import { HttpException, Injectable } from '@nestjs/common';
-import { getExecutor } from '@server/lib/drizzle/db';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
+import type { DbClient } from '@server/lib/drizzle/db';
 import { cultivators } from '@server/lib/drizzle/schema';
 import {
   findFeedbackById,
@@ -8,8 +9,8 @@ import {
   type FeedbackStatus,
   type FeedbackType,
 } from '@server/lib/repositories/feedbackRepository';
-import { MailService } from '@server/lib/services/MailService';
-import { updateSpiritStones } from '@server/lib/services/cultivator/CultivatorStateRepository';
+import { MailService } from '@server/mail/application/MailService';
+import { updateSpiritStones } from '@server/cultivator/application/readers/CultivatorStateRepository';
 import { and, eq, inArray } from 'drizzle-orm';
 import { z } from 'zod';
 
@@ -76,8 +77,10 @@ function buildFeedbackStatusMailContent(params: {
 
 @Injectable()
 export class AdminFeedbackService {
+  constructor(@Inject(DRIZZLE_DATABASE) private readonly database: DbClient) {}
+
   async list(query: Record<string, string | undefined>) {
-    const q = getExecutor();
+    const q = this.database;
     const page = Number.parseInt(query.page ?? '1', 10);
     const limit = Number.parseInt(query.limit ?? '20', 10);
     const status = query.status as FeedbackStatus | undefined;
@@ -174,7 +177,7 @@ export class AdminFeedbackService {
     let notifiedUser = false;
     let rewardGranted = false;
     if (hasStatusChanged) {
-      const q = getExecutor();
+      const q = this.database;
       const fallbackCultivator = existing.cultivatorId
         ? null
         : await q.query.cultivators.findFirst({

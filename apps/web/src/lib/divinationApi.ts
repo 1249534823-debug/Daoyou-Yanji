@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import type {
   DivinationRecord,
   DivinationStreamEvent,
@@ -13,7 +14,7 @@ async function readJson<T>(response: Response): Promise<T> {
 }
 export async function getDivination(signal?: AbortSignal) {
   return readJson<DivinationView>(
-    await fetch('/api/divination', { cache: 'no-store', signal }),
+    await apiFetch('/api/divination', { cache: 'no-store', signal }),
   );
 }
 export async function drawDivination(
@@ -21,7 +22,7 @@ export async function drawDivination(
   signal: AbortSignal,
 ) {
   return readJson<DivinationRecord>(
-    await fetch('/api/divination/draw', {
+    await apiFetch('/api/divination/draw', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ direction }),
@@ -34,7 +35,7 @@ export async function interpretDivination(
   signal: AbortSignal,
   onEvent: (event: DivinationStreamEvent) => void,
 ) {
-  const response = await fetch('/api/divination/interpret', {
+  const response = await apiFetch('/api/divination/interpret', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ drawId }),

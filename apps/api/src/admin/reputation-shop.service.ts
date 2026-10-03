@@ -5,7 +5,7 @@ import {
   listReputationShopItems,
   ReputationShopError,
   updateReputationShopItem,
-} from '@server/lib/services/ReputationShopService';
+} from '@server/reputation-shop/application/ReputationShopService';
 import {
   ReputationShopItemMutationSchema,
   ReputationShopListQuerySchema,

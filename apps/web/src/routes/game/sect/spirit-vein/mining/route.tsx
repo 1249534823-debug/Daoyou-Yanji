@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   GameActivityFullscreenRetry,
   GameActivityLaunchGate,
@@ -175,7 +176,7 @@ export default function SectSpiritVeinMiningPage() {
       }
       try {
         const result = await mutate<SectTaskActionData>(
-          fetch(
+          apiFetch(
             `/api/sects/current/tasks/${encodeURIComponent(mode.task.definitionId)}/actions/start`,
             postJson({}),
           ),
@@ -221,7 +222,7 @@ export default function SectSpiritVeinMiningPage() {
       setOperationError(undefined);
       try {
         const result = await mutate<SectTaskActionData>(
-          fetch(
+          apiFetch(
             `/api/sects/current/tasks/${encodeURIComponent(session.task.definitionId)}/actions/complete`,
             postJson(
               {

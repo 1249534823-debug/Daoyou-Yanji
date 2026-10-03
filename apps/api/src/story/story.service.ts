@@ -1,20 +1,24 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { DbClient } from '@server/lib/drizzle/db';
 import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
 import { readResourceWithMeta } from '@server/lib/services/ResourceReadService';
 import {
   completeStoryGuideCommand,
   completeStoryPerformanceCommand,
-} from '@server/lib/services/StoryApplicationService';
-import { StoryService as StoryDomain } from '@server/lib/services/StoryService';
+} from '@server/story/application/StoryApplicationService';
+import { StoryService as StoryDomain } from '@server/story/application/StoryService';
 
 @Injectable()
 export class StoryService {
+  constructor(@Inject(DRIZZLE_DATABASE) private readonly database: DbClient) {}
   read(actor: ActiveCultivatorRef) {
     return readResourceWithMeta(
       { kind: 'cultivator', id: actor.cultivatorId },
       'player.story',
       (tx) => StoryDomain.read(actor.cultivatorId, tx),
+      this.database,
     );
   }
 

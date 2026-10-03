@@ -6,8 +6,8 @@ import {
   cancelAuctionListing,
   listAuctionBeast,
   listAuctionItem,
-} from '@server/lib/services/AuctionApplicationService';
-import { publicAuctionListing } from '@server/lib/services/AuctionService';
+} from '@server/auction/application/AuctionApplicationService';
+import { publicAuctionListing } from '@server/auction/application/AuctionService';
 import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
 import type {
   AuctionBeastListRequest,

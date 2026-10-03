@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { GameLoadingState } from '@app/components/game-shell/GameLoadingState';
 import { InkButton } from '@app/components/ui/InkButton';
 import type { QiLogEntry, QiLogsResponse } from '@daoyou/shared/contracts/qi';
@@ -70,7 +71,7 @@ export function QiLogsTab() {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch(
+        const response = await apiFetch(
           `/api/cultivator/qi/logs?page=${page}&pageSize=${PAGE_SIZE}`,
         );
         const json = (await response.json()) as {

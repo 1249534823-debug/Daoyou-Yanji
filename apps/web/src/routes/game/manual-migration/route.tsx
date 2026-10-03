@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import {
   combatV6Request,
   mutationBody,
@@ -92,7 +93,7 @@ function MigrationPage({ ownerId }: { ownerId: string }) {
     setError('');
     try {
       const data = await consumeResourceMutation<ManualMigrationResult>(
-        await fetch(
+        await apiFetch(
           `${endpoint}/exchange`,
           mutationBody({ productId: confirm.id, selections }),
         ),

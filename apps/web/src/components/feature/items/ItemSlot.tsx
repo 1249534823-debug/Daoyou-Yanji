@@ -1,5 +1,5 @@
 import { GameIcon } from '@app/components/ui/GameIcon';
-import { cn } from '@daoyou/shared/lib/cn';
+import { cn } from '@app/lib/cn';
 import {
   useEffect,
   useLayoutEffect,

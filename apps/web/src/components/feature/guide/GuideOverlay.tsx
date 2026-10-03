@@ -1,3 +1,4 @@
+import { apiFetch } from '@app/lib/api/fetch';
 import { InkButton } from '@app/components/ui';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
 import { usePlayerSession } from '@app/lib/resources/player';
@@ -225,7 +226,7 @@ function GuideSession({
     notingRef.current = true;
     setNoting(true);
     setNoteError(undefined);
-    void fetch(`/api/story/guides/${encodeURIComponent(lessonId)}/complete`, {
+    void apiFetch(`/api/story/guides/${encodeURIComponent(lessonId)}/complete`, {
       method: 'POST',
     })
       .then((response) => consumeResourceMutation(response))
