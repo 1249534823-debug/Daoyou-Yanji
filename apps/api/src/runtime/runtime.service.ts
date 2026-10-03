@@ -6,13 +6,14 @@ import {
   type OnApplicationShutdown,
 } from '@nestjs/common';
 import { HttpAdapterHost } from '@nestjs/core';
-import { DatabaseService } from '../database/database.service';
+import { CombatV6TrainingSessionService } from '@server/combat/application/CombatV6TrainingSessionService';
+import { closeRedisConnection } from '@server/lib/redis';
 import {
   registerMessageInfrastructure,
   shutdownMessageInfrastructure,
-} from '@server/lib/mq/domainEventRegistry';
-import { closeRedisConnection } from '@server/lib/redis';
+} from '@server/runtime/messaging/domainEventRegistry';
 import type { Server } from 'node:http';
+import { DatabaseService } from '../database/database.service';
 import { RequestWorkService } from '../http/request-work.service';
 import { CronService } from './cron.service';
 
@@ -26,6 +27,8 @@ export class RuntimeService
   private drainTimer?: ReturnType<typeof setTimeout>;
 
   constructor(
+    @Inject(CombatV6TrainingSessionService)
+    private readonly training: CombatV6TrainingSessionService,
     @Inject(DatabaseService) private readonly database: DatabaseService,
     @Inject(CronService) private readonly cron: CronService,
     @Inject(HttpAdapterHost) private readonly http: HttpAdapterHost,
@@ -33,7 +36,7 @@ export class RuntimeService
   ) {}
 
   async onApplicationBootstrap(): Promise<void> {
-    await registerMessageInfrastructure();
+    await registerMessageInfrastructure(this.training);
     this.cron.start();
   }
 

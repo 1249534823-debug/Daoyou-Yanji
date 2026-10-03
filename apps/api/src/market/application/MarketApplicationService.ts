@@ -1,18 +1,16 @@
-import type { DbTransaction } from '@server/lib/drizzle/db';
+import type { MarketBuyInput } from '@daoyou/shared/contracts/market';
+import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
+import type { CultivatorQueriesService } from '@server/cultivator/cultivator-queries.service';
+import type { DbClient, DbTransaction } from '@server/lib/drizzle/db';
 import { cultivators } from '@server/lib/drizzle/schema';
 import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
 import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateRepository';
-import { getPlayerPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository';
-import type { MarketBuyInput } from '@daoyou/shared/contracts/market';
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
-import type { PreHeavenFate } from '@daoyou/shared/types/cultivator';
-import { eq } from 'drizzle-orm';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
-import { readCultivatorRealm } from '@server/cultivator/application/readers/CultivatorFactsReader';
 import {
   markMarketPurchased,
   prepareBatchMarketPurchase,
 } from '@server/market/application/MarketService';
+import type { PlayerCommandExecutor } from '@server/player/application/state/CommandExecutors';
+import { eq } from 'drizzle-orm';
 
 type PreparedPurchaseCommand<T> = {
   commit(tx: DbTransaction): Promise<{
@@ -58,12 +56,6 @@ type MarketActor = {
   cultivatorId: string;
 };
 
-async function loadMarketFates(actor: MarketActor): Promise<PreHeavenFate[]> {
-  return (
-    (await getPlayerPreHeavenFates(actor.userId, actor.cultivatorId)) ?? []
-  );
-}
-
 async function runAfterCommit(
   afterCommit: (() => Promise<void>) | undefined,
   context: Record<string, unknown>,
@@ -76,70 +68,86 @@ async function runAfterCommit(
   }
 }
 
-export async function purchaseMarketItems(args: {
-  actor: MarketActor;
-  nodeId: string;
-  input: MarketBuyInput;
-}) {
-  const { actor, nodeId, input } = args;
-  const fingerprint = JSON.stringify({
-    nodeId,
-    layer: input.layer,
-    expectedTotal: input.expectedTotal,
-    ids: input.items.map((item) => item.listingId).sort(),
-  });
-  const source = 'market_purchase_v6';
-  return withRedisLock(
-    {
-      keys: [
-        redisLockKeys.cultivatorMutation(actor.cultivatorId),
-        `market:purchase:user:${actor.userId}`,
-      ],
-      context: 'market-purchase',
-      timeoutMs: 30000,
-      retries: 0,
-    },
-    async (lease) => {
-      const existing = await findPlayerMutationRequest(
-        actor.cultivatorId,
-        source,
-        input.requestId,
-      );
-      const prepared = existing
-        ? undefined
-        : await prepareBatchMarketPurchase({
-            nodeId,
-            layer: input.layer,
-            items: input.items,
-            expectedTotal: input.expectedTotal,
-            userId: actor.userId,
-            cultivatorId: actor.cultivatorId,
-            cultivatorRealm: (await readCultivatorRealm(actor.cultivatorId))
-              .realm,
-            fates: await loadMarketFates(actor),
-          });
-      const committed = await playerCommandExecutor.execute({
-        coordination: { mode: 'redis', lease },
-        userId: actor.userId,
-        cultivatorId: actor.cultivatorId,
-        source,
-        idempotency: { key: input.requestId, fingerprint },
-        command: async (tx) => {
-          if (!prepared) throw new Error('购买凭据已失效，请重新选购');
-          return executeMarketPurchaseCommand(prepared, tx, actor.cultivatorId);
-        },
-      });
-      await runAfterCommit(
-        () =>
-          markMarketPurchased(
-            actor.userId,
-            nodeId,
-            input.layer,
-            input.items.map((item) => item.listingId),
-          ),
-        { cultivatorId: actor.cultivatorId, requestId: input.requestId },
-      );
-      return committed;
-    },
-  );
+export class MarketPurchaseService {
+  constructor(
+    private readonly facts: CultivatorQueriesService,
+    private readonly commands: PlayerCommandExecutor,
+    private readonly database: DbClient,
+  ) {}
+
+  async purchase(args: {
+    actor: MarketActor;
+    nodeId: string;
+    input: MarketBuyInput;
+  }) {
+    const { actor, nodeId, input } = args;
+    const fingerprint = JSON.stringify({
+      nodeId,
+      layer: input.layer,
+      expectedTotal: input.expectedTotal,
+      ids: input.items.map((item) => item.listingId).sort(),
+    });
+    const source = 'market_purchase_v6';
+    return withRedisLock(
+      {
+        keys: [
+          redisLockKeys.cultivatorMutation(actor.cultivatorId),
+          `market:purchase:user:${actor.userId}`,
+        ],
+        context: 'market-purchase',
+        timeoutMs: 30000,
+        retries: 0,
+      },
+      async (lease) => {
+        const existing = await findPlayerMutationRequest(
+          actor.cultivatorId,
+          source,
+          input.requestId,
+          this.database,
+        );
+        const prepared = existing
+          ? undefined
+          : await prepareBatchMarketPurchase({
+              nodeId,
+              layer: input.layer,
+              items: input.items,
+              expectedTotal: input.expectedTotal,
+              userId: actor.userId,
+              cultivatorId: actor.cultivatorId,
+              cultivatorRealm: (await this.facts.realm(actor.cultivatorId))
+                .realm,
+              fates: await this.facts.preHeavenFates(
+                actor.userId,
+                actor.cultivatorId,
+              ),
+            });
+        const committed = await this.commands.execute({
+          coordination: { mode: 'redis', lease },
+          userId: actor.userId,
+          cultivatorId: actor.cultivatorId,
+          source,
+          idempotency: { key: input.requestId, fingerprint },
+          command: async (tx) => {
+            if (!prepared) throw new Error('购买凭据已失效，请重新选购');
+            return executeMarketPurchaseCommand(
+              prepared,
+              tx,
+              actor.cultivatorId,
+            );
+          },
+        });
+        await runAfterCommit(
+          () =>
+            markMarketPurchased(
+              actor.userId,
+              nodeId,
+              input.layer,
+              input.items.map((item) => item.listingId),
+            ),
+          { cultivatorId: actor.cultivatorId, requestId: input.requestId },
+        );
+        return committed;
+      },
+    );
+  }
 }

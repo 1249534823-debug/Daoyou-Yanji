@@ -57,7 +57,7 @@ description: Daoyou NestJS API、认证、授权、Better Auth、ALTCHA、admin�
 - Resolve the actor from `activeCultivatorRef`; derive combat attributes, equipment, manuals and beasts server-side through `CombatV6BuildService.ts`. Client commands do not authorize client-supplied combat units, results or rewards.
 - Preserve session ownership/participant checks, `expectedRevision` validation, legal-command queries and Redis CAS. Spectator and replay views must retain their existing visibility checks.
 - State changes use the owning service's mutation/occupancy guards, transaction and resource response path (`CommandExecutors.ts`, `ResourceMutationResponse.ts`, `InventoryService.ts`). Check mode-specific exceptions such as dungeon recovery before reusing a blanket combat lock.
-- Terminal settlement and replay archival run through `apps/api/src/lib/mq/combatV6Messaging.ts` and V6 projectors. Retain retry/idempotency semantics; do not introduce direct route settlement alongside consumers.
+- Terminal settlement and replay archival run through `apps/api/src/runtime/messaging/combatV6Messaging.ts` and V6 projectors. Retain retry/idempotency semantics; do not introduce direct route settlement alongside consumers.
 - `/api/battle-records/*` is a 410 retirement endpoint; do not restore V5 battle handlers for new V6 history features.
 
 ## External Service Facts

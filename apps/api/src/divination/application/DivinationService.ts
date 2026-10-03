@@ -24,9 +24,9 @@ import {
 } from '@daoyou/shared/lib/divination';
 import { and, eq } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
-import { assertInventoryIdle, grantInventory } from '@server/inventory/application/InventoryService';
+import { assertInventoryIdle, grantInventory } from '@server/inventory/operations';
 import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
-import { ResourceEventCommitter } from '@server/lib/services/ResourceEventCommitter';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
 
 type Actor = { userId: string; cultivatorId: string };
 type Row = typeof dailyDivinations.$inferSelect;

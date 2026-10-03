@@ -37,8 +37,8 @@ import {
   getNegativeFateEffects,
   getPositiveFateEffects,
 } from '@server/reshape/application/FateFragmentRegistry';
-import { assertInventoryIdle, InventoryError } from '@server/inventory/application/InventoryService';
-import { ResourceEventCommitter } from '@server/lib/services/ResourceEventCommitter';
+import { assertInventoryIdle, InventoryError } from '@server/inventory/operations';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
 import { TaskService } from '@server/tasks/application/TaskService';
 import { readCombatV6ConditionAuthority } from '@server/combat/application/CombatV6ConditionAuthority';
 import {

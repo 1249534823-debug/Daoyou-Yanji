@@ -1,8 +1,13 @@
 import { consumables, materials } from '@server/lib/drizzle/schema';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
 import { and, eq } from 'drizzle-orm';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
-import { MarketServiceError } from '@server/market/application/MarketService';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
+
+class InventoryDiscardError extends Error {
+  constructor(public status: number, message: string) {
+    super(message);
+  }
+}
 
 type Actor = { userId: string; cultivatorId: string };
 
@@ -27,7 +32,7 @@ export function discardInventoryItem(args: {
         )
         .returning();
       if (result.length === 0) {
-        throw new MarketServiceError(404, '物品未找到或无法删除');
+        throw new InventoryDiscardError(404, '物品未找到或无法删除');
       }
       const resourceTopic =
         args.itemType === 'consumable'

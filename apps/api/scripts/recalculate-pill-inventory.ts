@@ -12,7 +12,7 @@ import {
   saveInventoryPlan,
 } from '../src/inventory/application/InventoryService';
 import { inventoryStackKey } from '../src/inventory/application/inventoryStackKey';
-import { ResourceEventCommitter } from '../src/lib/services/ResourceEventCommitter';
+import { ResourceEventCommitter } from '../src/player/application/state/ResourceEventCommitter';
 import { compactStorage, type InventoryItem } from '../../../packages/shared/src/inventory';
 
 const args = process.argv.slice(2);

@@ -17,7 +17,7 @@ import {
   lockActiveMembership,
 } from '@server/lib/repositories/sectCombatRepository';
 import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository';
-import { ResourceEventCommitter } from '@server/lib/services/ResourceEventCommitter';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
 import type {
   SectPathSelectionRequest,
   SectCombatView,

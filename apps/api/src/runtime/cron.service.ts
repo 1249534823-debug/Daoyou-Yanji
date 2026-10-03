@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { SchedulerRegistry } from '@nestjs/schedule';
-import { BACKGROUND_SCHEDULES } from '@server/lib/jobs/schedules';
+import { BACKGROUND_SCHEDULES } from '@server/runtime/jobs/schedules';
 import { publishScheduledBackgroundCommand } from '@server/lib/mq/backgroundCommandPublisher';
 import { CronJob } from 'cron';
 import { AppConfigService } from '../config/app-config.service';

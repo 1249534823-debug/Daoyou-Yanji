@@ -9,7 +9,7 @@ import {
   openBlackMarketSession,
   prepareBlackMarketInteraction,
 } from '@server/black-market/application/BlackMarketService';
-import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
 import type { BlackMarketInteractStreamEvent } from '@daoyou/shared/types/blackMarket';
 import type { z } from 'zod';
 import type {

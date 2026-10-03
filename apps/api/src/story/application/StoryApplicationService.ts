@@ -1,5 +1,5 @@
 import type { StoryView } from '@daoyou/shared/story/schema';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
 import { StoryService } from '@server/story/application/StoryService';
 
 export function completeStoryPerformanceCommand(args: {

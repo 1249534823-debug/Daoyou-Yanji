@@ -4,12 +4,12 @@ import type { DbTransaction } from '@server/lib/drizzle/db';
 import { cultivators } from '@server/lib/drizzle/schema';
 import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
 import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateRepository';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
 import {
   materialLibraryEntryToMaterial,
   sampleMaterialLibraryEntryByPreferences,
 } from '@server/admin/application/MaterialLibraryService';
-import { readCultivatorRealm } from '@server/cultivator/application/readers/CultivatorFactsReader';
+import { readCultivatorRealm } from '@server/cultivator/facts';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
 import { MaterialFactsSchema } from '@daoyou/shared/items/definitions/materials';
 import {

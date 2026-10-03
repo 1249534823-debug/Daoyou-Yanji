@@ -33,7 +33,7 @@ import {
   carryV6SectBuild,
   planV6SectTransfer,
 } from '@server/combat/application/CombatV6SectTransfer';
-import { assertInventoryIdle } from '@server/inventory/application/InventoryService';
+import { assertInventoryIdle } from '@server/inventory/operations';
 import { getSectDateKey, getSectWeekKey } from '@server/sects/organization/SectOrganizationClock';
 
 async function loadTransferTalisman(

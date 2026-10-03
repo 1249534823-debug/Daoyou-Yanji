@@ -4,7 +4,7 @@ import { resetDevDivination } from '@server/dev-tools/application/DevDivinationS
 import { clearDevInventoryBag } from '@server/dev-tools/application/DevInventoryService';
 import { DivinationError } from '@server/divination/application/DivinationService';
 import { grantDevResources } from '@server/forging/application/ForgingService';
-import { InventoryError } from '@server/inventory/application/InventoryService';
+import { InventoryError } from '@server/inventory/operations';
 import { QiServiceError } from '@server/cultivator/application/QiService';
 import { DevCultivatorPatchSchema } from '@daoyou/shared/contracts/devTools';
 import { DevGrantSchema } from '@daoyou/shared/contracts/forging';

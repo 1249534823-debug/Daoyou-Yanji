@@ -144,7 +144,6 @@ export default tseslint.config(
               group: [
                 '@server/*/application/**',
                 '@server/sects/organization/**',
-                '@server/lib/services/**',
               ],
               message: 'Repositories must not call application services.',
             },
@@ -166,6 +165,67 @@ export default tseslint.config(
               importNames: ['db', 'getExecutor'],
               message:
                 'Inject DRIZZLE_DATABASE in Nest services; pass it to repository calls.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ['apps/api/src/market/**/*.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            { group: ['@app/*', '@daoyou/web*', '**/apps/web/**'] },
+            {
+              group: [
+                '@server/cultivator/application/**',
+                '@server/inventory/application/**',
+              ],
+              message:
+                'Market uses public character queries and inventory operations/providers.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ['apps/api/src/inventory/**/*.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            { group: ['@app/*', '@daoyou/web*', '**/apps/web/**'] },
+            {
+              group: ['@server/market/**', '**/market/application/**'],
+              message:
+                'Inventory owns recycling and must not depend on Market.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ['apps/api/src/lib/mq/**/*.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            { group: ['@app/*', '@daoyou/web*', '**/apps/web/**'] },
+            {
+              group: [
+                '@server/*/application/**',
+                '@server/sects/organization/**',
+                '@server/runtime/**',
+              ],
+              message:
+                'Business message registration belongs to Runtime; MQ libraries own transport.',
             },
           ],
         },

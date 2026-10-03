@@ -14,9 +14,9 @@ import { prepareAlchemyCraft } from '@server/alchemy/application/alchemyServiceV
 import {
   playerCommandExecutor,
   type CommittedCommand,
-} from '@server/lib/services/CommandExecutors';
-import { readCultivatorName } from '@server/cultivator/application/readers/CultivatorFactsReader';
-import { assertInventoryIdle } from '@server/inventory/application/InventoryService';
+} from '@server/player/application/state/CommandExecutors';
+import { readCultivatorName } from '@server/cultivator/facts';
+import { assertInventoryIdle } from '@server/inventory/operations';
 import {
   qiCurrencyChange,
   type QiSettlementBaseline,

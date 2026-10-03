@@ -3,8 +3,8 @@ import { startBreakthroughBattle } from '@server/combat/application/CombatV6Brea
 import { DRIZZLE_DATABASE } from '@server/database/database.service';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import type { DbClient } from '@server/lib/drizzle/db';
-import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
-import { readResourceWithMeta } from '@server/lib/services/ResourceReadService';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
+import { readResourceWithMeta } from '@server/player/application/state/ResourceReadService';
 import { claimTaskRewardCommand } from '@server/tasks/application/TaskApplicationService';
 import { TaskService } from '@server/tasks/application/TaskService';
 

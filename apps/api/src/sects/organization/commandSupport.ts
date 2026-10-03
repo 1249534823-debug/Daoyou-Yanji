@@ -1,5 +1,5 @@
 import type { DbTransaction } from '@server/lib/drizzle/db';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
 import type { SectRuntime } from '@daoyou/shared/engine/sect';
 

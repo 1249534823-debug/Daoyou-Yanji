@@ -1,5 +1,5 @@
 import { Controller, Get, HttpException, Inject } from '@nestjs/common';
-import { getMessageInfrastructureHealthStatus } from '@server/lib/mq/domainEventRegistry';
+import { getMessageInfrastructureHealthStatus } from '@server/runtime/messaging/domainEventRegistry';
 import { getNatsHealthStatus } from '@server/lib/nats';
 import { getRedisHealthStatus } from '@server/lib/redis';
 import { Access } from '../auth/access';

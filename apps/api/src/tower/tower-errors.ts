@@ -1,7 +1,7 @@
 import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { InventoryError } from '@server/inventory/application/InventoryService';
+import { InventoryError } from '@server/inventory/operations';
 import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService';
-import { TowerV6Error } from '@server/lib/tower/combatV6';
+import { TowerV6Error } from '@server/tower/application/runtime/combatV6';
 import { ZodError } from 'zod';
 import { apiErrorFilter } from '../http/error-filter';
 

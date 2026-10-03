@@ -7,8 +7,8 @@ import {
   getTowerBattle,
   getTowerView,
   startTower,
-} from '@server/lib/tower/combatV6';
-import { getTowerLeaderboard } from '@server/lib/tower/leaderboard';
+} from '@server/tower/application/runtime/combatV6';
+import { getTowerLeaderboard } from '@server/tower/application/runtime/leaderboard';
 import type { CombatV6TrainingCommandRequestSchema } from '@daoyou/shared/contracts/combatV6';
 import { getTowerSeasonMeta } from '@daoyou/shared/lib/tower/season';
 import type { z } from 'zod';

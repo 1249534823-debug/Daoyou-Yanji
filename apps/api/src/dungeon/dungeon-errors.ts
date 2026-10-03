@@ -1,4 +1,4 @@
-import { DungeonFlowError } from '@server/lib/dungeon/service_v2';
+import { DungeonFlowError } from '@server/dungeon/application/flow/DungeonFlowService';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
 import { DungeonStartError } from '@server/dungeon/application/DungeonApplicationService';
 import {

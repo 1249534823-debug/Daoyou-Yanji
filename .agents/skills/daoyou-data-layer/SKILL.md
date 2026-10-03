@@ -48,7 +48,7 @@ Repository names resolve under `apps/api/src/lib/repositories`; V6 service names
 ### Redis, Messages and Replays
 
 - Redis is authoritative for active V6 battle state, commands and RNG. Inspect `CombatV6RuntimeStore.ts` and the mode-specific stores for CAS revisions, occupancy, expiry and outboxes; do not substitute process-local sessions.
-- Access Redis through `apps/api/src/lib/redis`; NATS through `apps/api/src/lib/nats`. `apps/api/src/lib/mq/combatV6Messaging.ts` coordinates terminal/replay publication and archival.
+- Access Redis through `apps/api/src/lib/redis`; NATS through `apps/api/src/lib/nats`. `apps/api/src/runtime/messaging/combatV6Messaging.ts` coordinates terminal/replay publication and archival.
 - PostgreSQL V6 archives enforce source/idempotency uniqueness. Replay participants intentionally do not cascade from character deletion; the battle archive owns their lifecycle.
 - Keep settlement, resource events and replay delivery idempotent across retries. Read `docs/nats-domain-events.md` together with the relevant consumer before changing message boundaries.
 

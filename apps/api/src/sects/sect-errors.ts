@@ -1,6 +1,6 @@
 import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { PlayerCommandIdempotencyError } from '@server/lib/services/CommandExecutors';
-import { InventoryError } from '@server/inventory/application/InventoryService';
+import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors';
+import { InventoryError } from '@server/inventory/operations';
 import { SectError } from '@server/sects/application/SectError';
 import { SectShopError } from '@server/sects/application/SectShopService';
 import { apiErrorFilter } from '../http/error-filter';

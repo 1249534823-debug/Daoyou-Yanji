@@ -62,12 +62,12 @@ import type {
 import { MARKET_PRESET_FALLBACK_LAYERS } from '@daoyou/shared/types/market';
 import { and, eq, inArray, sql } from 'drizzle-orm';
 import { createHash } from 'node:crypto';
-import { grantInventory } from '@server/inventory/application/InventoryService';
+import { grantInventory } from '@server/inventory/operations';
 import { deliverMarketMaterial } from '@server/market/application/MarketInventoryDelivery';
 import {
   sanitizeMaterialDetails,
   type HiddenMysteryReveal,
-} from '@server/inventory/application/materialDetailsPrivacy';
+} from '@server/inventory/material-privacy';
 import {
   materialLibraryEntryToMaterial,
   sampleMaterialLibraryEntries,

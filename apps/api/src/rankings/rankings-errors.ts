@@ -1,5 +1,5 @@
 import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { InventoryError } from '@server/inventory/application/InventoryService';
+import { InventoryError } from '@server/inventory/operations';
 import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService';
 import { RankingV6Error } from '@server/combat/application/CombatV6RankingService';
 import { z } from 'zod';

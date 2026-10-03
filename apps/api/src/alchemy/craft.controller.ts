@@ -11,7 +11,7 @@ import {
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
 import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError';
-import { PlayerCommandIdempotencyError } from '@server/lib/services/CommandExecutors';
+import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors';
 import { CraftCommandError } from '@server/forging/application/CraftApplicationService';
 import { QiServiceError } from '@server/cultivator/application/QiService';
 import { z } from 'zod';

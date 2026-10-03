@@ -19,7 +19,7 @@ import {
   listTopSectContributionRanking,
 } from '@server/lib/repositories/sectOrganizationRepository';
 import { findMembership } from '@server/lib/repositories/sectRepository';
-import { readResourceWithResolvedScope } from '@server/lib/services/ResourceReadService';
+import { readResourceWithResolvedScope } from '@server/player/application/state/ResourceReadService';
 import { createAndPublishSectChatMessage } from '@server/social/application/chatDelivery';
 import {
   ChatMessageApplicationError,

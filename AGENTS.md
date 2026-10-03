@@ -15,7 +15,7 @@ AI agents should read this first. Keep changes small, project-specific, and back
 ## Key Directories
 
 - `apps/api/src/main.ts`: Node/Nest entrypoint, HTTP/WS adapters and shutdown coordination; runtime module owns cron and messaging lifecycle.
-- `apps/api/src`: Nest feature modules. Each feature owns its `application/` implementations (sects uses `organization/`); `lib` retains shared infrastructure and resource coordination.
+- `apps/api/src`: Nest feature modules. Each feature owns its `application/` implementations (sects uses `organization/`); player owns state coordination, runtime owns jobs/message composition, and `lib` retains shared infrastructure.
 - `apps/web/src`: React SPA routes, layouts, game shell, UI, hooks, providers.
 - `packages/shared/src`: shared contracts, game engines, config, pure logic, domain types.
 - `apps/api/src/lib/drizzle/schema.ts`: Drizzle schema for `wanjiedaoyou_*` business tables.
@@ -74,9 +74,9 @@ pnpm run db:migrate
 
 - Numeric data uses Tailwind default `font-mono`; prose inherits the body font. Keep quantity weight/spacing local (`font-semibold tracking-tight`), and do not override `--font-mono` or add numeric font tokens/classes. See `docs/numeric-typography.md`.
 
-- React routes are centralized in `apps/web/src/router.tsx` and loaded with `lazyRoute`.
+- React routes are assembled in `apps/web/src/router.tsx` from `route-definitions/**` and loaded with `lazyRoute`. Preserve route nesting/order and implicit IDs when moving definitions.
 - Game scenes use `handle={scene(...)}`; the scene id must exist in `apps/web/src/components/game-shell/gameNavigation.ts`.
-- `/game` uses distinct genesis, narrative, viewport, activity, combat, map and dungeon layouts. V6 battles have `CombatV6Layout`; inspect `router.tsx` for the actual wrapper before changing a scene.
+- `/game` uses distinct genesis, narrative, viewport, activity, combat, map and dungeon layouts. V6 battles have `CombatV6Layout`; inspect `route-definitions/game.tsx` and its branches for the actual wrapper before changing a scene.
 - Main-flow game UI must follow `daoyou-game-ui`: identity layer, task layer, and navigation layer stay separate.
 - Do not add `InkPageShell` to game routes.
 - Cross-route reusable UI belongs in `apps/web/src/components/feature/**`, `apps/web/src/components/ui/**`, or `apps/web/src/components/game-shell/**`; `apps/web/src/routes/game/**/components` is page-private.

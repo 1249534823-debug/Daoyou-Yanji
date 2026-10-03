@@ -5,7 +5,7 @@ import {
   type DbTransaction,
 } from '@server/lib/drizzle/db';
 import * as schema from '@server/lib/drizzle/schema';
-import { hasActiveDungeon } from '@server/lib/dungeon/occupancy';
+import { hasActiveDungeon } from '@server/dungeon/occupancy';
 import { loadCultivatorSectState } from '@server/lib/repositories/sectRepository';
 import { getOrInitCultivationProgress } from '@daoyou/shared/engine/cultivation/cultivationUtils';
 import type { CultivatorDisplayInput } from '@daoyou/shared/lib/cultivatorDisplay';

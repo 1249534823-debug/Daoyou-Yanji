@@ -1,8 +1,8 @@
-import { hasDungeonBattle } from '@server/lib/dungeon/occupancy';
+import { hasDungeonBattle } from '@server/dungeon/occupancy';
 import { db, type DbExecutor } from '@server/lib/drizzle/db';
 import { redis } from '@server/lib/redis';
 import { hasActiveRanking } from '@server/lib/redis/rankingChallenge';
-import { hasTowerBattle } from '@server/lib/tower/occupancy';
+import { hasTowerBattle } from '@server/tower/occupancy';
 import { arenaOccupancyKey } from '@server/combat/application/CombatV6ArenaStore';
 import { hasActiveBreakthroughBattle } from '@server/combat/application/CombatV6BreakthroughOccupancy';
 import { CombatV6RuntimeStore } from '@server/combat/application/CombatV6RuntimeStore';

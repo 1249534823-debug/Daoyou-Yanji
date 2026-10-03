@@ -2,12 +2,12 @@ import { db, type DbExecutor } from '@server/lib/drizzle/db';
 import { creationProducts, cultivators } from '@server/lib/drizzle/schema';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { readCharacterManuals } from '@server/lib/repositories/characterLoadoutRepository';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
 import {
   assertInventoryIdle,
   grantInventory,
   InventoryError,
-} from '@server/inventory/application/InventoryService';
+} from '@server/inventory/operations';
 import type {
   ExchangeManual,
   ManualMigrationAdminView,

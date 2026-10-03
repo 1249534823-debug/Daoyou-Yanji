@@ -1,4 +1,9 @@
 import { Module } from '@nestjs/common';
+import { DatabaseModule } from '@server/database/database.module';
+import { DRIZZLE_DATABASE } from '@server/database/database.service';
+import type { DbClient } from '@server/lib/drizzle/db';
+import { CombatV6RuntimeStore } from './application/CombatV6RuntimeStore';
+import { CombatV6TrainingSessionService } from './application/CombatV6TrainingSessionService';
 import { AutoStrategyController } from './auto-strategy.controller';
 import { AutoStrategyService } from './auto-strategy.service';
 import { BreakthroughController } from './breakthrough.controller';
@@ -18,6 +23,7 @@ import { WildController } from './wild.controller';
 import { WildService } from './wild.service';
 
 @Module({
+  imports: [DatabaseModule],
   controllers: [
     CombatActivityController,
     ReplaysController,
@@ -29,6 +35,16 @@ import { WildService } from './wild.service';
     SectTaskBattleController,
   ],
   providers: [
+    {
+      provide: CombatV6RuntimeStore,
+      useFactory: () => new CombatV6RuntimeStore(),
+    },
+    {
+      provide: CombatV6TrainingSessionService,
+      useFactory: (store: CombatV6RuntimeStore, database: DbClient) =>
+        new CombatV6TrainingSessionService(store, database),
+      inject: [CombatV6RuntimeStore, DRIZZLE_DATABASE],
+    },
     TraceParamsPipe,
     CombatActivityService,
     ReplaysService,
@@ -38,5 +54,6 @@ import { WildService } from './wild.service';
     BreakthroughService,
     SectTaskBattleService,
   ],
+  exports: [CombatV6TrainingSessionService],
 })
 export class CombatModule {}

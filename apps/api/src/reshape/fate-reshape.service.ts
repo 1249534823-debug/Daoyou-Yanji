@@ -5,7 +5,7 @@ import {
   startFateReshapeCommand,
 } from '@server/reshape/application/FateReshapeApplicationService';
 import { FateReshapeService as FateSessions } from '@server/reshape/application/FateReshapeService';
-import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
 import { z } from 'zod';
 const ConfirmSchema = z.object({
   selectedIndices: z.array(z.number().int().nonnegative()).length(3),

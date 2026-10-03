@@ -13,7 +13,7 @@ import {
   markCultivatorMailRead,
   sendCultivatorMail,
 } from '@server/mail/application/PlayerMailApplicationService';
-import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
 import { scheduleSystemMailObservation } from '@server/mail/application/SystemMailService';
 import { and, desc, eq, sql } from 'drizzle-orm';
 

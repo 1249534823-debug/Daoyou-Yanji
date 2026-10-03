@@ -10,7 +10,7 @@ import {
   getOrCreateSpiritField,
   updateSpiritField,
 } from '@server/lib/repositories/SpiritFieldRepository';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
 import { ConditionService } from '@server/cultivator/application/ConditionService';
 import { qiCurrencyChange } from '@server/cultivator/application/QiResourceChanges';
 import { QiService } from '@server/cultivator/application/QiService';
@@ -46,7 +46,7 @@ import type { MaterialType, RealmType } from '@daoyou/shared/types/constants';
 import type { Consumable, Material } from '@daoyou/shared/types/cultivator';
 import { and, eq } from 'drizzle-orm';
 import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateRepository';
-import { grantInventory } from '@server/inventory/application/InventoryService';
+import { grantInventory } from '@server/inventory/operations';
 import {
   consumeFieldItem,
   fieldResource,

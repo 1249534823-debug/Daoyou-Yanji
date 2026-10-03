@@ -55,12 +55,12 @@ import { WILD_DROP_POOLS, wildItemRewards } from '@daoyou/shared/rewards/wild';
 import { REALM_ORDER } from '@daoyou/shared/types/constants';
 import { eq } from 'drizzle-orm';
 import { createHash, randomInt, randomUUID } from 'node:crypto';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
 import { ConditionService } from '@server/cultivator/application/ConditionService';
 import { qiCurrencyChange } from '@server/cultivator/application/QiResourceChanges';
 import { QiService } from '@server/cultivator/application/QiService';
 
-import { ResourceEventCommitter } from '@server/lib/services/ResourceEventCommitter';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
 import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository';
 import { assembleCombatV6WildPlayer } from '@server/combat/application/CombatV6BuildService';
 import { hasActiveCombat } from '@server/combat/application/CombatOccupancy';

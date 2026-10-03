@@ -40,7 +40,7 @@ import {
   simulateRankingBattle,
 } from '@daoyou/shared/engine/combat-v6/ranking/battle';
 import { and, eq } from 'drizzle-orm';
-import { assertInventoryIdle } from '@server/inventory/application/InventoryService';
+import { assertInventoryIdle } from '@server/inventory/operations';
 import { assembleCombatV6TrainingPlayer } from '@server/combat/application/CombatV6BuildService';
 
 export class RankingV6Error extends Error {}

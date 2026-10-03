@@ -30,7 +30,7 @@ import {
   grantInventory,
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/application/InventoryService';
+} from '@server/inventory/operations';
 import { SectError } from '@server/sects/application/SectError';
 import {
   freezeSectTaskTarget,

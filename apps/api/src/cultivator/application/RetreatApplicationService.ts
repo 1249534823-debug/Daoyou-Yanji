@@ -27,7 +27,7 @@ import type { BreakthroughHistoryEntry } from '@daoyou/shared/types/cultivator';
 import { randomUUID } from 'crypto';
 import { findJournalOperation } from '@server/lib/repositories/playerJournalRepository';
 import { retreatResultFromJournal } from '@daoyou/shared/contracts/playerJournal';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
 import { PillOperationExecutor } from '@server/inventory/application/PillOperationExecutor';
 import { QiService } from '@server/cultivator/application/QiService';
 import { breakthroughChanges, retreatChanges } from '@server/cultivator/application/RetreatResourceChanges';
@@ -459,4 +459,4 @@ export async function commitBreakthroughRetreat(args: {
   });
   return { committed, domainEventId };
 }
-import { assertCombatV6MutationAllowed } from '@server/combat/application/CombatV6MutationGuard';
+import { assertCombatV6MutationAllowed } from '@server/combat/mutation-policy';

@@ -1,4 +1,4 @@
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
 import { MailService, type MailAttachment } from '@server/mail/application/MailService';
 
 export async function sendWeeklyRankingRewardCommand(args: {

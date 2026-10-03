@@ -1,6 +1,3 @@
-import { getExecutor, type DbExecutor } from '@server/lib/drizzle/db';
-import { cultivators, inventoryItems } from '@server/lib/drizzle/schema';
-import { redis } from '@server/lib/redis';
 import type {
   RecycleQuote,
   RecycleResult,
@@ -20,17 +17,26 @@ import { materialFactsOf } from '@daoyou/shared/items/material';
 import { findItemDefinition } from '@daoyou/shared/items/registry';
 import { calculateSpiritFruitRecycleUnitPrice } from '@daoyou/shared/lib/pillRecyclePrice';
 import { QUALITY_ORDER } from '@daoyou/shared/types/constants';
-import { and, eq, inArray, sql } from 'drizzle-orm';
-import { randomUUID } from 'node:crypto';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
-import { inventoryItemOf, saveInventoryPlan } from '@server/inventory/application/InventoryService';
+import {
+  inventoryItemOf,
+  saveInventoryPlan,
+} from '@server/inventory/application/InventoryService';
+import { getExecutor, type DbExecutor } from '@server/lib/drizzle/db';
+import { cultivators, inventoryItems } from '@server/lib/drizzle/schema';
+import { redis } from '@server/lib/redis';
+import {
+  playerCommandExecutor,
+  type PlayerCommandExecutor,
+} from '@server/player/application/state/CommandExecutors';
 import {
   MarketRecycleError,
   buildMaterialHighTierAppraisal,
   calculateHighTierUnitPrice,
   calculateLowTierUnitPrice,
   calculatePillRecycleUnitPrice,
-} from '@server/market/application/MarketRecycleService';
+} from './RecycleAppraisal';
+import { and, eq, inArray, sql } from 'drizzle-orm';
+import { randomUUID } from 'node:crypto';
 
 const key = (owner: string, id: string) => `market:bag-recycle:${owner}:${id}`;
 async function selectedItems(
@@ -65,8 +71,9 @@ async function selectedItems(
 export async function previewBagRecycle(
   owner: string,
   selection: RecycleSelection[],
+  database: DbExecutor = getExecutor(),
 ) {
-  const snapshots = await selectedItems(owner, selection);
+  const snapshots = await selectedItems(owner, selection, database);
   const items = snapshots.map((item, index) => {
     const ref = selection[index];
     const definition = findItemDefinition(item.definitionId);
@@ -152,8 +159,9 @@ export async function previewBagRecycle(
 export function confirmBagRecycle(
   actor: { userId: string; cultivatorId: string },
   quoteId: string,
+  commands: PlayerCommandExecutor = playerCommandExecutor,
 ) {
-  return playerCommandExecutor.executeWithLock<RecycleResult>({
+  return commands.executeWithLock<RecycleResult>({
     ...actor,
     source: 'bag_recycle',
     idempotency: { key: `bag-recycle:${quoteId}`, fingerprint: quoteId },

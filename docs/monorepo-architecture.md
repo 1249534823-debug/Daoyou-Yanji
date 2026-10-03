@@ -2,7 +2,7 @@
 
 审查日期：2026-10-03。目标：NestJS 后端 + React SPA/Vite + pnpm workspace + Turborepo。
 
-本文区分首次审查发现和本轮重构后的状态。代码、依赖图、构建产物与本地运行是判断依据；历史迁移文档不等同于生产验收。本轮改动保留在工作区，尚未发布。
+第 1—6 节保留前次架构整理的审查与验证记录；第 7 节记录按推荐顺序实施的后续六个阶段。本文区分首次审查发现和各轮重构后的状态。代码、依赖图、构建产物与本地运行是判断依据；历史迁移文档不等同于生产验收。本轮改动保留在工作区，尚未发布。
 
 ## 1. 结论
 
@@ -131,3 +131,58 @@ PostgreSQL 管理长期角色/资产/资源版本和回放。Redis 管理活跃�
 未执行生产/预发布写入、迁移、远端发布、完整自然会话续期、全部战斗模式端到端结算或长时间重连验收。本轮结果覆盖架构整理和相关运行路径，不替代迁移文档中的完整上线验收。
 
 后续工作应优先来自实际修改和测量：新增有状态跨领域依赖时补齐 Provider/port；地图体验有性能问题时分析 Phaser 加载；资源 schema 有热路径证据时再细化入口；继续完成生产特殊数据、自然会话续期、灰度与回滚验收。无需为了“标准 monorepo”引入 SSR、拆更多服务、或将所有领域函数机械地包装成 Injectable。
+
+## 7. 后续六阶段实施与验收记录
+
+实施日期：2026-10-03。以本轮开始时的 HEAD 为比较基线；修改尚未提交、推送或部署。边界决策见 [architecture-boundaries.md](architecture-boundaries.md)。不新增工作区、数据库迁移、HTTP 协议或游戏规则。
+
+### 阶段落地
+
+| 阶段 | 已落地内容 | 状态 |
+| --- | --- | --- |
+| 1. 固定边界与基线 | 明确 Controller、应用层、repository、shared 和 Runtime 的所有权；记录同步事务及 outbox 提交顺序 | 已完成 |
+| 2. 坊市纵向样板 | Market 通过 CultivatorQueriesService、InventoryRecycleService、PlayerCommandExecutor 和 MarketPurchaseService 显式组合；数据库经现有 DI token 注入；回收估价归背包领域，消除背包反向导入坊市；lint 禁止坊市访问角色/背包私有实现 | 已完成；本地购买、报价与回收通过 |
+| 3. 玩家状态协调归位 | CommandExecutors、ResourceEngine、读取/响应/资源提交及 DomainEventExecutor 归入 player/application/state；包含维护脚本在内的调用方更新 | 已完成；同步规则、事务和幂等流程保留 |
+| 4. 玩法归位与生命周期 | 秘境归入 dungeon/application/flow，蜃楼归入 tower/application/runtime；jobs 与业务消息组合归 Runtime；秘境流程和训练会话由 Nest Module 创建，训练路由与过期任务使用同一 Provider | 已完成；启动、健康检查、训练与停机通过；完整秘境/蜃楼运行验收仍待补齐 |
+| 5. shared 与 SPA | shared 移除 47 个 wildcard exports，改为 344 个明确入口；router 由领域路由定义组装，HUD 展示、详情、指标和声望读取拆分 | 已完成；类型、构建、路由树与响应式核对通过 |
+| 6. 发布门禁与追溯 | PR/master 与 tag 复用 quality-check；镜像发布依赖同 revision 的质量检查，保留 latest；摘要记录 API revision/tag/digest 和 SPA build ID；蓝绿脚本输出切换前后的镜像身份 | 配置已完成；本地镜像通过，远端 CI 与目标环境切换待验证 |
+
+公开跨领域入口使用 facts、operations、occupancy、mutation-policy 等窄入口，不增加整个 feature 的聚合 barrel。无状态函数继续使用普通函数；既有框架独立协调器与 Nest 的 useValue Provider 共享同一实例，没有另建数据库池或平行命令协调器。其他领域后续新增有状态依赖时沿用坊市样板，不机械地将所有函数改成 Injectable。
+
+当前生产 TS/TSX 文件数为 API 546、Web 584、shared 540，共 1670 个，排除测试与声明文件。根 router 从 1467 行降至 44 行，GameTopHud 从 881 行降至 219 行；移动的实现仍存在于所属目录，文件变小不表示删除了业务能力。
+
+### 本轮验证证据
+
+| 检查 | 实际结果 |
+| --- | --- |
+| pnpm install --frozen-lockfile | 通过，锁文件未变化 |
+| pnpm run lint | 通过，0 error / 0 warning |
+| pnpm run typecheck；三个工作区强制 typecheck | 通过，包含根维护工具 |
+| pnpm exec turbo run build --force | API、Web 通过；Phaser 懒加载大包提示保留 |
+| pnpm run test | 237 文件、2403 测试通过；没有新增 API/Web 或服务 mock 测试 |
+| 静态运行时依赖分析 | 无文件级静态循环，无 API/Web/shared 跨应用导入；不是动态依赖或领域耦合不存在的证明 |
+| 原/新路由树比较 | 生产 131、开发 132 个路由一致；核对 path、index、显式/自动 ID、children 顺序、handle、lazy/loader 及 fallback 标记 |
+| 秘境提取前后源码核对 | 38 个保留的方法实现一致，抽出的 LLM 生成函数体在 helper 调用替换后一致 |
+| Docker 本地构建及产物依赖解析 | daoyou-architecture-local:20261003 构建成功；运行用户为 node，Node 24.18.0，Nest/pg 可解析，dist/main.js 存在 |
+| Workflow YAML、发布 shell | 三个 workflow YAML 解析及 Prettier 检查通过；bash -n scripts/blue-green-app.sh 通过，镜像追溯模板在无 revision label 的本地镜像上正常输出 unknown；SPA 摘要命令在真实构建产物上运行通过。未实际运行 GitHub Actions 或生产脚本 |
+| git diff --check | 通过 |
+
+本轮 SPA 构建 ID：`8824f95e-f3e1-43d3-92b8-e34c365ceaea`。本地镜像 digest：`sha256:e89e4690ea4560d4da46fefbb0a1bba8f4a3cf5794f3219344017c5335143267`。这只是本地构建标识，不是已发布版本。
+
+本地浏览器使用 `127.0.0.1:5174`、API `3001` 和既有本地道友2会话：
+
+- 洞府、HUD 天地灵气/修为详情、地图与坊市、随身物品栏正常加载；本轮浏览器记录未发现控制台 error/warn。
+- 购买地灵草 1 件，售价 47 灵石：HUD 从 40776 更新至 40729，背包增加 1 件。双击购买按钮只产生 1 个购买 POST，返回 200。
+- 回收同一件地灵草：报价 13 灵石，preview/confirm 各返回 200；确认后物品消失，HUD 更新至 40742。双击出售只产生 1 个 confirm POST。本次物品已清理；实际交易差额 34 灵石保留，没有发放或回滚角色资产。
+- 最后将估价实现原样归入背包领域后，再次启动最终 API 并在页面询价，preview 返回 200；清空选择，未出售原有物品。估价文件与基线内容逐字一致。
+- 无会话访问坊市返回 401；输入 schema、价格指纹、已有 requestId 查询、幂等响应及 quote 快照校验经源码检查保留。浏览器双击只验证客户端防重，服务端请求重放、价格变化和资产不足没有在本轮执行，不能据此宣称这些运行场景已通过。
+- 创建训练会话，人物与灵兽提交防御，推进到第 2 回合并播放战报；确认放弃后回到场景选择页，清理当次会话。
+- 秘境准备页及状态读取正常，未启动 LLM 探索；蜃楼页对炼气角色显示金丹准入限制，未完成闯关。读取通过不代表完整结算通过。
+- 360×800 和 1280×900 检查洞府、HUD、底部导航及详情弹窗。截图保存在本次任务临时产物，不纳入仓库。
+- API 健康检查返回 database/redis/nats/messaging 全部 up。SIGTERM 日志顺序为停止调度、排空 HTTP、停止消息、关闭 DB/Redis、shutdown complete；停止了当次启动的 API/Web，保留原有基础设施。
+
+### 保留的问题与发布验收
+
+本地启动时，既有到期拍卖的道装附件不符合当前 shared 物品协议，后台 expireListings 任务报 schema 错误；本轮没有改写这些存量资产。秘境准备页还显示气血 1/996，而 HUD 显示 996/996，需另行核查读取/缓存的权威来源；本轮仅移动实现，未调整相关计算或掩盖差异。
+
+完整秘境 LLM 生成/结算、蜃楼高境界流程、服务端请求重放和失败分支、自然会话续期、历史资产、多人胜利结算仍需真实流程补充。目标环境灰度、旧 SPA/API 兼容、镜像切换与回滚、分支保护和远端 workflow 结果没有执行；继续按 [nestjs-migration.md](nestjs-migration.md) 的发布验收推进。结构迁移阶段已落地，发布验收保持开放。

@@ -6,7 +6,7 @@ import { alchemyShowcaseSnapshot } from '@daoyou/shared/items/alchemyShowcase';
 import { forgingShowcaseSnapshot } from '@daoyou/shared/items/forgingShowcase';
 import { QUALITY_ORDER } from '@daoyou/shared/types/constants';
 import type { WorldChatPayload } from '@daoyou/shared/types/world-chat';
-import type { FeatureCommandResult } from '@server/lib/services/CommandExecutors';
+import type { FeatureCommandResult } from '@server/player/application/state/CommandExecutors';
 import { createAndPublishWorldChatMessage } from '@server/social/application/chatDelivery';
 
 type RumorProjectionResult = FeatureCommandResult<{

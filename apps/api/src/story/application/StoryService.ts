@@ -36,7 +36,7 @@ import {
   type StoryView,
 } from '@daoyou/shared/story/schema';
 import { and, eq, sql } from 'drizzle-orm';
-import { grantInventory } from '@server/inventory/application/InventoryService';
+import { grantInventory } from '@server/inventory/operations';
 
 const MAIN_STORY_ID = 'arrival';
 

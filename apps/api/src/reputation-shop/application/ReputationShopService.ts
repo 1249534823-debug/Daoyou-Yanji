@@ -8,7 +8,7 @@ import {
   reputationShopItems,
   reputationShopPurchases,
 } from '@server/lib/drizzle/schema';
-import { resourceEngine } from '@server/lib/services/resource/ResourceEngine';
+import { resourceEngine } from '@server/player/application/state/ResourceEngine';
 import {
   RewardItemSchema,
   materializeRewardItem,
@@ -23,7 +23,7 @@ import {
 import { getItemExchangePurchaseWeek } from '@daoyou/shared/lib/itemExchangeShop';
 import { and, asc, desc, eq, sql, type SQL } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
-import { grantInventory } from '@server/inventory/application/InventoryService';
+import { grantInventory } from '@server/inventory/operations';
 
 type ShopItemRow = typeof reputationShopItems.$inferSelect;
 

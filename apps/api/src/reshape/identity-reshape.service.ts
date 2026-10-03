@@ -9,7 +9,7 @@ import {
   saveIdentityReshapeDraft,
   startIdentityReshape,
 } from '@server/reshape/application/IdentityReshapeService';
-import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
 import {
   IDENTITY_RESHAPE_DESCRIPTION_MAX_LENGTH,
   IDENTITY_RESHAPE_DESCRIPTION_MIN_LENGTH,

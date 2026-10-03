@@ -17,7 +17,7 @@ import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import type { CultivationProgress } from '@daoyou/shared/types/cultivator';
 import { and, eq } from 'drizzle-orm';
 import { getExecutor } from '@server/lib/drizzle/db';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
 import { newRewardAttachment } from '@server/mail/application/MailInventory';
 import { generateYieldMaterials } from '@server/cultivator/application/YieldDomainEventProjector';
 import { computeItemLibrarySampleKey } from '@server/lib/utils/itemLibrarySampleKey';

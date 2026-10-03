@@ -14,7 +14,7 @@ import {
   assertInventoryIdle,
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/application/InventoryService';
+} from '@server/inventory/operations';
 import { SpiritFieldServiceError } from '@server/spirit-field/application/SpiritFieldError';
 
 export async function readFieldBag(

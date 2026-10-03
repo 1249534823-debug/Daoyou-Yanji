@@ -4,9 +4,9 @@ import { assertAlchemyMaterialVersions } from '@server/alchemy/application/inven
 import { previewFormulaCraft } from '@server/alchemy/application/AlchemyFormulaService';
 import { previewAlchemySelection } from '@server/alchemy/application/alchemyServiceV2';
 import { executeCraftCommand } from '@server/forging/application/CraftApplicationService';
-import { readCraftReadinessFacts } from '@server/cultivator/application/readers/CultivatorFactsReader';
+import { readCraftReadinessFacts } from '@server/cultivator/facts';
 import { getPlayerPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository';
-import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
 import type { z } from 'zod';
 import type { CraftCommandSchema, CraftSchema } from './alchemy-input';
 

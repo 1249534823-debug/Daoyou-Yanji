@@ -23,13 +23,13 @@ import { randomInt, randomUUID } from 'node:crypto';
 import { db, type DbExecutor } from '@server/lib/drizzle/db';
 import { cultivators, inventoryItems } from '@server/lib/drizzle/schema';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
 import {
   assertInventoryIdle,
   InventoryError,
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/application/InventoryService';
+} from '@server/inventory/operations';
 import { QiService } from '@server/cultivator/application/QiService';
 
 async function characterOf(actor: ActiveCultivatorRef, tx: DbExecutor) {

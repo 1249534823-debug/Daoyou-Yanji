@@ -8,7 +8,7 @@ import {
   listAuctionItem,
 } from '@server/auction/application/AuctionApplicationService';
 import { publicAuctionListing } from '@server/auction/application/AuctionService';
-import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
 import type {
   AuctionBeastListRequest,
   AuctionBuySchema,

@@ -14,7 +14,7 @@ import {
   InventoryError,
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/application/InventoryService';
+} from '@server/inventory/operations';
 import { MailService } from '@server/mail/application/MailService';
 import {
   consumeFirstTalismanByScenario,

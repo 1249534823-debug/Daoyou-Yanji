@@ -18,7 +18,7 @@ import {
   grantInventory,
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/application/InventoryService';
+} from '@server/inventory/operations';
 
 export async function readAlchemyMaterials(
   owner: string,

@@ -1,5 +1,5 @@
 import { publicUnitAppearances } from '@daoyou/shared/combat-v6/unit-appearance';
-import { db } from '@server/lib/drizzle/db';
+import type { DbClient } from '@server/lib/drizzle/db';
 import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
 import { findActiveSectMembership } from '@server/lib/repositories/sectCombatRepository';
 import { automaticCommands } from '@daoyou/shared/combat-v6/auto';
@@ -61,7 +61,10 @@ export class CombatV6TrainingSessionError extends Error {
 }
 
 export class CombatV6TrainingSessionService {
-  constructor(private readonly store = new CombatV6RuntimeStore()) {}
+  constructor(
+    private readonly store: CombatV6RuntimeStore,
+    private readonly database: DbClient,
+  ) {}
 
   async create(
     actor: Actor,
@@ -108,7 +111,7 @@ export class CombatV6TrainingSessionService {
       throw this.error('AlreadyActive', '请先结束当前战斗与结算');
     const assembled = await assembleCombatV6TrainingPlayer(
       actor.cultivatorId,
-      db,
+      this.database,
     );
     const seed = randomInt(0, 0x7fffffff);
     const created = createCombatV6TrainingHostV1({
@@ -313,7 +316,7 @@ export class CombatV6TrainingSessionService {
     }
     const membership = await findActiveSectMembership(
       runtime.cultivatorId,
-      db,
+      this.database,
     );
     if (membership?.membershipId === runtime.membershipId) return;
     await this.store.remove(
@@ -466,8 +469,6 @@ export class CombatV6TrainingSessionService {
   }
 }
 
-export const combatV6TrainingSessionStore =
-  new CombatV6TrainingSessionService();
 export const COMBAT_V6_TRAINING_CONTENT_VIEW = Object.freeze({
   tiers: [60, 120, 180] as const,
   encounters: COMBAT_V6_TRAINING_ENCOUNTERS_V1.map(({ id, name }) => ({

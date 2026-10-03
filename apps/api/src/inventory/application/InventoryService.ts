@@ -70,7 +70,7 @@ import { publishResourceEvents } from '@server/realtime/infrastructure/playerSta
 import {
   ResourceEventCommitter,
   type ResourceCommitResult,
-} from '@server/lib/services/ResourceEventCommitter';
+} from '@server/player/application/state/ResourceEventCommitter';
 
 export class InventoryError extends Error {}
 export function inventoryItemOf(

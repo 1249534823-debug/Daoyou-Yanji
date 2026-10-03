@@ -1,5 +1,5 @@
 import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { InventoryError } from '@server/inventory/application/InventoryService';
+import { InventoryError } from '@server/inventory/operations';
 import { InventoryRuleError } from '@daoyou/shared/inventory';
 import { ZodError } from 'zod';
 import { apiErrorFilter } from '../http/error-filter';

@@ -19,7 +19,7 @@ import {
 } from '@daoyou/shared/engine/combat-v6/content';
 import { transferSectProgress } from '@daoyou/shared/engine/combat-v6/sect-progression';
 import { eq } from 'drizzle-orm';
-import { InventoryError } from '@server/inventory/application/InventoryService';
+import { InventoryError } from '@server/inventory/operations';
 
 export async function planV6SectTransfer(
   membershipId: string,

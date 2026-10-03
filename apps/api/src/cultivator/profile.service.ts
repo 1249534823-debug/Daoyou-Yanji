@@ -23,7 +23,7 @@ import {
 } from '@server/cultivator/application/CultivatorProfileApplicationService';
 import { QiService } from '@server/cultivator/application/QiService';
 import { claimRedeemCode } from '@server/admin/application/RedeemCodeApplicationService';
-import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
 
 function parsePositiveInt(value: string | undefined, fallback: number) {
   if (!value) return fallback;

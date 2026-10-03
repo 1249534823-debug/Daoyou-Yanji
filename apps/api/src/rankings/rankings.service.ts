@@ -24,7 +24,7 @@ import {
   runRankingChallenge,
 } from '@server/combat/application/CombatV6RankingService';
 import { loadCultivatorInspectionData } from '@server/cultivator/application/readers/CultivatorCombatProjectionReader';
-import { readCultivatorRealm } from '@server/cultivator/application/readers/CultivatorFactsReader';
+import { readCultivatorRealm } from '@server/cultivator/facts';
 import { and, desc, eq, inArray, sql } from 'drizzle-orm';
 
 function parseRealm(raw: string | undefined): RealmType | null {

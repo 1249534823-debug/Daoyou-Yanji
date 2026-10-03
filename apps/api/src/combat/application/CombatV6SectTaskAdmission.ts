@@ -16,7 +16,7 @@ import {
   sectCombatStates,
   sectMemberships,
 } from '@server/lib/drizzle/schema';
-import { dungeonPlayer } from '@server/lib/dungeon/combatV6';
+import { dungeonPlayer } from '@server/dungeon/combat-player';
 import { redis } from '@server/lib/redis';
 import { and, eq, inArray, isNotNull, ne, sql } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';

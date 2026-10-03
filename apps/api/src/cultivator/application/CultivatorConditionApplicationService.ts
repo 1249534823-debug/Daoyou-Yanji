@@ -16,7 +16,7 @@ import { randomUUID } from 'crypto';
 import { and, eq, sql } from 'drizzle-orm';
 import { inventoryItems } from '@server/lib/drizzle/schema';
 import { loadPlayerBodyCultivationFacts } from '@server/cultivator/application/BodyCultivationBreakthroughService';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
 import { ConditionService } from '@server/cultivator/application/ConditionService';
 import { ConsumableUseEngine } from '@server/inventory/application/ConsumableUseEngine';
 import {

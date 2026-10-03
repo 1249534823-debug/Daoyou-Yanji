@@ -5,7 +5,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service';
 import type { DbClient } from '@server/lib/drizzle/db';
 import { findMembership } from '@server/lib/repositories/sectRepository';
-import { readResourceWithMeta } from '@server/lib/services/ResourceReadService';
+import { readResourceWithMeta } from '@server/player/application/state/ResourceReadService';
 import { SectError } from '@server/sects/application/SectError';
 
 @Injectable()

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
 import {
   claimSpiritFieldStarterSeeds,
   cultivateSpiritField,

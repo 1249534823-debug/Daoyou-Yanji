@@ -1,33 +1,37 @@
 import type { CombatV6TrainingCommandRequestSchema } from '@daoyou/shared/contracts/combatV6';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import type { DbClient } from '@server/lib/drizzle/db';
-import { dungeonHistories } from '@server/lib/drizzle/schema';
-import {
-  changeDungeonBattle,
-  getDungeonBattle,
-} from '@server/lib/dungeon/combatV6';
-import {
-  checkDungeonLimit,
-  getDungeonLimitConfig,
-} from '@server/lib/dungeon/dungeonLimiter';
 import {
   executeDungeonCommand,
   readDungeonState,
 } from '@server/dungeon/application/DungeonApplicationService';
+import {
+  changeDungeonBattle,
+  getDungeonBattle,
+} from '@server/dungeon/application/flow/combatV6';
+import {
+  checkDungeonLimit,
+  getDungeonLimitConfig,
+} from '@server/dungeon/application/flow/dungeonLimiter';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types';
+import type { DbClient } from '@server/lib/drizzle/db';
+import { dungeonHistories } from '@server/lib/drizzle/schema';
 import { desc, eq, sql } from 'drizzle-orm';
 import type { z } from 'zod';
+import { DungeonFlowService } from './application/flow/DungeonFlowService';
 
 @Injectable()
 export class DungeonService {
-  constructor(@Inject(DRIZZLE_DATABASE) private readonly database: DbClient) {}
+  constructor(
+    @Inject(DRIZZLE_DATABASE) private readonly database: DbClient,
+    @Inject(DungeonFlowService) private readonly flow: DungeonFlowService,
+  ) {}
 
   execute(
     actor: ActiveCultivatorRef,
-    command: Parameters<typeof executeDungeonCommand>[0]['command'],
+    command: Parameters<typeof executeDungeonCommand>[1]['command'],
   ) {
-    return executeDungeonCommand({
+    return executeDungeonCommand(this.flow, {
       userId: actor.userId,
       cultivatorId: actor.cultivatorId,
       command,
@@ -35,7 +39,7 @@ export class DungeonService {
   }
 
   async state(owner: string, runId?: string) {
-    return { state: await readDungeonState(owner, runId) };
+    return { state: await readDungeonState(this.flow, owner, runId) };
   }
 
   async history(owner: string, pageQuery?: string, pageSizeQuery?: string) {

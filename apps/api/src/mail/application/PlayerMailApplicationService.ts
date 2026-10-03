@@ -3,12 +3,12 @@ import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateR
 import { getExecutor } from '@server/lib/drizzle/db';
 import { mails } from '@server/lib/drizzle/schema';
 import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
-import { resourceEngine } from '@server/lib/services/resource/ResourceEngine';
+import { resourceEngine } from '@server/player/application/state/ResourceEngine';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
 import type { ResourceOperationSettlement } from '@daoyou/shared/engine/resource/types';
 import { attachmentsToResourceOperations } from '@daoyou/shared/lib/itemLibrary';
 import { and, eq, inArray } from 'drizzle-orm';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
 import {
   deliverMailBeasts,
   selectClaimableBeastMails,
@@ -17,7 +17,7 @@ import { deliverMailInventory } from '@server/mail/application/MailInventory';
 import type { MailAttachment } from '@server/mail/application/MailService';
 import { sendPlayerMail } from '@server/mail/application/PlayerMailService';
 import { readPlayerMailSummary } from '@server/player/application/PlayerResourceReaderService';
-import { readCultivatorName } from '@server/cultivator/application/readers/CultivatorFactsReader';
+import { readCultivatorName } from '@server/cultivator/facts';
 import { sanitizeMaterialForClient } from '@server/inventory/application/materialDetailsPrivacy';
 
 type MailActor = {

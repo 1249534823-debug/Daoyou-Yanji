@@ -29,9 +29,9 @@ import {
   InventoryError,
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/application/InventoryService';
+} from '@server/inventory/operations';
 import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
-import { ResourceEventCommitter } from '@server/lib/services/ResourceEventCommitter';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
 
 async function readManualFacts(owner: string, q: DbExecutor) {
   const character = await characterIdentityRow(owner, q);

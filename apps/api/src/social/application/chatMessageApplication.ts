@@ -8,8 +8,8 @@ import type {
   WorldChatMessageType,
   WorldChatPayload,
 } from '@daoyou/shared/types/world-chat';
-import { readCultivatorPublicIdentity } from '@server/cultivator/application/readers/CultivatorFactsReader';
-import { readInventory } from '@server/inventory/application/InventoryService';
+import { readCultivatorPublicIdentity } from '@server/cultivator/facts';
+import { readInventory } from '@server/inventory/operations';
 import { type DbClient } from '@server/lib/drizzle/db';
 import { readBeastRoster } from '@server/lib/repositories/combatV6BeastRepository';
 import {

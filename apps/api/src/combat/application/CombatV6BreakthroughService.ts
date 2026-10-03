@@ -1,7 +1,7 @@
 import { publicUnitAppearances } from '@daoyou/shared/combat-v6/unit-appearance';
 import { db, type DbTransaction } from '@server/lib/drizzle/db';
 import { cultivators, cultivatorTasks } from '@server/lib/drizzle/schema';
-import { dungeonPlayer } from '@server/lib/dungeon/combatV6';
+import { dungeonPlayer } from '@server/dungeon/combat-player';
 import { redis } from '@server/lib/redis';
 import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
 import { settleBeastDeaths } from '@server/lib/repositories/combatV6BeastRepository';
@@ -39,8 +39,8 @@ import type { TaskInstanceMetadata } from '@daoyou/shared/types/task';
 import { eq } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
 import { ConditionService } from '@server/cultivator/application/ConditionService';
-import { assertInventoryIdle } from '@server/inventory/application/InventoryService';
-import { ResourceEventCommitter } from '@server/lib/services/ResourceEventCommitter';
+import { assertInventoryIdle } from '@server/inventory/operations';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
 import { TaskService } from '@server/tasks/application/TaskService';
 
 type Actor = { userId: string; cultivatorId: string };

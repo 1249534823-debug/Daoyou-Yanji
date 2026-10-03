@@ -8,9 +8,9 @@ import {
   inventoryItems,
 } from '@server/lib/drizzle/schema';
 import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock';
-import { assertInventoryIdle, InventoryError } from '@server/inventory/application/InventoryService';
+import { assertInventoryIdle, InventoryError } from '@server/inventory/operations';
 import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
-import { ResourceEventCommitter } from '@server/lib/services/ResourceEventCommitter';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
 
 /** Only the local bag and its equipment references are cleared; storage is retained. */
 export async function clearDevInventoryBag(owner: string) {

@@ -33,7 +33,7 @@ import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerS
 import { and, eq } from 'drizzle-orm';
 import { ConditionService } from '@server/cultivator/application/ConditionService';
 import { describeJournal, runJournalSettlement } from '@server/player/application/JournalSettlement';
-import { ResourceEventCommitter } from '@server/lib/services/ResourceEventCommitter';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
 import { createPostgresSectCommandContext } from '@server/sects/organization/PostgresSectOrganizationAdapters';
 import { fulfillSectV6Task } from '@server/sects/organization/productionSectOrganization';
 import {

@@ -34,7 +34,7 @@ Nest `ConfigurationModule` 使用 `@nestjs/config`、关闭dotenv自动发现，
 
 `DatabaseModule`以 `DRIZZLE_DATABASE` Provider 导出既有Drizzle客户端和 `DatabaseService`，Nest SQL／资源读取入口显式注入并向下传递客户端，与独立仓储共用一个pg.Pool，事务继续使用 `DbExecutor`／`DbTransaction`。Runtime在请求及消息排空后关闭连接；健康检查同时探测PostgreSQL、Redis、NATS及消息设施。
 
-业务实现归所属feature的 `application/`（宗门组织为 `sects/organization/`），实时广播归 `realtime/infrastructure/`。`lib/services`只保留跨领域资源读取、提交和命令协调；避免新增集中式业务实现。浏览器业务HTTP请求使用 `apps/web/src/lib/api/fetch.ts` 的 `apiFetch`，不修改全局fetch。完整边界和发布顺序见 [架构审查与规范](monorepo-architecture.md)。
+业务实现归所属feature的 `application/`（宗门组织为 `sects/organization/`），实时广播归 `realtime/infrastructure/`。`player/application/state`拥有跨领域资源读取、提交和命令协调；秘境/蜃楼归所属feature，调度和业务消息组合归`runtime`，`lib`只保留共享技术设施。避免新增集中式业务实现。浏览器业务HTTP请求使用 `apps/web/src/lib/api/fetch.ts` 的 `apiFetch`，不修改全局fetch。完整边界和发布顺序见 [架构审查与规范](monorepo-architecture.md)。
 
 ## NestJS API
 

@@ -4,7 +4,7 @@ import {
   type NestExpressApplication,
 } from '@nestjs/platform-express';
 import { closeDatabase } from '@server/lib/drizzle/db';
-import { shutdownMessageInfrastructure } from '@server/lib/mq/domainEventRegistry';
+import { shutdownMessageInfrastructure } from '@server/runtime/messaging/domainEventRegistry';
 import { closeRedisConnection } from '@server/lib/redis';
 import express from 'express';
 import 'reflect-metadata';

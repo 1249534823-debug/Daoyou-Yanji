@@ -9,8 +9,8 @@ import {
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
 import { BeastError } from '@server/combat/application/BeastMutationGuard';
-import { PlayerCommandIdempotencyError } from '@server/lib/services/CommandExecutors';
-import { InventoryError } from '@server/inventory/application/InventoryService';
+import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors';
+import { InventoryError } from '@server/inventory/operations';
 import { PlayerMailCommandError } from '@server/mail/application/PlayerMailApplicationService';
 import { PlayerMailServiceError } from '@server/mail/application/PlayerMailService';
 import { SendMailSchema, type SendMailRequest } from '@daoyou/shared/contracts/mail';

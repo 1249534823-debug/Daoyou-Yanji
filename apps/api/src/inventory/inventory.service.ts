@@ -9,7 +9,7 @@ import {
   readInventory,
 } from '@server/inventory/application/InventoryService';
 import type { DbClient } from '@server/lib/drizzle/db';
-import { readResourceWithMeta } from '@server/lib/services/ResourceReadService';
+import { readResourceWithMeta } from '@server/player/application/state/ResourceReadService';
 import type { z } from 'zod';
 
 @Injectable()

@@ -6,7 +6,7 @@ import {
 } from '@server/lib/drizzle/schema';
 import { readActiveSectCombatProgress } from '@server/lib/repositories/sectCombatRepository';
 import { eq, inArray, sql } from 'drizzle-orm';
-import { assertInventoryIdle } from '@server/inventory/application/InventoryService';
+import { assertInventoryIdle } from '@server/inventory/operations';
 
 export class SectMeridianResetServiceError extends Error {
   constructor(message: string) {

@@ -1,33 +1,38 @@
-import { Injectable } from '@nestjs/common';
+import type { MarketBuyInput } from '@daoyou/shared/contracts/market';
+import type { RecycleRequestSchema } from '@daoyou/shared/contracts/recycle';
+import { Inject, Injectable } from '@nestjs/common';
+import { CultivatorQueriesService } from '@server/cultivator/cultivator-queries.service';
+import { InventoryRecycleService } from '@server/inventory/inventory-recycle.service';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import {
-  confirmBagRecycle,
-  previewBagRecycle,
-} from '@server/inventory/application/BagRecycleService';
-import { purchaseMarketItems } from '@server/market/application/MarketApplicationService';
 import {
   getMarketListings,
   MarketServiceError,
   resolveLayer,
   resolveNodeId,
 } from '@server/market/application/MarketService';
-import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
-import { readCultivatorRealm } from '@server/cultivator/application/readers/CultivatorFactsReader';
-import { getPlayerPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository';
-import type { MarketBuyInput } from '@daoyou/shared/contracts/market';
-import type { RecycleRequestSchema } from '@daoyou/shared/contracts/recycle';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
 import type { z } from 'zod';
+import { MarketPurchaseService } from './application/MarketApplicationService';
 
 @Injectable()
 export class MarketService {
+  constructor(
+    @Inject(CultivatorQueriesService)
+    private readonly facts: CultivatorQueriesService,
+    @Inject(InventoryRecycleService)
+    private readonly recycling: InventoryRecycleService,
+    @Inject(MarketPurchaseService)
+    private readonly purchases: MarketPurchaseService,
+  ) {}
+
   async list(actor: ActiveCultivatorRef, node: string, layerValue?: string) {
     const nodeId = resolveNodeId(node);
     const layer = resolveLayer(layerValue);
     if (layer === 'black')
       throw new MarketServiceError(410, '黑市已经移入暗巷，请从坊市入口前往');
     const [{ realm }, fates] = await Promise.all([
-      readCultivatorRealm(actor.cultivatorId),
-      getPlayerPreHeavenFates(actor.userId, actor.cultivatorId),
+      this.facts.realm(actor.cultivatorId),
+      this.facts.preHeavenFates(actor.userId, actor.cultivatorId),
     ]);
     return getMarketListings({
       nodeId,
@@ -40,7 +45,11 @@ export class MarketService {
 
   async buy(actor: ActiveCultivatorRef, node: string, input: MarketBuyInput) {
     return toPlayerStateMutationResponse(
-      await purchaseMarketItems({ actor, nodeId: resolveNodeId(node), input }),
+      await this.purchases.purchase({
+        actor,
+        nodeId: resolveNodeId(node),
+        input,
+      }),
     );
   }
 
@@ -51,10 +60,10 @@ export class MarketService {
     if (input.phase === 'preview')
       return {
         success: true,
-        data: await previewBagRecycle(actor.cultivatorId, input.items),
+        data: await this.recycling.preview(actor.cultivatorId, input.items),
       };
     return toPlayerStateMutationResponse(
-      await confirmBagRecycle(actor, input.quoteId),
+      await this.recycling.confirm(actor, input.quoteId),
     );
   }
 }

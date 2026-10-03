@@ -1,24 +1,29 @@
-import { Injectable } from '@nestjs/common';
-import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import {
-  COMBAT_V6_TRAINING_CONTENT_VIEW,
-  combatV6TrainingSessionStore,
-} from '@server/combat/application/CombatV6TrainingSessionService';
 import type {
   CombatV6TrainingCommandRequestSchema,
   CombatV6TrainingCreateRequest,
 } from '@daoyou/shared/contracts/combatV6';
+import { Inject, Injectable } from '@nestjs/common';
+import {
+  COMBAT_V6_TRAINING_CONTENT_VIEW,
+  CombatV6TrainingSessionService,
+} from '@server/combat/application/CombatV6TrainingSessionService';
+import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import type { z } from 'zod';
 
 @Injectable()
 export class TrainingService {
+  constructor(
+    @Inject(CombatV6TrainingSessionService)
+    private readonly sessions: CombatV6TrainingSessionService,
+  ) {}
+
   content() {
     return { success: true, data: COMBAT_V6_TRAINING_CONTENT_VIEW };
   }
   async current(actor: ActiveCultivatorRef, after: number) {
     return {
       success: true,
-      data: await combatV6TrainingSessionStore.current(actor, after),
+      data: await this.sessions.current(actor, after),
     };
   }
   async create(
@@ -27,17 +32,13 @@ export class TrainingService {
   ) {
     return {
       success: true,
-      data: await combatV6TrainingSessionStore.create(
-        actor,
-        input.encounterId,
-        input.tier,
-      ),
+      data: await this.sessions.create(actor, input.encounterId, input.tier),
     };
   }
   async read(actor: ActiveCultivatorRef, id: string, after: number) {
     return {
       success: true,
-      data: await combatV6TrainingSessionStore.get(actor, id, after),
+      data: await this.sessions.get(actor, id, after),
     };
   }
   async submit(
@@ -48,7 +49,7 @@ export class TrainingService {
   ) {
     return {
       success: true,
-      data: await combatV6TrainingSessionStore.submit(
+      data: await this.sessions.submit(
         actor,
         id,
         input.expectedRevision,
@@ -65,24 +66,19 @@ export class TrainingService {
   ) {
     return {
       success: true,
-      data: await combatV6TrainingSessionStore.resolve(
-        actor,
-        id,
-        revision,
-        round,
-      ),
+      data: await this.sessions.resolve(actor, id, revision, round),
     };
   }
   async abandon(actor: ActiveCultivatorRef, id: string, revision: number) {
     return {
       success: true,
-      data: await combatV6TrainingSessionStore.abandon(actor, id, revision),
+      data: await this.sessions.abandon(actor, id, revision),
     };
   }
   async trace(actor: ActiveCultivatorRef, id: string) {
     return {
       success: true,
-      data: await combatV6TrainingSessionStore.trace(actor, id),
+      data: await this.sessions.trace(actor, id),
     };
   }
 }

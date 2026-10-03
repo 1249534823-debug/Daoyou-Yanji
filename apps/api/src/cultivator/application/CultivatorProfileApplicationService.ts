@@ -18,7 +18,7 @@ import {
   AttributeResetService,
   withAttributeResetLock,
 } from '@server/cultivator/application/AttributeResetService';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
 import {
   deleteCultivator,
 } from '@server/cultivator/application/readers/CultivatorStateRepository';

@@ -21,8 +21,8 @@ import { combatCharacterLevel } from '@daoyou/shared/engine/combat-v6/projection
 import { sectV6Change } from '@daoyou/shared/engine/combat-v6/sect-progression';
 import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
 import { and, eq } from 'drizzle-orm';
-import { assertInventoryIdle, InventoryError } from '@server/inventory/application/InventoryService';
-import { ResourceEventCommitter } from '@server/lib/services/ResourceEventCommitter';
+import { assertInventoryIdle, InventoryError } from '@server/inventory/operations';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
 import { getSectCombatView } from '@server/combat/application/CombatV6BuildService';
 
 export async function readSectV6(owner: string): Promise<SectV6View> {

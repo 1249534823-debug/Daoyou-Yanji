@@ -13,7 +13,7 @@ import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resource
 import type { Cultivator } from '@daoyou/shared/types/cultivator';
 import { MailService } from '@server/mail/application/MailService';
 import { TaskService } from '@server/tasks/application/TaskService';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
 import {
   createCultivator,
   hasActiveCultivator,

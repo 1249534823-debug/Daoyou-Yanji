@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
-import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
 import { wildSessions } from '@server/combat/application/CombatV6WildSessionService';
 import type { CombatV6TrainingCommandRequestSchema } from '@daoyou/shared/contracts/combatV6';
 import type { WildExploreRequestSchema } from '@daoyou/shared/contracts/combatV6Wild';

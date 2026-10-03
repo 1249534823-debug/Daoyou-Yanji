@@ -1,6 +1,6 @@
 import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db';
 import * as schema from '@server/lib/drizzle/schema';
-import { hasActiveDungeon } from '@server/lib/dungeon/occupancy';
+import { hasActiveDungeon } from '@server/dungeon/occupancy';
 import { redis } from '@server/lib/redis';
 import { parseRedisJson } from '@server/lib/redis/json';
 import type { RedisLeaseContext } from '@server/lib/redis/lock';

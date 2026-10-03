@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types';
 import { redisLockErrorResponse } from '@server/lib/http/errors';
-import { PlayerCommandIdempotencyError } from '@server/lib/services/CommandExecutors';
+import { PlayerCommandIdempotencyError } from '@server/player/application/state/CommandExecutors';
 import { ReputationShopError } from '@server/reputation-shop/application/ReputationShopService';
 import {
   ReputationShopBuyBodySchema,

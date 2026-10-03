@@ -10,7 +10,7 @@ import {
   consumeCultivatorConsumable,
   recoverCultivatorAtInn,
 } from '@server/cultivator/application/CultivatorConditionApplicationService';
-import { toPlayerStateMutationResponse } from '@server/lib/services/ResourceMutationResponse';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse';
 import type { BodyCultivationBreakthroughReadinessResponse } from '@daoyou/shared/contracts/bodyCultivation';
 
 @Injectable()

@@ -8,7 +8,7 @@ import { CombatV6RuntimeStore } from '@server/combat/application/CombatV6Runtime
 import { activeSectTaskBattle } from '@server/combat/application/CombatV6SectTaskOccupancy';
 import { CombatV6WildStore } from '@server/combat/application/CombatV6WildStore';
 import { pendingRanking } from '@server/combat/application/CombatV6RankingService';
-import { towerRunKey } from '@server/lib/tower/occupancy';
+import { towerRunKey } from '@server/tower/occupancy';
 import type { CombatActivityNotice } from '@daoyou/shared/contracts/combatActivity';
 import { shouldExpireTowerRun } from '@daoyou/shared/lib/tower/lifecycle';
 import { and, eq, inArray, isNotNull, ne, or } from 'drizzle-orm';

@@ -34,7 +34,7 @@ import {
 } from '@server/cultivator/application/readers/CultivatorStateRepository';
 import { MailService } from '@server/mail/application/MailService';
 import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
-import { ResourceEventCommitter } from '@server/lib/services/ResourceEventCommitter';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
 import type { HuntActor } from '@server/hunts/application/HuntTeamService';
 import { finishHuntTeam } from '@server/hunts/application/HuntTeamService';
 const store = new CombatV6ArenaStore();

@@ -1,9 +1,9 @@
 import { redis } from '@server/lib/redis';
 import { arenaOccupancyKey, CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore';
-import { hasTowerBattle } from '@server/lib/tower/occupancy';
+import { hasTowerBattle } from '@server/tower/occupancy';
 import { readCharacterCombatBuild } from '@server/lib/repositories/characterLoadoutRepository';
 import type { DbExecutor } from '@server/lib/drizzle/db';
-import { hasActiveDungeon } from '@server/lib/dungeon/occupancy';
+import { hasActiveDungeon } from '@server/dungeon/occupancy';
 import {
   characterIdentityRow,
 } from '@server/lib/repositories/sectCombatRepository';

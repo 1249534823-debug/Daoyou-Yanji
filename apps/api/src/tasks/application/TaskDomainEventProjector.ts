@@ -5,7 +5,7 @@ import {
   type DomainEventEnvelope,
 } from '@daoyou/shared/contracts/domainEvents';
 import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
-import type { FeatureCommandResult } from '@server/lib/services/CommandExecutors';
+import type { FeatureCommandResult } from '@server/player/application/state/CommandExecutors';
 import { readPlayerTaskSummary } from '@server/player/application/PlayerResourceReaderService';
 import { TaskService } from '@server/tasks/application/TaskService';
 

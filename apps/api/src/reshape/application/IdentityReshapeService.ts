@@ -31,7 +31,7 @@ import {
 } from '@daoyou/shared/types/identityReshape';
 import { and, eq, sql } from 'drizzle-orm';
 import { findBagTalisman } from '@server/inventory/application/BagConsumables';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
 import { consumeConsumableById } from '@server/cultivator/application/readers/CultivatorInventoryRepository';
 
 function sessionKey(cultivatorId: string) {

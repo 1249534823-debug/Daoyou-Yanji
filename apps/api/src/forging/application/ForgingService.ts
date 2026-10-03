@@ -57,9 +57,9 @@ import {
   findPlayerMutationRequest,
   lockCultivatorForStateMutation,
 } from '@server/lib/repositories/playerStateRepository';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
 import { mapConsumableRow } from '@server/inventory/application/consumablePersistence';
-import { readCultivatorName } from '@server/cultivator/application/readers/CultivatorFactsReader';
+import { readCultivatorName } from '@server/cultivator/facts';
 import { addConsumableToInventoryInTransaction } from '@server/cultivator/application/readers/CultivatorInventoryRepository';
 import { generateForgingNarrative } from '@server/forging/application/ForgingNarrativeService';
 import {
@@ -68,12 +68,12 @@ import {
   InventoryError,
   inventoryItemOf,
   saveInventoryPlan,
-} from '@server/inventory/application/InventoryService';
+} from '@server/inventory/operations';
 import { MailService } from '@server/mail/application/MailService';
 import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster';
 import { QiService } from '@server/cultivator/application/QiService';
 import { StoryService } from '@server/story/application/StoryService';
-import { ResourceEventCommitter } from '@server/lib/services/ResourceEventCommitter';
+import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter';
 
 async function mutate<T>(
   owner: string,

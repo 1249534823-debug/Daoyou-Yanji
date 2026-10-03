@@ -3,7 +3,7 @@ import { resolveRedeemCodeRewardAttachments } from '@server/lib/redeem/reward';
 import { materializeRewardAttachments } from '@daoyou/shared/contracts/adminRewards';
 import { and, eq, sql } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
-import { playerCommandExecutor } from '@server/lib/services/CommandExecutors';
+import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors';
 import { MailService } from '@server/mail/application/MailService';
 
 export class RedeemClaimError extends Error {

@@ -13,7 +13,7 @@ import { assertCurrentRewardItem } from '@daoyou/shared/lib/retiredDraw';
 import type { Consumable, Material } from '@daoyou/shared/types/cultivator';
 import type { MailAttachment } from '@daoyou/shared/types/mail';
 import type { DbTransaction } from '@server/lib/drizzle/db';
-import { grantInventory } from '@server/inventory/application/InventoryService';
+import { grantInventory } from '@server/inventory/operations';
 import { sanitizeMaterialForClient } from '@server/inventory/application/materialDetailsPrivacy';
 
 /** Only used when producing new rewards; never converts stored mail on claim. */
