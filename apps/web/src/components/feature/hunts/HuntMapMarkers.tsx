@@ -1,6 +1,6 @@
 import { GameIcon } from '@app/components/ui/GameIcon';
-import { type HuntEvent } from '@daoyou/game-domain/hunts/event';
-import { HUNT_BOSSES } from '@daoyou/game-content/hunts/bosses';
+import { type HuntEvent } from '@daoyou/game-domain/hunts';
+import { HUNT_BOSSES } from '@daoyou/game-content/hunts';
 export type HuntMapPoint = { id: string; x: number; y: number };
 export function HuntMapMarkers({
   events,

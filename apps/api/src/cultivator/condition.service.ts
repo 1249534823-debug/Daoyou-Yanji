@@ -11,7 +11,7 @@ import {
   recoverCultivatorAtInn,
 } from '@server/cultivator/application/CultivatorConditionApplicationService.js';
 import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
-import type { BodyCultivationBreakthroughReadinessResponse } from '@daoyou/contracts/bodyCultivation';
+import type { BodyCultivationBreakthroughReadinessResponse } from '@daoyou/contracts/body-cultivation';
 
 @Injectable()
 export class ConditionService {

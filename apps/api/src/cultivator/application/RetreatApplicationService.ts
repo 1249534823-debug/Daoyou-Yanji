@@ -16,17 +16,17 @@ import type {
   BreakthroughStoryPayload,
   LifespanExhaustedStoryPayload,
 } from '@server/utils/prompts.js';
-import { getRetreatQiCost } from '@daoyou/game-rules/qi/actions';
+import { getRetreatQiCost } from '@daoyou/game-rules/qi';
 import { RESOURCE_DATA_SCHEMAS } from '@server/lib/resources/schemas.js';
 import type { RetreatResultData } from '@daoyou/contracts/retreat';
 import {
   attemptBreakthrough,
   performCultivation,
-} from '@daoyou/game-rules/cultivation/CultivationEngine';
-import type { BreakthroughHistoryEntry } from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-rules/cultivation';
+import type { BreakthroughHistoryEntry } from '@daoyou/game-domain/character';
 import { randomUUID } from 'crypto';
 import { findJournalOperation } from '@server/lib/repositories/playerJournalRepository.js';
-import { retreatResultFromJournal } from '@daoyou/contracts/playerJournal';
+import { retreatResultFromJournal } from '@daoyou/contracts/player/journal';
 import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
 import { PillOperationExecutor } from '@server/inventory/application/PillOperationExecutor.js';
 import { QiService } from '@server/cultivator/application/QiService.js';

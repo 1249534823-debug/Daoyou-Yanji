@@ -34,7 +34,7 @@ import { createCombatV6Replay } from '@daoyou/game-rules/combat/replay';
 import type {
   RankingChallengeRequest,
   RankingChallengeResult,
-} from '@daoyou/contracts/combatV6Ranking';
+} from '@daoyou/contracts/combat/ranking';
 import {
   compileRankingBattle,
   simulateRankingBattle,

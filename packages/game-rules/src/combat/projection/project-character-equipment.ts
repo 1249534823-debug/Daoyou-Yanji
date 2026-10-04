@@ -1,11 +1,14 @@
-import type { Attributes } from "@daoyou/game-domain/cultivator"
-import { DAO_RAGE_RESOURCE } from "@daoyou/game-content/equipment/special-content"
+import type { Attributes } from "@daoyou/game-domain/character"
+import {
+  DAO_RAGE_RESOURCE,
+  DAO_EQUIPMENT_ARTS_V1,
+  DAO_RAGE_RESOURCE_ID,
+} from '@daoyou/game-content/equipment/special';
 import { compileCurrentSectCombatV6 } from "../../sects/index.js"
 import { type CombatV6VersionStamp, type LineupUnit } from '@daoyou/combat-core/types';
-import { DAO_EQUIPMENT_ARTS_V1, DAO_RAGE_RESOURCE_ID } from '@daoyou/game-content/equipment/special-content';
-import { daoFormationInscriptionOf, DAO_FORMATION_INSCRIPTION_ID } from '@daoyou/game-content/equipment/content';
+import { daoFormationInscriptionOf, DAO_FORMATION_INSCRIPTION_ID } from '@daoyou/game-content/equipment/base';
 import { daoFormationPanel } from '../../equipment/inscriptions.js';
-import { type DaoEquipmentInstanceV1 } from '@daoyou/game-domain/equipment/types';
+import { type DaoEquipmentInstanceV1 } from '@daoyou/game-domain/equipment';
 import { compileDaoEquipmentSpecialLoadoutV1 } from '../../equipment/compiler.js';
 import { compileBodyCultivationV6 } from "./body-cultivation-v6.js"
 import { compileCharacterPanelV1 } from "./character-panel-v1.js"
@@ -15,7 +18,7 @@ import type {
   CombatV6ProjectionDiagnostic,
   CombatV6ProjectionResult,
   CharacterCombatInput,
-} from "@daoyou/game-domain/combat/projection"
+} from "@daoyou/game-domain/combat"
 
 const MERIDIAN_EQUIPMENT_ELEMENTS = new Set(['金', '火', '风']);
 

@@ -24,4 +24,4 @@ export const YOUDU_VISIBLE_ABILITY_IDS = [
 
 export const youduAbilityTag = (abilityId: string) =>
   GameplayTags.ABILITY.SECT.ability(YOUDU_SECT_ID, abilityId);
-import { GameplayTags } from '@daoyou/game-domain/legacy/tags/gameplayTags';
+import { GameplayTags } from '@daoyou/game-domain/legacy/tags';

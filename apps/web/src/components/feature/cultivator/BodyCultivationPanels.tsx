@@ -4,9 +4,9 @@ import {
   getBodyCultivationSummary,
   type BodyCultivationSummary,
   type BodyCultivationTrackSummary,
-} from '@daoyou/game-rules/body-cultivation/summary';
-import { type MarrowWashSummary } from '@daoyou/game-rules/body-cultivation/marrow-wash';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-rules/body-cultivation/progress';
+import { type MarrowWashSummary } from '@daoyou/game-rules/body-cultivation/training';
+import type { Cultivator } from '@daoyou/game-domain/character';
 import { type ReactNode } from 'react';
 import { getTrackProgressPercent } from './bodyCultivationProgress';
 

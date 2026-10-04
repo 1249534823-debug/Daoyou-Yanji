@@ -4,7 +4,7 @@ import { InkBadge } from '@app/components/ui/InkBadge';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkList, InkListItem } from '@app/components/ui/InkList';
 import { ELEMENT_VALUES } from '@daoyou/constants/elements';
-import type { SpiritualRoot } from '@daoyou/game-domain/cultivator';
+import type { SpiritualRoot } from '@daoyou/game-domain/character';
 import { getElementInfo } from '@daoyou/game-content/presentation/concepts';
 import { ReactNode } from 'react';
 import { useInkUI } from '../providers/useInkUI.js';

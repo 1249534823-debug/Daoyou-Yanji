@@ -1,15 +1,15 @@
 import { expect, it } from 'vitest';
 import { z } from 'zod';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
-import schema from '@daoyou/game-content/beasts/data/refinement.schema' with { type: 'json' };
-import { generateCapturedBeast } from './generator.js';
-import { gainBeastExp } from './progression.js';
-import { beastRefinementReason, refineBeast } from './refinement.js';
 import {
+  BEAST_SPECIES,
   BEAST_REFINEMENT,
   BeastRefinementPackShape,
   loadBeastRefinementPack,
-} from '@daoyou/game-content/beasts/refinement-config';
+} from '@daoyou/game-content/beasts';
+import { BEASTS_REFINEMENT_SCHEMA as schema } from '@daoyou/game-content/authoring/beasts';
+import { generateCapturedBeast } from './generator.js';
+import { gainBeastExp } from './progression.js';
+import { beastRefinementReason, refineBeast } from './refinement.js';
 import { BeastSchema, GeneratedBeastSchema } from './schema.js';
 import { rollBeastTraits } from './trait-generator.js';
 const id = '00000000-0000-4000-8000-000000000001';

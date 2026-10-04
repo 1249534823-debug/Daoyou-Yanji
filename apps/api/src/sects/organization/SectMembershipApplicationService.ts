@@ -10,7 +10,7 @@ import {
   PromotionRequirementSpecification,
   SectMembership,
 } from '@daoyou/game-rules/sect-organization';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
+import type { Cultivator } from '@daoyou/game-domain/character';
 import type { SectBenefitService } from '@server/sects/organization/SectBenefitService.js';
 import type { SectDomainEventDispatcherFactory } from '@server/sects/organization/SectDomainEventDispatcher.js';
 import {

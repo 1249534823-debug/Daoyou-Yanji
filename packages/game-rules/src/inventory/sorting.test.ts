@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { ITEM_DEFINITIONS } from '@daoyou/game-content/items/registry';
-import { INVENTORY_KINDS } from '@daoyou/game-domain/items/sorting';
+import { ITEM_DEFINITIONS } from '@daoyou/game-content/items';
+import { INVENTORY_KINDS } from '@daoyou/game-domain/inventory';
 import { sortInventoryItems } from './sorting.js';
 
 const items = [

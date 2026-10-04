@@ -1,7 +1,7 @@
 import type {
   QiAction,
   QiRestoreTalismanScenario,
-} from '@daoyou/game-domain/qi/actions';
+} from '@daoyou/game-domain/qi';
 import {
   QI_ACTION_COSTS,
   QI_RESTORE_TALISMAN_SCENARIOS,

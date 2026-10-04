@@ -4,7 +4,7 @@ import type {
   DivinationStreamEvent,
   DivinationView,
 } from '@daoyou/contracts/divination';
-import type { DivinationDirection } from '@daoyou/game-domain/divination/types';
+import type { DivinationDirection } from '@daoyou/game-domain/divination';
 
 async function readJson<T>(response: Response): Promise<T> {
   const body = await response.json();

@@ -11,7 +11,7 @@ import {
   RankingChallengeSchema,
   type RankingChallengeRequest,
   type RankingChallengeResult,
-} from '@daoyou/contracts/combatV6Ranking';
+} from '@daoyou/contracts/combat/ranking';
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';
 

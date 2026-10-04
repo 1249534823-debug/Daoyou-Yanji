@@ -6,12 +6,12 @@ export {
   frameFeedback,
   reasonText,
   unitLabels,
-} from '@daoyou/game-rules/combat/battle-log';
+} from '@daoyou/game-rules/combat/log';
 export type {
   ActionEntry,
   BattleLog,
   LogLine,
-} from '@daoyou/game-rules/combat/battle-log';
+} from '@daoyou/game-rules/combat/log';
 
 export const combatV6HistorySources = {
   ranking: '天骄榜',

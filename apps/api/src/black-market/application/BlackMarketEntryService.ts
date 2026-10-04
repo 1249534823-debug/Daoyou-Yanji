@@ -6,8 +6,8 @@ import { QiService } from '@server/cultivator/application/QiService.js';
 import {
   blackMarketEntryCost,
   blackMarketEntryId,
-} from '@daoyou/game-rules/black-market/rules';
-import type { BlackMarketNpcId } from '@daoyou/game-domain/blackMarket';
+} from '@daoyou/game-rules/black-market';
+import type { BlackMarketNpcId } from '@daoyou/game-domain/black-market';
 import { createHash } from 'node:crypto';
 
 const ENTRY_SOURCE = 'black_market_entry';

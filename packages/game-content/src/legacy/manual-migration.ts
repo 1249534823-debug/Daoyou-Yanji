@@ -1,5 +1,5 @@
-import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
-import type { ManualMigrationConfig } from '@daoyou/game-domain/legacy/manual-migration';
+import { ConsumableFactsSchema } from '@daoyou/game-domain/inventory';
+import type { ManualMigrationConfig } from '@daoyou/game-domain/legacy/migrations';
 import { BASE_PRICES } from '../materials/config.js';
 
 export const manualMigrationInsightFacts = ConsumableFactsSchema.parse({

@@ -3,7 +3,7 @@ import {
   getAffixUnderlineStyle,
 } from '@app/components/feature/products/affixPresentation';
 import { InkBadge } from '@app/components/ui/InkBadge';
-import { getPillAppearanceColorClass } from '@daoyou/game-rules/alchemy/pillAppearance';
+import { getPillAppearanceColorClass } from '@daoyou/game-rules/alchemy';
 import { cn } from '@app/lib/cn';
 import type { PillDetailGroup, PillDisplayModel } from './pillDisplayModel';
 

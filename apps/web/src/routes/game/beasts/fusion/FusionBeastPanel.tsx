@@ -2,7 +2,7 @@ import { BeastIcon } from '@app/components/feature/beasts/BeastIcon';
 import { BeastSkillTile } from '@app/components/feature/beasts/BeastSkillTile';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkTag } from '@app/components/ui/InkTag';
-import type { SummonedBeast } from '@daoyou/game-domain/beasts/schema';
+import type { SummonedBeast } from '@daoyou/game-domain/beasts';
 
 export function FusionIdentityTag({ beast }: { beast: SummonedBeast }) {
   return (

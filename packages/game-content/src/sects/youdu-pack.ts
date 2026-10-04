@@ -6,7 +6,7 @@ import { EffectType, SkillTag, StatusCategory, StatusTick, TickKind } from '@dao
 import { type SkillDef, type StatusDef } from '@daoyou/combat-core/types';
 import { validateSectExpressions } from './authoring-expressions.js';
 import { sectSkillLearning } from './skill-learning.js';
-import type { SectSkillDefV6 } from '@daoyou/game-domain/combat/content';
+import type { SectSkillDefV6 } from '@daoyou/game-domain/combat';
 import raw from './data/youdu-combat.json' with { type: 'json' };
 
 const text = z.string().min(1).max(80).regex(/\S/);

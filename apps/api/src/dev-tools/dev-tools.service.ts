@@ -8,7 +8,7 @@ import { InventoryError } from '@server/inventory/operations.js';
 import { QiServiceError } from '@server/cultivator/application/QiService.js';
 
 import { DevCultivatorPatchSchema, DevGrantSchema } from './dev-tools-input.js';
-import { InventoryRuleError } from '@daoyou/game-domain/items/bag';
+import { InventoryRuleError } from '@daoyou/game-domain/inventory';
 import { z } from 'zod';
 
 @Injectable()

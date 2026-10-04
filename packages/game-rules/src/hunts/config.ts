@@ -1,7 +1,7 @@
-import { HUNT_BOSSES } from '@daoyou/game-content/hunts/bosses';
-import type { HuntBossId, HuntEvent } from '@daoyou/game-domain/hunts/event';
+import { HUNT_BOSSES } from '@daoyou/game-content/hunts';
+import type { HuntBossId, HuntEvent } from '@daoyou/game-domain/hunts';
 
-import { getRealmStageLevel } from '@daoyou/game-domain/progression/realms';
+import { getRealmStageLevel } from '@daoyou/game-domain/progression';
 
 import { getWorldMapLocation } from '@daoyou/game-content/world/map';
 

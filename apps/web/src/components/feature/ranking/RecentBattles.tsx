@@ -4,7 +4,7 @@ import { GameLoadingState } from '@app/components/game-shell/GameLoadingState';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkNotice } from '@app/components/ui/InkNotice';
 import { usePlayerSession } from '@app/lib/resources/player';
-import type { CombatV6HistoryPage } from '@daoyou/contracts/combatV6Replay';
+import type { CombatV6HistoryPage } from '@daoyou/contracts/combat/replays';
 import { useEffect, useState } from 'react';
 
 export function RecentBattles() {

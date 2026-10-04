@@ -4,12 +4,12 @@ import { effectiveAttrs } from '@daoyou/combat-core/units';
 import { SeededRng } from '@daoyou/combat-core/rng';
 import { type Command, type SkillDef } from '@daoyou/combat-core/types';
 import { createDaoyouRuleset, daoyouFormulas } from '../combat/daoyou/index.js';
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '@daoyou/game-domain/combat/versions';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '@daoyou/game-domain/combat';
 import { createEmptySectCombatProgressV6 } from './build-state.js';
 import { compileSectDefinitionV6 } from './compiler.js';
 import { YOUDU_V6_DEFINITION as definition } from '@daoyou/game-content/sects/youdu';
-import { DAO_EQUIPMENT_ARTS_V1 } from '@daoyou/game-content/equipment/special-content';
-import { BEAST_SKILLS, BEAST_STATUS_DEFS } from '@daoyou/game-content/beasts/content';
+import { DAO_EQUIPMENT_ARTS_V1 } from '@daoyou/game-content/equipment/special';
+import { BEAST_SKILLS, BEAST_STATUS_DEFS } from '@daoyou/game-content/beasts';
 
 const S = (x: string) => `youdu.skill.${x}`;
 const T = (x: string) => `youdu.status.${x}`;

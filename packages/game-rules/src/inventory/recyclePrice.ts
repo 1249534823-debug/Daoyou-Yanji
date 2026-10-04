@@ -1,7 +1,7 @@
-import { getLevelRealmStage } from '@daoyou/game-domain/progression/realms';
-import { DAO_EQUIPMENT_FORGING } from '@daoyou/game-content/equipment/forging-content';
-import { CHARACTER_MANUALS_V1 } from '@daoyou/game-content/manuals/content';
-import { BASE_PRICES } from '@daoyou/game-content/materials/config';
+import { getLevelRealmStage } from '@daoyou/game-domain/progression';
+import { DAO_EQUIPMENT_FORGING } from '@daoyou/game-content/equipment/forging';
+import { CHARACTER_MANUALS_V1 } from '@daoyou/game-content/manuals';
+import { BASE_PRICES } from '@daoyou/game-content/materials';
 import { REALM_VALUES, type RealmType } from '@daoyou/constants/realms';
 import { type Quality } from '@daoyou/constants/qualities';
 

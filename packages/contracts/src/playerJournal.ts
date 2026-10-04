@@ -2,7 +2,7 @@ import { JournalChangeSchema } from '@daoyou/game-domain/journal/changes';
 import type {
   BreakthroughResult,
   CultivationResult,
-} from '@daoyou/game-domain/cultivation/results';
+} from '@daoyou/game-domain/cultivation';
 
 import { REALM_STAGE_VALUES, REALM_VALUES } from '@daoyou/constants/realms';
 

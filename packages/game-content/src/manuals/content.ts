@@ -1,7 +1,7 @@
 import { SkillTag, TargetSide } from '@daoyou/combat-core/enums';
 import data from './data/manual-pack.json' with { type: 'json' };
-import { loadManualPack } from '@daoyou/game-domain/manuals/pack';
-import type { CharacterManualDefV1 } from '@daoyou/game-domain/manuals/types';
+import { loadManualPack } from '@daoyou/game-domain/manuals/authoring';
+import type { CharacterManualDefV1 } from '@daoyou/game-domain/manuals';
 
 export const MANUAL_PACK = loadManualPack(data);
 export const CHARACTER_MANUALS_V1: readonly CharacterManualDefV1[] =

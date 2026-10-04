@@ -10,7 +10,7 @@ import {
   prepareBlackMarketInteraction,
 } from '@server/black-market/application/BlackMarketService.js';
 import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
-import type { BlackMarketInteractStreamEvent } from '@daoyou/game-domain/blackMarket';
+import type { BlackMarketInteractStreamEvent } from '@daoyou/game-domain/black-market';
 import type { z } from 'zod';
 import type {
   CommitSchema,

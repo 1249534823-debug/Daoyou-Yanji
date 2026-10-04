@@ -1,6 +1,6 @@
-import type { TowerBlessingId } from '@daoyou/game-domain/tower/blessings';
+import type { TowerBlessingId } from '@daoyou/game-domain/tower';
 import { TOWER_BLESSINGS_PACK } from './blessing-pack.js';
-export { TOWER_BLESSING_IDS, type TowerBlessingId } from '@daoyou/game-domain/tower/blessings';
+export { TOWER_BLESSING_IDS, type TowerBlessingId } from '@daoyou/game-domain/tower';
 
 export interface TowerBlessingDefinition {
   id: TowerBlessingId;

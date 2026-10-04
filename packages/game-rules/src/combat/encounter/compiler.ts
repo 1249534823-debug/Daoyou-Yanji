@@ -1,4 +1,4 @@
-import { BEAST_STATUS_DEFS, BEAST_SKILLS } from '@daoyou/game-content/beasts/content';
+import { BEAST_STATUS_DEFS, BEAST_SKILLS } from '@daoyou/game-content/beasts';
 import { projectBeastRoster } from '../../beasts/projection.js';
 import { ATTR_NAMES } from '@daoyou/combat-core/constants';
 import { EffectType, Team } from '@daoyou/combat-core/enums';
@@ -8,15 +8,15 @@ import { daoyouRulesetV6 } from '../daoyou/index.js';
 import {
   COMBAT_V6_CHARACTER_BUILD_VERSIONS,
   COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS,
-} from '@daoyou/game-domain/combat/versions';
-import { COMBAT_V6_TRAINING_CONTENT_V1 } from '@daoyou/game-content/combat/training/content';
+} from '@daoyou/game-domain/combat';
+import { COMBAT_V6_TRAINING_CONTENT_V1 } from '@daoyou/game-content/combat/training';
 import type {
   CombatV6EncounterDiagnostic,
   CombatV6TrainingContentV1,
   CompileCombatV6TrainingEncounterV1Input,
   CompileCombatV6TrainingEncounterV1Result,
   PveCombatantDefV1,
-} from '@daoyou/game-domain/combat/encounter';
+} from '@daoyou/game-domain/combat';
 
 const TIERS = new Set([60, 120, 180]);
 

@@ -10,9 +10,9 @@ import {
 } from '@app/lib/resources/player';
 import { getSectPresentation } from '@app/lib/sect/sectPresentation';
 import type { SectCatalogEntry } from '@daoyou/contracts/sect';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
-import { type CombatV6SectId } from '@daoyou/game-domain/combat/content';
-import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
+import { type CombatV6SectId } from '@daoyou/game-domain/combat';
+import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production';
 import { getSectLandmarkBySectId } from '@daoyou/game-content/world/map';
 import { useMemo, useRef, useState } from 'react';
 import { Navigate, useNavigate, useSearchParams } from 'react-router';

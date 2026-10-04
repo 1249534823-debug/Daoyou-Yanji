@@ -1,9 +1,11 @@
-import { PILL_APPEARANCE_CONFIG } from '@daoyou/game-content/alchemy/appearance';
+import {
+  PILL_APPEARANCE_CONFIG,
+  PILL_APPEARANCE_EFFECT_MULTIPLIER,
+} from '@daoyou/game-content/alchemy';
 import { QUALITY_ORDER, type Quality } from '@daoyou/constants/qualities';
 
-import type { PillAppearanceGrade } from '@daoyou/game-domain/consumable';
+import type { PillAppearanceGrade } from '@daoyou/game-domain/consumables';
 
-import { PILL_APPEARANCE_EFFECT_MULTIPLIER } from '@daoyou/game-content/alchemy/alchemyEssenceConfig';
 
 function qualityIndex(quality: Quality): number {
   return QUALITY_ORDER[quality] ?? 0;

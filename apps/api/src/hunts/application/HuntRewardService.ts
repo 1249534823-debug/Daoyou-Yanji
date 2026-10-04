@@ -1,8 +1,8 @@
 import type { DbExecutor } from '@server/lib/drizzle/db.js';
-import type { HuntEvent } from '@daoyou/game-domain/hunts/event';
-import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
+import type { HuntEvent } from '@daoyou/game-domain/hunts';
+import { MaterialFactsSchema } from '@daoyou/game-domain/inventory';
 import { HuntRewardSnapshotSchema, planHuntReward } from '@daoyou/game-rules/rewards/hunt';
-import { HUNT_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/game-rules/rewards/hunt-material-quality';
+import { HUNT_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/game-rules/rewards/materials';
 import { generateRealmMaterials } from '@server/inventory/application/MaterialRewardService.js';
 import { computeItemLibrarySampleKey } from '@server/lib/utils/itemLibrarySampleKey.js';
 

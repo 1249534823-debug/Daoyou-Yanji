@@ -1,5 +1,5 @@
-import type { WildResources } from '@daoyou/game-domain/wild/resources';
-import { WILD_PACK } from '@daoyou/game-content/combat/wild/pack';
+import type { WildResources } from '@daoyou/game-domain/wild';
+import { WILD_PACK } from '@daoyou/game-content/combat/wild';
 
 export const WILD_EXPLORATION_COOLDOWN_MS =
   WILD_PACK.activity.explorationCooldownMs;

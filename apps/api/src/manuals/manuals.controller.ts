@@ -10,7 +10,7 @@ import {
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import { redisLockErrorResponse } from '@server/lib/http/errors.js';
 import { InventoryError } from '@server/inventory/operations.js';
-import { ManualActionSchema } from '@daoyou/game-domain/manuals/action';
+import { ManualActionSchema } from '@daoyou/game-domain/manuals';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { apiErrorFilter } from '../http/error-filter.js';

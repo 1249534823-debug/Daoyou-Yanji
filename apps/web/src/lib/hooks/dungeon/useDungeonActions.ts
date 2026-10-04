@@ -1,12 +1,12 @@
 import { apiFetch } from '@app/lib/api/fetch';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
-import type { DungeonMaterialSelection } from '@daoyou/game-domain/dungeon/actions';
 import type {
+  DungeonMaterialSelection,
   DungeonOption,
   DungeonRecoverAction,
   DungeonState,
-} from '@daoyou/game-domain/dungeon/state';
+} from '@daoyou/game-domain/dungeon';
 import { useRef, useState } from 'react';
 
 export function useDungeonActions(

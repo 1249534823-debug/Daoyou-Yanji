@@ -2,7 +2,7 @@ import { redis } from '@server/lib/redis/index.js';
 import {
   ARENA_V6_PROTOCOL,
   type ArenaRuntime,
-} from '@daoyou/contracts/combatV6Arena';
+} from '@daoyou/contracts/combat/arena';
 
 const root = 'combat:v6:arena';
 export const arenaRuntimeKey = (id: string) => `${root}:runtime:${id}`;

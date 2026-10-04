@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { generateForgedEquipment } from '../equipment/forging.js';
 import { changeEquipmentLocation } from './equipment-location.js';
-import { type InventoryItem } from '@daoyou/game-domain/items/inventory';
+import { type InventoryItem } from '@daoyou/game-domain/inventory';
 import { emptySlot, InventoryItemSchema, sortBag } from './index.js';
 
 function equipment(id: string, slotIndex: number | null): InventoryItem {

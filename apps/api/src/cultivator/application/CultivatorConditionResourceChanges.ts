@@ -1,15 +1,17 @@
-import { getOrInitCultivationProgress } from '@daoyou/game-rules/cultivation/cultivationUtils';
-import { isAttributeResetTalismanScenario } from '@daoyou/game-content/consumables/attributeResetTalisman';
-import { isSectMeridianResetTalismanScenario } from '@daoyou/game-content/consumables/sectMeridianResetTalisman';
+import { getOrInitCultivationProgress } from '@daoyou/game-rules/cultivation';
+import {
+  isAttributeResetTalismanScenario,
+  isSectMeridianResetTalismanScenario,
+} from '@daoyou/game-content/consumables';
 import { RESOURCE_DATA_SCHEMAS } from '@server/lib/resources/schemas.js';
 import { type ResourceChangeDescriptor, type ResourceDataMap } from '@daoyou/contracts/resources';
-import { isTalismanConsumable } from '@daoyou/game-domain/consumables/identity';
+import { isTalismanConsumable } from '@daoyou/game-domain/consumables';
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import type {
   Consumable,
   CultivationProgress,
   Cultivator,
-} from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/character';
 import {
   qiCurrencyChange,
   qiCurrencyPatch,

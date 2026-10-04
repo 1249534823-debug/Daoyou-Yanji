@@ -4,22 +4,26 @@ import {
   type SectSubmissionItemKind,
   type SectPillDeliveryRequirement,
   type SectDeliveryRequirement,
-} from '@daoyou/game-domain/sects/task-requirements';
-import { getLevelRealmStage } from '@daoyou/game-domain/progression/realms';
+} from '@daoyou/game-domain/sects/tasks';
+import {
+  getLevelRealmStage,
+  getRealmStageLevel as combatCharacterLevel,
+} from '@daoyou/game-domain/progression';
 
-import { DAO_EQUIPMENT_SLOTS } from '@daoyou/game-domain/equipment/types';
+import {
+  DAO_EQUIPMENT_SLOTS,
+  EQUIPMENT_SLOT_NAMES,
+} from '@daoyou/game-domain/equipment';
 
-import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
 
-import type { DailyTaskDifficulty } from '@daoyou/game-domain/cultivation/task-difficulty';
+import type { DailyTaskDifficulty } from '@daoyou/game-domain/cultivation';
 
-import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment/slot-names';
 
 import { getMaterialTypeLabel } from '@daoyou/game-content/presentation/concepts';
 
 import { getPillAppearanceLabel } from '../../../alchemy/pillAppearance.js';
 
-import type { RealmStage } from '@daoyou/constants/realms';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 
 import { QUALITY_ORDER } from '@daoyou/constants/qualities';
 
@@ -31,17 +35,16 @@ import type { MaterialType } from '@daoyou/game-domain/inventory';
 
 import type { Quality } from '@daoyou/constants/qualities';
 
-import type { RealmType } from '@daoyou/constants/realms';
 
 import type {
   PillAppearanceGrade,
   PillFamily,
-} from '@daoyou/game-domain/consumable';
+} from '@daoyou/game-domain/consumables';
 
 import type {
   SectTaskDialogueEmphasis,
   SectTaskDialogueSegment,
-} from '@daoyou/game-domain/sects/organization-contracts';
+} from '@daoyou/game-domain/sects/commands';
 
 // 宗门交装保留现行10级要求，不再耦合野外掉落。
 const SECT_DELIVERY_EQUIPMENT_LEVELS = [10];

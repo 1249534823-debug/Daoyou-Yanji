@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { CombatV6TrainingUnitViewV1 as Unit } from '@daoyou/game-domain/combat/display';
+import type { CombatV6TrainingUnitViewV1 as Unit } from '@daoyou/game-domain/combat';
 import { applyUnitDelta, contiguousEvents, diffUnits } from './playback.js';
 import { combatV6Playback, combatV6Units } from './presentation.js';
 import {

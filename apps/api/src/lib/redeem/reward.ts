@@ -1,5 +1,5 @@
-import { parseMailAttachments, summarizeMailAttachments } from '@daoyou/game-rules/mail/attachments';
-import type { MailAttachment } from '@daoyou/game-domain/mail/attachment';
+import { parseMailAttachments, summarizeMailAttachments } from '@daoyou/game-rules/mail';
+import type { MailAttachment } from '@daoyou/game-domain/mail';
 
 interface RedeemCodeRewardSource {
   rewardAttachments?: unknown;

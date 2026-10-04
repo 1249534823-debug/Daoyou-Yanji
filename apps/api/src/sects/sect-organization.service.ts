@@ -4,8 +4,8 @@ import type {
   SectTransferPreviewQuerySchema,
   SectTransferRequestSchema,
 } from '@daoyou/contracts/sect';
-import { SectShopBuyParamsSchema } from '@daoyou/contracts/sectShop';
-import { productionSectRuntime as runtime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
+import { SectShopBuyParamsSchema } from '@daoyou/contracts/shops/sect';
+import { productionSectRuntime as runtime } from '@daoyou/game-rules/sect-organization/production';
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';

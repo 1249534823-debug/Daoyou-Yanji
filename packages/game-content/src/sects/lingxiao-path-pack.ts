@@ -6,7 +6,7 @@ import { EffectType, SkillTag, TargetSide } from '@daoyou/combat-core/enums';
 import { sectSkillLearning } from './skill-learning.js';
 import { LINGXIAO_COMBAT } from './lingxiao-pack.js';
 import { validateSectExpressions } from './authoring-expressions.js';
-import type { SectPathDefV6, SectSkillDefV6 } from '@daoyou/game-domain/combat/content';
+import type { SectPathDefV6, SectSkillDefV6 } from '@daoyou/game-domain/combat';
 import raw from './data/lingxiao-paths.json' with { type: 'json' };
 
 const id = z.string().regex(/^lingxiao\.[a-z][a-z0-9_.]*$/);

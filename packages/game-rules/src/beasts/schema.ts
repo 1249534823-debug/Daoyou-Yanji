@@ -1,9 +1,9 @@
-import { createBeastSchema } from '@daoyou/game-domain/beasts/schema';
+import { createBeastSchema } from '@daoyou/game-domain/beasts';
 
 import {
   BEAST_SKILLS,
   BEAST_SPECIES,
-} from '@daoyou/game-content/beasts/content';
+} from '@daoyou/game-content/beasts';
 
 import { beastPointBudget } from './identity.js';
 

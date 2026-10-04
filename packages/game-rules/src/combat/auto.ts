@@ -1,14 +1,16 @@
 
 
-import type { CombatV6CommandGroup } from '@daoyou/game-domain/combat/commands';
+import type { CombatV6CommandGroup } from '@daoyou/game-domain/combat';
 
 import type { BattleState, CombatV6CommandOptions, SkillDef, StatusDef } from '@daoyou/combat-core/types';
 
 import { observeAutoBattle } from './auto-observation.js';
 
-import { AUTO_POLICY_VERSION } from '@daoyou/game-domain/combat/auto-policy';
+import {
+  AUTO_POLICY_VERSION,
+  type AutoStrategy,
+} from '@daoyou/game-domain/combat/auto';
 
-import { type AutoStrategy } from '@daoyou/game-domain/combat/auto-strategy';
 
 import { chooseStrategyCandidate } from './auto-strategy.js';
 
@@ -21,7 +23,7 @@ import {
 import { controlledUnits } from './controlled-commands.js';
 
 
-export { AUTO_POLICY_VERSION } from '@daoyou/game-domain/combat/auto-policy';
+export { AUTO_POLICY_VERSION } from '@daoyou/game-domain/combat/auto';
 
 export const AUTO_DELAY_MS = 3000;
 

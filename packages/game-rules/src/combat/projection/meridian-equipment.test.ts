@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { ELEMENT_VALUES } from '@daoyou/constants/elements';
-import type { DaoEquipmentInstanceV1 } from '@daoyou/game-domain/equipment/types';
+import type { DaoEquipmentInstanceV1 } from '@daoyou/game-domain/equipment';
 import { generateForgedEquipment } from '../../equipment/forging.js';
 import { generateDaoEquipmentV2 } from '../../equipment/generator.js';
 import { projectCharacterToCombatV6 } from './project-character.js';
-import { type CharacterCombatInput } from '@daoyou/game-domain/combat/projection';
+import { type CharacterCombatInput } from '@daoyou/game-domain/combat';
 import baseline from './fixtures/character-build.json' with { type: 'json' };
 
 const input = baseline.inputs[0] as unknown as CharacterCombatInput;

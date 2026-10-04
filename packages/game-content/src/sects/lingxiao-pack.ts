@@ -6,7 +6,7 @@ import { CommandPolicy, EffectType, SkillTag, StatusCategory, TargetMode, Target
 import { type SkillDef, type StatusDef } from '@daoyou/combat-core/types';
 import { validateSectExpressions } from './authoring-expressions.js';
 import { sectSkillLearning } from './skill-learning.js';
-import type { SectSkillDefV6 } from '@daoyou/game-domain/combat/content';
+import type { SectSkillDefV6 } from '@daoyou/game-domain/combat';
 import raw from './data/lingxiao-combat.json' with { type: 'json' };
 
 const id = z.string().regex(/^lingxiao\.[a-z][a-z0-9_.]*$/);

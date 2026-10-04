@@ -1,9 +1,9 @@
-import { TYPE_DESCRIPTIONS } from '@daoyou/game-content/materials/config';
+import { TYPE_DESCRIPTIONS } from '@daoyou/game-content/materials';
 import {
   calculateDungeonMaterialCost,
   calculateDungeonResourceCost,
   calculateDungeonStatLoss,
-} from '@daoyou/game-rules/dungeon/costPolicy';
+} from '@daoyou/game-rules/dungeon';
 import { type SatelliteNode } from '@daoyou/game-domain/world/map';
 import { getMapNode } from '@daoyou/game-content/world/map';
 import { resolveDungeonMapConfig } from '@daoyou/game-rules/world/dungeon';

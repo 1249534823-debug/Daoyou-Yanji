@@ -1,4 +1,4 @@
-import { getRealmStageRank } from '@daoyou/game-domain/progression/realms';
+import { getRealmStageRank } from '@daoyou/game-domain/progression';
 import { StandardSectRules, sectAbilityMethodId } from '../domain/index.js';
 import type { SectDefinition, SectPathDefinition } from '../domain/index.js';
 import type { SectModule } from '../plugin/index.js';

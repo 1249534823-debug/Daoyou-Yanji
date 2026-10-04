@@ -1,4 +1,4 @@
-import { publicUnitAppearances } from '@daoyou/game-rules/combat/unit-appearance';
+import { publicUnitAppearances } from '@daoyou/game-rules/combat/appearance';
 import type { DbClient } from '@server/lib/drizzle/db.js';
 import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
 import { findActiveSectMembership } from '@server/lib/repositories/sectCombatRepository.js';
@@ -10,16 +10,20 @@ import {
   combatV6Units,
   visibleUnitNames,
 } from '@daoyou/game-rules/combat/presentation';
-import { liveReplayDelta } from '@daoyou/game-rules/combat/replay-timeline';
-import { type CombatV6TrainingCommandV1 } from '@daoyou/game-domain/combat/commands';
-import { COMBAT_V6_TRAINING_ERROR_CODE, type CombatV6TrainingSessionViewV1 } from '@daoyou/contracts/combatV6';
-import { type CombatV6TerminalReason } from '@daoyou/game-domain/combat/runtime-values';
-import { CombatV6BattleFinishedRecordV1Schema, type CombatV6BattleFinishedRecordV1, type CombatV6RedisRuntimeV1, type CombatV6TerminalOutboxV1 } from '@daoyou/contracts/combatV6Runtime';
+import { liveReplayDelta } from '@daoyou/game-rules/combat/playback';
+import {
+  type CombatV6TrainingCommandV1,
+  type CombatV6TerminalReason,
+  type CombatV6TrainingHostV1,
+  type CombatV6TrainingTierV1,
+  type TrainingEncounterOutcome,
+} from '@daoyou/game-domain/combat';
+import { COMBAT_V6_TRAINING_ERROR_CODE, type CombatV6TrainingSessionViewV1 } from '@daoyou/contracts/combat';
+import { CombatV6BattleFinishedRecordV1Schema, type CombatV6BattleFinishedRecordV1, type CombatV6RedisRuntimeV1, type CombatV6TerminalOutboxV1 } from '@daoyou/contracts/combat/runtime';
 import { parseDomainEventEnvelope } from '@server/lib/mq/domainEventSchema.js';
-import { DOMAIN_EVENT_DEFINITIONS, type DomainEventEnvelope } from '@daoyou/contracts/domainEvents';
-import { COMBAT_V6_TRAINING_ENCOUNTERS_V1 } from '@daoyou/game-content/combat/training/content';
+import { DOMAIN_EVENT_DEFINITIONS, type DomainEventEnvelope } from '@daoyou/contracts/events';
+import { COMBAT_V6_TRAINING_ENCOUNTERS_V1 } from '@daoyou/game-content/combat/training';
 import { createCombatV6TrainingHostV1, restoreCombatV6TrainingHostV1, TrainingHostError } from '@daoyou/game-rules/combat/encounter/host';
-import { type CombatV6TrainingHostV1, type CombatV6TrainingTierV1, type TrainingEncounterOutcome } from '@daoyou/game-domain/combat/encounter';
 import { randomInt, randomUUID } from 'node:crypto';
 import { hasActiveCombat } from '@server/combat/application/CombatOccupancy.js';
 import {
@@ -170,7 +174,7 @@ export class CombatV6TrainingSessionService {
     battleId: string,
     expectedRevision: number,
     unitId: string,
-    commands: import('@daoyou/game-domain/combat/commands').CombatV6CommandGroup,
+    commands: import('@daoyou/game-domain/combat').CombatV6CommandGroup,
   ) {
     const runtime = await this.require(actor, battleId);
     this.assertRevision(runtime, expectedRevision);

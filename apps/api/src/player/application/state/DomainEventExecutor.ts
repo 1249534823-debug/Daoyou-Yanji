@@ -4,8 +4,8 @@ import {
   systemCommandExecutor,
   type FeatureCommandResult,
 } from '@server/player/application/state/CommandExecutors.js';
-import type { DomainEventType } from '@daoyou/game-domain/events/payloads';
-import type { DomainEventEnvelope } from '@daoyou/contracts/domainEvents';
+import type { DomainEventType } from '@daoyou/game-domain/events';
+import type { DomainEventEnvelope } from '@daoyou/contracts/events';
 
 type DomainEventSkipResult = { status: 'already_processed' };
 

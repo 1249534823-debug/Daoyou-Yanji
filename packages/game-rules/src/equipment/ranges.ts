@@ -1,7 +1,9 @@
-import { DAO_EQUIPMENT_BASE_GENERATION } from '@daoyou/game-content/equipment/content';
+import { DAO_EQUIPMENT_BASE_GENERATION } from '@daoyou/game-content/equipment/base';
 import { DAO_WEAPONS } from '@daoyou/game-content/equipment/weapons';
-import type { DaoEquipmentTemplateV1 } from '@daoyou/game-domain/equipment/types';
-import type { DaoWeaponType } from '@daoyou/game-domain/equipment/weapons';
+import type {
+  DaoEquipmentTemplateV1,
+  DaoWeaponType,
+} from '@daoyou/game-domain/equipment';
 
 
 export function daoEquipmentAttributeRange(equipmentLevel: number): {

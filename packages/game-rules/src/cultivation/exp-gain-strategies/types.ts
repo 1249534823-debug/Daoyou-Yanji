@@ -1,5 +1,5 @@
-import type { DailyTaskDifficulty } from '@daoyou/game-domain/cultivation/task-difficulty';
-import { EXP_CAP_TABLE } from '@daoyou/game-content/cultivation/cultivationProgress';
+import type { DailyTaskDifficulty } from '@daoyou/game-domain/cultivation';
+import { EXP_CAP_TABLE } from '@daoyou/game-content/cultivation';
 
 import type {
   CultivationExpCalculation,

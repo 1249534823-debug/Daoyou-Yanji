@@ -1,12 +1,12 @@
-import type { ArtifactMigrationSource } from '@daoyou/game-domain/legacy/artifact-migration';
+import type { ArtifactMigrationSource } from '@daoyou/game-domain/legacy/migrations';
 import { z } from 'zod';
 
-import { DAO_EQUIPMENT_SLOTS } from '@daoyou/game-domain/equipment/types';
-
 import {
+  DAO_EQUIPMENT_SLOTS,
   DAO_WEAPON_TYPES,
   equipmentWeaponTypeProblem,
-} from '@daoyou/game-domain/equipment/weapons';
+} from '@daoyou/game-domain/equipment';
+
 
 export const ExchangeArtifactSchema = z
   .object({

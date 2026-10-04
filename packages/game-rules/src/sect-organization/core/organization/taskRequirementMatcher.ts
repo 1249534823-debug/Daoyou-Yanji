@@ -4,8 +4,11 @@ import type {
   SectDeliveryViolation,
   DeliveryMatchResult,
   SectMaterialDeliverySelection,
-} from '@daoyou/game-domain/sects/task-submission';
-import { getLevelRealmStage } from '@daoyou/game-domain/progression/realms';
+  SectDeliveryRequirement,
+  SectMaterialDeliveryRequirement,
+  SectPillTraitKey,
+} from '@daoyou/game-domain/sects/tasks';
+import { getLevelRealmStage } from '@daoyou/game-domain/progression';
 
 import { CULTIVATION_BOOST_STATUS_KEY } from '../../../consumables/cultivation-boost.js';
 
@@ -14,13 +17,8 @@ import { QUALITY_ORDER } from '@daoyou/constants/qualities';
 import type {
   PillAppearanceGrade,
   PillSpec,
-} from '@daoyou/game-domain/consumable';
+} from '@daoyou/game-domain/consumables';
 
-import type {
-  SectDeliveryRequirement,
-  SectMaterialDeliveryRequirement,
-  SectPillTraitKey,
-} from '@daoyou/game-domain/sects/task-requirements';
 
 const APPEARANCE_ORDER: Record<PillAppearanceGrade, number> = {
   low: 0,

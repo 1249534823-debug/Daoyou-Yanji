@@ -1,22 +1,22 @@
-import { MAX_PLAYER_ITEM_QUANTITY } from '@daoyou/game-domain/items/quantity';
-import type { CultivatorSectState } from '@daoyou/game-domain/sects/state';
-import type { SectBattleTargetSummary } from '@daoyou/game-domain/sects/task-battle-target';
-import type { SectDefinition } from '@daoyou/game-domain/sects/definitions';
-import type { SectDeliveryRequirement } from '@daoyou/game-domain/sects/task-requirements';
+import { MAX_PLAYER_ITEM_QUANTITY } from '@daoyou/game-domain/inventory';
 import type {
-  SectDeliveryViolation,
-  SectSubmissionItemFacts,
-} from '@daoyou/game-domain/sects/task-submission';
-import type {
+  CultivatorSectState,
+  SectDefinition,
   SectDiscipleRank,
   SectFacilityState,
-} from '@daoyou/game-domain/sects/organization';
+} from '@daoyou/game-domain/sects';
+import type {
+  SectBattleTargetSummary,
+  SectDeliveryRequirement,
+  SectDeliveryViolation,
+  SectSubmissionItemFacts,
+  SectTaskRewardSnapshot,
+} from '@daoyou/game-domain/sects/tasks';
 import type {
   SectPermissionState,
   SectTaskDialoguePresentation,
-} from '@daoyou/game-domain/sects/organization-contracts';
-import type { SectTaskRewardSnapshot } from '@daoyou/game-domain/sects/task-rewards';
-import type { CultivationProgress } from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/sects/commands';
+import type { CultivationProgress } from '@daoyou/game-domain/character';
 import { z } from 'zod';
 import type { PlayerStateMutationResponse } from './player.js';
 

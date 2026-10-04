@@ -12,9 +12,9 @@ import {
   artifactMigrationPlan,
   artifactMigrationRealm,
   drawArtifactBlueprints,
-} from '@daoyou/game-rules/artifact-migration/rules';
-import type { ArtifactMigrationResult } from '@daoyou/game-domain/legacy/artifact-migration';
-import type { ArtifactMigrationView, ExchangeArtifact } from '@daoyou/contracts/artifactMigration';
+} from '@daoyou/game-rules/legacy/artifacts';
+import type { ArtifactMigrationResult } from '@daoyou/game-domain/legacy/migrations';
+import type { ArtifactMigrationView, ExchangeArtifact } from '@daoyou/contracts/legacy/artifacts';
 import { generateForgedEquipment } from '@daoyou/game-rules/equipment/forging';
 import { and, eq } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';

@@ -10,7 +10,7 @@ import {
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import { AutoStrategyError } from '@server/combat/application/CombatV6AutoStrategyService.js';
 import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildService.js';
-import { SaveAutoStrategySchema } from '@daoyou/game-domain/combat/auto-strategy';
+import { SaveAutoStrategySchema } from '@daoyou/game-domain/combat/auto';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { apiErrorFilter } from '../http/error-filter.js';

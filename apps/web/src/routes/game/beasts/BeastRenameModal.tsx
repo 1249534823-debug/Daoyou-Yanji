@@ -4,7 +4,7 @@ import { InkInput } from '@app/components/ui/InkInput';
 import {
   BEAST_NAME_MAX_LENGTH,
   BeastNameSchema,
-} from '@daoyou/contracts/combatV6Beasts';
+} from '@daoyou/contracts/beasts';
 import { useState } from 'react';
 
 export function BeastRenameModal({

@@ -1,19 +1,23 @@
 import { InkButton } from '@app/components/ui/InkButton';
 import { useInventoryBag } from '@app/lib/resources/bag';
-import type { ManualAction } from '@daoyou/game-domain/manuals/action';
-import type { ManualView } from '@daoyou/contracts/combatV6Manuals';
+import type {
+  ManualAction,
+  CharacterManualDefV1,
+} from '@daoyou/game-domain/manuals';
+import type { ManualView } from '@daoyou/contracts/manuals';
 import type { InventoryView } from '@daoyou/contracts/inventory';
-import { manualAttributeValue } from '@daoyou/game-rules/manuals/attributes';
-import { manualSlot } from '@daoyou/game-rules/manuals/compiler';
+import {
+  manualAttributeValue,
+  manualSlot,
+} from '@daoyou/game-rules/manuals/projection';
 import {
   CHARACTER_MANUALS_V1,
   manualRule,
-} from '@daoyou/game-content/manuals/content';
+} from '@daoyou/game-content/manuals';
 import { manualEffectLines } from '@daoyou/game-rules/manuals/presentation';
-import type { CharacterManualDefV1 } from '@daoyou/game-domain/manuals/types';
 import { itemDefinition } from '@daoyou/game-rules/inventory';
-import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character-attribute-labels';
-import { manualJadeCost, previewManualAction } from '@daoyou/game-rules/manuals/action';
+import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character';
+import { manualJadeCost, previewManualAction } from '@daoyou/game-rules/manuals';
 import { ManualProgress } from './ManualProgress';
 import { manualMechanismSummary } from './manualPresentation';
 

@@ -7,7 +7,7 @@ import {
   PILL_APPEARANCE_EFFECT_MULTIPLIER,
   PILL_CONDENSATION_MULTIPLIER_BY_QUALITY,
   PILL_UNIT_ESSENCE_BY_QUALITY,
-} from '@daoyou/game-content/alchemy/alchemyEssenceConfig';
+} from '@daoyou/game-content/alchemy';
 import {
   QUALITY_ORDER,
   QUALITY_VALUES,
@@ -18,7 +18,7 @@ import type {
   AlchemyYieldProfile,
   AlchemyYieldDisplayProfile,
   PillAppearanceGrade,
-} from '@daoyou/game-domain/consumable';
+} from '@daoyou/game-domain/consumables';
 
 export interface AlchemyEssenceMaterial {
   rank: Quality;

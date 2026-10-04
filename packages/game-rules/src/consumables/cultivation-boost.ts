@@ -1,10 +1,10 @@
-import { ALCHEMY_EFFECT_BASE_BY_QUALITY } from '@daoyou/game-content/alchemy/alchemyEffectConfig';
+import { ALCHEMY_EFFECT_BASE_BY_QUALITY } from '@daoyou/game-content/alchemy';
 import type {
   ConditionStatusInstance,
   CultivatorCondition,
 } from '@daoyou/game-domain/condition';
 import type { Quality } from '@daoyou/constants/qualities';
-import type { AddStatusOperation } from '@daoyou/game-domain/consumable';
+import type { AddStatusOperation } from '@daoyou/game-domain/consumables';
 import { isConditionStatusActive } from '../condition/index.js';
 
 export const CULTIVATION_BOOST_STATUS_KEY = 'cultivation_boost' as const;

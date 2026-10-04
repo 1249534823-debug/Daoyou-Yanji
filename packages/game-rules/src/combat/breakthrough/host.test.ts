@@ -1,9 +1,9 @@
 import type { CultivatorCondition } from '@daoyou/game-domain/condition';
 import { describe, expect, it } from 'vitest';
 import { generateStarterBeast } from '../../beasts/generator.js';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
-import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat/encounter';
-import { type BreakthroughChallengeId } from '@daoyou/game-domain/combat/breakthrough';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
+import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat';
+import { type BreakthroughChallengeId } from '@daoyou/game-domain/combat/challenges';
 import { BREAKTHROUGH_CHALLENGES } from '@daoyou/game-content/combat/breakthrough';
 import { BreakthroughHost, createBreakthroughHost } from './host.js';
 

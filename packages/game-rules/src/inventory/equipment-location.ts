@@ -1,5 +1,7 @@
-import { InventoryRuleError } from '@daoyou/game-domain/items/bag';
-import { type InventoryItem } from '@daoyou/game-domain/items/inventory';
+import {
+  InventoryRuleError,
+  type InventoryItem,
+} from '@daoyou/game-domain/inventory';
 import { emptySlot } from './index.js';
 
 /** Plan bag/equipment locations without changing the caller's inventory. */

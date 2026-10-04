@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { QUALITY_VALUES, type Quality } from '@daoyou/constants/qualities';
-import type { PillAppearanceGrade } from '@daoyou/game-domain/consumable';
+import type { PillAppearanceGrade } from '@daoyou/game-domain/consumables';
 import { alchemyShowcaseSnapshot } from './showcase.js';
-import { isInventoryShowcase } from '@daoyou/game-domain/items/showcase';
+import { isInventoryShowcase } from '@daoyou/game-domain/items/catalog';
 
 function pill(quality: Quality, appearance?: PillAppearanceGrade) {
   return {

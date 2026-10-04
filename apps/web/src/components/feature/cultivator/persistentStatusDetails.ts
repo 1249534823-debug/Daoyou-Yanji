@@ -2,25 +2,25 @@ import {
   getBreakthroughPenaltyPercent,
   getPillToxicityRecoveryMultiplier,
   getPillToxicityStage,
+  getConditionStatusTemplate,
 } from '@daoyou/game-rules/condition';
 import { evaluateFateContext } from '@daoyou/game-rules/character/fates';
-import { getConditionStatusTemplate } from '@daoyou/game-rules/condition/statuses';
 import {
   CULTIVATION_BOOST_STATUS_KEY,
   getCultivationBoostDisplayText,
-} from '@daoyou/game-rules/consumables/cultivation-boost';
+} from '@daoyou/game-rules/consumables/cultivation';
 import {
   BREAKTHROUGH_FOCUS_STATUS_KEY,
   CLEAR_MIND_STATUS_KEY,
   getBreakthroughFocusBonus,
   getProtectMeridiansReductionPercent,
   PROTECT_MERIDIANS_STATUS_KEY,
-} from '@daoyou/game-rules/alchemy/pillEffectScaling';
+} from '@daoyou/game-rules/alchemy';
 import type {
   ConditionStatusInstance,
   CultivatorCondition,
 } from '@daoyou/game-domain/condition';
-import type { PreHeavenFate } from '@daoyou/game-domain/cultivator';
+import type { PreHeavenFate } from '@daoyou/game-domain/character';
 
 export function getStatusEffectDetails(
   status: ConditionStatusInstance,

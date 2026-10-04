@@ -1,4 +1,4 @@
-import type { CombatV6TrainingCommandRequestSchema } from '@daoyou/contracts/combatV6';
+import type { CombatV6TrainingCommandRequestSchema } from '@daoyou/contracts/combat';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import {

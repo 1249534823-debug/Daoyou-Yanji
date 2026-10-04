@@ -1,5 +1,5 @@
-import { RewardSelectionsSchema } from '@daoyou/game-rules/rewards/items';
-import type { ItemGrant } from '@daoyou/game-domain/items/inventory';
+import { RewardSelectionsSchema } from '@daoyou/game-rules/rewards/materials';
+import type { ItemGrant } from '@daoyou/game-domain/inventory';
 
 export type RewardSelectionDraft =
   | { type: 'spirit_stones' | 'reputation'; quantity: string }

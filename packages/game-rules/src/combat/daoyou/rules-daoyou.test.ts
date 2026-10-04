@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { COMBAT_V6_BASE_PROJECTION_VERSIONS } from '@daoyou/game-domain/combat/versions';
+import { COMBAT_V6_BASE_PROJECTION_VERSIONS } from '@daoyou/game-domain/combat';
 import {
   CommandType,
   EffectType,

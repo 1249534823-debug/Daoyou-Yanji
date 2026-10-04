@@ -1,5 +1,5 @@
 import { SeededRng } from '@daoyou/combat-core/rng';
-import type { BeastSpeciesDefinition } from '@daoyou/game-domain/beasts/pack';
+import type { BeastSpeciesDefinition } from '@daoyou/game-domain/beasts/authoring';
 
 export type BeastTraits = {
   aptitudes: Record<keyof BeastSpeciesDefinition['aptitudes'], number>;

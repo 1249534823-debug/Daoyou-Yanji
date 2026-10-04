@@ -10,17 +10,19 @@ import { InkButton } from '@app/components/ui/InkButton';
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
 import { InkQuantityInput } from '@app/components/ui/InkQuantityInput';
 import { useCraftStorage } from '@app/lib/resources/craftStorage';
-import { MAX_CRAFT_MATERIAL_QUANTITY } from '@daoyou/game-domain/items/quantity';
+import {
+  MAX_CRAFT_MATERIAL_QUANTITY,
+  type ItemGrant,
+} from '@daoyou/game-domain/inventory';
 import type { InscriptionRequest } from '@daoyou/contracts/inscriptions';
 import type { InventoryView } from '@daoyou/contracts/inventory';
-import { daoFormationInscriptionOf } from '@daoyou/game-content/equipment/content';
-import { daoFormationMaxLevel } from '@daoyou/game-rules/equipment/inscriptions';
-import type { DaoFormationInscriptionStateV1 } from '@daoyou/game-domain/equipment/types';
-import { type InscriptionDrawPreview, type InscriptionMaterialRef, type InscriptionRef } from '@daoyou/game-domain/inscriptions/types';
+import { daoFormationInscriptionOf } from '@daoyou/game-content/equipment/base';
+import { daoFormationMaxLevel } from '@daoyou/game-rules/equipment/projection';
+import type { DaoFormationInscriptionStateV1 } from '@daoyou/game-domain/equipment';
+import { type InscriptionDrawPreview, type InscriptionMaterialRef, type InscriptionRef } from '@daoyou/game-domain/inscriptions';
 import { inscriptionMaterialProblem, prepareInscriptionDraw, prepareInscriptionEquipment, prepareInscriptionStrengthen } from '@daoyou/game-rules/inscriptions/rules';
-import { type ItemGrant } from '@daoyou/game-domain/items/inventory';
 import { itemDefinition } from '@daoyou/game-rules/inventory';
-import { EQUIPMENT_ATTRIBUTE_NAMES } from '@daoyou/game-domain/equipment/inventory';
+import { EQUIPMENT_ATTRIBUTE_NAMES } from '@daoyou/game-domain/equipment';
 import { InventoryEquipmentSchema } from '@daoyou/game-rules/inventory/equipment';
 import { inscriptionItemId } from '@daoyou/game-content/items/inscriptions';
 import { cn } from '@app/lib/cn';

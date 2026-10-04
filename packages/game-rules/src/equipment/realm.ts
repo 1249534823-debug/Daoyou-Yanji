@@ -1,5 +1,5 @@
-import { isOpenEquipmentLevel } from '@daoyou/game-domain/equipment/levels';
-import { getLevelRealmStage, getRealmStageLevel } from '@daoyou/game-domain/progression/realms';
+import { isOpenEquipmentLevel } from '@daoyou/game-domain/equipment';
+import { getLevelRealmStage, getRealmStageLevel } from '@daoyou/game-domain/progression';
 
 
 /** 器阶只决定属性档位；同一大境界的道装均在初期开放。 */

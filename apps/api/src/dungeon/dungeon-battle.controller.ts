@@ -9,13 +9,13 @@ import {
   UseFilters,
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
-import { CombatAutoRequestSchema } from '@daoyou/contracts/combatAuto';
+import { CombatAutoRequestSchema } from '@daoyou/contracts/combat/auto';
 import {
   CombatV6TrainingCommandRequestSchema,
   CombatV6TrainingEventsQuerySchema,
   CombatV6TrainingRevisionRequestSchema,
-} from '@daoyou/contracts/combatV6';
-import { DungeonBeginBattleRequestSchema } from '@daoyou/contracts/combatV6Dungeon';
+} from '@daoyou/contracts/combat';
+import { DungeonBeginBattleRequestSchema } from '@daoyou/contracts/combat/dungeon';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { AutoErrors } from '../combat/auto-errors.js';

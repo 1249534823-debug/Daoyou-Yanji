@@ -1,7 +1,7 @@
 import type {
   BreakthroughResult,
   CultivationResult,
-} from '@daoyou/game-domain/cultivation/results';
+} from '@daoyou/game-domain/cultivation';
 import { z } from 'zod';
 import type { PlayerResourceMutationMeta } from './player.js';
 

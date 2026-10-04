@@ -1,6 +1,8 @@
 import { z } from 'zod';
-import { BAG_CAPACITY } from '@daoyou/game-domain/items/bag';
-import { InventoryItemStructureSchema } from '@daoyou/game-domain/items/inventory';
+import {
+  BAG_CAPACITY,
+  InventoryItemStructureSchema,
+} from '@daoyou/game-domain/inventory';
 import type { InventoryView } from '../inventory.js';
 
 export interface BagResourceDataMap {

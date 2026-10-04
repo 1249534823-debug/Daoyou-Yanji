@@ -4,14 +4,14 @@ import {
   playerAppearances,
   publicUnitAppearances,
 } from '../unit-appearance.js';
-import { wildEncounterView } from '@daoyou/game-domain/wild/encounter';
-import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat/encounter';
+import { wildEncounterView } from '@daoyou/game-domain/wild';
+import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat';
 import {
   generateWildEncounter,
   generateWildIndividual,
   WildIndividualSchema,
 } from './generator.js';
-import { loadWildPack, WILD_PACK } from '@daoyou/game-content/combat/wild/pack';
+import { loadWildPack, WILD_PACK } from '@daoyou/game-content/combat/wild';
 
 const id = '00000000-0000-4000-8000-000000000001';
 const nodeId = WILD_PACK.regions[0].nodeId;

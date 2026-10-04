@@ -4,7 +4,7 @@ import { SPIRIT_SEED_QUALITY_CHANCE_MAP } from '@daoyou/game-content/spirit-fiel
 import type {
   SpiritSeedRandomOptions,
   SpiritSeedSkeleton,
-} from '@daoyou/game-domain/spirit-field/types';
+} from '@daoyou/game-domain/spirit-field';
 export interface SpiritSeedBatchSpec {
   rank: Quality;
   quantity: number;

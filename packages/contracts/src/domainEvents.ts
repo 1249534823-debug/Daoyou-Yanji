@@ -3,7 +3,7 @@ import {
   type DomainEventType,
   type DomainEventData,
   type createDomainEventDataSchemas,
-} from '@daoyou/game-domain/events/payloads';
+} from '@daoyou/game-domain/events';
 
 import { z } from 'zod';
 

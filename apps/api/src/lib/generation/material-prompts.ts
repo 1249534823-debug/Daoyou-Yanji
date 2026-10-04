@@ -1,7 +1,7 @@
 import {
   QUALITY_TO_RANK,
   TYPE_DESCRIPTIONS,
-} from '@daoyou/game-content/materials/config';
+} from '@daoyou/game-content/materials';
 import type { MaterialSkeleton } from '@daoyou/game-domain/materials/generation';
 import { renderPromptSystem, renderPromptUser } from '@server/lib/prompts/index.js';
 

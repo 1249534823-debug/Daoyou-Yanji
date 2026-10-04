@@ -18,7 +18,7 @@ import {
 import { getPlayerIdentityCultivatorById } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 import { QiService } from '@server/cultivator/application/QiService.js';
 import { getSectCombatView } from '@server/combat/application/CombatV6BuildService.js';
-import { getOrInitCultivationProgress } from '@daoyou/game-rules/cultivation/cultivationUtils';
+import { getOrInitCultivationProgress } from '@daoyou/game-rules/cultivation';
 import {
   PLAYER_RESOURCE_KEYS,
   type PlayerResourceKey,

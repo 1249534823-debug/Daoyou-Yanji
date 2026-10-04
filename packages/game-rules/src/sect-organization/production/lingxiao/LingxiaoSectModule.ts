@@ -1,6 +1,8 @@
 import { StandardSectModule } from '../../core/index.js';
-import { LINGXIAO_DEFINITION } from '@daoyou/game-content/sect-organization/lingxiao/definition';
-import { LINGXIAO_ORGANIZATION_THEME } from '@daoyou/game-content/sect-organization/lingxiao/organization';
+import {
+  LINGXIAO_DEFINITION,
+  LINGXIAO_ORGANIZATION_THEME,
+} from '@daoyou/game-content/sect-organization/lingxiao';
 
 export class LingxiaoSectModule extends StandardSectModule {
   constructor() {

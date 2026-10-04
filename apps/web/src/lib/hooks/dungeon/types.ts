@@ -2,8 +2,8 @@ import type {
   DungeonRound,
   DungeonSettlement,
   DungeonState,
-} from '@daoyou/game-domain/dungeon/state';
-import type { ResourceOperation } from '@daoyou/game-domain/resources/operations';
+} from '@daoyou/game-domain/dungeon';
+import type { ResourceOperation } from '@daoyou/game-domain/resources';
 
 export interface BattleCallbackData {
   isFinished: boolean;

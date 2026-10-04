@@ -1,22 +1,22 @@
 import {
   CombatV6TerminalReasonSchema,
   VersionStampSchema,
-} from '@daoyou/game-domain/combat/runtime-values';
+} from '@daoyou/game-domain/combat';
 
-import type { CombatV6BattleFinishedDataV1 } from '@daoyou/game-domain/combat/terminal-event';
+import type { CombatV6BattleFinishedDataV1 } from '@daoyou/game-domain/combat/replay';
 
 import {
   CombatV6TrainingBattleMetadataV1Schema,
   CombatV6BattleMetadataV1Schema,
-} from '@daoyou/game-domain/combat/metadata';
+  CombatV6ReplayTimelineSchema,
+} from '@daoyou/game-domain/combat/replay';
 
 import type { CombatV6VersionStamp } from '@daoyou/combat-core/types';
 
-import type { CombatV6TrainingRuntimeSnapshotV1 } from '@daoyou/game-domain/combat/encounter';
+import type { CombatV6TrainingRuntimeSnapshotV1 } from '@daoyou/game-domain/combat';
 
 import { z } from 'zod';
 
-import { CombatV6ReplayTimelineSchema } from '@daoyou/game-domain/combat/replay-schema';
 
 export const COMBAT_V6_RUNTIME_VERSION = 'combat_v6_redis_runtime_v1' as const;
 

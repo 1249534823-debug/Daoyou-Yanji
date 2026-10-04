@@ -1,5 +1,5 @@
 import type { InventoryView } from '@daoyou/contracts/inventory';
-import { BAG_CAPACITY } from '@daoyou/game-domain/items/bag';
+import { BAG_CAPACITY } from '@daoyou/game-domain/inventory';
 import type { ComponentProps } from 'react';
 import { InventoryGrid, ItemSlot } from './ItemSlot';
 

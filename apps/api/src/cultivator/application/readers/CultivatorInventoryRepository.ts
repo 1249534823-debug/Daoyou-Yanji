@@ -1,7 +1,7 @@
 import * as creationProductRepository from '@server/lib/repositories/creationProductRepository.js';
 import { calculateSingleElixirScore } from '@server/utils/rankingUtils.js';
 import { legacyProductForGrant } from '@daoyou/game-domain/legacy/products';
-import { buildConsumableStackKey } from '@daoyou/game-domain/consumables/identity';
+import { buildConsumableStackKey } from '@daoyou/game-domain/consumables';
 import { ELEMENT_VALUES, ElementType } from '@daoyou/constants/elements';
 import { MaterialType } from '@daoyou/game-domain/inventory';
 import { Quality, QUALITY_ORDER } from '@daoyou/constants/qualities';
@@ -10,7 +10,7 @@ import type {
   Consumable,
   Cultivator,
   Material,
-} from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/character';
 import {
   and,
   asc,

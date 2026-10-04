@@ -1,41 +1,41 @@
-import { getMinimumPillQualityByRealm } from '@daoyou/game-rules/consumables/scaling';
-import { CULTIVATION_PILL_MAX_QUALITY_BY_REALM } from '@daoyou/game-content/consumables/config';
+import { getMinimumPillQualityByRealm } from '@daoyou/game-rules/consumables';
+import { CULTIVATION_PILL_MAX_QUALITY_BY_REALM } from '@daoyou/game-content/consumables';
 import {
   BODY_CULTIVATION_REALM_REQUIREMENTS,
   getBodyCultivationThresholdByLevel,
   getBodyTrackKeyFromPath,
   isBodyCultivationTrackPath,
   isLegacyTemperingTrackPath,
-} from '@daoyou/game-rules/body-cultivation/config';
-import { normalizeBodyCultivationState } from '@daoyou/game-rules/body-cultivation/normalize';
-import { getBodyCultivationSummary } from '@daoyou/game-rules/body-cultivation/summary';
-import { getBreakthroughFocusPillLabel } from '@daoyou/game-rules/consumables/breakthrough-pill';
-import { getConditionStatusTemplate } from '@daoyou/game-rules/condition/statuses';
+  normalizeBodyCultivationState,
+  getBodyCultivationSummary,
+} from '@daoyou/game-rules/body-cultivation/progress';
+import { getBreakthroughFocusPillLabel } from '@daoyou/game-rules/consumables/breakthrough';
+import {
+  getConditionStatusTemplate,
+  getTrackConfig,
+} from '@daoyou/game-rules/condition';
 import {
   CULTIVATION_BOOST_STATUS_KEY,
   getCultivationBoostDisplayText,
-} from '@daoyou/game-rules/consumables/cultivation-boost';
+} from '@daoyou/game-rules/consumables/cultivation';
 import {
   getGameConceptLabel,
   getResourceLabel,
   getResourceText,
 } from '@daoyou/game-content/presentation/concepts';
-import { getPillAppearanceLabel } from '@daoyou/game-rules/alchemy/pillAppearance';
 import {
+  getPillAppearanceLabel,
   BREAKTHROUGH_FOCUS_STATUS_KEY,
   CLEAR_MIND_STATUS_KEY,
   getBreakthroughFocusBonus,
   getProtectMeridiansReductionPercent,
   PROTECT_MERIDIANS_STATUS_KEY,
-} from '@daoyou/game-rules/alchemy/pillEffectScaling';
-import {
   getLongevityPillUsageLimit,
   getPillUsageKeywordLabel,
   getPillUsageRuleText,
   getPrimaryPillQuotaCategory,
   getRealmPillUsageLimit,
-} from '@daoyou/game-rules/alchemy/pillUsageText';
-import { getTrackConfig } from '@daoyou/game-rules/condition/tracks';
+} from '@daoyou/game-rules/alchemy';
 import type {
   ConditionStatusKey,
   CultivatorCondition,
@@ -48,8 +48,8 @@ import type {
   PillQuotaCategory,
   PillSpec,
   SpiritFruitSpec,
-} from '@daoyou/game-domain/consumable';
-import type { Consumable } from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/consumables';
+import type { Consumable } from '@daoyou/game-domain/character';
 
 interface PillDisplayOptions {
   realm?: RealmType;

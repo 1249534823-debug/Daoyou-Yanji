@@ -1,6 +1,8 @@
 import { StandardSectModule } from '../../core/index.js';
-import { TIANYAN_DEFINITION } from '@daoyou/game-content/sect-organization/tianyan/definition';
-import { TIANYAN_ORGANIZATION_THEME } from '@daoyou/game-content/sect-organization/tianyan/organization';
+import {
+  TIANYAN_DEFINITION,
+  TIANYAN_ORGANIZATION_THEME,
+} from '@daoyou/game-content/sect-organization/tianyan';
 
 export class TianyanSectModule extends StandardSectModule {
   constructor() {

@@ -1,8 +1,8 @@
 import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from '@daoyou/game-content/sects/progression/progression' with { type: 'json' };
-import schema from '@daoyou/game-content/sects/progression/progression.schema' with { type: 'json' };
+import { SECTS_PROGRESSION_PROGRESSION_DATA as raw } from '@daoyou/game-content/sects/progression';
+import { SECTS_PROGRESSION_PROGRESSION_SCHEMA as schema } from '@daoyou/game-content/authoring/sects';
 import { SectProgressionPackShape, loadSectProgressionPack, configuredMethodCost, configuredMeridianCost } from '../progression-pack.js';
 import { methodTrainingCost, meridianUnlockCost } from '../progression.js';
 

@@ -1,8 +1,8 @@
 import { BeastIcon } from '@app/components/feature/beasts/BeastIcon';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
-import { type SummonedBeast } from '@daoyou/game-domain/beasts/schema';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts';
+import { type SummonedBeast } from '@daoyou/game-domain/beasts';
 import { fusionPreview } from '@daoyou/game-rules/beasts/fusion';
 
 export function FusionPreview({

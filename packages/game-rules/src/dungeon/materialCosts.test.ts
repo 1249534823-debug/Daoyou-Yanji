@@ -1,8 +1,10 @@
-import type { DungeonMaterialSelection } from '@daoyou/game-domain/dungeon/actions';
-import type { InventoryItem } from '@daoyou/game-domain/items/inventory';
+import type {
+  DungeonMaterialSelection,
+  DungeonOptionCost,
+} from '@daoyou/game-domain/dungeon';
+import type { InventoryItem } from '@daoyou/game-domain/inventory';
 import { describe, expect, it } from 'vitest';
 import { consumeDungeonMaterials } from './materialCosts.js';
-import type { DungeonOptionCost } from '@daoyou/game-domain/dungeon/state';
 
 const material = (
   id: string,

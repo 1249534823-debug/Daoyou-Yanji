@@ -16,10 +16,10 @@ import {
   type ResourceChange,
   type ResourceScope,
 } from './resources/index.js';
-import { canonicalizeResourceParams } from '@daoyou/game-domain/resources/canonicalize';
-import { createInventoryEquipmentSchema } from '@daoyou/game-domain/equipment/inventory';
-import { createInventorySchemas } from '@daoyou/game-domain/items/inventory';
-import { createSectDeliveryRequirementSchemas } from '@daoyou/game-domain/sects/task-requirements';
+import { canonicalizeResourceParams } from '@daoyou/game-domain/resources';
+import { createInventoryEquipmentSchema } from '@daoyou/game-domain/equipment';
+import { createInventorySchemas } from '@daoyou/game-domain/inventory';
+import { createSectDeliveryRequirementSchemas } from '@daoyou/game-domain/sects/tasks';
 import { createResourceSchemas } from './resources/registry.js';
 import { createSectResourceSchemas } from './resources/sect.js';
 

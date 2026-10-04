@@ -1,14 +1,14 @@
 import {
   COMBAT_V6_SECT_DEFINITIONS,
   validateCombatV6SectRegistry,
-} from '@daoyou/game-content/sects/registry';
+} from '@daoyou/game-content/sects';
 import { compileSectDefinitionV6 } from './compiler.js';
 
 import type {
   CompileSectCombatV6Result,
   SectCombatProgressV6,
   SectDefinitionV6,
-} from '@daoyou/game-domain/combat/content';
+} from '@daoyou/game-domain/combat';
 
 type SectCompileInput = {
   progress: SectCombatProgressV6;
@@ -19,11 +19,11 @@ function compileRegisteredSect(
   input: SectCompileInput,
   registry: Partial<
     Record<
-      import('@daoyou/game-domain/combat/content').CombatV6SectId,
+      import('@daoyou/game-domain/combat').CombatV6SectId,
       SectDefinitionV6
     >
   >,
-  registryDiagnostics: import('@daoyou/game-domain/combat/projection').CombatV6ProjectionDiagnostic[],
+  registryDiagnostics: import('@daoyou/game-domain/combat').CombatV6ProjectionDiagnostic[],
 ): CompileSectCombatV6Result {
   if (registryDiagnostics.some((item) => item.severity === 'error'))
     return { ok: false, diagnostics: registryDiagnostics };
@@ -112,7 +112,7 @@ export {
   validateJiujieContentV1,
 } from '@daoyou/game-content/sects/jiujie';
 
-export type { CombatV6PanelContribution } from '@daoyou/game-domain/combat/projection';
+export type { CombatV6PanelContribution } from '@daoyou/game-domain/combat';
 
 export type {
   CombatV6SectId,
@@ -126,4 +126,4 @@ export type {
   SectPathDefV6,
   SectSkillDefV6,
   SkillPatchV6,
-} from '@daoyou/game-domain/combat/content';
+} from '@daoyou/game-domain/combat';

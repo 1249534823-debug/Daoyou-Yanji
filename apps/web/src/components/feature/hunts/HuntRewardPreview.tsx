@@ -1,11 +1,11 @@
 import { itemPresentation } from '@app/components/feature/items/itemPresentation';
 import { ItemSlot } from '@app/components/feature/items/ItemSlot';
 import { GameIcon } from '@app/components/ui/GameIcon';
-import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '@daoyou/game-content/beasts/content';
+import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '@daoyou/game-content/beasts';
 import { itemDefinition } from '@daoyou/game-rules/inventory';
 import { getGameConceptInfo } from '@daoyou/game-content/presentation/concepts';
 import { HUNT_DROP_POOL } from '@daoyou/game-rules/rewards/hunt';
-import { HUNT_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/game-rules/rewards/hunt-material-quality';
+import { HUNT_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/game-rules/rewards/materials';
 import type { RealmType } from '@daoyou/constants/realms';
 import { useState } from 'react';
 

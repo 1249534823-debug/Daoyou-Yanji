@@ -1,13 +1,16 @@
-import { canSelectMeridianNode, connectedMeridianSelection, meridianNodesConnect, toggleMeridianNode } from '@daoyou/game-rules/sects/meridian-selection';
-import { InkButton } from '@app/components/ui/InkButton';
-import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
-import { getLevelRealmStage } from '@daoyou/game-domain/progression/realms';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
-import { type MeridianNodeDefV6 } from '@daoyou/game-domain/combat/content';
 import {
+  canSelectMeridianNode,
+  connectedMeridianSelection,
+  meridianNodesConnect,
+  toggleMeridianNode,
   MERIDIAN_LEVELS,
   meridianUnlockCost,
-} from '@daoyou/game-rules/sects/progression';
+} from '@daoyou/game-rules/sects';
+import { InkButton } from '@app/components/ui/InkButton';
+import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
+import { getLevelRealmStage } from '@daoyou/game-domain/progression';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
+import { type MeridianNodeDefV6 } from '@daoyou/game-domain/combat';
 import { SECT_PANEL_LABELS } from '@daoyou/game-rules/sects/presentation';
 import { useState, useSyncExternalStore } from 'react';
 import { useBeforeUnload, useBlocker } from 'react-router';

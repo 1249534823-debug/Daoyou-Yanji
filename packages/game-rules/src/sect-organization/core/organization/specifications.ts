@@ -1,10 +1,10 @@
-import { isPillSpec } from '@daoyou/game-domain/consumables/identity';
+import { isPillSpec } from '@daoyou/game-domain/consumables';
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { QUALITY_ORDER } from '@daoyou/constants/qualities';
 import type { Quality } from '@daoyou/constants/qualities';
-import type { ConsumableSpec } from '@daoyou/game-domain/consumable';
+import type { ConsumableSpec } from '@daoyou/game-domain/consumables';
 import { realmMeetsSectRank } from '../domain/organization.js';
-import type { SectRankRequirement } from '@daoyou/game-domain/sects/organization';
+import type { SectRankRequirement } from '@daoyou/game-domain/sects';
 
 export interface PromotionCandidateFacts {
   realm: RealmType;

@@ -5,9 +5,9 @@ import { createBattle } from '@daoyou/combat-core/session';
 import { effectiveSpeed } from '@daoyou/combat-core/units';
 import { type SkillDef, type StatusDef } from '@daoyou/combat-core/types';
 import { createDaoyouRuleset } from '../combat/daoyou/index.js';
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '@daoyou/game-domain/combat/versions';
-import pack from '@daoyou/game-content/equipment/data/equipment-special' with { type: 'json' };
-import { DAO_EQUIPMENT_ARTS_V1, DAO_RAGE_RESOURCE_ID } from '@daoyou/game-content/equipment/special-content';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '@daoyou/game-domain/combat';
+import { EQUIPMENT_EQUIPMENT_SPECIAL_DATA as pack } from '@daoyou/game-content/authoring/equipment';
+import { DAO_EQUIPMENT_ARTS_V1, DAO_RAGE_RESOURCE_ID } from '@daoyou/game-content/equipment/special';
 
 const art = (id: string) =>
   DAO_EQUIPMENT_ARTS_V1.find((a) => a.id === `dao_equipment.art.${id}`)!;

@@ -10,18 +10,18 @@ import {
   UseFilters,
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
-import { CombatAutoRequestSchema } from '@daoyou/contracts/combatAuto';
+import { CombatAutoRequestSchema } from '@daoyou/contracts/combat/auto';
 import {
   CombatV6TrainingCommandParamsSchema,
   CombatV6TrainingCommandRequestSchema,
   CombatV6TrainingEventsQuerySchema,
   CombatV6TrainingRevisionRequestSchema,
   CombatV6TrainingSessionParamsSchema,
-} from '@daoyou/contracts/combatV6';
+} from '@daoyou/contracts/combat';
 import {
   WildExploreRequestSchema,
   WildStartRequestSchema,
-} from '@daoyou/contracts/combatV6Wild';
+} from '@daoyou/contracts/combat/wild';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { FirstQuery } from '../http/first-query.js';

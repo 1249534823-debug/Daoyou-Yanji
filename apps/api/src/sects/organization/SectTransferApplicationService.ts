@@ -15,7 +15,7 @@ import { SectError } from '@server/sects/application/SectError.js';
 import {
   CHEAT_HEAVEN_TALISMAN_NAME,
   CHEAT_HEAVEN_TALISMAN_SCENARIO,
-} from '@daoyou/game-content/consumables/sectTransferTalisman';
+} from '@daoyou/game-content/consumables';
 import type {
   SectContextData,
   SectTransferPreviewData,
@@ -26,7 +26,7 @@ import {
   type SectDiscipleRank,
   type SectRuntime,
 } from '@daoyou/game-rules/sect-organization';
-import type { Consumable } from '@daoyou/game-domain/cultivator';
+import type { Consumable } from '@daoyou/game-domain/character';
 import { and, eq } from 'drizzle-orm';
 import { findBagTalisman } from '@server/inventory/application/BagConsumables.js';
 import {

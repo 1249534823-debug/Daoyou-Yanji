@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import type { CombatV6DisplayCatalog } from '@daoyou/game-domain/combat/display';
+import type { CombatV6DisplayCatalog } from '@daoyou/game-domain/combat';
 
 export type CombatV6ReplayDisplay = CombatV6DisplayCatalog;
 

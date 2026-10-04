@@ -6,10 +6,10 @@ import { createBattle } from '@daoyou/combat-core/session';
 import { effectiveAttrs } from '@daoyou/combat-core/units';
 import { type Command, type CreateBattleInput } from '@daoyou/combat-core/types';
 import { createDaoyouRuleset } from '../combat/daoyou/index.js';
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '@daoyou/game-domain/combat/versions';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '@daoyou/game-domain/combat';
 import { compileSectDefinitionV6 } from './compiler.js';
 import { TIANYAN_V6_DEFINITION as definition } from '@daoyou/game-content/sects/tianyan';
-import { TIANYAN_REACTIONS_V1 } from '@daoyou/game-content/sects/tianyan-foundation';
+import { TIANYAN_REACTIONS_V1 } from '@daoyou/game-content/authoring/sects';
 const S = (id: string) => 'tianyan.skill.' + id;
 const T = (id: string) => 'tianyan.status.' + id;
 const cmd = (id: string, targets = ['t']): Command => ({

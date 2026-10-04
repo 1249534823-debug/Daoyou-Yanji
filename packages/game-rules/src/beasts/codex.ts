@@ -1,7 +1,7 @@
 import { REALM_ORDER, type RealmType } from '@daoyou/constants/realms';
-import { WILD_REGIONS } from '@daoyou/game-content/combat/wild/content';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
-import type { BeastSpeciesDefinition } from '@daoyou/game-domain/beasts/pack';
+import { WILD_REGIONS } from '@daoyou/game-content/combat/wild';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts';
+import type { BeastSpeciesDefinition } from '@daoyou/game-domain/beasts/authoring';
 
 export interface BeastCodexHabitat {
   nodeId: string;

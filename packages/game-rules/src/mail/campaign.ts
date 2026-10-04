@@ -1,6 +1,11 @@
-import { createSystemMailInputSchema, type SystemMailCampaign } from '@daoyou/game-domain/mail/campaign';
+import {
+  createSystemMailInputSchema,
+  type SystemMailCampaign,
+  mailRealmRank,
+  type SystemMailConditions,
+  type SystemMailAudienceSnapshot,
+} from '@daoyou/game-domain/mail';
 export const SystemMailInputSchema = createSystemMailInputSchema(RewardSelectionsSchema);
-import { mailRealmRank, type SystemMailConditions, type SystemMailAudienceSnapshot } from '@daoyou/game-domain/mail/audience';
 
 
 

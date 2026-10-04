@@ -2,14 +2,14 @@ import { rollDrops } from '../drops/index.js';
 
 import { SeededRng } from '@daoyou/combat-core/rng';
 
-import type { ItemGrant } from '@daoyou/game-domain/items/inventory';
+import type { ItemGrant } from '@daoyou/game-domain/inventory';
 
 import {
   STORY_REWARD_PACK,
   STORY_SPIRIT_STONE_REWARD,
   storyDropPool,
   type StoryRewardPack,
-} from '@daoyou/game-content/rewards/story-pack';
+} from '@daoyou/game-content/rewards/story';
 
 export interface PlannedStoryReward {
   items: ItemGrant[];

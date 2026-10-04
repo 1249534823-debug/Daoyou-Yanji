@@ -3,8 +3,8 @@ import {
   createEmptySectCombatProgressV6,
   createFreshCombatV6MethodLevels,
 } from '../sects/build-state.js';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
-import { type CharacterDisplayBuild } from '@daoyou/game-domain/character/display';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
+import { type CharacterDisplayBuild } from '@daoyou/game-domain/character';
 import { projectCharacterDisplay } from '../character/display.js';
 import { publicCombatV6Build } from './public-build.js';
 

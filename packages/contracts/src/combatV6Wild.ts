@@ -1,8 +1,11 @@
-import type { WildEncounterView } from '@daoyou/game-domain/wild/encounter';
+import type {
+  WildEncounterView,
+  WildRuntimeSnapshot,
+  WildRegion,
+} from '@daoyou/game-domain/wild';
 
 
 
-import type { WildRuntimeSnapshot } from '@daoyou/game-domain/wild/runtime';
 
 
 
@@ -16,7 +19,7 @@ import { z } from 'zod';
 
 
 
-import { type DropPool } from '@daoyou/game-domain/drops/pool';
+import { type DropPool } from '@daoyou/game-domain/rewards';
 
 
 
@@ -32,11 +35,10 @@ import { type DropPool } from '@daoyou/game-domain/drops/pool';
 
 
 
-import type { WildRegion } from '@daoyou/game-domain/wild/region';
 
 
 
-import { type ItemGrant } from '@daoyou/game-domain/items/inventory';
+import { type ItemGrant } from '@daoyou/game-domain/inventory';
 
 
 
@@ -54,7 +56,7 @@ import type { CombatV6RedisRuntimeV1 } from './combatV6Runtime.js';
 
 
 
-import { CombatV6BattleMetadataV1Schema } from '@daoyou/game-domain/combat/metadata';
+import { CombatV6BattleMetadataV1Schema } from '@daoyou/game-domain/combat/replay';
 
 
 

@@ -1,4 +1,4 @@
-import type { BlackMarketRevealRating } from '@daoyou/game-domain/blackMarket';
+import type { BlackMarketRevealRating } from '@daoyou/game-domain/black-market';
 
 export const BLACK_MARKET_MAX_INSPECTIONS = 3;
 export const BLACK_MARKET_MAX_TURNS = 6;

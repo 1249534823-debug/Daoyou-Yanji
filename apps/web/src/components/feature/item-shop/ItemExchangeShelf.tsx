@@ -5,7 +5,7 @@ import {
 import { GameLoadingState } from '@app/components/game-shell';
 import { InkButton, InkInput, InkNotice, InkSelect } from '@app/components/ui';
 import type { ItemExchangeShopItemView } from '@daoyou/game-domain/shops/exchange';
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import { findItemDefinition } from '@daoyou/game-content/items';
 import { getGameConceptInfo } from '@daoyou/game-content/presentation/concepts';
 import { useState } from 'react';
 

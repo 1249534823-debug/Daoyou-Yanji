@@ -22,7 +22,7 @@ import type {
 import {
   getMarketNodeSwitchOptions,
   resolveMarketSwitchLayer,
-} from '@daoyou/game-rules/world/marketConfig';
+} from '@daoyou/game-rules/world/market';
 import { formatCompactGameNumber } from '@daoyou/game-rules/presentation/numbers';
 import type { MarketAccessState, MarketListing } from '@daoyou/game-domain/market';
 import { useEffect, useRef, useState } from 'react';

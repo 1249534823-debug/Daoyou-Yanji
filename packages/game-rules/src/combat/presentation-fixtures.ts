@@ -8,7 +8,7 @@ import {
 import { createBattle } from '@daoyou/combat-core/session';
 import type { CreateBattleInput } from '@daoyou/combat-core/types';
 import { daoyouRulesetV6 } from './daoyou/index.js';
-import { COMBAT_V6_SEAL_CURVE_WILD_VERSIONS } from '@daoyou/game-domain/combat/versions';
+import { COMBAT_V6_SEAL_CURVE_WILD_VERSIONS } from '@daoyou/game-domain/combat';
 
 /** Deterministic workloads shared by presentation regression checks. */
 export const presentationScenarios = [

@@ -1,6 +1,6 @@
 import { Controller, Get, Header, Inject, UseFilters } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
-import { PlayerJournalQuerySchema } from '@daoyou/contracts/playerJournal';
+import { PlayerJournalQuerySchema } from '@daoyou/contracts/player/journal';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { apiErrorFilter } from '../http/error-filter.js';

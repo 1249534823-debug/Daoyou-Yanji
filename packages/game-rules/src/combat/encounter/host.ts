@@ -1,7 +1,17 @@
-import type { CompiledPveEncounter, PveRestoredState } from '@daoyou/game-domain/combat/runtime';
+import type {
+  CompiledPveEncounter,
+  PveRestoredState,
+  CombatV6EncounterTraceV1,
+  CombatV6TrainingHostV1,
+  CombatV6TrainingRuntimeSnapshotV1,
+  CompileCombatV6TrainingEncounterV1Input,
+  CompileCombatV6TrainingEncounterV1Result,
+  CompiledCombatV6TrainingEncounterV1,
+  TrainingEncounterOutcome,
+} from '@daoyou/game-domain/combat';
 import { playerAppearances } from '../unit-appearance.js';
 
-import { AUTO_POLICY_VERSION } from '@daoyou/game-domain/combat/auto-policy';
+import { AUTO_POLICY_VERSION } from '@daoyou/game-domain/combat/auto';
 
 import { automaticCommands } from '../auto.js';
 
@@ -22,23 +32,13 @@ import { BattlePhase, CommandType, MatchWinner, ResultReason, Team } from '@daoy
 
 import { createBattle, restoreBattle, type BattleSession } from '@daoyou/combat-core/session';
 
-import { isStanding } from '@daoyou/combat-core/units';
+import { isStanding, canCollectCommand } from '@daoyou/combat-core/units';
 
 import { type BattleEvent, type Command, type SkillDef, type Unit } from '@daoyou/combat-core/types';
 
-import { canCollectCommand } from '@daoyou/combat-core/units';
 
 import { compileCombatV6TrainingEncounterV1 } from './compiler.js';
 
-import type {
-  CombatV6EncounterTraceV1,
-  CombatV6TrainingHostV1,
-  CombatV6TrainingRuntimeSnapshotV1,
-  CompileCombatV6TrainingEncounterV1Input,
-  CompileCombatV6TrainingEncounterV1Result,
-  CompiledCombatV6TrainingEncounterV1,
-  TrainingEncounterOutcome,
-} from '@daoyou/game-domain/combat/encounter';
 
 export const TrainingHostErrorCode = {
   NotCommandPhase: 'training-not-command-phase',

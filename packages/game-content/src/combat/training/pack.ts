@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { ATTR_NAMES } from '@daoyou/combat-core/constants';
 import { DamageOrigin, EffectType, FormulaFamily, SkillTag, StatusCategory, StatusTick, TargetSide, TickKind, UnitKind } from '@daoyou/combat-core/enums';
 import { validateSectExpressions } from '../../sects/authoring-expressions.js';
-import type { CombatV6TrainingContentV1, PveCombatantDefV1 } from '@daoyou/game-domain/combat/encounter';
+import type { CombatV6TrainingContentV1, PveCombatantDefV1 } from '@daoyou/game-domain/combat';
 import raw from './data/training.json' with { type: 'json' };
 
 const id = z.string().regex(/^combat\.training\.[a-z][a-z0-9.-]*$/);

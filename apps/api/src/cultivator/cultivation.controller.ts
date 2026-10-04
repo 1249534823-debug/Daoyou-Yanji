@@ -15,7 +15,7 @@ import {
 } from '@server/cultivator/application/QiService.js';
 import { RetreatCommandError } from '@server/cultivator/application/RetreatApplicationService.js';
 import { YieldCommandError } from '@server/cultivator/application/YieldApplicationService.js';
-import { JournalRequestSchema } from '@daoyou/contracts/playerJournal';
+import { JournalRequestSchema } from '@daoyou/contracts/player/journal';
 import {
   RetreatRequestSchema,
   type RetreatRequest,

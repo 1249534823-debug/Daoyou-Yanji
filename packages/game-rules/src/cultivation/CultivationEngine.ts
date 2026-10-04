@@ -2,8 +2,8 @@ import type {
   RetreatCultivatorFacts,
   CultivationResult,
   BreakthroughResult,
-} from '@daoyou/game-domain/cultivation/results';
-import { COMPREHENSION_INSIGHT_CAP } from '@daoyou/game-content/cultivation/cultivationTuning';
+} from '@daoyou/game-domain/cultivation';
+import { COMPREHENSION_INSIGHT_CAP } from '@daoyou/game-content/cultivation';
 
 import { getBreakthroughAttributeGrowthReward } from '../progression/attributes.js';
 
@@ -29,7 +29,7 @@ import type {
   Attributes,
   BreakthroughHistoryEntry,
   RetreatRecord,
-} from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/character';
 
 import {
   calculateBreakthroughChance,

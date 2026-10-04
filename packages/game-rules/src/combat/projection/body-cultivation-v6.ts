@@ -1,13 +1,16 @@
-import { BODY_CULTIVATION_TRACK_KEYS } from '@daoyou/game-content/body-cultivation/pack';
-import { BODY_CULTIVATION_PACK, bodyTrainingLevelCap } from "@daoyou/game-content/body-cultivation/pack"
+import {
+  BODY_CULTIVATION_TRACK_KEYS,
+  BODY_CULTIVATION_PACK,
+  bodyTrainingLevelCap,
+} from '@daoyou/game-content/body-cultivation';
 import { bodyCultivationBenefits } from "../../body-cultivation/benefits.js"
 import type { BodyCultivationTrackKey } from "@daoyou/game-domain/condition"
-import type { CharacterPanelV1 } from '@daoyou/game-domain/combat/panel';
 import type {
+  CharacterPanelV1,
   CombatV6BodyCultivationInput,
   CombatV6ProjectionDiagnostic,
   CombatV6TrainingProjection,
-} from "@daoyou/game-domain/combat/projection"
+} from '@daoyou/game-domain/combat';
 
 export function compileBodyCultivationV6(
   state: CombatV6BodyCultivationInput,

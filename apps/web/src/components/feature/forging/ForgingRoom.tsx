@@ -10,14 +10,16 @@ import { InkButton } from '@app/components/ui/InkButton';
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
 import { InkInput } from '@app/components/ui/InkInput';
 import { InkTooltip } from '@app/components/ui/InkTooltip';
-import { getLevelRealmStage } from '@daoyou/game-domain/progression/realms';
-import { daoEquipmentBaseRange } from '@daoyou/game-rules/equipment/ranges';
-import { daoEquipmentTemplateOf } from '@daoyou/game-content/equipment/content';
-import { DAO_EQUIPMENT_FORGING } from '@daoyou/game-content/equipment/forging-content';
+import { getLevelRealmStage } from '@daoyou/game-domain/progression';
+import { daoEquipmentBaseRange } from '@daoyou/game-rules/equipment/forging';
+import { daoEquipmentTemplateOf } from '@daoyou/game-content/equipment/base';
+import { DAO_EQUIPMENT_FORGING } from '@daoyou/game-content/equipment/forging';
 import { DAO_WEAPONS } from '@daoyou/game-content/equipment/weapons';
-import { DAO_WEAPON_TYPES } from '@daoyou/game-domain/equipment/weapons';
-import { FORGE_INTENT_MAX_LENGTH } from '@daoyou/game-domain/equipment/narrative';
-import { EQUIPMENT_ATTRIBUTE_NAMES } from '@daoyou/game-domain/equipment/inventory';
+import {
+  DAO_WEAPON_TYPES,
+  FORGE_INTENT_MAX_LENGTH,
+  EQUIPMENT_ATTRIBUTE_NAMES,
+} from '@daoyou/game-domain/equipment';
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useBeforeUnload, useBlocker } from 'react-router';
 import { ForgingFurnace } from './ForgingFurnace';

@@ -17,30 +17,35 @@ import {
   combatV6Units,
   visibleUnitNames,
 } from '@daoyou/game-rules/combat/presentation';
-import { liveReplayDelta } from '@daoyou/game-rules/combat/replay-timeline';
-import { publicUnitAppearances } from '@daoyou/game-rules/combat/unit-appearance';
+import { liveReplayDelta } from '@daoyou/game-rules/combat/playback';
+import { publicUnitAppearances } from '@daoyou/game-rules/combat/appearance';
 import { QI_ACTION_COSTS } from '@daoyou/game-content/qi/config';
-import type { CombatV6TrainingCommandV1 } from '@daoyou/game-domain/combat/commands';
-import type { CombatV6TerminalReason } from '@daoyou/game-domain/combat/runtime-values';
-import type { CombatV6TerminalOutboxV1 } from '@daoyou/contracts/combatV6Runtime';
-import type { WildSettlement } from '@daoyou/game-domain/wild/settlement';
-import type { WildRuntime, WildSessionView } from '@daoyou/contracts/combatV6Wild';
-import { wildEncounterView, type WildEncounter } from '@daoyou/game-domain/wild/encounter';
-import { type WildRegionView } from '@daoyou/contracts/combatV6Wild';
-import { DOMAIN_EVENT_DEFINITIONS } from '@daoyou/contracts/domainEvents';
-import { beastDeathIds } from '@daoyou/game-rules/beasts/progression';
+import type {
+  CombatV6TrainingCommandV1,
+  CombatV6TerminalReason,
+} from '@daoyou/game-domain/combat';
+import type { CombatV6TerminalOutboxV1 } from '@daoyou/contracts/combat/runtime';
+import type { WildSettlement } from '@daoyou/game-domain/wild';
+import type { WildRuntime, WildSessionView } from '@daoyou/contracts/combat/wild';
+import { wildEncounterView, type WildEncounter } from '@daoyou/game-domain/wild';
+import { type WildRegionView } from '@daoyou/contracts/combat/wild';
+import { DOMAIN_EVENT_DEFINITIONS } from '@daoyou/contracts/events';
+import { beastDeathIds } from '@daoyou/game-rules/beasts/growth';
 import { SeededRng } from '@daoyou/combat-core/rng';
-import { projectCharacterToCombatV6 } from '@daoyou/game-rules/combat/projection/project-character';
+import { projectCharacterToCombatV6 } from '@daoyou/game-rules/combat/projection';
 import {
   getWildRegion,
   WILD_CONTENT_VERSION,
-} from '@daoyou/game-content/combat/wild/content';
+} from '@daoyou/game-content/combat/wild';
 import {
   generateWildEncounter,
   generateWildIndividual,
 } from '@daoyou/game-rules/combat/wild/generator';
-import { createWildHost, WildHost } from '@daoyou/game-rules/combat/wild/host';
-import { WILD_EXPLORATION_COOLDOWN_MS } from '@daoyou/game-rules/combat/wild/rules';
+import {
+  createWildHost,
+  WildHost,
+  WILD_EXPLORATION_COOLDOWN_MS,
+} from '@daoyou/game-rules/combat/wild';
 import { evaluateFateContext } from '@daoyou/game-rules/character/fates';
 import { WILD_DROP_POOLS, wildItemRewards } from '@daoyou/game-rules/rewards/wild';
 
@@ -508,7 +513,7 @@ export class CombatV6WildSessionService {
     id: string,
     expected: number,
     unitId: string,
-    commands: import('@daoyou/game-domain/combat/commands').CombatV6CommandGroup,
+    commands: import('@daoyou/game-domain/combat').CombatV6CommandGroup,
   ) {
     return this.change(actor, id, expected, (host) => {
       if (unitId !== host.playerId)

@@ -1,6 +1,6 @@
 import { getRealmStageNaturalAttributeValue } from '../../progression/attributes.js';
 import { ELEMENT_VALUES, type ElementType } from '@daoyou/constants/elements';
-import type { Attributes, SpiritualRoot } from '@daoyou/game-domain/cultivator';
+import type { Attributes, SpiritualRoot } from '@daoyou/game-domain/character';
 
 export function generateAttributes(): Attributes {
   const naturalValue = getRealmStageNaturalAttributeValue('炼气', '初期');

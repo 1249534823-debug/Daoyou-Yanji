@@ -1,6 +1,6 @@
 import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
-import type { ResourceOperationSettlement } from '@daoyou/game-domain/resources/operations';
-import { attachmentsToResourceOperations } from '@daoyou/game-rules/mail/attachments';
+import type { ResourceOperationSettlement } from '@daoyou/game-domain/resources';
+import { attachmentsToResourceOperations } from '@daoyou/game-rules/mail';
 import type { CultivatorQueriesService } from '@server/cultivator/cultivator-queries.service.js';
 import { sanitizeMaterialForClient } from '@server/inventory/presentation.js';
 import type { DbClient } from '@server/lib/drizzle/db.js';

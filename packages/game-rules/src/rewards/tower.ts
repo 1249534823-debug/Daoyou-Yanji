@@ -1,12 +1,12 @@
 import type {
   TowerReward,
   TowerRewardPreview,
-} from '@daoyou/game-domain/tower/reward';
+} from '@daoyou/game-domain/tower';
 import { rollDrops } from '../drops/index.js';
 import { SeededRng } from '@daoyou/combat-core/rng';
-import { isOpenEquipmentLevel } from '@daoyou/game-domain/equipment/levels';
+import { isOpenEquipmentLevel } from '@daoyou/game-domain/equipment';
 import { equipmentRealm } from '../equipment/realm.js';
-import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
+import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression';
 import { itemDefinition } from '../inventory/index.js';
 import { hashTowerSeed } from '../tower/helpers.js';
 import type { RealmType } from '@daoyou/constants/realms';

@@ -1,7 +1,8 @@
 import type {
   DungeonCostRank,
   DungeonRankedResourceType,
-} from '@daoyou/game-domain/dungeon/cost';
+  DungeonDifficultyTier,
+} from '@daoyou/game-domain/dungeon';
 import {
   DUNGEON_LIFESPAN_COST_MAX,
   DUNGEON_DIFFICULTY_COST_MULTIPLIER,
@@ -10,9 +11,8 @@ import {
   DUNGEON_MATERIAL_QUALITY_VALUES,
   type DungeonMaterialQuality,
 } from '@daoyou/game-content/dungeon/cost';
-import { REALM_DAILY_EXP_BUDGET } from '@daoyou/game-content/cultivation/cultivationExpGain';
+import { REALM_DAILY_EXP_BUDGET } from '@daoyou/game-content/cultivation';
 
-import type { DungeonDifficultyTier } from '@daoyou/game-domain/dungeon/difficulty';
 
 import { REALM_ORDER, type RealmType } from '@daoyou/constants/realms';
 

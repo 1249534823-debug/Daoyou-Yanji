@@ -10,7 +10,7 @@ import {
   getTempFates,
 } from '@server/lib/repositories/redisCultivatorRepository.js';
 import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
+import type { Cultivator } from '@daoyou/game-domain/character';
 import { MailService } from '@server/mail/application/MailService.js';
 import { TaskService } from '@server/tasks/application/TaskService.js';
 import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';

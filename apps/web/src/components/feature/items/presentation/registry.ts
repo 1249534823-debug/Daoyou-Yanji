@@ -1,5 +1,5 @@
 import { itemDefinition } from '@daoyou/game-rules/inventory';
-import type { ItemDefinition } from '@daoyou/game-domain/items/definition';
+import type { ItemDefinition } from '@daoyou/game-domain/inventory';
 import {
   beastBookAdapter,
   blueprintAdapter,

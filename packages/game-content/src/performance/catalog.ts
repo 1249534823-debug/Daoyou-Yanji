@@ -18,7 +18,7 @@ import arrivalScent from './data/arrival-scent.json' with { type: 'json' };
 import {
   parsePerformanceScript,
   type PerformanceScript,
-} from '@daoyou/game-domain/performance/schema';
+} from '@daoyou/game-domain/performance';
 
 const scripts = new Map<string, PerformanceScript>([
   ['arrival-fall', parsePerformanceScript(arrivalFall)],

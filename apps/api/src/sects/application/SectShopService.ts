@@ -9,13 +9,13 @@ import {
   RewardItemSchema,
   materializeRewardItem,
   rewardDisplayItem,
-} from '@daoyou/game-rules/rewards/items';
+} from '@daoyou/game-rules/rewards/materials';
 import type {
   SectShopItemData,
   SectShopItemMutation,
   SectShopItemStatus,
-} from '@daoyou/contracts/sectShop';
-import { SECT_SHOP_MAX_PRICE } from '@daoyou/contracts/sectShop';
+} from '@daoyou/contracts/shops/sect';
+import { SECT_SHOP_MAX_PRICE } from '@daoyou/contracts/shops/sect';
 import { getItemExchangePurchaseWeek } from '@daoyou/game-rules/shops/purchase';
 import { and, asc, desc, eq, sql, type SQL } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';

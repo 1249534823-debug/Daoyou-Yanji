@@ -5,17 +5,19 @@ import {
 } from '@app/components/feature/items/ItemSlot';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton, InkInput, InkNotice, InkSelect } from '@app/components/ui';
-import { rewardDisplayItem } from '@daoyou/game-rules/rewards/items';
+import {
+  rewardDisplayItem,
+  libraryMaterialGrant,
+} from '@daoyou/game-rules/rewards/materials';
 import {
   INVENTORY_MATERIAL_TYPES,
   MATERIAL_TYPE_NAMES,
-} from '@daoyou/game-domain/items/material-facts';
-import { libraryMaterialGrant } from '@daoyou/game-rules/rewards/library-material-grant';
-import { DEFAULT_ITEM_LIBRARY_DAILY_MATERIAL_GENERATION_SETTINGS, type ItemLibraryDailyMaterialGenerationSettings } from '@daoyou/contracts/applicationSettings';
-import type { CreateItemLibraryEntry } from '@daoyou/contracts/itemLibrary';
-import type { ItemLibraryEntry } from '@daoyou/game-domain/items/library';
+  MATERIAL_TYPE_VALUES,
+} from '@daoyou/game-domain/inventory';
+import { DEFAULT_ITEM_LIBRARY_DAILY_MATERIAL_GENERATION_SETTINGS, type ItemLibraryDailyMaterialGenerationSettings } from '@daoyou/contracts/application-settings';
+import type { CreateItemLibraryEntry } from '@daoyou/contracts/items/library';
+import type { ItemLibraryEntry } from '@daoyou/game-domain/items/catalog';
 import { ELEMENT_VALUES } from '@daoyou/constants/elements';
-import { MATERIAL_TYPE_VALUES } from '@daoyou/game-domain/inventory';
 import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 import { useCallback, useEffect, useState } from 'react';
 import { AdminDialog } from '../_components/AdminDialog';

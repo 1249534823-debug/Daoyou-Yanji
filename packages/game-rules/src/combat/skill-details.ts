@@ -1,14 +1,14 @@
 import {
   BEAST_COMBO_SKILL_IDS,
   BEAST_SKILL_CONTENT,
-} from '@daoyou/game-content/beasts/content';
+} from '@daoyou/game-content/beasts';
 import { EffectType, HookName } from '@daoyou/combat-core/enums';
 import type {
   SkillDef,
   SkillEffect,
   StatusDef,
 } from '@daoyou/combat-core/types';
-import { DAO_EQUIPMENT_ARTS_V1 } from '@daoyou/game-content/equipment/special-content';
+import { DAO_EQUIPMENT_ARTS_V1 } from '@daoyou/game-content/equipment/special';
 
 const arts = new Map(DAO_EQUIPMENT_ARTS_V1.map((art) => [art.skill.id, art]));
 function beastPassiveDescription(skill: SkillDef): string | undefined {

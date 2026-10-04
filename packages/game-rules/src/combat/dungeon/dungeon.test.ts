@@ -6,11 +6,11 @@ import {
 } from '../../rewards/dungeon.js';
 import type { CultivatorCondition } from '@daoyou/game-domain/condition';
 import { describe, expect, it } from 'vitest';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
 import {
   type CombatV6SectId,
   type SectCombatProgressV6,
-} from '@daoyou/game-domain/combat/content';
+} from '@daoyou/game-domain/combat';
 import { DUNGEON_TEMPLATES } from '@daoyou/game-content/combat/dungeon';
 import {
   DungeonHost,

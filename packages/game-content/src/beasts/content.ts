@@ -3,7 +3,7 @@ import { type StatusDef } from '@daoyou/combat-core/types';
 import progressionData from './data/progression.json' with { type: 'json' };
 import skillsData from './data/skills.json' with { type: 'json' };
 import speciesData from './data/species.json' with { type: 'json' };
-import { loadBeastPacks } from '@daoyou/game-domain/beasts/pack';
+import { loadBeastPacks } from '@daoyou/game-domain/beasts/authoring';
 import { compileBeastSkill } from './skill-compiler.js';
 
 const packs = loadBeastPacks(speciesData, skillsData, progressionData);

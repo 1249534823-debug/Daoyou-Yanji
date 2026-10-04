@@ -7,29 +7,33 @@ import type {
   WithdrawMaterialSchema,
   WithdrawVaultPageSchema,
 } from '@daoyou/contracts/forging';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
-import { BeastSchema } from '@daoyou/game-rules/beasts/schema';
-import { generateStarterBeast } from '@daoyou/game-rules/beasts/generator';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts';
+import { BeastSchema } from '@daoyou/game-rules/beasts/validation';
+import { generateStarterBeast } from '@daoyou/game-rules/beasts/generation';
 import {
   BEAST_CAPACITY,
   gainBeastExp,
   nextBeastExp,
-} from '@daoyou/game-rules/beasts/progression';
-import { generateForgedEquipment } from '@daoyou/game-rules/equipment/forging';
-import { buildSpiritFieldSeedMaterialFromPlant } from '@daoyou/game-domain/spirit-field/seedMaterial';
-import { forgingCost, forgingInputs, validateForgeWeaponType } from '@daoyou/game-rules/forging/rules';
-import { storyMarkForSignal } from '@daoyou/game-rules/story/signals';
-import { type InventoryItem } from '@daoyou/game-domain/items/inventory';
-import { addItems, itemDefinition } from '@daoyou/game-rules/inventory';
-import { consumableFactsOf } from '@daoyou/game-domain/items/consumable-facts';
+} from '@daoyou/game-rules/beasts/growth';
 import {
+  generateForgedEquipment,
+  forgingCost,
+  forgingInputs,
+  validateForgeWeaponType,
+} from '@daoyou/game-rules/equipment/forging';
+import { buildSpiritFieldSeedMaterialFromPlant } from '@daoyou/game-domain/spirit-field';
+import { storyMarkForSignal } from '@daoyou/game-rules/story';
+import {
+  type InventoryItem,
+  consumableFactsOf,
   INVENTORY_MATERIAL_TYPES,
   MaterialFactsSchema,
-} from '@daoyou/game-domain/items/material-facts';
-import { seedFactsOf } from '@daoyou/game-domain/items/seed-facts';
+  seedFactsOf,
+  materialFactsOf,
+} from '@daoyou/game-domain/inventory';
+import { addItems, itemDefinition } from '@daoyou/game-rules/inventory';
 import { legacyMaterialUnavailableReason } from '@daoyou/game-rules/items/legacy-material';
-import { materialFactsOf } from '@daoyou/game-domain/items/material';
-import { parseMailAttachments } from '@daoyou/game-rules/mail/attachments';
+import { parseMailAttachments } from '@daoyou/game-rules/mail';
 import { and, asc, count, eq, gte, ilike, inArray, or, sql } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
 import type { z } from 'zod';

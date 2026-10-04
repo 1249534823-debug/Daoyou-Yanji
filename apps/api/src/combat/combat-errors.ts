@@ -10,7 +10,7 @@ import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildServ
 import { CombatV6TrainingSessionError } from '@server/combat/application/CombatV6TrainingSessionService.js';
 import { WildError } from '@server/combat/application/CombatV6WildSessionService.js';
 import { TrainingHostError } from '@daoyou/game-rules/combat/encounter/host';
-import { InventoryRuleError } from '@daoyou/game-domain/items/bag';
+import { InventoryRuleError } from '@daoyou/game-domain/inventory';
 import { ZodError } from 'zod';
 import { apiErrorFilter } from '../http/error-filter.js';
 

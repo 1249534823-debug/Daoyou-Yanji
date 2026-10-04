@@ -1,4 +1,4 @@
-import { getRealmStageLevel } from '@daoyou/game-domain/progression/realms';
+import { getRealmStageLevel } from '@daoyou/game-domain/progression';
 import { forgingBoosts } from '../forging/rules.js';
 import { REALM_VALUES } from '@daoyou/constants/realms';
 import { describe, expect, it } from 'vitest';
@@ -7,7 +7,7 @@ import {
   compileDaoEquipmentSpecialLoadoutV1,
 } from './compiler.js';
 import { generateDaoEquipmentV1 } from './generator.js';
-import { EQUIPMENT_LEVELS, OPEN_EQUIPMENT_LEVELS, isEquipmentLevel } from '@daoyou/game-domain/equipment/levels';
+import { EQUIPMENT_LEVELS, OPEN_EQUIPMENT_LEVELS, isEquipmentLevel } from '@daoyou/game-domain/equipment';
 import { equipmentRealm } from './realm.js';
 
 describe('九境界道装门槛', () => {

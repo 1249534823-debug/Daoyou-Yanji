@@ -1,11 +1,11 @@
 import { formatContentPackErrors } from '@daoyou/game-domain/content-pack-errors';
 import { z } from 'zod';
-import { isOpenEquipmentLevel } from '@daoyou/game-domain/equipment/levels';
+import { isOpenEquipmentLevel } from '@daoyou/game-domain/equipment';
 import { equipmentRealm } from '../equipment/realm.js';
-import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression';
+import { findItemDefinition } from '@daoyou/game-content/items';
 import { TOWER_MIN_REALM } from '../tower/helpers.js';
-import raw from '@daoyou/game-content/rewards/data/tower' with { type: 'json' };
+import { REWARDS_TOWER_DATA as raw } from '@daoyou/game-content/rewards/tower';
 
 const integer = z.number().int().min(0).max(1000000);
 const drop = z.strictObject({

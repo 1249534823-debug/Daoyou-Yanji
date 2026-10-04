@@ -5,12 +5,12 @@ import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton, InkDetailDrawer, InkNotice } from '@app/components/ui';
 import { useResourceMutation } from '@app/lib/resources/mutations';
 import { useCultivatorProgress } from '@app/lib/resources/player';
-import { ATTRIBUTE_RESET_TALISMAN_NAME } from '@daoyou/game-content/consumables/attributeResetTalisman';
-import type { AttributePreviewData } from '@daoyou/contracts/characterAttributes';
-import type { CharacterPanelV1 } from '@daoyou/game-domain/combat/panel';
-import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character-attribute-labels';
+import { ATTRIBUTE_RESET_TALISMAN_NAME } from '@daoyou/game-content/consumables';
+import type { AttributePreviewData } from '@daoyou/contracts/character/attributes';
+import type { CharacterPanelV1 } from '@daoyou/game-domain/combat';
+import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character';
 import { CHARACTER_PANEL_LABELS, formatCharacterAttributeValue } from '@daoyou/game-rules/character/display';
-import type { Attributes } from '@daoyou/game-domain/cultivator';
+import type { Attributes } from '@daoyou/game-domain/character';
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router';
 import {

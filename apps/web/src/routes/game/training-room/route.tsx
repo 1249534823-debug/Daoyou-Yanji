@@ -9,8 +9,8 @@ import { InkCard } from '@app/components/ui/InkCard';
 import { inkFieldVariants } from '@app/components/ui/inkFieldStyles';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
 import { useSectCombatState } from '@app/lib/resources/player';
-import type { SectCombatView } from '@daoyou/game-domain/sects/build';
-import type { CombatV6TrainingSessionViewV1 } from '@daoyou/contracts/combatV6';
+import type { SectCombatView } from '@daoyou/game-domain/sects';
+import type { CombatV6TrainingSessionViewV1 } from '@daoyou/contracts/combat';
 import { useEffect, useState } from 'react';
 
 type ContentView = {

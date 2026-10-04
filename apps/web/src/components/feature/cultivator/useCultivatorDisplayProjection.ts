@@ -10,8 +10,12 @@ import {
   getEstimatedServerNowMs,
   useRecoveryClock,
 } from '@app/lib/resources/recoveryClock';
-import { type CultivatorDisplayInput } from '@daoyou/game-domain/character/display';
-import type { CombatV6ResourceAuthority, CultivatorDisplaySnapshot } from '@daoyou/game-domain/character/display';
+import { type CultivatorDisplayInput } from '@daoyou/game-domain/character';
+import type {
+  CombatV6ResourceAuthority,
+  CultivatorDisplaySnapshot,
+  Cultivator,
+} from '@daoyou/game-domain/character';
 import {
   getNextConditionStatusExpiryMs,
   isConditionStatusActive,
@@ -21,7 +25,6 @@ import {
 import { evaluateFateContext } from '@daoyou/game-rules/character/fates';
 import type { PlayerIdentityCultivator } from '@daoyou/contracts/player';
 import type { CultivatorCondition } from '@daoyou/game-domain/condition';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
 import { useMemo } from 'react';
 
 export type CultivatorDisplayProjectionInput = PlayerIdentityCultivator &

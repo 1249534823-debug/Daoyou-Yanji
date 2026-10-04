@@ -1,5 +1,5 @@
 
-import type { SectBattleSnapshot } from '@daoyou/game-domain/combat/sect-battle';
+import type { SectBattleSnapshot } from '@daoyou/game-domain/combat/challenges';
 
 
 import type { CombatV6TrainingSessionViewV1 } from './combatV6.js';

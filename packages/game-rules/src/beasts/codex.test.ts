@@ -1,8 +1,8 @@
 import { expect, it } from 'vitest';
 import { REALM_ORDER } from '@daoyou/constants/realms';
-import { WILD_REGIONS } from '@daoyou/game-content/combat/wild/content';
+import { WILD_REGIONS } from '@daoyou/game-content/combat/wild';
 import { listBeastCodex } from './codex.js';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts';
 
 const codex = listBeastCodex();
 

@@ -1,5 +1,5 @@
 import type { SectTaskRewardSnapshot } from '@daoyou/game-rules/sect-organization';
-import type { Material } from '@daoyou/game-domain/cultivator';
+import type { Material } from '@daoyou/game-domain/character';
 import { organizationError } from '@server/sects/organization/applicationSupport.js';
 import type { SectRewardGateway } from '@server/sects/organization/ports.js';
 import type { SectCommandEffects } from '@server/sects/organization/SectCommandEffects.js';

@@ -2,8 +2,8 @@ import { expect, it } from 'vitest';
 import { CommandType, DamageKind, EventType } from '@daoyou/combat-core/enums';
 import { createBattle } from '@daoyou/combat-core/session';
 import { createDaoyouRuleset } from '../combat/daoyou/index.js';
-import { COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS } from '@daoyou/game-domain/combat/versions';
-import { BEAST_SKILLS } from '@daoyou/game-content/beasts/content';
+import { COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS } from '@daoyou/game-domain/combat';
+import { BEAST_SKILLS } from '@daoyou/game-content/beasts';
 import { captureMp, captureSkill, nextBeastExp } from './progression.js';
 
 it.each([

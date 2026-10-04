@@ -1,7 +1,7 @@
-import { getLevelRealmStage } from '@daoyou/game-domain/progression/realms';
-import type { BeastTradePreview } from '@daoyou/game-domain/beasts/trade-preview';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
-import { beastOriginName } from '@daoyou/game-rules/beasts/identity';
+import { getLevelRealmStage } from '@daoyou/game-domain/progression';
+import type { BeastTradePreview } from '@daoyou/game-domain/beasts';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts';
+import { beastOriginName } from '@daoyou/game-rules/beasts/growth';
 import { BeastIcon } from './BeastIcon';
 import { BeastMutationTag } from './BeastMutationTag';
 

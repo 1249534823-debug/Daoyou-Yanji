@@ -2,11 +2,11 @@ import { describe, expect, it } from 'vitest';
 import { compileDaoEquipmentSpecialLoadoutV1 } from '../equipment/compiler.js';
 import { generateForgedEquipment, rollHigher } from '../equipment/forging.js';
 import { generateDaoEquipmentV2 } from '../equipment/generator.js';
-import { DAO_EQUIPMENT_SLOTS } from '@daoyou/game-domain/equipment/types';
+import { DAO_EQUIPMENT_SLOTS } from '@daoyou/game-domain/equipment';
 import { sameStack, sortBag } from '../inventory/index.js';
 import { addItems } from '../inventory/test-helpers.js';
-import { BLUEPRINTS } from '@daoyou/game-content/items/equipment-blueprints';
-import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
+import { BLUEPRINTS } from '@daoyou/game-content/items/equipment';
+import { MaterialFactsSchema } from '@daoyou/game-domain/inventory';
 import { forgedName } from './names.js';
 import { forgingBoosts, forgingCost } from './rules.js';
 

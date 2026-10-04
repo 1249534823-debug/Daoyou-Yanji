@@ -1,4 +1,4 @@
-import { BLUEPRINTS } from '@daoyou/game-content/items/equipment-blueprints';
+import { BLUEPRINTS } from '@daoyou/game-content/items/equipment';
 import { QUALITY_ORDER } from '@daoyou/constants/qualities';
 import { REALM_STAGE_VALUES, REALM_VALUES } from '@daoyou/constants/realms';
 import { describe, expect, it } from 'vitest';

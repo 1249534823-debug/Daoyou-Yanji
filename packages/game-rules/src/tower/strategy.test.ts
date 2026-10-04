@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { TOWER_ELIGIBLE_REALMS } from './helpers.js';
 import { getTowerSeasonMeta } from './season.js';
 import { createTowerWeek, TOWER_ENCOUNTERS } from './weekly.js';
-import { TOWER_STRATEGY_VERSION, type TowerFloorStrategy } from '@daoyou/game-domain/tower/strategy';
+import { TOWER_STRATEGY_VERSION, type TowerFloorStrategy } from '@daoyou/game-domain/tower';
 import { hasTowerTrait, towerStrategySignature, validateTowerFloorStrategy } from './strategy.js';
 import { compileTowerStrategy } from './strategy-compiler.js';
 import { expandTowerWeek } from './strategy-templates.js';

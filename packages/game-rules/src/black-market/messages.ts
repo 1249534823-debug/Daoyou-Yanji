@@ -1,7 +1,7 @@
 import {
   BLACK_MARKET_INSPECTION_KINDS,
   type BlackMarketInspectionKind,
-} from '@daoyou/game-domain/blackMarket';
+} from '@daoyou/game-domain/black-market';
 
 const LEGACY_INSPECTION_PREFIX = '查验：';
 

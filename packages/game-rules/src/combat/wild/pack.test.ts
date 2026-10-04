@@ -4,10 +4,12 @@ import { z } from 'zod';
 import {
   BEAST_PROGRESSION,
   BEAST_SPECIES,
-} from '@daoyou/game-content/beasts/content';
+} from '@daoyou/game-content/beasts';
 import { BeastSchema } from '../../beasts/schema.js';
-import raw from '@daoyou/game-content/combat/wild/data/wild' with { type: 'json' };
-import schema from '@daoyou/game-content/combat/wild/data/wild.schema' with { type: 'json' };
+import {
+  COMBAT_WILD_WILD_DATA as raw,
+  COMBAT_WILD_WILD_SCHEMA as schema,
+} from '@daoyou/game-content/authoring/combat';
 import {
   generateWildEncounter,
   generateWildIndividual,
@@ -16,7 +18,7 @@ import {
 import {
   WildPackShape,
   loadWildPack,
-} from '@daoyou/game-content/combat/wild/pack';
+} from '@daoyou/game-content/combat/wild';
 
 const nodeId = raw.regions[0].nodeId;
 describe('野外寻觅配置与个体生成', () => {

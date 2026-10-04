@@ -1,6 +1,6 @@
-import type { ConsumableSpec } from '@daoyou/game-domain/consumable';
+import type { ConsumableSpec } from '@daoyou/game-domain/consumables';
 import { gainBeastExp, nextBeastExp } from './progression.js';
-import type { SummonedBeast } from '@daoyou/game-domain/beasts/schema';
+import type { SummonedBeast } from '@daoyou/game-domain/beasts';
 
 /** 消耗品中保存的是已结算品相和契合倍率的收益，喂养时不再乘算。 */
 export function beastFoodCultivation(spec: ConsumableSpec): number {

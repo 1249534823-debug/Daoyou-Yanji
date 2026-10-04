@@ -1,4 +1,4 @@
-import { SPIRIT_FIELD_CULTIVATION_METHODS } from '@daoyou/game-domain/spirit-field/types';
+import { SPIRIT_FIELD_CULTIVATION_METHODS } from '@daoyou/game-domain/spirit-field';
 import { z } from 'zod';
 
 export const SpiritFieldPlotIndexSchema = z.number().int().min(0).max(5);

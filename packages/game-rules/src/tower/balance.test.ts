@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { automaticCommands } from '../combat/auto.js';
-import { allowedTowerFormations } from '@daoyou/game-content/tower/formations';
+import { allowedTowerFormations } from '@daoyou/game-content/tower';
 import { getTowerSeasonMeta } from './season.js';
 import { createTowerWeek, TOWER_COMBINATIONS } from './weekly.js';
 import { createTowerHost } from './host.js';

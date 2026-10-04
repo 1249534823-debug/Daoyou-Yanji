@@ -1,4 +1,4 @@
-import { MAX_CRAFT_MATERIAL_QUANTITY } from '@daoyou/game-domain/items/quantity';
+import { MAX_CRAFT_MATERIAL_QUANTITY } from '@daoyou/game-domain/inventory';
 
 /** 单炉材料种类与单个材料格的投入量。 */
 export const ALCHEMY_INPUT_CONSTRAINTS = {

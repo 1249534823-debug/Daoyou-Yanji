@@ -1,10 +1,10 @@
 import { type DbTransaction } from '@server/lib/drizzle/db.js';
 import * as organizationRepository from '@server/lib/repositories/sectOrganizationRepository.js';
-import type { DomainEventEnvelope } from '@daoyou/contracts/domainEvents';
+import type { DomainEventEnvelope } from '@daoyou/contracts/events';
 import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
 import type { SectInfrastructureData } from '@daoyou/contracts/sect';
 import { applySectFacilityConstruction } from '@daoyou/game-rules/sect-organization';
-import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
+import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production';
 import { mapFacilities } from '@server/sects/organization/applicationSupport.js';
 
 export async function projectSectConstructionDonation(

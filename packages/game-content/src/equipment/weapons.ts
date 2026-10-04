@@ -1,4 +1,4 @@
-import type { DaoWeaponType } from '@daoyou/game-domain/equipment/weapons';
+import type { DaoWeaponType } from '@daoyou/game-domain/equipment';
 
 
 /** 相对标准剑的器胚区间系数；不作用于人物总面板或治疗属性。 */

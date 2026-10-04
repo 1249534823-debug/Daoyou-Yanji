@@ -5,7 +5,7 @@ import {
   cultivatorManualStates,
   inventoryItems,
 } from '@server/lib/drizzle/schema.js';
-import type { DaoEquipmentLoadoutV1 } from '@daoyou/game-domain/equipment/types';
+import type { DaoEquipmentLoadoutV1 } from '@daoyou/game-domain/equipment';
 import type { CultivatorManualStateV1 } from '@daoyou/game-rules/manuals';
 import { eq } from 'drizzle-orm';
 import { readActiveSectCombatProgress } from './sectCombatRepository.js';

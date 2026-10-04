@@ -7,17 +7,19 @@ import { InkBadge } from '@app/components/ui/InkBadge';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkTag } from '@app/components/ui/InkTag';
 import { InkTooltip } from '@app/components/ui/InkTooltip';
-import { getLevelRealmStage } from '@daoyou/game-domain/progression/realms';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
-import { beastPanel, canDeployBeast } from '@daoyou/game-rules/beasts/projection';
-import { type SummonedBeast } from '@daoyou/game-domain/beasts/schema';
-import { BEAST_PROGRESSION } from '@daoyou/game-content/beasts/content';
+import { getLevelRealmStage } from '@daoyou/game-domain/progression';
+import { BEAST_SPECIES, BEAST_PROGRESSION } from '@daoyou/game-content/beasts';
+import {
+  beastPanel,
+  canDeployBeast,
+  beastAttributes,
+} from '@daoyou/game-rules/beasts/projection';
+import { type SummonedBeast } from '@daoyou/game-domain/beasts';
 import {
   allocateBeast,
   BEAST_ATTRIBUTE_NAMES,
   nextBeastExp,
-} from '@daoyou/game-rules/beasts/progression';
-import { beastAttributes } from '@daoyou/game-rules/beasts/projection';
+} from '@daoyou/game-rules/beasts/growth';
 import { useState } from 'react';
 import type { BeastAction } from './BeastActionDrawer';
 

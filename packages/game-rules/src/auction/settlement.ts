@@ -1,7 +1,7 @@
-import type { AuctionSettlementQuote } from '@daoyou/game-domain/auction/settlement';
+import type { AuctionSettlementQuote } from '@daoyou/game-domain/auction';
 import { AUCTION_MIN_QUALITY, AUCTION_QUALITY_UNIT_PRICE_CAPS, AUCTION_TAX_BRACKETS } from '@daoyou/game-content/auction/config';
 
-import { AUCTION_MAX_UNIT_PRICE } from '@daoyou/game-domain/auction/limits';
+import { AUCTION_MAX_UNIT_PRICE } from '@daoyou/game-domain/auction';
 
 
 

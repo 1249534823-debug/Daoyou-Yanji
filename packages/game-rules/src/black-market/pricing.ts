@@ -1,8 +1,8 @@
 import {
   BASE_PRICES,
   TYPE_MULTIPLIERS,
-} from '@daoyou/game-content/materials/config';
-import type { BlackMarketNpcId } from '@daoyou/game-domain/blackMarket';
+} from '@daoyou/game-content/materials';
+import type { BlackMarketNpcId } from '@daoyou/game-domain/black-market';
 import type { MaterialType } from '@daoyou/game-domain/inventory';
 import type { Quality } from '@daoyou/constants/qualities';
 import { blackMarketUnit } from './rules.js';

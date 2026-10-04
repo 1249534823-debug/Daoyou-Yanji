@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { forgingBoosts } from '../forging/rules.js';
 import { groupAlchemyBagMaterials } from '../inventory/alchemy.js';
 import { addItems } from '../inventory/test-helpers.js';
-import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
+import { MaterialFactsSchema } from '@daoyou/game-domain/inventory';
 import { legacyMaterialUnavailableReason } from './legacy-material.js';
 
 describe('legacy material connectivity', () => {

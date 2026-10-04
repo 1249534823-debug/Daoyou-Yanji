@@ -1,4 +1,4 @@
-import { StoryChapterSchema } from '@daoyou/game-content/story/schema';
+import { StoryChapterSchema } from '@daoyou/game-content/authoring/story';
 import { describe, expect, it } from 'vitest';
 import { openingStoryProgress } from './progress.js';
 import { getStoryChapter } from '@daoyou/game-content/story/catalog';
@@ -14,7 +14,7 @@ import {
   emptyStoryFacts,
   type StoryChapter,
   type StoryProgress,
-} from '@daoyou/game-domain/story/schema';
+} from '@daoyou/game-domain/story';
 
 const chapter: StoryChapter = {
   id: 'sample',

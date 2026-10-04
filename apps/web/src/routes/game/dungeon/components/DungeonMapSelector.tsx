@@ -1,7 +1,7 @@
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkCard } from '@app/components/ui/InkCard';
 import { InkNotice } from '@app/components/ui/InkNotice';
-import { dungeonReadiness } from '@daoyou/game-rules/dungeon/readiness';
+import { dungeonReadiness } from '@daoyou/game-rules/dungeon';
 import { MapNodeInfo } from '@daoyou/game-domain/world/map';
 import type { RealmType } from '@daoyou/constants/realms';
 import { MapNodeCard } from '../MapNodeCard';

@@ -1,11 +1,11 @@
 import { calculateSingleElixirScore } from '@server/utils/rankingUtils.js';
-import { resolveAlchemyEffects } from '@daoyou/game-rules/alchemy/alchemyEffectResolver';
+import { resolveAlchemyEffects } from '@daoyou/game-rules/alchemy';
 import type {
   AlchemyEffectRoute,
   AlchemyYieldProfile,
   PillSpec,
-} from '@daoyou/game-domain/consumable';
-import type { Consumable } from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/consumables';
+import type { Consumable } from '@daoyou/game-domain/character';
 
 export interface AlchemyOutputDraft {
   name: string;

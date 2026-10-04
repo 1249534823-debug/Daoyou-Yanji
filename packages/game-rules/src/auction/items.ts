@@ -1,12 +1,14 @@
 import { z } from 'zod';
-import { AUCTION_MAX_UNIT_PRICE } from '@daoyou/game-domain/auction/limits';
+import { AUCTION_MAX_UNIT_PRICE } from '@daoyou/game-domain/auction';
 import { getAuctionUnitPriceCap, isAuctionListableQuality } from './settlement.js';
 import { ItemGrantSchema, itemDefinition } from '../inventory/index.js';
 import { InventoryEquipmentSchema } from '../inventory/equipment.js';
-import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
-import { SeedFactsSchema } from '@daoyou/game-domain/items/seed-facts';
-import { materialFactsOf } from '@daoyou/game-domain/items/material';
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import {
+  ConsumableFactsSchema,
+  SeedFactsSchema,
+  materialFactsOf,
+} from '@daoyou/game-domain/inventory';
+import { findItemDefinition } from '@daoyou/game-content/items';
 import { QUALITY_VALUES, type Quality } from '@daoyou/constants/qualities';
 import { BeastTransferSchema } from '../beasts/trade.js';
 

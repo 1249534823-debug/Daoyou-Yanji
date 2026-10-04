@@ -1,7 +1,7 @@
 import type { MapNodeAction } from '@app/components/feature/map/mapActions';
 import { WildNodePreview } from '@app/components/feature/map/WildNodePreview';
 import { InkButton } from '@app/components/ui/InkButton';
-import { getAtlasCategory } from '@daoyou/game-rules/world/mapAtlasCategories';
+import { getAtlasCategory } from '@daoyou/game-rules/world/atlas';
 import { type WorldMapLocation } from '@daoyou/game-domain/world/map';
 import { resolveDungeonMapConfig } from '@daoyou/game-rules/world/dungeon';
 import { AtlasNodeKinds } from './AtlasNodeKinds';

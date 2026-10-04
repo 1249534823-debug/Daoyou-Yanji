@@ -1,11 +1,10 @@
 import { expect, it } from 'vitest';
 import { learnBeastSkill } from '../inventory/index.js';
-import { BOOKS } from '@daoyou/game-content/items/beast-books';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
+import { BOOKS } from '@daoyou/game-content/items/beasts';
+import { BEAST_SPECIES, BEAST_REFINEMENT } from '@daoyou/game-content/beasts';
 import { generateCapturedBeast, generateStarterBeast } from './generator.js';
 import { beastAttributes, beastPanel } from './projection.js';
 import { refineBeast } from './refinement.js';
-import { BEAST_REFINEMENT } from '@daoyou/game-content/beasts/refinement-config';
 import { BeastSchema } from './schema.js';
 import { rollBeastTraits } from './trait-generator.js';
 

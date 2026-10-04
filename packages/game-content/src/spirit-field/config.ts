@@ -3,7 +3,7 @@ import type { RealmType } from '@daoyou/constants/realms';
 import type {
   SpiritFieldMethodDefinition,
   SpiritFieldStage,
-} from '@daoyou/game-domain/spirit-field/types';
+} from '@daoyou/game-domain/spirit-field';
 
 export const SPIRIT_FIELD_METHODS: readonly SpiritFieldMethodDefinition[] = [
   {

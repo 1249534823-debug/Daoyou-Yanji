@@ -1,4 +1,4 @@
-import type { SectPresentationTheme } from '@daoyou/game-domain/sects/organization-presentation';
+import type { SectPresentationTheme } from '@daoyou/game-domain/sects';
 import { LINGXIAO_SECT_ID } from './ids.js';
 
 export const LINGXIAO_SECT_PRESENTATION: SectPresentationTheme = {

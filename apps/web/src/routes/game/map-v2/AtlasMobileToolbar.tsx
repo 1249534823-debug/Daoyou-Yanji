@@ -1,10 +1,10 @@
 import { GameIcon } from '@app/components/ui/GameIcon';
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
-import { getAtlasRegion } from '@daoyou/game-rules/world/mapAtlas';
 import {
+  getAtlasRegion,
   ATLAS_CATEGORY_IDS,
   getAtlasCategory,
-} from '@daoyou/game-rules/world/mapAtlasCategories';
+} from '@daoyou/game-rules/world/atlas';
 import { useEffect, useRef, useState } from 'react';
 import { ATLAS_CATEGORY_STYLE } from './atlasMarkerStyle';
 import type { AtlasToolbarProps } from './AtlasToolbar';

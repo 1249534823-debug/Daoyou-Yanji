@@ -5,7 +5,7 @@ import { type SkillDef, type StatusDef } from '@daoyou/combat-core/types';
 import { validateSectExpressions } from './authoring-expressions.js';
 import raw from './data/jiujie-combat.json' with { type: 'json' };
 import { sectSkillLearning } from './skill-learning.js';
-import type { SectSkillDefV6 } from '@daoyou/game-domain/combat/content';
+import type { SectSkillDefV6 } from '@daoyou/game-domain/combat';
 import {
   jjEffect,
   jjExpr,

@@ -9,17 +9,18 @@ import { InkModal } from '@app/components/layout/InkModal';
 import { InkButton } from '@app/components/ui/InkButton';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
 import { usePlayerSession } from '@app/lib/resources/player';
-import type { ArtifactMigrationResult, ArtifactMigrationSource } from '@daoyou/game-domain/legacy/artifact-migration';
-import type { ArtifactMigrationView } from '@daoyou/contracts/artifactMigration';
+import type { ArtifactMigrationResult, ArtifactMigrationSource } from '@daoyou/game-domain/legacy/migrations';
+import type { ArtifactMigrationView } from '@daoyou/contracts/legacy/artifacts';
 import {
   DAO_EQUIPMENT_SLOTS,
   type DaoEquipmentSlot,
-} from '@daoyou/game-domain/equipment/types';
+  DAO_WEAPON_TYPES,
+  type DaoWeaponType,
+  EQUIPMENT_SLOT_NAMES,
+} from '@daoyou/game-domain/equipment';
 import { DAO_WEAPONS } from '@daoyou/game-content/equipment/weapons';
-import { DAO_WEAPON_TYPES, type DaoWeaponType } from '@daoyou/game-domain/equipment/weapons';
-import type { ItemGrant } from '@daoyou/game-domain/items/inventory';
-import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment/slot-names';
-import { BLUEPRINTS } from '@daoyou/game-content/items/equipment-blueprints';
+import type { ItemGrant } from '@daoyou/game-domain/inventory';
+import { BLUEPRINTS } from '@daoyou/game-content/items/equipment';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 const endpoint = '/api/artifact-migration';

@@ -7,12 +7,12 @@ import type { PlayerIdentityCultivator } from '@daoyou/contracts/player';
 import {
   clampSpiritualRootEffectiveStrength,
   SPIRITUAL_ROOT_EFFECTIVE_STRENGTH_CAP,
-} from '@daoyou/game-rules/body-cultivation/marrow-wash';
+} from '@daoyou/game-rules/body-cultivation/training';
 import { ElementType } from '@daoyou/constants/elements';
 import { GenderType, SpiritualRootGrade } from '@daoyou/game-domain/character';
 import { Quality } from '@daoyou/constants/qualities';
 import { RealmStage, RealmType } from '@daoyou/constants/realms';
-import type { Cultivator, PreHeavenFate } from '@daoyou/game-domain/cultivator';
+import type { Cultivator, PreHeavenFate } from '@daoyou/game-domain/character';
 import { and, desc, eq, sql } from 'drizzle-orm';
 import {
   db,
@@ -22,7 +22,7 @@ import {
   type DbTransaction,
 } from '@server/lib/drizzle/db.js';
 import * as schema from '@server/lib/drizzle/schema.js';
-import { openingStoryProgress } from '@daoyou/game-rules/story/progress';
+import { openingStoryProgress } from '@daoyou/game-rules/story';
 import { insertCultivatorStory } from '@server/lib/repositories/storyRepository.js';
 import { ConditionService } from '@server/cultivator/application/ConditionService.js';
 import { FateEngine } from '@server/reshape/application/FateEngine.js';

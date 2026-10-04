@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts';
 import { generateCapturedBeast, generateStarterBeast } from './generator.js';
 import { canDeployBeast, projectBeastRoster } from './projection.js';
 import { CANDIDATE_SKILL_CHANCE, rollBeastTraits } from './trait-generator.js';

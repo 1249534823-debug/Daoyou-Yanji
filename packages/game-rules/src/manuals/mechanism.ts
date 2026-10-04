@@ -1,6 +1,6 @@
 import { DamageOrigin, EffectType, HookAim, HookName, SkillTag, StatusCategory, TargetSide } from '@daoyou/combat-core/enums';
 import { type EffectWhen, type SkillDef, type SkillHook } from '@daoyou/combat-core/types';
-import type { ManualMechanism } from '@daoyou/game-domain/manuals/pack';
+import type { ManualMechanism } from '@daoyou/game-domain/manuals/authoring';
 
 export function manualMechanismValue(
   mechanism: ManualMechanism,

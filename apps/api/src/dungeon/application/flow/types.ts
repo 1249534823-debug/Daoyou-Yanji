@@ -1,6 +1,6 @@
-import type { ResourceOperation } from '@daoyou/game-domain/resources/operations';
+import type { ResourceOperation } from '@daoyou/game-domain/resources';
 import { ItemGrantSchema } from '@daoyou/game-rules/inventory';
-import { DUNGEON_COST_RANK_VALUES } from '@daoyou/game-domain/dungeon/cost';
+import { DUNGEON_COST_RANK_VALUES } from '@daoyou/game-domain/dungeon';
 import { ENEMY_RACE_VALUES } from '@daoyou/game-domain/character';
 import { REALM_STAGE_VALUES } from '@daoyou/constants/realms';
 import { z } from 'zod';
@@ -436,7 +436,7 @@ export type DungeonRecoverAction =
   'retry' | 'retry_continue' | 'retry_settle' | 'safe_retreat' | 'force_quit';
 
 export interface DungeonCostLedgerEntry {
-  materialSelections?: import('@daoyou/game-domain/dungeon/actions').DungeonMaterialSelection[];
+  materialSelections?: import('@daoyou/game-domain/dungeon').DungeonMaterialSelection[];
   actionId: string;
   round: number;
   choiceId?: number;
@@ -453,7 +453,7 @@ export interface DungeonGainLedgerEntry {
 }
 
 export interface DungeonPendingAction {
-  materialSelections?: import('@daoyou/game-domain/dungeon/actions').DungeonMaterialSelection[];
+  materialSelections?: import('@daoyou/game-domain/dungeon').DungeonMaterialSelection[];
   actionId: string;
   choiceId?: number;
   choiceText?: string;
@@ -467,11 +467,11 @@ export interface DungeonPendingAction {
 // === Internal State Management ===
 
 export interface DungeonState {
-  encounter?: import('@daoyou/game-domain/dungeon/actions').DungeonEncounterView;
+  encounter?: import('@daoyou/game-domain/dungeon').DungeonEncounterView;
   rewardSeed?: number;
-  v6Rewards?: import('@daoyou/game-domain/dungeon/rewards').DungeonRewardEntry[];
+  v6Rewards?: import('@daoyou/game-domain/dungeon').DungeonRewardEntry[];
   beastResources?: Record<string, { hp: number; mp: number }>;
-  endDisposition?: import('@daoyou/game-domain/dungeon/settlement').DungeonEndDisposition;
+  endDisposition?: import('@daoyou/game-domain/dungeon').DungeonEndDisposition;
   runId?: string;
   cultivatorId: string;
   mapNodeId: string;

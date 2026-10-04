@@ -16,7 +16,7 @@ import { ArenaV6Error } from '@server/combat/application/CombatV6ArenaService.js
 import {
   ArenaV6SubmitSchema,
   type ArenaV6Submit,
-} from '@daoyou/contracts/combatV6Arena';
+} from '@daoyou/contracts/combat/arena';
 import type { Request } from 'express';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';

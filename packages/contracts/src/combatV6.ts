@@ -1,7 +1,9 @@
-import type { CombatV6SessionSnapshot } from '@daoyou/game-domain/combat/session-view';
-import { CombatV6CommandGroupSchema } from '@daoyou/game-domain/combat/commands';
+import type {
+  CombatV6SessionSnapshot,
+  CombatV6TrainingTierV1,
+} from '@daoyou/game-domain/combat';
+import { CombatV6CommandGroupSchema } from '@daoyou/game-domain/combat';
 
-import type { CombatV6TrainingTierV1 } from '@daoyou/game-domain/combat/encounter';
 
 import { z } from 'zod';
 

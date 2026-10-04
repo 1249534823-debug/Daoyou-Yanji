@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
-import { DAO_EQUIPMENT_GENERATOR_VERSION, type DaoEquipmentInstanceV1 } from '@daoyou/game-domain/equipment/types';
-import { DAO_EQUIPMENT_TEMPLATE_ID, DAO_EQUIPMENT_TEMPLATES_V1, DAO_FORMATION_INSCRIPTION_ID, DAO_FORMATION_INSCRIPTIONS_V1 } from '@daoyou/game-content/equipment/content';
+import { DAO_EQUIPMENT_GENERATOR_VERSION, type DaoEquipmentInstanceV1 } from '@daoyou/game-domain/equipment';
+import { DAO_EQUIPMENT_TEMPLATE_ID, DAO_EQUIPMENT_TEMPLATES_V1, DAO_FORMATION_INSCRIPTION_ID, DAO_FORMATION_INSCRIPTIONS_V1 } from '@daoyou/game-content/equipment/base';
 import { compileDaoEquipmentLoadoutV1, validateDaoEquipmentInstanceV1 } from './compiler.js';
 import { daoEquipmentGenerationRulesV1, generateDaoEquipmentV1 } from './generator.js';
 

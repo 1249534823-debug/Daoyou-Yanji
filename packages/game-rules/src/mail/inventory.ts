@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { ItemGrantSchema } from '../inventory/index.js';
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import { findItemDefinition } from '@daoyou/game-content/items';
 
 export const MailInventoryGrantSchema = ItemGrantSchema.extend({
   quantity: z.number().int().positive().max(2147483647),

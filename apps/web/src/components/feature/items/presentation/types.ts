@@ -1,5 +1,5 @@
 import type { InventoryView } from '@daoyou/contracts/inventory';
-import type { ItemDefinition } from '@daoyou/game-domain/items/definition';
+import type { ItemDefinition } from '@daoyou/game-domain/inventory';
 import type { CultivatorCondition } from '@daoyou/game-domain/condition';
 import type { RealmType } from '@daoyou/constants/realms';
 

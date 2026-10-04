@@ -14,8 +14,8 @@ import {
   type EnlightenmentView,
 } from '@daoyou/contracts/enlightenment';
 import type { InventoryView } from '@daoyou/contracts/inventory';
-import { type EnlightenmentPreview } from '@daoyou/game-domain/manuals/enlightenment';
-import { enlightenmentMaterialProblem, prepareEnlightenment } from '@daoyou/game-rules/manuals/enlightenment';
+import { type EnlightenmentPreview } from '@daoyou/game-domain/manuals';
+import { enlightenmentMaterialProblem, prepareEnlightenment } from '@daoyou/game-rules/manuals';
 import { useEffect, useRef, useState } from 'react';
 import { combatV6Request, mutationBody } from '../combat-v6/request';
 import type { InventoryFilter } from '../items/inventoryFilterModel';

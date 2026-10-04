@@ -2,7 +2,7 @@ import { sectContextResource } from '@app/lib/resources/definitions';
 import { useSingletonResource } from '@app/lib/resources/hooks';
 import { usePlayerSession } from '@app/lib/resources/player';
 import { getSectOrganizationDefinition } from '@daoyou/game-content/sect-organization/definitions';
-import type { CultivatorSectState } from '@daoyou/game-domain/sects/state';
+import type { CultivatorSectState } from '@daoyou/game-domain/sects';
 import { useMemo } from 'react';
 
 export function useSectContextQuery(enabled = true) {

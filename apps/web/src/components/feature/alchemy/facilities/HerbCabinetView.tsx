@@ -1,5 +1,5 @@
 import { useInkUI } from '@app/components/providers/InkUIProvider';
-import type { Material } from '@daoyou/game-domain/cultivator';
+import type { Material } from '@daoyou/game-domain/character';
 import { AlchemyToolWorkspace } from '../AlchemyToolWorkspace';
 import { useAlchemyCraftSession } from '../alchemyCraftContext';
 import { AlchemyMaterialShelf } from './AlchemyMaterialShelf';

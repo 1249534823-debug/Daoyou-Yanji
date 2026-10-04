@@ -9,10 +9,10 @@ import { consumeConsumableById } from '@server/cultivator/application/readers/Cu
 import {
   ATTRIBUTE_RESET_TALISMAN_NAME,
   ATTRIBUTE_RESET_TALISMAN_SCENARIO,
-} from '@daoyou/game-content/consumables/attributeResetTalisman';
+} from '@daoyou/game-content/consumables';
 import { getRealmStageNaturalAttributeValue } from '@daoyou/game-rules/progression/attributes';
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
-import type { Attributes } from '@daoyou/game-domain/cultivator';
+import type { Attributes } from '@daoyou/game-domain/character';
 import { eq } from 'drizzle-orm';
 import { findBagTalisman } from '@server/inventory/application/BagConsumables.js';
 

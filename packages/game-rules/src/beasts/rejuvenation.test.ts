@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts';
 import { generateCapturedBeast, generateStarterBeast } from './generator.js';
 import { beastPointBudget } from './identity.js';
 import { gainBeastExp, allocateBeast } from './progression.js';

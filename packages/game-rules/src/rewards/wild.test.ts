@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
-import { WILD_REGIONS } from '@daoyou/game-content/combat/wild/content';
+import { WILD_REGIONS } from '@daoyou/game-content/combat/wild';
 import { ItemGrantSchema } from '../inventory/index.js';
-import { BOOKS } from '@daoyou/game-content/items/beast-books';
+import { BOOKS } from '@daoyou/game-content/items/beasts';
 import {
   WILD_DROP_POOLS,
   WILD_INHERITANCE_POOL,

@@ -6,7 +6,7 @@ import { SkillTag, TargetSide } from '@daoyou/combat-core/enums';
 import { sectSkillLearning } from './skill-learning.js';
 import { YOUDU_COMBAT } from './youdu-pack.js';
 import { validateSectExpressions } from './authoring-expressions.js';
-import type { SectPathDefV6, SectSkillDefV6 } from '@daoyou/game-domain/combat/content';
+import type { SectPathDefV6, SectSkillDefV6 } from '@daoyou/game-domain/combat';
 import raw from './data/youdu-paths.json' with { type: 'json' };
 
 const id = z.string().regex(/^youdu\.[a-z][a-z0-9_.]*$/);

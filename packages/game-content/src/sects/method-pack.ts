@@ -2,7 +2,7 @@ import { formatContentPackErrors } from '@daoyou/game-domain/content-pack-errors
 import { z } from 'zod';
 import { ATTR_NAMES } from '@daoyou/combat-core/constants';
 import raw from './data/methods.json' with { type: 'json' };
-import type { SectMethodDefV6, CombatV6SectId } from '@daoyou/game-domain/combat/content';
+import type { SectMethodDefV6, CombatV6SectId } from '@daoyou/game-domain/combat';
 
 const methods = z.array(z.strictObject({
   id: z.string().regex(/^[a-z]+\.method\.[a-z_]+$/),

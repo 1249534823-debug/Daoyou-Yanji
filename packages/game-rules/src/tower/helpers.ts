@@ -1,14 +1,16 @@
 import { ENEMY_RACE_VALUES, type EnemyRace } from '@daoyou/game-domain/character';
 import { REALM_ORDER, type RealmStage, type RealmType } from '@daoyou/constants/realms';
-import { TOWER_BLESSINGS_PACK } from '@daoyou/game-content/tower/blessing-pack';
-import { compileTowerBlessingDefinitions } from '@daoyou/game-content/tower/blessings';
-import { type TowerBlessingId } from '@daoyou/game-domain/tower/blessings';
-import { TOWER_ENCOUNTER_PACK } from '@daoyou/game-content/tower/encounter-pack';
+import {
+  TOWER_BLESSINGS_PACK,
+  compileTowerBlessingDefinitions,
+  TOWER_ENCOUNTER_PACK,
+} from '@daoyou/game-content/tower';
+import { type TowerBlessingId } from '@daoyou/game-domain/tower';
 import type {
   TowerBlessingChoice,
   TowerFloorKind,
   TowerMilestoneTier,
-} from '@daoyou/game-domain/tower/state';
+} from '@daoyou/game-domain/tower';
 
 export const TOWER_MAX_FLOOR = TOWER_ENCOUNTER_PACK.floors.length;
 export const TOWER_DIFFICULTY_STEP = TOWER_ENCOUNTER_PACK.difficultyStep;

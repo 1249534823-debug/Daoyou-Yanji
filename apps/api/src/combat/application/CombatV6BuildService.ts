@@ -18,17 +18,17 @@ import {
 } from '@server/lib/repositories/sectCombatRepository.js';
 import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
 import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
-import type { SectCombatView } from '@daoyou/game-domain/sects/build';
-import type { SectPathSelectionRequest } from '@daoyou/contracts/combatV6';
-import { COMBAT_V6_BUILD_ERROR_CODE } from '@daoyou/contracts/combatV6';
+import type { SectCombatView } from '@daoyou/game-domain/sects';
+import type { SectPathSelectionRequest } from '@daoyou/contracts/combat';
+import { COMBAT_V6_BUILD_ERROR_CODE } from '@daoyou/contracts/combat';
 import {
   createSectCombatView,
   createFreshCombatV6MethodLevels,
-} from '@daoyou/game-rules/sects/build-state';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
-import { type CombatV6SectId } from '@daoyou/game-domain/combat/content';
-import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat/encounter';
-import { projectCharacterToCombatV6 } from '@daoyou/game-rules/combat/projection/project-character';
+} from '@daoyou/game-rules/sects';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
+import { type CombatV6SectId } from '@daoyou/game-domain/combat';
+import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat';
+import { projectCharacterToCombatV6 } from '@daoyou/game-rules/combat/projection';
 import type { CultivatorCondition } from '@daoyou/game-domain/condition';
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { and, eq, isNull, sql } from 'drizzle-orm';

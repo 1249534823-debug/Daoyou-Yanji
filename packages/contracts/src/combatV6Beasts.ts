@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { BeastLineupSchema, type BeastRoster, type SummonedBeast } from '@daoyou/game-domain/beasts/schema';
-import type { createBeastAllocationSchema } from '@daoyou/game-domain/beasts/allocation';
+import { BeastLineupSchema, type BeastRoster, type SummonedBeast } from '@daoyou/game-domain/beasts';
+import type { createBeastAllocationSchema } from '@daoyou/game-domain/beasts';
 export const BeastClaimSchema = z
   .object({ speciesId: z.string().min(1).max(160) })
   .strict();

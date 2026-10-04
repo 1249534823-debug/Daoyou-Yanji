@@ -1,9 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from '@daoyou/game-content/sects/data/methods' with { type: 'json' };
-import schema from '@daoyou/game-content/sects/data/methods.schema' with { type: 'json' };
-import { loadSectMethodsPack, SectMethodsPackShape } from '@daoyou/game-content/sects/method-pack';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import {
+  SECTS_METHODS_DATA as raw,
+  SECTS_METHODS_SCHEMA as schema,
+  loadSectMethodsPack,
+  SectMethodsPackShape,
+} from '@daoyou/game-content/authoring/sects';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
 import { compileSectDefinitionV6 } from './compiler.js';
 import { createEmptySectCombatProgressV6, createFreshCombatV6MethodLevels } from './build-state.js';
 

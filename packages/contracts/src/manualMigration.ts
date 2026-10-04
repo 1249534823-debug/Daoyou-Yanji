@@ -1,10 +1,10 @@
 import type {
   ManualMigrationPolicy,
   ManualMigrationSource,
-} from '@daoyou/game-domain/legacy/manual-migration';
+} from '@daoyou/game-domain/legacy/migrations';
 import { z } from 'zod';
 
-import type { ItemGrant } from '@daoyou/game-domain/items/inventory';
+import type { ItemGrant } from '@daoyou/game-domain/inventory';
 
 export const ExchangeManualSchema = z
   .object({

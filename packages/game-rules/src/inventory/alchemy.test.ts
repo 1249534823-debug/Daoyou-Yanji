@@ -2,18 +2,16 @@ import { describe, expect, it } from 'vitest';
 import {
   consumableFactsOf,
   ConsumableFactsSchema,
-} from '@daoyou/game-domain/items/consumable-facts';
-import {
   FORGING_MATERIAL_TYPES,
   MaterialFactsSchema,
-} from '@daoyou/game-domain/items/material-facts';
+  BAG_CAPACITY,
+  type InventoryItem,
+} from '@daoyou/game-domain/inventory';
 import { calculateAlchemyCost } from '../alchemy/alchemyCost.js';
 import {
   groupAlchemyBagMaterials,
   groupAlchemyStorageMaterials,
 } from './alchemy.js';
-import { BAG_CAPACITY } from '@daoyou/game-domain/items/bag';
-import { type InventoryItem } from '@daoyou/game-domain/items/inventory';
 import { InventoryItemSchema, sortBag } from './index.js';
 import { inventoryStackIdentity } from './stack-key.js';
 import { addItems } from './test-helpers.js';

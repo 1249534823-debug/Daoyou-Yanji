@@ -7,7 +7,7 @@ import {
 } from './helpers.js';
 import { getTowerSeasonMeta } from './season.js';
 import { createTowerWeek, TOWER_ENCOUNTERS } from './weekly.js';
-import { type TowerBlessings } from '@daoyou/game-domain/tower/runtime';
+import { type TowerBlessings } from '@daoyou/game-domain/tower';
 import { createTowerHost } from './host.js';
 import { towerReferenceBuild } from './reference-fixtures.js';
 

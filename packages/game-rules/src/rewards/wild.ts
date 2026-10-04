@@ -1,9 +1,9 @@
-import { type DropPool } from '@daoyou/game-domain/drops/pool';
+import { type DropPool } from '@daoyou/game-domain/rewards';
 import { rollDrops } from '../drops/index.js';
-import { WILD_REGIONS } from '@daoyou/game-content/combat/wild/content';
-import type { ItemGrant } from '@daoyou/game-domain/items/inventory';
-import { BOOKS } from '@daoyou/game-content/items/beast-books';
-import { compileWildRewardPool } from '@daoyou/game-content/rewards/wild-pack';
+import { WILD_REGIONS } from '@daoyou/game-content/combat/wild';
+import type { ItemGrant } from '@daoyou/game-domain/inventory';
+import { BOOKS } from '@daoyou/game-content/items/beasts';
+import { compileWildRewardPool } from '@daoyou/game-content/rewards/wild';
 
 export const WILD_INHERITANCE_POOL = compileWildRewardPool();
 export const WILD_DROP_POOLS: Record<string, DropPool> = Object.fromEntries(

@@ -1,9 +1,9 @@
 import { DamageKind, EffectType, HookAim, HookName, SkillTag, StatusCategory, TargetMode, TargetSide } from '@daoyou/combat-core/enums';
 import { type SkillDef, type StatusDef } from '@daoyou/combat-core/types';
 import { DaoyouRule } from '../combat/tuning.js';
-import { DAO_RAGE_PASSIVE_ID, DAO_RAGE_RESOURCE_ID } from '@daoyou/game-domain/equipment/special-ids';
-import type { EquipmentSpecialPack } from '@daoyou/game-domain/equipment/special-pack';
-import type { DaoEquipmentArtDefV1, DaoEquipmentEssenceDefV1 } from '@daoyou/game-domain/equipment/types';
+import { DAO_RAGE_PASSIVE_ID, DAO_RAGE_RESOURCE_ID } from '@daoyou/game-domain/equipment';
+import type { EquipmentSpecialPack } from '@daoyou/game-domain/equipment/authoring/special';
+import type { DaoEquipmentArtDefV1, DaoEquipmentEssenceDefV1 } from '@daoyou/game-domain/equipment';
 
 export function compileEquipmentEssence(
   entry: EquipmentSpecialPack['essences'][number],

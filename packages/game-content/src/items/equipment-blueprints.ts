@@ -1,9 +1,11 @@
-import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment/slot-names';
-import { getLevelRealmStage } from '@daoyou/game-domain/progression/realms';
+import {
+  EQUIPMENT_SLOT_NAMES,
+  EQUIPMENT_LEVELS,
+  DAO_EQUIPMENT_SLOTS,
+} from '@daoyou/game-domain/equipment';
+import { getLevelRealmStage } from '@daoyou/game-domain/progression';
 
-import { EQUIPMENT_LEVELS } from '@daoyou/game-domain/equipment/levels';
 
-import { DAO_EQUIPMENT_SLOTS } from '@daoyou/game-domain/equipment/types';
 
 export const BLUEPRINTS = DAO_EQUIPMENT_SLOTS.flatMap((slot) =>
   EQUIPMENT_LEVELS.map((level) => {

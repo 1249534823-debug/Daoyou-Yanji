@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { COMPREHENSION_INSIGHT_CAP } from '@daoyou/game-content/cultivation/cultivationTuning';
+import { COMPREHENSION_INSIGHT_CAP } from '@daoyou/game-content/cultivation';
 import type {
   Cultivator,
   FateEffectEntry,
-} from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/character';
 import { resolveLiveExpCap } from './cultivationUtils.js';
 import {
   attemptBreakthrough,

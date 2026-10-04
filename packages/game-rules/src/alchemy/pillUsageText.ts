@@ -1,12 +1,12 @@
 import {
   CULTIVATION_PILL_USAGE_LIMITS,
   REALM_PILL_USAGE_LIMITS,
-} from '@daoyou/game-content/consumables/config';
+} from '@daoyou/game-content/consumables';
 import type { RealmType } from '@daoyou/constants/realms';
 import type {
   PillQuotaCategory,
   PillSpec,
-} from '@daoyou/game-domain/consumable';
+} from '@daoyou/game-domain/consumables';
 
 export function getRealmPillUsageLimit(realm: RealmType): number {
   return REALM_PILL_USAGE_LIMITS[realm];

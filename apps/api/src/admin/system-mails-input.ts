@@ -1,4 +1,4 @@
-import { SystemMailInputSchema } from '@daoyou/game-rules/mail/campaign';
+import { SystemMailInputSchema } from '@daoyou/game-rules/mail';
 import { z } from 'zod';
 export const CreateSchema = z
   .object({ requestId: z.uuid(), input: SystemMailInputSchema })

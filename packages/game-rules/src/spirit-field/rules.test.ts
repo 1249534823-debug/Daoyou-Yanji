@@ -10,7 +10,7 @@ import {
 import type {
   SpiritFieldPlantSnapshot,
   SpiritFieldPlotState,
-} from '@daoyou/game-domain/spirit-field/types';
+} from '@daoyou/game-domain/spirit-field';
 
 const plant: SpiritFieldPlantSnapshot = {
   id: 'seed-test',

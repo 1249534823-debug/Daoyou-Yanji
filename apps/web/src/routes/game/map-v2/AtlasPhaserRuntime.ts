@@ -1,4 +1,4 @@
-import type { HuntEvent } from '@daoyou/game-domain/hunts/event';
+import type { HuntEvent } from '@daoyou/game-domain/hunts';
 import type { HuntMapPoint } from '@app/components/feature/hunts/HuntMapMarkers';
 import { GameIcon } from '@app/components/ui/GameIcon';
 import {
@@ -7,12 +7,10 @@ import {
   getAtlasLocations,
   hasAtlasMap,
   type AtlasPoint,
-} from '@daoyou/game-rules/world/mapAtlas';
-import {
   getAtlasCategory,
   getAtlasShortName,
   type AtlasCategory,
-} from '@daoyou/game-rules/world/mapAtlasCategories';
+} from '@daoyou/game-rules/world/atlas';
 import * as Phaser from 'phaser';
 import { ATLAS_CATEGORY_STYLE } from './atlasMarkerStyle';
 

@@ -17,7 +17,7 @@ import {
   type AdminAccountBanRequest,
   type AdminAccountChangeEmailRequest,
   type AdminAccountListQuery,
-} from '@daoyou/contracts/adminAccounts';
+} from '@daoyou/contracts/admin/accounts';
 import { fromNodeHeaders } from 'better-auth/node';
 import type { Request, Response } from 'express';
 import { Access, CurrentUser } from '../auth/access.js';

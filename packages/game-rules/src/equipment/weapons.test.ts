@@ -4,13 +4,17 @@ import { InventoryEquipmentSchema } from '../inventory/equipment.js';
 import { SeededRng } from '@daoyou/combat-core/rng';
 import { compileDaoEquipmentSpecialLoadoutV1 } from './compiler.js';
 import { daoEquipmentBaseRange } from './ranges.js';
-import { daoEquipmentTemplateOf } from '@daoyou/game-content/equipment/content';
+import { daoEquipmentTemplateOf } from '@daoyou/game-content/equipment/base';
 import { generateForgedEquipment } from './forging.js';
 import { generateDaoEquipmentV2 } from './generator.js';
-import { OPEN_EQUIPMENT_LEVELS } from '@daoyou/game-domain/equipment/levels';
-import type { DaoEquipmentInstanceV1 } from '@daoyou/game-domain/equipment/types';
+import {
+  OPEN_EQUIPMENT_LEVELS,
+  DAO_WEAPON_TYPES,
+  daoWeaponTypeOf,
+  type DaoWeaponType,
+} from '@daoyou/game-domain/equipment';
+import type { DaoEquipmentInstanceV1 } from '@daoyou/game-domain/equipment';
 import { DAO_WEAPONS } from '@daoyou/game-content/equipment/weapons';
-import { DAO_WEAPON_TYPES, daoWeaponTypeOf, type DaoWeaponType } from '@daoyou/game-domain/equipment/weapons';
 
 const input = {
   id: 'weapon-type',

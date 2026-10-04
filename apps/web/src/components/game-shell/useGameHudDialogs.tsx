@@ -11,7 +11,7 @@ import {
   COMPREHENSION_INSIGHT_CAP,
   NORMAL_BREAKTHROUGH_THRESHOLD,
   PERFECT_BREAKTHROUGH_INSIGHT,
-} from '@daoyou/game-content/cultivation/cultivationTuning';
+} from '@daoyou/game-content/cultivation';
 import {
   QI_ACTION_COSTS,
   QI_DAILY_RESTORE_ITEM_LIMIT,

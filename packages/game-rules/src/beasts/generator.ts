@@ -2,9 +2,9 @@ import {
   BEAST_GENERATION,
   BEAST_SPECIES,
   BEAST_SPECIES_REVISION,
-} from '@daoyou/game-content/beasts/content';
+} from '@daoyou/game-content/beasts';
 import { beastPointBudget, type BeastOriginKind } from './identity.js';
-import { BEAST_VERSION, type SummonedBeast } from '@daoyou/game-domain/beasts/schema';
+import { BEAST_VERSION, type SummonedBeast } from '@daoyou/game-domain/beasts';
 import { GeneratedBeastSchema } from './schema.js';
 import { rollBeastTraits } from './trait-generator.js';
 

@@ -1,15 +1,15 @@
 import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
-import { type QiAction } from '@daoyou/game-domain/qi/actions';
+import { type QiAction } from '@daoyou/game-domain/qi';
 import { QI_ACTION_COSTS, QI_DAILY_RESTORE_ITEM_LIMIT, QI_MAX, QI_OVERFLOW_MAX, QI_REFRESH_TIMEZONE } from '@daoyou/game-content/qi/config';
 import type { QiLogsResponse, QiState } from '@daoyou/contracts/qi';
-import { projectNaturalQiState } from '@daoyou/game-rules/qi/recovery';
+import { projectNaturalQiState } from '@daoyou/game-rules/qi';
 import type {
   QiLogMetadata,
   QiLogStatus,
   QiReservationResult,
   QiRestoreResult,
   QiRestoreSource,
-} from '@daoyou/game-domain/qi/state';
+} from '@daoyou/game-domain/qi';
 import { and, desc, eq, sql } from 'drizzle-orm';
 import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
 import { cultivators, qiLogs } from '@server/lib/drizzle/schema.js';

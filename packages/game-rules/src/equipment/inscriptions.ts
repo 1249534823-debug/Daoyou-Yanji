@@ -1,10 +1,10 @@
-import { FormationInscriptionsSchema } from '@daoyou/game-domain/equipment/inscriptions';
+import { FormationInscriptionsSchema } from '@daoyou/game-domain/equipment';
 
-import type { CombatV6ProjectionDiagnostic } from '@daoyou/game-domain/combat/projection';
+import type { CombatV6ProjectionDiagnostic } from '@daoyou/game-domain/combat';
 
-import { daoFormationInscriptionOf } from '@daoyou/game-content/equipment/content';
+import { daoFormationInscriptionOf } from '@daoyou/game-content/equipment/base';
 
-import type { DaoEquipmentInstanceV1, DaoEquipmentPanelRoll, DaoEquipmentSlot } from '@daoyou/game-domain/equipment/types';
+import type { DaoEquipmentInstanceV1, DaoEquipmentPanelRoll, DaoEquipmentSlot } from '@daoyou/game-domain/equipment';
 
 
 /** 按资产档位明确配置，不外推尚未开放的境界。 */

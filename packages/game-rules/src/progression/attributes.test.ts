@@ -1,6 +1,6 @@
 import { REALM_VALUES, REALM_STAGE_VALUES } from '@daoyou/constants/realms';
 import { describe, expect, it } from 'vitest';
-import { getRealmStageRank, getRealmStageLevel, getLevelRealmStage } from '@daoyou/game-domain/progression/realms';
+import { getRealmStageRank, getRealmStageLevel, getLevelRealmStage } from '@daoyou/game-domain/progression';
 import { getBreakthroughAttributeGrowthReward, getRealmDamagePressureMultiplier, getRealmEffectChanceMultiplier, getRealmStageAttributeBudget, getRealmStageNaturalAttributeValue, getRealmStageUnallocatedAttributeBudget } from './attributes.js';
 
 describe('realmProgression', () => {

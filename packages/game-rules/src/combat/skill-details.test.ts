@@ -1,9 +1,9 @@
-import { BEAST_SKILLS } from '@daoyou/game-content/beasts/content';
+import { BEAST_SKILLS } from '@daoyou/game-content/beasts';
 import { EffectType, TargetSide } from '@daoyou/combat-core/enums';
-import { DAO_EQUIPMENT_ARTS_V1 } from '@daoyou/game-content/equipment/special-content';
+import { DAO_EQUIPMENT_ARTS_V1 } from '@daoyou/game-content/equipment/special';
 import { describe, expect, it } from 'vitest';
 import { combatV6SkillDetails } from './skill-details.js';
-import { LINGXIAO_COMBAT } from '@daoyou/game-content/sects/lingxiao-pack';
+import { LINGXIAO_COMBAT } from '@daoyou/game-content/authoring/sects';
 
 describe('combat skill previews', () => {
   it('shows combo chances from the authoritative hooks', () => {

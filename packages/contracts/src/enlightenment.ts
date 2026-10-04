@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import type { EnlightenmentPreview } from '@daoyou/game-domain/manuals/enlightenment';
+import type { EnlightenmentPreview } from '@daoyou/game-domain/manuals';
 import { REALM_VALUES, type RealmType } from '@daoyou/constants/realms';
 
 export const EnlightenmentRequestSchema = z

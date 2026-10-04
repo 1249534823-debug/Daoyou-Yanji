@@ -2,7 +2,7 @@ import type {
   SectTaskDefinition,
   SectTaskDialoguePresentation,
   SectTaskDialogueSegment,
-} from '@daoyou/game-domain/sects/organization-contracts';
+} from '@daoyou/game-domain/sects/commands';
 import type { SectTaskOfferSnapshot } from './taskOffer.js';
 import { formatSectDeliveryRequirement } from './taskRequirements.js';
 

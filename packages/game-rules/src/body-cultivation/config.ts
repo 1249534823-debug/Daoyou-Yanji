@@ -8,8 +8,8 @@ import type {
 } from '@daoyou/game-domain/condition';
 import { REALM_ORDER, type RealmType } from '@daoyou/constants/realms';
 import { bodyCultivationThreshold } from './threshold.js';
-import { BODY_CULTIVATION_PACK, BODY_CULTIVATION_TRACK_KEYS } from '@daoyou/game-content/body-cultivation/pack';
-export { BODY_CULTIVATION_TRACK_KEYS } from '@daoyou/game-content/body-cultivation/pack';
+import { BODY_CULTIVATION_PACK, BODY_CULTIVATION_TRACK_KEYS } from '@daoyou/game-content/body-cultivation';
+export { BODY_CULTIVATION_TRACK_KEYS } from '@daoyou/game-content/body-cultivation';
 
 
 export const BODY_CULTIVATION_TRACK_PATHS = BODY_CULTIVATION_TRACK_KEYS.map(

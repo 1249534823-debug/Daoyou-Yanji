@@ -4,10 +4,10 @@ import { CommandType, DamageKind, EffectType, EventType, SkillTag, TargetSide } 
 import { createBattle } from '@daoyou/combat-core/session';
 import { type SkillDef } from '@daoyou/combat-core/types';
 import { createDaoyouRuleset } from '../combat/daoyou/index.js';
-import { COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS } from '@daoyou/game-domain/combat/versions';
-import { BEAST_SKILLS, BEAST_SKILL_CONTENT } from '@daoyou/game-content/beasts/content';
+import { COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS } from '@daoyou/game-domain/combat';
+import { BEAST_SKILLS, BEAST_SKILL_CONTENT } from '@daoyou/game-content/beasts';
 import { beastDeathIds } from './progression.js';
-import { compileBeastSkill } from '@daoyou/game-content/beasts/skill-compiler';
+import { compileBeastSkill } from '@daoyou/game-content/authoring/beasts';
 
 const ruleset = createDaoyouRuleset({
   formulas: {

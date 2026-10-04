@@ -6,8 +6,8 @@ import type {
   LegacyAlchemyPropertyKey,
   PillFamily,
   WeightedAlchemyProperty,
-} from '@daoyou/game-domain/consumable';
-import { ALCHEMY_PROPERTY_KEY_VALUES } from '@daoyou/game-domain/consumable';
+} from '@daoyou/game-domain/consumables';
+import { ALCHEMY_PROPERTY_KEY_VALUES } from '@daoyou/game-domain/consumables';
 import { getGameConceptLabel } from '@daoyou/game-content/presentation/concepts';
 
 export const ALCHEMY_PROPERTY_LABELS: Record<AlchemyPropertyKey, string> = {

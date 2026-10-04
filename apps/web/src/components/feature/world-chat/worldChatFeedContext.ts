@@ -1,7 +1,7 @@
 import type {
   WorldChatChannel,
   WorldChatMessageDTO,
-} from '@daoyou/contracts/world-chat-messages';
+} from '@daoyou/contracts/world-chat';
 import { createContext } from 'react';
 
 export type SendWorldChatShowcaseInput =

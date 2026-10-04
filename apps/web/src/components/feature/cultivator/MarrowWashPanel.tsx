@@ -17,7 +17,7 @@ import { getElementInfo } from '@daoyou/game-content/presentation/concepts';
 import {
   MARROW_WASH_BREAKTHROUGH_QI_COST,
   getMarrowWashSummary,
-} from '@daoyou/game-rules/body-cultivation/marrow-wash';
+} from '@daoyou/game-rules/body-cultivation/training';
 import { useState } from 'react';
 
 function RootStrengthList({

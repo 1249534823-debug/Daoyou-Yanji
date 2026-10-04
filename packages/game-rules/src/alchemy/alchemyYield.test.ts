@@ -6,7 +6,7 @@ import {
   calculateRawEssence,
   rollAlchemyYieldProfile,
 } from './alchemyYield.js';
-import { PILL_UNIT_ESSENCE_BY_QUALITY } from '@daoyou/game-content/alchemy/alchemyEssenceConfig';
+import { PILL_UNIT_ESSENCE_BY_QUALITY } from '@daoyou/game-content/alchemy';
 import { QUALITY_ORDER } from '@daoyou/constants/qualities';
 
 describe('alchemy yield engine', () => {

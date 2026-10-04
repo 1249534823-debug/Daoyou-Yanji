@@ -2,10 +2,13 @@ import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 import { createEmptySectCombatProgressV6 } from './build-state.js';
 import { compileSectDefinitionV6 } from './compiler.js';
-import raw from '@daoyou/game-content/sects/data/tianyan-paths' with { type: 'json' };
-import schema from '@daoyou/game-content/sects/data/tianyan-paths.schema' with { type: 'json' };
+import {
+  SECTS_TIANYAN_PATHS_DATA as raw,
+  SECTS_TIANYAN_PATHS_SCHEMA as schema,
+  TianyanPathsShape,
+  loadTianyanPaths,
+} from '@daoyou/game-content/authoring/sects';
 import { TIANYAN_V6_DEFINITION as definition } from '@daoyou/game-content/sects/tianyan';
-import { TianyanPathsShape, loadTianyanPaths } from '@daoyou/game-content/sects/tianyan-path-pack';
 
 describe('天衍经脉连线', () => {
   it('Schema 同步', () =>

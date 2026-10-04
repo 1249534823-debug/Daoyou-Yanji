@@ -1,4 +1,4 @@
-import { canonicalizeResourceParams } from '@daoyou/game-domain/resources/canonicalize';
+import { canonicalizeResourceParams } from '@daoyou/game-domain/resources';
 import { z } from 'zod';
 
 import type {

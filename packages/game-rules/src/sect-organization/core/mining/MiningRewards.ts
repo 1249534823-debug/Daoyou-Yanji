@@ -2,7 +2,7 @@ import { QUALITY_ORDER } from '@daoyou/constants/qualities';
 import type { Quality } from '@daoyou/constants/qualities';
 import type { RealmType } from '@daoyou/constants/realms';
 import { SECT_REALM_QUALITY_RULES } from '../organization/taskRequirements.js';
-import type { SectTaskRewardSnapshot } from '@daoyou/game-domain/sects/task-rewards';
+import type { SectTaskRewardSnapshot } from '@daoyou/game-domain/sects/tasks';
 import type { MiningScoreTier } from './MiningGameRules.js';
 
 export const MINING_TIER_REWARD_MULTIPLIER = {

@@ -14,7 +14,7 @@ import { CombatV6WildStore } from '@server/combat/application/CombatV6WildStore.
 import { activeSectTaskBattle } from '@server/combat/application/CombatV6SectTaskOccupancy.js';
 import { activeBreakthroughBattle } from '@server/combat/application/CombatV6BreakthroughOccupancy.js';
 import { SectTaskRecordPayloadSchema } from '@daoyou/game-rules/sect-organization';
-import { SectV6TargetSchema } from '@daoyou/game-domain/combat/sect-target';
+import { SectV6TargetSchema } from '@daoyou/game-domain/combat/challenges';
 
 /** Read-model annotation only. Never persisted into cultivators.condition. */
 export async function readCombatV6ConditionAuthority(

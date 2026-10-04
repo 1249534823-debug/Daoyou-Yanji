@@ -1,7 +1,7 @@
 import type { DbTransaction } from '@server/lib/drizzle/db.js';
-import type { DomainEventEnvelope } from '@daoyou/contracts/domainEvents';
-import type { ItemGrant } from '@daoyou/game-domain/items/inventory';
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import type { DomainEventEnvelope } from '@daoyou/contracts/events';
+import type { ItemGrant } from '@daoyou/game-domain/inventory';
+import { findItemDefinition } from '@daoyou/game-content/items';
 import type { RealmType } from '@daoyou/constants/realms';
 import { MailService, type MailAttachment } from '@server/mail/application/MailService.js';
 import { generateRealmMaterials } from '@server/inventory/application/MaterialRewardService.js';

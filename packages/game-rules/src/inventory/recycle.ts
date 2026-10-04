@@ -1,9 +1,11 @@
-import { isEquipmentLevel } from '@daoyou/game-domain/equipment/levels';
-import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
-import { SeedFactsSchema } from '@daoyou/game-domain/items/seed-facts';
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import { isEquipmentLevel } from '@daoyou/game-domain/equipment';
+import {
+  ConsumableFactsSchema,
+  SeedFactsSchema,
+} from '@daoyou/game-domain/inventory';
+import { findItemDefinition } from '@daoyou/game-content/items';
 import { InventoryEquipmentSchema } from './equipment.js';
-import type { InventoryItem } from '@daoyou/game-domain/items/inventory';
+import type { InventoryItem } from '@daoyou/game-domain/inventory';
 
 export function recycleBlockingReason(
   item: Pick<

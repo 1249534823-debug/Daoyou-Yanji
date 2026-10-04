@@ -12,10 +12,9 @@ import {
 import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
 import { getGuideLesson } from '@daoyou/game-content/guide/catalog';
 import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
-import { storyReward } from '@daoyou/game-rules/story/grants';
-import { restingStoryProgress } from '@daoyou/game-rules/story/progress';
-import { getStoryChapter } from '@daoyou/game-content/story/catalog';
 import {
+  storyReward,
+  restingStoryProgress,
   acknowledgeGuide,
   acknowledgePerformance,
   noteStoryFact,
@@ -23,7 +22,8 @@ import {
   resolveStory,
   rewindToUnwatchedPerformance,
   type StoryResolution,
-} from '@daoyou/game-rules/story/resolve';
+} from '@daoyou/game-rules/story';
+import { getStoryChapter } from '@daoyou/game-content/story/catalog';
 import {
   emptyStoryFacts,
   STORY_MARK_FACT_IDS,
@@ -32,7 +32,7 @@ import {
   type StoryFacts,
   type StoryProgress,
   type StoryView,
-} from '@daoyou/game-domain/story/schema';
+} from '@daoyou/game-domain/story';
 import { and, eq, sql } from 'drizzle-orm';
 import { grantInventory } from '@server/inventory/operations.js';
 

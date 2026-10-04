@@ -21,7 +21,7 @@ import {
   tyModifier,
   tyTarget,
 } from './tianyan-shapes.js';
-import type { SectSkillDefV6 } from '@daoyou/game-domain/combat/content';
+import type { SectSkillDefV6 } from '@daoyou/game-domain/combat';
 const skill = z.strictObject({
   id: tyId,
   name: z.string().min(1),

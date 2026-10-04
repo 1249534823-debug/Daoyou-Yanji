@@ -3,8 +3,8 @@ import { CommandType, EventType, type UnitKind } from '@daoyou/combat-core/enums
 import { createBattle, restoreBattle } from '@daoyou/combat-core/session';
 import { type SkillDef } from '@daoyou/combat-core/types';
 import { createDaoyouRuleset } from '../combat/daoyou/index.js';
-import { LINGXIAO_COMBAT } from '@daoyou/game-content/sects/lingxiao-pack';
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '@daoyou/game-domain/combat/versions';
+import { LINGXIAO_COMBAT } from '@daoyou/game-content/authoring/sects';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '@daoyou/game-domain/combat';
 
 const skillId = (name: string) => `lingxiao.skill.${name}`;
 const ruleset = createDaoyouRuleset({ formulas: {

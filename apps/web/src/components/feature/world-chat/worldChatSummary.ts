@@ -1,7 +1,7 @@
-import { isInventoryShowcase } from '@daoyou/game-domain/items/showcase';
+import { isInventoryShowcase } from '@daoyou/game-domain/items/catalog';
 import type {
   WorldChatMessageDTO,
-} from '@daoyou/contracts/world-chat-messages';
+} from '@daoyou/contracts/world-chat';
 
 function isTextPayload(
   payload: WorldChatMessageDTO['payload'],

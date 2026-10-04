@@ -1,4 +1,4 @@
-import { BEAST_PROGRESSION } from '@daoyou/game-content/beasts/content';
+import { BEAST_PROGRESSION } from '@daoyou/game-content/beasts';
 
 export type BeastOriginKind = 'baby' | 'pseudo_baby' | 'wild';
 export type BeastIdentity = {

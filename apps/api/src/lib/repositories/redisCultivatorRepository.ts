@@ -1,4 +1,4 @@
-import { Cultivator } from '@daoyou/game-domain/cultivator';
+import { Cultivator } from '@daoyou/game-domain/character';
 import { redis } from '../redis/index.js';
 import { parseRedisJson } from '../redis/json.js';
 

@@ -1,4 +1,4 @@
-import type { HuntBossId } from '@daoyou/game-domain/hunts/event';
+import type { HuntBossId } from '@daoyou/game-domain/hunts';
 
 export const HUNT_BOSSES = {
   heretic: {

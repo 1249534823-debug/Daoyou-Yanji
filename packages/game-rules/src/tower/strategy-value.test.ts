@@ -2,7 +2,7 @@ import { expect, it } from 'vitest';
 import { automaticCommands } from '../combat/auto.js';
 import { getTowerSeasonMeta } from './season.js';
 import { createTowerWeek } from './weekly.js';
-import { type TowerBlessings } from '@daoyou/game-domain/tower/runtime';
+import { type TowerBlessings } from '@daoyou/game-domain/tower';
 import { createTowerHost } from './host.js';
 import { towerReferenceBuild } from './reference-fixtures.js';
 

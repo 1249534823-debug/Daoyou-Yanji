@@ -2,8 +2,10 @@ import { JIUJIE_COMBAT } from "./jiujie-pack.js";
 import { JIUJIE_PATHS } from "./jiujie-path-pack.js";
 import { SECT_METHODS } from "./method-pack.js";
 import { StatusCategory } from '@daoyou/combat-core/enums';
-import type { CombatV6ProjectionDiagnostic } from "@daoyou/game-domain/combat/projection"
-import type { SectDefinitionV6 } from "@daoyou/game-domain/combat/content"
+import type {
+  CombatV6ProjectionDiagnostic,
+  SectDefinitionV6,
+} from '@daoyou/game-domain/combat';
 
 export const JIUJIE_V6_ID = "jiujie" as const
 export const JIUJIE_PATH_ID = {

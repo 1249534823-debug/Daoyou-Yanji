@@ -1,9 +1,9 @@
-import { createWildIndividualSchema, type WildCombatant, type WildIndividual } from '@daoyou/game-domain/wild/individual';
+import { createWildIndividualSchema, type WildCombatant, type WildIndividual } from '@daoyou/game-domain/wild';
 export const WildIndividualSchema = createWildIndividualSchema(BeastSchema);
 
 import { distributeBeastPoints } from '../../beasts/allocation.js';
 
-import { BEAST_PROGRESSION } from '@daoyou/game-content/beasts/content';
+import { BEAST_PROGRESSION } from '@daoyou/game-content/beasts';
 
 import { generateCapturedBeast } from '../../beasts/generator.js';
 
@@ -11,7 +11,7 @@ import { BeastSchema, GeneratedBeastSchema } from '../../beasts/schema.js';
 
 import { SeededRng } from '@daoyou/combat-core/rng';
 
-import { WILD_PACK } from '@daoyou/game-content/combat/wild/pack';
+import { WILD_PACK } from '@daoyou/game-content/combat/wild';
 
 export function generateWildEncounter(
   nodeId: string,

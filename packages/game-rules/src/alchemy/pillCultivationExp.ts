@@ -1,5 +1,5 @@
-import { PILL_EXP_BUDGET } from '@daoyou/game-content/alchemy/pillExpGain';
-import { EXP_CAP_TABLE } from '@daoyou/game-content/cultivation/cultivationProgress';
+import { PILL_EXP_BUDGET } from '@daoyou/game-content/alchemy';
+import { EXP_CAP_TABLE } from '@daoyou/game-content/cultivation';
 import {
   calculateCultivationExpByCap,
   type CultivationExpCalculationInput,

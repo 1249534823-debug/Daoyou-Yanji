@@ -1,7 +1,7 @@
 import type { z } from 'zod';
 import type { InventoryEquipmentSchema } from '../inventory/equipment.js';
 import { EQUIPMENT_ITEM } from '@daoyou/game-content/items/equipment';
-import type { InventoryShowcaseSnapshot } from '@daoyou/game-domain/items/showcase';
+import type { InventoryShowcaseSnapshot } from '@daoyou/game-domain/items/catalog';
 
 export function forgingShowcaseSnapshot(
   equipment: z.infer<typeof InventoryEquipmentSchema>,

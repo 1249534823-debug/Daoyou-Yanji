@@ -1,6 +1,10 @@
-import { PublishedTowerWeekSchema, type PublishedTowerWeek } from '@daoyou/game-domain/tower/published';
+import {
+  PublishedTowerWeekSchema,
+  type PublishedTowerWeek,
+  TOWER_STRATEGY_VERSION,
+} from '@daoyou/game-domain/tower';
 
-import type { TowerSeasonMeta } from '@daoyou/game-domain/tower/state';
+import type { TowerSeasonMeta } from '@daoyou/game-domain/tower';
 
 import {
   createTowerWeek,
@@ -11,7 +15,6 @@ import {
 
 import type { RealmType } from '@daoyou/constants/realms';
 
-import { TOWER_STRATEGY_VERSION } from '@daoyou/game-domain/tower/strategy';
 
 import { towerStrategyPreview, towerStrategySignature, validateTowerFloorStrategy } from './strategy.js';
 

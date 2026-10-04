@@ -1,4 +1,4 @@
-import { CombatAutoRequestSchema } from '@daoyou/contracts/combatAuto';
+import { CombatAutoRequestSchema } from '@daoyou/contracts/combat/auto';
 import {
   CombatV6TrainingCommandParamsSchema,
   CombatV6TrainingCommandRequestSchema,
@@ -6,7 +6,7 @@ import {
   CombatV6TrainingEventsQuerySchema,
   CombatV6TrainingRevisionRequestSchema,
   CombatV6TrainingSessionParamsSchema,
-} from '@daoyou/contracts/combatV6';
+} from '@daoyou/contracts/combat';
 import {
   Controller,
   Delete,

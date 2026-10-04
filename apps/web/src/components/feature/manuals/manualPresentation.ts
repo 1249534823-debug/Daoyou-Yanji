@@ -1,6 +1,6 @@
-import { manualMechanismValue } from '@daoyou/game-rules/manuals/mechanism';
+import { manualMechanismValue } from '@daoyou/game-rules/manuals/projection';
 import { manualMechanismDescription } from '@daoyou/game-rules/manuals/presentation';
-import type { CharacterManualDefV1 } from '@daoyou/game-domain/manuals/types';
+import type { CharacterManualDefV1 } from '@daoyou/game-domain/manuals';
 
 export function manualMechanismSummary(
   manual: CharacterManualDefV1,

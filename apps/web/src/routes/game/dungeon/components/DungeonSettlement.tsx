@@ -3,8 +3,8 @@ import type { DisplayItem } from '@app/components/feature/items/itemPresentation
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkCard } from '@app/components/ui/InkCard';
 import { InkTag } from '@app/components/ui/InkTag';
-import type { ResourceOperation } from '@daoyou/game-domain/resources/operations';
-import type { DungeonSettlement as DungeonSettlementType } from '@daoyou/game-domain/dungeon/state';
+import type { ResourceOperation } from '@daoyou/game-domain/resources';
+import type { DungeonSettlement as DungeonSettlementType } from '@daoyou/game-domain/dungeon';
 import { getResourceTypeInfo } from '@daoyou/game-content/presentation/concepts';
 import { dungeonRewardItemName } from '@daoyou/game-rules/rewards/dungeon';
 

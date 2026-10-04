@@ -15,11 +15,11 @@ import {
   loadSectCultivatorProgress,
   spendTrainingResources,
 } from '@server/lib/repositories/sectRepository.js';
-import type { SectV6Action } from '@daoyou/game-domain/sects/actions';
-import type { SectV6View } from '@daoyou/contracts/combatV6Sect';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
-import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
-import { sectV6Change } from '@daoyou/game-rules/sects/progression';
+import type { SectV6Action } from '@daoyou/game-domain/sects/commands';
+import type { SectV6View } from '@daoyou/contracts/sects/combat';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
+import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression';
+import { sectV6Change } from '@daoyou/game-rules/sects';
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { and, eq } from 'drizzle-orm';
 import { assertInventoryIdle, InventoryError } from '@server/inventory/operations.js';

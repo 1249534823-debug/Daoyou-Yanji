@@ -4,7 +4,7 @@ import {
   resetCombatAutoStrategy,
   saveCombatAutoStrategy,
 } from '@server/combat/application/CombatV6AutoStrategyService.js';
-import type { AutoStrategy } from '@daoyou/game-domain/combat/auto-strategy';
+import type { AutoStrategy } from '@daoyou/game-domain/combat/auto';
 
 @Injectable()
 export class AutoStrategyService {

@@ -1,4 +1,4 @@
-import type { HuntTeam } from '@daoyou/game-domain/hunts/team';
+import type { HuntTeam } from '@daoyou/game-domain/hunts';
 import { REALM_VALUES, type RealmType } from '@daoyou/constants/realms';
 import { huntIsOpen } from './config.js';
 export function huntRealmAllowed(

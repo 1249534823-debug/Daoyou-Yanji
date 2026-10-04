@@ -1,14 +1,14 @@
 import {
   CHARACTER_MANUALS_V1,
   manualRule,
-} from '@daoyou/game-content/manuals/content';
-import { DAO_EQUIPMENT_GENERATOR_VERSION } from '@daoyou/game-domain/equipment/types';
-import { DAO_EQUIPMENT_TEMPLATE_ID } from '@daoyou/game-content/equipment/content';
+} from '@daoyou/game-content/manuals';
+import { DAO_EQUIPMENT_GENERATOR_VERSION } from '@daoyou/game-domain/equipment';
+import { DAO_EQUIPMENT_TEMPLATE_ID } from '@daoyou/game-content/equipment/base';
 import { generateDaoEquipmentV1 } from '../equipment/generator.js';
 import { describe, expect, it } from 'vitest';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
 import { projectCharacterToCombatV6 } from '../combat/projection/project-character.js';
-import { type CharacterDisplayBuild, type CultivatorDisplayInput } from '@daoyou/game-domain/character/display';
+import { type CharacterDisplayBuild, type CultivatorDisplayInput } from '@daoyou/game-domain/character';
 import { characterResourceMaxima, normalizeCharacterResource, projectCharacterDisplay, projectCharacterDisplaySnapshot } from './display.js';
 
 const player: CultivatorDisplayInput = {

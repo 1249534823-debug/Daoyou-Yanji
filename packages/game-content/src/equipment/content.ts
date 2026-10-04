@@ -1,13 +1,13 @@
 import data from './data/equipment-base.json' with { type: 'json' };
 
-import { loadEquipmentBasePack } from '@daoyou/game-domain/equipment/pack';
+import { loadEquipmentBasePack } from '@daoyou/game-domain/equipment/authoring/base';
 
 
 
 import type {
   DaoEquipmentTemplateV1,
   DaoFormationInscriptionDefV1,
-} from '@daoyou/game-domain/equipment/types';
+} from '@daoyou/game-domain/equipment';
 
 
 export const DAO_EQUIPMENT_TEMPLATE_ID = {

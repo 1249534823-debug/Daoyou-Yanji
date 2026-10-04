@@ -1,17 +1,15 @@
 import {
   ALCHEMY_ALLOWED_MATERIAL_TYPES,
   type AlchemyMaterialType,
-} from '@daoyou/game-content/alchemy/alchemyConfig';
-import {
   MATERIAL_ESSENCE_BY_QUALITY,
   MATERIAL_ESSENCE_TYPE_MULTIPLIER,
   MAX_ALCHEMY_EFFECTIVE_ESSENCE_MULTIPLIER,
   PILL_UNIT_ESSENCE_BY_QUALITY,
-} from '@daoyou/game-content/alchemy/alchemyEssenceConfig';
+} from '@daoyou/game-content/alchemy';
 import {
   BASE_PRICES,
   TYPE_MULTIPLIERS,
-} from '@daoyou/game-content/materials/config';
+} from '@daoyou/game-content/materials';
 import { QUALITY_VALUES, type Quality } from '@daoyou/constants/qualities';
 import { describe, expect, it } from 'vitest';
 import {

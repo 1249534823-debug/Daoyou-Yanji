@@ -1,11 +1,13 @@
-import type { CharacterPanelV1 } from '@daoyou/game-domain/combat/panel';
-import type { PublicCombatV6Build } from '@daoyou/game-domain/combat/public-build';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import type {
+  CharacterPanelV1,
+  PublicCombatV6Build,
+} from '@daoyou/game-domain/combat';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
 import { projectCharacterToCombatV6 } from './projection/project-character.js';
 import {
   type CharacterDisplayBuild,
   type CultivatorDisplayInput,
-} from '@daoyou/game-domain/character/display';
+} from '@daoyou/game-domain/character';
 import { projectCharacterDisplay } from '../character/display.js';
 import { combatV6SkillDetails } from './skill-details.js';
 

@@ -1,4 +1,4 @@
-import type { FormulaFitBand } from '@daoyou/game-domain/consumable';
+import type { FormulaFitBand } from '@daoyou/game-domain/consumables';
 
 export interface FormulaFitPolicy {
   /** 兼容既有丹药元数据与评分展示的档位代表值，不是二次契合度计算。 */

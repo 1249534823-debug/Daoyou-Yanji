@@ -1,9 +1,9 @@
 import {
   SECT_DISCIPLE_RANKS,
   SECT_RANK_ORDER,
-} from '@daoyou/game-domain/sects/organization';
-import type { SectDiscipleRank } from '@daoyou/game-domain/sects/organization';
-import type { SectTaskRewardSnapshot } from '@daoyou/game-domain/sects/task-rewards';
+} from '@daoyou/game-domain/sects';
+import type { SectDiscipleRank } from '@daoyou/game-domain/sects';
+import type { SectTaskRewardSnapshot } from '@daoyou/game-domain/sects/tasks';
 
 export type SectDomainEvent =
   | {

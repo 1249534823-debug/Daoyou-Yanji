@@ -1,5 +1,5 @@
-import type { CreateItemLibraryEntry } from '@daoyou/contracts/itemLibrary';
-import type { ItemLibraryEntry } from '@daoyou/game-domain/items/library';
+import type { CreateItemLibraryEntry } from '@daoyou/contracts/items/library';
+import type { ItemLibraryEntry } from '@daoyou/game-domain/items/catalog';
 import type { ElementType } from '@daoyou/constants/elements';
 import type { MaterialType } from '@daoyou/game-domain/inventory';
 import type { Quality } from '@daoyou/constants/qualities';

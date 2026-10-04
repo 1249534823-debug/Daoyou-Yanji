@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { InventoryItem } from '@daoyou/game-domain/items/inventory';
+import type { InventoryItem } from '@daoyou/game-domain/inventory';
 import { compactJournalChanges, inventoryJournalChanges } from './changes.js';
 
 const item: InventoryItem = {

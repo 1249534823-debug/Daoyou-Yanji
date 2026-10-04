@@ -7,7 +7,7 @@ import {
   REALM_DAILY_EXP_BUDGET,
   RETREAT_EXP_BUDGET,
   SYSTEM_REWARD_EXP_BUDGET,
-} from '@daoyou/game-content/cultivation/cultivationExpGain';
+} from '@daoyou/game-content/cultivation';
 import {
   calculateCultivationExpByCap,
   calculateCultivationExpByDailyBudget,
@@ -33,7 +33,7 @@ import {
   type SystemRewardExpContext,
 } from './types.js';
 
-export type { DailyTaskDifficulty } from '@daoyou/game-domain/cultivation/task-difficulty';
+export type { DailyTaskDifficulty } from '@daoyou/game-domain/cultivation';
 export type { BattleVictoryExpContext, BattleVictoryType, CultivationExpGainContextMap, CultivationExpGainScene, CultivationExpGainStrategy, DailyTaskExpContext, DungeonExpContext, DungeonResult, DungeonTier, EventExpContext, EventWeight, OfflineYieldExpContext, PillExpContext, RetreatExpContext, SystemRewardExpContext } from './types.js';
 
 function normalizeDungeonTier(tier: string | undefined): DungeonTier {

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { generateForgedEquipment } from '../equipment/forging.js';
-import { DAO_EQUIPMENT_SLOTS } from '@daoyou/game-domain/equipment/types';
-import { BLUEPRINTS } from '@daoyou/game-content/items/equipment-blueprints';
+import { DAO_EQUIPMENT_SLOTS } from '@daoyou/game-domain/equipment';
+import { BLUEPRINTS } from '@daoyou/game-content/items/equipment';
 import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 import { REALM_VALUES } from '@daoyou/constants/realms';
 import {

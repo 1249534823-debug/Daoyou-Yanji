@@ -1,5 +1,5 @@
 import type { SectFacilityEffectSnapshot } from '@daoyou/game-rules/sect-organization';
-import { PRODUCTION_SECT_IDS, PRODUCTION_SECT_PRESENTATIONS } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
+import { PRODUCTION_SECT_IDS, PRODUCTION_SECT_PRESENTATIONS } from '@daoyou/game-rules/sect-organization/production';
 
 export type {
   ResolvedSectPresentation,

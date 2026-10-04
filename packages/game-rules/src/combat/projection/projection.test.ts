@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest"
-import type { Attributes } from "@daoyou/game-domain/cultivator"
+import type { Attributes } from "@daoyou/game-domain/character"
 import type { CultivatorCondition } from "@daoyou/game-domain/condition"
 import { compileCharacterPanelV1 } from './character-panel-v1.js';
 import { compileBodyCultivationV6 } from './body-cultivation-v6.js';
 import { projectCultivatorBaseToCombatV6 } from './project-cultivator-base.js';
 import { projectCharacterToCombatV6 } from './project-character.js';
-import { type CultivatorBaseCombatInput } from '@daoyou/game-domain/combat/projection';
+import { type CultivatorBaseCombatInput } from '@daoyou/game-domain/combat';
 
 const BASE_ATTRIBUTES: Attributes = {
   vitality: 10,

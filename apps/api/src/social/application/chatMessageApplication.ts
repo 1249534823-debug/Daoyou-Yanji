@@ -1,13 +1,13 @@
-import { beastTradePreview } from '@daoyou/game-domain/beasts/trade-preview';
-import type { WorldChatCreateMessageRequest } from '@daoyou/contracts/world-chat';
-import { inventoryShowcaseSnapshot } from '@daoyou/game-domain/items/showcase';
+import { beastTradePreview } from '@daoyou/game-domain/beasts';
 import type {
+  WorldChatCreateMessageRequest,
   WorldChatItemShowcasePayload,
   WorldChatMessageChannel,
   WorldChatMessageDTO,
   WorldChatMessageType,
   WorldChatPayload,
-} from '@daoyou/contracts/world-chat-messages';
+} from '@daoyou/contracts/world-chat';
+import { inventoryShowcaseSnapshot } from '@daoyou/game-domain/items/catalog';
 import { readCultivatorPublicIdentity } from '@server/cultivator/facts.js';
 import { readInventory } from '@server/inventory/operations.js';
 import { type DbClient } from '@server/lib/drizzle/db.js';

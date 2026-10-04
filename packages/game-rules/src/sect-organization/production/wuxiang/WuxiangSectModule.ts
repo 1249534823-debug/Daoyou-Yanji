@@ -1,6 +1,8 @@
 import { StandardSectModule } from '../../core/index.js';
-import { WUXIANG_DEFINITION } from '@daoyou/game-content/sect-organization/wuxiang/definition';
-import { WUXIANG_ORGANIZATION_THEME } from '@daoyou/game-content/sect-organization/wuxiang/organization';
+import {
+  WUXIANG_DEFINITION,
+  WUXIANG_ORGANIZATION_THEME,
+} from '@daoyou/game-content/sect-organization/wuxiang';
 
 export class WuxiangSectModule extends StandardSectModule {
   constructor() {

@@ -1,4 +1,7 @@
-import { createBeastAllocationSchema } from '@daoyou/game-domain/beasts/allocation';
+import {
+  createBeastAllocationSchema,
+  type SummonedBeast,
+} from '@daoyou/game-domain/beasts';
 export const BeastAllocationSchema = createBeastAllocationSchema(BEAST_PROGRESSION.pointsPerLevel);
 import { z } from 'zod';
 
@@ -10,11 +13,10 @@ import { type BattleState, type SkillDef } from '@daoyou/combat-core/types';
 
 import { isStanding } from '@daoyou/combat-core/units';
 
-import { BEAST_PROGRESSION, BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
+import { BEAST_PROGRESSION, BEAST_SPECIES } from '@daoyou/game-content/beasts';
 
 import { beastPointBudget } from './identity.js';
 
-import { type SummonedBeast } from '@daoyou/game-domain/beasts/schema';
 
 import { BeastSchema } from './schema.js';
 

@@ -1,4 +1,4 @@
-import type { Material } from '@daoyou/game-domain/cultivator';
+import type { Material } from '@daoyou/game-domain/character';
 import { AlchemyBag } from '../AlchemyBag';
 export function AlchemyMaterialShelf({
   onCarry,

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { DomainEventDataSchemas } from '../events.js';
 import { generateForgedEquipment } from '../equipment/forging.js';
 import { forgingShowcaseSnapshot } from './showcase.js';
-import { isInventoryShowcase } from '@daoyou/game-domain/items/showcase';
+import { isInventoryShowcase } from '@daoyou/game-domain/items/catalog';
 
 function equipment() {
   const result = generateForgedEquipment({

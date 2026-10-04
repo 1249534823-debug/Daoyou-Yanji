@@ -1,16 +1,16 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';
-import data from '@daoyou/game-content/equipment/data/equipment-forging' with { type: 'json' };
-import schema from '@daoyou/game-content/equipment/data/equipment-forging.schema' with { type: 'json' };
+import data from '@daoyou/game-content/authoring/equipment/forging' with { type: 'json' };
+import { EQUIPMENT_EQUIPMENT_FORGING_SCHEMA as schema } from '@daoyou/game-content/authoring/equipment';
 import {
   EquipmentForgingPackShape,
   loadEquipmentForgingPack,
-} from '@daoyou/game-domain/equipment/forging-pack';
+} from '@daoyou/game-domain/equipment/authoring/forging';
 import { daoEquipmentGenerationRulesV2 } from './generator.js';
 import {
   DAO_EQUIPMENT_ARTS_V1,
   DAO_EQUIPMENT_ESSENCES_V1,
-} from '@daoyou/game-content/equipment/special-content';
+} from '@daoyou/game-content/equipment/special';
 
 const definitions = {
   arts: DAO_EQUIPMENT_ARTS_V1,
@@ -124,7 +124,7 @@ describe('equipment forging pack', () => {
 });
 
 afterEach(() => {
-  vi.doUnmock('@daoyou/game-content/equipment/data/equipment-forging');
+  vi.doUnmock('@daoyou/game-content/authoring/equipment/forging');
   vi.resetModules();
 });
 
@@ -137,7 +137,7 @@ it('shares edited generation, pool, cost and material boost configuration', asyn
   copy.forging.boostPerMaterial = 0.2;
   copy.forging.costs[0].spiritStones = 321;
   vi.resetModules();
-  vi.doMock('@daoyou/game-content/equipment/data/equipment-forging', () => ({ default: copy }));
+  vi.doMock('@daoyou/game-content/authoring/equipment/forging', () => ({ default: copy }));
   const { generateDaoEquipmentV2 } = await import('./generator.js');
   const { generateForgedEquipment, FORGING_BOOST_PER_MATERIAL } =
     await import('./forging.js');
@@ -187,7 +187,7 @@ it('更换器蕴候选池不改变白字、绿字、器诀或其他成品事实'
   const copy = structuredClone(data);
   copy.generation.essencePool.reverse();
   vi.resetModules();
-  vi.doMock('@daoyou/game-content/equipment/data/equipment-forging', () => ({ default: copy }));
+  vi.doMock('@daoyou/game-content/authoring/equipment/forging', () => ({ default: copy }));
   const { generateDaoEquipmentV2: changed } = await import('./generator.js');
   expect(inputs.map((input) => withoutEssences(changed(input)))).toEqual(expected);
 });
@@ -209,7 +209,7 @@ it('更换器诀候选池不改变白字、绿字、器蕴或其他成品事实'
   const copy = structuredClone(data);
   copy.generation.artPool.reverse();
   vi.resetModules();
-  vi.doMock('@daoyou/game-content/equipment/data/equipment-forging', () => ({ default: copy }));
+  vi.doMock('@daoyou/game-content/authoring/equipment/forging', () => ({ default: copy }));
   const { generateDaoEquipmentV2: changed } = await import('./generator.js');
   expect(inputs.map((input) => withoutArt(changed(input)))).toEqual(expected);
 });

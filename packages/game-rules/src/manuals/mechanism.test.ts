@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { JIUJIE_COMBAT } from '@daoyou/game-content/sects/jiujie-pack';
+import { JIUJIE_COMBAT } from '@daoyou/game-content/authoring/sects';
 import { CommandType, DamageOrigin, EffectType, HookName, SkillTag, TargetSide } from '@daoyou/combat-core/enums';
 import { createBattle } from '@daoyou/combat-core/session';
 import { type SkillDef, type StatusDef } from '@daoyou/combat-core/types';
 import { createDaoyouRuleset } from '../combat/daoyou/index.js';
-import { COMBAT_V6_BASE_PROJECTION_VERSIONS } from '@daoyou/game-domain/combat/versions';
+import { COMBAT_V6_BASE_PROJECTION_VERSIONS } from '@daoyou/game-domain/combat';
 import { compileCharacterManualsV1, manualSlot } from './compiler.js';
-import { CHARACTER_MANUALS_V1, MANUAL_PACK } from '@daoyou/game-content/manuals/content';
+import { CHARACTER_MANUALS_V1, MANUAL_PACK } from '@daoyou/game-content/manuals';
 import { compileManualSkill, manualMechanismValue } from './mechanism.js';
-import { loadManualPack } from '@daoyou/game-domain/manuals/pack';
+import { loadManualPack } from '@daoyou/game-domain/manuals/authoring';
 import { manualEffectLines } from './presentation.js';
 
 const statuses: StatusDef[] = [

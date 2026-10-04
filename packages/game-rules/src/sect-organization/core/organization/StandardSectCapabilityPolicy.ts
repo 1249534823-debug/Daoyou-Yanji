@@ -1,13 +1,13 @@
 import {
   hasSectRank,
   SECT_RANK_LABELS,
-} from '@daoyou/game-domain/sects/organization';
-import type { SectDiscipleRank } from '@daoyou/game-domain/sects/organization';
+} from '@daoyou/game-domain/sects';
+import type { SectDiscipleRank } from '@daoyou/game-domain/sects';
 import type {
   SectCapabilityKey,
   SectCapabilityPolicy,
   SectPermissionState,
-} from '@daoyou/game-domain/sects/organization-contracts';
+} from '@daoyou/game-domain/sects/commands';
 
 export class StandardSectCapabilityPolicy implements SectCapabilityPolicy {
   private readonly capabilityKeys: readonly SectCapabilityKey[];

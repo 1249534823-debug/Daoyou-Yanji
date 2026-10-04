@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { type TowerKeyFormation } from '@daoyou/game-domain/tower/formations';
-import { allowedTowerFormations } from '@daoyou/game-content/tower/formations';
+import { type TowerKeyFormation } from '@daoyou/game-domain/tower';
+import { allowedTowerFormations } from '@daoyou/game-content/tower';
 import { getTowerSeasonMeta } from './season.js';
 import {
   createTowerWeek,
@@ -9,10 +9,10 @@ import {
   type TowerWeek,
 } from './weekly.js';
 import type { CultivatorCondition } from '@daoyou/game-domain/condition';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts';
 import { generateStarterBeast } from '../beasts/generator.js';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
-import { type CombatV6SectId, type SectCombatProgressV6 } from '@daoyou/game-domain/combat/content';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
+import { type CombatV6SectId, type SectCombatProgressV6 } from '@daoyou/game-domain/combat';
 import { compileTowerEncounter } from './content.js';
 import { createTowerHost, projectTowerPlayer, TowerHost } from './host.js';
 import { publishTowerWeek } from './published.js';

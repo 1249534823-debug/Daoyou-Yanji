@@ -5,15 +5,24 @@ import { useCraftStorage } from '@app/lib/resources/craftStorage';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
 import type { ForgeRequest, ForgeView } from '@daoyou/contracts/forging';
 import type { InventoryView } from '@daoyou/contracts/inventory';
-import { isOpenEquipmentLevel } from '@daoyou/game-domain/equipment/levels';
-import { equipmentRealm } from '@daoyou/game-rules/equipment/realm';
-import type { DaoEquipmentInstanceV1 } from '@daoyou/game-domain/equipment/types';
-import type { DaoWeaponType } from '@daoyou/game-domain/equipment/weapons';
-import { FORGE_INTENT_MAX_LENGTH } from '@daoyou/game-domain/equipment/narrative';
-import { forgingCost, forgingInputs } from '@daoyou/game-rules/forging/rules';
+import {
+  isOpenEquipmentLevel,
+  FORGE_INTENT_MAX_LENGTH,
+} from '@daoyou/game-domain/equipment';
+import {
+  equipmentRealm,
+  forgingCost,
+  forgingInputs,
+} from '@daoyou/game-rules/equipment/forging';
+import type {
+  DaoEquipmentInstanceV1,
+  DaoWeaponType,
+} from '@daoyou/game-domain/equipment';
 import { itemDefinition } from '@daoyou/game-rules/inventory';
-import { FORGING_MATERIAL_TYPES } from '@daoyou/game-domain/items/material-facts';
-import { materialFactsOf } from '@daoyou/game-domain/items/material';
+import {
+  FORGING_MATERIAL_TYPES,
+  materialFactsOf,
+} from '@daoyou/game-domain/inventory';
 import { QUALITY_ORDER } from '@daoyou/constants/qualities';
 import { useEffect, useRef, useState } from 'react';
 import { combatV6Request, mutationBody } from '../combat-v6/request';

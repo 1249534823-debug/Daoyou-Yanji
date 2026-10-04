@@ -1,7 +1,7 @@
 import type {
   CharacterManualDefV1,
   CultivatorManualStateV1,
-} from '@daoyou/game-domain/manuals/types';
+} from '@daoyou/game-domain/manuals';
 import { ManualProgress } from './ManualProgress';
 
 export function ManualRealmSlot({

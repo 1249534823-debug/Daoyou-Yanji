@@ -1,20 +1,22 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';
-import { BOOKS } from '@daoyou/game-content/items/beast-books';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
-import progression from '@daoyou/game-content/beasts/data/progression' with { type: 'json' };
-import progressionSchema from '@daoyou/game-content/beasts/data/progression.schema' with { type: 'json' };
-import skills from '@daoyou/game-content/beasts/data/skills' with { type: 'json' };
-import skillsSchema from '@daoyou/game-content/beasts/data/skills.schema' with { type: 'json' };
-import species from '@daoyou/game-content/beasts/data/species' with { type: 'json' };
-import speciesSchema from '@daoyou/game-content/beasts/data/species.schema' with { type: 'json' };
+import { BOOKS } from '@daoyou/game-content/items/beasts';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts';
+import progression from '@daoyou/game-content/authoring/beasts/progression' with { type: 'json' };
+import {
+  BEASTS_PROGRESSION_SCHEMA as progressionSchema,
+  BEASTS_SKILLS_SCHEMA as skillsSchema,
+  BEASTS_SPECIES_SCHEMA as speciesSchema,
+} from '@daoyou/game-content/authoring/beasts';
+import skills from '@daoyou/game-content/authoring/beasts/skills' with { type: 'json' };
+import species from '@daoyou/game-content/authoring/beasts/species' with { type: 'json' };
 import { generateStarterBeast } from './generator.js';
 import {
   BeastProgressionPackShape,
   BeastSkillsPackShape,
   BeastSpeciesPackShape,
   loadBeastPacks,
-} from '@daoyou/game-domain/beasts/pack';
+} from '@daoyou/game-domain/beasts/authoring';
 
 function input() {
   return structuredClone({ species, skills, progression });
@@ -226,9 +228,9 @@ describe('beast content packs', () => {
 
 afterEach(() => {
   for (const file of [
-    '@daoyou/game-content/beasts/data/species',
-    '@daoyou/game-content/beasts/data/skills',
-    '@daoyou/game-content/beasts/data/progression',
+    '@daoyou/game-content/authoring/beasts/species',
+    '@daoyou/game-content/authoring/beasts/skills',
+    '@daoyou/game-content/authoring/beasts/progression',
   ])
     vi.doUnmock(file);
   vi.resetModules();
@@ -257,7 +259,7 @@ it('uses edited generation ranges without invalidating existing individual rolls
   };
   copy.species[0].growthMilli = { min: 1200, max: 1200 };
   vi.resetModules();
-  vi.doMock('@daoyou/game-content/beasts/data/species', () => ({ default: copy }));
+  vi.doMock('@daoyou/game-content/authoring/beasts/species', () => ({ default: copy }));
   const { generateStarterBeast: generate, generateCapturedBeast } =
     await import('./generator.js');
   const { BeastSchema } = await import('./schema.js');
@@ -296,7 +298,7 @@ it('uses edited points, experience, lifespan and panel parameters consistently',
   };
   copy.panel.health = { aptitudeCoefficient: 0, attributeCoefficient: 7 };
   vi.resetModules();
-  vi.doMock('@daoyou/game-content/beasts/data/progression', () => ({ default: copy }));
+  vi.doMock('@daoyou/game-content/authoring/beasts/progression', () => ({ default: copy }));
   const { generateStarterBeast: generate } = await import('./generator.js');
   const { beastPanel, canDeployBeast } = await import('./projection.js');
   const { gainBeastExp, nextBeastExp, beastRestCost, loseBeastLifespan } =
@@ -318,9 +320,9 @@ it('derives book availability from the skill pack', async () => {
   const copy = structuredClone(skills);
   copy.skills[0].book = false;
   vi.resetModules();
-  vi.doMock('@daoyou/game-content/beasts/data/skills', () => ({ default: copy }));
+  vi.doMock('@daoyou/game-content/authoring/beasts/skills', () => ({ default: copy }));
   const { BOOKS: books } =
-    await import('@daoyou/game-content/items/beast-books');
+    await import('@daoyou/game-content/items/beasts');
   expect(books.map((b) => b.skillId)).toEqual(
     copy.skills.filter((s) => s.book).map((s) => s.id),
   );

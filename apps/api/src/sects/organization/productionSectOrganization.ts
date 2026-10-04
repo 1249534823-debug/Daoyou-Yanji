@@ -4,7 +4,7 @@ import {
   type DbTransaction,
 } from '@server/lib/drizzle/db.js';
 import type { SectCraftContextKey } from '@daoyou/game-rules/sect-organization';
-import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
+import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production';
 import { ClaimSectTaskRewardHandler } from '@server/sects/organization/ClaimSectTaskRewardHandler.js';
 import { GetSectTasksQueryHandler } from '@server/sects/organization/GetSectTasksQueryHandler.js';
 import {

@@ -1,4 +1,4 @@
-import { publicUnitAppearances } from '@daoyou/game-rules/combat/unit-appearance';
+import { publicUnitAppearances } from '@daoyou/game-rules/combat/appearance';
 import { db, type DbExecutor } from '@server/lib/drizzle/db.js';
 import {
   cultivatorBeasts,
@@ -26,19 +26,19 @@ import {
   visibleUnitNames,
 } from '@daoyou/game-rules/combat/presentation';
 import { createCombatV6Replay } from '@daoyou/game-rules/combat/replay';
-import { liveReplayDelta } from '@daoyou/game-rules/combat/replay-timeline';
-import type { CombatV6CommandGroup } from '@daoyou/game-domain/combat/commands';
-import type { DungeonEncounterView } from '@daoyou/game-domain/dungeon/actions';
-import type { DungeonSessionView } from '@daoyou/contracts/combatV6Dungeon';
-import { beastDeathIds } from '@daoyou/game-rules/beasts/progression';
+import { liveReplayDelta } from '@daoyou/game-rules/combat/playback';
+import type { CombatV6CommandGroup } from '@daoyou/game-domain/combat';
+import type { DungeonEncounterView } from '@daoyou/game-domain/dungeon';
+import type { DungeonSessionView } from '@daoyou/contracts/combat/dungeon';
 import {
+  beastDeathIds,
   beastVictoryExperience,
   gainBeastExp,
-} from '@daoyou/game-rules/beasts/progression';
-import { type DungeonBattleSnapshot } from '@daoyou/game-domain/combat/dungeon';
+} from '@daoyou/game-rules/beasts/growth';
+import { type DungeonBattleSnapshot } from '@daoyou/game-domain/combat/challenges';
 import { carryDungeonBeastResources, createDungeonHost, DungeonHost } from '@daoyou/game-rules/combat/dungeon/host';
-import { projectCharacterToCombatV6 } from '@daoyou/game-rules/combat/projection/project-character';
-import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
+import { projectCharacterToCombatV6 } from '@daoyou/game-rules/combat/projection';
+import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression';
 import { evaluateFateContext } from '@daoyou/game-rules/character/fates';
 import { getMapNode } from '@daoyou/game-content/world/map';
 import { resolveDungeonMapConfig } from '@daoyou/game-rules/world/dungeon';

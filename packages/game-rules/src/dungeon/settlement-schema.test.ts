@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { createDungeonSettlementSchema } from '@daoyou/game-domain/dungeon/state';
+import { createDungeonSettlementSchema } from '@daoyou/game-domain/dungeon';
 import { ItemGrantSchema } from '../inventory/index.js';
 
 const DungeonSettlementSchema = createDungeonSettlementSchema(ItemGrantSchema);

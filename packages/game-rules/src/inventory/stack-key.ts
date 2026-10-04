@@ -1,7 +1,9 @@
-import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
-import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
-import { SeedFactsSchema } from '@daoyou/game-domain/items/seed-facts';
-import { stableSerializeConsumableSpec } from '@daoyou/game-domain/consumables/identity';
+import {
+  ConsumableFactsSchema,
+  MaterialFactsSchema,
+  SeedFactsSchema,
+} from '@daoyou/game-domain/inventory';
+import { stableSerializeConsumableSpec } from '@daoyou/game-domain/consumables';
 import { calculatePillScore } from '../alchemy/pillScore.js';
 
 /** Versioned, length-prefixed UTF-8 facts; SQL backfill uses the same encoding. */

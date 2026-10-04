@@ -5,13 +5,13 @@ import {
   GENERATABLE_ALCHEMY_PROPERTY_KEY_VALUES,
   getAlchemyPropertyLabel,
   normalizeWeightedAlchemyProperties,
-} from '@daoyou/game-rules/alchemy/alchemyProperties';
-import { mergeAlchemyMaterialPropertyHints } from '@daoyou/game-rules/alchemy/alchemyMaterialHints';
+  mergeAlchemyMaterialPropertyHints,
+} from '@daoyou/game-rules/alchemy';
 import { ELEMENT_VALUES } from '@daoyou/constants/elements';
 import {
   ALCHEMY_FOCUS_MODE_VALUES,
   type AlchemyRecipePlan,
-} from '@daoyou/game-domain/consumable';
+} from '@daoyou/game-domain/consumables';
 import { z } from 'zod';
 import type { PreparedAlchemyMaterial } from '@server/alchemy/application/AlchemyRecipeRules.js';
 

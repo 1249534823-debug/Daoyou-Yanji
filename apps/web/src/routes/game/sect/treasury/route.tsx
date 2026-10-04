@@ -13,7 +13,7 @@ import { useResourceMutation } from '@app/lib/resources/mutations';
 import type {
   SectShopBuyResponse,
   SectShopItemData,
-} from '@daoyou/contracts/sectShop';
+} from '@daoyou/contracts/shops/sect';
 import { STANDARD_SECT_PRESENTATION } from '@daoyou/game-rules/sect-organization';
 import { useRef, useState } from 'react';
 import {

@@ -1,4 +1,4 @@
-import { REALM_DAILY_EXP_BUDGET } from '@daoyou/game-content/cultivation/cultivationExpGain';
+import { REALM_DAILY_EXP_BUDGET } from '@daoyou/game-content/cultivation';
 import type { RealmType } from '@daoyou/constants/realms';
 import type { SectDiscipleRank } from '../domain/index.js';
 

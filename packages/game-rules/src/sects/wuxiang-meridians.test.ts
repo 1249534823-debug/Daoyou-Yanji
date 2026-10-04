@@ -4,12 +4,12 @@ import { createBattle, restoreBattle } from '@daoyou/combat-core/session';
 import { effectiveAttrs } from '@daoyou/combat-core/units';
 import { SeededRng } from '@daoyou/combat-core/rng';
 import { type Command, type CreateBattleInput } from '@daoyou/combat-core/types';
-import { DAO_EQUIPMENT_ARTS_V1 } from '@daoyou/game-content/equipment/special-content';
+import { DAO_EQUIPMENT_ARTS_V1 } from '@daoyou/game-content/equipment/special';
 import { createDaoyouRuleset } from '../combat/daoyou/index.js';
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '@daoyou/game-domain/combat/versions';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '@daoyou/game-domain/combat';
 import { compileSectDefinitionV6 } from './compiler.js';
 import { WUXIANG_V6_DEFINITION as definition } from '@daoyou/game-content/sects/wuxiang';
-import { YOUDU_COMBAT } from '@daoyou/game-content/sects/youdu-pack';
+import { YOUDU_COMBAT } from '@daoyou/game-content/authoring/sects';
 
 const S = (x: string) => `wuxiang.skill.${x}`;
 const T = (x: string) => `wuxiang.status.${x}`;

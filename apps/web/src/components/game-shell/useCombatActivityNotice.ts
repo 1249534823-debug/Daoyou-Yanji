@@ -2,7 +2,7 @@ import { apiFetch } from '@app/lib/api/fetch';
 import {
   CombatActivityNoticeSchema,
   type CombatActivityNotice,
-} from '@daoyou/contracts/combatActivity';
+} from '@daoyou/contracts/combat/activity';
 import { useEffect, useState } from 'react';
 
 const POLL_MS = 8_000;

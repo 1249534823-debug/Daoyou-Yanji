@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { AutoStrategySchema, type AutoStrategy } from '@daoyou/game-domain/combat/auto-strategy';
+import { AutoStrategySchema, type AutoStrategy } from '@daoyou/game-domain/combat/auto';
 import defaults from './auto-defaults.json' with { type: 'json' };
 
 

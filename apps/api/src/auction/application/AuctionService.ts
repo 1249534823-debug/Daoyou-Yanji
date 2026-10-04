@@ -1,15 +1,21 @@
-import { AUCTION_MAX_TRANSACTION_TOTAL } from '@daoyou/game-domain/auction/limits';
-import { calculateAuctionSettlement } from '@daoyou/game-rules/auction/settlement';
+import { AUCTION_MAX_TRANSACTION_TOTAL } from '@daoyou/game-domain/auction';
+import {
+  calculateAuctionSettlement,
+  auctionBlockReason,
+  auctionItemCategory,
+  auctionItemPriceCap,
+  auctionItemQuality,
+  AuctionSnapshotSchema,
+} from '@daoyou/game-rules/auction';
 import { AUCTION_PRIVATE_LISTING_TALISMAN_SCENARIO } from '@daoyou/game-content/social/config';
 import type { AuctionBeastListRequest } from '@daoyou/contracts/auction';
-import { auctionBlockReason, auctionItemCategory, auctionItemPriceCap, auctionItemQuality, AuctionSnapshotSchema } from '@daoyou/game-rules/auction/items';
 import { type AuctionListingView, type AuctionListRequest } from '@daoyou/contracts/auction';
 import {
   beastAuctionBlockReason,
   BeastTransferSchema,
 } from '@daoyou/game-rules/beasts/trade';
 import { itemDefinition, ItemGrantSchema } from '@daoyou/game-rules/inventory';
-import type { MailAttachment } from '@daoyou/game-domain/mail/attachment';
+import type { MailAttachment } from '@daoyou/game-domain/mail';
 import {
   assertBeastIdle,
   BeastError,

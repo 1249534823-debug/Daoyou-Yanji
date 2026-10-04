@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ManualMigrationConfigSchema } from '@daoyou/game-domain/legacy/manual-migration';
+import { ManualMigrationConfigSchema } from '@daoyou/game-domain/legacy/migrations';
 import { ItemGrantSchema } from '../inventory/index.js';
 import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 import { MANUAL_MIGRATION_CONFIG } from '@daoyou/game-content/legacy/manual-migration';

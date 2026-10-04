@@ -1,4 +1,4 @@
-import type { SectV6Cost } from '@daoyou/game-domain/sects/actions';
+import type { SectV6Cost } from '@daoyou/game-domain/sects/commands';
 export function CostText({ cost }: { cost: SectV6Cost }) {
   return (
     <p>

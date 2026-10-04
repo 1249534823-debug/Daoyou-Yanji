@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { resolveSectPresentation } from './sectPresentation.js';
-import type { SectPresentationTheme } from '@daoyou/game-domain/sects/organization-presentation';
+import type { SectPresentationTheme } from '@daoyou/game-domain/sects';
 
 describe('sect presentation affairs room', () => {
   it('provides one default NPC for every task kind', () => {

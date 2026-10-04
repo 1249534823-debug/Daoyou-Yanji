@@ -1,12 +1,16 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from '@daoyou/game-content/sects/data/lingxiao-combat' with { type: 'json' };
-import schema from '@daoyou/game-content/sects/data/lingxiao-combat.schema' with { type: 'json' };
-import { LingxiaoCombatPackShape, loadLingxiaoCombatPack, compileLingxiaoCombatPack } from '@daoyou/game-content/sects/lingxiao-pack';
+import {
+  SECTS_LINGXIAO_COMBAT_DATA as raw,
+  SECTS_LINGXIAO_COMBAT_SCHEMA as schema,
+  LingxiaoCombatPackShape,
+  loadLingxiaoCombatPack,
+  compileLingxiaoCombatPack,
+} from '@daoyou/game-content/authoring/sects';
 import { CommandType } from '@daoyou/combat-core/enums';
 import { createBattle } from '@daoyou/combat-core/session';
 import { createDaoyouRuleset } from '../combat/daoyou/index.js';
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '@daoyou/game-domain/combat/versions';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '@daoyou/game-domain/combat';
 
 describe('红尘剑宗技能、状态与资源配置', () => {
   it('Schema 同步', () => expect(z.toJSONSchema(LingxiaoCombatPackShape)).toEqual(schema));

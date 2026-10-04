@@ -1,4 +1,4 @@
-import type { Attributes } from '@daoyou/game-domain/cultivator';
+import type { Attributes } from '@daoyou/game-domain/character';
 
 export function createEmptyAttributeDraft(): Attributes {
   return {

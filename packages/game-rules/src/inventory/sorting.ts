@@ -1,4 +1,4 @@
-import { INVENTORY_KINDS, type InventorySort } from '@daoyou/game-domain/items/sorting';
+import { INVENTORY_KINDS, type InventorySort } from '@daoyou/game-domain/inventory';
 import { itemDefinition } from './index.js';
 
 

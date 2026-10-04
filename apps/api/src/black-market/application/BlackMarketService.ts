@@ -11,21 +11,15 @@ import {
 } from '@server/admin/application/MaterialLibraryService.js';
 import { readCultivatorRealm } from '@server/cultivator/facts.js';
 import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
-import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
+import { MaterialFactsSchema } from '@daoyou/game-domain/inventory';
 import {
   applyBlackMarketBeliefPatch,
   describeBlackMarketClaimMode,
-} from '@daoyou/game-rules/black-market/belief';
-import {
   applyBlackMarketPriceDecision,
   assessOffer,
-} from '@daoyou/game-rules/black-market/negotiation';
-import {
   applyBlackMarketBeliefPressure,
   computeBlackMarketTrueValue,
   createBlackMarketPricing,
-} from '@daoyou/game-rules/black-market/pricing';
-import {
   BLACK_MARKET_ENTRY_COST,
   BLACK_MARKET_MAX_INSPECTIONS,
   BLACK_MARKET_MAX_TURNS,
@@ -36,7 +30,7 @@ import {
   blackMarketTurnsRemaining,
   blackMarketUnit,
   classifyBlackMarketReveal,
-} from '@daoyou/game-rules/black-market/rules';
+} from '@daoyou/game-rules/black-market';
 import {
   BLACK_MARKET_QUALITY_WEIGHTS,
   getMarketConfigByNodeId,
@@ -44,7 +38,7 @@ import {
   getRegionProfile,
   isMarketNodeEnabled,
   validateLayerAccess,
-} from '@daoyou/game-rules/world/marketConfig';
+} from '@daoyou/game-rules/world/market';
 import {
   type BlackMarketInteractCommand,
   type BlackMarketInteractionResult,
@@ -54,7 +48,7 @@ import {
   type BlackMarketOverview,
   type BlackMarketReveal,
   type BlackMarketSessionView,
-} from '@daoyou/game-domain/blackMarket';
+} from '@daoyou/game-domain/black-market';
 import { QUALITY_ORDER } from '@daoyou/constants/qualities';
 import { and, eq, sql } from 'drizzle-orm';
 import { createHmac, randomUUID } from 'node:crypto';

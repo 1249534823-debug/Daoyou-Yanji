@@ -1,11 +1,11 @@
 import { InkModal } from '@app/components/layout/InkModal';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkDiscreteRange } from '@app/components/ui/InkDiscreteRange';
-import type { InventorySort } from '@daoyou/game-domain/items/sorting';
+import type { InventorySort } from '@daoyou/game-domain/inventory';
 import {
   INVENTORY_MATERIAL_TYPES,
   MATERIAL_TYPE_NAMES,
-} from '@daoyou/game-domain/items/material-facts';
+} from '@daoyou/game-domain/inventory';
 import { ELEMENT_VALUES, type ElementType } from '@daoyou/constants/elements';
 import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 import { useState } from 'react';

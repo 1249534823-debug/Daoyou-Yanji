@@ -1,4 +1,4 @@
-import type { CharacterManualDefV1 } from '@daoyou/game-domain/manuals/types';
+import type { CharacterManualDefV1 } from '@daoyou/game-domain/manuals';
 
 /** valueAt1 is the complete first-level bonus; growth starts at level two. */
 export function manualAttributeValue(

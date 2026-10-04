@@ -2,7 +2,7 @@ import { DUNGEON_DIFFICULTY_PRESETS, DUNGEON_ENEMY_DIFFICULTY_TABLE } from '@dao
 
 import type { ResolvedDungeonMapConfig, MapNodeInfo } from '@daoyou/game-domain/world/map';
 
-import type { DungeonDifficultyTier } from '@daoyou/game-domain/dungeon/difficulty';
+import type { DungeonDifficultyTier } from '@daoyou/game-domain/dungeon';
 
 import type { RealmStage } from '@daoyou/constants/realms';
 

@@ -4,10 +4,14 @@ import {
   compileEquipmentEssence,
   compileRageGainPassive,
 } from './special-compiler.js';
-import { DAO_RAGE_RESOURCE_ID } from '@daoyou/game-domain/equipment/special-ids';
-import { loadEquipmentSpecialPack } from '@daoyou/game-domain/equipment/special-pack';
+import { DAO_RAGE_RESOURCE_ID } from '@daoyou/game-domain/equipment';
+import { loadEquipmentSpecialPack } from '@daoyou/game-domain/equipment/authoring/special';
 
-export * from '@daoyou/game-domain/equipment/special-ids';
+export {
+  DAO_RAGE_RESOURCE_ID,
+  DAO_EQUIPMENT_ESSENCE_ID,
+  DAO_RAGE_PASSIVE_ID,
+} from '@daoyou/game-domain/equipment';
 
 const pack = loadEquipmentSpecialPack(data);
 export const DAO_RAGE_RESOURCE = {

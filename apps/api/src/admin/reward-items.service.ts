@@ -1,16 +1,16 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { getQuotaCategoryForFamily } from '@server/alchemy/application/AlchemyRecipeRules.js';
-import { TALISMAN_SCENARIO_OPTIONS } from '@daoyou/game-domain/consumables/talisman-scenarios';
-import { AdminItemGenerationSchema } from '@daoyou/contracts/adminItemGeneration';
-import { RewardItemSchema } from '@daoyou/game-rules/rewards/items';
+import { TALISMAN_SCENARIO_OPTIONS } from '@daoyou/game-domain/consumables';
+import { AdminItemGenerationSchema } from '@daoyou/contracts/admin/item-generation';
+import { RewardItemSchema } from '@daoyou/game-rules/rewards/materials';
 import { generateForgedEquipment } from '@daoyou/game-rules/equipment/forging';
-import { buildSpiritFruitSpec } from '@daoyou/game-rules/spirit-field/spiritFruit';
+import { buildSpiritFruitSpec } from '@daoyou/game-rules/spirit-field';
 import {
   normalizeAlchemyEffectRoute,
   resolveAlchemyEffects,
-} from '@daoyou/game-rules/alchemy/alchemyEffectResolver';
-import { getAlchemyPropertyFamily } from '@daoyou/game-rules/alchemy/alchemyProperties';
-import type { ConsumableSpec } from '@daoyou/game-domain/consumable';
+  getAlchemyPropertyFamily,
+} from '@daoyou/game-rules/alchemy';
+import type { ConsumableSpec } from '@daoyou/game-domain/consumables';
 import { randomInt, randomUUID } from 'node:crypto';
 import { z } from 'zod';
 @Injectable()

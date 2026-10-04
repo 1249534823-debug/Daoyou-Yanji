@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { compileDaoEquipmentSpecialLoadoutV1 } from '../equipment/compiler.js';
 import { generateForgedEquipment } from '../equipment/forging.js';
 import { InventoryEquipmentSchema } from '../inventory/equipment.js';
-import { ForgeIntentSchema, ForgedEquipmentCopySchema } from '@daoyou/game-domain/equipment/narrative';
+import { ForgeIntentSchema, ForgedEquipmentCopySchema } from '@daoyou/game-domain/equipment';
 
 describe('forged equipment narrative', () => {
   it('counts intent and description by Unicode code points', () => {

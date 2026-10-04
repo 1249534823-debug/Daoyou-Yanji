@@ -4,7 +4,7 @@ import { MailAttachmentsSchema } from './attachments.js';
 import {
   ItemLibraryConsumablePayloadSchema,
   ItemLibraryMaterialPayloadSchema,
-} from '@daoyou/game-domain/items/library';
+} from '@daoyou/game-domain/items/catalog';
 
 function buildPillPayload() {
   return {

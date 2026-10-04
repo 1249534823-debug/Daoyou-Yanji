@@ -1,7 +1,7 @@
 import type {
   BreakthroughChallengeId,
   BreakthroughSnapshot,
-} from '@daoyou/game-domain/combat/breakthrough';
+} from '@daoyou/game-domain/combat/challenges';
 
 import type { CombatV6TrainingSessionViewV1 } from './combatV6.js';
 

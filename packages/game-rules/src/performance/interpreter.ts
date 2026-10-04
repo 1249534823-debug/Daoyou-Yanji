@@ -3,7 +3,7 @@ import type {
   PerformanceCue,
   PerformanceScript,
   PerformanceTone,
-} from '@daoyou/game-domain/performance/schema';
+} from '@daoyou/game-domain/performance';
 
 export interface PerformanceBackdrop {
   src: string;

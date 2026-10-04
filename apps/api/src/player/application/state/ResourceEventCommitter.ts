@@ -7,9 +7,9 @@ import {
 } from '@server/lib/repositories/playerStateRepository.js';
 import type { PlayerResourceMutationMeta } from '@daoyou/contracts/player';
 import { refreshCombatV6CharacterResources } from '@server/combat/character-resources.js';
-import { withCharacterPanelInvalidations } from '@daoyou/contracts/resources/characterResourceChanges';
-import { withBagInvalidations } from '@daoyou/contracts/resources/bagResourceChanges';
 import {
+  withCharacterPanelInvalidations,
+  withBagInvalidations,
   RESOURCE_TOPIC_SCOPE_KIND,
   type ResourceChange,
   type ResourceChangeDescriptor,

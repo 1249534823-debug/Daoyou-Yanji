@@ -4,7 +4,7 @@ import arrivalChapter from './data/arrival.json' with { type: 'json' };
 
 import { getPerformanceScript } from '../performance/catalog.js';
 
-import { type StoryChapter } from '@daoyou/game-domain/story/schema';
+import { type StoryChapter } from '@daoyou/game-domain/story';
 
 function parseChapter(input: unknown): StoryChapter {
   const chapter = StoryChapterSchema.parse(input);

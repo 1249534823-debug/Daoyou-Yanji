@@ -1,10 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { generateForgedEquipment } from '../equipment/forging.js';
-import { buildSpiritFieldSeedDetails } from '@daoyou/game-domain/spirit-field/seedMaterial';
-import type { SpiritFieldPlantSnapshot } from '@daoyou/game-domain/spirit-field/types';
-import { consumableFactsOf } from '@daoyou/game-domain/items/consumable-facts';
-import { seedFactsOf } from '@daoyou/game-domain/items/seed-facts';
-import type { Consumable } from '@daoyou/game-domain/cultivator';
+import { buildSpiritFieldSeedDetails } from '@daoyou/game-domain/spirit-field';
+import type { SpiritFieldPlantSnapshot } from '@daoyou/game-domain/spirit-field';
+import { consumableFactsOf, seedFactsOf } from '@daoyou/game-domain/inventory';
+import type { Consumable } from '@daoyou/game-domain/character';
 import { recycleBlockingReason } from './recycle.js';
 import {
   blueprintRecycleUnitPrice,

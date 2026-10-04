@@ -1,4 +1,4 @@
-import type { BreakthroughModifiers } from '@daoyou/game-domain/cultivation/breakthrough-modifiers';
+import type { BreakthroughModifiers } from '@daoyou/game-domain/cultivation';
 import { format } from 'd3-format';
 
 export type BreakthroughFactorTone = 'positive' | 'warning' | 'neutral';

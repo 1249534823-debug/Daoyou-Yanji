@@ -18,7 +18,7 @@ import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
 import { createHash } from 'node:crypto';
 import { captureJournalSettlement } from '@server/player/application/JournalSettlement.js';
 import { claimJournalOperation, completeJournalOperation, isJournalActivity, journalOperationKey } from '@server/lib/repositories/playerJournalRepository.js';
-import type { PlayerJournalEvent } from '@daoyou/contracts/playerJournal';
+import type { PlayerJournalEvent } from '@daoyou/contracts/player/journal';
 import {
   baselinesFromResourceChanges,
   resourceEventCommitter,

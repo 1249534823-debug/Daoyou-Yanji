@@ -3,7 +3,7 @@ import { createBattle, restoreBattle } from '@daoyou/combat-core/session';
 import { effectiveAttrs } from '@daoyou/combat-core/units';
 import { type Command } from '@daoyou/combat-core/types';
 import { createDaoyouRuleset } from '../combat/daoyou/index.js';
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '@daoyou/game-domain/combat/versions';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '@daoyou/game-domain/combat';
 import { createEmptySectCombatProgressV6 } from './build-state.js';
 import { compileSectDefinitionV6 } from './compiler.js';
 import { YOUDU_V6_DEFINITION as definition } from '@daoyou/game-content/sects/youdu';

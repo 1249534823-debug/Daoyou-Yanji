@@ -2,15 +2,15 @@ import {
   DivinationDiceSchema,
   type DivinationDice,
   type DivinationDirection,
-} from '@daoyou/game-domain/divination/types';
+} from '@daoyou/game-domain/divination';
 import {
   DIVINATION_DIRECTIONS,
   DIVINATION_OMENS,
   SCATTERED_OMENS,
-} from '@daoyou/game-content/divination/content';
+} from '@daoyou/game-content/divination';
 import { QI_RESTORE_TALISMAN_SCENARIOS } from '@daoyou/game-content/qi/config';
 
-import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
+import { ConsumableFactsSchema } from '@daoyou/game-domain/inventory';
 
 export function resolveDivination(dice: DivinationDice) {
   const [a, b, c] = DivinationDiceSchema.parse(dice).sort(

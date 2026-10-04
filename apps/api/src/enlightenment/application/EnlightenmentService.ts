@@ -2,22 +2,22 @@ import { describeJournal } from '@server/player/application/JournalSettlement.js
 import {
   getOrInitCultivationProgress,
   stripExpCapForStorage,
-} from '@daoyou/game-rules/cultivation/cultivationUtils';
+} from '@daoyou/game-rules/cultivation';
 import type {
   EnlightenmentRequest,
   EnlightenmentResult,
   EnlightenmentView,
 } from '@daoyou/contracts/enlightenment';
 import { addItems } from '@daoyou/game-rules/inventory';
-import { inventoryStackIdentity } from '@daoyou/game-rules/inventory/stack-key';
+import { inventoryStackIdentity } from '@daoyou/game-rules/inventory/stacking';
 import { evaluateFateContext } from '@daoyou/game-rules/character/fates';
-import { projectNaturalQiState } from '@daoyou/game-rules/qi/recovery';
+import { projectNaturalQiState } from '@daoyou/game-rules/qi';
 import {
   prepareEnlightenment,
   rollEnlightenment,
-} from '@daoyou/game-rules/manuals/enlightenment';
+} from '@daoyou/game-rules/manuals';
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
-import type { CultivationProgress } from '@daoyou/game-domain/cultivator';
+import type { CultivationProgress } from '@daoyou/game-domain/character';
 import { and, eq, inArray, or } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
 import { db, type DbExecutor } from '@server/lib/drizzle/db.js';

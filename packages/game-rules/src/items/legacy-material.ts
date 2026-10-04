@@ -1,4 +1,4 @@
-import { seedFactsOf } from '@daoyou/game-domain/items/seed-facts';
+import { seedFactsOf } from '@daoyou/game-domain/inventory';
 
 /** Only migration eligibility; retired facts are never repaired or revealed. */
 export function legacyMaterialUnavailableReason(material: {

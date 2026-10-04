@@ -1,8 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from '@daoyou/game-content/sects/data/youdu-paths' with { type: 'json' };
-import schema from '@daoyou/game-content/sects/data/youdu-paths.schema' with { type: 'json' };
-import { YouduPathsPackShape, loadYouduPathsPack, compileYouduPaths } from '@daoyou/game-content/sects/youdu-path-pack';
+import {
+  SECTS_YOUDU_PATHS_DATA as raw,
+  SECTS_YOUDU_PATHS_SCHEMA as schema,
+  YouduPathsPackShape,
+  loadYouduPathsPack,
+  compileYouduPaths,
+} from '@daoyou/game-content/authoring/sects';
 import { YOUDU_V6_DEFINITION } from '@daoyou/game-content/sects/youdu';
 import { compileSectDefinitionV6 } from './compiler.js';
 import { createEmptySectCombatProgressV6 } from './build-state.js';

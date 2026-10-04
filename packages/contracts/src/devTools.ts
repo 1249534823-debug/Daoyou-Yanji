@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { SECT_DISCIPLE_RANKS } from '@daoyou/game-domain/sects/organization';
+import { SECT_DISCIPLE_RANKS } from '@daoyou/game-domain/sects';
 
 import { ELEMENT_VALUES } from '@daoyou/constants/elements';
 

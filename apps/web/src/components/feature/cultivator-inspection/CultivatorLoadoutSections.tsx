@@ -1,9 +1,11 @@
 import { ItemSlot } from '@app/components/feature/items/ItemSlot';
 import { InkNotice } from '@app/components/ui';
-import type { PublicCombatV6Build } from '@daoyou/game-domain/combat/public-build';
-import { DAO_EQUIPMENT_SLOTS } from '@daoyou/game-domain/equipment/types';
+import type { PublicCombatV6Build } from '@daoyou/game-domain/combat';
+import {
+  DAO_EQUIPMENT_SLOTS,
+  EQUIPMENT_SLOT_NAMES,
+} from '@daoyou/game-domain/equipment';
 import { itemDefinition } from '@daoyou/game-rules/inventory';
-import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment/slot-names';
 
 export function CultivatorLoadoutSections({
   build,

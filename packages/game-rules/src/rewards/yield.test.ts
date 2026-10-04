@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { getRealmStageLevel } from '@daoyou/game-domain/progression/realms';
+import { getRealmStageLevel } from '@daoyou/game-domain/progression';
 import { SeededRng } from '@daoyou/combat-core/rng';
 import { equipmentRealm } from '../equipment/realm.js';
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import { findItemDefinition } from '@daoyou/game-content/items';
 import { REALM_STAGE_VALUES, REALM_VALUES } from '@daoyou/constants/realms';
 import {
   planYieldRewards,

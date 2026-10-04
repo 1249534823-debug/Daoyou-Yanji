@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DUNGEON_COST_RANK_VALUES } from '@daoyou/game-domain/dungeon/cost';
+import { DUNGEON_COST_RANK_VALUES } from '@daoyou/game-domain/dungeon';
 import { DUNGEON_LIFESPAN_COST_MAX } from '@daoyou/game-content/dungeon/cost';
 import {
   calculateDungeonMaterialCost,

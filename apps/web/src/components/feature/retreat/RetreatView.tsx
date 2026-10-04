@@ -6,10 +6,10 @@ import {
   GameSceneTabs,
 } from '@app/components/game-shell';
 import { InkButton, InkInput, InkNotice } from '@app/components/ui';
-import { COMPREHENSION_INSIGHT_CAP } from '@daoyou/game-content/cultivation/cultivationTuning';
+import { COMPREHENSION_INSIGHT_CAP } from '@daoyou/game-content/cultivation';
 import { QI_ACTION_COSTS } from '@daoyou/game-content/qi/config';
 import { getGameConceptLabel } from '@daoyou/game-content/presentation/concepts';
-import type { TaskInstance } from '@daoyou/game-domain/tasks/types';
+import type { TaskInstance } from '@daoyou/game-domain/tasks';
 
 import { cn } from '@app/lib/cn';
 import { useState } from 'react';

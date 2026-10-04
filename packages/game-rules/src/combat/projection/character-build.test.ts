@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto"
 import { describe, expect, it } from "vitest"
 import { projectCharacterToCombatV6 } from './project-character.js';
-import { type CharacterCombatInput } from '@daoyou/game-domain/combat/projection';
+import { type CharacterCombatInput } from '@daoyou/game-domain/combat';
 import baseline from "./fixtures/character-build.json" with { type: 'json' }
 
 describe("current character build", () => {

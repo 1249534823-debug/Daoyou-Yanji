@@ -1,6 +1,8 @@
-import type { ArtifactMigrationPlan } from '@daoyou/game-domain/legacy/artifact-migration';
-import { EQUIPMENT_LEVELS } from '@daoyou/game-domain/equipment/levels';
-import { DAO_EQUIPMENT_SLOTS } from '@daoyou/game-domain/equipment/types';
+import type { ArtifactMigrationPlan } from '@daoyou/game-domain/legacy/migrations';
+import {
+  EQUIPMENT_LEVELS,
+  DAO_EQUIPMENT_SLOTS,
+} from '@daoyou/game-domain/equipment';
 import { legacyRecord } from '@daoyou/game-domain/legacy/products';
 import { REALM_VALUES, type RealmType } from '@daoyou/constants/realms';
 

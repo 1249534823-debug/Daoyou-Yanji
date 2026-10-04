@@ -1,12 +1,20 @@
-import type { CompiledTowerEncounter } from '@daoyou/game-domain/tower/encounter';
-import { TOWER_ENCOUNTER_PACK as pack } from '@daoyou/game-content/tower/encounter-pack';
+import type { CompiledTowerEncounter } from '@daoyou/game-domain/tower';
+import {
+  TOWER_ENCOUNTER_PACK as pack,
+  TOWER_CATALOG,
+  TOWER_SKILLS,
+  TOWER_STATUS_DEFS,
+  type TowerModifier,
+} from '@daoyou/game-content/tower';
 import type { RealmType } from '@daoyou/constants/realms';
 import { UnitKind } from '@daoyou/combat-core/enums';
 import { type CreateBattleInput, type SkillDef, type StatusDef } from '@daoyou/combat-core/types';
-import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
-import { type TowerNpcPlan } from '@daoyou/game-domain/tower/npc-plan';
-import { TOWER_CATALOG, TOWER_SKILLS, TOWER_STATUS_DEFS, type TowerModifier } from '@daoyou/game-content/tower/catalog';
-import { TOWER_STRATEGY_VERSION, type TowerFloorStrategy } from '@daoyou/game-domain/tower/strategy';
+import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression';
+import {
+  type TowerNpcPlan,
+  TOWER_STRATEGY_VERSION,
+  type TowerFloorStrategy,
+} from '@daoyou/game-domain/tower';
 import { towerStrategyPreview, validateTowerFloorStrategy } from './strategy.js';
 
 /** Bind only matching reference strings; no mechanic names or slot assumptions. */

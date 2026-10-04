@@ -3,7 +3,7 @@ import { createBattle, restoreBattle } from '@daoyou/combat-core/session';
 import { type Command, type LineupUnit, type SkillDef } from '@daoyou/combat-core/types';
 import { effectiveSpeed, healTakenFactor } from '@daoyou/combat-core/units';
 import { createDaoyouRuleset } from '../combat/daoyou/index.js';
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '@daoyou/game-domain/combat/versions';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '@daoyou/game-domain/combat';
 import { createEmptySectCombatProgressV6 } from './build-state.js';
 import { compileSectDefinitionV6 } from './compiler.js';
 import { LINGXIAO_V6_DEFINITION } from '@daoyou/game-content/sects/lingxiao';

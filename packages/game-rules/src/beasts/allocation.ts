@@ -1,5 +1,5 @@
 import { SeededRng } from '@daoyou/combat-core/rng';
-import type { SummonedBeast } from '@daoyou/game-domain/beasts/schema';
+import type { SummonedBeast } from '@daoyou/game-domain/beasts';
 
 /** 平均分配后在每对属性间转移点数，各项不超出平均值的配置幅度。 */
 export function distributeBeastPoints(

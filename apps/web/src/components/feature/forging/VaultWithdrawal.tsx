@@ -5,7 +5,7 @@ import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
 import { usePlayerSession } from '@app/lib/resources/player';
 import type { VaultView } from '@daoyou/contracts/forging';
-import { MATERIAL_TYPE_NAMES } from '@daoyou/game-domain/items/material-facts';
+import { MATERIAL_TYPE_NAMES } from '@daoyou/game-domain/inventory';
 import { useEffect, useRef, useState } from 'react';
 import { combatV6Request, mutationBody } from '../combat-v6/request';
 

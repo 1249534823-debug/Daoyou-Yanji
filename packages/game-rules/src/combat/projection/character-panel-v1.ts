@@ -1,5 +1,5 @@
-import type { CharacterPanelV1 } from '@daoyou/game-domain/combat/panel';
-import type { Attributes } from "@daoyou/game-domain/cultivator"
+import type { CharacterPanelV1 } from '@daoyou/game-domain/combat';
+import type { Attributes } from "@daoyou/game-domain/character"
 
 
 /** 已通过投影校验的永久六维，编译为 character_panel_v1 裸身面板。 */

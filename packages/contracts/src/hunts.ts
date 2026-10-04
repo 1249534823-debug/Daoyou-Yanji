@@ -1,11 +1,13 @@
-import { HuntEventIdSchema } from '@daoyou/game-domain/hunts/event-id';
-import type { HuntTeam } from '@daoyou/game-domain/hunts/team';
+import { HuntEventIdSchema } from '@daoyou/game-domain/hunts';
+import type {
+  HuntTeam,
+  HuntEvent,
+  HuntRewardSnapshot,
+} from '@daoyou/game-domain/hunts';
 
 import { z } from 'zod';
 
-import type { HuntEvent } from '@daoyou/game-domain/hunts/event';
 
-import type { HuntRewardSnapshot } from '@daoyou/game-domain/hunts/reward';
 
 import { REALM_VALUES } from '@daoyou/constants/realms';
 

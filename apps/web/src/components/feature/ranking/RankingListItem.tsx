@@ -4,15 +4,15 @@ import {
 } from '@app/components/feature/consumables';
 import { InkBadge, InkButton, type Tier } from '@app/components/ui';
 import { cn } from '@app/lib/cn';
-import { isPillSpec } from '@daoyou/game-domain/consumables/identity';
+import { isPillSpec } from '@daoyou/game-domain/consumables';
 import { CONSUMABLE_TYPE_DISPLAY_MAP } from '@daoyou/game-content/presentation/concepts';
 import {
   formatCompactGameNumber,
   formatFullGameNumber,
 } from '@daoyou/game-rules/presentation/numbers';
 import type { RealmType } from '@daoyou/constants/realms';
-import type { PillSpec } from '@daoyou/game-domain/consumable';
-import type { Consumable } from '@daoyou/game-domain/cultivator';
+import type { PillSpec } from '@daoyou/game-domain/consumables';
+import type { Consumable } from '@daoyou/game-domain/character';
 import type {
   BattleRankingItem,
   ItemRankingEntry,

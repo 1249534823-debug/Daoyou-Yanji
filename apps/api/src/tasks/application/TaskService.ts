@@ -16,14 +16,16 @@ import {
   updateCultivatorTask,
   type CultivatorTaskRecord,
 } from '@server/lib/repositories/taskRepository.js';
-import { getNextStage } from '@daoyou/game-rules/cultivation/breakthroughCalculator';
-import { getOrInitCultivationProgress } from '@daoyou/game-rules/cultivation/cultivationUtils';
-import { getBreakthroughPillLabel } from '@daoyou/game-rules/consumables/breakthrough-pill';
+import {
+  getNextStage,
+  getOrInitCultivationProgress,
+} from '@daoyou/game-rules/cultivation';
+import { getBreakthroughPillLabel } from '@daoyou/game-rules/consumables/breakthrough';
 import { isConditionStatusActive } from '@daoyou/game-rules/condition';
 import type { ConditionStatusKey } from '@daoyou/game-domain/condition';
 import { REALM_ORDER, type RealmType } from '@daoyou/constants/realms';
-import type { CultivationProgress, Cultivator } from '@daoyou/game-domain/cultivator';
-import type { MailAttachment } from '@daoyou/game-domain/mail/attachment';
+import type { CultivationProgress, Cultivator } from '@daoyou/game-domain/character';
+import type { MailAttachment } from '@daoyou/game-domain/mail';
 import type {
   TaskActionLink,
   TaskEvent,
@@ -35,7 +37,7 @@ import type {
   TaskProgressSnapshot,
   TaskStageProgress,
   TaskStatus,
-} from '@daoyou/game-domain/tasks/types';
+} from '@daoyou/game-domain/tasks';
 import {
   getBreakthroughTaskDefinition,
   getBreakthroughTaskDefinitionByTransition,

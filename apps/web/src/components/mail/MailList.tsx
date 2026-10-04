@@ -1,6 +1,6 @@
 import { InkListItem } from '@app/components/ui/InkList';
 import { InkNotice } from '@app/components/ui/InkNotice';
-import type { MailAttachment } from '@daoyou/game-domain/mail/attachment';
+import type { MailAttachment } from '@daoyou/game-domain/mail';
 
 // Define local interface to match API response/schema
 export interface Mail {

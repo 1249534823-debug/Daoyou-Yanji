@@ -4,8 +4,8 @@ import { CommandType, EventType } from '@daoyou/combat-core/enums';
 import { createBattle } from '@daoyou/combat-core/session';
 import { type LineupUnit } from '@daoyou/combat-core/types';
 import { createDaoyouRuleset } from '../combat/daoyou/index.js';
-import { COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS } from '@daoyou/game-domain/combat/versions';
-import { BEAST_SKILLS, BEAST_SKILL_FAMILIES, BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
+import { COMBAT_V6_SEAL_CURVE_TRAINING_VERSIONS } from '@daoyou/game-domain/combat';
+import { BEAST_SKILLS, BEAST_SKILL_FAMILIES, BEAST_SPECIES } from '@daoyou/game-content/beasts';
 import { generateStarterBeast } from './generator.js';
 import {
   activeBeastSkills,

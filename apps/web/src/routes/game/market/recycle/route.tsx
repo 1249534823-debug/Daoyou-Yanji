@@ -17,14 +17,14 @@ import type {
   RecycleSelection,
 } from '@daoyou/contracts/recycle';
 import { recycleBlockingReason } from '@daoyou/game-rules/inventory/recycle';
-import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
 import {
+  ConsumableFactsSchema,
   INVENTORY_MATERIAL_TYPES,
   MATERIAL_TYPE_NAMES,
-} from '@daoyou/game-domain/items/material-facts';
-import { SeedFactsSchema } from '@daoyou/game-domain/items/seed-facts';
-import { materialFactsOf } from '@daoyou/game-domain/items/material';
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
+  SeedFactsSchema,
+  materialFactsOf,
+} from '@daoyou/game-domain/inventory';
+import { findItemDefinition } from '@daoyou/game-content/items';
 import { QUALITY_ORDER, QUALITY_VALUES, type Quality } from '@daoyou/constants/qualities';
 import { useEffect, useRef, useState } from 'react';
 

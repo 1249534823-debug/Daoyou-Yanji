@@ -1,6 +1,6 @@
-import type { SectV6Action } from '@daoyou/game-domain/sects/actions';
-import type { SectV6View } from '@daoyou/contracts/combatV6Sect';
-import { sectV6Change } from '@daoyou/game-rules/sects/progression';
+import type { SectV6Action } from '@daoyou/game-domain/sects/commands';
+import type { SectV6View } from '@daoyou/contracts/sects/combat';
+import { sectV6Change } from '@daoyou/game-rules/sects';
 export type SectWorkspaceProps = {
   view: SectV6View;
   pending: boolean;

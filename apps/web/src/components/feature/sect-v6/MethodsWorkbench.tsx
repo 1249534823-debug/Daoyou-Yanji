@@ -1,7 +1,6 @@
 import { InkButton } from '@app/components/ui/InkButton';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
-import { methodLevelCap } from '@daoyou/game-rules/sects/progression-pack';
-import { methodTrainingCost } from '@daoyou/game-rules/sects/progression';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
+import { methodLevelCap, methodTrainingCost } from '@daoyou/game-rules/sects';
 import {
   SECT_PANEL_LABELS,
   sectSkillCatalog,

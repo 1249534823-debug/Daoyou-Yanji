@@ -1,9 +1,13 @@
 import { SeededRng } from '@daoyou/combat-core/rng';
 import { distributeBeastPoints } from './allocation.js';
-import { BEAST_GENERATION, BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
-import { BEAST_FUSION, BEAST_FUSION_VERSION } from '@daoyou/game-content/beasts/fusion-config';
+import {
+  BEAST_GENERATION,
+  BEAST_SPECIES,
+  BEAST_FUSION,
+  BEAST_FUSION_VERSION,
+} from '@daoyou/game-content/beasts';
 import { beastPointBudget } from './identity.js';
-import { type BeastLineup, type SummonedBeast } from '@daoyou/game-domain/beasts/schema';
+import { type BeastLineup, type SummonedBeast } from '@daoyou/game-domain/beasts';
 import { BeastSchema, GeneratedBeastSchema } from './schema.js';
 
 export function beastFusionMaterialReason(

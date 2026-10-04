@@ -4,9 +4,9 @@ import {
   type DbTransaction,
 } from '@server/lib/drizzle/db.js';
 import * as schema from '@server/lib/drizzle/schema.js';
-import type { BodyCultivationBreakthroughReadinessData } from '@daoyou/contracts/bodyCultivation';
-import { previewBodyCultivationRealmBreakthrough } from '@daoyou/game-rules/body-cultivation/breakthrough';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
+import type { BodyCultivationBreakthroughReadinessData } from '@daoyou/contracts/body-cultivation';
+import { previewBodyCultivationRealmBreakthrough } from '@daoyou/game-rules/body-cultivation/training';
+import type { Cultivator } from '@daoyou/game-domain/character';
 import { and, eq } from 'drizzle-orm';
 
 export type BodyCultivationFacts = Pick<

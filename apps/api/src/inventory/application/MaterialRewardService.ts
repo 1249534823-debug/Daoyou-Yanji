@@ -1,10 +1,10 @@
 import type { DbExecutor } from '@server/lib/drizzle/db.js';
 import { MaterialGenerator } from '@server/lib/generation/MaterialGenerator.js';
-import { YieldCalculator } from '@daoyou/game-rules/yield/YieldCalculator';
+import { YieldCalculator } from '@daoyou/game-rules/yield';
 import { MATERIAL_TYPE_VALUES, type MaterialType } from '@daoyou/game-domain/inventory';
 import { QUALITY_ORDER, QUALITY_VALUES, type Quality } from '@daoyou/constants/qualities';
 import { type RealmType } from '@daoyou/constants/realms';
-import type { Material } from '@daoyou/game-domain/cultivator';
+import type { Material } from '@daoyou/game-domain/character';
 import {
   materialLibraryEntryToMaterial,
   sampleMaterialLibraryEntryByPreferences,

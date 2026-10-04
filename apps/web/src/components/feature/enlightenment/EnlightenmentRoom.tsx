@@ -8,10 +8,12 @@ import { GameIcon } from '@app/components/ui/GameIcon';
 import { GameImage } from '@app/components/ui/GameImage';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
-import { CHARACTER_MANUALS_V1 } from '@daoyou/game-content/manuals/content';
+import {
+  CHARACTER_MANUALS_V1,
+  ENLIGHTENMENT_REALMS,
+} from '@daoyou/game-content/manuals';
 import { cn } from '@app/lib/cn';
-import { ENLIGHTENMENT_REALMS } from '@daoyou/game-content/manuals/enlightenment';
-import { enlightenmentQualityCap } from '@daoyou/game-rules/manuals/enlightenment';
+import { enlightenmentQualityCap } from '@daoyou/game-rules/manuals';
 import { REALM_VALUES } from '@daoyou/constants/realms';
 import { useState } from 'react';
 import { CraftInventoryPanel } from '../items/CraftInventoryPanel';

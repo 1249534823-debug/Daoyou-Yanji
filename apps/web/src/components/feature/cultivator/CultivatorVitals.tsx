@@ -1,6 +1,8 @@
 import { InkButton, InkDetailDrawer } from '@app/components/ui';
-import { getPillToxicityStage } from '@daoyou/game-rules/condition';
-import { getConditionStatusTemplate } from '@daoyou/game-rules/condition/statuses';
+import {
+  getPillToxicityStage,
+  getConditionStatusTemplate,
+} from '@daoyou/game-rules/condition';
 import { useState } from 'react';
 import { CharacterSheetRow } from './CharacterSheetRow';
 import {

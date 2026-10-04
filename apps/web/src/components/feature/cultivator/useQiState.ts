@@ -9,7 +9,7 @@ import {
   projectNaturalQiState,
   type NaturalQiProjection,
   type QiRecoveryStatus,
-} from '@daoyou/game-rules/qi/recovery';
+} from '@daoyou/game-rules/qi';
 
 export interface QiRecoveryInfo {
   status: QiRecoveryStatus;

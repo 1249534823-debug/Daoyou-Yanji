@@ -1,5 +1,4 @@
-import type { QiAction } from '@daoyou/game-domain/qi/actions';
-import type { QiLogStatus } from '@daoyou/game-domain/qi/state';
+import type { QiAction, QiLogStatus } from '@daoyou/game-domain/qi';
 
 export interface QiState {
   current: number;

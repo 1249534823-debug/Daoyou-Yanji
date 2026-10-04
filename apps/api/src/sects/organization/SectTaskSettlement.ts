@@ -1,4 +1,4 @@
-import type { DailyTaskDifficulty } from '@daoyou/game-domain/cultivation/task-difficulty';
+import type { DailyTaskDifficulty } from '@daoyou/game-domain/cultivation';
 import {
   assertSectRealmQualityRules,
   assertStandardSectTaskRequirementCurve,

@@ -1,6 +1,6 @@
 import { formatContentPackErrors } from '@daoyou/game-domain/content-pack-errors';
 import { z } from 'zod';
-import raw from '@daoyou/game-content/sects/progression/progression' with { type: 'json' };
+import { SECTS_PROGRESSION_PROGRESSION_DATA as raw } from '@daoyou/game-content/sects/progression';
 
 const integer = z.number().int().nonnegative().max(100_000_000);
 const coefficient = z.number().nonnegative().max(100).multipleOf(0.000001);

@@ -1,9 +1,9 @@
 // Explicit authored strategy. Runtime interpretation never consults generation templates.
-import { TowerFloorStrategySchema, type TowerFloorStrategy, type TowerEnemyStrategy, type TowerTraitId } from '@daoyou/game-domain/tower/strategy';
+import { TowerFloorStrategySchema, type TowerFloorStrategy, type TowerEnemyStrategy, type TowerTraitId } from '@daoyou/game-domain/tower';
 
-import type { TowerEnemyPreview } from '@daoyou/game-domain/tower/preview';
+import type { TowerEnemyPreview } from '@daoyou/game-domain/tower';
 
-import { TOWER_CATALOG, TOWER_SKILLS, towerContentNote } from '@daoyou/game-content/tower/catalog';
+import { TOWER_CATALOG, TOWER_SKILLS, towerContentNote } from '@daoyou/game-content/tower';
 
 export const hasTowerTrait = (enemy: TowerEnemyStrategy, id: TowerTraitId) =>
   enemy.traits.some((t) => t.id === id);

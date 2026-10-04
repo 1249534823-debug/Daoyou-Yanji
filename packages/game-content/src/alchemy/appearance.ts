@@ -1,4 +1,4 @@
-import type { PillAppearanceGrade } from '@daoyou/game-domain/consumable';
+import type { PillAppearanceGrade } from '@daoyou/game-domain/consumables';
 
 export interface PillAppearanceConfig {
   grade: PillAppearanceGrade;

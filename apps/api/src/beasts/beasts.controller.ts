@@ -18,7 +18,7 @@ import {
   BeastLineupRequestSchema,
   BeastRenameSchema,
   BeastRestSchema,
-} from '@daoyou/contracts/combatV6Beasts';
+} from '@daoyou/contracts/beasts';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { CombatErrors, combatErrorResponse } from '../combat/combat-errors.js';

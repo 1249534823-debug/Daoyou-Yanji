@@ -3,31 +3,31 @@ import type {
   DungeonRewardEntry,
   DungeonRewardPlan,
   DungeonRewardResourceContext,
-} from '@daoyou/game-domain/dungeon/rewards';
+} from '@daoyou/game-domain/dungeon';
 import {
   DUNGEON_EXP_BUDGET,
   REALM_DAILY_EXP_BUDGET,
-} from '@daoyou/game-content/cultivation/cultivationExpGain';
+} from '@daoyou/game-content/cultivation';
 
-import { getLevelRealmStage } from '@daoyou/game-domain/progression/realms';
+import { getLevelRealmStage } from '@daoyou/game-domain/progression';
 
-import { type DropPool } from '@daoyou/game-domain/drops/pool';
+import { type DropPool } from '@daoyou/game-domain/rewards';
 
 import { rollDrops } from '../drops/index.js';
 
 import { SeededRng } from '@daoyou/combat-core/rng';
 
-import { OPEN_EQUIPMENT_LEVELS } from '@daoyou/game-domain/equipment/levels';
+import { OPEN_EQUIPMENT_LEVELS } from '@daoyou/game-domain/equipment';
 
 import { equipmentRealm } from '../equipment/realm.js';
 
-import type { ItemGrant } from '@daoyou/game-domain/items/inventory';
+import type { ItemGrant } from '@daoyou/game-domain/inventory';
 
 import { itemDefinition } from '../inventory/index.js';
 
-import { BLUEPRINTS } from '@daoyou/game-content/items/equipment-blueprints';
+import { BLUEPRINTS } from '@daoyou/game-content/items/equipment';
 
-import { materialFactsOf } from '@daoyou/game-domain/items/material';
+import { materialFactsOf } from '@daoyou/game-domain/inventory';
 
 import { calculateCultivationExpByDailyBudget } from '../cultivation/exp-gain.js';
 
@@ -35,7 +35,7 @@ import { getDungeonRewardBonus } from '../world/dungeon.js';
 
 import { REALM_YIELD_RATES } from '@daoyou/game-content/economy';
 
-import { DUNGEON_REWARD_PACK } from '@daoyou/game-content/rewards/dungeon-pack';
+import { DUNGEON_REWARD_PACK } from '@daoyou/game-content/rewards/dungeon';
 
 export const DUNGEON_REWARD_CONFIG = DUNGEON_REWARD_PACK.sources;
 

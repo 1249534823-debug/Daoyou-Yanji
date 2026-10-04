@@ -1,14 +1,16 @@
 import { InkButton } from '@app/components/ui/InkButton';
 import { useInventoryBag } from '@app/lib/resources/bag';
 import { useCraftStorage } from '@app/lib/resources/craftStorage';
-import type { ManualAction } from '@daoyou/game-domain/manuals/action';
-import type { ManualView } from '@daoyou/contracts/combatV6Manuals';
+import type {
+  ManualAction,
+  CharacterManualDefV1,
+} from '@daoyou/game-domain/manuals';
+import type { ManualView } from '@daoyou/contracts/manuals';
 import type { InventoryView } from '@daoyou/contracts/inventory';
-import { manualSlot } from '@daoyou/game-rules/manuals/compiler';
-import { CHARACTER_MANUALS_V1 } from '@daoyou/game-content/manuals/content';
-import type { CharacterManualDefV1 } from '@daoyou/game-domain/manuals/types';
+import { manualSlot } from '@daoyou/game-rules/manuals/projection';
+import { CHARACTER_MANUALS_V1 } from '@daoyou/game-content/manuals';
 import { itemDefinition } from '@daoyou/game-rules/inventory';
-import { manualJadeCost, previewManualAction } from '@daoyou/game-rules/manuals/action';
+import { manualJadeCost, previewManualAction } from '@daoyou/game-rules/manuals';
 import { useState } from 'react';
 import { CraftInventoryPanel } from '../items/CraftInventoryPanel';
 import {

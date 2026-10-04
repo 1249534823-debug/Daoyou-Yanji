@@ -1,6 +1,6 @@
 import * as schema from '@server/lib/drizzle/schema.js';
-import { assertConsumableSpec, stableSerializeConsumableSpec } from '@daoyou/game-domain/consumables/identity';
-import type { Consumable } from '@daoyou/game-domain/cultivator';
+import { assertConsumableSpec, stableSerializeConsumableSpec } from '@daoyou/game-domain/consumables';
+import type { Consumable } from '@daoyou/game-domain/character';
 import type { ConsumableType } from '@daoyou/game-domain/inventory';
 import type { Quality } from '@daoyou/constants/qualities';
 

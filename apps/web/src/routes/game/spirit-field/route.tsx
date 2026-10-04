@@ -17,11 +17,13 @@ import { useInventoryBag } from '@app/lib/resources/bag';
 import { useCraftStorage } from '@app/lib/resources/craftStorage';
 import { useResourceMutation } from '@app/lib/resources/mutations';
 import type { InventoryView } from '@daoyou/contracts/inventory';
-import { canPlantSpiritFieldSeed } from '@daoyou/game-rules/spirit-field/rules';
-import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
-import { SeedFactsSchema } from '@daoyou/game-domain/items/seed-facts';
-import { materialFactsOf } from '@daoyou/game-domain/items/material';
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import { canPlantSpiritFieldSeed } from '@daoyou/game-rules/spirit-field';
+import {
+  ConsumableFactsSchema,
+  SeedFactsSchema,
+  materialFactsOf,
+} from '@daoyou/game-domain/inventory';
+import { findItemDefinition } from '@daoyou/game-content/items';
 import type { RealmType } from '@daoyou/constants/realms';
 import { useCallback, useEffect, useRef, useState } from 'react';
 

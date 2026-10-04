@@ -1,8 +1,8 @@
-import { createMailAttachmentSchemas } from '@daoyou/game-domain/mail/schema';
+import { createMailAttachmentSchemas } from '@daoyou/game-domain/mail';
 
-import type { ResourceOperation } from '@daoyou/game-domain/resources/operations';
+import type { ResourceOperation } from '@daoyou/game-domain/resources';
 
-import type { MailAttachment } from '@daoyou/game-domain/mail/attachment';
+import type { MailAttachment } from '@daoyou/game-domain/mail';
 
 import { BeastTransferSchema } from '../beasts/trade.js';
 

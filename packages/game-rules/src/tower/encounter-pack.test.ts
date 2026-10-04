@@ -1,13 +1,15 @@
 import { compileTowerEncounter } from './content.js';
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from '@daoyou/game-content/tower/data/encounters' with { type: 'json' };
-import schema from '@daoyou/game-content/tower/data/encounters.schema' with { type: 'json' };
+import {
+  TOWER_ENCOUNTERS_DATA as raw,
+  TOWER_ENCOUNTERS_SCHEMA as schema,
+} from '@daoyou/game-content/authoring/tower';
 import {
   TowerEncounterPackShape,
   loadTowerEncounterPack,
-} from '@daoyou/game-content/tower/encounter-pack';
-import { allowedTowerFormations } from '@daoyou/game-content/tower/formations';
+  allowedTowerFormations,
+} from '@daoyou/game-content/tower';
 import { TOWER_ELIGIBLE_REALMS } from './helpers.js';
 import { getTowerSeasonMeta } from './season.js';
 import { createTowerWeek, towerCombination } from './weekly.js';

@@ -11,7 +11,7 @@ import {
   restoreGuideState,
   type GuideState,
 } from '@daoyou/game-rules/guide/interpreter';
-import type { GuideStep } from '@daoyou/game-domain/guide/schema';
+import type { GuideStep } from '@daoyou/game-domain/guide';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 type ShownStep = Extract<GuideStep, { type: 'look' | 'press' }>;

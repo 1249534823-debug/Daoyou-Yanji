@@ -1,7 +1,7 @@
 import { SeededRng } from '@daoyou/combat-core/rng';
-import type { DaoEquipmentSlot } from '@daoyou/game-domain/equipment/types';
+import type { DaoEquipmentSlot } from '@daoyou/game-domain/equipment';
 import { DAO_WEAPONS } from '@daoyou/game-content/equipment/weapons';
-import { type DaoWeaponType } from '@daoyou/game-domain/equipment/weapons';
+import { type DaoWeaponType } from '@daoyou/game-domain/equipment';
 // One explicit naming tier per equipment level. Cosmetic draws never affect equipment RNG.
 const tiers = [
   '青石',

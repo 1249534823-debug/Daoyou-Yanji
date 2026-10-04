@@ -12,11 +12,11 @@ import {
 import {
   BASE_PRICES,
   TYPE_MULTIPLIERS,
-} from '@daoyou/game-content/materials/config';
+} from '@daoyou/game-content/materials';
 import { getMaterialTypeLabel } from '@daoyou/game-content/presentation/concepts';
-import { calculatePillRecycleUnitPrice as calculatePillRecyclePrice } from '@daoyou/game-rules/alchemy/pillRecyclePrice';
+import { calculatePillRecycleUnitPrice as calculatePillRecyclePrice } from '@daoyou/game-rules/alchemy';
 import { QUALITY_ORDER, type Quality } from '@daoyou/constants/qualities';
-import type { Consumable, Material } from '@daoyou/game-domain/cultivator';
+import type { Consumable, Material } from '@daoyou/game-domain/character';
 import type { HighTierAppraisal } from '@daoyou/game-domain/market';
 
 const APPRAISAL_RATING_STEPS: HighTierAppraisal['rating'][] = [

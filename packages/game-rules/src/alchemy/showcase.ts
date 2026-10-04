@@ -1,8 +1,8 @@
 import { z } from 'zod';
 import { QUALITY_ORDER } from '@daoyou/constants/qualities';
 import { CONSUMABLE_ITEM } from '@daoyou/game-content/items/consumables';
-import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
-import type { InventoryShowcaseSnapshot } from '@daoyou/game-domain/items/showcase';
+import { ConsumableFactsSchema } from '@daoyou/game-domain/inventory';
+import type { InventoryShowcaseSnapshot } from '@daoyou/game-domain/items/catalog';
 
 const AlchemyOutputSchema = ConsumableFactsSchema.strip().extend({
   quantity: z.number().int().positive(),

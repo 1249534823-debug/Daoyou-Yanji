@@ -1,7 +1,7 @@
 import type {
   SectMapHotspot,
   SectPresentationTheme,
-} from '@daoyou/game-domain/sects/organization-presentation';
+} from '@daoyou/game-domain/sects';
 import { JIUJIE_SECT_ID } from './ids.js';
 const h = (
   id: string,

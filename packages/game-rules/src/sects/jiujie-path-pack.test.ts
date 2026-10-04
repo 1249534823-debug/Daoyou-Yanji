@@ -1,8 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from '@daoyou/game-content/sects/data/jiujie-paths' with { type: 'json' };
-import schema from '@daoyou/game-content/sects/data/jiujie-paths.schema' with { type: 'json' };
-import { JiujiePathsShape, loadJiujiePaths } from '@daoyou/game-content/sects/jiujie-path-pack';
+import {
+  SECTS_JIUJIE_PATHS_DATA as raw,
+  SECTS_JIUJIE_PATHS_SCHEMA as schema,
+  JiujiePathsShape,
+  loadJiujiePaths,
+} from '@daoyou/game-content/authoring/sects';
 import { JIUJIE_V6_DEFINITION as definition } from '@daoyou/game-content/sects/jiujie';
 import { compileSectDefinitionV6 } from './compiler.js';
 import { createEmptySectCombatProgressV6 } from './build-state.js';

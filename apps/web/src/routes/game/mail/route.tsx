@@ -24,7 +24,7 @@ import type {
   FriendSearchResponse,
   FriendSearchResult,
 } from '@daoyou/contracts/friends';
-import { mailLocationText } from '@daoyou/game-rules/mail/inventory';
+import { mailLocationText } from '@daoyou/game-rules/mail';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router';
 

@@ -1,5 +1,7 @@
-import arrivalFall from '@daoyou/game-content/performance/data/arrival-fall' with { type: 'json' };
-import arrivalMouth from '@daoyou/game-content/performance/data/arrival-mouth' with { type: 'json' };
+import {
+  PERFORMANCE_ARRIVAL_FALL_DATA as arrivalFall,
+  PERFORMANCE_ARRIVAL_MOUTH_DATA as arrivalMouth,
+} from '@daoyou/game-content/authoring/performance';
 import { describe, expect, it } from 'vitest';
 import {
   createPerformanceState,
@@ -10,7 +12,7 @@ import {
   fillPerformanceScript,
   parsePerformanceScript,
   type PerformanceScript,
-} from '@daoyou/game-domain/performance/schema';
+} from '@daoyou/game-domain/performance';
 
 const script = parsePerformanceScript({
   id: 'sample',

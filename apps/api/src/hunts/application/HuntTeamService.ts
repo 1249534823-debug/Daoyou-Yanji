@@ -7,15 +7,16 @@ import {
   ARENA_SPARRING_RULES_V1,
   type ArenaRoomV1,
 } from '@daoyou/contracts/arena';
-import type { HuntMember, HuntTeam } from '@daoyou/game-domain/hunts/team';
+import type { HuntMember, HuntTeam } from '@daoyou/game-domain/hunts';
 import type { HuntLobby, HuntTeamCommand } from '@daoyou/contracts/hunts';
-import { type HuntEvent } from '@daoyou/game-domain/hunts/event';
-import { huntEventById, huntIsOpen } from '@daoyou/game-rules/hunts/config';
+import { type HuntEvent } from '@daoyou/game-domain/hunts';
 import {
+  huntEventById,
+  huntIsOpen,
   huntRealmAllowed,
   huntStartError,
   selectHuntTeam,
-} from '@daoyou/game-rules/hunts/rules';
+} from '@daoyou/game-rules/hunts';
 import { REALM_VALUES, type RealmType } from '@daoyou/constants/realms';
 import { and, eq } from 'drizzle-orm';
 import { hasActiveCombat } from '@server/combat/application/CombatOccupancy.js';

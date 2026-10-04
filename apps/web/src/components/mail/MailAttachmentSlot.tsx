@@ -3,9 +3,9 @@ import { ItemPreviewView } from '@app/components/feature/items/ItemPreviewView';
 import { ItemSlot, PreviewSlot } from '@app/components/feature/items/ItemSlot';
 import type { ItemPreviewModel } from '@app/components/feature/items/presentation/types';
 import { tierColorMap } from '@app/components/ui/inkBadgeTiers';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts';
 import { getGameConceptIcon } from '@daoyou/game-content/presentation/concepts';
-import type { MailAttachment } from '@daoyou/game-domain/mail/attachment';
+import type { MailAttachment } from '@daoyou/game-domain/mail';
 
 export function MailAttachmentSlot({
   attachment,

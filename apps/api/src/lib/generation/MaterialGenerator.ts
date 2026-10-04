@@ -1,8 +1,8 @@
 import {
   BASE_PRICES,
   TYPE_MULTIPLIERS,
-} from '@daoyou/game-content/materials/config';
-import { getFallbackMaterialPreset } from '@daoyou/game-content/materials/fallback-presets';
+  getFallbackMaterialPreset,
+} from '@daoyou/game-content/materials';
 import { MaterialGenerator as MaterialSkeletonGenerator } from '@daoyou/game-rules/materials/generator';
 import {
   MaterialAISchema,

@@ -10,7 +10,7 @@ import { useCultivatorCurrency } from '@app/lib/resources/player';
 import type {
   TowerSessionView,
   TowerView,
-} from '@daoyou/contracts/combatV6Tower';
+} from '@daoyou/contracts/combat/tower';
 import { useNavigate } from 'react-router';
 
 export default function TowerBattleRoute() {

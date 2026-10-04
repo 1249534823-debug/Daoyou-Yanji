@@ -3,7 +3,7 @@ import type { RealmType } from '@daoyou/constants/realms';
 import {
   CULTIVATION_PILL_MIN_QUALITY_BY_REALM,
   LIFESPAN_PILL_GAIN_RANGE_BY_QUALITY,
-} from '@daoyou/game-content/consumables/config';
+} from '@daoyou/game-content/consumables';
 
 export function getMinimumPillQualityByRealm(realm: RealmType): Quality {
   return CULTIVATION_PILL_MIN_QUALITY_BY_REALM[realm] ?? '凡品';

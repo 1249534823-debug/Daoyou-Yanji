@@ -1,4 +1,4 @@
-import type { DungeonDifficultyTier } from '@daoyou/game-domain/dungeon/difficulty';
+import type { DungeonDifficultyTier } from '@daoyou/game-domain/dungeon';
 import type { ResolvedDungeonMapConfig } from '@daoyou/game-domain/world/map';
 import type { RealmType } from '@daoyou/constants/realms';
 

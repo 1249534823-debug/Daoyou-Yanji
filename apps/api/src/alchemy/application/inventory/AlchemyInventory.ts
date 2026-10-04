@@ -9,9 +9,9 @@ import {
   groupAlchemyStorageMaterials,
   type AlchemyBagMaterial,
 } from '@daoyou/game-rules/inventory/alchemy';
-import { inventoryStackIdentity } from '@daoyou/game-rules/inventory/stack-key';
-import { consumableFactsOf } from '@daoyou/game-domain/items/consumable-facts';
-import type { Consumable } from '@daoyou/game-domain/cultivator';
+import { inventoryStackIdentity } from '@daoyou/game-rules/inventory/stacking';
+import { consumableFactsOf } from '@daoyou/game-domain/inventory';
+import type { Consumable } from '@daoyou/game-domain/character';
 import { and, eq, inArray } from 'drizzle-orm';
 import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError.js';
 import {

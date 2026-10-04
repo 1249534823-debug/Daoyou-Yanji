@@ -1,4 +1,4 @@
-import { type SummonedBeast } from '@daoyou/game-domain/beasts/schema';
+import { type SummonedBeast } from '@daoyou/game-domain/beasts';
 import { GeneratedBeastSchema } from './schema.js';
 import { beastPointBudget } from './identity.js';
 

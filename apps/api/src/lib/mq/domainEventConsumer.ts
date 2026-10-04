@@ -1,7 +1,7 @@
 import { getJetStreamClient } from '@server/lib/nats/index.js';
-import { type DomainEventType } from '@daoyou/game-domain/events/payloads';
+import { type DomainEventType } from '@daoyou/game-domain/events';
 import { parseDomainEventEnvelope } from '@server/lib/mq/domainEventSchema.js';
-import { DOMAIN_EVENT_STREAM, type DomainEventEnvelope } from '@daoyou/contracts/domainEvents';
+import { DOMAIN_EVENT_STREAM, type DomainEventEnvelope } from '@daoyou/contracts/events';
 import { JSONCodec, type ConsumerMessages, type JsMsg } from 'nats';
 import {
   consumerRetryDelayMs,

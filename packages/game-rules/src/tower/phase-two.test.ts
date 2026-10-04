@@ -3,11 +3,14 @@ import { automaticCommands } from '../combat/auto.js';
 import { buildTowerBlessingChoices } from './helpers.js';
 import { getTowerSeasonMeta } from './season.js';
 import { DaoyouRule } from '@daoyou/game-content/combat/tuning';
-import { loadTowerCatalog, TOWER_CATALOG } from '@daoyou/game-content/tower/catalog';
-import raw from '@daoyou/game-content/tower/data/enemies' with { type: 'json' };
-import generation from '@daoyou/game-content/tower/data/generation' with { type: 'json' };
-import { loadTowerGeneration } from '@daoyou/game-content/tower/generation';
-import { type TowerBlessings } from '@daoyou/game-domain/tower/runtime';
+import {
+  loadTowerCatalog,
+  TOWER_CATALOG,
+  TOWER_GENERATION_DATA as generation,
+  loadTowerGeneration,
+} from '@daoyou/game-content/tower';
+import { TOWER_ENEMIES_DATA as raw } from '@daoyou/game-content/authoring/tower';
+import { type TowerBlessings } from '@daoyou/game-domain/tower';
 import { createTowerHost } from './host.js';
 import {
   publishedTowerEncounter,

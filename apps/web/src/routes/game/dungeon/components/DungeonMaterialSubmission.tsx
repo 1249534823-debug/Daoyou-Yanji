@@ -8,13 +8,15 @@ import {
   formatDungeonCostValue,
 } from '@app/lib/dungeon/formatDungeonCost';
 import { useInventoryBag } from '@app/lib/resources/bag';
-import type { DungeonMaterialSelection } from '@daoyou/game-domain/dungeon/actions';
+import type {
+  DungeonMaterialSelection,
+  DungeonOption,
+} from '@daoyou/game-domain/dungeon';
 import type { InventoryView } from '@daoyou/contracts/inventory';
 import {
   consumeDungeonMaterials,
   dungeonMaterialMatches,
-} from '@daoyou/game-rules/dungeon/materialCosts';
-import type { DungeonOption } from '@daoyou/game-domain/dungeon/state';
+} from '@daoyou/game-rules/dungeon';
 import { useState } from 'react';
 
 export function DungeonMaterialSubmission({

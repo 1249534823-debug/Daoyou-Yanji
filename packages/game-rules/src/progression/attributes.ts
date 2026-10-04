@@ -1,5 +1,5 @@
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
-import { getRealmStageLevel } from '@daoyou/game-domain/progression/realms';
+import { getRealmStageLevel } from '@daoyou/game-domain/progression';
 
 
 export const BASE_ATTRIBUTE_VALUE = 10;

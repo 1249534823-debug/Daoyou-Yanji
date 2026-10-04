@@ -1,10 +1,14 @@
-import type { TowerBlessings } from '@daoyou/game-domain/tower/runtime';
+import type {
+  TowerBlessings,
+  TowerReward,
+  TowerRewardPreview,
+  TowerBlessingChoice,
+  TowerSeasonMeta,
+  TowerEnemyPreview,
+} from '@daoyou/game-domain/tower';
 
-import type { TowerReward, TowerRewardPreview } from '@daoyou/game-domain/tower/reward';
 
-import type { TowerBlessingChoice, TowerSeasonMeta } from '@daoyou/game-domain/tower/state';
 
-import type { TowerEnemyPreview } from '@daoyou/game-domain/tower/preview';
 
 import type { RealmType } from '@daoyou/constants/realms';
 

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { DropPoolSchema, type DropPool } from '@daoyou/game-domain/drops/pool';
+import { DropPoolSchema, type DropPool } from '@daoyou/game-domain/rewards';
 import { BOOKS } from '../items/beast-books.js';
 import { formatContentPackErrors } from '@daoyou/game-domain/content-pack-errors';
 import raw from './data/wild.json' with { type: 'json' };

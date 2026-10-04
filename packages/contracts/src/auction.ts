@@ -1,9 +1,9 @@
-import type { AuctionItemType } from '@daoyou/game-domain/auction/types';
+import type { AuctionItemType } from '@daoyou/game-domain/auction';
 
 import { z } from 'zod';
 
 
-import { AUCTION_MAX_PURCHASE_QUANTITY, AUCTION_MAX_UNIT_PRICE } from '@daoyou/game-domain/auction/limits';
+import { AUCTION_MAX_PURCHASE_QUANTITY, AUCTION_MAX_UNIT_PRICE } from '@daoyou/game-domain/auction';
 
 
 
@@ -22,7 +22,7 @@ import { AUCTION_MAX_PURCHASE_QUANTITY, AUCTION_MAX_UNIT_PRICE } from '@daoyou/g
 
 
 
-import { type BeastTradePreview } from '@daoyou/game-domain/beasts/trade-preview';
+import { type BeastTradePreview } from '@daoyou/game-domain/beasts';
 
 
 

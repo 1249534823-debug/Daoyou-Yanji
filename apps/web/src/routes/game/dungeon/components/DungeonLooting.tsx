@@ -1,8 +1,8 @@
 import { InkSection } from '@app/components/layout';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkCard } from '@app/components/ui/InkCard';
-import type { DungeonState } from '@daoyou/game-domain/dungeon/state';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
+import type { DungeonState } from '@daoyou/game-domain/dungeon';
+import type { Cultivator } from '@daoyou/game-domain/character';
 import type { DungeonDisplayResources } from './DungeonRunPanel';
 import { DungeonRunPanel } from './DungeonRunPanel';
 

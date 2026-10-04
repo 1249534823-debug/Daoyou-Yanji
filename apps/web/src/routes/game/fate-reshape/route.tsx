@@ -24,8 +24,8 @@ import {
   useCultivatorIdentity,
   usePlayerSession,
 } from '@app/lib/resources/player';
-import type { PreHeavenFate } from '@daoyou/game-domain/cultivator';
-import type { FateReshapeSessionDTO } from '@daoyou/game-domain/fateReshape';
+import type { PreHeavenFate } from '@daoyou/game-domain/character';
+import type { FateReshapeSessionDTO } from '@daoyou/game-domain/fate-reshape';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 type SessionResponse = {

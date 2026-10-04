@@ -1,4 +1,4 @@
-import { DropPoolSchema, type DropPool, type DropResult } from '@daoyou/game-domain/drops/pool';
+import { DropPoolSchema, type DropPool, type DropResult } from '@daoyou/game-domain/rewards';
 
 
 /** Opaque reward IDs only. A caller supplies independent deterministic streams by group ID. */

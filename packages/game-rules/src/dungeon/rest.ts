@@ -1,4 +1,4 @@
-import type { Consumable } from '@daoyou/game-domain/cultivator';
+import type { Consumable } from '@daoyou/game-domain/character';
 
 export function isDungeonRecoveryPill(item: Pick<Consumable, 'spec'>) {
   return (

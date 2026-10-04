@@ -1,6 +1,6 @@
-import type { SectCombatView } from '@daoyou/game-domain/sects/build';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
-import { type CombatV6SectId, type SectCombatProgressV6 } from '@daoyou/game-domain/combat/content';
+import type { SectCombatView } from '@daoyou/game-domain/sects';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
+import { type CombatV6SectId, type SectCombatProgressV6 } from '@daoyou/game-domain/combat';
 
 export function createFreshCombatV6MethodLevels(
   sectId: CombatV6SectId,

@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { BEAST_STARTER_SPECIES } from '@daoyou/game-content/beasts/content';
+import { BEAST_STARTER_SPECIES } from '@daoyou/game-content/beasts';
 import { generateStarterBeast } from './generator.js';
 import { generateCapturedBeast } from './generator.js';
 import { MailAttachmentSchema } from '../mail/attachments.js';
 import { AuctionSnapshotSchema } from '../auction/items.js';
-import { beastTradePreview } from '@daoyou/game-domain/beasts/trade-preview';
+import { beastTradePreview } from '@daoyou/game-domain/beasts';
 import {
   BeastTransferSchema,
   beastAuctionBlockReason,

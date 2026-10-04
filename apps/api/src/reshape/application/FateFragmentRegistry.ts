@@ -2,7 +2,7 @@ import type {
   FateEffectEntry,
   FateEffectPolarity,
   FateEffectType,
-} from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/character';
 import type { Quality } from '@daoyou/constants/qualities';
 import { QUALITY_ORDER } from '@daoyou/constants/qualities';
 import {

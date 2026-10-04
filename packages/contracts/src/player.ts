@@ -2,9 +2,9 @@ import type { ApiSuccess } from './http.js';
 import type {
   CultivationProgress,
   Cultivator,
-} from '@daoyou/game-domain/cultivator';
-import type { QiProjectionBaseline } from '@daoyou/game-domain/qi/state';
-import type { SectCombatView } from '@daoyou/game-domain/sects/build';
+} from '@daoyou/game-domain/character';
+import type { QiProjectionBaseline } from '@daoyou/game-domain/qi';
+import type { SectCombatView } from '@daoyou/game-domain/sects';
 import type {
   ResourceChange,
   ResourceReadMeta,
@@ -27,9 +27,9 @@ export type CultivatorInspectionData = Pick<
   | 'condition'
 > & {
   combatPanel:
-    import('@daoyou/game-domain/combat/panel').CharacterPanelV1 | null;
+    import('@daoyou/game-domain/combat').CharacterPanelV1 | null;
   build:
-    | import('@daoyou/game-domain/combat/public-build').PublicCombatV6Build
+    | import('@daoyou/game-domain/combat').PublicCombatV6Build
     | null;
 };
 
@@ -80,7 +80,7 @@ export interface PlayerResourceMap {
   };
   condition:
     | (NonNullable<Cultivator['condition']> & {
-        combatV6?: import('@daoyou/game-domain/character/display').CombatV6ResourceAuthority;
+        combatV6?: import('@daoyou/game-domain/character').CombatV6ResourceAuthority;
       })
     | undefined;
   progress: CultivationProgress;

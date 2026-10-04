@@ -1,5 +1,5 @@
-import type { BeastTradePreview } from '@daoyou/game-domain/beasts/trade-preview';
-import type { InventoryShowcasePayload } from '@daoyou/game-domain/items/showcase';
+import type { BeastTradePreview } from '@daoyou/game-domain/beasts';
+import type { InventoryShowcasePayload } from '@daoyou/game-domain/items/catalog';
 
 export type WorldChatMessageChannel = 'system' | 'world' | 'sect';
 

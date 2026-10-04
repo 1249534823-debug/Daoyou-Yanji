@@ -7,7 +7,7 @@ import { cultivators, spiritualRoots } from '@server/lib/drizzle/schema.js';
 import type {
   CultivationProgress,
   Cultivator,
-} from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/character';
 import type { CultivatorCondition } from '@daoyou/game-domain/condition';
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { and, eq } from 'drizzle-orm';

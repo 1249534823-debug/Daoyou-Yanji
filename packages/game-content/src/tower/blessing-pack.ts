@@ -1,4 +1,4 @@
-import { TOWER_BLESSING_IDS, type TowerBlessingId } from '@daoyou/game-domain/tower/blessings';
+import { TOWER_BLESSING_IDS, type TowerBlessingId } from '@daoyou/game-domain/tower';
 import { formatContentPackErrors } from '@daoyou/game-domain/content-pack-errors';
 
 import { z } from 'zod';

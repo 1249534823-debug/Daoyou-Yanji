@@ -2,12 +2,12 @@ import { getJetStreamManager } from '@server/lib/nats/index.js';
 import {
   BACKGROUND_COMMAND_STREAM,
   BACKGROUND_COMMAND_SUBJECT_PREFIX,
-} from '@daoyou/contracts/backgroundCommands';
+} from '@daoyou/contracts/background-commands';
 import {
   DOMAIN_EVENT_STREAM,
   DOMAIN_EVENT_SUBJECT_PREFIX,
-} from '@daoyou/contracts/domainEvents';
-import { COMBAT_V6_REPLAY_STREAM, COMBAT_V6_REPLAY_SUBJECT } from '@daoyou/contracts/combatV6Runtime';
+} from '@daoyou/contracts/events';
+import { COMBAT_V6_REPLAY_STREAM, COMBAT_V6_REPLAY_SUBJECT } from '@daoyou/contracts/combat/runtime';
 import {
   AckPolicy,
   DeliverPolicy,

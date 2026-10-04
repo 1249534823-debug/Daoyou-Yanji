@@ -1,4 +1,4 @@
-import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character-attribute-labels';
+import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character';
 import type { ConditionResourceKey } from '@daoyou/game-domain/condition';
 import type {
   ConsumableType,
@@ -7,7 +7,7 @@ import type {
 } from '@daoyou/game-domain/inventory';
 import type { ElementType } from '@daoyou/constants/elements';
 import type { SkillType, StatusEffect } from '@daoyou/game-domain/skills';
-import type { Attributes } from '@daoyou/game-domain/cultivator';
+import type { Attributes } from '@daoyou/game-domain/character';
 
 export interface GameConceptDisplayInfo {
   label: string;

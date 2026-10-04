@@ -5,12 +5,12 @@ import { readMarrowWashFacts } from '@server/cultivator/application/readers/Cult
 import { getCultivatorConsumableById } from '@server/cultivator/application/readers/CultivatorInventoryRepository.js';
 import { setSpiritualRootMarrowWashBonus } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 import { updateCultivator } from '@server/cultivator/application/readers/CultivatorStateRepository.js';
-import { stripExpCapForStorage } from '@daoyou/game-rules/cultivation/cultivationUtils';
+import { stripExpCapForStorage } from '@daoyou/game-rules/cultivation';
 import {
   breakthroughMarrowWash,
   MARROW_WASH_BREAKTHROUGH_QI_COST,
   SPIRITUAL_ROOT_EFFECTIVE_STRENGTH_CAP,
-} from '@daoyou/game-rules/body-cultivation/marrow-wash';
+} from '@daoyou/game-rules/body-cultivation/training';
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { randomUUID } from 'crypto';
 import { and, eq, sql } from 'drizzle-orm';

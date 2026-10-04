@@ -1,4 +1,4 @@
-import type { CharacterPanelV1 } from '@daoyou/game-domain/combat/panel';
+import type { CharacterPanelV1 } from '@daoyou/game-domain/combat';
 import { z } from 'zod';
 
 export const AttributeAllocationSchema = z

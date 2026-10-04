@@ -1,7 +1,11 @@
-import { mark, formations, HUNT_ENEMY_COUNT } from '@daoyou/game-content/hunts/combat';
-import type { HuntEvent } from '@daoyou/game-domain/hunts/event';
+import {
+  mark,
+  formations,
+  HUNT_ENEMY_COUNT,
+  HUNT_BOSSES,
+} from '@daoyou/game-content/hunts';
+import type { HuntEvent } from '@daoyou/game-domain/hunts';
 
-import { HUNT_BOSSES } from '@daoyou/game-content/hunts/bosses';
 
 import type { BattleState, Command, LineupUnit } from '@daoyou/combat-core/types';
 

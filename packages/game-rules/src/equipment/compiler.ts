@@ -1,23 +1,10 @@
-import { LEVELS_PER_REALM_STAGE } from '@daoyou/game-domain/progression/realms';
+import { LEVELS_PER_REALM_STAGE } from '@daoyou/game-domain/progression';
 import { ELEMENT_VALUES } from '@daoyou/constants/elements';
-import { isOpenEquipmentLevel } from '@daoyou/game-domain/equipment/levels';
-import { equipmentRealm } from './realm.js';
-import type { Attributes } from '@daoyou/game-domain/cultivator';
 import {
+  isOpenEquipmentLevel,
   EquipmentCrafterNameSchema,
   ForgedEquipmentDescSchema,
   ForgedEquipmentNameSchema,
-} from '@daoyou/game-domain/equipment/narrative';
-import type { CombatV6ProjectionDiagnostic } from '@daoyou/game-domain/combat/projection';
-import { daoEquipmentAttributeRange, daoEquipmentBaseRange } from './ranges.js';
-import { daoEquipmentTemplateOf } from '@daoyou/game-content/equipment/content';
-import {
-  DAO_EQUIPMENT_ARTS_V1,
-  DAO_EQUIPMENT_ESSENCES_V1,
-  DAO_RAGE_RESOURCE_ID,
-  createDaoRageGainPassive,
-} from '@daoyou/game-content/equipment/special-content';
-import {
   DAO_EQUIPMENT_GENERATOR_VERSION,
   DAO_EQUIPMENT_GENERATOR_VERSION_V2,
   DAO_EQUIPMENT_GENERATOR_VERSION_V3,
@@ -32,8 +19,20 @@ import {
   type DaoEquipmentInstanceV1,
   type DaoEquipmentLoadoutV1,
   type DaoEquipmentPanelRoll,
-} from '@daoyou/game-domain/equipment/types';
-import { daoWeaponTypeOf, equipmentWeaponTypeProblem } from '@daoyou/game-domain/equipment/weapons';
+  daoWeaponTypeOf,
+  equipmentWeaponTypeProblem,
+} from '@daoyou/game-domain/equipment';
+import { equipmentRealm } from './realm.js';
+import type { Attributes } from '@daoyou/game-domain/character';
+import type { CombatV6ProjectionDiagnostic } from '@daoyou/game-domain/combat';
+import { daoEquipmentAttributeRange, daoEquipmentBaseRange } from './ranges.js';
+import { daoEquipmentTemplateOf } from '@daoyou/game-content/equipment/base';
+import {
+  DAO_EQUIPMENT_ARTS_V1,
+  DAO_EQUIPMENT_ESSENCES_V1,
+  DAO_RAGE_RESOURCE_ID,
+  createDaoRageGainPassive,
+} from '@daoyou/game-content/equipment/special';
 import { daoFormationPanel, validateFormationInscriptions } from './inscriptions.js';
 
 const ATTRIBUTE_KEYS: DaoEquipmentAttribute[] = [

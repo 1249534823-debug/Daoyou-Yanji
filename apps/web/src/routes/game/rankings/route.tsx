@@ -27,7 +27,7 @@ import {
   usePlayerSession,
 } from '@app/lib/resources/player';
 import { MAX_DAILY_RANKING_CHALLENGES } from '@daoyou/game-rules/rankings/ranking';
-import type { RankingChallengeRequest } from '@daoyou/contracts/combatV6Ranking';
+import type { RankingChallengeRequest } from '@daoyou/contracts/combat/ranking';
 import type { CultivatorInspectionData } from '@daoyou/contracts/player';
 import { cn } from '@app/lib/cn';
 import { getGameConceptInfo } from '@daoyou/game-content/presentation/concepts';

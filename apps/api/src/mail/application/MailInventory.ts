@@ -1,15 +1,16 @@
-import { beastTradePreview } from '@daoyou/game-domain/beasts/trade-preview';
+import { beastTradePreview } from '@daoyou/game-domain/beasts';
 import { BeastTransferSchema } from '@daoyou/game-rules/beasts/trade';
-import { MailInventoryGrantSchema } from '@daoyou/game-rules/mail/inventory';
-import { consumableFactsOf } from '@daoyou/game-domain/items/consumable-facts';
+import { MailInventoryGrantSchema } from '@daoyou/game-rules/mail';
 import {
+  consumableFactsOf,
   INVENTORY_MATERIAL_TYPES,
   MaterialFactsSchema,
-} from '@daoyou/game-domain/items/material-facts';
-import { seedFactsOf, SeedFactsSchema } from '@daoyou/game-domain/items/seed-facts';
+  seedFactsOf,
+  SeedFactsSchema,
+} from '@daoyou/game-domain/inventory';
 import { assertCurrentRewardItem } from '@daoyou/game-rules/legacy/retired-draw';
-import type { Consumable, Material } from '@daoyou/game-domain/cultivator';
-import type { MailAttachment } from '@daoyou/game-domain/mail/attachment';
+import type { Consumable, Material } from '@daoyou/game-domain/character';
+import type { MailAttachment } from '@daoyou/game-domain/mail';
 import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import { grantInventory } from '@server/inventory/operations.js';
 import { sanitizeMaterialForClient } from '@server/inventory/presentation.js';

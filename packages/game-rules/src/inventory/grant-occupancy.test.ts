@@ -1,6 +1,5 @@
 import { divinationRewardFacts } from '../divination/rules.js';
-import { BAG_CAPACITY } from '@daoyou/game-domain/items/bag';
-import { type ItemGrant } from '@daoyou/game-domain/items/inventory';
+import { BAG_CAPACITY, type ItemGrant } from '@daoyou/game-domain/inventory';
 import { addItems } from './index.js';
 import { inventoryStackIdentity } from './stack-key.js';
 

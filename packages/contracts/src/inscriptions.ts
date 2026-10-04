@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { MAX_CRAFT_MATERIAL_QUANTITY } from '@daoyou/game-domain/items/quantity';
-import type { InscriptionCost } from '@daoyou/game-domain/inscriptions/types';
-import type { ItemGrant } from '@daoyou/game-domain/items/inventory';
+import { MAX_CRAFT_MATERIAL_QUANTITY } from '@daoyou/game-domain/inventory';
+import type { InscriptionCost } from '@daoyou/game-domain/inscriptions';
+import type { ItemGrant } from '@daoyou/game-domain/inventory';
 
 const ref = z.strictObject({
   id: z.string().min(1).max(160),

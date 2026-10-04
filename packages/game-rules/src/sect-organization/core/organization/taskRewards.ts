@@ -1,13 +1,13 @@
 import {
   SectTaskRewardSnapshotSchema,
   type SectTaskRewardSnapshot,
-} from '@daoyou/game-domain/sects/task-rewards';
+} from '@daoyou/game-domain/sects/tasks';
 import {
   DAILY_TASK_EXP_BUDGET,
   REALM_DAILY_EXP_BUDGET,
-} from '@daoyou/game-content/cultivation/cultivationExpGain';
+} from '@daoyou/game-content/cultivation';
 
-import type { DailyTaskDifficulty } from '@daoyou/game-domain/cultivation/task-difficulty';
+import type { DailyTaskDifficulty } from '@daoyou/game-domain/cultivation';
 
 import { REALM_ORDER } from '@daoyou/constants/realms';
 

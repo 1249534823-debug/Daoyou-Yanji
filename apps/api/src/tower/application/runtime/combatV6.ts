@@ -7,33 +7,32 @@ import {
   visibleUnitNames,
 } from '@daoyou/game-rules/combat/presentation';
 import { createCombatV6Replay } from '@daoyou/game-rules/combat/replay';
-import { liveReplayDelta } from '@daoyou/game-rules/combat/replay-timeline';
-import { publicUnitAppearances } from '@daoyou/game-rules/combat/unit-appearance';
-import type { CombatV6CommandGroup } from '@daoyou/game-domain/combat/commands';
-import type { TowerReward } from '@daoyou/game-domain/tower/reward';
-import type { TowerSessionView, TowerView } from '@daoyou/contracts/combatV6Tower';
+import { liveReplayDelta } from '@daoyou/game-rules/combat/playback';
+import { publicUnitAppearances } from '@daoyou/game-rules/combat/appearance';
+import type {
+  CombatV6CommandGroup,
+  CombatV6TrainingPlayerInput,
+} from '@daoyou/game-domain/combat';
+import type { TowerReward, TowerBlessingId } from '@daoyou/game-domain/tower';
+import type { TowerSessionView, TowerView } from '@daoyou/contracts/combat/tower';
 import type { ResourceChange } from '@daoyou/contracts/resources';
 import { canDeployBeast } from '@daoyou/game-rules/beasts/projection';
-import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat/encounter';
-import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
-import { type TowerBattleSnapshot } from '@daoyou/game-domain/tower/runtime';
+import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression';
+import { type TowerBattleSnapshot } from '@daoyou/game-domain/tower';
 import { createTowerHost, TowerHost } from '@daoyou/game-rules/tower/host';
-import { publishedTowerPreviews } from '@daoyou/game-rules/tower/published';
-import type { TowerBlessingId } from '@daoyou/game-domain/tower/blessings';
 import {
+  publishedTowerPreviews,
   buildTowerBlessingChoices,
   hashTowerSeed,
   isTowerRealmEligible,
   TOWER_MAX_FLOOR,
   TOWER_MIN_REALM,
-} from '@daoyou/game-rules/tower/helpers';
-import { shouldExpireTowerRun } from '@daoyou/game-rules/tower/lifecycle';
-import {
+  shouldExpireTowerRun,
   advanceTowerRewardWeek,
   towerRewards,
   TowerRewardSchema,
-} from '@daoyou/game-rules/tower/reward-state';
-import { getTowerSeasonMeta } from '@daoyou/game-rules/tower/season';
+  getTowerSeasonMeta,
+} from '@daoyou/game-rules/tower';
 import { planTowerReward, towerRewardPreviews } from '@daoyou/game-rules/rewards/tower';
 import type { CultivatorCondition } from '@daoyou/game-domain/condition';
 import type { RealmType } from '@daoyou/constants/realms';

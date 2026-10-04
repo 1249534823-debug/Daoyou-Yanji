@@ -1,11 +1,5 @@
-import { isOpenEquipmentLevel } from '@daoyou/game-domain/equipment/levels';
-import { equipmentRealm } from './realm.js';
-import { SeededRng } from '@daoyou/combat-core/rng';
-import type { CombatV6ProjectionDiagnostic } from "@daoyou/game-domain/combat/projection"
-import { daoEquipmentBaseRange, daoEquipmentAttributeRange } from './ranges.js';
-import { DAO_EQUIPMENT_BASE_GENERATION, daoEquipmentTemplateOf } from '@daoyou/game-content/equipment/content';
-import { DAO_EQUIPMENT_SPECIAL_GENERATION, equipmentArtPool, equipmentEssencePool } from "@daoyou/game-content/equipment/forging-content"
 import {
+  isOpenEquipmentLevel,
   DAO_EQUIPMENT_GENERATOR_VERSION,
   DAO_EQUIPMENT_GENERATOR_VERSION_V2,
   type DaoEquipmentAttribute,
@@ -13,7 +7,13 @@ import {
   type DaoEquipmentGenerationResult,
   type GenerateDaoEquipmentV1Input,
   type GenerateDaoEquipmentV2Input,
-} from "@daoyou/game-domain/equipment/types"
+} from '@daoyou/game-domain/equipment';
+import { equipmentRealm } from './realm.js';
+import { SeededRng } from '@daoyou/combat-core/rng';
+import type { CombatV6ProjectionDiagnostic } from "@daoyou/game-domain/combat"
+import { daoEquipmentBaseRange, daoEquipmentAttributeRange } from './ranges.js';
+import { DAO_EQUIPMENT_BASE_GENERATION, daoEquipmentTemplateOf } from '@daoyou/game-content/equipment/base';
+import { DAO_EQUIPMENT_SPECIAL_GENERATION, equipmentArtPool, equipmentEssencePool } from "@daoyou/game-content/equipment/forging"
 
 const ATTRIBUTES: DaoEquipmentAttribute[] = [
   "vitality",

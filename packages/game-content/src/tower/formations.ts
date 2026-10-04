@@ -1,4 +1,4 @@
-import type { TowerFormationId, TowerEnemyRole, TowerKeyFormation } from '@daoyou/game-domain/tower/formations';
+import type { TowerFormationId, TowerEnemyRole, TowerKeyFormation } from '@daoyou/game-domain/tower';
 import generation from './data/generation.json' with { type: 'json' };
 
 /** Encounter budgets belong to the whole group; companions never inherit leader traits. */

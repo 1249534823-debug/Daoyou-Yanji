@@ -3,9 +3,9 @@ import {
   BEAST_ADVANCED_SKILL_IDS,
   BEAST_SKILL_CONTENT,
   BEAST_SUPERIOR_BOOK_SKILL_IDS,
-} from '@daoyou/game-content/beasts/content';
-import skills from '@daoyou/game-content/beasts/data/skills' with { type: 'json' };
-import { BeastSkillsPackShape } from '@daoyou/game-domain/beasts/pack';
+} from '@daoyou/game-content/beasts';
+import skills from '@daoyou/game-content/authoring/beasts/skills' with { type: 'json' };
+import { BeastSkillsPackShape } from '@daoyou/game-domain/beasts/authoring';
 import { beastSkillPresentation } from './skill-presentation.js';
 it('技能格与传承灵印都读取技能配置的高级标记', () => {
   for (const skill of BEAST_SKILL_CONTENT) {

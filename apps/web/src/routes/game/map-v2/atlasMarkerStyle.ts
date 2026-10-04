@@ -1,4 +1,4 @@
-import type { AtlasCategory } from '@daoyou/game-rules/world/mapAtlasCategories';
+import type { AtlasCategory } from '@daoyou/game-rules/world/atlas';
 
 export const ATLAS_CATEGORY_STYLE = {
   wild: {

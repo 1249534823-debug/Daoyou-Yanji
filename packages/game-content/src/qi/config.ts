@@ -1,7 +1,7 @@
 import type {
   QiAction,
   QiRestoreTalismanScenario,
-} from '@daoyou/game-domain/qi/actions';
+} from '@daoyou/game-domain/qi';
 
 export const QI_MAX = 240;
 

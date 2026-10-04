@@ -1,7 +1,7 @@
 import { apiFetch } from '@app/lib/api/fetch';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton, InkInput, InkNotice, InkSelect } from '@app/components/ui';
-import { MailAttachmentsSchema } from '@daoyou/game-rules/mail/attachments';
+import { MailAttachmentsSchema } from '@daoyou/game-rules/mail';
 import { useEffect, useState } from 'react';
 import { AdminDialog } from '../../_components/AdminDialog';
 import { RewardSelectionPreview } from '../../_components/RewardSelectionEditor';

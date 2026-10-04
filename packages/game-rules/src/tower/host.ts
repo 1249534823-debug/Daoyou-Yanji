@@ -1,9 +1,9 @@
-import type { TowerBlessings, TowerBattleSnapshot } from '@daoyou/game-domain/tower/runtime';
-import { AUTO_POLICY_VERSION } from '@daoyou/game-domain/combat/auto-policy';
+import type { TowerBlessings, TowerBattleSnapshot } from '@daoyou/game-domain/tower';
+import { AUTO_POLICY_VERSION } from '@daoyou/game-domain/combat/auto';
 
 import { playerAppearances } from '../combat/unit-appearance.js';
 
-import { TOWER_BLESSINGS_PACK } from '@daoyou/game-content/tower/blessing-pack';
+import { TOWER_BLESSINGS_PACK } from '@daoyou/game-content/tower';
 
 import {
   TOWER_CONTENT_VERSION,
@@ -12,7 +12,7 @@ import {
 
 import type { RealmType } from '@daoyou/constants/realms';
 
-import { BEAST_SKILLS, BEAST_STATUS_DEFS } from '@daoyou/game-content/beasts/content';
+import { BEAST_SKILLS, BEAST_STATUS_DEFS } from '@daoyou/game-content/beasts';
 
 import { projectBeastRoster } from '../beasts/projection.js';
 
@@ -20,9 +20,12 @@ import { isStanding } from '@daoyou/combat-core/units';
 
 import { type Attrs } from '@daoyou/combat-core/types';
 
-import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat/encounter';
+import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat';
 
-import { type PveRestoredState } from '@daoyou/game-domain/combat/runtime';
+import {
+  type PveRestoredState,
+  COMBAT_V6_CHARACTER_BUILD_VERSIONS,
+} from '@daoyou/game-domain/combat';
 
 import { CombatV6PveHostSession } from '../combat/encounter/host.js';
 
@@ -30,11 +33,10 @@ import { projectCharacterToCombatV6 } from '../combat/projection/project-charact
 
 import { daoyouRulesetV6 } from '../combat/daoyou/index.js';
 
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '@daoyou/game-domain/combat/versions';
 
 import { compileTowerEncounter } from './content.js';
 
-import { type PublishedTowerWeek } from '@daoyou/game-domain/tower/published';
+import { type PublishedTowerWeek } from '@daoyou/game-domain/tower';
 
 import { publishedTowerEncounter } from './published.js';
 

@@ -3,7 +3,7 @@ import {
   COMBAT_V6_REPLAY_VERSION,
   parseCombatV6Replay,
   type CombatV6ReplayV1,
-} from '@daoyou/game-domain/combat/replay-archive';
+} from '@daoyou/game-domain/combat/replay';
 import type { CombatV6ReplayTimeline } from '@daoyou/game-domain/combat/replay';
 import { arenaEvents, projectReplayUnits } from './arena.js';
 import { applyUnitDelta, diffUnits } from './playback.js';

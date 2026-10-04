@@ -1,6 +1,8 @@
-import { ALCHEMY_EFFECT_BASE_BY_QUALITY } from '@daoyou/game-content/alchemy/alchemyEffectConfig';
-import { PILL_APPEARANCE_EFFECT_MULTIPLIER } from '@daoyou/game-content/alchemy/alchemyEssenceConfig';
-import { BEAST_CULTIVATION_BASE_BY_QUALITY } from '@daoyou/game-content/beasts/cultivation';
+import {
+  ALCHEMY_EFFECT_BASE_BY_QUALITY,
+  PILL_APPEARANCE_EFFECT_MULTIPLIER,
+} from '@daoyou/game-content/alchemy';
+import { BEAST_CULTIVATION_BASE_BY_QUALITY } from '@daoyou/game-content/beasts';
 import type { Quality } from '@daoyou/constants/qualities';
 import {
   ALCHEMY_PROPERTY_KEY_VALUES,
@@ -8,7 +10,7 @@ import {
   type AlchemyEffectRoute,
   type ConditionOperation,
   type PillAppearanceGrade,
-} from '@daoyou/game-domain/consumable';
+} from '@daoyou/game-domain/consumables';
 import { getAlchemyPropertyTrackPath } from './alchemyProperties.js';
 import { buildCultivationBoostPayload } from '../consumables/cultivation-boost.js';
 import { getPillAppearanceToxicityMultiplier } from './pillAppearance.js';

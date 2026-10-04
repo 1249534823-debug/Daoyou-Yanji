@@ -6,7 +6,7 @@ import type {
 } from '@daoyou/contracts/player';
 import { RESOURCE_DATA_SCHEMAS } from '@app/lib/resources/schemas';
 import { reduceTaskResourceList, type ResourceDataMap, type ResourceScope } from '@daoyou/contracts/resources';
-import type { TaskStatus } from '@daoyou/game-domain/tasks/types';
+import type { TaskStatus } from '@daoyou/game-domain/tasks';
 import {
   defaultResourceReducer,
   loadResourceEndpoint,

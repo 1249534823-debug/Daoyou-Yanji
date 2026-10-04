@@ -8,7 +8,7 @@ import { MANUAL_JADES } from './manual-jades.js';
 import { MATERIAL_ITEM } from './materials.js';
 import { INSCRIPTION_ITEMS } from './inscriptions.js';
 import { SEED_ITEM } from './seeds.js';
-import type { ItemDefinition } from '@daoyou/game-domain/items/definition';
+import type { ItemDefinition } from '@daoyou/game-domain/inventory';
 export const ITEM_DEFINITIONS: readonly ItemDefinition[] = [
   ...BOOKS,
   ...BEAST_REFINEMENT.items.map((item) => ({

@@ -9,11 +9,11 @@ import { REALM_STAGE_VALUES, REALM_VALUES } from '@daoyou/constants/realms';
 import {
   StoryViewSchema,
   type StoryView,
-} from '@daoyou/game-domain/story/schema';
-import type { TaskInstance } from '@daoyou/game-domain/tasks/types';
+} from '@daoyou/game-domain/story';
+import type { TaskInstance } from '@daoyou/game-domain/tasks';
 import { z } from 'zod';
-import { SectCombatReadinessSchema } from '@daoyou/game-domain/sects/build';
-import { BreakthroughBattlePointerSchema } from '@daoyou/game-domain/tasks/breakthrough-pointer';
+import { SectCombatReadinessSchema } from '@daoyou/game-domain/sects';
+import { BreakthroughBattlePointerSchema } from '@daoyou/game-domain/tasks';
 import type { PlayerResourceMap } from '../player.js';
 import type { ResourceChange } from './registry.js';
 

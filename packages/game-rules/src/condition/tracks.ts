@@ -1,6 +1,6 @@
-import type { Attributes } from '@daoyou/game-domain/cultivator';
+import type { Attributes } from '@daoyou/game-domain/character';
 import type { ConditionTrackPath } from '@daoyou/game-domain/condition';
-import { BODY_CULTIVATION_TRACK_KEYS } from '@daoyou/game-content/body-cultivation/pack';
+import { BODY_CULTIVATION_TRACK_KEYS } from '@daoyou/game-content/body-cultivation';
 import {
   BODY_TRACK_LABELS,
   LEGACY_TEMPERING_TO_BODY_TRACK,

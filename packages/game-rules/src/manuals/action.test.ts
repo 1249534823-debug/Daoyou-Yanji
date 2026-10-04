@@ -2,10 +2,10 @@ import { expect, it } from 'vitest';
 import {
   ManualActionSchema,
   type ManualAction,
-} from '@daoyou/game-domain/manuals/action';
-import { MANUAL_PACK } from '@daoyou/game-content/manuals/content';
-import type { CultivatorManualStateV1 } from '@daoyou/game-domain/manuals/types';
-import type { InventoryItem } from '@daoyou/game-domain/items/inventory';
+} from '@daoyou/game-domain/manuals';
+import { MANUAL_PACK } from '@daoyou/game-content/manuals';
+import type { CultivatorManualStateV1 } from '@daoyou/game-domain/manuals';
+import type { InventoryItem } from '@daoyou/game-domain/inventory';
 import { manualJadeCost, previewManualAction } from './action.js';
 
 const state: CultivatorManualStateV1 = {

@@ -5,7 +5,7 @@ import type {
   SectRoomDefinition,
   SectPresentationTheme,
   ResolvedSectPresentation,
-} from '@daoyou/game-domain/sects/organization-presentation';
+} from '@daoyou/game-domain/sects';
 
 function assertNonBlank(label: string, value: string): void {
   if (!value.trim()) throw new Error(`${label}不能为空`);

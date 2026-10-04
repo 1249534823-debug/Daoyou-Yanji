@@ -12,7 +12,7 @@ import {
 import type {
   PerformanceContext,
   PerformanceScript,
-} from '@daoyou/game-domain/performance/schema';
+} from '@daoyou/game-domain/performance';
 import { useEffect, useRef, useState } from 'react';
 
 const choiceMarks = ['一', '二', '三', '四'] as const;

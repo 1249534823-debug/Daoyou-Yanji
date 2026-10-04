@@ -1,5 +1,5 @@
 import { getRealmStageUnallocatedAttributeBudget } from '../../progression/attributes.js';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
+import type { Cultivator } from '@daoyou/game-domain/character';
 import {
   normalizeCultivatorAIData,
   type CultivatorAIRawData,

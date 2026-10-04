@@ -1,4 +1,4 @@
-import type { BlackMarketObservation } from '@daoyou/game-domain/blackMarket';
+import type { BlackMarketObservation } from '@daoyou/game-domain/black-market';
 import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 
 export interface BlackMarketObservationCandidate extends Omit<

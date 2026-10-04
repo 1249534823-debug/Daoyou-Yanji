@@ -9,7 +9,7 @@ import {
   QUANTITY_RANGE_MAP,
   RANK_TO_QUALITY,
   TYPE_CHANCE_MAP,
-} from '@daoyou/game-content/materials/config';
+} from '@daoyou/game-content/materials';
 import {
   type MaterialRandomOptions,
   type MaterialSkeleton,

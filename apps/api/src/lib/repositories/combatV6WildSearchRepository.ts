@@ -1,6 +1,6 @@
-import { type WildEncounter } from '@daoyou/game-domain/wild/encounter';
-import { WildEncounterSchema, WildRuntimeSchema } from '@daoyou/game-rules/combat/wild/state-schema';
-import { type WildRuntime } from '@daoyou/contracts/combatV6Wild';
+import { type WildEncounter } from '@daoyou/game-domain/wild';
+import { WildEncounterSchema, WildRuntimeSchema } from '@daoyou/game-rules/combat/wild';
+import { type WildRuntime } from '@daoyou/contracts/combat/wild';
 import { eq } from 'drizzle-orm';
 import { db, type DbExecutor, type DbTransaction } from '../drizzle/db.js';
 import { wildSearches } from '../drizzle/schema.js';

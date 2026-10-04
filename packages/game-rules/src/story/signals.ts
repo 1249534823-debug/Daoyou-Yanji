@@ -1,7 +1,7 @@
 import {
   STORY_MARK_FACT_IDS,
   type StoryFactId,
-} from '@daoyou/game-domain/story/schema';
+} from '@daoyou/game-domain/story';
 
 export type StorySignal =
   | { type: 'alchemy.craft.completed' }

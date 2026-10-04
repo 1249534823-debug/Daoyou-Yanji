@@ -1,4 +1,4 @@
-import { AUCTION_ITEM_TYPES } from '@daoyou/game-domain/auction/types';
+import { AUCTION_ITEM_TYPES } from '@daoyou/game-domain/auction';
 import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 import { z } from 'zod';
 

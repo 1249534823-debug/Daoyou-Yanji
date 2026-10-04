@@ -1,5 +1,5 @@
 import { InkButton } from '@app/components/ui/InkButton';
-import type { DungeonEncounterView } from '@daoyou/game-domain/dungeon/actions';
+import type { DungeonEncounterView } from '@daoyou/game-domain/dungeon';
 
 export function BattlePreparation({
   encounter,

@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { DAO_FORMATION_INSCRIPTIONS_V1 } from '@daoyou/game-content/equipment/content';
+import { DAO_FORMATION_INSCRIPTIONS_V1 } from '@daoyou/game-content/equipment/base';
 import { generateForgedEquipment } from '../../equipment/forging.js';
-import type { DaoEquipmentInstanceV1, DaoEquipmentSlot } from '@daoyou/game-domain/equipment/types';
+import type { DaoEquipmentInstanceV1, DaoEquipmentSlot } from '@daoyou/game-domain/equipment';
 import { daoyouFormulas } from '../daoyou/formulas.js';
 import { projectCharacterToCombatV6 } from './project-character.js';
-import type { CharacterCombatInput } from '@daoyou/game-domain/combat/projection';
+import type { CharacterCombatInput } from '@daoyou/game-domain/combat';
 
 const input: CharacterCombatInput = {
   cultivator: {

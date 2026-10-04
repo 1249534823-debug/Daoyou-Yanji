@@ -5,7 +5,7 @@ import {
   useCultivatorCondition,
   useCultivatorIdentity,
 } from '@app/lib/resources/player';
-import { getBodyCultivationSummary } from '@daoyou/game-rules/body-cultivation/summary';
+import { getBodyCultivationSummary } from '@daoyou/game-rules/body-cultivation/progress';
 import { getTrackProgressPercent } from './bodyCultivationProgress';
 import { MarrowWashPanel } from './MarrowWashPanel';
 

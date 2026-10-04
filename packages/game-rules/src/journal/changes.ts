@@ -1,6 +1,6 @@
 import type { JournalChange } from '@daoyou/game-domain/journal/changes';
-import type { InventoryItem } from '@daoyou/game-domain/items/inventory';
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import type { InventoryItem } from '@daoyou/game-domain/inventory';
+import { findItemDefinition } from '@daoyou/game-content/items';
 
 /** Quantity changes only: moving/equipping an existing item is not a gain. */
 export function inventoryJournalChanges(

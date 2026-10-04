@@ -1,6 +1,8 @@
 import { StandardSectModule } from '../../core/index.js';
-import { YOUDU_DEFINITION } from '@daoyou/game-content/sect-organization/youdu/definition';
-import { YOUDU_ORGANIZATION_THEME } from '@daoyou/game-content/sect-organization/youdu/organization';
+import {
+  YOUDU_DEFINITION,
+  YOUDU_ORGANIZATION_THEME,
+} from '@daoyou/game-content/sect-organization/youdu';
 
 export class YouduSectModule extends StandardSectModule {
   constructor() {

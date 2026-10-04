@@ -2,7 +2,7 @@ import { formatContentPackErrors } from '@daoyou/game-domain/content-pack-errors
 import { z } from 'zod';
 import raw from './data/skill-learning.json' with { type: 'json' };
 import { SECT_METHODS } from './method-pack.js';
-import type { SectDefinitionV6 } from '@daoyou/game-domain/combat/content';
+import type { SectDefinitionV6 } from '@daoyou/game-domain/combat';
 
 export const SectSkillLearningShape = z.strictObject({
   $schema: z.string().optional(),

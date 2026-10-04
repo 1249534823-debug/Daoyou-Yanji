@@ -7,7 +7,7 @@ import {
 import type {
   FateGenerationCategory,
   PreHeavenFate,
-} from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/character';
 import type { Quality } from '@daoyou/constants/qualities';
 import {
   FATE_CANDIDATE_COUNT,

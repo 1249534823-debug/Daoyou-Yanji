@@ -6,7 +6,7 @@ import {
   getDivineFortunePrompt,
   getRandomFallbackFortune,
 } from '@server/utils/divineFortune.js';
-import { DivineFortuneSchema, type DivineFortune } from '@daoyou/game-domain/divination/fortune';
+import { DivineFortuneSchema, type DivineFortune } from '@daoyou/game-domain/divination';
 const CACHE_KEY = 'divine_fortune_data';
 const CACHE_TTL = 60 * 60 * 24;
 @Injectable()

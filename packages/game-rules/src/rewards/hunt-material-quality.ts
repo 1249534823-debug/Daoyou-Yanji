@@ -1,7 +1,9 @@
 import { QUALITY_VALUES, type Quality } from '@daoyou/constants/qualities';
 import { REALM_VALUES, type RealmType } from '@daoyou/constants/realms';
-import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/game-content/rewards/dungeon-material-quality';
-import { DUNGEON_REWARD_PACK } from '@daoyou/game-content/rewards/dungeon-pack';
+import {
+  DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM,
+  DUNGEON_REWARD_PACK,
+} from '@daoyou/game-content/rewards/dungeon';
 
 const completion = DUNGEON_REWARD_PACK.sources.completion;
 const materialChance =

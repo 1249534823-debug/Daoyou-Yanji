@@ -1,9 +1,9 @@
 import { redis } from '@server/lib/redis/index.js';
-import type { CombatV6ReplayV1 } from '@daoyou/game-domain/combat/replay-archive';
-import type { CombatV6TerminalOutboxV1 } from '@daoyou/contracts/combatV6Runtime';
-import { type WildSettlement } from '@daoyou/game-domain/wild/settlement';
-import { WildRuntimeSchema, WildSettlementSchema } from '@daoyou/game-rules/combat/wild/state-schema';
-import { type WildRuntime } from '@daoyou/contracts/combatV6Wild';
+import type { CombatV6ReplayV1 } from '@daoyou/game-domain/combat/replay';
+import type { CombatV6TerminalOutboxV1 } from '@daoyou/contracts/combat/runtime';
+import { type WildSettlement } from '@daoyou/game-domain/wild';
+import { WildRuntimeSchema, WildSettlementSchema } from '@daoyou/game-rules/combat/wild';
+import { type WildRuntime } from '@daoyou/contracts/combat/wild';
 
 const root = 'combat:v6';
 const run = (id: string) => `${root}:runtime:${id}`;

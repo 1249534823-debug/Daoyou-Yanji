@@ -1,9 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from '@daoyou/game-content/body-cultivation/data/body-cultivation' with { type: 'json' };
-import schema from '@daoyou/game-content/body-cultivation/data/body-cultivation.schema' with { type: 'json' };
+import {
+  BODY_CULTIVATION_BODY_CULTIVATION_DATA as raw,
+  BODY_CULTIVATION_BODY_CULTIVATION_SCHEMA as schema,
+} from '@daoyou/game-content/authoring/body-cultivation';
 import { bodyCultivationThreshold } from './threshold.js';
-import { BodyCultivationPackShape, BODY_CULTIVATION_TRACK_KEYS, loadBodyCultivationPack } from '@daoyou/game-content/body-cultivation/pack';
+import { BodyCultivationPackShape, BODY_CULTIVATION_TRACK_KEYS, loadBodyCultivationPack } from '@daoyou/game-content/body-cultivation';
 import { bodyCultivationEffectTexts } from './benefits.js';
 import { compileBodyCultivationV6 } from '../combat/projection/body-cultivation-v6.js';
 import { compileCharacterPanelV1 } from '../combat/projection/character-panel-v1.js';

@@ -1,4 +1,4 @@
-import type { DungeonEndDisposition } from '@daoyou/game-domain/dungeon/settlement';
+import type { DungeonEndDisposition } from '@daoyou/game-domain/dungeon';
 import { renderPrompt } from '@server/lib/prompts/index.js';
 import { generateAiObject } from '@server/utils/aiClient.js';
 import { stableCompactStringify } from '@server/utils/llmPayload.js';

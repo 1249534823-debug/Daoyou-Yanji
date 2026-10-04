@@ -1,7 +1,7 @@
 import type { ApiSuccess } from './http.js';
 import type { PlayerStateMutationResponse } from './player.js';
 import type { ResourceReadResponse } from './resources/index.js';
-import type { TaskInstance } from '@daoyou/game-domain/tasks/types';
+import type { TaskInstance } from '@daoyou/game-domain/tasks';
 
 export type TaskListResponse = ResourceReadResponse<'player.tasks'>;
 

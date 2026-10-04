@@ -1,7 +1,7 @@
 import type {
   FateEffectEntry,
   PreHeavenFate,
-} from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/character';
 
 /**
  * 命格聚合结果。

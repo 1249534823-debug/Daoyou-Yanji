@@ -1,5 +1,5 @@
 import { SECT_METHODS } from './method-pack.js';
-import type { SectDefinitionV6 } from '@daoyou/game-domain/combat/content';
+import type { SectDefinitionV6 } from '@daoyou/game-domain/combat';
 import { WUXIANG_COMBAT } from './wuxiang-pack.js';
 import { WUXIANG_PATHS } from './wuxiang-path-pack.js';
 

@@ -1,6 +1,17 @@
-import type { SectDiscipleRank } from '@daoyou/game-domain/sects/organization';
-export * from '@daoyou/game-domain/sects/organization';
-import { getRealmStageRank } from '@daoyou/game-domain/progression/realms';
+import type { SectDiscipleRank } from '@daoyou/game-domain/sects';
+export {
+  hasSectRank,
+  SECT_DISCIPLE_RANKS,
+  type SectDiscipleRank,
+  type SectOffice,
+  type SectFacilityKey,
+  type UpgradeableSectFacilityKey,
+  SECT_RANK_ORDER,
+  SECT_RANK_LABELS,
+  type SectFacilityState,
+  type SectRankRequirement,
+} from '@daoyou/game-domain/sects';
+import { getRealmStageRank } from '@daoyou/game-domain/progression';
 
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 

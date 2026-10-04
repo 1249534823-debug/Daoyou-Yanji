@@ -1,10 +1,12 @@
 import { InkModal } from '@app/components/layout';
 import { InkButton, InkIdentifyCelebration } from '@app/components/ui';
 import type { RetreatResultData } from '@daoyou/contracts/retreat';
-import type { BreakthroughResult, CultivationResult } from '@daoyou/game-domain/cultivation/results';
-import { getGameConceptLabel } from '@daoyou/game-content/presentation/concepts';
-import type { Attributes } from '@daoyou/game-domain/cultivator';
-import { getAttributeInfo } from '@daoyou/game-content/presentation/concepts';
+import type { BreakthroughResult, CultivationResult } from '@daoyou/game-domain/cultivation';
+import {
+  getGameConceptLabel,
+  getAttributeInfo,
+} from '@daoyou/game-content/presentation/concepts';
+import type { Attributes } from '@daoyou/game-domain/character';
 import { format } from 'd3-format';
 import { useMemo } from 'react';
 import { BreakthroughChanceDetails } from './BreakthroughChanceDetails';

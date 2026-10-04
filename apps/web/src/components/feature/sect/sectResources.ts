@@ -30,7 +30,7 @@ import {
   resolveSectPresentation,
   type ResolvedSectPresentation,
 } from '@daoyou/game-rules/sect-organization';
-import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
+import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { z } from 'zod';
 

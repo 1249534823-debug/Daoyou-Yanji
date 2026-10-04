@@ -8,21 +8,21 @@ import {
   useCultivatorProgress,
   useUnreadMailCount,
 } from '@app/lib/resources/player';
-import { type CultivatorDisplayInput, type CultivatorDisplaySnapshot } from '@daoyou/game-domain/character/display';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
+import { type CultivatorDisplayInput, type CultivatorDisplaySnapshot } from '@daoyou/game-domain/character';
+import type { Cultivator } from '@daoyou/game-domain/character';
 import {
   BOTTLENECK_THRESHOLD,
   COMPREHENSION_INSIGHT_CAP,
-} from '@daoyou/game-content/cultivation/cultivationTuning';
+} from '@daoyou/game-content/cultivation';
 import {
   getBodyCultivationSummary,
   type BodyCultivationSummary,
-} from '@daoyou/game-rules/body-cultivation/summary';
+} from '@daoyou/game-rules/body-cultivation/progress';
 import {
   getPillToxicityStage,
   isConditionStatusActive,
+  getConditionStatusTemplate,
 } from '@daoyou/game-rules/condition';
-import { getConditionStatusTemplate } from '@daoyou/game-rules/condition/statuses';
 import {
   getGameConceptLabel,
   getResourceLabel,
@@ -31,7 +31,7 @@ import {
 import {
   getMarrowWashSummary,
   type MarrowWashSummary,
-} from '@daoyou/game-rules/body-cultivation/marrow-wash';
+} from '@daoyou/game-rules/body-cultivation/training';
 import type { ConditionStatusKey } from '@daoyou/game-domain/condition';
 import { RealmType } from '@daoyou/constants/realms';
 

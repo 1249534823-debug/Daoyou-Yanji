@@ -7,7 +7,7 @@ import {
   LINGXIAO_SKILL_ID,
   LINGXIAO_V6_DEFINITION,
 } from "@daoyou/game-content/sects/lingxiao"
-import type { SectCombatProgressV6, SectDefinitionV6 } from "@daoyou/game-domain/combat/content"
+import type { SectCombatProgressV6, SectDefinitionV6 } from "@daoyou/game-domain/combat"
 
 function progress(
   activePathId = LINGXIAO_PATH_ID.Zhanchen,

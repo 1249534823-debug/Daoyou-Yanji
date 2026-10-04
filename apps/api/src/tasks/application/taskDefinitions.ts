@@ -3,7 +3,7 @@ import type {
   TaskDefinition,
   TaskInstanceMetadata,
   TaskStageDefinition,
-} from '@daoyou/game-domain/tasks/types';
+} from '@daoyou/game-domain/tasks';
 
 type TaskLinkKind =
   | 'alchemy'

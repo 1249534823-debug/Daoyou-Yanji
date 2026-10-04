@@ -1,20 +1,24 @@
-import type { createInventorySchemas } from '@daoyou/game-domain/items/inventory';
-import type { createMailAttachmentSchemas } from '@daoyou/game-domain/mail/schema';
+import type { createInventorySchemas } from '@daoyou/game-domain/inventory';
+import type { createMailAttachmentSchemas } from '@daoyou/game-domain/mail';
 import { z } from 'zod';
 
-import { DAO_EQUIPMENT_SLOTS } from '@daoyou/game-domain/equipment/types';
+import {
+  DAO_EQUIPMENT_SLOTS,
+  DAO_WEAPON_TYPES,
+  ForgeIntentSchema,
+  ForgingLevelSchema,
+} from '@daoyou/game-domain/equipment';
 
-import { DAO_WEAPON_TYPES } from '@daoyou/game-domain/equipment/weapons';
 
-import { ForgeIntentSchema } from '@daoyou/game-domain/equipment/narrative';
 
-import { ForgingLevelSchema } from '@daoyou/game-domain/equipment/forging-level';
 
-import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
+import {
+  ConsumableFactsSchema,
+  MaterialFactsSchema,
+  SeedFactsSchema,
+} from '@daoyou/game-domain/inventory';
 
-import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
 
-import { SeedFactsSchema } from '@daoyou/game-domain/items/seed-facts';
 
 const ref = {
   id: z.string().min(1).max(160),

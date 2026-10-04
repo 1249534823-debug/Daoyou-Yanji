@@ -14,34 +14,30 @@ import {
   type PreparedAlchemyMaterial,
 } from '@server/alchemy/application/AlchemyRecipeRules.js';
 import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
-import { ALCHEMY_MAX_DOSE } from '@daoyou/game-content/alchemy/alchemyInput';
-import type { ResourceOperationSettlement } from '@daoyou/game-domain/resources/operations';
+import {
+  ALCHEMY_MAX_DOSE,
+  getFormulaFitPolicy,
+} from '@daoyou/game-content/alchemy';
+import type { ResourceOperationSettlement } from '@daoyou/game-domain/resources';
 import type { AlchemyBagMaterial } from '@daoyou/game-rules/inventory/alchemy';
 import {
   calculateAlchemyCost,
   calculateHighestMaterialRank,
-} from '@daoyou/game-rules/alchemy/alchemyCost';
-import {
   normalizeAlchemyEffectRoute,
   validateAlchemyEffectRoute,
-} from '@daoyou/game-rules/alchemy/alchemyEffectResolver';
-import { getFormulaFitPolicy } from '@daoyou/game-content/alchemy/formula-fit';
-import { isAlchemyMaterialType } from '@daoyou/game-rules/alchemy/alchemyMaterials';
-import {
+  isAlchemyMaterialType,
   formatAlchemyPropertyVector,
   normalizeWeightedAlchemyProperties,
-} from '@daoyou/game-rules/alchemy/alchemyProperties';
-import {
   buildAlchemyYieldPreview,
   calculateAlchemyQiCost,
   rollAlchemyYieldProfile,
   toAlchemyYieldDisplayProfile,
   type AlchemyYieldFactors,
-} from '@daoyou/game-rules/alchemy/alchemyYield';
+} from '@daoyou/game-rules/alchemy';
 import {
   getBreakthroughPillLabel,
   getNextMajorRealm,
-} from '@daoyou/game-rules/consumables/breakthrough-pill';
+} from '@daoyou/game-rules/consumables/breakthrough';
 import {
   evaluateFateContext,
   getAlchemySpiritStoneMultiplier,
@@ -66,9 +62,9 @@ import type {
   PillFamily,
   PillSpec,
   WeightedAlchemyProperty,
-} from '@daoyou/game-domain/consumable';
-import { PILL_QUOTA_CATEGORY_VALUES } from '@daoyou/game-domain/consumable';
-import type { Consumable, PreHeavenFate } from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/consumables';
+import { PILL_QUOTA_CATEGORY_VALUES } from '@daoyou/game-domain/consumables';
+import type { Consumable, PreHeavenFate } from '@daoyou/game-domain/character';
 import { and, desc, eq, ilike, or, sql } from 'drizzle-orm';
 import {
   consumeAlchemyMaterials,
@@ -1184,7 +1180,7 @@ export interface PreparedFormulaCraft {
       consumable: Consumable;
       craftedConsumables: Consumable[];
       consumables: Consumable[];
-      yieldProfile: import('@daoyou/game-domain/consumable').AlchemyYieldDisplayProfile;
+      yieldProfile: import('@daoyou/game-domain/consumables').AlchemyYieldDisplayProfile;
       formulaProgress: FormulaProgress;
     };
     inventoryChanges: ResourceOperationSettlement['inventoryChanges'];

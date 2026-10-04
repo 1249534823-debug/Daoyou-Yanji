@@ -5,7 +5,7 @@ import {
   matchSectMaterialDeliverySelection,
   projectSectPillTraits,
 } from './taskRequirementMatcher.js';
-import type { SectMaterialSubmissionFacts } from '@daoyou/game-domain/sects/task-submission';
+import type { SectMaterialSubmissionFacts } from '@daoyou/game-domain/sects/tasks';
 
 describe('sect delivery requirement matcher', () => {
   it('matches pill operations projected as stable traits', () => {

@@ -1,4 +1,4 @@
-import type { CombatV6DeltaFrameV1, CombatV6OptionalUnitField, CombatV6UnitChanges, CombatV6TrainingUnitViewV1 as Unit } from '@daoyou/game-domain/combat/display';
+import type { CombatV6DeltaFrameV1, CombatV6OptionalUnitField, CombatV6UnitChanges, CombatV6TrainingUnitViewV1 as Unit } from '@daoyou/game-domain/combat';
 
 const fields = [
   'publicBars',

@@ -21,7 +21,7 @@ import type {
   SpiritFieldCultivateRequest,
   SpiritFieldHarvestRequest,
   SpiritFieldSowRequest,
-} from '@daoyou/contracts/spiritField';
+} from '@daoyou/contracts/spirit-field';
 import {
   SPIRIT_FIELD_METHODS,
   SPIRIT_FIELD_STARTER_BATCHES,
@@ -37,14 +37,18 @@ import {
   type SpiritFieldCultivationMethod,
   type SpiritFieldPlotState,
 } from '@daoyou/game-rules/spirit-field';
-import type { InventoryItem } from '@daoyou/game-domain/items/inventory';
-import { consumableFactsOf } from '@daoyou/game-domain/items/consumable-facts';
-import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
-import { seedFactsOf } from '@daoyou/game-domain/items/seed-facts';
+import type {
+  InventoryItem,
+  MaterialType,
+} from '@daoyou/game-domain/inventory';
+import {
+  consumableFactsOf,
+  MaterialFactsSchema,
+  seedFactsOf,
+} from '@daoyou/game-domain/inventory';
 import { SpiritFieldServiceError } from '@server/spirit-field/application/SpiritFieldError.js';
-import type { MaterialType } from '@daoyou/game-domain/inventory';
 import type { RealmType } from '@daoyou/constants/realms';
-import type { Consumable, Material } from '@daoyou/game-domain/cultivator';
+import type { Consumable, Material } from '@daoyou/game-domain/character';
 import { and, eq } from 'drizzle-orm';
 import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateRepository.js';
 import { grantInventory } from '@server/inventory/operations.js';

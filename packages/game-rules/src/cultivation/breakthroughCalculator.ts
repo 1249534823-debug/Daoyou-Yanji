@@ -1,4 +1,4 @@
-import type { BreakthroughModifiers } from '@daoyou/game-domain/cultivation/breakthrough-modifiers';
+import type { BreakthroughModifiers } from '@daoyou/game-domain/cultivation';
 /**
  * 新版突破概率计算系统
  *
@@ -16,7 +16,7 @@ import {
 import type {
   CultivationProgress,
   Cultivator,
-} from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/character';
 
 type BreakthroughCultivator = Pick<
   Cultivator,

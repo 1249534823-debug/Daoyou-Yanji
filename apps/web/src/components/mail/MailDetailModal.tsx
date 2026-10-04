@@ -4,7 +4,7 @@ import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkNotice } from '@app/components/ui/InkNotice';
 import { useResourceMutation } from '@app/lib/resources/mutations';
-import { mailLocationText } from '@daoyou/game-rules/mail/inventory';
+import { mailLocationText } from '@daoyou/game-rules/mail';
 import { useState } from 'react';
 import { MailAttachmentSlot } from './MailAttachmentSlot';
 import { Mail } from './MailList';

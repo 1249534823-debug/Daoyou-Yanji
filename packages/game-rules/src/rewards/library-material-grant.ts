@@ -1,7 +1,9 @@
-import type { ItemGrant } from '@daoyou/game-domain/items/inventory';
-import type { ItemLibraryEntry } from '@daoyou/game-domain/items/library';
-import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
-import { seedFactsOf } from '@daoyou/game-domain/items/seed-facts';
+import type { ItemGrant } from '@daoyou/game-domain/inventory';
+import type { ItemLibraryEntry } from '@daoyou/game-domain/items/catalog';
+import {
+  MaterialFactsSchema,
+  seedFactsOf,
+} from '@daoyou/game-domain/inventory';
 
 /** The library is only a source: the selected facts are frozen in the reward. */
 export function libraryMaterialGrant(entry: ItemLibraryEntry): ItemGrant {

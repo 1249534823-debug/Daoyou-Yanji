@@ -1,4 +1,4 @@
-import type { SectOrganizationTheme } from '@daoyou/game-domain/sects/organization-theme';
+import type { SectOrganizationTheme } from '@daoyou/game-domain/sects';
 import type { RealmType } from '@daoyou/constants/realms';
 
 import { SECT_RANK_METHOD_CAP } from '../domain/index.js';
@@ -9,7 +9,7 @@ import { StandardSectCapabilityPolicy } from './StandardSectCapabilityPolicy.js'
 
 import { getSectFacilityUpgradeTarget } from './construction.js';
 
-import { SECT_CRAFT_CONTEXTS } from '@daoyou/game-domain/sects/organization-contracts';
+import { SECT_CRAFT_CONTEXTS } from '@daoyou/game-domain/sects/commands';
 
 import type {
   SectBenefitPolicy,
@@ -22,7 +22,7 @@ import type {
   SectTaskCatalog,
   SectTaskDefinition,
   SectTaskDialogueDefinition,
-} from '@daoyou/game-domain/sects/organization-contracts';
+} from '@daoyou/game-domain/sects/commands';
 
 import { calculateStandardSectStipendBase } from './stipend.js';
 

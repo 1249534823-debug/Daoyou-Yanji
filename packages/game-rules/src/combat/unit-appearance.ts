@@ -1,8 +1,10 @@
-import type { CombatV6UnitAppearance } from '@daoyou/game-domain/combat/display';
+import type {
+  CombatV6UnitAppearance,
+  CombatV6TrainingPlayerInput,
+} from '@daoyou/game-domain/combat';
 
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts';
 
-import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat/encounter';
 
 export function beastAppearance(
   speciesId: string,

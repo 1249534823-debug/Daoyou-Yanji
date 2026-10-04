@@ -2,7 +2,7 @@ import {
   BEAST_ADVANCED_SKILL_IDS,
   BEAST_SKILL_CONTENT,
   BEAST_SKILLS,
-} from '@daoyou/game-content/beasts/content';
+} from '@daoyou/game-content/beasts';
 import { combatV6SkillDetails } from '../combat/skill-details.js';
 
 export type BeastSkillPresentation = {

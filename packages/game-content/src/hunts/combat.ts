@@ -1,5 +1,5 @@
 import type { SkillDef, StatusDef } from '@daoyou/combat-core/types';
-import type { HuntBossId } from '@daoyou/game-domain/hunts/event';
+import type { HuntBossId } from '@daoyou/game-domain/hunts';
 
 export const mark = 'hunt.demon.mark';
 

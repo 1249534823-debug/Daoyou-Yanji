@@ -1,7 +1,7 @@
 import { BUILTIN_SKILL_ID } from '@daoyou/combat-core/constants';
 import { DamageKind, EffectType, FormulaFamily, HookAim, HookName, SkillTag, StatusCategory, StatusFlag, TargetMode, TargetSide } from '@daoyou/combat-core/enums';
 import { type SkillDef } from '@daoyou/combat-core/types';
-import type { BeastSkillContent } from '@daoyou/game-domain/beasts/pack';
+import type { BeastSkillContent } from '@daoyou/game-domain/beasts/authoring';
 
 export function compileBeastSkill(entry: BeastSkillContent): SkillDef {
   const { effect: e } = entry;

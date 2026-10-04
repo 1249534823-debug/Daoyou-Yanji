@@ -5,19 +5,21 @@ import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
 import { useInventoryBag } from '@app/lib/resources/bag';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
 import { useCultivatorIdentity } from '@app/lib/resources/player';
-import type { ManualAction } from '@daoyou/game-domain/manuals/action';
-import type { ManualView } from '@daoyou/contracts/combatV6Manuals';
+import type {
+  ManualAction,
+  CharacterManualDefV1,
+} from '@daoyou/game-domain/manuals';
+import type { ManualView } from '@daoyou/contracts/manuals';
 import type { InventoryView } from '@daoyou/contracts/inventory';
-import { manualAttributeValue } from '@daoyou/game-rules/manuals/attributes';
 import {
+  manualAttributeValue,
   getManualSlotCount,
   MAX_MANUALS_PER_SLOT,
-} from '@daoyou/game-rules/manuals/compiler';
-import { CHARACTER_MANUALS_V1 } from '@daoyou/game-content/manuals/content';
-import { MANUAL_REALMS } from '@daoyou/game-domain/manuals/pack';
-import type { CharacterManualDefV1 } from '@daoyou/game-domain/manuals/types';
+} from '@daoyou/game-rules/manuals/projection';
+import { CHARACTER_MANUALS_V1 } from '@daoyou/game-content/manuals';
+import { MANUAL_REALMS } from '@daoyou/game-domain/manuals/authoring';
 import { itemDefinition } from '@daoyou/game-rules/inventory';
-import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character-attribute-labels';
+import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character';
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useSearchParams } from 'react-router';
 import { combatV6Request, mutationBody } from '../combat-v6/request';

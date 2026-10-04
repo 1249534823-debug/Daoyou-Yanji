@@ -1,4 +1,4 @@
-import { createStoryChapterSchema } from '@daoyou/game-domain/story/schema';
+import { createStoryChapterSchema } from '@daoyou/game-domain/story';
 import { getGuideLesson } from '../guide/catalog.js';
 import { hasStoryReward } from './rewards.js';
 

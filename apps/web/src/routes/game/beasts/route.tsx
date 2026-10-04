@@ -10,10 +10,12 @@ import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkBadge } from '@app/components/ui/InkBadge';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
-import type { BeastManagementView } from '@daoyou/contracts/combatV6Beasts';
-import { BEAST_STARTER_SPECIES } from '@daoyou/game-content/beasts/content';
-import { BEAST_GENERATION } from '@daoyou/game-content/beasts/content';
-import { BEAST_CAPACITY } from '@daoyou/game-rules/beasts/progression';
+import type { BeastManagementView } from '@daoyou/contracts/beasts';
+import {
+  BEAST_STARTER_SPECIES,
+  BEAST_GENERATION,
+} from '@daoyou/game-content/beasts';
+import { BEAST_CAPACITY } from '@daoyou/game-rules/beasts/growth';
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router';
 import { BeastActionDrawer, type BeastAction } from './BeastActionDrawer';

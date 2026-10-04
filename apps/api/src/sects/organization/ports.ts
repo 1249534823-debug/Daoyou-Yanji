@@ -14,7 +14,7 @@ import type {
 } from '@daoyou/game-rules/sect-organization';
 import type { Quality } from '@daoyou/constants/qualities';
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
-import type { Material } from '@daoyou/game-domain/cultivator';
+import type { Material } from '@daoyou/game-domain/character';
 import type { SectCommandEffects } from '@server/sects/organization/SectCommandEffects.js';
 
 export interface Clock {
@@ -241,7 +241,7 @@ export interface SectRewardMaterialCatalogGateway {
 export interface SectBattleGateway {
   freeze(
     context: import('@server/sects/organization/task-executors/SectTaskExecutor.js').SectTaskEnrollmentContext,
-  ): Promise<import('@daoyou/game-domain/combat/sect-target').SectV6Target>;
+  ): Promise<import('@daoyou/game-domain/combat/challenges').SectV6Target>;
   start(
     context: import('@server/sects/organization/task-executors/SectTaskExecutor.js').SectTaskExecutionContext,
   ): Promise<{ battleId: string }>;

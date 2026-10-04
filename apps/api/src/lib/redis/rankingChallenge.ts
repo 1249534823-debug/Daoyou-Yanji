@@ -2,9 +2,9 @@ import { MAX_DAILY_RANKING_CHALLENGES } from '@daoyou/game-rules/rankings/rankin
 import type {
   RankingChallengeRequest,
   RankingChallengeResult,
-} from '@daoyou/contracts/combatV6Ranking';
-import type { CombatV6ReplayV1 } from '@daoyou/game-domain/combat/replay-archive';
-import type { RankingBattleInput } from '@daoyou/game-domain/combat/ranking';
+} from '@daoyou/contracts/combat/ranking';
+import type { CombatV6ReplayV1 } from '@daoyou/game-domain/combat/replay';
+import type { RankingBattleInput } from '@daoyou/game-domain/combat/challenges';
 import { redis } from './index.js';
 
 export const rankingQuotaKey = (owner: string, day: string) =>

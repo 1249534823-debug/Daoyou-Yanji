@@ -1,4 +1,4 @@
-import type { DivineFortune } from '@daoyou/game-domain/divination/fortune';
+import type { DivineFortune } from '@daoyou/game-domain/divination';
 
 export const FALLBACK_FORTUNES: DivineFortune[] = [
   {

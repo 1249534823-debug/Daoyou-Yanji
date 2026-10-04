@@ -5,7 +5,7 @@ import { tierColorMap } from '@app/components/ui/inkBadgeTiers';
 import { useCultivatorIdentity } from '@app/lib/resources/player';
 import { cn } from '@app/lib/cn';
 import { getElementInfo } from '@daoyou/game-content/presentation/concepts';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
+import type { Cultivator } from '@daoyou/game-domain/character';
 import { useState } from 'react';
 import { CultivatorReincarnation } from './CultivatorReincarnation';
 

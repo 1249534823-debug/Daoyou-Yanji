@@ -1,10 +1,10 @@
 import { expect, it } from 'vitest';
 import { applyUnitDelta } from '../playback.js';
 import { combatV6Units } from '../presentation.js';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts';
 import { generateStarterBeast } from '../../beasts/generator.js';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
-import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat/encounter';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
+import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat';
 import { compileRankingBattle, simulateRankingBattle } from './battle.js';
 import { projectCharacterToCombatV6 } from '../projection/project-character.js';
 

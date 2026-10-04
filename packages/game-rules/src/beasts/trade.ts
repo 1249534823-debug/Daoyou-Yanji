@@ -1,9 +1,13 @@
-import { createBeastTradeSchemas, type BeastTransfer } from '@daoyou/game-domain/beasts/trade';
+import {
+  createBeastTradeSchemas,
+  type BeastTransfer,
+  type BeastLineup,
+  type SummonedBeast,
+} from '@daoyou/game-domain/beasts';
 export const { BeastTransferSchema, BeastTradePreviewSchema } = createBeastTradeSchemas(BeastSchema);
 
 
 
-import { type BeastLineup, type SummonedBeast } from '@daoyou/game-domain/beasts/schema';
 
 
 import { BeastSchema } from './schema.js';

@@ -11,7 +11,7 @@ import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   RankingChallengeSchema,
   type RankingChallengeRequest,
-} from '@daoyou/contracts/combatV6Ranking';
+} from '@daoyou/contracts/combat/ranking';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { FirstQuery } from '../http/first-query.js';
 import { JsonBody } from '../http/json-body.js';

@@ -1,6 +1,6 @@
 import { PRODUCTION_SECT_IDS } from '../sect-organization/production/productionRuntime.js';
 import { describe, expect, it } from 'vitest';
-import type { DungeonDifficultyTier } from '@daoyou/game-domain/dungeon/difficulty';
+import type { DungeonDifficultyTier } from '@daoyou/game-domain/dungeon';
 import type { MapNodeInfo } from '@daoyou/game-domain/world/map';
 import { getAllMapNodes, getAllSatelliteNodes, getAllSectLandmarks, getMapNode, getSectLandmark, getSectLandmarkBySectId } from '@daoyou/game-content/world/map';
 import { canChallengeDungeonRealm, clampDungeonEnemyRealmStage, getDungeonRewardBonus, resolveDungeonEnemyDifficulty, resolveDungeonMapConfig } from './dungeon.js';

@@ -8,11 +8,11 @@ import { useInventoryBag } from '@app/lib/resources/bag';
 import { useResourceMutation } from '@app/lib/resources/mutations';
 import { useCultivatorCondition } from '@app/lib/resources/player';
 import type { InventoryView } from '@daoyou/contracts/inventory';
-import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
-import { canUseDungeonRecoveryPill } from '@daoyou/game-rules/dungeon/rest';
-import type { DungeonState } from '@daoyou/game-domain/dungeon/state';
+import { ConsumableFactsSchema } from '@daoyou/game-domain/inventory';
+import { canUseDungeonRecoveryPill } from '@daoyou/game-rules/dungeon';
+import type { DungeonState } from '@daoyou/game-domain/dungeon';
 import { dungeonRewardItemName } from '@daoyou/game-rules/rewards/dungeon';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
+import type { Cultivator } from '@daoyou/game-domain/character';
 import { useRef, useState } from 'react';
 
 export interface DungeonDisplayResources {

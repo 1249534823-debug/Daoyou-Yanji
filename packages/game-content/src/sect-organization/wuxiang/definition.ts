@@ -1,4 +1,4 @@
-import type { SectDefinition } from '@daoyou/game-domain/sects/definitions';
+import type { SectDefinition } from '@daoyou/game-domain/sects';
 
 /** 组织身份与历史进度映射；战斗内容由 combat-v6 提供。 */
 export const WUXIANG_DEFINITION: SectDefinition = {

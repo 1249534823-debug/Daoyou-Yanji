@@ -6,12 +6,12 @@ import {
   InkNotice,
   inkFieldVariants,
 } from '@app/components/ui';
-import { formatAlchemyPropertyVector } from '@daoyou/game-rules/alchemy/alchemyProperties';
+import { formatAlchemyPropertyVector } from '@daoyou/game-rules/alchemy';
 import {
   PILL_FAMILY_VALUES,
   type AlchemyFormula,
   type PillFamily,
-} from '@daoyou/game-domain/consumable';
+} from '@daoyou/game-domain/consumables';
 import { useState } from 'react';
 import { AlchemyToolWorkspace } from '../AlchemyToolWorkspace';
 import { useAlchemyCraftSession } from '../alchemyCraftContext';

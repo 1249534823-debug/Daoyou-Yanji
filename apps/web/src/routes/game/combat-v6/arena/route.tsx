@@ -3,8 +3,8 @@ import { CombatV6Battle } from '@app/components/feature/combat-v6/CombatV6Battle
 import { CombatV6Page } from '@app/components/feature/combat-v6/CombatV6Page';
 import { useArenaV6Session } from '@app/components/feature/combat-v6/useArenaV6Session';
 import { HuntResult } from '@app/components/feature/hunts/HuntResult';
-import { HUNT_BOSSES } from '@daoyou/game-content/hunts/bosses';
-import { huntMapHref } from '@daoyou/game-rules/hunts/config';
+import { HUNT_BOSSES } from '@daoyou/game-content/hunts';
+import { huntMapHref } from '@daoyou/game-rules/hunts';
 import { useState } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router';
 

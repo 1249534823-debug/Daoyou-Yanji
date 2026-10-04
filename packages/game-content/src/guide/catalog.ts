@@ -7,7 +7,7 @@ import mapQingxi from './data/map-qingxi.json' with { type: 'json' };
 import {
   parseGuideLesson,
   type GuideLesson,
-} from '@daoyou/game-domain/guide/schema';
+} from '@daoyou/game-domain/guide';
 
 const lessons = new Map<string, GuideLesson>([
   ['alchemy-first-furnace', parseGuideLesson(alchemyFirstFurnace)],

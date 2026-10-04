@@ -1,13 +1,15 @@
 import { z } from 'zod';
-import { isTalismanScenario } from '@daoyou/game-domain/consumables/talisman-scenarios';
-import { isOpenEquipmentLevel } from '@daoyou/game-domain/equipment/levels';
-import { DAO_WEAPON_TYPES } from '@daoyou/game-domain/equipment/weapons';
-import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 import {
+  isTalismanScenario,
   ALCHEMY_PROPERTY_KEY_VALUES,
   PILL_APPEARANCE_GRADE_VALUES,
   PILL_FAMILY_VALUES,
-} from '@daoyou/game-domain/consumable';
+} from '@daoyou/game-domain/consumables';
+import {
+  isOpenEquipmentLevel,
+  DAO_WEAPON_TYPES,
+} from '@daoyou/game-domain/equipment';
+import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 
 export const AdminItemGenerationSchema = z.discriminatedUnion('kind', [
   z

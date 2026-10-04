@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { manualSlot, validateManualStateV1 } from './compiler.js';
-import { CHARACTER_MANUALS_V1 } from '@daoyou/game-content/manuals/content';
+import { CHARACTER_MANUALS_V1 } from '@daoyou/game-content/manuals';
 import { changeManual } from './state.js';
-import type { CultivatorManualStateV1 } from '@daoyou/game-domain/manuals/types';
+import type { CultivatorManualStateV1 } from '@daoyou/game-domain/manuals';
 
 const manuals = CHARACTER_MANUALS_V1.filter(
   (manual) => manual.realm === '炼气',

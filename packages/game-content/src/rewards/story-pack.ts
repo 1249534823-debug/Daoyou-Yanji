@@ -1,8 +1,8 @@
 import { z } from 'zod';
-import { DropPoolSchema, type DropPool } from '@daoyou/game-domain/drops/pool';
+import { DropPoolSchema, type DropPool } from '@daoyou/game-domain/rewards';
 import { findItemDefinition } from '../items/registry.js';
 import { MATERIAL_ITEM } from '../items/materials.js';
-import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
+import { MaterialFactsSchema } from '@daoyou/game-domain/inventory';
 import { formatContentPackErrors } from '@daoyou/game-domain/content-pack-errors';
 import raw from './data/story.json' with { type: 'json' };
 

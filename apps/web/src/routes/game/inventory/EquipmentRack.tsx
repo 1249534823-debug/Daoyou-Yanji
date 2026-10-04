@@ -3,13 +3,13 @@ import { GameIcon } from '@app/components/ui/GameIcon';
 import { GameImage } from '@app/components/ui/GameImage';
 import { InkButton } from '@app/components/ui/InkButton';
 import type { InventoryView } from '@daoyou/contracts/inventory';
-import { compileDaoEquipmentSpecialLoadoutV1 } from '@daoyou/game-rules/equipment/compiler';
+import { compileDaoEquipmentSpecialLoadoutV1 } from '@daoyou/game-rules/equipment/projection';
 import type {
   DaoEquipmentInstanceV1,
   DaoEquipmentLoadoutV1,
   DaoEquipmentSlot,
-} from '@daoyou/game-domain/equipment/types';
-import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment/slot-names';
+} from '@daoyou/game-domain/equipment';
+import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment';
 
 type Item = InventoryView['items'][number];
 const columns: DaoEquipmentSlot[][] = [

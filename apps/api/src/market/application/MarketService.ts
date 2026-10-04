@@ -17,14 +17,14 @@ import {
   QUALITY_CHANCE_MAP,
   TYPE_CHANCE_MAP,
   TYPE_MULTIPLIERS,
-} from '@daoyou/game-content/materials/config';
-import { MARKET_PRESET_POOL } from '@daoyou/game-content/materials/market-presets';
+  MARKET_PRESET_POOL,
+} from '@daoyou/game-content/materials';
 import {
   getSpiritFieldMarketSeedSlotCount,
 } from '@daoyou/game-rules/spirit-field';
-import { readSpiritFieldSeedSpec } from '@daoyou/game-domain/spirit-field/seedMaterial';
-import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import { readSpiritFieldSeedSpec } from '@daoyou/game-domain/spirit-field';
+import { MaterialFactsSchema } from '@daoyou/game-domain/inventory';
+import { findItemDefinition } from '@daoyou/game-content/items';
 import {
   evaluateFateContext,
   getMarketPurchasePriceMultiplier,
@@ -45,12 +45,12 @@ import {
   MARKET_STALE_RETRY_MS,
   resolveLayerConfig,
   validateLayerAccess,
-} from '@daoyou/game-rules/world/marketConfig';
+} from '@daoyou/game-rules/world/market';
 import type { MaterialType } from '@daoyou/game-domain/inventory';
 import type { Quality } from '@daoyou/constants/qualities';
 import type { RealmType } from '@daoyou/constants/realms';
 import { QUALITY_ORDER, QUALITY_VALUES } from '@daoyou/constants/qualities';
-import type { PreHeavenFate } from '@daoyou/game-domain/cultivator';
+import type { PreHeavenFate } from '@daoyou/game-domain/character';
 import type { MarketAccessState, MarketItemListing, MarketLayer, MarketListing, MarketMaterialListing, MysteryRevealContext, RegionProfile, ResolvedLayerConfig } from '@daoyou/game-domain/market';
 import { MARKET_PRESET_FALLBACK_LAYERS } from '@daoyou/game-content/market';
 import { and, eq, inArray, sql } from 'drizzle-orm';

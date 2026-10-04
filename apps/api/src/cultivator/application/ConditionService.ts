@@ -1,23 +1,21 @@
-import { type CultivatorDisplayInput } from '@daoyou/game-domain/character/display';
+import { type CultivatorDisplayInput } from '@daoyou/game-domain/character';
 import { characterResourceMaxima, normalizeCharacterResource } from '@daoyou/game-rules/character/display';
 import {
   getBreakthroughPenalty,
   isConditionStatusActive,
   projectNaturalRecoveryResources,
+  isConditionStatusKey,
 } from '@daoyou/game-rules/condition';
 import { evaluateFateContext } from '@daoyou/game-rules/character/fates';
 import {
-  isConditionStatusKey,
-} from '@daoyou/game-rules/condition/statuses';
-import {
   createDefaultBodyCultivationState,
   normalizeBodyCultivationState,
-} from '@daoyou/game-rules/body-cultivation/normalize';
+} from '@daoyou/game-rules/body-cultivation/progress';
 import {
   breakthroughBodyCultivationRealm as advanceBodyCultivationRealm,
-} from '@daoyou/game-rules/body-cultivation/breakthrough';
-import { PILL_TOXICITY_CAP } from '@daoyou/game-content/consumables/config';
-import { normalizeMarrowWashState } from '@daoyou/game-rules/body-cultivation/marrow-wash';
+  normalizeMarrowWashState,
+} from '@daoyou/game-rules/body-cultivation/training';
+import { PILL_TOXICITY_CAP } from '@daoyou/game-content/consumables';
 import type {
   BodyCultivationRealm,
   ConditionStatusDuration,
@@ -27,7 +25,7 @@ import type {
   CultivatorCondition,
   TemperingTrackKey,
 } from '@daoyou/game-domain/condition';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
+import type { Cultivator } from '@daoyou/game-domain/character';
 
 export type ConditionCultivatorFacts = CultivatorDisplayInput &
   Pick<Cultivator, 'pre_heaven_fates'>;

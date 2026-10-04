@@ -1,4 +1,4 @@
-import { DungeonMaterialSelectionsSchema } from '@daoyou/game-domain/dungeon/actions';
+import { DungeonMaterialSelectionsSchema } from '@daoyou/game-domain/dungeon';
 import { z } from 'zod';
 
 import type { CombatV6TrainingSessionViewV1 } from './combatV6.js';

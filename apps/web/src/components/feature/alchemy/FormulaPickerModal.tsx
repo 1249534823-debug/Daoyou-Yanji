@@ -7,12 +7,12 @@ import {
   InkNotice,
   inkFieldVariants,
 } from '@app/components/ui';
-import { formatAlchemyPropertyVector } from '@daoyou/game-rules/alchemy/alchemyProperties';
+import { formatAlchemyPropertyVector } from '@daoyou/game-rules/alchemy';
 import {
   PILL_FAMILY_VALUES,
   type AlchemyFormula,
   type PillFamily,
-} from '@daoyou/game-domain/consumable';
+} from '@daoyou/game-domain/consumables';
 import { useAlchemyFormulaLibrary } from './useAlchemyFormulaLibrary';
 
 export function FormulaPickerModal({

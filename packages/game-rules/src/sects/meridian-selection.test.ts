@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { LINGXIAO_V6_DEFINITION as definition } from '@daoyou/game-content/sects/lingxiao';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
 import { canSelectMeridianNode, connectedMeridianSelection, meridianNodesConnect, toggleMeridianNode } from './meridian-selection.js';
 import { createEmptySectCombatProgressV6 } from './build-state.js';
 import { compileSectDefinitionV6 } from './compiler.js';

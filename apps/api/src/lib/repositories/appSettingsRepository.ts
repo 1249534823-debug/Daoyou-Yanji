@@ -1,6 +1,6 @@
 import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
 import { appSettings } from '@server/lib/drizzle/schema.js';
-import { DEFAULT_ITEM_LIBRARY_DAILY_MATERIAL_GENERATION_SETTINGS, ItemLibraryDailyMaterialGenerationSettingsSchema, type ItemLibraryDailyMaterialGenerationSettings } from '@daoyou/contracts/applicationSettings';
+import { DEFAULT_ITEM_LIBRARY_DAILY_MATERIAL_GENERATION_SETTINGS, ItemLibraryDailyMaterialGenerationSettingsSchema, type ItemLibraryDailyMaterialGenerationSettings } from '@daoyou/contracts/application-settings';
 import { APP_SETTING_KEYS, DEFAULT_COMMUNITY_QQ_GROUP_NUMBER } from '@server/lib/repositories/app-settings-config.js';
 import { AfdianSponsorshipConfigSchema, type AfdianSponsorshipConfig } from '@daoyou/game-domain/sponsorship';
 import { DEFAULT_AFDIAN_SPONSORSHIP_CONFIG } from '@daoyou/game-content/sponsorship/defaults';

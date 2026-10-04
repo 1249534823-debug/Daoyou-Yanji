@@ -1,14 +1,13 @@
 import { resolveAlchemyEffects } from '../alchemy/alchemyEffectResolver.js';
-import type { PillSpec } from '@daoyou/game-domain/consumable';
+import type { PillSpec } from '@daoyou/game-domain/consumables';
 import { describe, expect, it } from 'vitest';
 import { buildSpiritFruitSpec } from '../spirit-field/spiritFruit.js';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
+import { BEAST_SPECIES, BEAST_REFINEMENT } from '@daoyou/game-content/beasts';
 import { beastFoodCultivation, previewBeastFeeding } from './feeding.js';
 import { generateCapturedBeast } from './generator.js';
 import { gainBeastExp, nextBeastExp } from './progression.js';
 import { beastPanel } from './projection.js';
 import { refineBeast } from './refinement.js';
-import { BEAST_REFINEMENT } from '@daoyou/game-content/beasts/refinement-config';
 
 const id = '00000000-0000-4000-8000-000000000001';
 const born = () => generateCapturedBeast(id, id, BEAST_SPECIES[0].id, 0, 42);

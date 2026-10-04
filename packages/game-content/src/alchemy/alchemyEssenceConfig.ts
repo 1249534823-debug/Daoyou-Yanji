@@ -1,5 +1,5 @@
 import type { Quality } from '@daoyou/constants/qualities';
-import type { PillAppearanceGrade } from '@daoyou/game-domain/consumable';
+import type { PillAppearanceGrade } from '@daoyou/game-domain/consumables';
 
 export const MATERIAL_ESSENCE_BY_QUALITY: Record<Quality, number> = {
   凡品: 8,

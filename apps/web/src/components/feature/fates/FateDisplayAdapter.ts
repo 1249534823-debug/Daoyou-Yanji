@@ -1,7 +1,7 @@
 import type {
   FateEffectEntry,
   PreHeavenFate,
-} from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/character';
 import type { Quality } from '@daoyou/constants/qualities';
 
 export interface FateDetailGroup {

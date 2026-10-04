@@ -4,8 +4,8 @@ import type {
   AlchemyFormulaDiscoveryCandidate,
   AlchemyYieldDisplayProfile,
   FormulaAnalysisResult,
-} from '@daoyou/game-domain/consumable';
-import type { Consumable, Material } from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/consumables';
+import type { Consumable, Material } from '@daoyou/game-domain/character';
 
 export type AlchemyWorkspacePhase =
   'preparing' | 'observing' | 'firing' | 'result';

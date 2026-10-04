@@ -1,15 +1,17 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import { BOOKS } from '@daoyou/game-content/items/beast-books';
-import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '@daoyou/game-content/beasts/content';
-import raw from '@daoyou/game-content/rewards/data/wild' with { type: 'json' };
-import schema from '@daoyou/game-content/rewards/data/wild.schema' with { type: 'json' };
+import { BOOKS } from '@daoyou/game-content/items/beasts';
+import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '@daoyou/game-content/beasts';
+import {
+  REWARDS_WILD_DATA as raw,
+  REWARDS_WILD_SCHEMA as schema,
+} from '@daoyou/game-content/authoring/rewards';
 import { WILD_INHERITANCE_POOL, wildItemRewards } from './wild.js';
 import {
   WildRewardPackShape,
   compileWildRewardPool,
   loadWildRewardPack,
-} from '@daoyou/game-content/rewards/wild-pack';
+} from '@daoyou/game-content/rewards/wild';
 
 describe('野外传承灵印奖励包', () => {
   it('Schema 同步', () =>

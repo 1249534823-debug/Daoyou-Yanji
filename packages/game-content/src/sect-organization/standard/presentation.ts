@@ -7,7 +7,7 @@ import type {
   SectRoomActorDefinition,
   SectRoomDefinition,
   ResolvedSectPresentation,
-} from '@daoyou/game-domain/sects/organization-presentation';
+} from '@daoyou/game-domain/sects';
 
 const permissionDeniedDescription =
   '设施禁制尚未开启，当前弟子身份不足以进入。';

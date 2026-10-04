@@ -8,8 +8,8 @@ import { getTowerSeasonMeta } from './season.js';
 import { createTowerWeek, TOWER_ENCOUNTERS } from './weekly.js';
 import { applyCultivate, physicalBase } from '../combat/daoyou/formulas.js';
 import { compileTowerEncounter } from './content.js';
-import mechanics from '@daoyou/game-content/tower/data/mechanics' with { type: 'json' };
-import { type TowerBlessings } from '@daoyou/game-domain/tower/runtime';
+import { TOWER_MECHANICS_DATA as mechanics } from '@daoyou/game-content/authoring/tower';
+import { type TowerBlessings } from '@daoyou/game-domain/tower';
 import { createTowerHost, projectTowerPlayer } from './host.js';
 import { towerReferenceBuild } from './reference-fixtures.js';
 

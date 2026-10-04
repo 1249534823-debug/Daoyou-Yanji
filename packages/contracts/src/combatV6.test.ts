@@ -6,8 +6,10 @@ import {
   CombatV6TrainingEventsQuerySchema,
   CombatV6TrainingSessionParamsSchema,
 } from './combatV6.js';
-import { CombatV6TrainingBattleMetadataV1Schema } from '@daoyou/game-domain/combat/metadata';
-import { CombatV6BattleFinishedDataV1Schema } from '@daoyou/game-domain/combat/terminal-event';
+import {
+  CombatV6TrainingBattleMetadataV1Schema,
+  CombatV6BattleFinishedDataV1Schema,
+} from '@daoyou/game-domain/combat/replay';
 import {
   CombatV6BattleFinishedRecordV1Schema,
   CombatV6ReplayArchiveMessageV1Schema,

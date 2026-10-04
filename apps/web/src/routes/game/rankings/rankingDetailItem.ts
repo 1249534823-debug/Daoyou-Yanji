@@ -1,6 +1,6 @@
 import type { ItemDetailPayload } from '@app/components/feature/items';
-import { assertConsumableSpec } from '@daoyou/game-domain/consumables/identity';
-import type { Consumable } from '@daoyou/game-domain/cultivator';
+import { assertConsumableSpec } from '@daoyou/game-domain/consumables';
+import type { Consumable } from '@daoyou/game-domain/character';
 import type { ItemRankingEntry } from '@daoyou/contracts/rankings';
 
 export function toRankingDetailItem(item: ItemRankingEntry): ItemDetailPayload {

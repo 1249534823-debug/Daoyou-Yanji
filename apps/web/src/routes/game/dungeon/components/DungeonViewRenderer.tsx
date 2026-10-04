@@ -6,17 +6,19 @@ import { InkNotice } from '@app/components/ui/InkNotice';
 import type { BattleCallbackData } from '@app/lib/hooks/dungeon/types';
 import { DungeonViewState } from '@app/lib/hooks/dungeon/useDungeonViewModel';
 import { getMapNode } from '@daoyou/game-content/world/map';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
-import type { DungeonMaterialSelection } from '@daoyou/game-domain/dungeon/actions';
+import type { Cultivator } from '@daoyou/game-domain/character';
 import type {
+  DungeonMaterialSelection,
   DungeonOption,
   DungeonRecoverAction,
   DungeonState,
-} from '@daoyou/game-domain/dungeon/state';
-import type { TaskInstance } from '@daoyou/game-domain/tasks/types';
-import { isConditionStatusActive } from '@daoyou/game-rules/condition';
-import { getConditionStatusTemplate } from '@daoyou/game-rules/condition/statuses';
-import { dungeonReadiness } from '@daoyou/game-rules/dungeon/readiness';
+} from '@daoyou/game-domain/dungeon';
+import type { TaskInstance } from '@daoyou/game-domain/tasks';
+import {
+  isConditionStatusActive,
+  getConditionStatusTemplate,
+} from '@daoyou/game-rules/condition';
+import { dungeonReadiness } from '@daoyou/game-rules/dungeon';
 import { canChallengeDungeonRealm } from '@daoyou/game-rules/world/dungeon';
 import { DungeonSceneScreen } from '../dungeonScene';
 import {

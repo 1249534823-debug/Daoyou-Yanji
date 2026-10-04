@@ -4,12 +4,12 @@ import { inventoryStackIdentity } from '../inventory/stack-key.js';
 import {
   seedFactsOf,
   SeedFactsSchema,
-} from '@daoyou/game-domain/items/seed-facts';
+} from '@daoyou/game-domain/inventory';
 import {
   buildSpiritFieldSeedMaterialFromPlant,
   readSpiritFieldSeedSpec,
-} from '@daoyou/game-domain/spirit-field/seedMaterial';
-import type { SpiritFieldPlantSnapshot } from '@daoyou/game-domain/spirit-field/types';
+} from '@daoyou/game-domain/spirit-field';
+import type { SpiritFieldPlantSnapshot } from '@daoyou/game-domain/spirit-field';
 
 const plant: SpiritFieldPlantSnapshot = {
   id: 'fingerprint-seed',

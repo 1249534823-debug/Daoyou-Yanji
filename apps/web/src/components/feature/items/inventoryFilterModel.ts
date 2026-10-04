@@ -1,10 +1,10 @@
 import type { InventoryView } from '@daoyou/contracts/inventory';
 import { itemDefinition } from '@daoyou/game-rules/inventory';
-import { INVENTORY_KINDS } from '@daoyou/game-domain/items/sorting';
 import {
+  INVENTORY_KINDS,
   INVENTORY_MATERIAL_TYPES,
   MaterialFactsSchema,
-} from '@daoyou/game-domain/items/material-facts';
+} from '@daoyou/game-domain/inventory';
 import { QUALITY_VALUES, type Quality } from '@daoyou/constants/qualities';
 import { type ElementType } from '@daoyou/constants/elements';
 

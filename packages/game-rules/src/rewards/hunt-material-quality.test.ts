@@ -1,8 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { HUNT_REALMS } from '../hunts/config.js';
 import { QUALITY_VALUES } from '@daoyou/constants/qualities';
-import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/game-content/rewards/dungeon-material-quality';
-import { DUNGEON_REWARD_PACK } from '@daoyou/game-content/rewards/dungeon-pack';
+import {
+  DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM,
+  DUNGEON_REWARD_PACK,
+} from '@daoyou/game-content/rewards/dungeon';
 import { planHuntReward } from './hunt.js';
 import { HUNT_MATERIAL_QUALITY_CHANCE_BY_REALM } from './hunt-material-quality.js';
 

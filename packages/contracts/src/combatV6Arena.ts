@@ -4,7 +4,7 @@ import type {
 } from '@daoyou/game-domain/combat/arena';
 import { COMBAT_V6_TRAINING_API_VERSION } from './combatV6.js';
 import { z } from 'zod';
-import { CombatV6CommandGroupSchema } from '@daoyou/game-domain/combat/commands';
+import { CombatV6CommandGroupSchema } from '@daoyou/game-domain/combat';
 
 export const ARENA_V6_PROTOCOL = 'combat_v6_arena_v1' as const;
 

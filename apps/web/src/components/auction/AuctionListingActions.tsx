@@ -1,6 +1,6 @@
 import { InkButton, InkQuantityInput } from '@app/components/ui';
-import { AUCTION_MAX_PURCHASE_QUANTITY, AUCTION_MAX_TRANSACTION_TOTAL } from '@daoyou/game-domain/auction/limits';
-import { calculateAuctionSettlement } from '@daoyou/game-rules/auction/settlement';
+import { AUCTION_MAX_PURCHASE_QUANTITY, AUCTION_MAX_TRANSACTION_TOTAL } from '@daoyou/game-domain/auction';
+import { calculateAuctionSettlement } from '@daoyou/game-rules/auction';
 import type { AuctionListingView } from '@daoyou/contracts/auction';
 import { canDeployBeast } from '@daoyou/game-rules/beasts/projection';
 import { useState } from 'react';

@@ -1,22 +1,22 @@
-import { ForgingLevelSchema } from '@daoyou/game-domain/equipment/forging-level';
-import { isOpenEquipmentLevel } from '@daoyou/game-domain/equipment/levels';
+import {
+  ForgingLevelSchema,
+  isOpenEquipmentLevel,
+  equipmentWeaponTypeProblem,
+  type DaoWeaponType,
+} from '@daoyou/game-domain/equipment';
 
 import { equipmentRealm } from '../equipment/realm.js';
 
 import type { ForgingBoosts } from '../equipment/forging.js';
 
-import { DAO_EQUIPMENT_FORGING } from '@daoyou/game-content/equipment/forging-content';
+import { DAO_EQUIPMENT_FORGING } from '@daoyou/game-content/equipment/forging';
 
-import type { DaoEquipmentSlot } from '@daoyou/game-domain/equipment/types';
+import type { DaoEquipmentSlot } from '@daoyou/game-domain/equipment';
 
-import {
-  equipmentWeaponTypeProblem,
-  type DaoWeaponType,
-} from '@daoyou/game-domain/equipment/weapons';
 
-import { InventoryRuleError } from '@daoyou/game-domain/items/bag';
+import { InventoryRuleError } from '@daoyou/game-domain/inventory';
 
-import type { MaterialFacts } from '@daoyou/game-domain/items/material-facts';
+import type { MaterialFacts } from '@daoyou/game-domain/inventory';
 
 import { QUALITY_ORDER, type Quality } from '@daoyou/constants/qualities';
 

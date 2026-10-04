@@ -1,11 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from '@daoyou/game-content/sects/data/lingxiao-paths' with { type: 'json' };
-import schema from '@daoyou/game-content/sects/data/lingxiao-paths.schema' with { type: 'json' };
-import { LingxiaoPathsPackShape, loadLingxiaoPathsPack, compileLingxiaoPaths } from '@daoyou/game-content/sects/lingxiao-path-pack';
+import {
+  SECTS_LINGXIAO_PATHS_DATA as raw,
+  SECTS_LINGXIAO_PATHS_SCHEMA as schema,
+  LingxiaoPathsPackShape,
+  loadLingxiaoPathsPack,
+  compileLingxiaoPaths,
+} from '@daoyou/game-content/authoring/sects';
 import { LINGXIAO_V6_DEFINITION } from '@daoyou/game-content/sects/lingxiao';
 import { compileSectDefinitionV6 } from './compiler.js';
-import type { SectCombatProgressV6, SectDefinitionV6 } from '@daoyou/game-domain/combat/content';
+import type { SectCombatProgressV6, SectDefinitionV6 } from '@daoyou/game-domain/combat';
 
 function compile(definition: SectDefinitionV6, pathIndex: number, nodeId: string) {
   definition = structuredClone(definition);

@@ -4,12 +4,12 @@ import type {
   InscriptionView,
 } from '@daoyou/contracts/inscriptions';
 import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
-import { type InscriptionCost } from '@daoyou/game-domain/inscriptions/types';
+import { type InscriptionCost } from '@daoyou/game-domain/inscriptions';
 import { prepareInscriptionDraw, prepareInscriptionEquipment, prepareInscriptionStrengthen, rollInscriptionDraw } from '@daoyou/game-rules/inscriptions/rules';
-import { type InventoryItem, type ItemGrant } from '@daoyou/game-domain/items/inventory';
+import { type InventoryItem, type ItemGrant } from '@daoyou/game-domain/inventory';
 import { addItems } from '@daoyou/game-rules/inventory';
-import { inventoryStackIdentity } from '@daoyou/game-rules/inventory/stack-key';
-import { projectNaturalQiState } from '@daoyou/game-rules/qi/recovery';
+import { inventoryStackIdentity } from '@daoyou/game-rules/inventory/stacking';
+import { projectNaturalQiState } from '@daoyou/game-rules/qi';
 import { and, eq, gte, inArray, or, sql } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
 import { db, type DbExecutor } from '@server/lib/drizzle/db.js';

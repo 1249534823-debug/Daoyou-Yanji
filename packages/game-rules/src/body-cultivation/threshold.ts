@@ -1,4 +1,4 @@
-import { BODY_CULTIVATION_PACK } from '@daoyou/game-content/body-cultivation/pack';
+import { BODY_CULTIVATION_PACK } from '@daoyou/game-content/body-cultivation';
 
 
 export function bodyCultivationThreshold(level: number, pack = BODY_CULTIVATION_PACK): number {

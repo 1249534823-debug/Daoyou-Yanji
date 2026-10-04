@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '@daoyou/game-content/beasts/content';
-import { isOpenEquipmentLevel } from '@daoyou/game-domain/equipment/levels';
+import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '@daoyou/game-content/beasts';
+import { isOpenEquipmentLevel } from '@daoyou/game-domain/equipment';
 import { equipmentRealm } from '../equipment/realm.js';
-import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
+import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression';
 import { itemDefinition, ItemGrantSchema } from '../inventory/index.js';
 import { TOWER_ELIGIBLE_REALMS } from '../tower/helpers.js';
-import raw from '@daoyou/game-content/rewards/data/tower' with { type: 'json' };
-import schema from '@daoyou/game-content/rewards/data/tower.schema' with { type: 'json' };
+import { REWARDS_TOWER_DATA as raw } from '@daoyou/game-content/rewards/tower';
+import { REWARDS_TOWER_SCHEMA as schema } from '@daoyou/game-content/authoring/rewards';
 import { planTowerReward, towerRewardPreviews } from './tower.js';
 import { loadTowerRewardPack, TowerRewardPackShape } from './tower-pack.js';
 

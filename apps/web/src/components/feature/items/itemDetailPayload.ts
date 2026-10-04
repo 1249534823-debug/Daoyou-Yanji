@@ -4,7 +4,7 @@ import type {
   CultivationTechnique,
   Material,
   Skill,
-} from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/character';
 
 export type ItemDetailPayload =
   | {

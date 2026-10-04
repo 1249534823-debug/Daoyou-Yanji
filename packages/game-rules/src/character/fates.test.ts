@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type {
   FateEffectType,
   PreHeavenFate,
-} from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/character';
 import {
   evaluateFateContext,
   getAlchemySpiritStoneMultiplier,

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { loadStoryRewardPack } from '@daoyou/game-content/rewards/story-pack';
+import { loadStoryRewardPack } from '@daoyou/game-content/rewards/story';
 import { storyReward } from './grants.js';
 
 describe('story rewards', () => {

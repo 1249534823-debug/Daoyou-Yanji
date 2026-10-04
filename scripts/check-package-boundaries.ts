@@ -76,6 +76,9 @@ for (const { directory, manifest } of workspaces) {
       if (!specifier.startsWith('@daoyou/')) return;
       const [scope, packageName, ...subpath] = specifier.split('/');
       const name = `${scope}/${packageName}`;
+      if (name === '@daoyou/game-content' && subpath[0] === 'authoring' && !/\.(test|spec)\.[cm]?[jt]sx?$/.test(file) && !file.startsWith('scripts/')) {
+        errors.push(`${file}: content authoring entrypoints are only for content validation tests and maintenance tools`);
+      }
       if (manifest.name === '@daoyou/game-domain' && name === '@daoyou/combat-core' && !typeOnly) {
         errors.push(`${file}: domain models may only import combat-core types`);
       }
@@ -97,6 +100,9 @@ for (const { directory, manifest } of workspaces) {
       }
     }
     function visit(node: ts.Node) {
+      if (file.includes('/src/public/') && ts.isExportDeclaration(node) && (!node.exportClause || ts.isNamespaceExport(node.exportClause))) {
+        errors.push(`${file}: public entrypoints must name their exports explicitly`);
+      }
       if ((ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) && node.moduleSpecifier && ts.isStringLiteral(node.moduleSpecifier)) {
         const typeOnly = ts.isImportDeclaration(node)
           ? Boolean(node.importClause?.isTypeOnly || (node.importClause && !node.importClause.name && node.importClause.namedBindings && ts.isNamedImports(node.importClause.namedBindings) && node.importClause.namedBindings.elements.length > 0 && node.importClause.namedBindings.elements.every((element) => element.isTypeOnly)))

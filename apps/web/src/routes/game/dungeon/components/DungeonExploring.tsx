@@ -8,15 +8,15 @@ import {
   formatDungeonCostName,
   formatDungeonCostValue,
 } from '@app/lib/dungeon/formatDungeonCost';
-import type { DungeonMaterialSelection } from '@daoyou/game-domain/dungeon/actions';
 import type {
+  DungeonMaterialSelection,
   DungeonOption,
   DungeonOptionCost,
   DungeonRound,
   DungeonState,
-} from '@daoyou/game-domain/dungeon/state';
+} from '@daoyou/game-domain/dungeon';
 import { getResourceIcon } from '@daoyou/game-content/presentation/concepts';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
+import type { Cultivator } from '@daoyou/game-domain/character';
 import { useState } from 'react';
 import { DungeonMaterialSubmission } from './DungeonMaterialSubmission';
 import type { DungeonDisplayResources } from './DungeonRunPanel';

@@ -1,5 +1,5 @@
 import { removeFromAllRankingRealmsExcept } from '@server/lib/redis/rankings.js';
-import type { DomainEventEnvelope } from '@daoyou/contracts/domainEvents';
+import type { DomainEventEnvelope } from '@daoyou/contracts/events';
 import type { FeatureCommandResult } from '@server/player/application/state/CommandExecutors.js';
 
 export async function projectRealmChangedRanking(

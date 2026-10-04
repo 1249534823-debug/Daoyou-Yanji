@@ -1,5 +1,8 @@
 import { publicUnitAppearances } from './unit-appearance.js';
-import { type CombatV6DisplayEvent } from '@daoyou/game-domain/combat/display';
+import {
+  type CombatV6DisplayEvent,
+  COMBAT_V6_SEAL_CURVE_ARENA_VERSIONS,
+} from '@daoyou/game-domain/combat';
 
 import { ARENA_PUBLIC_VIEW } from '@daoyou/game-domain/combat/arena';
 import type {
@@ -13,9 +16,8 @@ import {
   type Command,
 } from '@daoyou/combat-core/types';
 import { canCollectCommand } from '@daoyou/combat-core/units';
-import { DAO_RAGE_RESOURCE_ID } from '@daoyou/game-domain/equipment/special-ids';
+import { DAO_RAGE_RESOURCE_ID } from '@daoyou/game-domain/equipment';
 import { daoyouRulesetV6 } from './daoyou/index.js';
-import { COMBAT_V6_SEAL_CURVE_ARENA_VERSIONS } from '@daoyou/game-domain/combat/versions';
 import { huntParticipantSucceeded } from '../hunts/settlement.js';
 import { controlledUnits, validatePetCommand } from './controlled-commands.js';
 import { diffUnits } from './playback.js';

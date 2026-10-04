@@ -1,4 +1,4 @@
-import type { SectDefinition } from '@daoyou/game-domain/sects/definitions';
+import type { SectDefinition } from '@daoyou/game-domain/sects';
 import { JIUJIE_DEFINITION } from './jiujie/definition.js';
 import { LINGXIAO_DEFINITION } from './lingxiao/definition.js';
 import { TIANYAN_DEFINITION } from './tianyan/definition.js';

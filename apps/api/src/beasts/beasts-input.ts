@@ -1,4 +1,4 @@
-import { createBeastAllocateSchema } from '@daoyou/contracts/combatV6Beasts';
-import { BeastAllocationSchema } from '@daoyou/game-rules/beasts/progression';
+import { createBeastAllocateSchema } from '@daoyou/contracts/beasts';
+import { BeastAllocationSchema } from '@daoyou/game-rules/beasts/growth';
 
 export const BeastAllocateSchema = createBeastAllocateSchema(BeastAllocationSchema);

@@ -1,4 +1,4 @@
-import type { GuideLesson, GuideStep } from '@daoyou/game-domain/guide/schema';
+import type { GuideLesson, GuideStep } from '@daoyou/game-domain/guide';
 
 export interface GuideState {
   cursor: number;

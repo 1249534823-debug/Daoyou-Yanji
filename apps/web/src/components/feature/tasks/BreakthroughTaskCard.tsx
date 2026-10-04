@@ -1,6 +1,6 @@
 import { InkButton } from '@app/components/ui/InkButton';
 import { cn } from '@app/lib/cn';
-import type { TaskInstance } from '@daoyou/game-domain/tasks/types';
+import type { TaskInstance } from '@daoyou/game-domain/tasks';
 import { TaskObjectiveRow } from './TaskObjectiveRow';
 
 function StatusPill({

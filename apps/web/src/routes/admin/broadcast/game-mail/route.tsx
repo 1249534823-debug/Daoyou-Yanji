@@ -1,7 +1,7 @@
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton, InkInput } from '@app/components/ui';
-import { type SystemMailCampaign, type SystemMailListItem } from '@daoyou/game-domain/mail/campaign';
-import { formatMailTime, systemMailConditionSummary, systemMailStatusLabel } from '@daoyou/game-rules/mail/campaign';
+import { type SystemMailCampaign, type SystemMailListItem } from '@daoyou/game-domain/mail';
+import { formatMailTime, systemMailConditionSummary, systemMailStatusLabel } from '@daoyou/game-rules/mail';
 import { useEffect, useState } from 'react';
 import { AdminDialog } from '../../_components/AdminDialog';
 import { AdminPageHeader } from '../../_components/AdminPage';

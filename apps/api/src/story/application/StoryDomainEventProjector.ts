@@ -3,9 +3,9 @@ import { StoryService } from '@server/story/application/StoryService.js';
 import {
   isDomainEventType,
   type DomainEventEnvelope,
-} from '@daoyou/contracts/domainEvents';
+} from '@daoyou/contracts/events';
 import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
-import { storyMarkForSignal } from '@daoyou/game-rules/story/signals';
+import { storyMarkForSignal } from '@daoyou/game-rules/story';
 
 export async function projectStoryDomainEvent(
   event: DomainEventEnvelope,

@@ -5,7 +5,7 @@ import { InkButton } from '@app/components/ui/InkButton';
 import { InkInput } from '@app/components/ui/InkInput';
 import { InkNotice } from '@app/components/ui/InkNotice';
 import { InkTabs } from '@app/components/ui/InkTabs';
-import type { WorldChatChannel as WorldChatViewChannel } from '@daoyou/contracts/world-chat-messages';
+import type { WorldChatChannel as WorldChatViewChannel } from '@daoyou/contracts/world-chat';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { WorldChatMessageItem } from './WorldChatMessageItem';
 import { WorldChatShowcaseDialog } from './WorldChatShowcaseDialog';

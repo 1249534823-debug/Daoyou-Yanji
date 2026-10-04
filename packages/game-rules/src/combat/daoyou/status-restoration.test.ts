@@ -3,7 +3,7 @@ import { createBattle } from '@daoyou/combat-core/session';
 import { SeededRng } from '@daoyou/combat-core/rng';
 import { type SkillDef, type StatusDef } from '@daoyou/combat-core/types';
 import { createDaoyouRuleset } from './index.js';
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '@daoyou/game-domain/combat/versions';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '@daoyou/game-domain/combat';
 
 const seal: SkillDef = { id: 'seal', name: '封印', tags: ['spell', 'seal'], targeting: { side: 'enemy' }, effects: [{ type: 'applyStatus', statusId: 'control', duration: 3, hit: 'seal' }] };
 function battle(chance: number, factor?: number, statusFactor?: number) {

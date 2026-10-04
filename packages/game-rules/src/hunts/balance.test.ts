@@ -1,16 +1,19 @@
 import { describe, expect, it } from 'vitest';
 import { automaticCommands } from '../combat/auto.js';
-import { type HuntBossId } from '@daoyou/game-domain/hunts/event';
-import { HUNT_BOSSES } from '@daoyou/game-content/hunts/bosses';
+import { type HuntBossId } from '@daoyou/game-domain/hunts';
+import {
+  HUNT_BOSSES,
+  HUNT_SKILLS,
+  HUNT_STATUSES,
+} from '@daoyou/game-content/hunts';
 import { huntEventsAt } from './config.js';
-import { BEAST_SKILLS, BEAST_STATUS_DEFS } from '@daoyou/game-content/beasts/content';
+import { BEAST_SKILLS, BEAST_STATUS_DEFS } from '@daoyou/game-content/beasts';
 import { projectBeastRoster } from '../beasts/projection.js';
 import { createBattle } from '@daoyou/combat-core/session';
 import { type CreateBattleInput } from '@daoyou/combat-core/types';
 import { projectCharacterToCombatV6 } from '../combat/projection/project-character.js';
 import { daoyouRulesetV6 } from '../combat/daoyou/index.js';
 import { towerReferenceBuild } from '../tower/reference-fixtures.js';
-import { HUNT_SKILLS, HUNT_STATUSES } from '@daoyou/game-content/hunts/combat';
 import { huntEnemies, huntNpcCommand } from './content.js';
 
 const events = huntEventsAt(100000);

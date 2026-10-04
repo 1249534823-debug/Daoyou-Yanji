@@ -1,5 +1,5 @@
-import { EXP_CAP_TABLE } from '@daoyou/game-content/cultivation/cultivationProgress';
 import {
+  EXP_CAP_TABLE,
   BOTTLENECK_EXP_PENALTY,
   BOTTLENECK_THRESHOLD,
   BREAKTHROUGH_MIN_PROGRESS,
@@ -18,13 +18,13 @@ import {
   SPIRITUAL_ROOT_BASE,
   YEARS_MULTIPLIER_BASE,
   YEARS_MULTIPLIER_SCALE,
-} from '@daoyou/game-content/cultivation/cultivationTuning';
+} from '@daoyou/game-content/cultivation';
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import type {
   CultivationProgress,
   Cultivator,
   SpiritualRoot,
-} from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/character';
 import { calculateRetreatBaseExp } from './exp-gain-strategies/index.js';
 
 /**

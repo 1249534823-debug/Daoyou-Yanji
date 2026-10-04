@@ -1,8 +1,8 @@
-import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character-attribute-labels';
+import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character';
 import { manualAttributeValue } from './attributes.js';
 import { manualMechanismValue } from './mechanism.js';
-import type { ManualMechanism } from '@daoyou/game-domain/manuals/pack';
-import type { CharacterManualDefV1 } from '@daoyou/game-domain/manuals/types';
+import type { ManualMechanism } from '@daoyou/game-domain/manuals/authoring';
+import type { CharacterManualDefV1 } from '@daoyou/game-domain/manuals';
 
 const conditions: Record<ManualMechanism['condition'], string> = {
   always: '',

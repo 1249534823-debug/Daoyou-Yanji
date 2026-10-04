@@ -1,8 +1,10 @@
-import { createDomainEventDataSchemas } from '@daoyou/game-domain/events/payloads';
-import { createBeastSchema } from '@daoyou/game-domain/beasts/schema';
-import { createBeastTradeSchemas } from '@daoyou/game-domain/beasts/trade';
-import { createInventoryEquipmentSchema } from '@daoyou/game-domain/equipment/inventory';
-import { createInventorySchemas } from '@daoyou/game-domain/items/inventory';
+import { createDomainEventDataSchemas } from '@daoyou/game-domain/events';
+import {
+  createBeastSchema,
+  createBeastTradeSchemas,
+} from '@daoyou/game-domain/beasts';
+import { createInventoryEquipmentSchema } from '@daoyou/game-domain/equipment';
+import { createInventorySchemas } from '@daoyou/game-domain/inventory';
 
 import { createDomainEventParser } from './domainEvents.js';
 import { DOMAIN_EVENT_DEFINITIONS } from './domainEvents.js';

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { TOWER_ENCOUNTER_PACK } from '@daoyou/game-content/tower/encounter-pack';
+import { TOWER_ENCOUNTER_PACK } from '@daoyou/game-content/tower';
 import { presetEnemyAttrs } from './preset-enemy.js';
 
 describe('预设敌人预算', () => {

@@ -1,6 +1,8 @@
 import { StandardSectModule } from '../../core/index.js';
-import { JIUJIE_DEFINITION } from '@daoyou/game-content/sect-organization/jiujie/definition';
-import { JIUJIE_ORGANIZATION_THEME } from '@daoyou/game-content/sect-organization/jiujie/organization';
+import {
+  JIUJIE_DEFINITION,
+  JIUJIE_ORGANIZATION_THEME,
+} from '@daoyou/game-content/sect-organization/jiujie';
 
 export class JiujieSectModule extends StandardSectModule {
   constructor() {

@@ -1,4 +1,7 @@
-import { BODY_CULTIVATION_PACK } from '@daoyou/game-content/body-cultivation/pack';
+import {
+  BODY_CULTIVATION_PACK,
+  BODY_CULTIVATION_TRACK_KEYS,
+} from '@daoyou/game-content/body-cultivation';
 import { bodyCultivationEffectTexts } from './benefits.js';
 import type {
   BodyCultivationRealm,
@@ -7,7 +10,6 @@ import type {
   CultivatorCondition,
 } from '@daoyou/game-domain/condition';
 import type { RealmType } from '@daoyou/constants/realms';
-import { BODY_CULTIVATION_TRACK_KEYS } from '@daoyou/game-content/body-cultivation/pack';
 import { BODY_CULTIVATION_REALM_REQUIREMENTS, BODY_TRACK_LABELS, type BodyCultivationRealmRequirement, getNextBodyCultivationRealm, getBodyCultivationThresholdByLevel, isCultivationRealmAtLeast } from './config.js';
 import { normalizeBodyCultivationState } from './normalize.js';
 

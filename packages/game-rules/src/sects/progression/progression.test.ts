@@ -3,7 +3,7 @@ import {
   createEmptySectCombatProgressV6,
   createFreshCombatV6MethodLevels,
 } from '../build-state.js';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
 import { compileCurrentSectCombatV6 } from '../index.js';
 import {
   MERIDIAN_LEVELS,

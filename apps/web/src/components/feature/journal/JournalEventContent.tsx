@@ -1,7 +1,7 @@
 import {
   JOURNAL_ACTIVITIES,
   type PlayerJournalEvent,
-} from '@daoyou/contracts/playerJournal';
+} from '@daoyou/contracts/player/journal';
 import { Fragment } from 'react';
 
 const resourceStyles = {

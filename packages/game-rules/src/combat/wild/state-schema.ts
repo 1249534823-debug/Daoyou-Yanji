@@ -1,5 +1,7 @@
-import { createWildStateSchemas } from '@daoyou/game-domain/wild/state-schema';
-import { createWildEncounterSchema } from '@daoyou/game-domain/wild/encounter';
+import {
+  createWildStateSchemas,
+  createWildEncounterSchema,
+} from '@daoyou/game-domain/wild';
 import { ItemGrantSchema } from '../../inventory/index.js';
 import { BeastSchema } from '../../beasts/schema.js';
 import { WildIndividualSchema } from './generator.js';

@@ -1,8 +1,8 @@
 import { withManualAttributes, compileCharacterManualsV1 } from '../../manuals/compiler.js';
-import { CHARACTER_MANUALS_V1 } from '@daoyou/game-content/manuals/content';
+import { CHARACTER_MANUALS_V1 } from '@daoyou/game-content/manuals';
 import { resolveCombatCapabilitiesV1 } from '../../manuals/capabilities.js';
 import type { CombatV6VersionStamp } from '@daoyou/combat-core/types';
-import type { CombatV6ProjectionDiagnostic, CombatV6ProjectionResult, CharacterCombatInput } from "@daoyou/game-domain/combat/projection"
+import type { CombatV6ProjectionDiagnostic, CombatV6ProjectionResult, CharacterCombatInput } from "@daoyou/game-domain/combat"
 
 function manualContentConflicts(existingSkills: string[], existingStatuses: string[]): CombatV6ProjectionDiagnostic[] {
   const existing = new Set([...existingSkills, ...existingStatuses])

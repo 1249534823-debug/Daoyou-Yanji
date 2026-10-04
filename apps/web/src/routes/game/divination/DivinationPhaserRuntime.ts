@@ -1,4 +1,4 @@
-import type { DivinationDice } from '@daoyou/game-domain/divination/types';
+import type { DivinationDice } from '@daoyou/game-domain/divination';
 import * as Phaser from 'phaser';
 
 export interface DivinationController {

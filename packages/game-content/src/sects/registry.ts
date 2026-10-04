@@ -1,4 +1,4 @@
-import type { SectDefinitionV6 } from '@daoyou/game-domain/combat/content';
+import type { SectDefinitionV6 } from '@daoyou/game-domain/combat';
 import { JIUJIE_V6_DEFINITION, validateJiujieContentV1 } from './jiujie.js';
 import { LINGXIAO_V6_DEFINITION } from './lingxiao.js';
 import { validateSectSkillLearningContent } from './skill-learning.js';
@@ -8,7 +8,7 @@ import { YOUDU_V6_DEFINITION } from './youdu.js';
 
 /** 当前五宗门内容目录。 */
 export const COMBAT_V6_SECT_DEFINITIONS: Record<
-  import('@daoyou/game-domain/combat/content').CombatV6SectId,
+  import('@daoyou/game-domain/combat').CombatV6SectId,
   SectDefinitionV6
 > = Object.freeze({
   lingxiao: LINGXIAO_V6_DEFINITION,
@@ -54,8 +54,8 @@ function definitionIds(definition: SectDefinitionV6): string[] {
 
 export function validateCombatV6SectRegistry(
   registry: Record<string, SectDefinitionV6> = COMBAT_V6_SECT_DEFINITIONS,
-): import('@daoyou/game-domain/combat/projection').CombatV6ProjectionDiagnostic[] {
-  const diagnostics: import('@daoyou/game-domain/combat/projection').CombatV6ProjectionDiagnostic[] =
+): import('@daoyou/game-domain/combat').CombatV6ProjectionDiagnostic[] {
+  const diagnostics: import('@daoyou/game-domain/combat').CombatV6ProjectionDiagnostic[] =
     [];
   const owner = new Map<string, string>();
   for (const [key, definition] of Object.entries(registry)) {

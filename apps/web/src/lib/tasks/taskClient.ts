@@ -4,9 +4,9 @@ import type {
   TaskChallengeResponse,
   TaskRewardClaimResponse,
 } from '@daoyou/contracts/task';
-import { getNextMajorRealm } from '@daoyou/game-rules/consumables/breakthrough-pill';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
-import type { TaskInstance } from '@daoyou/game-domain/tasks/types';
+import { getNextMajorRealm } from '@daoyou/game-rules/consumables/breakthrough';
+import type { Cultivator } from '@daoyou/game-domain/character';
+import type { TaskInstance } from '@daoyou/game-domain/tasks';
 
 async function readJsonOrThrow<T>(response: Response): Promise<T> {
   const payload = await response.json();

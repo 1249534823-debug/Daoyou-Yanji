@@ -1,6 +1,6 @@
 import type { DbExecutor } from '@server/lib/drizzle/db.js';
 import { cultivatorAutoStrategies } from '@server/lib/drizzle/schema.js';
-import { AutoStrategySchema, type AutoStrategy } from '@daoyou/game-domain/combat/auto-strategy';
+import { AutoStrategySchema, type AutoStrategy } from '@daoyou/game-domain/combat/auto';
 import { and, eq } from 'drizzle-orm';
 
 export async function readCustomAutoStrategy(

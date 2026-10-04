@@ -12,8 +12,8 @@ import type {
   DivinationRecord,
   DivinationView,
 } from '@daoyou/contracts/divination';
-import { type DivinationDirection } from '@daoyou/game-domain/divination/types';
-import { DIVINATION_DIRECTIONS } from '@daoyou/game-content/divination/content';
+import { type DivinationDirection } from '@daoyou/game-domain/divination';
+import { DIVINATION_DIRECTIONS } from '@daoyou/game-content/divination';
 import {
   useCallback,
   useEffect,

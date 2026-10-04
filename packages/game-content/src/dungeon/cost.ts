@@ -1,5 +1,7 @@
-import type { DungeonCostRank } from '@daoyou/game-domain/dungeon/cost';
-import type { DungeonDifficultyTier } from '@daoyou/game-domain/dungeon/difficulty';
+import type {
+  DungeonCostRank,
+  DungeonDifficultyTier,
+} from '@daoyou/game-domain/dungeon';
 import type { RealmType } from '@daoyou/constants/realms';
 
 export const DUNGEON_LIFESPAN_COST_MAX = 120;

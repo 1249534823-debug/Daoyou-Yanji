@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { SystemMailConditionsSchema, type SystemMailAudienceSnapshot } from '@daoyou/game-domain/mail/audience';
+import { SystemMailConditionsSchema, type SystemMailAudienceSnapshot } from '@daoyou/game-domain/mail';
 import { isSystemMailInWindow, matchesSystemMailConditions, SystemMailInputSchema } from './campaign.js';
 
 const publishedAt = '2026-09-23T00:00:00Z';

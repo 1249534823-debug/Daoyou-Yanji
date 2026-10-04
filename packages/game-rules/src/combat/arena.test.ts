@@ -12,9 +12,9 @@ type ArenaRuntime = ArenaState<ArenaSnapshot> & {
 import {
   parseCombatV6Replay,
   type CombatV6ReplayV1,
-} from '@daoyou/game-domain/combat/replay-archive';
+} from '@daoyou/game-domain/combat/replay';
 import { EffectType, SkillTag, TargetSide } from '@daoyou/combat-core/enums';
-import { DAO_RAGE_RESOURCE_ID } from '@daoyou/game-domain/equipment/special-ids';
+import { DAO_RAGE_RESOURCE_ID } from '@daoyou/game-domain/equipment';
 import { huntEventsAt } from '../hunts/config.js';
 import {
   arenaBattle,

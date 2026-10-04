@@ -1,8 +1,10 @@
-import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
-import { SeedFactsSchema } from '@daoyou/game-domain/items/seed-facts';
-import { materialFactsOf } from '@daoyou/game-domain/items/material';
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
-import { isPillConsumable } from '@daoyou/game-domain/consumables/identity';
+import {
+  ConsumableFactsSchema,
+  SeedFactsSchema,
+  materialFactsOf,
+} from '@daoyou/game-domain/inventory';
+import { findItemDefinition } from '@daoyou/game-content/items';
+import { isPillConsumable } from '@daoyou/game-domain/consumables';
 import { and, eq, or } from 'drizzle-orm';
 import {
   getExecutor,

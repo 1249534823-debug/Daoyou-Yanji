@@ -5,12 +5,12 @@ import {
   MAX_MANUALS_PER_SLOT,
   validateManualStateV1,
 } from './compiler.js';
-import { CHARACTER_MANUALS_V1, manualRule } from '@daoyou/game-content/manuals/content';
+import { CHARACTER_MANUALS_V1, manualRule } from '@daoyou/game-content/manuals';
 import type {
   CultivatorManualStateV1,
   ManualSlotV1,
   ManualStateChangeResult,
-} from '@daoyou/game-domain/manuals/types';
+} from '@daoyou/game-domain/manuals';
 
 export function changeManual(input: {
   state: CultivatorManualStateV1;

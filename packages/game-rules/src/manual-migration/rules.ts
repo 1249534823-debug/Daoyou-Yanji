@@ -10,13 +10,13 @@ import type {
   ManualMigrationGrant,
   ManualMigrationPolicy,
   ManualMigrationSource,
-} from '@daoyou/game-domain/legacy/manual-migration';
+} from '@daoyou/game-domain/legacy/migrations';
 
-import { ManualMigrationConfigSchema } from '@daoyou/game-domain/legacy/manual-migration';
+import { ManualMigrationConfigSchema } from '@daoyou/game-domain/legacy/migrations';
 
-import { CHARACTER_MANUALS_V1 } from '@daoyou/game-content/manuals/content';
+import { CHARACTER_MANUALS_V1 } from '@daoyou/game-content/manuals';
 
-import type { ItemGrant } from '@daoyou/game-domain/items/inventory';
+import type { ItemGrant } from '@daoyou/game-domain/inventory';
 
 import { QUALITY_VALUES, type Quality } from '@daoyou/constants/qualities';
 

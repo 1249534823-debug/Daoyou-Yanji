@@ -18,7 +18,7 @@ import {
   WithdrawMaterialSchema,
   WithdrawVaultPageSchema,
 } from '@daoyou/contracts/forging';
-import { InventoryRuleError } from '@daoyou/game-domain/items/bag';
+import { InventoryRuleError } from '@daoyou/game-domain/inventory';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { apiErrorFilter } from '../http/error-filter.js';

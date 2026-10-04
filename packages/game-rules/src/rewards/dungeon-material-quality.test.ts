@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { MaterialGenerator } from '../materials/generator.js';
 import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 import { REALM_VALUES } from '@daoyou/constants/realms';
-import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/game-content/rewards/dungeon-material-quality';
+import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/game-content/rewards/dungeon';
 
 describe('副本材料品质概率', () => {
   it('每个境界的概率之和为 1，低于品质下限的材料不会产出', () => {

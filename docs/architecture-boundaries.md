@@ -296,3 +296,68 @@ Docker 本地镜像 `daoyou-monorepo-review:local` 构建通过，以非 root �
 - 未执行 Docker 镜像重建、预发布/生产部署、数据迁移及真实发布/回滚演练；独立 deploy 验证不代替容器或目标环境验收。没有自动 commit/push。
 
 本轮收尾：IAB 已恢复本地道友 2 登录，第三账号临时会话已退出；浏览器禁用缓存设置已恢复，两个临时页面与本次 API/preview 服务已关闭。本地数据库、Redis、NATS 等基础服务保持原状。`git diff --check` 通过。
+
+## 公共导出收敛（2026-10-04）
+
+本批从干净的 `89f7575b` 开始，按用户确认的方案将文件级公开入口收敛为业务 API。以下数据是本批结果；上文 580 个导出为本批基线，不再代表当前数量。
+
+| 包 | 改造前子路径数 | 改造后子路径数 |
+| --- | ---: | ---: |
+| constants | 3 | 3 |
+| combat-core | 9 | 9 |
+| game-domain | 153 | 57 |
+| game-content | 182 | 81 |
+| game-rules | 168 | 92 |
+| contracts | 65 | 62 |
+| 合计 | 580 | 304 |
+
+减少 276 个公开子路径（47.6%）。数量统计的是 package.json 的 exports 键，不是导出符号数。新增 92 个显式公共入口文件，原实现继续留在各领域目录；API、Web、跨包引用和测试同步迁移，不保留旧路径兼容别名。
+
+### 当前公共 API 约定
+
+- 调用方按业务能力导入，例如 `@daoyou/game-domain/equipment`、`@daoyou/game-rules/inventory`、`@daoyou/contracts/combat/arena`，无需知道内部 types、pack 或 config 的文件布局。一个已有小模块可以直接作为公开入口，不强制套一层转发文件。
+- `src/public/**` 使用具名导出，运行值与 `export type` 分开；禁止 `export *` 和 namespace 再导出。package.json 继续逐项声明 exports，禁止通配符，也不增加整包根 barrel。
+- 领域模型、Schema 构造器、内容目录和绑定完整校验的规则仍由各自的包负责。入口合并不改变 `contracts ↔ game-domain ↔ game-rules` 的依赖方向；API 原有组合位置保留。
+- 类型入口保留被合并模块的类型声明，包括没有被直接 import、但可能被推导出的公开函数签名引用的类型。仅按直接调用统计删除类型会使消费者的声明生成失败（本批曾发现 TalismanSpec 的 TS2883，并已修正）。
+- 轻量入口与重型内容初始化保持分开：content 的 `equipment/base`、`equipment/forging`、`equipment/special`；domain 的 `character/generation`、`equipment/authoring/*`、`sects/commands`；rules 的 `inventory/stacking`、`sect-organization/tasks`、`combat/log`、`combat/appearance`、`combat/presentation`、炼体进度/训练及两类消耗品规则。它们是加载与职责边界，不应仅为减少行数继续合并。
+- `game-content/authoring/**` 面向内容校验测试和维护工具；边界检查禁止应用和库的非测试源码消费它。包内校验仍通过相对路径访问自身实现。五个原始 JSON 入口 `authoring/equipment/{base,forging}`、`authoring/beasts/{species,skills,progression}` 单独保留，以维持既有内容替换测试的 mock 边界。
+- 没有添加全包 `sideEffects: false`，原注册表与 Schema 初始化校验仍执行。导出数量下降不等于所有加载成本下降；新增入口必须同时考虑消费关系和首屏依赖。
+
+上述规则进入 `AGENTS.md`；技能中的实际包导入路径同步更新。`check-package-boundaries.ts` 新增 runtime/authoring 和 public 具名导出检查，随现有 `pnpm run lint` 进入 CI。临时违规探针验证两条规则均能拒绝对应导入/再导出，探针已删除。
+
+### 迁移范围与行为核对
+
+合并了迁移后 340 处重复 import；两个纯内容测试按所有权移动：`game-rules/src/equipment/special-pack.test.ts` → `game-content/src/equipment/special-pack.test.ts`，`game-rules/src/combat/encounter/pack.test.ts` → `game-content/src/combat/training/pack.test.ts`。断言保留，依赖规则的跨层测试仍留在 rules。
+
+对 930 个已修改的既有源码文件，排除 import/export 声明并规范化测试 mock 中的包路径后，编译词法流的非导入部分与基线一致。本检查确认业务语句没有随路径迁移重写，不能单独证明模块求值顺序和副作用等价，因此另做全量纯测试、干净构建、逐导出加载和页面回归。Schema、默认值、协议、事务与锁没有新增实现变更。
+
+### 同模式生产首屏对比
+
+从 `89f7575b` 的隔离 Git 快照重建 production Web，与当前干净 production 构建在同一 preview 地址、同一 IAB/本地道友 2 会话、禁用 HTTP 缓存条件下各刷新三次；等待洞府内容和 networkidle。临时 development-mode 构建数据已排除。以下资源不含 HTML，JS 字节为 encodedBodySize，同源总字节为 transferSize。
+
+| 指标 | 基线 production | 当前 production |
+| --- | ---: | ---: |
+| 同源资源请求 | 78 | 79 |
+| JS 请求 | 57 | 58 |
+| JS 响应体字节 | 320,670 | 326,283 |
+| 同源资源传输字节 | 558,750 | 564,663 |
+| DOMContentLoaded 中位数 | 56.8 ms | 54.1 ms |
+| load 中位数 | 59.4 ms | 57.5 ms |
+| FCP 中位数 | 68 ms | 60 ms |
+
+三轮请求数和字节数分别稳定；当前 JS 增加 5,613 字节（1.75%），是本次业务入口聚合后的实测代价。没有把本次重构表述为性能优化。回环网络未限速、样本小，时间只供记录，不能宣称加载加速。基线 DCL 为 59.1/56.8/35.6 ms、load 为 65/59.4/38 ms、FCP 为 72/68/40 ms；当前分别为 66.1/54.1/34.5 ms、71.7/57.5/36.8 ms、60/64/56 ms。
+
+初次较宽的聚合使首页日志经战斗展示引入重型注册表，已拆回上述轻量入口。最终首屏没有 Phaser 请求，宗门玉牒仍点击后加载。Vite 的 Phaser 大 chunk 提示保留。原始记录：`/tmp/daoyou-exports-browser-{before,after}-production.json`。
+
+### 本批验收与审阅方式
+
+- `pnpm install --frozen-lockfile`、`pnpm run lint`（8 workspace、11,649 imports）、`pnpm run typecheck`（14 Turbo 任务及根工具）通过。
+- `pnpm run test`：256 文件、2,402 项全部通过；没有新增 API/Web 单元测试。
+- 删除八个 workspace 的生成 dist 后，`pnpm exec turbo run build --force`：8 项构建通过。
+- `pnpm --filter @daoyou/api deploy --prod /tmp/daoyou-exports-api-deploy-20261004` 通过。该独立目录内 304 个导出（含 JSON）全部可由 Node 解析并加载；三个已移除路径探针得到 `ERR_PACKAGE_PATH_NOT_EXPORTED`；不含 Web 包或 API 源码。
+- 最终 API 编译产物启动成功。浏览器核对洞府、宗门玉牒、背包 34/40 格、育兽室和灵兽属性、炼器室及当前图纸空列表。既有 25 回合竞技回放可逐行动推进、跳转并到达 99/99 终局；最终页面 error 日志为空。本批未发起新战斗或资源操作。
+- 日志：`/tmp/daoyou-exports-{install,lint,typecheck,tests-final,build-final,deploy}.log`；回放截图：`/tmp/daoyou-exports-replay-verified.png`。临时迁移工具未加入仓库。
+- 审阅可分为：① domain/content 公共入口及对应消费者；② rules/contracts 公共入口及对应消费者；③ 边界检查、项目指南与验收记录。同一消费者可能同时使用多包，前两组需按 import hunk 联动审阅；旧入口已删除，不能假定任意拆开的中间提交都可独立构建。
+- 本批没有重跑新登录/自然续期、双账号完整结算、Docker 镜像、Turbo watch/缓存探针或生产部署/回滚。前文记录属于先前批次，不能替代本批未执行项。没有执行 commit/push 或数据库迁移。
+
+收尾：`git diff --check` 通过。浏览器 HTTP 缓存设置已恢复，临时验收页及本批 API/preview 已关闭；API 日志确认请求排空、消息停止和数据库/Redis 连接关闭，最终为 shutdown complete。基础数据库、Redis、NATS 服务保持原状。

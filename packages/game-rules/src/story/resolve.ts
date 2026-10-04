@@ -6,7 +6,7 @@ import {
   type StoryFacts,
   type StoryProgress,
   type StoryView,
-} from '@daoyou/game-domain/story/schema';
+} from '@daoyou/game-domain/story';
 
 const markFacts = new Set<StoryFactId>(STORY_MARK_FACT_IDS);
 

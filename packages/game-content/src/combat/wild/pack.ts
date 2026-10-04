@@ -1,4 +1,4 @@
-import { WildRegionSchema } from '@daoyou/game-domain/wild/region';
+import { WildRegionSchema } from '@daoyou/game-domain/wild';
 import { formatContentPackErrors } from '@daoyou/game-domain/content-pack-errors';
 
 import { REALM_ORDER } from '@daoyou/constants/realms';

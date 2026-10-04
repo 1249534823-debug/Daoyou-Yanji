@@ -1,4 +1,4 @@
-import { GameplayTags } from '@daoyou/game-domain/legacy/tags/gameplayTags';
+import { GameplayTags } from '@daoyou/game-domain/legacy/tags';
 
 export const JIUJIE_SECT_ID = 'jiujie';
 export const JIUJIE_CALAMITY = 'sect.jiujie.calamity';

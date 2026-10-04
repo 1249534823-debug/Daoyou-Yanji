@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { AUCTION_MAX_UNIT_PRICE } from '@daoyou/game-domain/auction/limits';
+import { AUCTION_MAX_UNIT_PRICE } from '@daoyou/game-domain/auction';
 import { AuctionBuySchema, AuctionListSchema } from './auction.js';
 it('上架仅接收版本引用，公开和专属对象不得混用', () => {
   const body = {

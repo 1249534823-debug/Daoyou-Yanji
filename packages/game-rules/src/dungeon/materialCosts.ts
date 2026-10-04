@@ -1,9 +1,13 @@
-import type { DungeonMaterialSelection } from '@daoyou/game-domain/dungeon/actions';
-import { type InventoryItem } from '@daoyou/game-domain/items/inventory';
+import type {
+  DungeonMaterialSelection,
+  DungeonOptionCost,
+} from '@daoyou/game-domain/dungeon';
+import {
+  type InventoryItem,
+  materialFactsOf,
+} from '@daoyou/game-domain/inventory';
 import { itemDefinition } from '../inventory/index.js';
-import { materialFactsOf } from '@daoyou/game-domain/items/material';
 import { QUALITY_VALUES } from '@daoyou/constants/qualities';
-import type { DungeonOptionCost } from '@daoyou/game-domain/dungeon/state';
 
 export function dungeonMaterialMatches(
   item: InventoryItem,

@@ -1,5 +1,5 @@
-import type { DungeonDifficultyTier } from '@daoyou/game-domain/dungeon/difficulty';
-import type { DungeonTemplate } from '@daoyou/game-domain/combat/dungeon';
+import type { DungeonDifficultyTier } from '@daoyou/game-domain/dungeon';
+import type { DungeonTemplate } from '@daoyou/game-domain/combat/challenges';
 
 
 export const DUNGEON_TEMPLATES = {

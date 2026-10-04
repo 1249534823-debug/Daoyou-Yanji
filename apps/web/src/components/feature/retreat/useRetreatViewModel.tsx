@@ -11,20 +11,20 @@ import {
   useCultivatorProgress,
   usePlayerSession,
 } from '@app/lib/resources/player';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
+import type { Cultivator } from '@daoyou/game-domain/character';
 import { useTaskList } from '@app/lib/hooks/useTaskList';
 import { useResourceMutation } from '@app/lib/resources/mutations';
 import { findCurrentMajorBreakthroughTask } from '@app/lib/tasks/taskClient';
 import {
   calculateBreakthroughChance,
   getNextStage,
-} from '@daoyou/game-rules/cultivation/breakthroughCalculator';
+} from '@daoyou/game-rules/cultivation';
 import type {
   RetreatAction,
   RetreatResultData,
 } from '@daoyou/contracts/retreat';
-import type { TaskInstance } from '@daoyou/game-domain/tasks/types';
-import { getRetreatQiCost } from '@daoyou/game-rules/qi/actions';
+import type { TaskInstance } from '@daoyou/game-domain/tasks';
+import { getRetreatQiCost } from '@daoyou/game-rules/qi';
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import {

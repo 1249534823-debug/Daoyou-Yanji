@@ -1,18 +1,18 @@
-import { ALCHEMY_ALLOWED_MATERIAL_TYPES } from '@daoyou/game-content/alchemy/alchemyConfig';
 import {
+  ALCHEMY_ALLOWED_MATERIAL_TYPES,
   MATERIAL_ESSENCE_BY_QUALITY,
   MATERIAL_ESSENCE_TYPE_MULTIPLIER,
   MAX_ALCHEMY_EFFECTIVE_ESSENCE_MULTIPLIER,
   PILL_APPEARANCE_EFFECT_MULTIPLIER,
   PILL_UNIT_ESSENCE_BY_QUALITY,
-} from '@daoyou/game-content/alchemy/alchemyEssenceConfig';
+} from '@daoyou/game-content/alchemy';
 import {
   BASE_PRICES,
   TYPE_MULTIPLIERS,
-} from '@daoyou/game-content/materials/config';
+} from '@daoyou/game-content/materials';
 import { PILL_QUALITY_BASE_SCORE } from './pillScore.js';
 import type { Quality } from '@daoyou/constants/qualities';
-import type { PillAppearanceGrade } from '@daoyou/game-domain/consumable';
+import type { PillAppearanceGrade } from '@daoyou/game-domain/consumables';
 
 const PILL_RECYCLE_RETURN_FACTOR = 0.6;
 const SPIRIT_FRUIT_PILL_VALUE_FACTOR = 0.8;

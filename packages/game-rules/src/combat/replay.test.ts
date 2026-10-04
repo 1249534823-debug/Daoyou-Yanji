@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseCombatV6Replay } from '@daoyou/game-domain/combat/replay-archive';
+import { parseCombatV6Replay } from '@daoyou/game-domain/combat/replay';
 import { projectReplayUnits } from './arena.js';
 import { applyUnitDelta } from './playback.js';
 import { combatV6Units } from './presentation.js';

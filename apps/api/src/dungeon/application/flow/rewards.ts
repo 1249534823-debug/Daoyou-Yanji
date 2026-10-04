@@ -1,11 +1,11 @@
 import type { DbExecutor } from '@server/lib/drizzle/db.js';
 import { generateRealmMaterials } from '@server/inventory/application/MaterialRewardService.js';
-import { getRealmStageLevel } from '@daoyou/game-domain/progression/realms';
-import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
-import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/game-content/rewards/dungeon-material-quality';
+import { getRealmStageLevel } from '@daoyou/game-domain/progression';
+import { MaterialFactsSchema } from '@daoyou/game-domain/inventory';
+import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/game-content/rewards/dungeon';
 import { getMapNode } from '@daoyou/game-content/world/map';
 import { resolveDungeonMapConfig } from '@daoyou/game-rules/world/dungeon';
-import { type DungeonRewardEntry, type DungeonRewardSource } from '@daoyou/game-domain/dungeon/rewards';
+import { type DungeonRewardEntry, type DungeonRewardSource } from '@daoyou/game-domain/dungeon';
 import { planDungeonReward, planDungeonStepResources } from '@daoyou/game-rules/rewards/dungeon';
 import type { RealmType } from '@daoyou/constants/realms';
 import type { DungeonState } from '@server/dungeon/application/flow/types.js';

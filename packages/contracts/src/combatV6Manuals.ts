@@ -1,4 +1,4 @@
-import type { CultivatorManualStateV1 } from '@daoyou/game-domain/manuals/types';
+import type { CultivatorManualStateV1 } from '@daoyou/game-domain/manuals';
 
 import type { RealmType } from '@daoyou/constants/realms';
 

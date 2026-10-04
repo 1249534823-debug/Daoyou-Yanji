@@ -1,28 +1,33 @@
-import { BAG_CAPACITY, InventoryRuleError } from '@daoyou/game-domain/items/bag';
+import {
+  BAG_CAPACITY,
+  InventoryRuleError,
+  createInventorySchemas,
+  type InventoryItem,
+  type ItemGrant,
+  ConsumableFactsSchema,
+  MaterialFactsSchema,
+  SeedFactsSchema,
+} from '@daoyou/game-domain/inventory';
 
 
-import { createInventorySchemas, type InventoryItem, type ItemGrant } from '@daoyou/game-domain/items/inventory';
 
 
 
 import { BeastSchema } from '../beasts/schema.js';
-import { type SummonedBeast } from '@daoyou/game-domain/beasts/schema';
+import { type SummonedBeast } from '@daoyou/game-domain/beasts';
 
 
 
-import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
 
 
 
-import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
 
 
 
-import { SeedFactsSchema } from '@daoyou/game-domain/items/seed-facts';
 
 
 
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import { findItemDefinition } from '@daoyou/game-content/items';
 
 
 
@@ -30,7 +35,7 @@ import { InventoryEquipmentSchema } from './equipment.js';
 
 
 
-export { BOOKS } from '@daoyou/game-content/items/beast-books';
+export { BOOKS } from '@daoyou/game-content/items/beasts';
 
 export const { itemDefinition, InventoryItemSchema, ItemGrantSchema } = createInventorySchemas({ findItemDefinition, InventoryEquipmentSchema });
 

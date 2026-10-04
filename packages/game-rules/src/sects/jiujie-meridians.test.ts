@@ -5,11 +5,13 @@ import { SeededRng } from '@daoyou/combat-core/rng';
 import { type Command, type CreateBattleInput, type SkillDef } from '@daoyou/combat-core/types';
 import { createEmptySectCombatProgressV6 } from './build-state.js';
 import { createDaoyouRuleset } from '../combat/daoyou/index.js';
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '@daoyou/game-domain/combat/versions';
-import { DAO_EQUIPMENT_ARTS_V1 } from '@daoyou/game-content/equipment/special-content';
-import { YOUDU_COMBAT } from '@daoyou/game-content/sects/youdu-pack';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '@daoyou/game-domain/combat';
+import { DAO_EQUIPMENT_ARTS_V1 } from '@daoyou/game-content/equipment/special';
+import {
+  YOUDU_COMBAT,
+  JIUJIE_COMBAT,
+} from '@daoyou/game-content/authoring/sects';
 import { JIUJIE_V6_DEFINITION as definition } from '@daoyou/game-content/sects/jiujie';
-import { JIUJIE_COMBAT } from '@daoyou/game-content/sects/jiujie-pack';
 import { daoyouFormulas } from '../combat/daoyou/formulas.js';
 import { compileSectDefinitionV6 } from './compiler.js';
 

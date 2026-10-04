@@ -2,7 +2,7 @@ import {
   TOWER_ELIGIBLE_REALMS,
   TOWER_MAX_FLOOR,
   TOWER_MIN_REALM,
-} from '@daoyou/game-rules/tower/helpers';
+} from '@daoyou/game-rules/tower';
 import { REALM_VALUES } from '@daoyou/constants/realms';
 import { z } from 'zod';
 const SeasonKeySchema = z

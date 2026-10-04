@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { createDaoyouRuleset } from './index.js';
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '@daoyou/game-domain/combat/versions';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS as versions } from '@daoyou/game-domain/combat';
 import { createBattle } from '@daoyou/combat-core/session';
 import { type Command, type SkillDef, type StatusDef } from '@daoyou/combat-core/types';
 const attack: SkillDef = {

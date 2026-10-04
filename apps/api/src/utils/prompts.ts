@@ -1,8 +1,8 @@
 import { renderPrompt } from '@server/lib/prompts/index.js';
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
-import type { Attributes, Cultivator } from '@daoyou/game-domain/cultivator';
+import type { Attributes, Cultivator } from '@daoyou/game-domain/character';
 import { getAttributeInfo } from '@daoyou/game-content/presentation/concepts';
-import type { BreakthroughModifiers } from '@daoyou/game-domain/cultivation/breakthrough-modifiers';
+import type { BreakthroughModifiers } from '@daoyou/game-domain/cultivation';
 
 export type RetreatStoryCultivator = Pick<
   Cultivator,

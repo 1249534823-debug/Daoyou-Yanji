@@ -1,12 +1,14 @@
-import type { DailyTaskDifficulty } from '@daoyou/game-domain/cultivation/task-difficulty';
+import type { DailyTaskDifficulty } from '@daoyou/game-domain/cultivation';
 import { REALM_STAGE_VALUES, REALM_VALUES } from '@daoyou/constants/realms';
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { z } from 'zod';
 import { MINING_SCORE_TIERS } from '../mining/MiningGameRules.js';
 import { SectDeliveryRequirementSchema } from './taskRequirements.js';
-import type { SectDeliveryRequirement } from '@daoyou/game-domain/sects/task-requirements';
-import { SectTaskRewardSnapshotSchema } from '@daoyou/game-domain/sects/task-rewards';
-import type { SectTaskRewardSnapshot } from '@daoyou/game-domain/sects/task-rewards';
+import type {
+  SectDeliveryRequirement,
+  SectTaskRewardSnapshot,
+} from '@daoyou/game-domain/sects/tasks';
+import { SectTaskRewardSnapshotSchema } from '@daoyou/game-domain/sects/tasks';
 
 export const SectTaskOfferSnapshotSchema = z
   .object({

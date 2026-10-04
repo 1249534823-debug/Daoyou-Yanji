@@ -2,7 +2,7 @@ import { arenaView } from '@server/combat/arena-view.js';
 import type {
   ArenaRuntime,
   ArenaSocketMessage,
-} from '@daoyou/contracts/combatV6Arena';
+} from '@daoyou/contracts/combat/arena';
 import { ARENA_PUBLIC_VIEW } from '@daoyou/game-domain/combat/arena';
 import { ArenaRoomService } from '@server/arena/application/ArenaRoomService.js';
 import {

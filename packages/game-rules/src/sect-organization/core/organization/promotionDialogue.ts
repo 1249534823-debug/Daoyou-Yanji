@@ -1,5 +1,5 @@
-import { SECT_RANK_LABELS } from '@daoyou/game-domain/sects/organization';
-import type { SectDiscipleRank } from '@daoyou/game-domain/sects/organization';
+import { SECT_RANK_LABELS } from '@daoyou/game-domain/sects';
+import type { SectDiscipleRank } from '@daoyou/game-domain/sects';
 
 export interface SectPromotionDialogueStatus {
   nextRank: SectDiscipleRank | null;

@@ -11,7 +11,7 @@ import type {
   ReputationShopBuyResponse,
   ReputationShopItemView,
   ReputationShopListResponse,
-} from '@daoyou/contracts/reputationShop';
+} from '@daoyou/contracts/shops/reputation';
 import { getGameConceptInfo } from '@daoyou/game-content/presentation/concepts';
 import { useCallback, useEffect, useRef, useState } from 'react';
 

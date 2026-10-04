@@ -1,10 +1,10 @@
 import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from '@daoyou/game-content/combat/training/data/training' with { type: 'json' };
-import schema from '@daoyou/game-content/combat/training/data/training.schema' with { type: 'json' };
-import { TrainingPackShape, compileTrainingContent, loadTrainingPack } from '@daoyou/game-content/combat/training/pack';
-import { COMBAT_V6_TRAINING_CONTENT_V1 } from '@daoyou/game-content/combat/training/content';
+import raw from './data/training.json' with { type: 'json' };
+import schema from './data/training.schema.json' with { type: 'json' };
+import { TrainingPackShape, compileTrainingContent, loadTrainingPack } from './pack.js';
+import { COMBAT_V6_TRAINING_CONTENT_V1 } from './content.js';
 
 describe('训练遭遇配置', () => {
   it('Schema 同步', () => expect(z.toJSONSchema(TrainingPackShape, { reused: 'ref' })).toEqual(schema));

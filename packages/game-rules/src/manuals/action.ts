@@ -1,15 +1,15 @@
-import type { ManualAction } from '@daoyou/game-domain/manuals/action';
+import type {
+  ManualAction,
+  CultivatorManualStateV1,
+  ManualStateChangeResult,
+} from '@daoyou/game-domain/manuals';
 import {
   CHARACTER_MANUALS_V1,
   manualRule,
-} from '@daoyou/game-content/manuals/content';
+} from '@daoyou/game-content/manuals';
 import { changeManual } from './state.js';
-import type {
-  CultivatorManualStateV1,
-  ManualStateChangeResult,
-} from '@daoyou/game-domain/manuals/types';
-import type { InventoryItem } from '@daoyou/game-domain/items/inventory';
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import type { InventoryItem } from '@daoyou/game-domain/inventory';
+import { findItemDefinition } from '@daoyou/game-content/items';
 import type { RealmType } from '@daoyou/constants/realms';
 
 /** Learning costs one jade; successive bottlenecks cost two, then three. */

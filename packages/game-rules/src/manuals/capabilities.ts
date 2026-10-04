@@ -1,8 +1,8 @@
-import type { CombatV6ProjectionDiagnostic } from "@daoyou/game-domain/combat/projection"
+import type { CombatV6ProjectionDiagnostic } from "@daoyou/game-domain/combat"
 import type {
   CombatV6CapabilityContribution,
   ResolveCombatCapabilitiesV1Result,
-} from "@daoyou/game-domain/manuals/types"
+} from "@daoyou/game-domain/manuals"
 
 function error(
   code: "CAPABILITY_POLICY_CONFLICT" | "CAPABILITY_RESOLUTION_CONFLICT",

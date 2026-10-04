@@ -1,5 +1,5 @@
-import { type DivinationDice } from '@daoyou/game-domain/divination/types';
-import { DIVINATION_OMENS } from '@daoyou/game-content/divination/content';
+import { type DivinationDice } from '@daoyou/game-domain/divination';
+import { DIVINATION_OMENS } from '@daoyou/game-content/divination';
 import {
   divinationDayKey,
   divinationRewardFacts,

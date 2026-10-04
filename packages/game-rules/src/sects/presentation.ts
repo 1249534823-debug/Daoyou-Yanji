@@ -1,7 +1,7 @@
 import { combatV6SkillDetails } from '../combat/skill-details.js';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
 import { compileCurrentSectCombatV6 } from './index.js';
-import type { SectCombatProgressV6 } from '@daoyou/game-domain/combat/content';
+import type { SectCombatProgressV6 } from '@daoyou/game-domain/combat';
 
 export function sectSkillCatalog(
   progress: SectCombatProgressV6,

@@ -1,8 +1,8 @@
-import type { WildRuntimeSnapshot } from '@daoyou/game-domain/wild/runtime';
+import type { WildRuntimeSnapshot } from '@daoyou/game-domain/wild';
 
 import { beastAppearance, playerAppearances } from '../unit-appearance.js';
 
-import { BEAST_SKILLS, BEAST_STATUS_DEFS } from '@daoyou/game-content/beasts/content';
+import { BEAST_SKILLS, BEAST_STATUS_DEFS } from '@daoyou/game-content/beasts';
 
 import { projectBeastRoster } from '../../beasts/projection.js';
 
@@ -14,29 +14,29 @@ import { SkillTag, UnitKind } from '@daoyou/combat-core/enums';
 
 import { type LineupUnit } from '@daoyou/combat-core/types';
 
-import { type PveRestoredState } from '@daoyou/game-domain/combat/runtime';
+import {
+  type PveRestoredState,
+  COMBAT_V6_CHARACTER_BUILD_VERSIONS,
+  COMBAT_V6_SEAL_CURVE_WILD_VERSIONS,
+} from '@daoyou/game-domain/combat';
 
 import { CombatV6PveHostSession } from '../encounter/host.js';
 
 import type {
   CombatV6TrainingPlayerInput,
   PveCommandStrategyV1,
-} from '@daoyou/game-domain/combat/encounter';
+} from '@daoyou/game-domain/combat';
 
 import { projectCharacterToCombatV6 } from '../projection/project-character.js';
 
 import { daoyouRulesetV6 } from '../daoyou/index.js';
 
-import {
-  COMBAT_V6_CHARACTER_BUILD_VERSIONS,
-  COMBAT_V6_SEAL_CURVE_WILD_VERSIONS,
-} from '@daoyou/game-domain/combat/versions';
 
-import { type WildIndividual } from '@daoyou/game-domain/wild/individual';
+import { type WildIndividual } from '@daoyou/game-domain/wild';
 
 import { WildIndividualSchema } from './generator.js';
 
-export { type WildCombatant } from '@daoyou/game-domain/wild/individual';
+export { type WildCombatant } from '@daoyou/game-domain/wild';
 
 export { generateWildEncounter } from './generator.js';
 

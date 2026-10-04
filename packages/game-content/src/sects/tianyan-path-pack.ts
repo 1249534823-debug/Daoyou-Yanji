@@ -10,7 +10,7 @@ import {
 } from './tianyan-foundation.js';
 import { tyId, tyModifier } from './tianyan-shapes.js';
 import { TIANYAN_SKILLS } from './tianyan-skill-pack.js';
-import type { SectPathDefV6, SectSkillDefV6 } from '@daoyou/game-domain/combat/content';
+import type { SectPathDefV6, SectSkillDefV6 } from '@daoyou/game-domain/combat';
 export const TianyanPathsShape = z.strictObject({
   $schema: z.string().optional(),
   formatVersion: z.literal(1),

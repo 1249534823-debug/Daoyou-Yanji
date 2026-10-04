@@ -1,4 +1,4 @@
-import { PRODUCTION_SECT_IDS } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
+import { PRODUCTION_SECT_IDS } from '@daoyou/game-rules/sect-organization/production';
 import { CORE_SECT_TASK_RENDERER_PLUGIN } from './core/module';
 import {
   SectTaskRendererRegistry,

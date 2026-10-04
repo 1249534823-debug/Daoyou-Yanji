@@ -13,13 +13,13 @@ import { useTaskList } from '@app/lib/hooks/useTaskList';
 import { useCultivatorProgress } from '@app/lib/resources/player';
 import { useStory } from '@app/lib/story/useStory';
 import { findCurrentMajorBreakthroughTask } from '@app/lib/tasks/taskClient';
-import { getBodyCultivationSummary } from '@daoyou/game-rules/body-cultivation/summary';
-import { getNextMajorRealm } from '@daoyou/game-rules/consumables/breakthrough-pill';
+import { getBodyCultivationSummary } from '@daoyou/game-rules/body-cultivation/progress';
+import { getNextMajorRealm } from '@daoyou/game-rules/consumables/breakthrough';
 import {
   getPillToxicityStage,
   isConditionStatusActive,
+  getConditionStatusTemplate,
 } from '@daoyou/game-rules/condition';
-import { getConditionStatusTemplate } from '@daoyou/game-rules/condition/statuses';
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 
 function calculateYieldHours(lastYieldAt: Date | string | undefined) {

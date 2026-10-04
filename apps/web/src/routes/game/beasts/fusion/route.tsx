@@ -15,13 +15,13 @@ import {
   type BeastFusionRequest,
   type BeastFusionResponse,
   type BeastManagementView,
-} from '@daoyou/contracts/combatV6Beasts';
-import type { SummonedBeast } from '@daoyou/game-domain/beasts/schema';
+} from '@daoyou/contracts/beasts';
+import type { SummonedBeast } from '@daoyou/game-domain/beasts';
 import {
   beastFusionMaterialReason,
   beastFusionReason,
 } from '@daoyou/game-rules/beasts/fusion';
-import { BEAST_FUSION } from '@daoyou/game-content/beasts/fusion-config';
+import { BEAST_FUSION } from '@daoyou/game-content/beasts';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { FusionBeastPanel, FusionIdentityTag } from './FusionBeastPanel';

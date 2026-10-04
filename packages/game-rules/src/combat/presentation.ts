@@ -1,6 +1,8 @@
 import { diffUnits } from './playback.js';
-import type { CombatV6TrainingUnitViewV1 } from '@daoyou/game-domain/combat/display';
-import type { CombatV6PlaybackV1 } from '@daoyou/game-domain/combat/display';
+import type {
+  CombatV6TrainingUnitViewV1,
+  CombatV6PlaybackV1,
+} from '@daoyou/game-domain/combat';
 import type { BattleEvent, BattleState, SkillDef, StatusDef } from '@daoyou/combat-core/types';
 import { effectiveAttrs } from '@daoyou/combat-core/units';
 import { combatV6SkillDetails } from './skill-details.js';

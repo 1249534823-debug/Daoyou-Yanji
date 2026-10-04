@@ -1,10 +1,11 @@
 import type { MapNodeAction } from '@app/components/feature/map/mapActions';
 import { GameIcon } from '@app/components/ui/GameIcon';
-import { ATLAS_REGIONS, hasAtlasMap } from '@daoyou/game-rules/world/mapAtlas';
 import {
+  ATLAS_REGIONS,
+  hasAtlasMap,
   ATLAS_CATEGORY_IDS,
   getAtlasCategory,
-} from '@daoyou/game-rules/world/mapAtlasCategories';
+} from '@daoyou/game-rules/world/atlas';
 import type { WorldMapLocation } from '@daoyou/game-domain/world/map';
 import { useEffect, useRef } from 'react';
 import { AtlasNodePanel } from './AtlasNodePanel';

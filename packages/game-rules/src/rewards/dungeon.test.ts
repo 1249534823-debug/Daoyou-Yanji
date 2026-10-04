@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { getRealmStageLevel } from '@daoyou/game-domain/progression/realms';
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import { getRealmStageLevel } from '@daoyou/game-domain/progression';
+import { findItemDefinition } from '@daoyou/game-content/items';
 import { REALM_VALUES } from '@daoyou/constants/realms';
-import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '@daoyou/game-content/beasts/content';
+import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '@daoyou/game-content/beasts';
 import {
   appendDungeonReward,
   dungeonRewardItemName,
@@ -12,7 +12,7 @@ import {
 import {
   DUNGEON_REWARD_PACK,
   loadDungeonRewardPack,
-} from '@daoyou/game-content/rewards/dungeon-pack';
+} from '@daoyou/game-content/rewards/dungeon';
 
 const originalPack = structuredClone(DUNGEON_REWARD_PACK);
 for (const source of Object.values(originalPack.sources)) {

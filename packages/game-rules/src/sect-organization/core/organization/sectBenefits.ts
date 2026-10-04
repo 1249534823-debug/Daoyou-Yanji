@@ -2,9 +2,9 @@ import type {
   SectBenefitSnapshot,
   SectCraftContextKey,
   SectOrganizationModule,
-} from '@daoyou/game-domain/sects/organization-contracts';
+} from '@daoyou/game-domain/sects/commands';
 import type { SectDiscipleRank } from '../domain/index.js';
-import { SECT_CRAFT_CONTEXTS } from '@daoyou/game-domain/sects/organization-contracts';
+import { SECT_CRAFT_CONTEXTS } from '@daoyou/game-domain/sects/commands';
 
 export type ResolvedSectBenefitSnapshot = SectBenefitSnapshot & {
   archiveLevel: number;

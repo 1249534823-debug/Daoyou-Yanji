@@ -14,7 +14,7 @@ import { InventoryError } from '@server/inventory/operations.js';
 import { PlayerMailCommandError } from '@server/mail/application/PlayerMailApplicationService.js';
 import { PlayerMailServiceError } from '@server/mail/application/PlayerMailService.js';
 import { SendMailSchema, type SendMailRequest } from '@daoyou/contracts/mail';
-import { JournalRequestSchema } from '@daoyou/contracts/playerJournal';
+import { JournalRequestSchema } from '@daoyou/contracts/player/journal';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { apiErrorFilter } from '../http/error-filter.js';

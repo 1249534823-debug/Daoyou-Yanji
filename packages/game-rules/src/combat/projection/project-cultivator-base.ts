@@ -1,15 +1,15 @@
 import { REALM_STAGE_VALUES, REALM_VALUES } from '@daoyou/constants/realms';
-import type { Attributes } from '@daoyou/game-domain/cultivator';
+import type { Attributes } from '@daoyou/game-domain/character';
 import { UnitKind } from '@daoyou/combat-core/enums';
 import { type LineupUnit } from '@daoyou/combat-core/types';
-import { COMBAT_V6_BASE_PROJECTION_VERSIONS } from '@daoyou/game-domain/combat/versions';
-import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
+import { COMBAT_V6_BASE_PROJECTION_VERSIONS } from '@daoyou/game-domain/combat';
+import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression';
 import { compileCharacterPanelV1 } from './character-panel-v1.js';
 import type {
   CombatV6ProjectionDiagnostic,
   CombatV6ProjectionResult,
   ProjectCultivatorBaseInput,
-} from '@daoyou/game-domain/combat/projection';
+} from '@daoyou/game-domain/combat';
 
 const ATTRIBUTE_KEYS = [
   'vitality',

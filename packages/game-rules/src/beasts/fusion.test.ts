@@ -1,10 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 import { generateWildIndividual } from '../combat/wild/generator.js';
-import { BEAST_SKILLS, BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
-import fusionSchema from '@daoyou/game-content/beasts/data/fusion.schema' with { type: 'json' };
+import {
+  BEAST_SKILLS,
+  BEAST_SPECIES,
+  BEAST_FUSION,
+  BeastFusionConfigSchema,
+} from '@daoyou/game-content/beasts';
+import { BEASTS_FUSION_SCHEMA as fusionSchema } from '@daoyou/game-content/authoring/beasts';
 import { beastFusionReason, fuseBeasts, fusionPreview } from './fusion.js';
-import { BEAST_FUSION, BeastFusionConfigSchema } from '@daoyou/game-content/beasts/fusion-config';
 import { generateStarterBeast } from './generator.js';
 import { beastPointBudget } from './identity.js';
 import { gainBeastExp } from './progression.js';

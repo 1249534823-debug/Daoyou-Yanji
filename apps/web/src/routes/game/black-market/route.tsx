@@ -16,7 +16,7 @@ import type {
   BlackMarketOpenResult,
   BlackMarketOverview,
   BlackMarketSessionView,
-} from '@daoyou/game-domain/blackMarket';
+} from '@daoyou/game-domain/black-market';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router';
 import { BlackMarketConversation } from './BlackMarketConversation';

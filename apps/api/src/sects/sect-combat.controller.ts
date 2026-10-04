@@ -14,9 +14,9 @@ import { CombatV6BuildError } from '@server/combat/application/CombatV6BuildServ
 import {
   SectPathSelectionRequestSchema,
   type SectPathSelectionRequest,
-} from '@daoyou/contracts/combatV6';
-import { SectV6ActionSchema } from '@daoyou/game-domain/sects/actions';
-import { SectV6RuleError } from '@daoyou/game-rules/sects/progression';
+} from '@daoyou/contracts/combat';
+import { SectV6ActionSchema } from '@daoyou/game-domain/sects/commands';
+import { SectV6RuleError } from '@daoyou/game-rules/sects';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { CombatErrors } from '../combat/combat-errors.js';

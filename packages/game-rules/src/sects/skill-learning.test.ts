@@ -1,10 +1,14 @@
 import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from '@daoyou/game-content/sects/data/skill-learning' with { type: 'json' };
-import schema from '@daoyou/game-content/sects/data/skill-learning.schema' with { type: 'json' };
-import { SectSkillLearningShape, loadSectSkillLearning, sectSkillLearning } from '@daoyou/game-content/sects/skill-learning';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import {
+  SECTS_SKILL_LEARNING_DATA as raw,
+  SECTS_SKILL_LEARNING_SCHEMA as schema,
+  SectSkillLearningShape,
+  loadSectSkillLearning,
+  sectSkillLearning,
+} from '@daoyou/game-content/authoring/sects';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
 import { compileSectDefinitionV6 } from './compiler.js';
 import { createEmptySectCombatProgressV6, createFreshCombatV6MethodLevels } from './build-state.js';
 

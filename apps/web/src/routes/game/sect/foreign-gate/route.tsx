@@ -5,7 +5,7 @@ import { GameImmersiveLoading } from '@app/components/game-shell';
 import { useSpecialSceneBackAction } from '@app/layouts/special-scene';
 import { formatDocumentTitle } from '@app/lib/router/routeTitle';
 import { getSectPresentation } from '@app/lib/sect/sectPresentation';
-import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
+import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production';
 import { useCallback } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router';
 

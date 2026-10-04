@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
 import { createBattle } from '@daoyou/combat-core/session';
 import { type SkillDef, type StatusDef } from '@daoyou/combat-core/types';
-import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat/encounter';
+import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat';
 import { CombatV6PveHostSession } from './encounter/host.js';
 import { projectCharacterToCombatV6 } from './projection/project-character.js';
 import {
@@ -11,18 +11,18 @@ import {
 } from './ranking/battle.js';
 import { daoyouRulesetV6 } from './daoyou/index.js';
 import { towerReferenceBuild } from '../tower/reference-fixtures.js';
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '@daoyou/game-domain/combat/versions';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '@daoyou/game-domain/combat';
 import { automaticCommands } from './auto.js';
 import { observeAutoBattle } from './auto-observation.js';
-import { AUTO_POLICY_VERSION } from '@daoyou/game-domain/combat/auto-policy';
-import { autoStatusChoices } from '@daoyou/game-content/combat/auto-status-options';
 import {
+  AUTO_POLICY_VERSION,
   AutoStrategySchema,
   MAX_AUTO_STRATEGY_RULES,
   SaveAutoStrategySchema,
   type AutoComparison,
   type AutoStrategy,
-} from '@daoyou/game-domain/combat/auto-strategy';
+} from '@daoyou/game-domain/combat/auto';
+import { autoStatusChoices } from '@daoyou/game-content/combat/auto-status-options';
 import { DEFAULT_AUTO_STRATEGIES } from '@daoyou/game-content/combat/auto-strategies';
 import { rankAutoActions } from './auto-utility.js';
 

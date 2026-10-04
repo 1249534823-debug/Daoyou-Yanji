@@ -7,9 +7,9 @@ import {
   huntLobby,
   joinHuntTeam,
 } from '@server/hunts/application/HuntTeamService.js';
-import type { HuntEventIdSchema } from '@daoyou/game-domain/hunts/event-id';
+import type { HuntEventIdSchema } from '@daoyou/game-domain/hunts';
 import type { HuntCreateTeamSchema, HuntTeamCommand } from '@daoyou/contracts/hunts';
-import { huntEventsAt } from '@daoyou/game-rules/hunts/config';
+import { huntEventsAt } from '@daoyou/game-rules/hunts';
 import type { z } from 'zod';
 
 @Injectable()

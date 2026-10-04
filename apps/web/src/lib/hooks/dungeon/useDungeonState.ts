@@ -1,5 +1,5 @@
 import { apiFetch } from '@app/lib/api/fetch';
-import type { DungeonState } from '@daoyou/game-domain/dungeon/state';
+import type { DungeonState } from '@daoyou/game-domain/dungeon';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 export function useDungeonState(cultivatorId: string | undefined) {

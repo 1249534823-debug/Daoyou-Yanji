@@ -11,7 +11,7 @@ import {
   createDefaultBodyCultivationState,
   normalizeBodyCultivationState,
 } from '../body-cultivation/normalize.js';
-import { PILL_TOXICITY_CAP } from '@daoyou/game-content/consumables/config';
+import { PILL_TOXICITY_CAP } from '@daoyou/game-content/consumables';
 
 export interface PillToxicityStage {
   key: 'none' | 'light' | 'heavy' | 'critical';

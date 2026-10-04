@@ -1,4 +1,4 @@
-import { ALCHEMY_EFFECT_BASE_BY_QUALITY } from '@daoyou/game-content/alchemy/alchemyEffectConfig';
+import { ALCHEMY_EFFECT_BASE_BY_QUALITY } from '@daoyou/game-content/alchemy';
 import { describe, expect, it } from 'vitest';
 import {
   normalizeAlchemyEffectRoute,

@@ -2,8 +2,8 @@ import { REALM_VALUES, type RealmType } from '@daoyou/constants/realms';
 import type {
   ConditionOperation,
   PillSpec,
-} from '@daoyou/game-domain/consumable';
-import type { Consumable } from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/consumables';
+import type { Consumable } from '@daoyou/game-domain/character';
 
 export function getNextMajorRealm(realm: RealmType): RealmType | null {
   const index = REALM_VALUES.indexOf(realm);

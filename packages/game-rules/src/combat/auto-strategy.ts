@@ -1,4 +1,4 @@
-import { type AutoStrategy, type AutoComparison } from '@daoyou/game-domain/combat/auto-strategy';
+import { type AutoStrategy, type AutoComparison } from '@daoyou/game-domain/combat/auto';
 
 
 

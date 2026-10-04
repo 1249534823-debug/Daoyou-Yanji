@@ -1,5 +1,5 @@
 import type { ApiSuccess } from './http.js';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
+import type { Cultivator } from '@daoyou/game-domain/character';
 
 export const CHARACTER_GENERATION_DAILY_LIMIT = 6;
 export const CHARACTER_GENERATION_LIMIT_REACHED_CODE =

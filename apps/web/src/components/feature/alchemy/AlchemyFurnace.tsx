@@ -1,7 +1,7 @@
 import { GameIcon } from '@app/components/ui/GameIcon';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkQuantityInput } from '@app/components/ui/InkQuantityInput';
-import { consumableFactsOf } from '@daoyou/game-domain/items/consumable-facts';
+import { consumableFactsOf } from '@daoyou/game-domain/inventory';
 import { cn } from '@app/lib/cn';
 import { FurnaceGatherEffect } from '../craft/FurnaceGatherEffect';
 import { ItemSlot } from '../items/ItemSlot';

@@ -9,7 +9,7 @@ import {
 } from '@app/lib/resources/definitions';
 import { useResource, useSingletonResource } from '@app/lib/resources/hooks';
 import { startTaskChallengeOnce } from '@app/lib/tasks/taskClient';
-import type { BreakthroughSessionView } from '@daoyou/contracts/combatV6Breakthrough';
+import type { BreakthroughSessionView } from '@daoyou/contracts/combat/breakthrough';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 

@@ -8,10 +8,10 @@ import {
   validateManualStateV1,
   withManualAttributes,
 } from './compiler.js';
-import { MANUAL_PACK } from '@daoyou/game-content/manuals/content';
-import { loadManualPack } from '@daoyou/game-domain/manuals/pack';
+import { MANUAL_PACK } from '@daoyou/game-content/manuals';
+import { loadManualPack } from '@daoyou/game-domain/manuals/authoring';
 import { changeManual } from './state.js';
-import type { CultivatorManualStateV1 } from '@daoyou/game-domain/manuals/types';
+import type { CultivatorManualStateV1 } from '@daoyou/game-domain/manuals';
 
 const id = 'character_manual.changchun';
 const empty = (): CultivatorManualStateV1 => ({

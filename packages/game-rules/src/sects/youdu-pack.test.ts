@@ -1,12 +1,16 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from '@daoyou/game-content/sects/data/youdu-combat' with { type: 'json' };
-import schema from '@daoyou/game-content/sects/data/youdu-combat.schema' with { type: 'json' };
-import { YouduCombatPackShape, loadYouduCombatPack, compileYouduCombatPack } from '@daoyou/game-content/sects/youdu-pack';
+import {
+  SECTS_YOUDU_COMBAT_DATA as raw,
+  SECTS_YOUDU_COMBAT_SCHEMA as schema,
+  YouduCombatPackShape,
+  loadYouduCombatPack,
+  compileYouduCombatPack,
+} from '@daoyou/game-content/authoring/sects';
 import { CommandType } from '@daoyou/combat-core/enums';
 import { createBattle } from '@daoyou/combat-core/session';
 import { createDaoyouRuleset } from '../combat/daoyou/index.js';
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '@daoyou/game-domain/combat/versions';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '@daoyou/game-domain/combat';
 
 function cast(data: unknown, index = 0) {
   const pack = compileYouduCombatPack(loadYouduCombatPack(data));

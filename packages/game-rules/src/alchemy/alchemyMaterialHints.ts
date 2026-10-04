@@ -2,7 +2,7 @@ import type {
   AlchemyMaterialPropertyVector,
   AlchemyPropertyKey,
   WeightedAlchemyProperty,
-} from '@daoyou/game-domain/consumable';
+} from '@daoyou/game-domain/consumables';
 import { normalizeWeightedAlchemyProperties } from './alchemyProperties.js';
 
 interface AlchemyMaterialHintRule {

@@ -1,5 +1,5 @@
 import { GameIcon } from '@app/components/ui/GameIcon';
-import { getAtlasCategory } from '@daoyou/game-rules/world/mapAtlasCategories';
+import { getAtlasCategory } from '@daoyou/game-rules/world/atlas';
 import type { WorldMapLocation } from '@daoyou/game-domain/world/map';
 import { ATLAS_CATEGORY_STYLE } from './atlasMarkerStyle';
 

@@ -1,7 +1,9 @@
-import type { MaterialFacts } from '@daoyou/game-domain/items/material-facts';
-import { materialFactsOf } from '@daoyou/game-domain/items/material';
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
-import type { InventoryItem } from '@daoyou/game-domain/items/inventory';
+import type {
+  MaterialFacts,
+  InventoryItem,
+} from '@daoyou/game-domain/inventory';
+import { materialFactsOf } from '@daoyou/game-domain/inventory';
+import { findItemDefinition } from '@daoyou/game-content/items';
 import { inventoryStackIdentity } from './stack-key.js';
 
 export type AlchemyBagMaterial = MaterialFacts & {

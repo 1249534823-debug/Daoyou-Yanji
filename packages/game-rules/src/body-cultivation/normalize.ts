@@ -4,7 +4,7 @@ import type {
   ConditionProgressTrack,
   CultivatorCondition,
 } from '@daoyou/game-domain/condition';
-import { BODY_CULTIVATION_TRACK_KEYS } from '@daoyou/game-content/body-cultivation/pack';
+import { BODY_CULTIVATION_TRACK_KEYS } from '@daoyou/game-content/body-cultivation';
 import { BODY_REALM_LABELS, LEGACY_TEMPERING_TO_BODY_TRACK, createEmptyProgressTrack } from './config.js';
 
 function normalizeProgressTrack(

@@ -3,20 +3,22 @@ import { CommandType, DamageKind, EffectType, EventType, HookName, SkillTag, Sta
 import { createBattle } from '@daoyou/combat-core/session';
 import { type SkillDef } from '@daoyou/combat-core/types';
 import { createDaoyouRuleset } from '../combat/daoyou/index.js';
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '@daoyou/game-domain/combat/versions';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '@daoyou/game-domain/combat';
 import {
   compileDaoEquipmentSpecialLoadoutV1,
   daoEquipmentRequiredLevel,
 } from './compiler.js';
-import data from '@daoyou/game-content/equipment/data/equipment-special' with { type: 'json' };
+import {
+  EQUIPMENT_EQUIPMENT_SPECIAL_DATA as data,
+  compileEquipmentEssence,
+} from '@daoyou/game-content/authoring/equipment';
 import { generateDaoEquipmentV2 } from './generator.js';
-import { compileEquipmentEssence } from '@daoyou/game-content/equipment/special-compiler';
 import {
   createDaoRageGainPassive,
   DAO_EQUIPMENT_ESSENCES_V1,
-} from '@daoyou/game-content/equipment/special-content';
-import { loadEquipmentSpecialPack } from '@daoyou/game-domain/equipment/special-pack';
-import type { DaoEquipmentSlot } from '@daoyou/game-domain/equipment/types';
+} from '@daoyou/game-content/equipment/special';
+import { loadEquipmentSpecialPack } from '@daoyou/game-domain/equipment/authoring/special';
+import type { DaoEquipmentSlot } from '@daoyou/game-domain/equipment';
 
 const pack = loadEquipmentSpecialPack(data);
 const id = (key: string) => `dao_equipment.essence.${key}`;

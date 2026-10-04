@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { activeBeastSkills } from '../beasts/projection.js';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts';
 import { generateStarterBeast } from '../beasts/generator.js';
-import { DAO_EQUIPMENT_GENERATOR_VERSION_V2 } from '@daoyou/game-domain/equipment/types';
-import { DAO_EQUIPMENT_TEMPLATE_ID } from '@daoyou/game-content/equipment/content';
+import { DAO_EQUIPMENT_GENERATOR_VERSION_V2 } from '@daoyou/game-domain/equipment';
+import { DAO_EQUIPMENT_TEMPLATE_ID } from '@daoyou/game-content/equipment/base';
 import { generateDaoEquipmentV2 } from '../equipment/generator.js';
-import { type InventoryItem } from '@daoyou/game-domain/items/inventory';
-import { BOOKS } from '@daoyou/game-content/items/beast-books';
+import { type InventoryItem } from '@daoyou/game-domain/inventory';
+import { BOOKS } from '@daoyou/game-content/items/beasts';
 import {
   compactStorage,
   InventoryItemSchema,

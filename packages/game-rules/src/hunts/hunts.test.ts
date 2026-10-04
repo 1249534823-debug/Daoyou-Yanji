@@ -1,9 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { type HuntTeam } from '@daoyou/game-domain/hunts/team';
-import { HuntEventIdSchema } from '@daoyou/game-domain/hunts/event-id';
+import { type HuntTeam, HuntEventIdSchema } from '@daoyou/game-domain/hunts';
 import { getAtlasRegion, hasAtlasMap } from '../world/mapAtlas.js';
 import { getWorldMapLocation } from '@daoyou/game-content/world/map';
-import { HUNT_BOSSES } from '@daoyou/game-content/hunts/bosses';
+import { HUNT_BOSSES } from '@daoyou/game-content/hunts';
 import {
   HUNT_CYCLE_MS,
   huntEventById,

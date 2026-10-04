@@ -1,6 +1,6 @@
 import type { SectAdmissionContext, SectDefinition } from '../domain/index.js';
 import { StandardSectOrganizationModule } from '../organization/index.js';
-import type { SectOrganizationTheme } from '@daoyou/game-domain/sects/organization-theme';
+import type { SectOrganizationTheme } from '@daoyou/game-domain/sects';
 import type { SectModule } from './contracts.js';
 import { AllowedRaceAdmissionPolicy } from './policies.js';
 

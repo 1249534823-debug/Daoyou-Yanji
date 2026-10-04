@@ -1,10 +1,14 @@
-import { type TowerFormationId } from '@daoyou/game-domain/tower/formations';
-import { TOWER_FORMATIONS } from '@daoyou/game-content/tower/formations';
+import {
+  type TowerFormationId,
+  type TowerFloorStrategy,
+} from '@daoyou/game-domain/tower';
+import {
+  TOWER_FORMATIONS,
+  TOWER_CATALOG,
+  TOWER_GENERATION as generation,
+} from '@daoyou/game-content/tower';
 import { resolveTowerFloorKind } from './helpers.js';
 import type { TowerWeek } from './weekly.js';
-import { TOWER_CATALOG } from '@daoyou/game-content/tower/catalog';
-import { TOWER_GENERATION as generation } from '@daoyou/game-content/tower/generation';
-import { type TowerFloorStrategy } from '@daoyou/game-domain/tower/strategy';
 import { validateTowerFloorStrategy } from './strategy.js';
 
 function recipe(

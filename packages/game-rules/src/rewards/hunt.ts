@@ -1,17 +1,17 @@
-import { createHuntRewardSnapshotSchema } from '@daoyou/game-domain/hunts/reward';
+import { createHuntRewardSnapshotSchema } from '@daoyou/game-domain/hunts';
 
-import { DropPoolSchema } from '@daoyou/game-domain/drops/pool';
+import { DropPoolSchema } from '@daoyou/game-domain/rewards';
 import { rollDrops } from '../drops/index.js';
 
 import { YieldCalculator } from '../yield/YieldCalculator.js';
 
-import type { HuntEvent } from '@daoyou/game-domain/hunts/event';
+import type { HuntEvent } from '@daoyou/game-domain/hunts';
 
 import { ItemGrantSchema } from '../inventory/index.js';
 
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import { findItemDefinition } from '@daoyou/game-content/items';
 
-import raw from '@daoyou/game-content/rewards/data/hunt' with { type: 'json' };
+import { REWARDS_HUNT_DATA as raw } from '@daoyou/game-content/rewards/hunt';
 
 export const HuntRewardSnapshotSchema =
   createHuntRewardSnapshotSchema(ItemGrantSchema);

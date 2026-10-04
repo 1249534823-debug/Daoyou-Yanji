@@ -1,13 +1,16 @@
 import { describe, expect, it } from 'vitest';
-import { type HuntBossId } from '@daoyou/game-domain/hunts/event';
-import { HUNT_BOSSES } from '@daoyou/game-content/hunts/bosses';
+import { type HuntBossId } from '@daoyou/game-domain/hunts';
+import {
+  HUNT_BOSSES,
+  HUNT_SKILLS,
+  HUNT_STATUSES,
+} from '@daoyou/game-content/hunts';
 import { huntEventsAt } from './config.js';
 import { createBattle, restoreBattle } from '@daoyou/combat-core/session';
 import { type Command, type LineupUnit, type Unit } from '@daoyou/combat-core/types';
 import { presetEnemyAttrs } from '../combat/encounter/preset-enemy.js';
 import { createDaoyouRuleset, daoyouRulesetV6 } from '../combat/daoyou/index.js';
-import { COMBAT_V6_SEAL_CURVE_ARENA_VERSIONS } from '@daoyou/game-domain/combat/versions';
-import { HUNT_SKILLS, HUNT_STATUSES } from '@daoyou/game-content/hunts/combat';
+import { COMBAT_V6_SEAL_CURVE_ARENA_VERSIONS } from '@daoyou/game-domain/combat';
 import { huntEnemies, huntNpcCommand } from './content.js';
 const ruleset = createDaoyouRuleset({
   formulas: {

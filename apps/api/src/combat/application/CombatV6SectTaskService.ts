@@ -6,17 +6,17 @@ import {
   visibleUnitNames,
 } from '@daoyou/game-rules/combat/presentation';
 import { createCombatV6Replay } from '@daoyou/game-rules/combat/replay';
-import { liveReplayDelta } from '@daoyou/game-rules/combat/replay-timeline';
-import { publicUnitAppearances } from '@daoyou/game-rules/combat/unit-appearance';
-import type { CombatV6CommandGroup } from '@daoyou/game-domain/combat/commands';
+import { liveReplayDelta } from '@daoyou/game-rules/combat/playback';
+import { publicUnitAppearances } from '@daoyou/game-rules/combat/appearance';
+import type { CombatV6CommandGroup } from '@daoyou/game-domain/combat';
 import {
   type SectTaskBattleRuntime,
   type SectTaskSessionView,
-} from '@daoyou/contracts/combatV6SectTask';
-import { beastDeathIds } from '@daoyou/game-rules/beasts/progression';
+} from '@daoyou/contracts/combat/sect-tasks';
+import { beastDeathIds } from '@daoyou/game-rules/beasts/growth';
 import { SectBattleHost } from '@daoyou/game-rules/combat/sect/host';
 import { SectTaskRecordPayloadSchema } from '@daoyou/game-rules/sect-organization';
-import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
+import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production';
 import type { CultivatorCondition } from '@daoyou/game-domain/condition';
 import { db } from '@server/lib/drizzle/db.js';
 import {

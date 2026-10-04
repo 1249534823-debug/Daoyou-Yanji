@@ -1,8 +1,8 @@
 import type {
   AttributeAllocationRequest,
   AttributePreviewData,
-} from '@daoyou/contracts/characterAttributes';
-import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character-attribute-labels';
+} from '@daoyou/contracts/character/attributes';
+import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character';
 import { projectCharacterDisplay } from '@daoyou/game-rules/character/display';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';

@@ -4,24 +4,24 @@ import {
   ItemSlot,
 } from '@app/components/feature/items/ItemSlot';
 import { InkButton, InkInput, InkNotice, InkSelect } from '@app/components/ui';
-import { TALISMAN_SCENARIO_OPTIONS } from '@daoyou/game-domain/consumables/talisman-scenarios';
+import { TALISMAN_SCENARIO_OPTIONS } from '@daoyou/game-domain/consumables';
 import {
   rewardDisplayItem,
   RewardItemSchema,
-} from '@daoyou/game-rules/rewards/items';
-import { DAO_EQUIPMENT_TEMPLATES_V1 } from '@daoyou/game-content/equipment/content';
-import { OPEN_EQUIPMENT_LEVELS } from '@daoyou/game-domain/equipment/levels';
-import { equipmentRealm } from '@daoyou/game-rules/equipment/realm';
+  libraryMaterialGrant,
+} from '@daoyou/game-rules/rewards/materials';
+import { DAO_EQUIPMENT_TEMPLATES_V1 } from '@daoyou/game-content/equipment/base';
+import { OPEN_EQUIPMENT_LEVELS } from '@daoyou/game-domain/equipment';
+import { equipmentRealm } from '@daoyou/game-rules/equipment/forging';
 import { DAO_WEAPONS } from '@daoyou/game-content/equipment/weapons';
-import type { ItemGrant } from '@daoyou/game-domain/items/inventory';
+import type { ItemGrant } from '@daoyou/game-domain/inventory';
 import {
   INVENTORY_MATERIAL_TYPES,
   MATERIAL_TYPE_NAMES,
-} from '@daoyou/game-domain/items/material-facts';
-import { libraryMaterialGrant } from '@daoyou/game-rules/rewards/library-material-grant';
-import { ITEM_DEFINITIONS } from '@daoyou/game-content/items/registry';
-import { ALCHEMY_PROPERTY_LABELS } from '@daoyou/game-rules/alchemy/alchemyProperties';
-import type { ItemLibraryEntry } from '@daoyou/game-domain/items/library';
+} from '@daoyou/game-domain/inventory';
+import { ITEM_DEFINITIONS } from '@daoyou/game-content/items';
+import { ALCHEMY_PROPERTY_LABELS } from '@daoyou/game-rules/alchemy';
+import type { ItemLibraryEntry } from '@daoyou/game-domain/items/catalog';
 import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 import { useEffect, useState } from 'react';
 import { AdminDialog } from './AdminDialog';

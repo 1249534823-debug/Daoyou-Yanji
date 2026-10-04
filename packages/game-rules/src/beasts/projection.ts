@@ -7,9 +7,9 @@ import {
   BEAST_SKILL_CONTENT,
   BEAST_SKILL_FAMILIES,
   BEAST_SPECIES,
-} from '@daoyou/game-content/beasts/content';
+} from '@daoyou/game-content/beasts';
 import { beastBaseAttribute } from './identity.js';
-import { BeastLineupSchema, type BeastRoster, type SummonedBeast } from '@daoyou/game-domain/beasts/schema';
+import { BeastLineupSchema, type BeastRoster, type SummonedBeast } from '@daoyou/game-domain/beasts';
 import { BeastSchema } from './schema.js';
 
 export function activeBeastSkills(beast: SummonedBeast) {

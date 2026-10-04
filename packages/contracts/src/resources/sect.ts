@@ -1,8 +1,8 @@
-import type { createSectDeliveryRequirementSchemas } from '@daoyou/game-domain/sects/task-requirements';
+import type { createSectDeliveryRequirementSchemas } from '@daoyou/game-domain/sects/tasks';
 
-import { SectTaskRewardSnapshotSchema } from '@daoyou/game-domain/sects/task-rewards';
+import { SectTaskRewardSnapshotSchema } from '@daoyou/game-domain/sects/tasks';
 
-import type { createInventorySchemas } from '@daoyou/game-domain/items/inventory';
+import type { createInventorySchemas } from '@daoyou/game-domain/inventory';
 
 import { REALM_STAGE_VALUES, REALM_VALUES } from '@daoyou/constants/realms';
 

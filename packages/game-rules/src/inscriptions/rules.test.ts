@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { DAO_FORMATION_INSCRIPTIONS_V1 } from '@daoyou/game-content/equipment/content';
+import { DAO_FORMATION_INSCRIPTIONS_V1 } from '@daoyou/game-content/equipment/base';
 import { generateForgedEquipment } from '../equipment/forging.js';
-import { type InventoryItem } from '@daoyou/game-domain/items/inventory';
+import { type InventoryItem } from '@daoyou/game-domain/inventory';
 import { addItems, InventoryItemSchema } from '../inventory/index.js';
 import { InventoryEquipmentSchema } from '../inventory/equipment.js';
 import { inventoryStackIdentity } from '../inventory/stack-key.js';
@@ -9,7 +9,7 @@ import {
   INSCRIPTION_ITEMS,
   inscriptionItemId,
 } from '@daoyou/game-content/items/inscriptions';
-import type { MaterialFacts } from '@daoyou/game-domain/items/material-facts';
+import type { MaterialFacts } from '@daoyou/game-domain/inventory';
 import {
   inscriptionMaterialTenths,
   inscriptionStrengthenCost,

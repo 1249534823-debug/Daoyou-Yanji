@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { CombatV6DisplayEvent } from '@daoyou/game-domain/combat/display';
+import type { CombatV6DisplayEvent } from '@daoyou/game-domain/combat';
 import {
   appendBattleEntries,
   compactLogLines,

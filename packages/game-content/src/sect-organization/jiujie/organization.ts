@@ -1,4 +1,4 @@
-import type { SectOrganizationTheme } from '@daoyou/game-domain/sects/organization-theme';
+import type { SectOrganizationTheme } from '@daoyou/game-domain/sects';
 export const JIUJIE_ORGANIZATION_THEME: SectOrganizationTheme = {
   elderTrial: {
     name: '九劫宫主·试炼化身',

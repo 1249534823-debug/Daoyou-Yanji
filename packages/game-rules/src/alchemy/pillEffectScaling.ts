@@ -1,11 +1,11 @@
-import { ALCHEMY_EFFECT_BASE_BY_QUALITY } from '@daoyou/game-content/alchemy/alchemyEffectConfig';
+import { ALCHEMY_EFFECT_BASE_BY_QUALITY } from '@daoyou/game-content/alchemy';
 import { getPillAppearanceToxicityMultiplier } from './pillAppearance.js';
 import type { ConditionStatusInstance } from '@daoyou/game-domain/condition';
 import type { Quality } from '@daoyou/constants/qualities';
 import type {
   AddStatusOperation,
   PillAppearanceGrade,
-} from '@daoyou/game-domain/consumable';
+} from '@daoyou/game-domain/consumables';
 
 export const BREAKTHROUGH_FOCUS_STATUS_KEY = 'breakthrough_focus' as const;
 export const PROTECT_MERIDIANS_STATUS_KEY = 'protect_meridians' as const;

@@ -1,5 +1,8 @@
 import type { MapNode } from '@daoyou/game-domain/world/map';
-import { getMapNode } from '@daoyou/game-content/world/map';
+import {
+  getMapNode,
+  WORLD_MAP_DATA as mapData,
+} from '@daoyou/game-content/world/map';
 import {
   MATERIAL_TYPE_VALUES,
   type MaterialType,
@@ -18,7 +21,6 @@ import {
   MARKET_ITEM_COUNT,
   MARKET_REFRESH_MS,
 } from '@daoyou/game-content/market';
-import mapData from '@daoyou/game-content/world/data/map' with { type: 'json' };
 
 export const MARKET_STALE_RETRY_MS = 15000;
 export const MYSTERY_MAPPING_TTL_SEC = 72 * 60 * 60;

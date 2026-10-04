@@ -16,7 +16,7 @@ import { useInventoryBag } from '@app/lib/resources/bag';
 import { useResourceMutation } from '@app/lib/resources/mutations';
 import type { FriendCultivatorSummary } from '@daoyou/contracts/friends';
 import type { InventoryView } from '@daoyou/contracts/inventory';
-import { mailGiftBlockReason } from '@daoyou/game-rules/mail/inventory';
+import { mailGiftBlockReason } from '@daoyou/game-rules/mail';
 import { SendMailSchema } from '@daoyou/contracts/mail';
 import { useRef, useState } from 'react';
 

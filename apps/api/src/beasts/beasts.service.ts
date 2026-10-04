@@ -4,7 +4,7 @@ import type {
   BeastLineupRequestSchema,
   BeastRenameSchema,
   BeastRestSchema,
-} from '@daoyou/contracts/combatV6Beasts';
+} from '@daoyou/contracts/beasts';
 import { Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import type { DbClient } from '@server/lib/drizzle/db.js';

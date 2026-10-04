@@ -1,14 +1,14 @@
 import { connectedMeridianSelection, normalizeMeridianSelection } from './meridian-selection.js';
 import { EffectType } from '@daoyou/combat-core/enums';
 import { type SkillDef, type SkillEffect } from '@daoyou/combat-core/types';
-import type { CombatV6ProjectionDiagnostic } from "@daoyou/game-domain/combat/projection"
 import type {
+  CombatV6ProjectionDiagnostic,
   CompileSectCombatV6Input,
   CompileSectCombatV6Result,
   MeridianNodeDefV6,
   SectSkillDefV6,
   SkillPatchV6,
-} from "@daoyou/game-domain/combat/content"
+} from '@daoyou/game-domain/combat';
 
 const diagnostic = (
   severity: "warning" | "error",

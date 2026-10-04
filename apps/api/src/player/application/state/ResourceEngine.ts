@@ -19,9 +19,9 @@ import type {
   ResourceOperationResult,
   ResourceOperationSettlement,
   ResourceValidationResult,
-} from '@daoyou/game-domain/resources/operations';
+} from '@daoyou/game-domain/resources';
 import { getGameConceptLabel } from '@daoyou/game-content/presentation/concepts';
-import type { Artifact, Consumable, Material } from '@daoyou/game-domain/cultivator';
+import type { Artifact, Consumable, Material } from '@daoyou/game-domain/character';
 import { and, eq, inArray, sql } from 'drizzle-orm';
 
 function createSettlement(): ResourceOperationSettlement {

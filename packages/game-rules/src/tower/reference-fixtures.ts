@@ -1,6 +1,6 @@
-import { getRealmStageLevel } from '@daoyou/game-domain/progression/realms';
+import { getRealmStageLevel } from '@daoyou/game-domain/progression';
 import { getRealmStageNaturalAttributeValue, getRealmStageUnallocatedAttributeBudget } from '../progression/attributes.js';
-import { BODY_CULTIVATION_TRACK_KEYS } from '@daoyou/game-content/body-cultivation/pack';
+import { BODY_CULTIVATION_TRACK_KEYS } from '@daoyou/game-content/body-cultivation';
 import type {
   BodyCultivationRealm,
   BodyCultivationState,
@@ -8,13 +8,15 @@ import type {
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { generateStarterBeast } from '../beasts/generator.js';
 import { allocateBeast, gainBeastExp } from '../beasts/progression.js';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
-import { type CombatV6SectId } from '@daoyou/game-domain/combat/content';
-import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat/encounter';
-import { DAO_EQUIPMENT_GENERATOR_VERSION } from '@daoyou/game-domain/equipment/types';
-import { DAO_EQUIPMENT_TEMPLATES_V1 } from '@daoyou/game-content/equipment/content';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
+import { type CombatV6SectId } from '@daoyou/game-domain/combat';
+import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat';
+import {
+  DAO_EQUIPMENT_GENERATOR_VERSION,
+  OPEN_EQUIPMENT_LEVELS,
+} from '@daoyou/game-domain/equipment';
+import { DAO_EQUIPMENT_TEMPLATES_V1 } from '@daoyou/game-content/equipment/base';
 import { generateDaoEquipmentV1 } from '../equipment/generator.js';
-import { OPEN_EQUIPMENT_LEVELS } from '@daoyou/game-domain/equipment/levels';
 import { equipmentRealm } from '../equipment/realm.js';
 
 // Frozen progression samples; never inferred from the challenger at runtime.

@@ -1,8 +1,10 @@
 import { z } from 'zod';
-import { BAG_CAPACITY } from '@daoyou/game-domain/items/bag';
-import { type InventoryItem } from '@daoyou/game-domain/items/inventory';
-import { INVENTORY_SORT_VALUES } from '@daoyou/game-domain/items/sorting';
-import { INVENTORY_MATERIAL_TYPES } from '@daoyou/game-domain/items/material-facts';
+import {
+  BAG_CAPACITY,
+  type InventoryItem,
+  INVENTORY_SORT_VALUES,
+  INVENTORY_MATERIAL_TYPES,
+} from '@daoyou/game-domain/inventory';
 import { ELEMENT_VALUES } from '@daoyou/constants/elements';
 import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 const ref = {

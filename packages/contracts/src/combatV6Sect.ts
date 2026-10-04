@@ -1,8 +1,8 @@
-import type { SectV6Cost } from '@daoyou/game-domain/sects/actions';
+import type { SectV6Cost } from '@daoyou/game-domain/sects/commands';
 
-import type { SectCombatProgressV6 } from '@daoyou/game-domain/combat/content';
+import type { SectCombatProgressV6 } from '@daoyou/game-domain/combat';
 
-import type { SectCombatView } from '@daoyou/game-domain/sects/build';
+import type { SectCombatView } from '@daoyou/game-domain/sects';
 
 export interface SectV6View {
   build: SectCombatView;

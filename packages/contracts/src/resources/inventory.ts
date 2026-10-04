@@ -14,12 +14,12 @@ import {
   PILL_FAMILY_VALUES,
   PILL_QUOTA_CATEGORY_VALUES,
   TALISMAN_SESSION_MODE_VALUES,
-} from '@daoyou/game-domain/consumable';
+} from '@daoyou/game-domain/consumables';
 import type {
   Artifact,
   Consumable,
   Material,
-} from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/character';
 import { z } from 'zod';
 import { applyResourceChange } from './core.js';
 import type { ResourceChange, ResourceDataMap } from './registry.js';

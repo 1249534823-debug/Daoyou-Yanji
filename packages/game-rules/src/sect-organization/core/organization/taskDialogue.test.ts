@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { StandardSectOrganizationModule } from './StandardSectOrganizationModule.js';
-import { resolveSectTaskExecutionLocationParameters } from '@daoyou/game-domain/sects/organization-contracts';
+import { resolveSectTaskExecutionLocationParameters } from '@daoyou/game-domain/sects/commands';
 import { resolveSectTaskDialogue } from './taskDialogue.js';
 import { createSectTaskOfferSnapshot } from './taskOffer.js';
 

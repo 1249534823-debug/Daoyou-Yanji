@@ -7,26 +7,24 @@ import type { RedisLeaseContext } from '@server/lib/redis/lock.js';
 import { loadPlayerConsumableOperationFacts } from '@server/cultivator/application/readers/CultivatorConditionFactsReader.js';
 import { consumeConsumableById } from '@server/cultivator/application/readers/CultivatorInventoryRepository.js';
 import { replaceSpiritualRoots } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
-import { stripExpCapForStorage } from '@daoyou/game-rules/cultivation/cultivationUtils';
+import { stripExpCapForStorage } from '@daoyou/game-rules/cultivation';
 import {
   ATTRIBUTE_RESET_TALISMAN_NAME,
   ATTRIBUTE_RESET_TALISMAN_SCENARIO,
-} from '@daoyou/game-content/consumables/attributeResetTalisman';
-import { isQiRestoreTalismanScenario } from '@daoyou/game-rules/qi/actions';
-import { QI_RESTORE_TALISMAN_SCENARIOS } from '@daoyou/game-content/qi/config';
-import {
   SECT_MERIDIAN_RESET_TALISMAN_NAME,
   SECT_MERIDIAN_RESET_TALISMAN_SCENARIO,
-} from '@daoyou/game-content/consumables/sectMeridianResetTalisman';
+} from '@daoyou/game-content/consumables';
+import { isQiRestoreTalismanScenario } from '@daoyou/game-rules/qi';
+import { QI_RESTORE_TALISMAN_SCENARIOS } from '@daoyou/game-content/qi/config';
 import {
   isPillConsumable,
   isSpiritFruitConsumable,
   isTalismanConsumable,
-} from '@daoyou/game-domain/consumables/identity';
-import { canUseDungeonRecoveryPill } from '@daoyou/game-rules/dungeon/rest';
+} from '@daoyou/game-domain/consumables';
+import { canUseDungeonRecoveryPill } from '@daoyou/game-rules/dungeon';
 import { getAttributeLabel } from '@daoyou/game-content/presentation/concepts';
-import { getTrackConfig } from '@daoyou/game-rules/condition/tracks';
-import type { Consumable } from '@daoyou/game-domain/cultivator';
+import { getTrackConfig } from '@daoyou/game-rules/condition';
+import type { Consumable } from '@daoyou/game-domain/character';
 import { randomUUID } from 'crypto';
 import { and, eq, ne } from 'drizzle-orm';
 import {

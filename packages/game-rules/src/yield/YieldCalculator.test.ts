@@ -1,4 +1,4 @@
-import { YIELD_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/game-content/rewards/yield-material-quality';
+import { YIELD_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/game-content/rewards/yield';
 import { YieldCalculator } from './YieldCalculator.js';
 import { calculateOfflineExp } from '../cultivation/exp-gain-strategies/index.js';
 

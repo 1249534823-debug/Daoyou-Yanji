@@ -24,15 +24,21 @@ import {
   useCultivatorCurrency,
   useCultivatorIdentity,
 } from '@app/lib/resources/player';
-import { AUCTION_MAX_PURCHASE_QUANTITY, AUCTION_MAX_TRANSACTION_TOTAL } from '@daoyou/game-domain/auction/limits';
-import { calculateAuctionSettlement } from '@daoyou/game-rules/auction/settlement';
-import { getRealmStageLevel } from '@daoyou/game-domain/progression/realms';
-import { AUCTION_ITEM_TYPES, AUCTION_TYPE_NAMES, type AuctionAssetType, type AuctionItemType } from '@daoyou/game-domain/auction/types';
+import {
+  AUCTION_MAX_PURCHASE_QUANTITY,
+  AUCTION_MAX_TRANSACTION_TOTAL,
+  AUCTION_ITEM_TYPES,
+  AUCTION_TYPE_NAMES,
+  type AuctionAssetType,
+  type AuctionItemType,
+} from '@daoyou/game-domain/auction';
+import { calculateAuctionSettlement } from '@daoyou/game-rules/auction';
+import { getRealmStageLevel } from '@daoyou/game-domain/progression';
 import { type AuctionListingView } from '@daoyou/contracts/auction';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts';
 import { canDeployBeast } from '@daoyou/game-rules/beasts/projection';
-import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment/slot-names';
-import { MATERIAL_TYPE_NAMES } from '@daoyou/game-domain/items/material-facts';
+import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment';
+import { MATERIAL_TYPE_NAMES } from '@daoyou/game-domain/inventory';
 import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router';

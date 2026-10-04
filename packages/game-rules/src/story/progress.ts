@@ -2,7 +2,7 @@ import { getStoryChapter } from '@daoyou/game-content/story/catalog';
 import {
   StoryProgressSchema,
   type StoryProgress,
-} from '@daoyou/game-domain/story/schema';
+} from '@daoyou/game-domain/story';
 
 export function openingStoryProgress(): StoryProgress {
   const chapter = getStoryChapter();

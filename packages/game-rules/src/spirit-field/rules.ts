@@ -14,7 +14,7 @@ import {
   type SpiritFieldPlotRuntimeStatus,
   type SpiritFieldPlotState,
   type SpiritFieldStageAffinity,
-} from '@daoyou/game-domain/spirit-field/types';
+} from '@daoyou/game-domain/spirit-field';
 
 export function deterministicUnit(seed: string): number {
   let hash = 2166136261;

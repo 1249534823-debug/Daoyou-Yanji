@@ -12,9 +12,9 @@ import type {
   PillAlchemyMeta,
   PillAppearanceGrade,
   PillSpec,
-} from '@daoyou/game-domain/consumable';
-import type { Consumable } from '@daoyou/game-domain/cultivator';
-import { PILL_APPEARANCE_EFFECT_MULTIPLIER } from '@daoyou/game-content/alchemy/alchemyEssenceConfig';
+} from '@daoyou/game-domain/consumables';
+import type { Consumable } from '@daoyou/game-domain/character';
+import { PILL_APPEARANCE_EFFECT_MULTIPLIER } from '@daoyou/game-content/alchemy';
 
 export const PILL_QUALITY_BASE_SCORE: Record<Quality, number> = {
   凡品: 58,

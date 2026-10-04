@@ -18,9 +18,9 @@ import {
   useSectCombatState,
 } from '@app/lib/resources/player';
 import { resolveMapReturnHref } from '@app/lib/router/mapNavigation';
-import type { WildEncounterView } from '@daoyou/game-domain/wild/encounter';
-import type { WildRegionView, WildSessionView } from '@daoyou/contracts/combatV6Wild';
-import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
+import type { WildEncounterView } from '@daoyou/game-domain/wild';
+import type { WildRegionView, WildSessionView } from '@daoyou/contracts/combat/wild';
+import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression';
 import { itemDefinition } from '@daoyou/game-rules/inventory';
 import { InventoryEquipmentSchema } from '@daoyou/game-rules/inventory/equipment';
 import { REALM_ORDER } from '@daoyou/constants/realms';

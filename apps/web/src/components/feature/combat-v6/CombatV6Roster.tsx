@@ -1,8 +1,8 @@
 import { BeastPortrait } from '@app/components/feature/beasts/BeastPortrait';
-import type { CombatV6UnitAppearance } from '@daoyou/game-domain/combat/display';
-import { DAO_RAGE_RESOURCE_ID } from '@daoyou/game-domain/equipment/special-ids';
+import type { CombatV6UnitAppearance } from '@daoyou/game-domain/combat';
+import { DAO_RAGE_RESOURCE_ID } from '@daoyou/game-domain/equipment';
 import { memo, useMemo, type CSSProperties } from 'react';
-import type { frameFeedback } from '@daoyou/game-rules/combat/battle-log';
+import type { frameFeedback } from '@daoyou/game-rules/combat/log';
 import type { CombatV6Unit } from './session';
 
 type UnitProps = {

@@ -5,7 +5,7 @@ import {
   currentGuideStep,
   restoreGuideState,
 } from './interpreter.js';
-import { parseGuideLesson } from '@daoyou/game-domain/guide/schema';
+import { parseGuideLesson } from '@daoyou/game-domain/guide';
 
 const lesson = parseGuideLesson({
   id: 'sample',

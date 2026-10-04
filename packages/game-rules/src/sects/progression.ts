@@ -1,10 +1,10 @@
 import { canSelectMeridianNode, normalizeMeridianSelection } from './meridian-selection.js';
-import { getLevelRealmStage } from '@daoyou/game-domain/progression/realms';
+import { getLevelRealmStage } from '@daoyou/game-domain/progression';
 import { SECT_PROGRESSION, configuredMethodCost, configuredMeridianCost, methodLevelCap } from './progression-pack.js';
-import type { SectV6Action, SectV6Cost } from '@daoyou/game-domain/sects/actions';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import type { SectV6Action, SectV6Cost } from '@daoyou/game-domain/sects/commands';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
 import { compileCurrentSectCombatV6 } from './index.js';
-import type { CombatV6SectId, SectCombatProgressV6 } from '@daoyou/game-domain/combat/content';
+import type { CombatV6SectId, SectCombatProgressV6 } from '@daoyou/game-domain/combat';
 
 export class SectV6RuleError extends Error {}
 export { methodLevelCap } from './progression-pack.js';

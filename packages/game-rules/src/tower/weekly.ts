@@ -1,17 +1,21 @@
-import type { TowerEnemyPreview } from '@daoyou/game-domain/tower/preview';
-import generation from '@daoyou/game-content/tower/data/generation' with { type: 'json' };
+import type {
+  TowerEnemyPreview,
+  TowerSeasonMeta,
+} from '@daoyou/game-domain/tower';
+import {
+  TOWER_GENERATION_DATA as generation,
+  allowedTowerFormations,
+} from '@daoyou/game-content/tower';
 
 import { towerStrategyPreview } from './strategy.js';
 
 import { expandTowerFloor } from './strategy-templates.js';
 
-import { type TowerKeyFormation } from '@daoyou/game-domain/tower/formations';
+import { type TowerKeyFormation } from '@daoyou/game-domain/tower';
 
-import { allowedTowerFormations } from '@daoyou/game-content/tower/formations';
 
 import { hashTowerSeed } from './helpers.js';
 
-import type { TowerSeasonMeta } from '@daoyou/game-domain/tower/state';
 
 export const TOWER_CONTENT_VERSION = 'combat-v6-tower-v8' as const;
 

@@ -1,7 +1,7 @@
 import type {
   DivinationDirection,
   DivinationOmen,
-} from '@daoyou/game-domain/divination/types';
+} from '@daoyou/game-domain/divination';
 
 export const DIVINATION_DIRECTIONS = [
   {

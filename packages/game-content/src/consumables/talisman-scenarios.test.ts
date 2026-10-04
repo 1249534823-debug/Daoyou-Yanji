@@ -7,7 +7,7 @@ import {
 import {
   TALISMAN_SCENARIO_OPTIONS,
   isTalismanScenario,
-} from '@daoyou/game-domain/consumables/talisman-scenarios';
+} from '@daoyou/game-domain/consumables';
 
 describe('talisman scenarios', () => {
   it('provides unique keywords with labels', () => {

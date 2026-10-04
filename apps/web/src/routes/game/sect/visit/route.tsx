@@ -6,7 +6,7 @@ import { usePlayerSession } from '@app/lib/resources/player';
 import { resolveMapReturnHref } from '@app/lib/router/mapNavigation';
 import { formatDocumentTitle } from '@app/lib/router/routeTitle';
 import { getSectPresentation } from '@app/lib/sect/sectPresentation';
-import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
+import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production';
 import { getSectLandmarkBySectId } from '@daoyou/game-content/world/map';
 import { useCallback } from 'react';
 import { Navigate, useLocation, useNavigate, useParams } from 'react-router';

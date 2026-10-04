@@ -1,6 +1,9 @@
-import { BEAST_SPECIES, BEAST_SPECIES_REVISION } from '@daoyou/game-content/beasts/content';
-import { BEAST_REFINEMENT } from '@daoyou/game-content/beasts/refinement-config';
-import { BEAST_VERSION, type SummonedBeast } from '@daoyou/game-domain/beasts/schema';
+import {
+  BEAST_SPECIES,
+  BEAST_SPECIES_REVISION,
+  BEAST_REFINEMENT,
+} from '@daoyou/game-content/beasts';
+import { BEAST_VERSION, type SummonedBeast } from '@daoyou/game-domain/beasts';
 import { GeneratedBeastSchema } from './schema.js';
 import { rollBeastTraits } from './trait-generator.js';
 

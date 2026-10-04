@@ -1,5 +1,5 @@
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
-import { type CombatV6SectId } from '@daoyou/game-domain/combat/content';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
+import { type CombatV6SectId } from '@daoyou/game-domain/combat';
 import {
   createSectCombatView,
   createEmptySectCombatProgressV6,

@@ -1,4 +1,4 @@
-import { SystemMailInputSchema } from '@daoyou/game-rules/mail/campaign';
+import { SystemMailInputSchema } from '@daoyou/game-rules/mail';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import type { DbClient } from '@server/lib/drizzle/db.js';

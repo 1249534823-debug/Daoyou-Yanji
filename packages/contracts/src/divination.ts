@@ -3,7 +3,7 @@ import {
   type DivinationDice,
   type DivinationDirection,
   type DivinationOmen,
-} from '@daoyou/game-domain/divination/types';
+} from '@daoyou/game-domain/divination';
 import { z } from 'zod';
 import type { PlayerResourceMutationMeta } from './player.js';
 

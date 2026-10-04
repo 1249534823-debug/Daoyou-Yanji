@@ -1,5 +1,9 @@
-import type { CombatV6DisplayEvent } from '@daoyou/game-domain/combat/display';
-import type { CombatV6TrainingUnitViewV1, SequencedCombatV6Event, CombatV6DisplayCatalog } from '@daoyou/game-domain/combat/display';
+import type {
+  CombatV6DisplayEvent,
+  CombatV6TrainingUnitViewV1,
+  SequencedCombatV6Event,
+  CombatV6DisplayCatalog,
+} from '@daoyou/game-domain/combat';
 type CombatV6Unit = CombatV6TrainingUnitViewV1;
 type SequencedEvent = SequencedCombatV6Event;
 type LogSession = {

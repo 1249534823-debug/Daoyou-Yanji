@@ -3,7 +3,7 @@ import { CommandType, EffectType, EventType, SkillTag, StatusCategory, TargetSid
 import { createBattle } from '@daoyou/combat-core/session';
 import { type SkillDef, type StatusDef } from '@daoyou/combat-core/types';
 import { createDaoyouRuleset } from '../combat/daoyou/index.js';
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '@daoyou/game-domain/combat/versions';
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '@daoyou/game-domain/combat';
 import { compileDaoEquipmentSpecialLoadoutV1 } from './compiler.js';
 import { generateDaoEquipmentV2 } from './generator.js';
 import {
@@ -11,8 +11,8 @@ import {
   DAO_EQUIPMENT_ESSENCES_V1,
   DAO_RAGE_RESOURCE_ID,
   createDaoRageGainPassive,
-} from '@daoyou/game-content/equipment/special-content';
-import type { DaoEquipmentArtDefV1, DaoEquipmentSlot } from '@daoyou/game-domain/equipment/types';
+} from '@daoyou/game-content/equipment/special';
+import type { DaoEquipmentArtDefV1, DaoEquipmentSlot } from '@daoyou/game-domain/equipment';
 
 const ruleset = createDaoyouRuleset({
   formulas: {

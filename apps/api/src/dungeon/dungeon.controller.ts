@@ -10,7 +10,7 @@ import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   DungeonActionRequestSchema,
   DungeonFlowRequestSchema,
-} from '@daoyou/contracts/combatV6Dungeon';
+} from '@daoyou/contracts/combat/dungeon';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { FirstQuery } from '../http/first-query.js';

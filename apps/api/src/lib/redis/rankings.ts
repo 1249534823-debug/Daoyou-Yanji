@@ -5,8 +5,8 @@ import {
   rankingDay,
 } from '@daoyou/game-rules/rankings/ranking';
 import { SECT_DISCIPLE_RANKS, SECT_RANK_LABELS } from '@daoyou/game-rules/sect-organization';
-import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
-import { getBodyCultivationRankingTag } from '@daoyou/game-rules/body-cultivation/ranking';
+import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production';
+import { getBodyCultivationRankingTag } from '@daoyou/game-rules/body-cultivation/progress';
 import type { CultivatorCondition } from '@daoyou/game-domain/condition';
 import { REALM_VALUES, type RealmType } from '@daoyou/constants/realms';
 import type { BattleRankingItem } from '@daoyou/contracts/rankings';

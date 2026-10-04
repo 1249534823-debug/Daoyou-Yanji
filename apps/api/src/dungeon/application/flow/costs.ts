@@ -1,7 +1,9 @@
-import type { DungeonMaterialSelection } from '@daoyou/game-domain/dungeon/actions';
-import type { ResourceOperation } from '@daoyou/game-domain/resources/operations';
-import { consumeDungeonMaterials } from '@daoyou/game-rules/dungeon/materialCosts';
-import type { DungeonOptionCost } from '@daoyou/game-domain/dungeon/state';
+import type {
+  DungeonMaterialSelection,
+  DungeonOptionCost,
+} from '@daoyou/game-domain/dungeon';
+import type { ResourceOperation } from '@daoyou/game-domain/resources';
+import { consumeDungeonMaterials } from '@daoyou/game-rules/dungeon';
 import { and, eq } from 'drizzle-orm';
 import {
   getExecutor,

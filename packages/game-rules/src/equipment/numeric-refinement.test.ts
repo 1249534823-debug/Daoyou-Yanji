@@ -1,16 +1,19 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { forgingInputs } from '../forging/rules.js';
 import { InventoryEquipmentSchema } from '../inventory/equipment.js';
-import type { MaterialFacts } from '@daoyou/game-domain/items/material-facts';
+import type { MaterialFacts } from '@daoyou/game-domain/inventory';
 import { SeededRng } from '@daoyou/combat-core/rng';
 import { compileDaoEquipmentSpecialLoadoutV1 } from './compiler.js';
 import { daoEquipmentAttributeRange, daoEquipmentBaseRange } from './ranges.js';
-import { daoEquipmentTemplateOf } from '@daoyou/game-content/equipment/content';
+import { daoEquipmentTemplateOf } from '@daoyou/game-content/equipment/base';
 import { generateForgedEquipment } from './forging.js';
 import { generateDaoEquipmentV2 } from './generator.js';
-import { OPEN_EQUIPMENT_LEVELS } from '@daoyou/game-domain/equipment/levels';
+import {
+  OPEN_EQUIPMENT_LEVELS,
+  DAO_EQUIPMENT_SLOTS,
+  type DaoEquipmentSlot,
+} from '@daoyou/game-domain/equipment';
 import { equipmentReferenceLevel } from './realm.js';
-import { DAO_EQUIPMENT_SLOTS, type DaoEquipmentSlot } from '@daoyou/game-domain/equipment/types';
 
 const input = (slot: DaoEquipmentSlot = 'weapon', equipmentLevel = 90) => ({
   id: slot, createdAt: '2026-09-12', seed: 123,

@@ -1,13 +1,16 @@
-import { type PublishedTowerWeek } from '@daoyou/game-domain/tower/published';
-import { publishTowerWeek, validatePublishedTowerWeek } from '@daoyou/game-rules/tower/published';
-import { TOWER_STRATEGY_VERSION } from '@daoyou/game-domain/tower/strategy';
 import {
+  type PublishedTowerWeek,
+  TOWER_STRATEGY_VERSION,
+} from '@daoyou/game-domain/tower';
+import {
+  publishTowerWeek,
+  validatePublishedTowerWeek,
   advanceTowerRewardWeek,
   TowerClaimsSchema,
   type TowerRewardState,
-} from '@daoyou/game-rules/tower/reward-state';
-import { getTowerSeasonMeta } from '@daoyou/game-rules/tower/season';
-import type { TowerSeasonMeta } from '@daoyou/game-domain/tower/state';
+  getTowerSeasonMeta,
+} from '@daoyou/game-rules/tower';
+import type { TowerSeasonMeta } from '@daoyou/game-domain/tower';
 import { and, desc, eq, gte, lt, ne } from 'drizzle-orm';
 import { createHash } from 'node:crypto';
 import { db, type DbExecutor, type DbTransaction } from '../drizzle/db.js';

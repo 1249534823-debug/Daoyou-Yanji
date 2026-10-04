@@ -5,7 +5,7 @@ import { SkillTag, TargetSide } from '@daoyou/combat-core/enums';
 import { validateSectExpressions } from './authoring-expressions.js';
 import raw from './data/wuxiang-paths.json' with { type: 'json' };
 import { sectSkillLearning } from './skill-learning.js';
-import type { SectPathDefV6, SectSkillDefV6 } from '@daoyou/game-domain/combat/content';
+import type { SectPathDefV6, SectSkillDefV6 } from '@daoyou/game-domain/combat';
 import { WUXIANG_COMBAT, validateWuxiangReferences } from './wuxiang-pack.js';
 import { wxHook, wxId, wxModifier } from './wuxiang-shapes.js';
 

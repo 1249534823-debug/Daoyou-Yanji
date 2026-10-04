@@ -1,9 +1,9 @@
-import { COMBAT_V6_TRAINING_API_VERSION } from '@daoyou/contracts/combatV6';
+import { COMBAT_V6_TRAINING_API_VERSION } from '@daoyou/contracts/combat';
 import {
   ARENA_V6_PROTOCOL,
   type ArenaRuntime,
   type ArenaSessionView,
-} from '@daoyou/contracts/combatV6Arena';
+} from '@daoyou/contracts/combat/arena';
 import {
   arenaView as projectArenaView,
   resolveArena as resolveArenaRound,

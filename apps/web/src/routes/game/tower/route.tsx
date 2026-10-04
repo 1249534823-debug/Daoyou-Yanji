@@ -6,12 +6,14 @@ import { GameSceneFrame } from '@app/components/game-shell';
 import { GameIcon } from '@app/components/ui/GameIcon';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkTooltip } from '@app/components/ui/InkTooltip';
-import type { TowerView } from '@daoyou/contracts/combatV6Tower';
-import type { TowerBlessingId } from '@daoyou/game-domain/tower/blessings';
-import { getTowerBlessingDefinition } from '@daoyou/game-content/tower/blessings';
-import { TOWER_MIN_REALM } from '@daoyou/game-rules/tower/helpers';
-import type { TowerLeaderboardEntry } from '@daoyou/game-domain/tower/state';
-import type { TowerEnemyPreview } from '@daoyou/game-domain/tower/preview';
+import type { TowerView } from '@daoyou/contracts/combat/tower';
+import type {
+  TowerBlessingId,
+  TowerLeaderboardEntry,
+  TowerEnemyPreview,
+} from '@daoyou/game-domain/tower';
+import { getTowerBlessingDefinition } from '@daoyou/game-content/tower';
+import { TOWER_MIN_REALM } from '@daoyou/game-rules/tower';
 import type { RealmType } from '@daoyou/constants/realms';
 import { useEffect, useRef, useState } from 'react';
 import { Navigate } from 'react-router';

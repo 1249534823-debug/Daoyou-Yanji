@@ -1,4 +1,4 @@
-import { LINGXIAO_ORGANIZATION_THEME } from '@daoyou/game-content/sect-organization/lingxiao/organization';
+import { LINGXIAO_ORGANIZATION_THEME } from '@daoyou/game-content/sect-organization/lingxiao';
 import { StandardSectOrganizationModule } from '../../../core/index.js';
 
 

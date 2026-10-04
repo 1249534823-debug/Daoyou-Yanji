@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ITEM_DEFINITIONS } from '@daoyou/game-content/items/registry';
+import { ITEM_DEFINITIONS } from '@daoyou/game-content/items';
 import { mailGiftBlockReason } from './inventory.js';
 
 describe('mail gifts', () => {

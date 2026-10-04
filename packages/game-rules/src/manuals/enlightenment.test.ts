@@ -1,8 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { CHARACTER_MANUALS_V1 } from '@daoyou/game-content/manuals/content';
-import { type InventoryItem } from '@daoyou/game-domain/items/inventory';
+import {
+  CHARACTER_MANUALS_V1,
+  ENLIGHTENMENT_QUALITIES,
+} from '@daoyou/game-content/manuals';
+import { type InventoryItem } from '@daoyou/game-domain/inventory';
 import { inventoryStackIdentity } from '../inventory/stack-key.js';
-import { ENLIGHTENMENT_QUALITIES } from '@daoyou/game-content/manuals/enlightenment';
 import {
   enlightenmentDistribution,
   enlightenmentMaterialProblem,

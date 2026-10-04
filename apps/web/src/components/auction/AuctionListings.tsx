@@ -6,7 +6,7 @@ import {
 } from '@app/components/feature/items/ItemSlot';
 import { InkModal } from '@app/components/layout';
 import { InkButton } from '@app/components/ui';
-import type { AuctionAssetType } from '@daoyou/game-domain/auction/types';
+import type { AuctionAssetType } from '@daoyou/game-domain/auction';
 import type { AuctionListingView } from '@daoyou/contracts/auction';
 import { useState, type ReactNode } from 'react';
 

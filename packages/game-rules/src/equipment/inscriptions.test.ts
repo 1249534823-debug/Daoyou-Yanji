@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { InventoryEquipmentSchema } from '../inventory/equipment.js';
 import { compileDaoEquipmentSpecialLoadoutV1 } from './compiler.js';
-import { DAO_FORMATION_INSCRIPTIONS_V1 } from '@daoyou/game-content/equipment/content';
+import { DAO_FORMATION_INSCRIPTIONS_V1 } from '@daoyou/game-content/equipment/base';
 import { generateForgedEquipment } from './forging.js';
-import { DAO_EQUIPMENT_SLOTS, type DaoEquipmentInstanceV1, type DaoEquipmentSlot } from '@daoyou/game-domain/equipment/types';
+import { DAO_EQUIPMENT_SLOTS, type DaoEquipmentInstanceV1, type DaoEquipmentSlot } from '@daoyou/game-domain/equipment';
 
 function equipment(slot: DaoEquipmentSlot, equipmentLevel = 90): DaoEquipmentInstanceV1 {
   const result = generateForgedEquipment({

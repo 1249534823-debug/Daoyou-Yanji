@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { AUCTION_MAX_UNIT_PRICE } from '@daoyou/game-domain/auction/limits';
+import { AUCTION_MAX_UNIT_PRICE } from '@daoyou/game-domain/auction';
 import { buildSpiritFruitSpec } from '../spirit-field/spiritFruit.js';
-import { ITEM_DEFINITIONS } from '@daoyou/game-content/items/registry';
+import { ITEM_DEFINITIONS } from '@daoyou/game-content/items';
 import {
   auctionBlockReason,
   auctionItemPriceCap,

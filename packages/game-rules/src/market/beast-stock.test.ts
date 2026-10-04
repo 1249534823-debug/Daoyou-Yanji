@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '@daoyou/game-content/beasts/content';
+import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '@daoyou/game-content/beasts';
 import { sampleBeastMarketStock } from './beast-stock.js';
 import {
   BEAST_MARKET_PACK,

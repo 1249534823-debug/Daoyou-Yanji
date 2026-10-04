@@ -7,19 +7,21 @@ import type {
   InscriptionMaterialRef,
   InscriptionCost,
   InscriptionDrawPreview,
-} from '@daoyou/game-domain/inscriptions/types';
-import { MAX_CRAFT_MATERIAL_QUANTITY } from '@daoyou/game-domain/items/quantity';
+} from '@daoyou/game-domain/inscriptions';
+import {
+  MAX_CRAFT_MATERIAL_QUANTITY,
+  InventoryRuleError,
+  type InventoryItem,
+  type ItemGrant,
+  MaterialFactsSchema,
+  type MaterialFacts,
+} from '@daoyou/game-domain/inventory';
 
-import { DAO_FORMATION_INSCRIPTIONS_V1 } from '@daoyou/game-content/equipment/content';
+import { DAO_FORMATION_INSCRIPTIONS_V1 } from '@daoyou/game-content/equipment/base';
 
 import { daoFormationMaxLevel } from '../equipment/inscriptions.js';
 
-import { InventoryRuleError } from '@daoyou/game-domain/items/bag';
 
-import {
-  type InventoryItem,
-  type ItemGrant,
-} from '@daoyou/game-domain/items/inventory';
 
 import { itemDefinition } from '../inventory/index.js';
 
@@ -30,10 +32,6 @@ import {
   inscriptionItemId,
 } from '@daoyou/game-content/items/inscriptions';
 
-import {
-  MaterialFactsSchema,
-  type MaterialFacts,
-} from '@daoyou/game-domain/items/material-facts';
 
 export function inscriptionMaterialTenths(facts: MaterialFacts): number {
   if (!(facts.type in TYPE_TENTHS))

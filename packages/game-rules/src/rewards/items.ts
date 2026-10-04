@@ -1,12 +1,12 @@
-import type { RewardDisplayItem } from '@daoyou/game-domain/rewards/display';
-import { createRewardSchemas, type RewardSelection } from '@daoyou/game-domain/rewards/selection';
+import type { RewardDisplayItem } from '@daoyou/game-domain/rewards';
+import { createRewardSchemas, type RewardSelection } from '@daoyou/game-domain/rewards';
 export const { RewardItemSchema, RewardSelectionsSchema } = createRewardSchemas({ ItemGrantSchema, InventoryItemSchema, InventoryEquipmentSchema, findItemDefinition });
 
 
 
 
 
-import { type ItemGrant } from '@daoyou/game-domain/items/inventory';
+import { type ItemGrant } from '@daoyou/game-domain/inventory';
 
 
 import { InventoryItemSchema, ItemGrantSchema } from '../inventory/index.js';
@@ -15,10 +15,10 @@ import { InventoryItemSchema, ItemGrantSchema } from '../inventory/index.js';
 import { InventoryEquipmentSchema } from '../inventory/equipment.js';
 
 
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import { findItemDefinition } from '@daoyou/game-content/items';
 
 
-import type { MailAttachment } from '@daoyou/game-domain/mail/attachment';
+import type { MailAttachment } from '@daoyou/game-domain/mail';
 
 
 export function rewardItemName(grant: ItemGrant): string {

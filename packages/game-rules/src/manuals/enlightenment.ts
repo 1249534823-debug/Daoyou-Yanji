@@ -3,27 +3,29 @@ import {
   ENLIGHTENMENT_REALMS,
   insightCosts,
   supports,
-} from '@daoyou/game-content/manuals/enlightenment';
+  CHARACTER_MANUALS_V1,
+} from '@daoyou/game-content/manuals';
 import type {
   EnlightenmentRef,
   EnlightenmentPreview,
-} from '@daoyou/game-domain/manuals/enlightenment';
-import { CHARACTER_MANUALS_V1 } from '@daoyou/game-content/manuals/content';
+} from '@daoyou/game-domain/manuals';
 
 import {
   BASE_PRICES,
   TYPE_MULTIPLIERS,
-} from '@daoyou/game-content/materials/config';
+} from '@daoyou/game-content/materials';
 
-import { InventoryRuleError } from '@daoyou/game-domain/items/bag';
+import {
+  InventoryRuleError,
+  type InventoryItem,
+  MaterialFactsSchema,
+} from '@daoyou/game-domain/inventory';
 
-import { type InventoryItem } from '@daoyou/game-domain/items/inventory';
 
 import { emptySlot } from '../inventory/index.js';
 
 import { inventoryStackIdentity } from '../inventory/stack-key.js';
 
-import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
 
 import { REALM_VALUES, type RealmType } from '@daoyou/constants/realms';
 

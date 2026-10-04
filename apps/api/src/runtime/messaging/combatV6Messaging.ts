@@ -1,7 +1,7 @@
-import { parseCombatV6Replay, type CombatV6ReplayV1 } from '@daoyou/game-domain/combat/replay-archive';
-import { COMBAT_V6_REPLAY_STREAM, COMBAT_V6_REPLAY_SUBJECT, CombatV6ReplayArchiveMessageV1Schema, type CombatV6ReplayArchiveMessageV1 } from '@daoyou/contracts/combatV6Runtime';
+import { parseCombatV6Replay, type CombatV6ReplayV1 } from '@daoyou/game-domain/combat/replay';
+import { COMBAT_V6_REPLAY_STREAM, COMBAT_V6_REPLAY_SUBJECT, CombatV6ReplayArchiveMessageV1Schema, type CombatV6ReplayArchiveMessageV1 } from '@daoyou/contracts/combat/runtime';
 import { parseDomainEventEnvelope } from '@server/lib/mq/domainEventSchema.js';
-import { DOMAIN_EVENT_STREAM } from '@daoyou/contracts/domainEvents';
+import { DOMAIN_EVENT_STREAM } from '@daoyou/contracts/events';
 import {
   startArenaV6Coordinator,
   stopArenaV6Coordinator,

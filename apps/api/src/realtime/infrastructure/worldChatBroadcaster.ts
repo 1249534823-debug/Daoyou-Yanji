@@ -6,7 +6,7 @@ import {
   createPubSubEnvelope,
   parsePubSubEnvelope,
 } from '@server/realtime/infrastructure/pubSubEnvelope.js';
-import type { WorldChatMessageDTO } from '@daoyou/contracts/world-chat-messages';
+import type { WorldChatMessageDTO } from '@daoyou/contracts/world-chat';
 
 type Listener = (message: WorldChatMessageDTO) => void;
 

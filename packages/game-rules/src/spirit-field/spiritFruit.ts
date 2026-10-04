@@ -1,11 +1,11 @@
-import { BEAST_CULTIVATION_BASE_BY_QUALITY } from '@daoyou/game-content/beasts/cultivation';
-import { ALCHEMY_EFFECT_BASE_BY_QUALITY } from '@daoyou/game-content/alchemy/alchemyEffectConfig';
+import { BEAST_CULTIVATION_BASE_BY_QUALITY } from '@daoyou/game-content/beasts';
+import { ALCHEMY_EFFECT_BASE_BY_QUALITY } from '@daoyou/game-content/alchemy';
 import { buildBreakthroughFocusOperation } from '../alchemy/pillEffectScaling.js';
 import type {
   ConditionOperation,
   PillFamily,
   SpiritFruitSpec,
-} from '@daoyou/game-domain/consumable';
+} from '@daoyou/game-domain/consumables';
 import type { Quality } from '@daoyou/constants/qualities';
 
 const lower = (value: number) => Math.max(1, Math.floor(value * 0.8));

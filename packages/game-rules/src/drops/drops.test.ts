@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DropPoolSchema } from '@daoyou/game-domain/drops/pool';
+import { DropPoolSchema } from '@daoyou/game-domain/rewards';
 import { rollDrops } from './index.js';
 const pool = DropPoolSchema.parse({
   id: 'any-business',

@@ -1,5 +1,5 @@
 import { InkButton, InkDetailDrawer } from '@app/components/ui';
-import type { AlchemyMode } from '@daoyou/game-domain/consumable';
+import type { AlchemyMode } from '@daoyou/game-domain/consumables';
 import { useRef, useState } from 'react';
 import { AlchemyBag } from '../AlchemyBag';
 import { AlchemyFurnace } from '../AlchemyFurnace';

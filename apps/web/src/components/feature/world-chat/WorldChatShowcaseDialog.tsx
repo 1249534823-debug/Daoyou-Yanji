@@ -8,9 +8,9 @@ import { InkModal } from '@app/components/layout';
 import { InkButton, InkInput, InkNotice } from '@app/components/ui';
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
 import { useInventoryBag } from '@app/lib/resources/bag';
-import type { BeastManagementView } from '@daoyou/contracts/combatV6Beasts';
+import type { BeastManagementView } from '@daoyou/contracts/beasts';
 import type { InventoryView } from '@daoyou/contracts/inventory';
-import type { SummonedBeast } from '@daoyou/game-domain/beasts/schema';
+import type { SummonedBeast } from '@daoyou/game-domain/beasts';
 import { useEffect, useRef, useState } from 'react';
 import type { SendWorldChatShowcaseInput } from './worldChatFeedContext';
 

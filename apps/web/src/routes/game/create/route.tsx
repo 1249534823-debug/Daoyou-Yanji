@@ -38,7 +38,7 @@ import {
   getGameConceptIcon,
   getResourceLabel,
 } from '@daoyou/game-content/presentation/concepts';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
+import type { Cultivator } from '@daoyou/game-domain/character';
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router';
 

@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { generateForgedEquipment } from '../equipment/forging.js';
 import { buildSpiritFruitSpec } from '../spirit-field/spiritFruit.js';
-import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
+import { ConsumableFactsSchema } from '@daoyou/game-domain/inventory';
 import { libraryMaterialGrant } from './library-material-grant.js';
-import { ITEM_DEFINITIONS } from '@daoyou/game-content/items/registry';
+import { ITEM_DEFINITIONS } from '@daoyou/game-content/items';
 import { resolveAlchemyEffects } from '../alchemy/alchemyEffectResolver.js';
 import { MailAttachmentsSchema } from '../mail/attachments.js';
-import { ItemLibraryEntrySchema } from '@daoyou/game-domain/items/library';
+import { ItemLibraryEntrySchema } from '@daoyou/game-domain/items/catalog';
 import {
   RewardItemSchema,
   RewardSelectionsSchema,

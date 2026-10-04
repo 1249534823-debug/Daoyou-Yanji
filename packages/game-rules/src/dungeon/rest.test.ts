@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { Consumable } from '@daoyou/game-domain/cultivator';
+import type { Consumable } from '@daoyou/game-domain/character';
 import { canUseDungeonRecoveryPill, isDungeonRecoveryPill } from './rest.js';
 
 const pill: Consumable = {

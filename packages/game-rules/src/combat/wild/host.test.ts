@@ -1,18 +1,18 @@
 import type { CultivatorCondition } from '@daoyou/game-domain/condition';
 import { describe, expect, it } from 'vitest';
-import { wildEncounterView } from '@daoyou/game-domain/wild/encounter';
+import { wildEncounterView } from '@daoyou/game-domain/wild';
 import {
   WildEncounterSchema,
   WildRuntimeSchema,
   WildSettlementSchema,
 } from './state-schema.js';
 import { WILD_DROP_POOLS } from '../../rewards/wild.js';
-import { BEAST_SKILLS } from '@daoyou/game-content/beasts/content';
+import { BEAST_SKILLS } from '@daoyou/game-content/beasts';
 import { activeBeastSkills, beastPanel } from '../../beasts/projection.js';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects';
 import { SkillTag } from '@daoyou/combat-core/enums';
-import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat/encounter';
-import { WILD_REGIONS } from '@daoyou/game-content/combat/wild/content';
+import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat';
+import { WILD_REGIONS } from '@daoyou/game-content/combat/wild';
 import { generateWildEncounter, generateWildIndividual } from './generator.js';
 import { createWildHost, WildHost } from './host.js';
 

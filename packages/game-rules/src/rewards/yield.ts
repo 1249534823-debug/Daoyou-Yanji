@@ -1,15 +1,15 @@
 import { z } from 'zod';
-import { getRealmStageLevel } from '@daoyou/game-domain/progression/realms';
-import { type DropPool } from '@daoyou/game-domain/drops/pool';
+import { getRealmStageLevel } from '@daoyou/game-domain/progression';
+import { type DropPool } from '@daoyou/game-domain/rewards';
 import { rollDrops } from '../drops/index.js';
-import { OPEN_EQUIPMENT_LEVELS } from '@daoyou/game-domain/equipment/levels';
+import { OPEN_EQUIPMENT_LEVELS } from '@daoyou/game-domain/equipment';
 import { equipmentRealm } from '../equipment/realm.js';
 import { YieldCalculator } from '../yield/YieldCalculator.js';
-import type { ItemGrant } from '@daoyou/game-domain/items/inventory';
-import { BLUEPRINTS } from '@daoyou/game-content/items/equipment-blueprints';
-import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import type { ItemGrant } from '@daoyou/game-domain/inventory';
+import { BLUEPRINTS } from '@daoyou/game-content/items/equipment';
+import { findItemDefinition } from '@daoyou/game-content/items';
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
-import raw from '@daoyou/game-content/rewards/data/yield' with { type: 'json' };
+import { REWARDS_YIELD_DATA as raw } from '@daoyou/game-content/rewards/yield';
 
 const weight = z.number().finite().positive().max(1000000);
 export const YieldRewardPackSchema = z

@@ -1,6 +1,8 @@
-import type { CompiledTowerEncounter } from '@daoyou/game-domain/tower/encounter';
-import type { TowerSeasonMeta } from '@daoyou/game-domain/tower/state';
-import type { TowerEnemyPreview } from '@daoyou/game-domain/tower/preview';
+import type {
+  CompiledTowerEncounter,
+  TowerSeasonMeta,
+  TowerEnemyPreview,
+} from '@daoyou/game-domain/tower';
 import type { RealmType } from '@daoyou/constants/realms';
 
 export interface AdminTowerWeekSummary {

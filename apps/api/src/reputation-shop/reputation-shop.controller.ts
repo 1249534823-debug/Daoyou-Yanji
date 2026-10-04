@@ -14,7 +14,7 @@ import { ReputationShopError } from '@server/reputation-shop/application/Reputat
 import {
   ReputationShopBuyBodySchema,
   ReputationShopBuyParamsSchema,
-} from '@daoyou/contracts/reputationShop';
+} from '@daoyou/contracts/shops/reputation';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { apiErrorFilter } from '../http/error-filter.js';

@@ -7,7 +7,7 @@ import {
   watchedArenaV6,
 } from '@server/combat/application/CombatV6ArenaService.js';
 import { arenaView } from '@server/combat/arena-view.js';
-import type { ArenaV6Submit } from '@daoyou/contracts/combatV6Arena';
+import type { ArenaV6Submit } from '@daoyou/contracts/combat/arena';
 
 @Injectable()
 export class ArenaBattlesService {

@@ -1,6 +1,6 @@
 import { RoomView, type RoomActorView } from '@app/components/feature/room';
 import { GameSceneFrame, GameSceneLoading } from '@app/components/game-shell';
-import type { AlchemyMode } from '@daoyou/game-domain/consumable';
+import type { AlchemyMode } from '@daoyou/game-domain/consumables';
 import { useCallback, useEffect, useLayoutEffect } from 'react';
 import { useBlocker, useSearchParams } from 'react-router';
 import { useAlchemyCraftSession } from './alchemyCraftContext';

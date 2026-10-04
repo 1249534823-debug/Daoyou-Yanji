@@ -10,19 +10,19 @@ import {
   journalOperationKey,
 } from '@server/lib/repositories/playerJournalRepository.js';
 import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
-import { getOrInitCultivationProgress } from '@daoyou/game-rules/cultivation/cultivationUtils';
+import { getOrInitCultivationProgress } from '@daoyou/game-rules/cultivation';
 import type { HuntBattleReward } from '@daoyou/contracts/hunts';
 import type { JournalChange } from '@daoyou/game-domain/journal/changes';
-import { HUNT_BOSSES } from '@daoyou/game-content/hunts/bosses';
+import { HUNT_BOSSES } from '@daoyou/game-content/hunts';
 import {
   huntParticipantSucceeded,
   settleHuntResources,
-} from '@daoyou/game-rules/hunts/settlement';
+} from '@daoyou/game-rules/hunts';
 import { dungeonRewardItemName } from '@daoyou/game-rules/rewards/dungeon';
 import { HuntRewardSnapshotSchema } from '@daoyou/game-rules/rewards/hunt';
 import type { CultivatorCondition } from '@daoyou/game-domain/condition';
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
-import type { CultivationProgress } from '@daoyou/game-domain/cultivator';
+import type { CultivationProgress } from '@daoyou/game-domain/character';
 import { and, eq } from 'drizzle-orm';
 import { z } from 'zod';
 import { ArenaV6Error, ownedArenaV6 } from '@server/combat/application/CombatV6ArenaService.js';

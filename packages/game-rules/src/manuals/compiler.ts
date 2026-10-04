@@ -2,19 +2,19 @@ import { REALM_VALUES, type RealmType } from '@daoyou/constants/realms';
 import type {
   CombatV6ProjectionDiagnostic,
   CultivatorBaseCombatInput,
-} from '@daoyou/game-domain/combat/projection';
+} from '@daoyou/game-domain/combat';
 import { DaoyouRule } from '@daoyou/game-content/combat/tuning';
 import { manualAttributeValue } from './attributes.js';
-import { CHARACTER_MANUALS_V1, manualRule } from '@daoyou/game-content/manuals/content';
+import { CHARACTER_MANUALS_V1, manualRule } from '@daoyou/game-content/manuals';
 import { compileManualSkill, manualMechanismValue } from './mechanism.js';
-import { MANUAL_REALMS } from '@daoyou/game-domain/manuals/pack';
+import { MANUAL_REALMS } from '@daoyou/game-domain/manuals/authoring';
 import type {
   CharacterManualDefV1,
   CharacterManualProjectionV1,
   CompileCharacterManualsV1Result,
   CultivatorManualStateV1,
   ManualSlotV1,
-} from '@daoyou/game-domain/manuals/types';
+} from '@daoyou/game-domain/manuals';
 
 export const MAX_MANUALS_PER_SLOT = 6;
 

@@ -1,8 +1,8 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';
-import data from '@daoyou/game-content/equipment/data/equipment-base' with { type: 'json' };
-import editorSchema from '@daoyou/game-content/equipment/data/equipment-base.schema' with { type: 'json' };
-import { EquipmentBasePackShape, loadEquipmentBasePack } from '@daoyou/game-domain/equipment/pack';
+import data from '@daoyou/game-content/authoring/equipment/base' with { type: 'json' };
+import { EQUIPMENT_EQUIPMENT_BASE_SCHEMA as editorSchema } from '@daoyou/game-content/authoring/equipment';
+import { EquipmentBasePackShape, loadEquipmentBasePack } from '@daoyou/game-domain/equipment/authoring/base';
 
 describe('equipment base data pack', () => {
   it('loads the shipped pack and keeps editor schema aligned', () => {
@@ -148,7 +148,7 @@ describe('equipment base data pack', () => {
 });
 
 afterEach(() => {
-  vi.doUnmock('@daoyou/game-content/equipment/data/equipment-base');
+  vi.doUnmock('@daoyou/game-content/authoring/equipment/base');
   vi.resetModules();
 });
 
@@ -161,7 +161,7 @@ it('feeds changed JSON into generation, forging and instance validation', async 
     ranges: changed.templates[0].baseStats[0].ranges.map((r) => ({ ...r, normal: [170, 170], enhanced: [170, 170] })),
   };
   vi.resetModules();
-  vi.doMock('@daoyou/game-content/equipment/data/equipment-base', () => ({ default: changed }));
+  vi.doMock('@daoyou/game-content/authoring/equipment/base', () => ({ default: changed }));
   const { generateDaoEquipmentV2, daoEquipmentGenerationRulesV1 } =
     await import('./generator.js');
   const { generateForgedEquipment } = await import('./forging.js');

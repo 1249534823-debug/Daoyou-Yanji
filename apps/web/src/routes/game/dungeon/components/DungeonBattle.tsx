@@ -5,8 +5,8 @@ import { InkButton } from '@app/components/ui/InkButton';
 import { apiFetch } from '@app/lib/api/fetch';
 import type { BattleCallbackData } from '@app/lib/hooks/dungeon/types';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
-import type { DungeonSessionView } from '@daoyou/contracts/combatV6Dungeon';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
+import type { DungeonSessionView } from '@daoyou/contracts/combat/dungeon';
+import type { Cultivator } from '@daoyou/game-domain/character';
 
 export function DungeonBattle({
   battleId,

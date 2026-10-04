@@ -4,10 +4,12 @@ import { z } from 'zod';
 import {
   TowerBlessingsPackShape,
   loadTowerBlessingsPack,
-} from '@daoyou/game-content/tower/blessing-pack';
-import { compileTowerBlessingDefinitions } from '@daoyou/game-content/tower/blessings';
-import raw from '@daoyou/game-content/tower/data/blessings' with { type: 'json' };
-import schema from '@daoyou/game-content/tower/data/blessings.schema' with { type: 'json' };
+  compileTowerBlessingDefinitions,
+} from '@daoyou/game-content/tower';
+import {
+  TOWER_BLESSINGS_DATA as raw,
+  TOWER_BLESSINGS_SCHEMA as schema,
+} from '@daoyou/game-content/authoring/tower';
 
 const player = {
   cultivator: {

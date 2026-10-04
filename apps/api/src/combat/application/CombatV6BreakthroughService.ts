@@ -1,4 +1,4 @@
-import { publicUnitAppearances } from '@daoyou/game-rules/combat/unit-appearance';
+import { publicUnitAppearances } from '@daoyou/game-rules/combat/appearance';
 import { db, type DbTransaction } from '@server/lib/drizzle/db.js';
 import { cultivators, cultivatorTasks } from '@server/lib/drizzle/schema.js';
 import { dungeonPlayer } from '@server/dungeon/combat-player.js';
@@ -19,17 +19,17 @@ import {
   visibleUnitNames,
 } from '@daoyou/game-rules/combat/presentation';
 import { createCombatV6Replay } from '@daoyou/game-rules/combat/replay';
-import { liveReplayDelta } from '@daoyou/game-rules/combat/replay-timeline';
-import type { CombatV6CommandGroup } from '@daoyou/game-domain/combat/commands';
-import { BreakthroughBattlePointerSchema } from '@daoyou/game-domain/tasks/breakthrough-pointer';
-import { type BreakthroughRuntime, type BreakthroughSessionView } from '@daoyou/contracts/combatV6Breakthrough';
-import { beastDeathIds } from '@daoyou/game-rules/beasts/progression';
-import { type BreakthroughChallengeId } from '@daoyou/game-domain/combat/breakthrough';
+import { liveReplayDelta } from '@daoyou/game-rules/combat/playback';
+import type { CombatV6CommandGroup } from '@daoyou/game-domain/combat';
+import { BreakthroughBattlePointerSchema } from '@daoyou/game-domain/tasks';
+import { type BreakthroughRuntime, type BreakthroughSessionView } from '@daoyou/contracts/combat/breakthrough';
+import { beastDeathIds } from '@daoyou/game-rules/beasts/growth';
+import { type BreakthroughChallengeId } from '@daoyou/game-domain/combat/challenges';
 import { BREAKTHROUGH_CHALLENGES } from '@daoyou/game-content/combat/breakthrough';
 import { BreakthroughHost, createBreakthroughHost } from '@daoyou/game-rules/combat/breakthrough/host';
 import { hasActiveConditionStatus } from '@daoyou/game-rules/condition';
 import type { CultivatorCondition } from '@daoyou/game-domain/condition';
-import type { TaskInstanceMetadata } from '@daoyou/game-domain/tasks/types';
+import type { TaskInstanceMetadata } from '@daoyou/game-domain/tasks';
 import { eq } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
 import { ConditionService } from '@server/cultivator/application/ConditionService.js';

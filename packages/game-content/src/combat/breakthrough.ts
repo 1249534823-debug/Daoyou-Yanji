@@ -1,4 +1,4 @@
-import type { BreakthroughChallengeId } from '@daoyou/game-domain/combat/breakthrough';
+import type { BreakthroughChallengeId } from '@daoyou/game-domain/combat/challenges';
 
 
 

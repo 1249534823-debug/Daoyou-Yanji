@@ -1,12 +1,12 @@
 import { InkButton } from '@app/components/ui/InkButton';
-import type { CombatV6TrainingCommandV1 } from '@daoyou/game-domain/combat/commands';
-import type { ArenaSessionView } from '@daoyou/contracts/combatV6Arena';
-import { CAPTURE_SKILL_ID } from '@daoyou/game-rules/beasts/progression';
+import type { CombatV6TrainingCommandV1 } from '@daoyou/game-domain/combat';
+import type { ArenaSessionView } from '@daoyou/contracts/combat/arena';
+import { CAPTURE_SKILL_ID } from '@daoyou/game-rules/beasts/growth';
 import { useState, type ReactNode } from 'react';
 import { CombatV6PetChoice } from './CombatV6PetChoice';
 import { CombatV6SkillChoice } from './CombatV6SkillChoice';
 import { CombatV6Status } from './CombatV6Status';
-import { reasonText } from '@daoyou/game-rules/combat/battle-log';
+import { reasonText } from '@daoyou/game-rules/combat/log';
 import { skillNeedsTarget } from './presentation';
 import type { CombatV6Session } from './session';
 export type Choice = {

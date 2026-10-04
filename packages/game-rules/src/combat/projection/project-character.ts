@@ -1,7 +1,7 @@
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from "@daoyou/game-domain/combat/versions"
+import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from "@daoyou/game-domain/combat"
 import { projectCharacterEquipment } from "./project-character-equipment.js"
 import { composeCharacterManuals } from "./compose-character-manuals.js"
-import type { CharacterCombatInput, CombatV6ProjectionResult } from "@daoyou/game-domain/combat/projection"
+import type { CharacterCombatInput, CombatV6ProjectionResult } from "@daoyou/game-domain/combat"
 
 /** 当前人物完整构筑入口。个人功法、道装和炼体不依赖宗门身份。 */
 export function projectCharacterToCombatV6(input: CharacterCombatInput, includeEffectiveAttributes = false): CombatV6ProjectionResult {

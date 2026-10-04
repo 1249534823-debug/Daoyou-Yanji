@@ -1,10 +1,10 @@
-import type { DungeonEndDisposition } from '@daoyou/game-domain/dungeon/settlement';
+import type { DungeonEndDisposition } from '@daoyou/game-domain/dungeon';
 import { getRealmStageNaturalAttributeValue } from '@daoyou/game-rules/progression/attributes';
 import type {
   ResourceOperation,
   ResourceOperationResult,
   ResourceOperationSettlement,
-} from '@daoyou/game-domain/resources/operations';
+} from '@daoyou/game-domain/resources';
 import { DUNGEON_LIFESPAN_COST_MAX } from '@daoyou/game-content/dungeon/cost';
 import { getMapNode, isSatelliteNode } from '@daoyou/game-content/world/map';
 import { canChallengeDungeonRealm, resolveDungeonMapConfig } from '@daoyou/game-rules/world/dungeon';
@@ -14,7 +14,7 @@ import {
 } from '@daoyou/game-rules/rewards/dungeon';
 import type { CultivatorCondition } from '@daoyou/game-domain/condition';
 import { REALM_STAGE_VALUES, REALM_VALUES, RealmType, type RealmStage } from '@daoyou/constants/realms';
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
+import type { Cultivator } from '@daoyou/game-domain/character';
 import { assertCombatV6MutationAllowed } from '@server/combat/mutation-policy.js';
 import { ConditionService } from '@server/cultivator/application/ConditionService.js';
 import { QiService } from '@server/cultivator/application/QiService.js';
@@ -96,7 +96,7 @@ type DungeonSettlementOptions = {
 };
 
 type DungeonFlowOptions = {
-  materialSelections?: import('@daoyou/game-domain/dungeon/actions').DungeonMaterialSelection[];
+  materialSelections?: import('@daoyou/game-domain/dungeon').DungeonMaterialSelection[];
   deferPersistence?: boolean;
   lease?: RedisLeaseContext;
 };

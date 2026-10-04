@@ -8,13 +8,13 @@ import {
   updateCultivationExp,
   updateSpiritStones,
 } from '@server/cultivator/application/readers/CultivatorStateRepository.js';
-import { getOrInitCultivationProgress } from '@daoyou/game-rules/cultivation/cultivationUtils';
-import { MailInventoryGrantSchema } from '@daoyou/game-rules/mail/inventory';
+import { getOrInitCultivationProgress } from '@daoyou/game-rules/cultivation';
+import { MailInventoryGrantSchema } from '@daoyou/game-rules/mail';
 import type { GeneratedMaterial } from '@daoyou/game-domain/materials/generation';
-import { YieldCalculator } from '@daoyou/game-rules/yield/YieldCalculator';
+import { YieldCalculator } from '@daoyou/game-rules/yield';
 import { planYieldRewards } from '@daoyou/game-rules/rewards/yield';
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
-import type { CultivationProgress } from '@daoyou/game-domain/cultivator';
+import type { CultivationProgress } from '@daoyou/game-domain/character';
 import { and, eq } from 'drizzle-orm';
 import { getExecutor } from '@server/lib/drizzle/db.js';
 import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';

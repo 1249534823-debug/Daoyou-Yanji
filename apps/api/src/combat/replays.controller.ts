@@ -12,8 +12,8 @@ import {
   type PipeTransform,
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
-import { CombatV6ReplayParamsSchema } from '@daoyou/contracts/combatV6';
-import { CombatV6HistoryQuerySchema } from '@daoyou/contracts/combatV6Replay';
+import { CombatV6ReplayParamsSchema } from '@daoyou/contracts/combat';
+import { CombatV6HistoryQuerySchema } from '@daoyou/contracts/combat/replays';
 import type { Response } from 'express';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';

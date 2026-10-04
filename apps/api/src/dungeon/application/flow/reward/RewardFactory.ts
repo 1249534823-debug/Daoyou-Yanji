@@ -10,17 +10,17 @@
  * - 材料生成简化，使用 AI 提供的元素和类型信息
  */
 
-import type { ResourceOperation } from '@daoyou/game-domain/resources/operations';
-import { YieldCalculator } from '@daoyou/game-rules/yield/YieldCalculator';
-import { calculateDungeonExp } from '@daoyou/game-rules/cultivation/exp-gain-strategies';
-import { type DungeonDifficultyTier } from '@daoyou/game-domain/dungeon/difficulty';
+import type { ResourceOperation } from '@daoyou/game-domain/resources';
+import { YieldCalculator } from '@daoyou/game-rules/yield';
+import { calculateDungeonExp } from '@daoyou/game-rules/cultivation';
+import { type DungeonDifficultyTier } from '@daoyou/game-domain/dungeon';
 import { getDungeonRewardBonus } from '@daoyou/game-rules/world/dungeon';
 import type { ElementType } from '@daoyou/constants/elements';
 import type { MaterialType } from '@daoyou/game-domain/inventory';
 import type { Quality } from '@daoyou/constants/qualities';
 import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { QUALITY_VALUES } from '@daoyou/constants/qualities';
-import type { Material } from '@daoyou/game-domain/cultivator';
+import type { Material } from '@daoyou/game-domain/character';
 import type { PlayerInfo } from '@server/dungeon/application/flow/types.js';
 import {
   REALM_QUALITY_CAP,

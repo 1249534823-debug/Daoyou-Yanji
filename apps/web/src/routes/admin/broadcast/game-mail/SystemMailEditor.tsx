@@ -1,7 +1,10 @@
 import { InkButton, InkInput, InkSelect } from '@app/components/ui';
-import { type MailRealm } from '@daoyou/game-domain/mail/audience';
-import { type SystemMailCampaign, type SystemMailInput } from '@daoyou/game-domain/mail/campaign';
-import { SystemMailInputSchema, formatMailTime, systemMailConditionSummary } from '@daoyou/game-rules/mail/campaign';
+import {
+  type MailRealm,
+  type SystemMailCampaign,
+  type SystemMailInput,
+} from '@daoyou/game-domain/mail';
+import { SystemMailInputSchema, formatMailTime, systemMailConditionSummary } from '@daoyou/game-rules/mail';
 import { SPONSORSHIP_TIER_IDS, SPONSORSHIP_TIER_META, type SponsorshipTierId } from '@daoyou/game-domain/sponsorship';
 import { REALM_STAGE_VALUES, REALM_VALUES } from '@daoyou/constants/realms';
 import { useRef, useState } from 'react';

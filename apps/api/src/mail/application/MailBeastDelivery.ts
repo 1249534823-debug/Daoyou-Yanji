@@ -6,8 +6,8 @@ import {
   planBeastMailClaims,
   receiveTradedBeast,
 } from '@daoyou/game-rules/beasts/trade';
-import { BEAST_CAPACITY } from '@daoyou/game-rules/beasts/progression';
-import type { MailAttachment } from '@daoyou/game-domain/mail/attachment';
+import { BEAST_CAPACITY } from '@daoyou/game-rules/beasts/growth';
+import type { MailAttachment } from '@daoyou/game-domain/mail';
 import { count, eq } from 'drizzle-orm';
 import {
   assertBeastIdle,

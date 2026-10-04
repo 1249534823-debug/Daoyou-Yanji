@@ -32,14 +32,18 @@ import type {
 import type {
   DaoEquipmentInstanceV1,
   DaoEquipmentSlot,
-} from '@daoyou/game-domain/equipment/types';
-import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
-import { BAG_CAPACITY } from '@daoyou/game-domain/items/bag';
-import { itemDefinition } from '@daoyou/game-rules/inventory';
-import { type InventorySort } from '@daoyou/game-domain/items/sorting';
-import { sortInventoryItems } from '@daoyou/game-rules/inventory/sorting';
-import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
-import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment/slot-names';
+} from '@daoyou/game-domain/equipment';
+import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression';
+import {
+  BAG_CAPACITY,
+  type InventorySort,
+  ConsumableFactsSchema,
+} from '@daoyou/game-domain/inventory';
+import {
+  itemDefinition,
+  sortInventoryItems,
+} from '@daoyou/game-rules/inventory';
+import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router';
 import { EquipmentAction, EquipmentRack } from './EquipmentRack';

@@ -2,17 +2,17 @@ import { forgedName } from '../forging/names.js';
 import { ELEMENT_VALUES } from '@daoyou/constants/elements';
 import { SeededRng } from '@daoyou/combat-core/rng';
 import { daoEquipmentAttributeRange, daoEquipmentBaseRange } from './ranges.js';
-import { daoEquipmentTemplateOf } from '@daoyou/game-content/equipment/content';
+import { daoEquipmentTemplateOf } from '@daoyou/game-content/equipment/base';
 import {
   daoEquipmentGenerationRulesV2,
   generateDaoEquipmentV2,
 } from './generator.js';
-import { DAO_EQUIPMENT_FORGING, equipmentEssencePool } from '@daoyou/game-content/equipment/forging-content';
+import { DAO_EQUIPMENT_FORGING, equipmentEssencePool } from '@daoyou/game-content/equipment/forging';
 import type {
   DaoEquipmentGenerationResult,
   GenerateDaoEquipmentV2Input,
-} from '@daoyou/game-domain/equipment/types';
-import { equipmentWeaponTypeProblem, type DaoWeaponType } from '@daoyou/game-domain/equipment/weapons';
+} from '@daoyou/game-domain/equipment';
+import { equipmentWeaponTypeProblem, type DaoWeaponType } from '@daoyou/game-domain/equipment';
 
 export type ForgingBoosts = {
   ore: number;

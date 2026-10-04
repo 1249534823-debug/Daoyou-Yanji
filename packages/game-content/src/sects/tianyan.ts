@@ -2,7 +2,7 @@ import { SECT_METHODS } from './method-pack.js';
 import { TIANYAN_STATUSES } from './tianyan-foundation.js';
 import { TIANYAN_PATHS } from './tianyan-path-pack.js';
 import { TIANYAN_SKILLS } from './tianyan-skill-pack.js';
-import type { SectDefinitionV6 } from '@daoyou/game-domain/combat/content';
+import type { SectDefinitionV6 } from '@daoyou/game-domain/combat';
 export { TIANYAN_REACTIONS_V1 } from './tianyan-foundation.js';
 export type {
   TianyanElementV1,

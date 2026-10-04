@@ -16,16 +16,19 @@ import {
   readBeastRoster,
 } from '@server/lib/repositories/combatV6BeastRepository.js';
 import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
-import { beastTradePreview } from '@daoyou/game-domain/beasts/trade-preview';
+import {
+  beastTradePreview,
+  BeastLineupSchema,
+  type BeastLineup,
+} from '@daoyou/game-domain/beasts';
 import {
   BeastNameSchema,
   type BeastFusionRequest,
   type BeastFusionResponse,
-} from '@daoyou/contracts/combatV6Beasts';
-import { BEAST_STARTER_SPECIES } from '@daoyou/game-content/beasts/content';
-import { BeastLineupSchema, type BeastLineup } from '@daoyou/game-domain/beasts/schema';
+} from '@daoyou/contracts/beasts';
+import { BEAST_STARTER_SPECIES } from '@daoyou/game-content/beasts';
 import { canDeployBeast } from '@daoyou/game-rules/beasts/projection';
-import { generateStarterBeast } from '@daoyou/game-rules/beasts/generator';
+import { generateStarterBeast } from '@daoyou/game-rules/beasts/generation';
 import {
   beastFusionReason,
   fuseBeasts,
@@ -35,7 +38,7 @@ import {
   BEAST_CAPACITY,
   beastRestCost,
   type BeastAllocationSchema,
-} from '@daoyou/game-rules/beasts/progression';
+} from '@daoyou/game-rules/beasts/growth';
 import { and, eq, inArray } from 'drizzle-orm';
 import { createHash, randomInt, randomUUID } from 'node:crypto';
 import type { z } from 'zod';

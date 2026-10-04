@@ -3,12 +3,12 @@ import type {
   CharacterDisplayBuild,
   CombatV6ResourceAuthority,
   CultivatorDisplaySnapshot,
-} from '@daoyou/game-domain/character/display';
-import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character-attribute-labels';
+  Cultivator,
+} from '@daoyou/game-domain/character';
+import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character';
 
-export { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character-attribute-labels';
+export { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character';
 
-import type { Cultivator } from '@daoyou/game-domain/cultivator';
 
 import type { CultivatorCondition } from '@daoyou/game-domain/condition';
 
@@ -16,7 +16,7 @@ import { projectNaturalRecoveryResources } from '../condition/index.js';
 
 import { projectCharacterToCombatV6 } from '../combat/projection/project-character.js';
 
-import { type CharacterPanelV1 } from '@daoyou/game-domain/combat/panel';
+import { type CharacterPanelV1 } from '@daoyou/game-domain/combat';
 
 export const CHARACTER_PANEL_LABELS: Record<keyof CharacterPanelV1, string> = {
   physicalAtk: '物理攻击',

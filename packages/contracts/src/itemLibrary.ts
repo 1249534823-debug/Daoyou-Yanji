@@ -5,15 +5,15 @@ import {
   ItemLibraryTypeSchema,
   ItemLibraryMaterialPayloadSchema,
   ArtifactEditorConfigSchema,
-} from '@daoyou/game-domain/items/library';
+} from '@daoyou/game-domain/items/catalog';
 import { ELEMENT_VALUES } from '@daoyou/constants/elements';
 import { QUALITY_VALUES } from '@daoyou/constants/qualities';
-import { MATERIAL_TYPE_VALUES } from '@daoyou/game-domain/inventory';
 import {
+  MATERIAL_TYPE_VALUES,
   MaterialFactsSchema,
   INVENTORY_MATERIAL_TYPES,
-} from '@daoyou/game-domain/items/material-facts';
-import { seedFactsOf } from '@daoyou/game-domain/items/seed-facts';
+  seedFactsOf,
+} from '@daoyou/game-domain/inventory';
 
 export const ArtifactPreviewRequestSchema = ArtifactEditorConfigSchema.extend({
   name: z.string().trim().min(1).max(100),

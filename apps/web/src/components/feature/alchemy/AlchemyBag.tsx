@@ -13,7 +13,7 @@ import {
   groupAlchemyStorageMaterials,
   type AlchemyBagMaterial,
 } from '@daoyou/game-rules/inventory/alchemy';
-import type { Material } from '@daoyou/game-domain/cultivator';
+import type { Material } from '@daoyou/game-domain/character';
 import { useEffect, useState } from 'react';
 import { CraftInventoryPanel } from '../items/CraftInventoryPanel';
 import { InventoryItems } from '../items/InventoryItems';

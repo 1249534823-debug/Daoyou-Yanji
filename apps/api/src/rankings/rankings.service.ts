@@ -1,5 +1,5 @@
-import type { RankingChallengeRequest } from '@daoyou/contracts/combatV6Ranking';
-import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
+import type { RankingChallengeRequest } from '@daoyou/contracts/combat/ranking';
+import { ConsumableFactsSchema } from '@daoyou/game-domain/inventory';
 import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 import { REALM_VALUES, type RealmType } from '@daoyou/constants/realms';
 import type {

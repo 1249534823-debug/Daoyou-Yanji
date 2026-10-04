@@ -7,11 +7,11 @@ import {
 import { itemLibrary } from '@server/lib/drizzle/schema.js';
 import { MaterialGenerator } from '@server/lib/generation/MaterialGenerator.js';
 import type { MaterialSkeleton } from '@daoyou/game-domain/materials/generation';
-import { type CreateItemLibraryEntry, type ItemLibraryMaterialGenerateInput, type ItemLibrarySpiritSeedGenerateInput } from '@daoyou/contracts/itemLibrary';
-import { ItemLibraryEntrySchema, type ItemLibraryEntry } from '@daoyou/game-domain/items/library';
+import { type CreateItemLibraryEntry, type ItemLibraryMaterialGenerateInput, type ItemLibrarySpiritSeedGenerateInput } from '@daoyou/contracts/items/library';
+import { ItemLibraryEntrySchema, type ItemLibraryEntry } from '@daoyou/game-domain/items/catalog';
 import { QUALITY_ORDER, type Quality } from '@daoyou/constants/qualities';
 import { type MaterialType } from '@daoyou/game-domain/inventory';
-import type { Material } from '@daoyou/game-domain/cultivator';
+import type { Material } from '@daoyou/game-domain/character';
 import { and, asc, eq, gte, inArray, sql } from 'drizzle-orm';
 import { computeItemLibrarySampleKey } from '@server/lib/utils/itemLibrarySampleKey.js';
 

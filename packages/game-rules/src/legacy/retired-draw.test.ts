@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { isTalismanScenario } from '@daoyou/game-domain/consumables/talisman-scenarios';
+import { isTalismanScenario } from '@daoyou/game-domain/consumables';
 import { assertCurrentRewardItem, isRetiredDrawItem } from './retired-draw.js';
 
 describe('retired draw production boundary', () => {

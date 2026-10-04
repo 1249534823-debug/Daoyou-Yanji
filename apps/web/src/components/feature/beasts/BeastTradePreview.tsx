@@ -1,11 +1,13 @@
 import { InkModal } from '@app/components/layout';
-import type { BeastTradePreview as Preview } from '@daoyou/game-domain/beasts/trade-preview';
+import type { BeastTradePreview as Preview } from '@daoyou/game-domain/beasts';
 import {
   BEAST_PROGRESSION,
   BEAST_SPECIES,
-} from '@daoyou/game-content/beasts/content';
-import { beastOriginName } from '@daoyou/game-rules/beasts/identity';
-import { BEAST_ATTRIBUTE_NAMES } from '@daoyou/game-rules/beasts/progression';
+} from '@daoyou/game-content/beasts';
+import {
+  beastOriginName,
+  BEAST_ATTRIBUTE_NAMES,
+} from '@daoyou/game-rules/beasts/growth';
 import { beastAttributes } from '@daoyou/game-rules/beasts/projection';
 import { useState } from 'react';
 import { BeastIcon } from './BeastIcon';

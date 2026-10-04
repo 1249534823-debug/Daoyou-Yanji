@@ -9,8 +9,8 @@ import {
   startTower,
 } from '@server/tower/application/runtime/combatV6.js';
 import { getTowerLeaderboard } from '@server/tower/application/runtime/leaderboard.js';
-import type { CombatV6TrainingCommandRequestSchema } from '@daoyou/contracts/combatV6';
-import { getTowerSeasonMeta } from '@daoyou/game-rules/tower/season';
+import type { CombatV6TrainingCommandRequestSchema } from '@daoyou/contracts/combat';
+import { getTowerSeasonMeta } from '@daoyou/game-rules/tower';
 import type { z } from 'zod';
 
 @Injectable()

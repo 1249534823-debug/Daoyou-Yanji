@@ -1,4 +1,4 @@
-import type { BackgroundCommandType } from '@daoyou/contracts/backgroundCommands';
+import type { BackgroundCommandType } from '@daoyou/contracts/background-commands';
 
 const AUCTION_EXPIRE_SCHEDULE = '*/2 * * * *';
 // Schedules use UTC. 16:00 UTC equals 00:00 Asia/Shanghai.

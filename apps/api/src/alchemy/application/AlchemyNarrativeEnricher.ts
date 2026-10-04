@@ -1,14 +1,14 @@
 import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
 import { renderPrompt } from '@server/lib/prompts/index.js';
 import { generateAiObject } from '@server/utils/aiClient.js';
-import { formatAlchemyPropertyVector } from '@daoyou/game-rules/alchemy/alchemyProperties';
+import { formatAlchemyPropertyVector } from '@daoyou/game-rules/alchemy';
 import type { ElementType } from '@daoyou/constants/elements';
 import type { Quality } from '@daoyou/constants/qualities';
 import type {
   AlchemyFocusMode,
   PillFamily,
   WeightedAlchemyProperty,
-} from '@daoyou/game-domain/consumable';
+} from '@daoyou/game-domain/consumables';
 import { z } from 'zod';
 
 function getPillFamilyLabel(family: PillFamily): string {

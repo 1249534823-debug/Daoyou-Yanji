@@ -6,7 +6,7 @@ import {
 } from '@app/components/feature/products';
 import { InkModal } from '@app/components/layout';
 import { ItemShowcaseModal } from '@app/components/ui/ItemShowcaseModal';
-import { seedFactsOf } from '@daoyou/game-domain/items/seed-facts';
+import { seedFactsOf } from '@daoyou/game-domain/inventory';
 import type { CultivatorCondition } from '@daoyou/game-domain/condition';
 import type { RealmType } from '@daoyou/constants/realms';
 import type {
@@ -14,7 +14,7 @@ import type {
   CultivationTechnique,
   Material,
   Skill,
-} from '@daoyou/game-domain/cultivator';
+} from '@daoyou/game-domain/character';
 import type { ItemDetailPayload } from './itemDetailPayload';
 import { ItemPreview } from './ItemPreview';
 

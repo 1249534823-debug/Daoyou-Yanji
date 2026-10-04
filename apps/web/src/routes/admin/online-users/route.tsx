@@ -4,7 +4,7 @@ import { InkButton } from '@app/components/ui';
 import type {
   AdminOnlineUsersResponse,
   AdminOnlineUsersSnapshot,
-} from '@daoyou/contracts/adminOnlineUsers';
+} from '@daoyou/contracts/admin/online-users';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 const REFRESH_INTERVAL_MS = 30_000;

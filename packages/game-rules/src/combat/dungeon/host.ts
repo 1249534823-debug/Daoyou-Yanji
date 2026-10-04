@@ -1,13 +1,13 @@
 import { DUNGEON_TEMPLATES, MAP_DIFFICULTY_SCALE } from '@daoyou/game-content/combat/dungeon';
-import type { DungeonTemplate, DungeonBattleSnapshot } from '@daoyou/game-domain/combat/dungeon';
+import type { DungeonTemplate, DungeonBattleSnapshot } from '@daoyou/game-domain/combat/challenges';
 
 import { playerAppearances } from '../unit-appearance.js';
 
-import { AUTO_POLICY_VERSION } from '@daoyou/game-domain/combat/auto-policy';
+import { AUTO_POLICY_VERSION } from '@daoyou/game-domain/combat/auto';
 
-import type { DungeonDifficultyTier } from '@daoyou/game-domain/dungeon/difficulty';
+import type { DungeonDifficultyTier } from '@daoyou/game-domain/dungeon';
 
-import { BEAST_STATUS_DEFS, BEAST_SKILLS } from '@daoyou/game-content/beasts/content';
+import { BEAST_STATUS_DEFS, BEAST_SKILLS } from '@daoyou/game-content/beasts';
 
 import { projectBeastRoster } from '../../beasts/projection.js';
 
@@ -15,9 +15,12 @@ import { UnitKind } from '@daoyou/combat-core/enums';
 
 import { type CreateBattleInput } from '@daoyou/combat-core/types';
 
-import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat/encounter';
+import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat';
 
-import { type PveRestoredState } from '@daoyou/game-domain/combat/runtime';
+import {
+  type PveRestoredState,
+  COMBAT_V6_CHARACTER_BUILD_VERSIONS,
+} from '@daoyou/game-domain/combat';
 
 import { CombatV6PveHostSession } from '../encounter/host.js';
 
@@ -25,7 +28,6 @@ import { projectCharacterToCombatV6 } from '../projection/project-character.js';
 
 import { daoyouRulesetV6 } from '../daoyou/index.js';
 
-import { COMBAT_V6_CHARACTER_BUILD_VERSIONS } from '@daoyou/game-domain/combat/versions';
 
 import { presetEnemyAttrs } from '../encounter/preset-enemy.js';
 

@@ -1,7 +1,7 @@
 import { earlyBaselines } from '@daoyou/game-content/combat/early-baselines';
-import { getLevelRealmStage, getRealmStageLevel } from '@daoyou/game-domain/progression/realms';
+import { getLevelRealmStage, getRealmStageLevel } from '@daoyou/game-domain/progression';
 
-import { TOWER_ENCOUNTER_PACK } from '@daoyou/game-content/tower/encounter-pack';
+import { TOWER_ENCOUNTER_PACK } from '@daoyou/game-content/tower';
 
 export type PresetEnemyKind = 'normal' | 'elite' | 'boss';
 

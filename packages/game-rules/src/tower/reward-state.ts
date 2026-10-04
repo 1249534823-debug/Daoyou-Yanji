@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import type { TowerReward } from '@daoyou/game-domain/tower/reward';
+import type { TowerReward } from '@daoyou/game-domain/tower';
 import { ItemGrantSchema } from '../inventory/index.js';
 
 export const TowerRewardSchema = z.strictObject({

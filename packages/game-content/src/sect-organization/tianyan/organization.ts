@@ -1,4 +1,4 @@
-import type { SectOrganizationTheme } from '@daoyou/game-domain/sects/organization-theme';
+import type { SectOrganizationTheme } from '@daoyou/game-domain/sects';
 
 export const TIANYAN_ORGANIZATION_THEME: SectOrganizationTheme = {
   elderTrial: {

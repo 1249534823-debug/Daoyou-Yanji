@@ -1,5 +1,5 @@
-import { type TowerBlessingId } from '@daoyou/game-domain/tower/blessings';
-import { TOWER_BLESSINGS_PACK, towerBlessingRule } from '@daoyou/game-content/tower/blessing-pack';
+import { type TowerBlessingId } from '@daoyou/game-domain/tower';
+import { TOWER_BLESSINGS_PACK, towerBlessingRule } from '@daoyou/game-content/tower';
 
 export function getTowerBlessingEffectPreview(
   args: {

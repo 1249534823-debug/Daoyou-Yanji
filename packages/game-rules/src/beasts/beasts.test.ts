@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
-import { BeastLineupSchema } from '@daoyou/game-domain/beasts/schema';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts';
+import { BeastLineupSchema } from '@daoyou/game-domain/beasts';
 import { BeastSchema } from './schema.js';
 import { activeBeastSkills, beastPanel, projectBeastRoster } from './projection.js';
 import { beastDeathIds, loseBeastLifespan } from './progression.js';

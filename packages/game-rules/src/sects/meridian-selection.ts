@@ -1,4 +1,4 @@
-import type { MeridianNodeDefV6, SectPathDefV6 } from '@daoyou/game-domain/combat/content';
+import type { MeridianNodeDefV6, SectPathDefV6 } from '@daoyou/game-domain/combat';
 
 /** 兼容早期将末端奖励当作互斥经脉保存的方案；读取不写回持久化数据。 */
 export function normalizeMeridianSelection(path: SectPathDefV6, nodeIds: string[]): string[] {

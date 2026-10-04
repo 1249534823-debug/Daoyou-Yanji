@@ -1,21 +1,21 @@
 import { tierColorMap } from '@app/components/ui/inkBadgeTiers';
-import { beastSkillPresentation } from '@daoyou/game-rules/beasts/skill-presentation';
-import { getLevelRealmStage } from '@daoyou/game-domain/progression/realms';
+import { beastSkillPresentation } from '@daoyou/game-rules/beasts/presentation';
+import { getLevelRealmStage } from '@daoyou/game-domain/progression';
 import {
   BEAST_SKILL_CONTENT,
   BEAST_SUPERIOR_BOOK_SKILL_IDS,
-} from '@daoyou/game-content/beasts/content';
-import { BEAST_REFINEMENT } from '@daoyou/game-content/beasts/refinement-config';
-import { BEAST_REJUVENATION } from '@daoyou/game-content/items/beast-rejuvenation';
-import { CHARACTER_MANUALS_V1 } from '@daoyou/game-content/manuals/content';
+  BEAST_REFINEMENT,
+} from '@daoyou/game-content/beasts';
+import { BEAST_REJUVENATION } from '@daoyou/game-content/items/beasts';
+import { CHARACTER_MANUALS_V1 } from '@daoyou/game-content/manuals';
 import { manualEffectLines } from '@daoyou/game-rules/manuals/presentation';
-import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment/slot-names';
-import { MATERIAL_TYPE_NAMES } from '@daoyou/game-domain/items/material-facts';
+import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment';
 import {
+  MATERIAL_TYPE_NAMES,
   SeedFactsSchema,
   SeedPreviewFactsSchema,
-} from '@daoyou/game-domain/items/seed-facts';
-import { materialFactsOf } from '@daoyou/game-domain/items/material';
+  materialFactsOf,
+} from '@daoyou/game-domain/inventory';
 import { REALM_VALUES } from '@daoyou/constants/realms';
 import { field, lines, quantity } from './helpers';
 import type { ItemAdapter } from './types';

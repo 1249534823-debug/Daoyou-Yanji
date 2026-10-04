@@ -13,9 +13,9 @@ import type {
   DivinationStreamEvent,
   DivinationView,
 } from '@daoyou/contracts/divination';
-import { type DivinationDice, type DivinationDirection } from '@daoyou/game-domain/divination/types';
-import { DIVINATION_DIRECTIONS } from '@daoyou/game-content/divination/content';
-import { divinationDayKey, divinationRewardFacts, fallbackDivination, resolveDivination } from '@daoyou/game-rules/divination/rules';
+import { type DivinationDice, type DivinationDirection } from '@daoyou/game-domain/divination';
+import { DIVINATION_DIRECTIONS } from '@daoyou/game-content/divination';
+import { divinationDayKey, divinationRewardFacts, fallbackDivination, resolveDivination } from '@daoyou/game-rules/divination';
 import { and, eq } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
 import { assertInventoryIdle, grantInventory } from '@server/inventory/operations.js';

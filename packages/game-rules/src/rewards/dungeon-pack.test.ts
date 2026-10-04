@@ -1,13 +1,15 @@
 import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import raw from '@daoyou/game-content/rewards/data/dungeon' with { type: 'json' };
-import schema from '@daoyou/game-content/rewards/data/dungeon.schema' with { type: 'json' };
+import {
+  REWARDS_DUNGEON_DATA as raw,
+  REWARDS_DUNGEON_SCHEMA as schema,
+} from '@daoyou/game-content/authoring/rewards';
 import { planDungeonReward } from './dungeon.js';
 import {
   DungeonRewardPackShape,
   loadDungeonRewardPack,
-} from '@daoyou/game-content/rewards/dungeon-pack';
+} from '@daoyou/game-content/rewards/dungeon';
 
 describe('副本奖励数据包', () => {
   it('Schema 同步', () =>
