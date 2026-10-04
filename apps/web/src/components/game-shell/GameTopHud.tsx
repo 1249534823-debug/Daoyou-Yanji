@@ -1,7 +1,7 @@
 import { useQiState } from '@app/components/feature/cultivator/useQiState';
 import { MeritStamp } from '@app/components/feature/merit/MeritStamp';
 import { getSectIdentityLabels } from '@app/components/feature/sect/sectIdentityDisplay';
-import { useActiveSectContextQuery } from '@app/components/feature/sect/sectResources';
+import { useActiveSectContextQuery } from '@app/components/feature/sect/sectContext';
 import { useSectIdentityDialog } from '@app/components/feature/sect/useSectIdentityDialog';
 import Link from '@app/components/router/AppLink';
 import { InkHorizontalScroll } from '@app/components/ui';

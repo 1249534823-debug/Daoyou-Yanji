@@ -3,7 +3,7 @@ import {
   SECT_RANK_LABELS,
   type SectOffice,
 } from '@daoyou/game-rules/sect-organization';
-import { getSectDefinition } from './sectResources';
+import { getSectDefinition } from './sectContext';
 
 const SECT_OFFICE_LABELS: Record<SectOffice, string> = {
   none: '暂无职司',

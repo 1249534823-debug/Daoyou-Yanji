@@ -6,8 +6,8 @@ import { HomeUrgentRow } from '@app/components/feature/home/HomeUrgentRow';
 import {
   GameSceneFrame,
   GameSceneLoading,
-  GameSceneSection,
-} from '@app/components/game-shell';
+} from '@app/components/game-shell/GameSceneFrame';
+import { GameSceneSection } from '@app/components/game-shell/GameSceneSection';
 import { InkButton, InkNotice } from '@app/components/ui';
 import { useTaskList } from '@app/lib/hooks/useTaskList';
 import { useCultivatorProgress } from '@app/lib/resources/player';

@@ -1,4 +1,4 @@
-import { GameSceneLoading } from '@app/components/game-shell';
+import { GameSceneLoading } from '@app/components/game-shell/GameSceneFrame';
 import { Suspense } from 'react';
 import { HomeView } from './components/HomeView';
 

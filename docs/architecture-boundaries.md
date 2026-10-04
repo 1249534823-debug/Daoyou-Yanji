@@ -208,10 +208,91 @@ Docker 本地镜像 `daoyou-monorepo-review:local` 构建通过，以非 root �
 
 回滚以配套 API 与 SPA 为单位；若涉及数据变更，须同时确认旧版本可读取更新后的数据，或准备相应数据恢复方案。镜像回滚不能撤销数据迁移，停机也不会自动清空 Redis 活动状态或 NATS 待处理消息，需在有相关协议变更时单独检查。
 
-历史道装数据迁移按用户要求从后续改造范围排除。自然会话续期、多人胜利结算和真实目标环境的维护发布／回滚仍需验收；本地构建和结构迁移不替代这些证据。
+历史道装数据迁移按用户要求从后续改造范围排除。本地自然会话续期与双账号胜利结算的新增证据见下方“迁移后审计与发布前验证”；真实目标环境的维护发布／回滚仍待验收，本地结果不替代这些证据。
 
 ## 实施状态
 
 六个批次的代码与配置已于 2026-10-03 落地。完整检查、真实本地流程、失败/重放与目标环境的未验证项见 [架构记录第 7 节](monorepo-architecture.md#7-后续六阶段实施与验收记录)。代码完成和生产发布验收分别记录：本轮没有提交、推送、数据库迁移或生产部署。
 
 2026-10-04 追加完成拍卖／邮件应用对象 DI、邮件事务投递入口、秘境存储与结尾生成拆分，以及 Runtime 注入任务映射。公开背包操作保留显式事务的函数入口，Redis 与 Player Provider 复用既有单例。新增拍卖／邮件私有实现导入约束。本轮实测、结构完成条件与停机发布清单见 [架构记录第 11 节](monorepo-architecture.md#11-拍卖邮件秘境与-runtime-依赖收口)。生产发布和未覆盖业务验收单独保持开放。
+
+## 迁移后审计与发布前验证（2026-10-04，基线 4c91ab07）
+
+### 1. 迁移差异审计
+
+对比六包迁移前的 `5df044ad` 与当前代码。静态审查按唯一声明名匹配编译后的初始化表达式/函数体，忽略导入路径和类型：3,379 项主体一致，其余候选逐类核对。此数字包含局部声明，不是全部函数的覆盖率；主体一致也不能单独证明导入绑定和初始化顺序一致。
+
+| 问题或审查点 | 结论与处理 |
+| --- | --- |
+| P2：边界检查把空命名导入/导出视为纯类型 | `every` 对空数组返回 true，导致 `import {}` / `export {}` 的运行时模块执行绕过 game-domain→combat-core 仅类型限制。增加非空检查；临时静态探针确认两者退出 1，真正的 import type 退出 0，探针已删除 |
+| P2：公开子路径暴露内部实现 | 收回四个 private 包共 38 个无仓库消费者的 exports：contracts 1、domain 1、content 14、rules 22。源码与包内相对引用保留；收窄后公开入口由 617 减到 579；加载优化另增加一个轻量宗门定义入口，最终为 580。没有把无外部引用等同于无运行用途 |
+| 资源协议组合 | API/Web 的 lib/resources/schemas.ts 都向 contracts 构造器注入完整 ItemGrant 与宗门交付 Schema；广播、数据库事件读取及 Web Store 均使用宿主绑定。bag 原本即使用 shape 投影，未把它误认成完整写入校验 |
+| 领域事件、开发工具与灵兽输入 | 事件 envelope 保留 subject/version/strict 校验，payload 由规则包绑定；开发工具保留真实数值上限、奖励/邮件校验，灵兽分配绑定当前点数公式 |
+| 默认值与内容校验 | 背包格位/数量/个体身份、装备属性/阵纹、灵兽技能/物种/容量和交付数量上下界保留。原有 unknown/any 历史字段没有被本轮扩宽；资源变更 superRefine 只校验不回写内部默认值的行为也沿用旧实现 |
+| 导入副作用 | 五宗注册表迁至 game-content 后仍执行技能学习内容校验；API/Web 通过包 exports 加载，未添加全包 sideEffects:false。规则层仅类型依赖与实际绑定分开审查 |
+| 竞技协议、事务与锁 | arena-view 宿主装饰器补齐 API/protocol 版本，包含缓存回合结果；竞技 service/store、占用检查、Player 状态提交、事务及消息结算主体对比一致，调用转向对应包/宿主绑定。未改 CAS、请求幂等或消息确认语义 |
+| 秘境重复定义 | API 的轮次 Schema 比领域模型多 10 项奖励上限及 0–100 危险值限制，结算多 10 项标签上限；差异在拆包前已存在。本轮不直接替换为较宽领域 Schema。仍需单独按输入/持久状态职责合并，不能做文本式去重 |
+| 历史兼容 | 旧储藏室/兑换仍有入口，炼丹旧字段与待处理消息属于存量兼容；保持上一轮明确的保留边界，不清数据或删表 |
+
+建议提交划分（本轮不自动提交）：① 边界判定修复；② 四包 exports 收窄；③ 实测后确定的 Web 加载优化；④ 本节验收记录。每组可独立审阅，未用格式化掩盖迁移差异。
+
+### 2. 高风险业务验收
+
+环境：本地编译 API + Vite production preview，页面为 `127.0.0.1:5174`，数据库/Redis/NATS 均为 local 配置。两个独立浏览器会话分别为 IAB 的本地道友 2、Chrome 的本地道友 1；权限检查再通过正常退出/密码登录切换至本地道友 3。未修改认证时间、直接写数据库或注入角色配置。
+
+| 路径 | 本轮结果与证据 |
+| --- | --- |
+| 自然会话续期 | Chrome 旧会话创建于 2026-09-19，本轮读取后数据库 updatedAt=2026-10-04T07:40:13.287Z、expiresAt=2026-10-11T07:40:13.287Z，页面正常进入洞府。未捕获续期前数据库值与 Set-Cookie，因此这是数据库时间和页面联合证据，不是完整 Cookie trace |
+| 新登录 | 道友 1 正式退出后由用户完成浏览器登录，本轮确认新 session 创建于 2026-10-04T07:59:14.232Z 并进入洞府；道友 3 由自动化完整执行密码登录，直接进入本人洞府，无旧账号资源残留 |
+| 双账号完整结算 | 房间 457804、战局 `1961a671-e428-4668-a819-5aa8abbb0f27`，双方准备开战，自动指令正常推进，25 回合自然终局：道友 1 胜利，道友 2 及灵兽落败。双方点击结束后退出战斗，页面恢复原有资源；没有用逃跑代替胜负验收 |
+| 战斗中断线恢复 | 第 1 回合 SIGTERM 停止本次 API，页面显示“连接恢复中”并禁用指令；重启后 WebSocket 重新握手 101，两端自动恢复同一战局，后续正常终局。覆盖实际服务重启，不等同于所有网络分区/超时场景 |
+| 重复请求与冲突 | 重放已观察到的第 3 回合 AUTO 指令及同一 requestId，两次串行和终局后两次并发请求均返回相同 200 accepted。保持 requestId、改 round 为 4 返回 409“请求 ID 已用于其他指令”。终局前后重放不增加回合；终局 revision 保持 120 |
+| 归档与占用释放 | PostgreSQL 仅一份 archive、两条 participant，source=arena-sparring、outcome=side-0、roundCount=25；Redis 双方 active/arena occupancy 四键均为空。战斗中读取与退出后读取的持久 condition、灵石、声望一致；此比较从战斗中采样，不宣称覆盖开战前全部持久字段 |
+| 私有回放权限 | 双方可打开新回放，各自看到本人精确资源和敌方百分比；未登录 API 返回 401；非参战道友 3 打开私有页显示“战斗回放不存在”，read 与 share API 都返回 404 |
+| 公开回放权限 | 由参战道友 1 点击“复制公开链接”，道友 3 可读取固定的道友 1 视角；公开 API credentials:omit 返回 200。生成公开链接后，道友 3 的私有 read 仍返回 404。未发送世界聊天消息 |
+
+本场归档与公开链接作为本地测试记录保留，所有活动战斗已正常结束。本轮没有覆盖新注册/邮箱验证、GitHub OAuth、多人观战席、生产代理/Cookie 域配置、故障矩阵及真实维护发布/回滚；这些不能由当前本地结果推定通过。
+
+截图：`/tmp/daoyou-priority-arena-terminal.jpg`（胜利）、`/tmp/daoyou-priority-replay-denied.jpg`（非参战者拒绝）、`/tmp/daoyou-priority-replay-public.jpg`（公开视角）。后端恢复日志为 `/tmp/daoyou-priority-api-recovery.log`。
+### 3. 增量工程链
+
+已实测同一工作树的 Turbo build：首次 8 项执行 15.667 秒，立即重跑 8/8 缓存命中 1.115 秒。只在 game-rules/qi/actions.ts 临时追加注释后，rules/API/Web 三项 hash 改变并重建，其余五项 hash 不变且命中缓存（12.234 秒）。注释仅为本地静态构建探针，已经恢复，未改变游戏数值。
+
+同时运行 pnpm dev：修改公共包后 game-rules/dist 包含新注释，API 监听 PID 从 29782 变为 29969、Web 从 29709 变为 29936，证明两个持久任务均被重启。CI 的 PR/master 和 tag 发布共用 quality-check.yml，调用与本地相同的 pnpm run lint→check:boundaries，tag 镜像任务依赖 quality 成功。
+
+恢复探针后再次构建，8/8 缓存命中，0.789 秒。原始证据：`/tmp/daoyou-priority-build-{baseline,warm,rules-change,restored}.log`、`/tmp/daoyou-priority-watch.log`，及 `.turbo/runs` 对应四份 summary（包含任务 hash/cache 状态）。
+
+### 4. SPA 加载测量
+
+使用 production preview、同一 IAB/本地道友 2 的洞府页面、禁用 HTTP 缓存，各完成三次全页刷新，等待“洞府各处”及 networkidle。通过 PerformanceResourceTiming 记录同源资源，资源计数/体积不含 HTML 文档；JS 使用 encodedBodySize，全部资源使用 transferSize（含浏览器计入的响应开销）。未限速，地址为回环网络；FCP 包含启动画面，不代表全部玩法可交互时间。
+
+| 指标 | 优化前 | 最终构建 | 变化 |
+| --- | ---: | ---: | --- |
+| 同源资源请求 | 84 | 78 | -6 |
+| JS 请求 | 63 | 57 | -6 |
+| 同源资源传输字节 | 669,932 | 558,755 | -16.6% |
+| JS 响应体传输字节 | 430,032 | 320,675 | -25.4% |
+| DOMContentLoaded 中位数 | 43.1 ms | 36.6 ms | 本地小样本，仅记录 |
+| load 中位数 | 45.5 ms | 39.3 ms | 本地小样本，仅记录 |
+| FCP 中位数 | 52 ms | 60 ms | 有波动，不能宣称整体加载加速 |
+
+三轮请求数与传输字节各自相同。优化前 DCL 为 47.5/43.1/34.9 ms、load 为 50.9/45.5/37.3 ms、FCP 为 64/48/52 ms；最终 DCL 为 44.2/36.6/34.4 ms、load 为 49.4/39.3/37.1 ms、FCP 为 64/52/60 ms。最终测量时近期战绩增加本轮切磋，API 内容有少量变化；JS 响应体不受此影响。证据为 `/tmp/daoyou-spa-before.json` 和 `/tmp/daoyou-spa-after-final.json`。
+
+具体调整：
+
+- 新增 game-content 的轻量宗门定义目录，复用五宗原始 definition 对象；HUD 的身份/版本校验和成员状态从 sectContext 获取，不初始化完整玩法模块。纯测试核对目录与生产模块 ID 一致、对象完全相同及未知 ID 拒绝。
+- 宗门玉牒详情按打开动作懒加载，保留加载反馈、版本错误和既有前往宗门操作；组件与 hook 分文件以维持 Fast Refresh 边界。
+- 洞府 route、HomeView、HomeAside 改用 GameSceneFrame/GameSceneSection 的直接入口，解除 game-shell 聚合入口经 CultivatorOverviewPanel 拉入的完整宗门和战斗内容注册表。
+- 优化前后首屏都没有 Phaser 请求，因此没有依据再调整 Phaser 拆包。原先首屏加载的 sectPresentation（55,025 字节）与 battle 注册表（54,601 字节）现已移出首屏。保留真实内容校验副作用，没有全包声明 sideEffects:false。
+
+实际打开宗门玉牒、关闭并进入宗门地图均正常；本轮两账号战斗和新回放也在此构建链上运行。Vite 仍提示大型 Phaser chunk，此提示代表延迟路由产物体积，不再等同于首屏成本。
+
+### 5. 交付检查与提交边界
+
+- `pnpm install --frozen-lockfile`、`pnpm run lint`（8 workspace、11,525 imports，零 warning）、`pnpm run typecheck`（14 Turbo 任务及根工具）、`pnpm run test`（256 文件/2,402 项）、`pnpm run build`（8 任务）全部通过。
+- `pnpm --filter @daoyou/api deploy --prod /tmp/daoyou-priority-api-deploy-20261004` 成功；在独立生产目录内逐一加载六库全部 580 个公开 exports（含 JSON）成功。
+- 日志保存在 `/tmp/daoyou-priority-{install,lint,typecheck,tests,build,deploy}-final.log`。本轮没有新增 API/Web 单元测试、一次性集成测试脚本或故障服务。
+- 建议四个提交：`fix(tooling): 拒绝空命名运行时导入绕过包边界`；`refactor(packages): 收窄未使用的公开子路径`；`perf(web): 延迟宗门详情并移除洞府的重型聚合依赖`（含新 definitions export 与纯测试）；`docs: 记录迁移审计和本地发布前验收`。第二和第三组同改 content manifest，审阅/暂存时按 hunk 划分。
+- 未执行 Docker 镜像重建、预发布/生产部署、数据迁移及真实发布/回滚演练；独立 deploy 验证不代替容器或目标环境验收。没有自动 commit/push。
+
+本轮收尾：IAB 已恢复本地道友 2 登录，第三账号临时会话已退出；浏览器禁用缓存设置已恢复，两个临时页面与本次 API/preview 服务已关闭。本地数据库、Redis、NATS 等基础服务保持原状。`git diff --check` 通过。

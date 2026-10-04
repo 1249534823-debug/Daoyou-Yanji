@@ -1,8 +1,14 @@
+import type { useSectContextQuery } from './sectContext';
+export {
+  useSectContextQuery,
+  useActiveSectContextQuery,
+  getSectDefinition,
+  membershipState,
+} from './sectContext';
 import { apiFetch } from '@app/lib/api/fetch';
 import {
   sectConstructionMemberResource,
   sectContributionRankingResource,
-  sectContextResource,
   sectInfrastructureResource,
   sectMembersResource,
   sectShopResource,
@@ -14,7 +20,6 @@ import {
   useSingletonResource,
   type ResourceQuery,
 } from '@app/lib/resources/hooks';
-import { usePlayerSession } from '@app/lib/resources/player';
 import { getSectPresentation } from '@app/lib/sect/sectPresentation';
 import {
   SectPromotionEvaluationDataSchema,
@@ -23,41 +28,11 @@ import {
 import {
   resolveSectBenefitSnapshot,
   resolveSectPresentation,
-  type CultivatorSectState,
   type ResolvedSectPresentation,
 } from '@daoyou/game-rules/sect-organization';
 import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { z } from 'zod';
-
-export function useSectContextQuery(enabled = true) {
-  const context = useSingletonResource(sectContextResource, enabled);
-  const versionError = getSectConfigVersionError(context.data);
-  return useMemo(
-    () => ({
-      ...context,
-      error: versionError ?? context.error,
-      status: versionError ? ('error' as const) : context.status,
-    }),
-    [context, versionError],
-  );
-}
-
-export function useActiveSectContextQuery(enabled = true) {
-  const session = usePlayerSession(enabled);
-  const hasSect =
-    enabled && Boolean(session.data?.activeCultivator?.sectId);
-  const context = useSectContextQuery(hasSect);
-  return useMemo(
-    () => ({
-      ...context,
-      hasSect,
-      sessionLoading: session.loading,
-      sessionError: session.error,
-    }),
-    [context, hasSect, session.error, session.loading],
-  );
-}
 
 export function useSectInfrastructureQuery() {
   return useSingletonResource(sectInfrastructureResource);
@@ -110,12 +85,6 @@ export function useSectMembersQuery(params: SectMembersParams, enabled = true) {
   return useResource(sectMembersResource, params, enabled);
 }
 
-export function getSectDefinition(
-  context: NonNullable<ReturnType<typeof useSectContextQuery>['data']>,
-) {
-  return productionSectRuntime.registry.require(context.sectId).definition;
-}
-
 function getShanghaiDateKey(now = new Date()): string {
   return new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Asia/Shanghai',
@@ -160,23 +129,6 @@ export function getSectPresentationForContext(
   return context?.sectId
     ? getSectPresentation(context.sectId)
     : resolveSectPresentation('standard');
-}
-
-export function membershipState(
-  context: NonNullable<ReturnType<typeof useSectContextQuery>['data']>,
-): CultivatorSectState {
-  return {
-    membershipId: context.membershipId,
-    sectId: context.sectId,
-    status: context.status,
-    joinedAt: context.joinedAt,
-    discipleRank: context.discipleRank,
-    contribution: context.contribution,
-    lifetimeContribution: context.lifetimeContribution,
-    office: context.office,
-    promotedAt: context.promotedAt,
-    configVersion: context.configVersion,
-  };
 }
 
 function useSectInteractionQuery<T>(
@@ -258,17 +210,4 @@ function useSectInteractionQuery<T>(
     }),
     [load, snapshot],
   );
-}
-
-function getSectConfigVersionError(
-  context:
-    NonNullable<ReturnType<typeof useSectContextQuery>['data']> | undefined,
-): string | undefined {
-  if (!context) return undefined;
-  const definition = productionSectRuntime.registry.require(
-    context.sectId,
-  ).definition;
-  return definition.configVersion === context.configVersion
-    ? undefined
-    : '客户端宗门配置已更新，请刷新页面';
 }

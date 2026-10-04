@@ -1,7 +1,7 @@
 import {
   membershipState,
   useActiveSectContextQuery,
-} from '@app/components/feature/sect/sectResources';
+} from '@app/components/feature/sect/sectContext';
 import {
   useCultivatorCondition,
   useCultivatorIdentity,

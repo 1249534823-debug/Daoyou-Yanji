@@ -1,5 +1,5 @@
 import { RecentBattles } from '@app/components/feature/ranking/RecentBattles';
-import { GameSceneAsideSection } from '@app/components/game-shell';
+import { GameSceneAsideSection } from '@app/components/game-shell/GameSceneFrame';
 import { DailyDivinationEntry } from './DailyDivinationEntry';
 
 export function HomeAside({ cultivatorId }: { cultivatorId: string }) {

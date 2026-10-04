@@ -63,7 +63,6 @@
     "./combat/commands": "./dist/combat/commands.js",
     "./combat/auto-policy": "./dist/combat/auto-policy.js",
     "./combat/versions": "./dist/combat/versions.js",
-    "./combat/battle-input": "./dist/combat/battle-input.js",
     "./combat/runtime": "./dist/combat/runtime.js",
     "./tower/blessings": "./dist/tower/blessings.js",
     "./tower/formations": "./dist/tower/formations.js",

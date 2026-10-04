@@ -55,7 +55,6 @@
     "./resources/bagResourceChanges": "./dist/resources/bagResourceChanges.js",
     "./spiritField": "./dist/spiritField.js",
     "./task": "./dist/task.js",
-    "./resources/inventory": "./dist/resources/inventory.js",
     "./itemLibrary": "./dist/itemLibrary.js",
     "./domainEvents": "./dist/domainEvents.js",
     "./world-chat-messages": "./dist/world-chat-messages.js",
