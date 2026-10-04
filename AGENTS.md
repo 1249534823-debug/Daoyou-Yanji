@@ -63,6 +63,7 @@ pnpm run db:migrate
 - `/api/auth/*` is Better Auth through `apps/api/src/lib/auth/handler.ts`.
 - `/internal/cron/*` uses Bearer `CRON_SECRET` when configured; production requires it, while non-production without `CRON_SECRET` currently allows the request.
 - Request/response contracts live in `packages/contracts/src`; domain models live in `packages/game-domain/src`. Use the owning package exports and do not recreate moved definitions.
+- At request/identity-to-domain boundaries, explicitly select business fields when constructing numeric deltas, strict runtime objects or event payloads. TypeScript structural typing does not remove extra runtime fields: `attribute_model_version` must not enter point totals, and `ActiveCultivatorRef.status` must not enter strict actor/event objects. Do not sum all values of a request object.
 - Resource protocol types and reducers use `@daoyou/contracts/resources`; complete runtime validators are bound in each app's `src/lib/resources/schemas.ts`. Keep the authoritative inventory and sect-delivery checks when changing resource parsing.
 - Domain-event transport metadata uses `@daoyou/contracts/events`; the API binds its parser to the game-rules payload validators in `src/lib/mq/domainEventSchema.ts`. Domain event data models live in `game-domain/events`.
 - Dev-tool request constructors live in contracts; `apps/api/src/dev-tools/dev-tools-input.ts` binds the current cultivation/root limits and complete reward/mail validators. Keep the local-only access policy in `contracts/dev-tools-access` and enforce it on the server.
@@ -120,6 +121,7 @@ pnpm run db:migrate
 - New unit tests are allowed only for pure, deterministic, reusable engine/domain logic under `packages/*/src`. Integration between pure rules and the engine belongs to the higher-level rules package; bottom-level packages must not depend on higher layers for tests.
 - Do not write tests that exercise or mock databases, repositories, HTTP controllers, auth, Redis, LLM/SMTP providers, network APIs, or other third-party services.
 - Frontend and backend changes must be verified with lint, typecheck/build, code inspection, and focused manual/runtime checks instead of unit tests.
+- For request adapter or mutation changes, verify a valid request with the complete client payload through the real local endpoint; inspect committed values and subsequent resource reads. Include the relevant budget/revision boundary and invalid input. Passing invalid-input checks or testing a manually stripped domain object alone does not verify the adapter. Restore temporary local preparation data following `docs/testing.md`. Migration review evidence and remaining gaps are recorded in `docs/nestjs-monorepo-review.md`.
 - For eligible shared engine changes, pick focused tests first, then broader shared-engine checks if the blast radius is large.
 - Run `pnpm run lint`, `pnpm run test`, or `pnpm run build` when code/config changes justify it.
 - For route/layout changes, run lint/build and inspect the affected navigation and layout behavior manually.
