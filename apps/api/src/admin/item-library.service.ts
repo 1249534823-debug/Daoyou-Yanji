@@ -15,14 +15,8 @@ import {
   generateMaterialLibraryEntries,
   generateSpiritSeedLibraryEntries,
 } from '@server/admin/application/MaterialLibraryService.js';
-import { ItemLibraryDailyMaterialGenerationSettingsSchema } from '@daoyou/shared/lib/constants/appSettings';
-import {
-  CreateItemLibraryEntrySchema,
-  ItemLibraryListQuerySchema,
-  ItemLibraryMaterialGenerateSchema,
-  ItemLibrarySpiritSeedGenerateSchema,
-  UpdateItemLibraryEntrySchema,
-} from '@daoyou/shared/lib/itemLibrary';
+import { ItemLibraryDailyMaterialGenerationSettingsSchema } from '@daoyou/contracts/applicationSettings';
+import { CreateItemLibraryEntrySchema, ItemLibraryListQuerySchema, ItemLibraryMaterialGenerateSchema, ItemLibrarySpiritSeedGenerateSchema, UpdateItemLibraryEntrySchema } from '@daoyou/contracts/itemLibrary';
 
 function isUniqueViolation(error: unknown): boolean {
   if (!error || typeof error !== 'object') return false;

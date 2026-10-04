@@ -1,9 +1,9 @@
-import { getPillAppearanceLabel } from '@daoyou/shared/lib/pillAppearance';
+import { getPillAppearanceLabel } from '@daoyou/game-rules/alchemy/pillAppearance';
 import type {
   AlchemyBatchDisplayProfile,
   FormulaAnalysisResult,
   PillAppearanceGrade,
-} from '@daoyou/shared/types/consumable';
+} from '@daoyou/game-domain/consumable';
 
 export function describeFireState({
   preview,

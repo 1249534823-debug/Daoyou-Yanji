@@ -1,19 +1,17 @@
 import {
   BASE_PRICES,
   TYPE_MULTIPLIERS,
-} from '@daoyou/shared/engine/material/creation/config';
-import { getFallbackMaterialPreset } from '@daoyou/shared/engine/material/creation/fallbackPresets';
-import { MaterialGenerator as MaterialSkeletonGenerator } from '@daoyou/shared/engine/material/creation/MaterialGenerator';
+} from '@daoyou/game-content/materials/config';
+import { getFallbackMaterialPreset } from '@daoyou/game-content/materials/fallback-presets';
+import { MaterialGenerator as MaterialSkeletonGenerator } from '@daoyou/game-rules/materials/generator';
 import {
   MaterialAISchema,
   type GeneratedMaterial,
   type MaterialRandomOptions,
   type MaterialSkeleton,
-} from '@daoyou/shared/engine/material/creation/types';
-import {
-  type MaterialType,
-  type Quality,
-} from '@daoyou/shared/types/constants';
+} from '@daoyou/game-domain/materials/generation';
+import { type MaterialType } from '@daoyou/game-domain/inventory';
+import { type Quality } from '@daoyou/constants/qualities';
 import { generateAiArray } from '@server/utils/aiClient.js';
 import {
   getMaterialGenerationPrompt,

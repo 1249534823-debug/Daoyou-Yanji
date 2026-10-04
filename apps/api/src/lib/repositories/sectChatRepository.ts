@@ -1,10 +1,10 @@
-import { WORLD_CHAT_MESSAGE_TYPES } from '@daoyou/shared/types/world-chat';
+import { WORLD_CHAT_MESSAGE_TYPES } from '@daoyou/contracts/world-chat-messages';
 import { redis } from '@server/lib/redis/index.js';
 import type {
   WorldChatMessageDTO,
   WorldChatMessageType,
   WorldChatPayload,
-} from '@daoyou/shared/types/world-chat';
+} from '@daoyou/contracts/world-chat-messages';
 import { randomUUID } from 'crypto';
 
 const SECT_CHAT_MAX_MESSAGES = 100;

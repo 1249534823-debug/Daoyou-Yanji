@@ -1,5 +1,5 @@
 import { SECT_ROOM_NPC_QUERY_KEY } from '@app/components/feature/sect/sectRoomNavigation';
-import type { SectRoomDefinition } from '@daoyou/shared/engine/sect';
+import type { SectRoomDefinition } from '@daoyou/game-rules/sect-organization';
 import { useCallback, useMemo } from 'react';
 import { useSearchParams } from 'react-router';
 

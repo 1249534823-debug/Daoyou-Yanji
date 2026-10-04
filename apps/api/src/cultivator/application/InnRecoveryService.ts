@@ -2,16 +2,16 @@ import {
   calculateInnRecoverySpiritStoneCost,
   calculateInnRecoveryLossAmount,
   rollInnRecoveryLossPercent,
-} from '@daoyou/shared/config/innRecovery';
+} from '@daoyou/game-rules/condition/inn-recovery';
 import {
   createDefaultCultivationProgress,
   syncBottleneckState,
-} from '@daoyou/shared/engine/cultivation/cultivationUtils';
-import { evaluateFateContext, getInnSpiritStoneMultiplier } from '@daoyou/shared/lib/fates';
+} from '@daoyou/game-rules/cultivation/cultivationUtils';
+import { evaluateFateContext, getInnSpiritStoneMultiplier } from '@daoyou/game-rules/character/fates';
 import { ConditionService } from '@server/cultivator/application/ConditionService.js';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import type { CultivationProgress, Cultivator } from '@daoyou/shared/types/cultivator';
-import type { CultivatorDisplayInput } from '@daoyou/shared/lib/cultivatorDisplay';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
+import type { CultivationProgress, Cultivator } from '@daoyou/game-domain/cultivator';
+import type { CultivatorDisplayInput } from '@daoyou/game-domain/character/display';
 
 export type InnRecoveryFacts = CultivatorDisplayInput &
   Pick<

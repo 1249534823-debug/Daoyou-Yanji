@@ -9,50 +9,42 @@ import {
 import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
 import { findActiveSectMembership } from '@server/lib/repositories/sectCombatRepository.js';
 
-import { automaticCommands } from '@daoyou/shared/combat-v6/auto';
+import { automaticCommands } from '@daoyou/game-rules/combat/auto';
 import {
   combatV6Display,
   combatV6DisplayEvent,
   combatV6Playback,
   combatV6Units,
   visibleUnitNames,
-} from '@daoyou/shared/combat-v6/presentation';
-import { liveReplayDelta } from '@daoyou/shared/combat-v6/replay-timeline';
-import { publicUnitAppearances } from '@daoyou/shared/combat-v6/unit-appearance';
-import { QI_ACTION_COSTS } from '@daoyou/shared/config/qiSystem';
-import type { CombatV6TrainingCommandV1 } from '@daoyou/shared/contracts/combatV6';
-import type {
-  CombatV6TerminalOutboxV1,
-  CombatV6TerminalReason,
-} from '@daoyou/shared/contracts/combatV6Runtime';
-import type {
-  WildRuntime,
-  WildSessionView,
-  WildSettlement,
-} from '@daoyou/shared/contracts/combatV6Wild';
-import {
-  wildEncounterView,
-  type WildEncounter,
-  type WildRegionView,
-} from '@daoyou/shared/contracts/combatV6Wild';
-import { DOMAIN_EVENT_DEFINITIONS } from '@daoyou/shared/contracts/domainEvents';
-import { beastDeathIds } from '@daoyou/shared/engine/combat-v6/beasts';
-import { SeededRng } from '@daoyou/shared/engine/combat-v6/core';
-import { projectCharacterToCombatV6 } from '@daoyou/shared/engine/combat-v6/projection';
+} from '@daoyou/game-rules/combat/presentation';
+import { liveReplayDelta } from '@daoyou/game-rules/combat/replay-timeline';
+import { publicUnitAppearances } from '@daoyou/game-rules/combat/unit-appearance';
+import { QI_ACTION_COSTS } from '@daoyou/game-content/qi/config';
+import type { CombatV6TrainingCommandV1 } from '@daoyou/game-domain/combat/commands';
+import type { CombatV6TerminalReason } from '@daoyou/game-domain/combat/runtime-values';
+import type { CombatV6TerminalOutboxV1 } from '@daoyou/contracts/combatV6Runtime';
+import type { WildSettlement } from '@daoyou/game-domain/wild/settlement';
+import type { WildRuntime, WildSessionView } from '@daoyou/contracts/combatV6Wild';
+import { wildEncounterView, type WildEncounter } from '@daoyou/game-domain/wild/encounter';
+import { type WildRegionView } from '@daoyou/contracts/combatV6Wild';
+import { DOMAIN_EVENT_DEFINITIONS } from '@daoyou/contracts/domainEvents';
+import { beastDeathIds } from '@daoyou/game-rules/beasts/progression';
+import { SeededRng } from '@daoyou/combat-core/rng';
+import { projectCharacterToCombatV6 } from '@daoyou/game-rules/combat/projection/project-character';
 import {
   getWildRegion,
   WILD_CONTENT_VERSION,
-} from '@daoyou/shared/engine/combat-v6/wild/content';
+} from '@daoyou/game-content/combat/wild/content';
 import {
   generateWildEncounter,
   generateWildIndividual,
-} from '@daoyou/shared/engine/combat-v6/wild/generator';
-import { createWildHost, WildHost } from '@daoyou/shared/engine/combat-v6/wild/host';
-import { WILD_EXPLORATION_COOLDOWN_MS } from '@daoyou/shared/engine/combat-v6/wild/rules';
-import { evaluateFateContext } from '@daoyou/shared/lib/fates';
-import { WILD_DROP_POOLS, wildItemRewards } from '@daoyou/shared/rewards/wild';
+} from '@daoyou/game-rules/combat/wild/generator';
+import { createWildHost, WildHost } from '@daoyou/game-rules/combat/wild/host';
+import { WILD_EXPLORATION_COOLDOWN_MS } from '@daoyou/game-rules/combat/wild/rules';
+import { evaluateFateContext } from '@daoyou/game-rules/character/fates';
+import { WILD_DROP_POOLS, wildItemRewards } from '@daoyou/game-rules/rewards/wild';
 
-import { REALM_ORDER } from '@daoyou/shared/types/constants';
+import { REALM_ORDER } from '@daoyou/constants/realms';
 import { eq } from 'drizzle-orm';
 import { createHash, randomInt, randomUUID } from 'node:crypto';
 import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
@@ -516,7 +508,7 @@ export class CombatV6WildSessionService {
     id: string,
     expected: number,
     unitId: string,
-    commands: import('@daoyou/shared/contracts/combatV6').CombatV6CommandGroup,
+    commands: import('@daoyou/game-domain/combat/commands').CombatV6CommandGroup,
   ) {
     return this.change(actor, id, expected, (host) => {
       if (unitId !== host.playerId)

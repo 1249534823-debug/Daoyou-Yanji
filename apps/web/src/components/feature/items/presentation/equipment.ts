@@ -1,19 +1,18 @@
 import { tierColorMap } from '@app/components/ui/inkBadgeTiers';
-import { getLevelRealmStage } from '@daoyou/shared/config/realmProgression';
-import { daoEquipmentRequiredLevel } from '@daoyou/shared/engine/combat-v6/equipment/compiler';
-import { daoFormationInscriptionOf } from '@daoyou/shared/engine/combat-v6/equipment/content';
-import { daoFormationMaxLevel } from '@daoyou/shared/engine/combat-v6/equipment/inscriptions';
+import { getLevelRealmStage } from '@daoyou/game-domain/progression/realms';
+import { daoEquipmentRequiredLevel } from '@daoyou/game-rules/equipment/compiler';
+import { daoFormationInscriptionOf } from '@daoyou/game-content/equipment/content';
+import { daoFormationMaxLevel } from '@daoyou/game-rules/equipment/inscriptions';
 import {
   DAO_EQUIPMENT_ARTS_V1,
   DAO_EQUIPMENT_ESSENCES_V1,
-} from '@daoyou/shared/engine/combat-v6/equipment/special-content';
-import {
-  EQUIPMENT_ATTRIBUTE_NAMES,
-  InventoryEquipmentSchema,
-} from '@daoyou/shared/inventory/equipment';
-import { EQUIPMENT_SLOT_NAMES } from '@daoyou/shared/items/definitions/equipment-blueprints';
-import { DAO_WEAPONS, daoWeaponTypeOf } from '@daoyou/shared/engine/combat-v6/equipment/weapons';
-import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/shared/lib/characterAttributeLabels';
+} from '@daoyou/game-content/equipment/special-content';
+import { EQUIPMENT_ATTRIBUTE_NAMES } from '@daoyou/game-domain/equipment/inventory';
+import { InventoryEquipmentSchema } from '@daoyou/game-rules/inventory/equipment';
+import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment/slot-names';
+import { DAO_WEAPONS } from '@daoyou/game-content/equipment/weapons';
+import { daoWeaponTypeOf } from '@daoyou/game-domain/equipment/weapons';
+import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character-attribute-labels';
 import { field, lines } from './helpers';
 import type { ItemAdapter, PreviewLine, PreviewSection } from './types';
 const icons = {

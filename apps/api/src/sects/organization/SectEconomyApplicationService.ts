@@ -2,9 +2,9 @@ import {
   buySectShopItem,
   listSectShopItems,
 } from '@server/sects/application/SectShopService.js';
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
-import { SectMembership, SectStipendClaim } from '@daoyou/shared/engine/sect';
-import type { RealmType } from '@daoyou/shared/types/constants';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
+import { SectMembership, SectStipendClaim } from '@daoyou/game-rules/sect-organization';
+import type { RealmType } from '@daoyou/constants/realms';
 import {
   mapFacilities,
   organizationError,

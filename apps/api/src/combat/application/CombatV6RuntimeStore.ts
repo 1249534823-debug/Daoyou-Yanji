@@ -4,7 +4,7 @@ import {
   parseCombatV6Runtime,
   type CombatV6BattleFinishedRecordV1,
   type CombatV6RedisRuntimeV1,
-} from '@daoyou/shared/contracts/combatV6Runtime';
+} from '@daoyou/contracts/combatV6Runtime';
 
 const PREFIX = 'combat:v6';
 const OUTBOX_TTL_SECONDS = 24 * 60 * 60;

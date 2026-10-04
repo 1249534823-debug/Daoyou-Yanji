@@ -1,8 +1,8 @@
 import {
   RewardSelectionsSchema,
   rewardAttachments as buildRewardAttachments,
-} from '@daoyou/shared/contracts/adminRewards';
-import type { MailAttachment } from '@daoyou/shared/types/mail';
+} from '@daoyou/game-rules/rewards/items';
+import type { MailAttachment } from '@daoyou/game-domain/mail/attachment';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import type { DbClient } from '@server/lib/drizzle/db.js';

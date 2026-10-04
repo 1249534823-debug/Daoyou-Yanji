@@ -11,14 +11,10 @@ import { redis } from '@server/lib/redis/index.js';
 import {
   materializeRewardAttachments,
   rewardAttachments,
-} from '@daoyou/shared/contracts/adminRewards';
-import type { DomainEventEnvelope } from '@daoyou/shared/contracts/domainEvents';
-import {
-  isSystemMailInWindow,
-  matchesSystemMailConditions,
-  SystemMailAudienceSnapshotSchema,
-  SystemMailConditionsSchema,
-} from '@daoyou/shared/contracts/systemMail';
+} from '@daoyou/game-rules/rewards/items';
+import type { DomainEventEnvelope } from '@daoyou/contracts/domainEvents';
+import { SystemMailAudienceSnapshotSchema, SystemMailConditionsSchema } from '@daoyou/game-domain/mail/audience';
+import { isSystemMailInWindow, matchesSystemMailConditions } from '@daoyou/game-rules/mail/campaign';
 import { and, asc, eq, gt, lte, notExists, sql } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
 import { MailService } from '@server/mail/application/MailService.js';

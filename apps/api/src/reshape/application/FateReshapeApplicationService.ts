@@ -1,6 +1,6 @@
 import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
 import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
 import {
   FateReshapeService,

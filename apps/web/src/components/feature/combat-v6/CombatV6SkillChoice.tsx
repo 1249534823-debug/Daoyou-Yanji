@@ -1,10 +1,11 @@
 import { GameIcon } from '@app/components/ui/GameIcon';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
-import { findBeastSkillPresentation } from '@daoyou/shared/combat-v6/beast-skill-presentation';
-import type { CombatV6SkillCommandOption } from '@daoyou/shared/engine/combat-v6/core';
+import { findBeastSkillPresentation } from '@daoyou/game-rules/beasts/skill-presentation';
+import type { CombatV6SkillCommandOption } from '@daoyou/combat-core/types';
 import { useState, type ReactNode } from 'react';
-import { reasonText, skillNeedsTarget } from './presentation';
+import { reasonText } from '@daoyou/game-rules/combat/battle-log';
+import { skillNeedsTarget } from './presentation';
 import type { CombatV6Session } from './session';
 
 export function CombatV6SkillChoice({

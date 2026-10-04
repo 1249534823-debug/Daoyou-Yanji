@@ -10,7 +10,7 @@ import { usePlayerSession } from '@app/lib/resources/player';
 import type {
   JournalCursor,
   PlayerJournalPage,
-} from '@daoyou/shared/contracts/playerJournal';
+} from '@daoyou/contracts/playerJournal';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router';
 

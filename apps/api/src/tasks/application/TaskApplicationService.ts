@@ -1,5 +1,5 @@
 import type { DbTransaction } from '@server/lib/drizzle/db.js';
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
 import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
 import { readPlayerTaskSummary } from '@server/player/application/PlayerResourceReaderService.js';
 import { TaskService } from '@server/tasks/application/TaskService.js';

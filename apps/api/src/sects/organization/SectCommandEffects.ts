@@ -1,5 +1,5 @@
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
-import type { SectTaskSettlementData } from '@daoyou/shared/contracts/sect';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
+import type { SectTaskSettlementData } from '@daoyou/contracts/sect';
 
 export interface SectCommandEffects {
   resourceChanges: ResourceChangeDescriptor[];

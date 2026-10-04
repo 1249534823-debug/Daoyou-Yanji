@@ -1,4 +1,4 @@
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
 import {
   executeSectPlayerCommand,
   type SectCommandArgs,

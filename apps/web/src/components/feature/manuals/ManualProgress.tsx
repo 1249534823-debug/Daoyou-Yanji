@@ -1,5 +1,5 @@
-import { manualRule } from '@daoyou/shared/engine/combat-v6/manuals/content';
-import type { CharacterManualDefV1 } from '@daoyou/shared/engine/combat-v6/manuals/types';
+import { manualRule } from '@daoyou/game-content/manuals/content';
+import type { CharacterManualDefV1 } from '@daoyou/game-domain/manuals/types';
 import { Fragment } from 'react';
 
 export function ManualProgress({

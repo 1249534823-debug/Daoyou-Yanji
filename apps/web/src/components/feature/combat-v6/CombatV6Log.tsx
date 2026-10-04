@@ -1,5 +1,5 @@
 import { memo, useEffect, useRef, useState } from 'react';
-import { compactLogLines, type ActionEntry } from './presentation';
+import { compactLogLines, type ActionEntry } from '@daoyou/game-rules/combat/battle-log';
 const LogEntry = memo(function LogEntry({
   entry,
   visibleSeq,

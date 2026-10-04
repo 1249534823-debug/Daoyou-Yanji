@@ -7,12 +7,9 @@ import {
   sectMeridianNodes,
   sectMethodProgress,
 } from '@server/lib/drizzle/schema.js';
-import { createFreshCombatV6MethodLevels } from '@daoyou/shared/engine/combat-v6/build-state';
-import {
-  COMBAT_V6_SECT_DEFINITIONS,
-  type CombatV6SectId,
-  type SectCombatProgressV6,
-} from '@daoyou/shared/engine/combat-v6/content';
+import { createFreshCombatV6MethodLevels } from '@daoyou/game-rules/sects/build-state';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import { type CombatV6SectId, type SectCombatProgressV6 } from '@daoyou/game-domain/combat/content';
 import { and, eq } from 'drizzle-orm';
 
 export type ActiveSectMembership = {

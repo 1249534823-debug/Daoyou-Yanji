@@ -1,4 +1,4 @@
-import type { SponsorshipTierId } from '@daoyou/shared/lib/sponsorship';
+import type { SponsorshipTierId } from '@daoyou/game-domain/sponsorship';
 
 export type ProviderOrder = {
   provider: 'afdian';

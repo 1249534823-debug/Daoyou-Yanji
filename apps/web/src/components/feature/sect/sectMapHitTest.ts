@@ -1,4 +1,4 @@
-import type { SectMapHotspot } from '@daoyou/shared/engine/sect';
+import type { SectMapHotspot } from '@daoyou/game-rules/sect-organization';
 
 export function resolveClosestSectMapHotspot(
   hotspots: readonly SectMapHotspot[],

@@ -1,5 +1,5 @@
 import { cn } from '@app/lib/cn';
-import type { TaskObjectiveProgress } from '@daoyou/shared/types/task';
+import type { TaskObjectiveProgress } from '@daoyou/game-domain/tasks/types';
 
 export function TaskObjectiveRow({
   objective,

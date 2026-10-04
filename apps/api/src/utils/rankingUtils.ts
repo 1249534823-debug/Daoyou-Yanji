@@ -6,9 +6,9 @@
  * 丹药评分保持原有规则；历史战斗产物直接保留存档评分。
  */
 
-import { calculatePillScore } from '@daoyou/shared/lib/pillScore';
-import { Quality } from '@daoyou/shared/types/constants';
-import { Consumable } from '@daoyou/shared/types/cultivator';
+import { calculatePillScore } from '@daoyou/game-rules/alchemy/pillScore';
+import { Quality } from '@daoyou/constants/qualities';
+import { Consumable } from '@daoyou/game-domain/cultivator';
 
 const QUALITY_SCORE_MAP: Record<Quality, number> = {
   凡品: 80,

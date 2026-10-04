@@ -15,7 +15,7 @@ import {
   SectTaskActionRequestSchema,
   SectTransferPreviewQuerySchema,
   SectTransferRequestSchema,
-} from '@daoyou/shared/contracts/sect';
+} from '@daoyou/contracts/sect';
 import type { Request } from 'express';
 import type { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';

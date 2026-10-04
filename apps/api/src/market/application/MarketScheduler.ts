@@ -2,8 +2,8 @@ import { preGenerateMarket } from '@server/market/application/MarketService.js';
 import {
   getEnabledMarketNodeIds,
   getMarketConfigByNodeId,
-} from '@daoyou/shared/lib/game/marketConfig';
-import type { MarketLayer } from '@daoyou/shared/types/market';
+} from '@daoyou/game-rules/world/marketConfig';
+import type { MarketLayer } from '@daoyou/game-domain/market';
 
 const MARKET_LAYERS: MarketLayer[] = ['common', 'treasure', 'heaven'];
 

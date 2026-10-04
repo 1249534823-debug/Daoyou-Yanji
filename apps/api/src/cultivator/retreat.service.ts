@@ -9,7 +9,7 @@ import {
 import type {
   RetreatRequest,
   RetreatStreamEvent,
-} from '@daoyou/shared/contracts/retreat';
+} from '@daoyou/contracts/retreat';
 
 @Injectable()
 export class RetreatService {

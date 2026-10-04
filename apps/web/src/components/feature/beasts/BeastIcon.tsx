@@ -1,5 +1,5 @@
 import type { GameIconProps } from '@app/components/ui/GameIcon';
-import { BEAST_SPECIES } from '@daoyou/shared/engine/combat-v6/beasts/content';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
 import { BeastPortrait } from './BeastPortrait';
 
 const speciesIcons = new Map(

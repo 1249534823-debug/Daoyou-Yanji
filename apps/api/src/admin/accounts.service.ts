@@ -6,7 +6,7 @@ import {
   type AdminAccountErrorResponse,
   type AdminAccountListItem,
   type AdminAccountListQuery,
-} from '@daoyou/shared/contracts/adminAccounts';
+} from '@daoyou/contracts/adminAccounts';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import { auth } from '@server/lib/auth/auth.js';

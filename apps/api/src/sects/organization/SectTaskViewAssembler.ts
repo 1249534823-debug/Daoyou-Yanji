@@ -1,4 +1,4 @@
-import type { SectTaskViewData } from '@daoyou/shared/contracts/sect';
+import type { SectTaskViewData } from '@daoyou/contracts/sect';
 import {
   resolveSectTaskClaimReward,
   resolveSectTaskAbandonAvailability,
@@ -7,7 +7,7 @@ import {
   readSectBattleTargetSnapshot,
   summarizeSectBattleTarget,
   type SectTaskDefinition,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import type { SectTaskRecord } from '@server/sects/organization/ports.js';
 import type { SectTaskExecutor } from '@server/sects/organization/task-executors/SectTaskExecutor.js';
 

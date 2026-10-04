@@ -18,15 +18,12 @@ import {
   useSectCombatState,
 } from '@app/lib/resources/player';
 import { resolveMapReturnHref } from '@app/lib/router/mapNavigation';
-import type {
-  WildEncounterView,
-  WildRegionView,
-  WildSessionView,
-} from '@daoyou/shared/contracts/combatV6Wild';
-import { combatCharacterLevel } from '@daoyou/shared/engine/combat-v6/projection/character-level';
-import { itemDefinition } from '@daoyou/shared/inventory';
-import { InventoryEquipmentSchema } from '@daoyou/shared/inventory/equipment';
-import { REALM_ORDER } from '@daoyou/shared/types/constants';
+import type { WildEncounterView } from '@daoyou/game-domain/wild/encounter';
+import type { WildRegionView, WildSessionView } from '@daoyou/contracts/combatV6Wild';
+import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
+import { itemDefinition } from '@daoyou/game-rules/inventory';
+import { InventoryEquipmentSchema } from '@daoyou/game-rules/inventory/equipment';
+import { REALM_ORDER } from '@daoyou/constants/realms';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router';
 import { WildSeekingScene } from './WildSeekingScene';

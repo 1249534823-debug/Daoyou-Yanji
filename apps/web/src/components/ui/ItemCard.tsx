@@ -5,7 +5,7 @@
  * 只做标题 / 徽标 / 描述 / 元信息 / 操作按钮的排版。
  */
 
-import type { Quality } from '@daoyou/shared/types/constants';
+import type { Quality } from '@daoyou/constants/qualities';
 import type { ReactNode } from 'react';
 import { InkBadge } from './InkBadge';
 import { InkListItem } from './InkList';

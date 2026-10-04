@@ -9,13 +9,11 @@ import {
   usePlayerSession,
 } from '@app/lib/resources/player';
 import { getSectPresentation } from '@app/lib/sect/sectPresentation';
-import type { SectCatalogEntry } from '@daoyou/shared/contracts/sect';
-import {
-  COMBAT_V6_SECT_DEFINITIONS,
-  type CombatV6SectId,
-} from '@daoyou/shared/engine/combat-v6/content';
-import { productionSectRuntime } from '@daoyou/shared/engine/sect/content';
-import { getSectLandmarkBySectId } from '@daoyou/shared/lib/game/mapSystem';
+import type { SectCatalogEntry } from '@daoyou/contracts/sect';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import { type CombatV6SectId } from '@daoyou/game-domain/combat/content';
+import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
+import { getSectLandmarkBySectId } from '@daoyou/game-content/world/map';
 import { useMemo, useRef, useState } from 'react';
 import { Navigate, useNavigate, useSearchParams } from 'react-router';
 import {

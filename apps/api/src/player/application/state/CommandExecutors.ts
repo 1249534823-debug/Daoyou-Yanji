@@ -13,12 +13,12 @@ import {
   type RedisLeaseContext,
 } from '@server/lib/redis/lock.js';
 import { publishResourceEvents } from '@server/realtime/infrastructure/playerStateBroadcaster.js';
-import type { PlayerResourceMutationMeta } from '@daoyou/shared/contracts/player';
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
+import type { PlayerResourceMutationMeta } from '@daoyou/contracts/player';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
 import { createHash } from 'node:crypto';
 import { captureJournalSettlement } from '@server/player/application/JournalSettlement.js';
 import { claimJournalOperation, completeJournalOperation, isJournalActivity, journalOperationKey } from '@server/lib/repositories/playerJournalRepository.js';
-import type { PlayerJournalEvent } from '@daoyou/shared/contracts/playerJournal';
+import type { PlayerJournalEvent } from '@daoyou/contracts/playerJournal';
 import {
   baselinesFromResourceChanges,
   resourceEventCommitter,

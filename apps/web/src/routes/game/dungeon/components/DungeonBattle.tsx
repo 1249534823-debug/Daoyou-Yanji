@@ -1,25 +1,13 @@
-import { apiFetch } from '@app/lib/api/fetch';
 import { CombatV6Battle } from '@app/components/feature/combat-v6/CombatV6Battle';
 import { CombatV6Page } from '@app/components/feature/combat-v6/CombatV6Page';
 import { useCombatV6Session } from '@app/components/feature/combat-v6/useCombatV6Session';
 import { InkButton } from '@app/components/ui/InkButton';
+import { apiFetch } from '@app/lib/api/fetch';
+import type { BattleCallbackData } from '@app/lib/hooks/dungeon/types';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
-import type { DungeonSessionView } from '@daoyou/shared/contracts/combatV6Dungeon';
-import type { ResourceOperation } from '@daoyou/shared/engine/resource/types';
-import type {
-  DungeonRound,
-  DungeonSettlement,
-  DungeonState,
-} from '@daoyou/shared/lib/dungeon/types';
-import type { Cultivator } from '@daoyou/shared/types/cultivator';
+import type { DungeonSessionView } from '@daoyou/contracts/combatV6Dungeon';
+import type { Cultivator } from '@daoyou/game-domain/cultivator';
 
-export interface BattleCallbackData {
-  isFinished: boolean;
-  settlement?: DungeonSettlement;
-  realGains?: ResourceOperation[];
-  dungeonState?: DungeonState;
-  roundData?: DungeonRound;
-}
 export function DungeonBattle({
   battleId,
   onBattleComplete,

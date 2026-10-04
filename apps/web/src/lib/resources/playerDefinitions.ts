@@ -3,14 +3,10 @@ import type {
   PlayerResourceKey,
   PlayerResourceMap,
   PlayerResourcesResponse,
-} from '@daoyou/shared/contracts/player';
-import {
-  reduceTaskResourceList,
-  RESOURCE_DATA_SCHEMAS,
-  type ResourceDataMap,
-  type ResourceScope,
-} from '@daoyou/shared/contracts/resources';
-import type { TaskStatus } from '@daoyou/shared/types/task';
+} from '@daoyou/contracts/player';
+import { RESOURCE_DATA_SCHEMAS } from '@app/lib/resources/schemas';
+import { reduceTaskResourceList, type ResourceDataMap, type ResourceScope } from '@daoyou/contracts/resources';
+import type { TaskStatus } from '@daoyou/game-domain/tasks/types';
 import {
   defaultResourceReducer,
   loadResourceEndpoint,

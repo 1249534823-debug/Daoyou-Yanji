@@ -5,7 +5,7 @@ import type {
   NarrativeAct,
   NarrativePerformanceScript,
   NarrativeTone,
-} from '@daoyou/shared/types/narrative';
+} from '@daoyou/game-domain/narrative';
 import { useEffect, useState } from 'react';
 import {
   advanceNarrativePerformance,

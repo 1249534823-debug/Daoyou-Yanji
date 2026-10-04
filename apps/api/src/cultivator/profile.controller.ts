@@ -13,7 +13,7 @@ import { RedeemClaimError } from '@server/admin/application/RedeemCodeApplicatio
 import {
   AttributeAllocationSchema,
   type AttributeAllocationRequest,
-} from '@daoyou/shared/contracts/characterAttributes';
+} from '@daoyou/contracts/characterAttributes';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { apiErrorFilter } from '../http/error-filter.js';

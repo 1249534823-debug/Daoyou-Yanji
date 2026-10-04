@@ -3,7 +3,7 @@ import type {
   RealtimeChannel,
   RealtimeServerEvent,
   RealtimeServerEventType,
-} from '@daoyou/shared/contracts/realtime';
+} from '@daoyou/contracts/realtime';
 
 export type RealtimeConnectionState =
   | 'idle'

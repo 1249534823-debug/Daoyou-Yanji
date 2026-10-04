@@ -4,7 +4,7 @@ import {
   CHARACTER_GENERATION_DAILY_LIMIT,
   type CharacterGenerationLimitedBy,
   type CharacterGenerationQuota,
-} from '@daoyou/shared/contracts/character-generation';
+} from '@daoyou/contracts/character-generation';
 import { redis } from './index.js';
 
 const KEY_PREFIX = 'character_generation:daily';

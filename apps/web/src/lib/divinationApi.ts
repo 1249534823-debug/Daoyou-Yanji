@@ -3,8 +3,8 @@ import type {
   DivinationRecord,
   DivinationStreamEvent,
   DivinationView,
-} from '@daoyou/shared/contracts/divination';
-import type { DivinationDirection } from '@daoyou/shared/lib/divination';
+} from '@daoyou/contracts/divination';
+import type { DivinationDirection } from '@daoyou/game-domain/divination/types';
 
 async function readJson<T>(response: Response): Promise<T> {
   const body = await response.json();

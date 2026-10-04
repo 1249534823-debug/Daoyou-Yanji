@@ -1,4 +1,4 @@
-import type { CombatV6HistoryItem } from '@daoyou/shared/contracts/combatV6Replay';
+import type { CombatV6HistoryItem } from '@daoyou/contracts/combatV6Replay';
 import { cn } from '@app/lib/cn';
 import { Link } from 'react-router';
 

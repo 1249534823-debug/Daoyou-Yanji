@@ -1,11 +1,11 @@
 import type {
   PlayerResourceEventsResponse,
   PlayerResourcesResponse,
-} from '@daoyou/shared/contracts/player';
+} from '@daoyou/contracts/player';
 import {
   requiresResourceEventReload,
   type ResourceScope,
-} from '@daoyou/shared/contracts/resources';
+} from '@daoyou/contracts/resources';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import type { DbClient } from '@server/lib/drizzle/db.js';

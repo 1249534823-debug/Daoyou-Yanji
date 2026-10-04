@@ -1,4 +1,4 @@
-import type { ResourceOperation } from '@daoyou/shared/engine/resource/types';
+import type { ResourceOperation } from '@daoyou/game-domain/resources/operations';
 import type { DbClient, DbTransaction } from '@server/lib/drizzle/db.js';
 import { dungeonHistories, dungeonRuns } from '@server/lib/drizzle/schema.js';
 import { and, desc, eq, isNull, ne } from 'drizzle-orm';

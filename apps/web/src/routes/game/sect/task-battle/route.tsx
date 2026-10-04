@@ -9,7 +9,7 @@ import {
 } from '@app/components/feature/sect/sectTaskActivityLocations';
 import { InkButton } from '@app/components/ui';
 import { startSectTaskBattleOnce } from '@app/lib/sect/sectClient';
-import type { SectTaskSessionView } from '@daoyou/shared/contracts/combatV6SectTask';
+import type { SectTaskSessionView } from '@daoyou/contracts/combatV6SectTask';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router';
 import { SectPermissionBoundary } from '../components/SectScene';

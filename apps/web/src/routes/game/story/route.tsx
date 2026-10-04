@@ -5,8 +5,8 @@ import { InkButton } from '@app/components/ui';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
 import { useCultivatorIdentity } from '@app/lib/resources/player';
 import { useStory } from '@app/lib/story/useStory';
-import { fillPerformanceScript } from '@daoyou/shared/performance/schema';
-import { getPerformanceScript } from '@daoyou/shared/performance/catalog';
+import { fillPerformanceScript } from '@daoyou/game-domain/performance/schema';
+import { getPerformanceScript } from '@daoyou/game-content/performance/catalog';
 import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router';
 

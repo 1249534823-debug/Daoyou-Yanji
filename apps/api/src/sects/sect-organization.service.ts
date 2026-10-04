@@ -3,10 +3,10 @@ import type {
   SectTaskActionRequestSchema,
   SectTransferPreviewQuerySchema,
   SectTransferRequestSchema,
-} from '@daoyou/shared/contracts/sect';
-import { SectShopBuyParamsSchema } from '@daoyou/shared/contracts/sectShop';
-import { productionSectRuntime as runtime } from '@daoyou/shared/engine/sect/content';
-import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
+} from '@daoyou/contracts/sect';
+import { SectShopBuyParamsSchema } from '@daoyou/contracts/sectShop';
+import { productionSectRuntime as runtime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';

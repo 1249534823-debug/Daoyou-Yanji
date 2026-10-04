@@ -1,6 +1,6 @@
 import { recordJournalChange } from '@server/player/application/JournalSettlement.js';
-import { ConsumableFactsSchema } from '@daoyou/shared/items/definitions/consumables';
-import type { Consumable } from '@daoyou/shared/types/cultivator';
+import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
+import type { Consumable } from '@daoyou/game-domain/cultivator';
 import { and, asc, eq } from 'drizzle-orm';
 import {
   getExecutor,

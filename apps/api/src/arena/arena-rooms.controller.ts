@@ -13,7 +13,7 @@ import {
   ArenaJoinRoomSchema,
   ArenaReadyCommandSchema,
   ArenaStartCommandSchema,
-} from '@daoyou/shared/contracts/arena';
+} from '@daoyou/contracts/arena';
 import type { Response } from 'express';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';

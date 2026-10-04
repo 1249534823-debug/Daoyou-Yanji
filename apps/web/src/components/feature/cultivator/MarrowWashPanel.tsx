@@ -12,12 +12,12 @@ import {
   useCultivatorCondition,
   useCultivatorIdentity,
 } from '@app/lib/resources/player';
-import type { PlayerIdentityCultivator } from '@daoyou/shared/contracts/player';
-import { getElementInfo } from '@daoyou/shared/lib/gameConceptDisplay';
+import type { PlayerIdentityCultivator } from '@daoyou/contracts/player';
+import { getElementInfo } from '@daoyou/game-content/presentation/concepts';
 import {
   MARROW_WASH_BREAKTHROUGH_QI_COST,
   getMarrowWashSummary,
-} from '@daoyou/shared/lib/marrowWash';
+} from '@daoyou/game-rules/body-cultivation/marrow-wash';
 import { useState } from 'react';
 
 function RootStrengthList({

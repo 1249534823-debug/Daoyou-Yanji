@@ -1,11 +1,9 @@
 import type { MapNodeAction } from '@app/components/feature/map/mapActions';
 import { WildNodePreview } from '@app/components/feature/map/WildNodePreview';
 import { InkButton } from '@app/components/ui/InkButton';
-import { getAtlasCategory } from '@daoyou/shared/lib/game/mapAtlasCategories';
-import {
-  resolveDungeonMapConfig,
-  type WorldMapLocation,
-} from '@daoyou/shared/lib/game/mapSystem';
+import { getAtlasCategory } from '@daoyou/game-rules/world/mapAtlasCategories';
+import { type WorldMapLocation } from '@daoyou/game-domain/world/map';
+import { resolveDungeonMapConfig } from '@daoyou/game-rules/world/dungeon';
 import { AtlasNodeKinds } from './AtlasNodeKinds';
 
 /** One nonmodal panel owns both location information and its single gameplay entry. */

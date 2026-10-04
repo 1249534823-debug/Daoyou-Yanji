@@ -1,7 +1,7 @@
 import { apiCorsOptions } from '@server/lib/http/cors.js';
 import { getRequestIp } from '@server/lib/http/requestIp.js';
 import { checkApiIpRateLimit } from '@server/lib/redis/apiIpRateLimiter.js';
-import { LlmByokConfigSchema } from '@daoyou/shared/config/llm';
+import { LlmByokConfigSchema } from '@daoyou/contracts/llm/config';
 
 export type HandshakeError = {
   status: number;

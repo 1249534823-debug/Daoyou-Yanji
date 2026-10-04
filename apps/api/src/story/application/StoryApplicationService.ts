@@ -1,4 +1,4 @@
-import type { StoryView } from '@daoyou/shared/story/schema';
+import type { StoryView } from '@daoyou/game-domain/story/schema';
 import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
 import { StoryService } from '@server/story/application/StoryService.js';
 

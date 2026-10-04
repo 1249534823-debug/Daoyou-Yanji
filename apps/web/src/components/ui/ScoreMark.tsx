@@ -1,5 +1,5 @@
 import { cn } from '@app/lib/cn';
-import { formatScore } from '@daoyou/shared/lib/scoreFormat';
+import { formatScore } from '@daoyou/game-rules/presentation/score';
 
 export function ScoreMark({
   score,

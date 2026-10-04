@@ -12,14 +12,8 @@ import {
   resourceScopes,
   resourceVersions,
 } from '@server/lib/drizzle/schema.js';
-import {
-  RESOURCE_TOPICS,
-  ResourceChangeSchema,
-  type ResourceChange,
-  type ResourceChangeDescriptor,
-  type ResourceScope,
-  type ResourceTopic,
-} from '@daoyou/shared/contracts/resources';
+import { ResourceChangeSchema } from '@server/lib/resources/schemas.js';
+import { RESOURCE_TOPICS, type ResourceChange, type ResourceChangeDescriptor, type ResourceScope, type ResourceTopic } from '@daoyou/contracts/resources';
 import { and, asc, eq, inArray, like, lt, min, sql } from 'drizzle-orm';
 import { ZodError } from 'zod';
 

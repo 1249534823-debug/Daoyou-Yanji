@@ -1,4 +1,4 @@
-import type { ArenaSessionView } from '@daoyou/shared/contracts/combatV6Arena';
+import type { ArenaSessionView } from '@daoyou/contracts/combatV6Arena';
 import { useEffect, useState } from 'react';
 
 /** Local clock drives presentation only; the host decides when commands lock. */

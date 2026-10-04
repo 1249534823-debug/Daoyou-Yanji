@@ -6,7 +6,7 @@ import {
   LLM_PROVIDER_DEFAULT_MODELS,
   LlmByokConfigSchema,
   type LlmProviderId,
-} from '@daoyou/shared/config/llm';
+} from '@daoyou/contracts/llm/config';
 import { useState } from 'react';
 import {
   SettingsMessage,

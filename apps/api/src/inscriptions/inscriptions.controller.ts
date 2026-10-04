@@ -18,8 +18,8 @@ import {
 import {
   InscriptionRequestSchema,
   type InscriptionRequest,
-} from '@daoyou/shared/contracts/inscriptions';
-import { InventoryRuleError } from '@daoyou/shared/inventory';
+} from '@daoyou/contracts/inscriptions';
+import { InventoryRuleError } from '@daoyou/game-domain/items/bag';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { apiErrorFilter } from '../http/error-filter.js';

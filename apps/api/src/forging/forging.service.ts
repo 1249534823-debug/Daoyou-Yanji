@@ -12,7 +12,7 @@ import type {
   VaultQuerySchema,
   WithdrawMaterialSchema,
   WithdrawVaultPageSchema,
-} from '@daoyou/shared/contracts/forging';
+} from '@daoyou/contracts/forging';
 import type { z } from 'zod';
 
 @Injectable()

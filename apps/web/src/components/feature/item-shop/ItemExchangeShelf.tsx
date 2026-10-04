@@ -4,9 +4,9 @@ import {
 } from '@app/components/feature/items/ItemSlot';
 import { GameLoadingState } from '@app/components/game-shell';
 import { InkButton, InkInput, InkNotice, InkSelect } from '@app/components/ui';
-import type { ItemExchangeShopItemView } from '@daoyou/shared/contracts/itemExchangeShop';
-import { findItemDefinition } from '@daoyou/shared/items/registry';
-import { getGameConceptInfo } from '@daoyou/shared/lib/gameConceptDisplay';
+import type { ItemExchangeShopItemView } from '@daoyou/game-domain/shops/exchange';
+import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import { getGameConceptInfo } from '@daoyou/game-content/presentation/concepts';
 import { useState } from 'react';
 
 const kinds = {

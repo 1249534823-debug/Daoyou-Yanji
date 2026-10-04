@@ -9,12 +9,12 @@ import {
   UseFilters,
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
-import { CombatAutoRequestSchema } from '@daoyou/shared/combat-v6/auto';
+import { CombatAutoRequestSchema } from '@daoyou/contracts/combatAuto';
 import {
   CombatV6TrainingCommandRequestSchema,
   CombatV6TrainingEventsQuerySchema,
   CombatV6TrainingRevisionRequestSchema,
-} from '@daoyou/shared/contracts/combatV6';
+} from '@daoyou/contracts/combatV6';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { FirstQuery } from '../http/first-query.js';

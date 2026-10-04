@@ -1,7 +1,7 @@
 import {
   isDomainEventType,
   type DomainEventEnvelope,
-} from '@daoyou/shared/contracts/domainEvents';
+} from '@daoyou/contracts/domainEvents';
 import { projectCombatV6Condition } from '@server/combat/application/CombatV6ConditionProjector.js';
 import type { CombatV6TrainingSessionService } from '@server/combat/application/CombatV6TrainingSessionService.js';
 import {

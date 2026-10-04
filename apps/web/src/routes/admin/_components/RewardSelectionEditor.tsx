@@ -3,7 +3,7 @@ import {
   ItemSlot,
 } from '@app/components/feature/items/ItemSlot';
 import { InkButton, InkInput } from '@app/components/ui';
-import { rewardDisplayItem } from '@daoyou/shared/contracts/adminRewards';
+import { rewardDisplayItem } from '@daoyou/game-rules/rewards/items';
 import { RewardItemPicker } from './RewardItemPicker';
 import {
   createReputationDraft,

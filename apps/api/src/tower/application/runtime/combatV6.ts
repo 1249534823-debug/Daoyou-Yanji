@@ -1,48 +1,42 @@
-import { automaticCommands } from '@daoyou/shared/combat-v6/auto';
+import { automaticCommands } from '@daoyou/game-rules/combat/auto';
 import {
   combatV6Display,
   combatV6DisplayEvent,
   combatV6Playback,
   combatV6Units,
   visibleUnitNames,
-} from '@daoyou/shared/combat-v6/presentation';
-import { createCombatV6Replay } from '@daoyou/shared/combat-v6/replay';
-import { liveReplayDelta } from '@daoyou/shared/combat-v6/replay-timeline';
-import { publicUnitAppearances } from '@daoyou/shared/combat-v6/unit-appearance';
-import type { CombatV6CommandGroup } from '@daoyou/shared/contracts/combatV6';
-import type {
-  TowerReward,
-  TowerSessionView,
-  TowerView,
-} from '@daoyou/shared/contracts/combatV6Tower';
-import type { ResourceChange } from '@daoyou/shared/contracts/resources';
-import { canDeployBeast } from '@daoyou/shared/engine/combat-v6/beasts';
-import type { CombatV6TrainingPlayerInput } from '@daoyou/shared/engine/combat-v6/encounter';
-import { combatCharacterLevel } from '@daoyou/shared/engine/combat-v6/projection/character-level';
-import {
-  createTowerHost,
-  TowerHost,
-  type TowerBattleSnapshot,
-} from '@daoyou/shared/engine/combat-v6/tower/host';
-import { publishedTowerPreviews } from '@daoyou/shared/engine/combat-v6/tower/published';
-import type { TowerBlessingId } from '@daoyou/shared/lib/tower/blessings';
+} from '@daoyou/game-rules/combat/presentation';
+import { createCombatV6Replay } from '@daoyou/game-rules/combat/replay';
+import { liveReplayDelta } from '@daoyou/game-rules/combat/replay-timeline';
+import { publicUnitAppearances } from '@daoyou/game-rules/combat/unit-appearance';
+import type { CombatV6CommandGroup } from '@daoyou/game-domain/combat/commands';
+import type { TowerReward } from '@daoyou/game-domain/tower/reward';
+import type { TowerSessionView, TowerView } from '@daoyou/contracts/combatV6Tower';
+import type { ResourceChange } from '@daoyou/contracts/resources';
+import { canDeployBeast } from '@daoyou/game-rules/beasts/projection';
+import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat/encounter';
+import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
+import { type TowerBattleSnapshot } from '@daoyou/game-domain/tower/runtime';
+import { createTowerHost, TowerHost } from '@daoyou/game-rules/tower/host';
+import { publishedTowerPreviews } from '@daoyou/game-rules/tower/published';
+import type { TowerBlessingId } from '@daoyou/game-domain/tower/blessings';
 import {
   buildTowerBlessingChoices,
   hashTowerSeed,
   isTowerRealmEligible,
   TOWER_MAX_FLOOR,
   TOWER_MIN_REALM,
-} from '@daoyou/shared/lib/tower/helpers';
-import { shouldExpireTowerRun } from '@daoyou/shared/lib/tower/lifecycle';
+} from '@daoyou/game-rules/tower/helpers';
+import { shouldExpireTowerRun } from '@daoyou/game-rules/tower/lifecycle';
 import {
   advanceTowerRewardWeek,
   towerRewards,
   TowerRewardSchema,
-} from '@daoyou/shared/lib/tower/reward-state';
-import { getTowerSeasonMeta } from '@daoyou/shared/lib/tower/season';
-import { planTowerReward, towerRewardPreviews } from '@daoyou/shared/rewards/tower';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import type { RealmType } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-rules/tower/reward-state';
+import { getTowerSeasonMeta } from '@daoyou/game-rules/tower/season';
+import { planTowerReward, towerRewardPreviews } from '@daoyou/game-rules/rewards/tower';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
+import type { RealmType } from '@daoyou/constants/realms';
 import { eq, sql } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
 import { db } from '@server/lib/drizzle/db.js';

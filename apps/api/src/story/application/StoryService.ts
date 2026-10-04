@@ -10,13 +10,11 @@ import {
   updateCultivatorStory,
 } from '@server/lib/repositories/storyRepository.js';
 import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
-import { getGuideLesson } from '@daoyou/shared/guide/catalog';
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
-import { storyReward } from '@daoyou/shared/story/grants';
-import {
-  getStoryChapter,
-  restingStoryProgress,
-} from '@daoyou/shared/story/catalog';
+import { getGuideLesson } from '@daoyou/game-content/guide/catalog';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
+import { storyReward } from '@daoyou/game-rules/story/grants';
+import { restingStoryProgress } from '@daoyou/game-rules/story/progress';
+import { getStoryChapter } from '@daoyou/game-content/story/catalog';
 import {
   acknowledgeGuide,
   acknowledgePerformance,
@@ -25,7 +23,7 @@ import {
   resolveStory,
   rewindToUnwatchedPerformance,
   type StoryResolution,
-} from '@daoyou/shared/story/resolve';
+} from '@daoyou/game-rules/story/resolve';
 import {
   emptyStoryFacts,
   STORY_MARK_FACT_IDS,
@@ -34,7 +32,7 @@ import {
   type StoryFacts,
   type StoryProgress,
   type StoryView,
-} from '@daoyou/shared/story/schema';
+} from '@daoyou/game-domain/story/schema';
 import { and, eq, sql } from 'drizzle-orm';
 import { grantInventory } from '@server/inventory/operations.js';
 

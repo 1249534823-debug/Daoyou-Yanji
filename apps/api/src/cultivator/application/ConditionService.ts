@@ -1,26 +1,23 @@
-import {
-  characterResourceMaxima,
-  normalizeCharacterResource,
-  type CultivatorDisplayInput,
-} from '@daoyou/shared/lib/cultivatorDisplay';
+import { type CultivatorDisplayInput } from '@daoyou/game-domain/character/display';
+import { characterResourceMaxima, normalizeCharacterResource } from '@daoyou/game-rules/character/display';
 import {
   getBreakthroughPenalty,
   isConditionStatusActive,
   projectNaturalRecoveryResources,
-} from '@daoyou/shared/lib/condition';
-import { evaluateFateContext } from '@daoyou/shared/lib/fates';
+} from '@daoyou/game-rules/condition';
+import { evaluateFateContext } from '@daoyou/game-rules/character/fates';
 import {
   isConditionStatusKey,
-} from '@daoyou/shared/lib/conditionStatusRegistry';
+} from '@daoyou/game-rules/condition/statuses';
 import {
   createDefaultBodyCultivationState,
   normalizeBodyCultivationState,
-} from '@daoyou/shared/lib/bodyCultivation/normalize';
+} from '@daoyou/game-rules/body-cultivation/normalize';
 import {
   breakthroughBodyCultivationRealm as advanceBodyCultivationRealm,
-} from '@daoyou/shared/lib/bodyCultivation/breakthrough';
-import { PILL_TOXICITY_CAP } from '@daoyou/shared/config/consumableSystem';
-import { normalizeMarrowWashState } from '@daoyou/shared/lib/marrowWash';
+} from '@daoyou/game-rules/body-cultivation/breakthrough';
+import { PILL_TOXICITY_CAP } from '@daoyou/game-content/consumables/config';
+import { normalizeMarrowWashState } from '@daoyou/game-rules/body-cultivation/marrow-wash';
 import type {
   BodyCultivationRealm,
   ConditionStatusDuration,
@@ -29,8 +26,8 @@ import type {
   ConditionResourcePoint,
   CultivatorCondition,
   TemperingTrackKey,
-} from '@daoyou/shared/types/condition';
-import type { Cultivator } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-domain/condition';
+import type { Cultivator } from '@daoyou/game-domain/cultivator';
 
 export type ConditionCultivatorFacts = CultivatorDisplayInput &
   Pick<Cultivator, 'pre_heaven_fates'>;

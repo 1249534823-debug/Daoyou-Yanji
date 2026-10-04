@@ -1,8 +1,8 @@
 import type {
   AuctionBeastListRequest,
   AuctionListRequest,
-} from '@daoyou/shared/contracts/auction';
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
+} from '@daoyou/contracts/auction';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
 import type { CultivatorQueriesService } from '@server/cultivator/cultivator-queries.service.js';
 import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import { cultivators } from '@server/lib/drizzle/schema.js';

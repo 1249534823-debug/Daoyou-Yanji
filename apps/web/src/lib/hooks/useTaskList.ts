@@ -3,7 +3,7 @@ import {
   type PlayerTasksParams,
 } from '@app/lib/resources/definitions';
 import { useResource } from '@app/lib/resources/hooks';
-import type { TaskStatus } from '@daoyou/shared/types/task';
+import type { TaskStatus } from '@daoyou/game-domain/tasks/types';
 import { useMemo } from 'react';
 
 export function useTaskList(

@@ -1,4 +1,4 @@
-import type { DailyTaskDifficulty } from '@daoyou/shared/engine/cultivation/exp-gain-strategies/types';
+import type { DailyTaskDifficulty } from '@daoyou/game-domain/cultivation/task-difficulty';
 import {
   assertSectRealmQualityRules,
   assertStandardSectTaskRequirementCurve,
@@ -10,8 +10,8 @@ import {
   type SectTaskDefinition,
   type SectTaskRewardCadence,
   type SectTaskRewardSnapshot,
-} from '@daoyou/shared/engine/sect';
-import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-rules/sect-organization';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { z, type ZodType } from 'zod';
 import { organizationError } from '@server/sects/organization/applicationSupport.js';
 import type { SectMembershipRecord, SectQueryContext } from '@server/sects/organization/ports.js';

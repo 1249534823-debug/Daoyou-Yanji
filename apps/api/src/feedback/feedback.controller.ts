@@ -3,7 +3,7 @@ import type { AuthUser } from '@server/lib/auth/types.js';
 import {
   FeedbackCreateRequestSchema,
   type FeedbackCreateRequest,
-} from '@daoyou/shared/contracts/feedback';
+} from '@daoyou/contracts/feedback';
 import { ZodError } from 'zod';
 import { Access, CurrentUser } from '../auth/access.js';
 import { apiErrorFilter } from '../http/error-filter.js';

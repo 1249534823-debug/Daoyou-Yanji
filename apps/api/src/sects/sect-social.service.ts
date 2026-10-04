@@ -1,12 +1,12 @@
 import type {
   SectContributionRankingData,
   SectContributionRankingEntry,
-} from '@daoyou/shared/contracts/sect';
+} from '@daoyou/contracts/sect';
 import type {
   SectChatListQuery,
   WorldChatCreateMessageRequest,
-} from '@daoyou/shared/contracts/world-chat';
-import type { SectDiscipleRank, SectOffice } from '@daoyou/shared/engine/sect';
+} from '@daoyou/contracts/world-chat';
+import type { SectDiscipleRank, SectOffice } from '@daoyou/game-rules/sect-organization';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';

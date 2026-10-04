@@ -5,7 +5,7 @@ import { useResourceMutation } from '@app/lib/resources/mutations';
 import type {
   SectTaskActionData,
   SectTaskViewData,
-} from '@daoyou/shared/contracts/sect';
+} from '@daoyou/contracts/sect';
 import {
   createContext,
   useCallback,

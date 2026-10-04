@@ -1,12 +1,12 @@
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
-import type { SectTaskActionData } from '@daoyou/shared/contracts/sect';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
+import type { SectTaskActionData } from '@daoyou/contracts/sect';
 import {
   SECT_TASK_ABANDON_COOLDOWN_MS,
   SectTask,
   SectTaskRecordPayloadSchema,
   resolveSectTaskAbandonAvailability,
   type SectTaskDefinition,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import { z } from 'zod';
 import { ClaimSectTaskRewardHandler } from '@server/sects/organization/ClaimSectTaskRewardHandler.js';
 import { SectCapabilityAuthorizer } from '@server/sects/organization/SectCapabilityAuthorizer.js';

@@ -10,7 +10,7 @@ import {
   type SweepDirection,
   type SweepGameProgress,
   type SweepGameState,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import * as Phaser from 'phaser';
 import {
   attachSweepVirtualJoystick,

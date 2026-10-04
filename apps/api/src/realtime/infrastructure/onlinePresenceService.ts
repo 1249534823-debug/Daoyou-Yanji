@@ -3,7 +3,7 @@ import { redis } from '@server/lib/redis/index.js';
 import { db } from '@server/lib/drizzle/db.js';
 import { cultivators } from '@server/lib/drizzle/schema.js';
 import { getPubSubInstanceId } from '@server/realtime/infrastructure/pubSubEnvelope.js';
-import type { AdminOnlineUsersSnapshot } from '@daoyou/shared/contracts/adminOnlineUsers';
+import type { AdminOnlineUsersSnapshot } from '@daoyou/contracts/adminOnlineUsers';
 import { eq } from 'drizzle-orm';
 
 const ONLINE_CULTIVATORS_KEY = 'admin:online:cultivators:v1';

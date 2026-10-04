@@ -15,18 +15,18 @@ import { SectError } from '@server/sects/application/SectError.js';
 import {
   CHEAT_HEAVEN_TALISMAN_NAME,
   CHEAT_HEAVEN_TALISMAN_SCENARIO,
-} from '@daoyou/shared/config/sectTransferTalisman';
+} from '@daoyou/game-content/consumables/sectTransferTalisman';
 import type {
   SectContextData,
   SectTransferPreviewData,
-} from '@daoyou/shared/contracts/sect';
+} from '@daoyou/contracts/sect';
 import {
   resolveSectTaskClaimReward,
   SectTaskRecordPayloadSchema,
   type SectDiscipleRank,
   type SectRuntime,
-} from '@daoyou/shared/engine/sect';
-import type { Consumable } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-rules/sect-organization';
+import type { Consumable } from '@daoyou/game-domain/cultivator';
 import { and, eq } from 'drizzle-orm';
 import { findBagTalisman } from '@server/inventory/application/BagConsumables.js';
 import {

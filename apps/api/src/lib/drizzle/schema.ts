@@ -1,36 +1,34 @@
-import type { PlayerJournalEvent } from '@daoyou/shared/contracts/playerJournal';
-import type { StoryStatus, StoryTrack } from '@daoyou/shared/story/schema';
-import type { SystemMailConditions } from '@daoyou/shared/contracts/systemMail';
-import type { RewardSelection } from '@daoyou/shared/contracts/adminRewards';
-import type { ItemGrant } from '@daoyou/shared/inventory';
-import type { StoredTowerWeek } from '@daoyou/shared/engine/combat-v6/tower/published';
-import type { TowerClaims } from '@daoyou/shared/lib/tower/reward-state';
-import type { DivinationDice, DivinationDirection } from '@daoyou/shared/lib/divination';
-import type { WildEncounter, WildRuntime } from '@daoyou/shared/contracts/combatV6Wild';
-import type { AutoStrategy } from '@daoyou/shared/combat-v6/auto-strategy';
-import type { CombatV6ReplayV1 } from '@daoyou/shared/contracts/combatV6Runtime';
+import type { PlayerJournalEvent } from '@daoyou/contracts/playerJournal';
+import type { StoryStatus, StoryTrack } from '@daoyou/game-domain/story/schema';
+import type { SystemMailConditions } from '@daoyou/game-domain/mail/audience';
+import type { RewardSelection } from '@daoyou/game-domain/rewards/selection';
+import type { ItemGrant } from '@daoyou/game-domain/items/inventory';
+import type { StoredTowerWeek } from '@daoyou/game-domain/tower/published';
+import type { TowerClaims } from '@daoyou/game-rules/tower/reward-state';
+import type { DivinationDice, DivinationDirection } from '@daoyou/game-domain/divination/types';
+import type { WildEncounter } from '@daoyou/game-domain/wild/encounter';
+import type { WildRuntime } from '@daoyou/contracts/combatV6Wild';
+import type { AutoStrategy } from '@daoyou/game-domain/combat/auto-strategy';
+import type { CombatV6ReplayV1 } from '@daoyou/game-domain/combat/replay-archive';
 import type {
   ResourceChangeOperation,
   ResourceScopeKind,
   ResourceTopic,
-} from '@daoyou/shared/contracts/resources';
-import type {
-  BeastLineup,
-  SummonedBeast,
-} from '@daoyou/shared/engine/combat-v6/beasts';
-import type { SpiritFieldPlotState } from '@daoyou/shared/engine/spirit-field/types';
+} from '@daoyou/contracts/resources';
+import type { BeastLineup, SummonedBeast } from '@daoyou/game-domain/beasts/schema';
+import type { SpiritFieldPlotState } from '@daoyou/game-domain/spirit-field/types';
 import type {
   ItemLibraryEditorConfig,
   ItemLibraryPayload,
-} from '@daoyou/shared/lib/itemLibrary';
-import type { SponsorshipTierId } from '@daoyou/shared/lib/sponsorship';
+} from '@daoyou/game-domain/items/library';
+import type { SponsorshipTierId } from '@daoyou/game-domain/sponsorship';
 import type {
   AlchemyFormulaBlueprint,
   AlchemyFormulaMastery,
   AlchemyFormulaPattern,
   PillFamily,
-} from '@daoyou/shared/types/consumable';
-import type { MailAttachment } from '@daoyou/shared/types/mail';
+} from '@daoyou/game-domain/consumable';
+import type { MailAttachment } from '@daoyou/game-domain/mail/attachment';
 import { sql } from 'drizzle-orm';
 import {
   bigint,

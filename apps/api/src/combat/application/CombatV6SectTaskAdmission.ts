@@ -1,15 +1,13 @@
-import {
-  SectV6TargetSchema,
-  type SectTaskBattleRuntime,
-} from '@daoyou/shared/contracts/combatV6SectTask';
-import { combatCharacterLevel } from '@daoyou/shared/engine/combat-v6/projection/character-level';
+import { SectV6TargetSchema } from '@daoyou/game-domain/combat/sect-target';
+import { type SectTaskBattleRuntime } from '@daoyou/contracts/combatV6SectTask';
+import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
 import {
   createSectBattleHost,
   freezeSectBattleOpponent,
   freezeSectNpcOpponent,
-} from '@daoyou/shared/engine/combat-v6/sect/host';
-import { resolveSectBattleTargetRealmCandidates } from '@daoyou/shared/engine/sect';
-import { productionSectRuntime } from '@daoyou/shared/engine/sect/content';
+} from '@daoyou/game-rules/combat/sect/host';
+import { resolveSectBattleTargetRealmCandidates } from '@daoyou/game-rules/sect-organization';
+import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
 import { type DbTransaction } from '@server/lib/drizzle/db.js';
 import {
   cultivators,

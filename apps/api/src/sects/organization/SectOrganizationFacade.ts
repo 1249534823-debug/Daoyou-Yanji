@@ -1,4 +1,4 @@
-import type { SectRuntime } from '@daoyou/shared/engine/sect';
+import type { SectRuntime } from '@daoyou/game-rules/sect-organization';
 import type { GetSectTasksQueryHandler } from '@server/sects/organization/GetSectTasksQueryHandler.js';
 import { SectAdmissionApplicationService } from '@server/sects/organization/SectAdmissionApplicationService.js';
 import type { SectConstructionApplicationService } from '@server/sects/organization/SectConstructionApplicationService.js';

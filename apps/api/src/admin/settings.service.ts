@@ -5,7 +5,7 @@ import {
   getResolvedCommunityQqGroupNumber,
   upsertAppSetting,
 } from '@server/lib/repositories/appSettingsRepository.js';
-import { APP_SETTING_KEYS } from '@daoyou/shared/lib/constants/appSettings';
+import { APP_SETTING_KEYS } from '@server/lib/repositories/app-settings-config.js';
 import { z } from 'zod';
 
 const AnnouncementSchema = z.object({ announcement: z.string() });

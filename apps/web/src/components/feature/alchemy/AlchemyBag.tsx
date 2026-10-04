@@ -12,16 +12,13 @@ import {
   groupAlchemyBagMaterials,
   groupAlchemyStorageMaterials,
   type AlchemyBagMaterial,
-} from '@daoyou/shared/inventory/alchemy';
-import type { Material } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-rules/inventory/alchemy';
+import type { Material } from '@daoyou/game-domain/cultivator';
 import { useEffect, useState } from 'react';
 import { CraftInventoryPanel } from '../items/CraftInventoryPanel';
 import { InventoryItems } from '../items/InventoryItems';
-import {
-  ALCHEMY_MAX_DOSE,
-  ALCHEMY_MAX_MATERIALS,
-  useAlchemyCraftSession,
-} from './alchemyCraftContext';
+import { ALCHEMY_MAX_DOSE, ALCHEMY_MAX_MATERIALS } from './useAlchemyCraftSessionState.js';
+import { useAlchemyCraftSession } from './alchemyCraftContext';
 
 export function AlchemyBag({
   onChoose,

@@ -7,7 +7,7 @@ import type {
   SectMapHotspot,
   SectPermissionState,
   SectSceneKey,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import { cn } from '@app/lib/cn';
 import {
   useCallback,

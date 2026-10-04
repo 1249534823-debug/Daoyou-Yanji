@@ -7,7 +7,8 @@ import {
   useState,
   type ReactNode,
 } from 'react';
-import { itemPresentation, type DisplayItem } from './itemPresentation';
+import { itemPresentation } from './itemPresentation';
+import { type DisplayItem } from './presentation/types.js';
 import { ItemPreview } from './ItemPreview';
 
 export function InventoryGrid({

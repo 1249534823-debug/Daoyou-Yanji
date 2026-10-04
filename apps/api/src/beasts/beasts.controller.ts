@@ -1,3 +1,4 @@
+import { BeastAllocateSchema } from './beasts-input.js';
 import {
   Controller,
   Get,
@@ -12,13 +13,12 @@ import {
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import { BeastError } from '@server/combat/application/CombatV6BeastService.js';
 import {
-  BeastAllocateSchema,
   BeastClaimSchema,
   BeastFusionRequestSchema,
   BeastLineupRequestSchema,
   BeastRenameSchema,
   BeastRestSchema,
-} from '@daoyou/shared/contracts/combatV6Beasts';
+} from '@daoyou/contracts/combatV6Beasts';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { CombatErrors, combatErrorResponse } from '../combat/combat-errors.js';

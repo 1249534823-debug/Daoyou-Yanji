@@ -15,7 +15,7 @@ import {
   type MiningScoreTier,
   type MiningTarget,
   type MiningTargetKind,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import * as Phaser from 'phaser';
 
 const TARGET_TEXTURES: Record<MiningTargetKind, string> = {

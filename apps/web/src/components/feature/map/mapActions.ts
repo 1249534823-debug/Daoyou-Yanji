@@ -1,5 +1,5 @@
 import type { InkButton } from '@app/components/ui/InkButton';
-import { getMapNode } from '@daoyou/shared/lib/game/mapSystem';
+import { getMapNode } from '@daoyou/game-content/world/map';
 import type { ComponentProps } from 'react';
 
 export interface MapNodeAction {

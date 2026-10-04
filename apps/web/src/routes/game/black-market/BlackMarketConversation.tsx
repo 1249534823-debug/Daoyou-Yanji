@@ -6,12 +6,12 @@ import {
   type InkDialogState,
   InkNotice,
 } from '@app/components/ui';
-import { normalizeBlackMarketPlayerBody } from '@daoyou/shared/lib/blackMarketMessages';
-import { getGameConceptInfo } from '@daoyou/shared/lib/gameConceptDisplay';
+import { normalizeBlackMarketPlayerBody } from '@daoyou/game-rules/black-market/messages';
+import { getGameConceptInfo } from '@daoyou/game-content/presentation/concepts';
 import type {
   BlackMarketNpcSummary,
   BlackMarketSessionView,
-} from '@daoyou/shared/types/blackMarket';
+} from '@daoyou/game-domain/blackMarket';
 import { useState } from 'react';
 
 const SPIRIT_STONES = getGameConceptInfo('spirit_stones');

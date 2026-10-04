@@ -1,8 +1,6 @@
 import { InkButton } from '@app/components/ui';
-import {
-  ALCHEMY_MAX_MATERIALS,
-  useAlchemyCraftSession,
-} from '../alchemyCraftContext';
+import { ALCHEMY_MAX_MATERIALS } from '../useAlchemyCraftSessionState.js';
+import { useAlchemyCraftSession } from '../alchemyCraftContext';
 
 export function FurnacePreparationStage() {
   const session = useAlchemyCraftSession();

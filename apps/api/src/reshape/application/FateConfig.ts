@@ -1,4 +1,4 @@
-import type { Quality } from '@daoyou/shared/types/constants';
+import type { Quality } from '@daoyou/constants/qualities';
 
 export const FATE_SLOT_COUNT = 3;
 export const FATE_CANDIDATE_COUNT = 6;

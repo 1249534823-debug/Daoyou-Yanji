@@ -1,7 +1,4 @@
-import type {
-  AuctionAssetType,
-  AuctionItemType,
-} from '@daoyou/shared/contracts/auction';
+import type { AuctionAssetType, AuctionItemType } from '@daoyou/game-domain/auction/types';
 import {
   and,
   asc,

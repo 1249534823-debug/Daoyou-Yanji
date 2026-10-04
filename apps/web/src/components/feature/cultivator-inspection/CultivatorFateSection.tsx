@@ -2,7 +2,7 @@ import { toFateDisplayModel } from '@app/components/feature/fates/FateDisplayAda
 import { FateEffectInlineList } from '@app/components/feature/fates/FateEffectInlineList';
 import { InkList, InkNotice } from '@app/components/ui';
 import { ItemCard } from '@app/components/ui/ItemCard';
-import type { CultivatorInspectionData } from '@daoyou/shared/contracts/player';
+import type { CultivatorInspectionData } from '@daoyou/contracts/player';
 
 export function CultivatorFateSection({
   cultivator,

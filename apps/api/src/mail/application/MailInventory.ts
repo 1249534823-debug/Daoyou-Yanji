@@ -1,17 +1,15 @@
-import {
-  beastTradePreview,
-  BeastTransferSchema,
-} from '@daoyou/shared/contracts/beastTrade';
-import { MailInventoryGrantSchema } from '@daoyou/shared/contracts/mail';
-import { consumableFactsOf } from '@daoyou/shared/items/definitions/consumables';
+import { beastTradePreview } from '@daoyou/game-domain/beasts/trade-preview';
+import { BeastTransferSchema } from '@daoyou/game-rules/beasts/trade';
+import { MailInventoryGrantSchema } from '@daoyou/game-rules/mail/inventory';
+import { consumableFactsOf } from '@daoyou/game-domain/items/consumable-facts';
 import {
   INVENTORY_MATERIAL_TYPES,
   MaterialFactsSchema,
-} from '@daoyou/shared/items/definitions/materials';
-import { seedFactsOf, SeedFactsSchema } from '@daoyou/shared/items/definitions/seeds';
-import { assertCurrentRewardItem } from '@daoyou/shared/lib/retiredDraw';
-import type { Consumable, Material } from '@daoyou/shared/types/cultivator';
-import type { MailAttachment } from '@daoyou/shared/types/mail';
+} from '@daoyou/game-domain/items/material-facts';
+import { seedFactsOf, SeedFactsSchema } from '@daoyou/game-domain/items/seed-facts';
+import { assertCurrentRewardItem } from '@daoyou/game-rules/legacy/retired-draw';
+import type { Consumable, Material } from '@daoyou/game-domain/cultivator';
+import type { MailAttachment } from '@daoyou/game-domain/mail/attachment';
 import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import { grantInventory } from '@server/inventory/operations.js';
 import { sanitizeMaterialForClient } from '@server/inventory/presentation.js';

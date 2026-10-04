@@ -1,5 +1,5 @@
-import { buildGeneratedCharacter } from '@daoyou/shared/engine/cultivator/creation/CharacterGenerator';
-import { CultivatorAIRawSchema } from '@daoyou/shared/engine/cultivator/creation/types';
+import { buildGeneratedCharacter } from '@daoyou/game-rules/character/creation/CharacterGenerator';
+import { CultivatorAIRawSchema } from '@daoyou/game-domain/character/generation';
 import { generateAiObject } from '@server/utils/aiClient.js';
 import {
   getCharacterGenerationPrompt,

@@ -10,11 +10,11 @@ import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   ExchangeArtifactSchema,
   type ExchangeArtifact,
-} from '@daoyou/shared/contracts/artifactMigration';
+} from '@daoyou/contracts/artifactMigration';
 import {
   ExchangeManualSchema,
   type ExchangeManual,
-} from '@daoyou/shared/contracts/manualMigration';
+} from '@daoyou/contracts/manualMigration';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { JsonBody } from '../http/json-body.js';
 import { ZodPipe } from '../http/zod.pipe.js';

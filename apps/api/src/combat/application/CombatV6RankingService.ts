@@ -29,16 +29,16 @@ import {
   MAX_DAILY_RANKING_CHALLENGES,
   rankingDay,
   rankingOrderAfterBattle,
-} from '@daoyou/shared/combat-v6/ranking';
-import { createCombatV6Replay } from '@daoyou/shared/combat-v6/replay';
+} from '@daoyou/game-rules/rankings/ranking';
+import { createCombatV6Replay } from '@daoyou/game-rules/combat/replay';
 import type {
   RankingChallengeRequest,
   RankingChallengeResult,
-} from '@daoyou/shared/contracts/combatV6Ranking';
+} from '@daoyou/contracts/combatV6Ranking';
 import {
   compileRankingBattle,
   simulateRankingBattle,
-} from '@daoyou/shared/engine/combat-v6/ranking/battle';
+} from '@daoyou/game-rules/combat/ranking/battle';
 import { and, eq } from 'drizzle-orm';
 import { assertInventoryIdle } from '@server/inventory/operations.js';
 import { assembleCombatV6TrainingPlayer } from '@server/combat/application/CombatV6BuildService.js';

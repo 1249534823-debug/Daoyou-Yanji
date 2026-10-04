@@ -1,4 +1,4 @@
-import type { SectOrganizationModule } from '@daoyou/shared/engine/sect';
+import type { SectOrganizationModule } from '@daoyou/game-rules/sect-organization';
 import { createStandardSectDomainEventDispatcher } from '@server/sects/organization/SectDomainEventDispatcher.js';
 import {
   CompletedDailyTaskProgressStrategy,

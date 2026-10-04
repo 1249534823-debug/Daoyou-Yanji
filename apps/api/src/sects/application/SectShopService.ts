@@ -9,14 +9,14 @@ import {
   RewardItemSchema,
   materializeRewardItem,
   rewardDisplayItem,
-} from '@daoyou/shared/contracts/adminRewards';
+} from '@daoyou/game-rules/rewards/items';
 import type {
   SectShopItemData,
   SectShopItemMutation,
   SectShopItemStatus,
-} from '@daoyou/shared/contracts/sectShop';
-import { SECT_SHOP_MAX_PRICE } from '@daoyou/shared/contracts/sectShop';
-import { getItemExchangePurchaseWeek } from '@daoyou/shared/lib/itemExchangeShop';
+} from '@daoyou/contracts/sectShop';
+import { SECT_SHOP_MAX_PRICE } from '@daoyou/contracts/sectShop';
+import { getItemExchangePurchaseWeek } from '@daoyou/game-rules/shops/purchase';
 import { and, asc, desc, eq, sql, type SQL } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
 import { assertInventoryIdle, grantInventory } from '@server/inventory/operations.js';

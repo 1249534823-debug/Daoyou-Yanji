@@ -1,7 +1,7 @@
 import type { ItemDetailPayload } from '@app/components/feature/items';
-import { assertConsumableSpec } from '@daoyou/shared/lib/consumables';
-import type { Consumable } from '@daoyou/shared/types/cultivator';
-import type { ItemRankingEntry } from '@daoyou/shared/types/rankings';
+import { assertConsumableSpec } from '@daoyou/game-domain/consumables/identity';
+import type { Consumable } from '@daoyou/game-domain/cultivator';
+import type { ItemRankingEntry } from '@daoyou/contracts/rankings';
 
 export function toRankingDetailItem(item: ItemRankingEntry): ItemDetailPayload {
   const consumable: Consumable = {

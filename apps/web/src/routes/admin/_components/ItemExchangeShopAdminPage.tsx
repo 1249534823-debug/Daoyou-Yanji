@@ -5,14 +5,10 @@ import { InkButton, InkInput, InkNotice, InkSelect } from '@app/components/ui';
 import {
   RewardItemSchema,
   rewardDisplayItem,
-} from '@daoyou/shared/contracts/adminRewards';
-import {
-  ITEM_EXCHANGE_SHOP_MAX_PRICE,
-  ItemExchangeShopItemMutationSchema,
-  type ItemExchangeShopItemMutation,
-  type ItemExchangeShopItemView,
-} from '@daoyou/shared/contracts/itemExchangeShop';
-import type { ItemGrant } from '@daoyou/shared/inventory';
+} from '@daoyou/game-rules/rewards/items';
+import { ITEM_EXCHANGE_SHOP_MAX_PRICE, type ItemExchangeShopItemMutation, type ItemExchangeShopItemView } from '@daoyou/game-domain/shops/exchange';
+import { ItemExchangeShopItemMutationSchema } from '@daoyou/game-rules/shops/exchange';
+import type { ItemGrant } from '@daoyou/game-domain/items/inventory';
 import { useCallback, useEffect, useState } from 'react';
 import { AdminDialog } from './AdminDialog';
 import { AdminPageHeader } from './AdminPage';

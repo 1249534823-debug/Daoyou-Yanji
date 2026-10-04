@@ -4,7 +4,7 @@ import {
   BACKGROUND_COMMAND_STREAM,
   parseBackgroundCommandEnvelope,
   type BackgroundCommandType,
-} from '@daoyou/shared/contracts/backgroundCommands';
+} from '@daoyou/contracts/backgroundCommands';
 import { JSONCodec } from 'nats';
 import { randomUUID } from 'node:crypto';
 

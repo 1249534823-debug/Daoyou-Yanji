@@ -3,7 +3,7 @@ import {
   WorldChatListQuerySchema,
   type WorldChatCreateMessageRequest,
   type WorldChatListQuery,
-} from '@daoyou/shared/contracts/world-chat';
+} from '@daoyou/contracts/world-chat';
 import {
   Controller,
   Get,

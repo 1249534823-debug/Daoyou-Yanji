@@ -6,7 +6,7 @@ import type {
   BlackMarketNpcId,
   BlackMarketOverview,
   BlackMarketSessionView,
-} from '@daoyou/shared/types/blackMarket';
+} from '@daoyou/game-domain/blackMarket';
 
 async function readJson<T>(response: Response): Promise<T> {
   const payload = await response.json();

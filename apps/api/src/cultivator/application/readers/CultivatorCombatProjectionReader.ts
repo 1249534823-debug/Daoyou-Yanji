@@ -8,9 +8,9 @@ import {
   characterIdentityRow,
 } from '@server/lib/repositories/sectCombatRepository.js';
 import { findCultivatorOwnerStatusById } from '@server/lib/repositories/cultivatorRepository.js';
-import { publicCombatV6Build } from '@daoyou/shared/combat-v6/public-build';
-import type { CultivatorInspectionData } from '@daoyou/shared/contracts/player';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
+import { publicCombatV6Build } from '@daoyou/game-rules/combat/public-build';
+import type { CultivatorInspectionData } from '@daoyou/contracts/player';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
 import { getPlayerIdentityCultivatorById } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 
 export async function loadCultivatorInspectionData(

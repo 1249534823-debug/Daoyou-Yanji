@@ -4,27 +4,25 @@ import {
   ItemSlot,
 } from '@app/components/feature/items/ItemSlot';
 import { InkButton, InkInput, InkNotice, InkSelect } from '@app/components/ui';
-import { TALISMAN_SCENARIO_OPTIONS } from '@daoyou/shared/config/talismanScenarios';
+import { TALISMAN_SCENARIO_OPTIONS } from '@daoyou/game-domain/consumables/talisman-scenarios';
 import {
   rewardDisplayItem,
   RewardItemSchema,
-} from '@daoyou/shared/contracts/adminRewards';
-import { DAO_EQUIPMENT_TEMPLATES_V1 } from '@daoyou/shared/engine/combat-v6/equipment/content';
-import {
-  equipmentRealm,
-  OPEN_EQUIPMENT_LEVELS,
-} from '@daoyou/shared/engine/combat-v6/equipment/realm';
-import { DAO_WEAPONS } from '@daoyou/shared/engine/combat-v6/equipment/weapons';
-import type { ItemGrant } from '@daoyou/shared/inventory';
+} from '@daoyou/game-rules/rewards/items';
+import { DAO_EQUIPMENT_TEMPLATES_V1 } from '@daoyou/game-content/equipment/content';
+import { OPEN_EQUIPMENT_LEVELS } from '@daoyou/game-domain/equipment/levels';
+import { equipmentRealm } from '@daoyou/game-rules/equipment/realm';
+import { DAO_WEAPONS } from '@daoyou/game-content/equipment/weapons';
+import type { ItemGrant } from '@daoyou/game-domain/items/inventory';
 import {
   INVENTORY_MATERIAL_TYPES,
   MATERIAL_TYPE_NAMES,
-} from '@daoyou/shared/items/definitions/materials';
-import { libraryMaterialGrant } from '@daoyou/shared/items/libraryMaterialGrant';
-import { ITEM_DEFINITIONS } from '@daoyou/shared/items/registry';
-import { ALCHEMY_PROPERTY_LABELS } from '@daoyou/shared/lib/alchemyProperties';
-import type { ItemLibraryEntry } from '@daoyou/shared/lib/itemLibrary';
-import { QUALITY_VALUES } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-domain/items/material-facts';
+import { libraryMaterialGrant } from '@daoyou/game-rules/rewards/library-material-grant';
+import { ITEM_DEFINITIONS } from '@daoyou/game-content/items/registry';
+import { ALCHEMY_PROPERTY_LABELS } from '@daoyou/game-rules/alchemy/alchemyProperties';
+import type { ItemLibraryEntry } from '@daoyou/game-domain/items/library';
+import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 import { useEffect, useState } from 'react';
 import { AdminDialog } from './AdminDialog';
 

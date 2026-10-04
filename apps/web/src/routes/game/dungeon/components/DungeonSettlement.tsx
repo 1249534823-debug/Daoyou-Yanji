@@ -3,10 +3,10 @@ import type { DisplayItem } from '@app/components/feature/items/itemPresentation
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkCard } from '@app/components/ui/InkCard';
 import { InkTag } from '@app/components/ui/InkTag';
-import type { ResourceOperation } from '@daoyou/shared/engine/resource/types';
-import type { DungeonSettlement as DungeonSettlementType } from '@daoyou/shared/lib/dungeon/types';
-import { getResourceTypeInfo } from '@daoyou/shared/lib/gameConceptDisplay';
-import { dungeonRewardItemName } from '@daoyou/shared/rewards/dungeon';
+import type { ResourceOperation } from '@daoyou/game-domain/resources/operations';
+import type { DungeonSettlement as DungeonSettlementType } from '@daoyou/game-domain/dungeon/state';
+import { getResourceTypeInfo } from '@daoyou/game-content/presentation/concepts';
+import { dungeonRewardItemName } from '@daoyou/game-rules/rewards/dungeon';
 
 interface DungeonSettlementProps {
   settlement: DungeonSettlementType | undefined;

@@ -2,7 +2,7 @@ import type {
   AuctionBeastListRequest,
   AuctionBuySchema,
   AuctionListRequest,
-} from '@daoyou/shared/contracts/auction';
+} from '@daoyou/contracts/auction';
 import { Inject, Injectable } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';

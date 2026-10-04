@@ -1,8 +1,8 @@
-import type { SectSubmissionCandidatesData } from '@daoyou/shared/contracts/sect';
+import type { SectSubmissionCandidatesData } from '@daoyou/contracts/sect';
 import {
   matchSectDeliveryCandidate,
   type SectTaskDefinition,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import { SectError } from '@server/sects/application/SectError.js';
 import type { SectQueryContext } from '@server/sects/organization/ports.js';
 

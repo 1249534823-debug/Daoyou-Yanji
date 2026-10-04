@@ -24,24 +24,16 @@ import {
   useCultivatorCurrency,
   useCultivatorIdentity,
 } from '@app/lib/resources/player';
-import {
-  AUCTION_MAX_PURCHASE_QUANTITY,
-  AUCTION_MAX_TRANSACTION_TOTAL,
-  calculateAuctionSettlement,
-} from '@daoyou/shared/config/auctionConfig';
-import { getRealmStageLevel } from '@daoyou/shared/config/realmProgression';
-import {
-  AUCTION_ITEM_TYPES,
-  AUCTION_TYPE_NAMES,
-  type AuctionAssetType,
-  type AuctionItemType,
-  type AuctionListingView,
-} from '@daoyou/shared/contracts/auction';
-import { BEAST_SPECIES } from '@daoyou/shared/engine/combat-v6/beasts/content';
-import { canDeployBeast } from '@daoyou/shared/engine/combat-v6/beasts/projection';
-import { EQUIPMENT_SLOT_NAMES } from '@daoyou/shared/items/definitions/equipment-blueprints';
-import { MATERIAL_TYPE_NAMES } from '@daoyou/shared/items/definitions/materials';
-import { QUALITY_VALUES } from '@daoyou/shared/types/constants';
+import { AUCTION_MAX_PURCHASE_QUANTITY, AUCTION_MAX_TRANSACTION_TOTAL } from '@daoyou/game-domain/auction/limits';
+import { calculateAuctionSettlement } from '@daoyou/game-rules/auction/settlement';
+import { getRealmStageLevel } from '@daoyou/game-domain/progression/realms';
+import { AUCTION_ITEM_TYPES, AUCTION_TYPE_NAMES, type AuctionAssetType, type AuctionItemType } from '@daoyou/game-domain/auction/types';
+import { type AuctionListingView } from '@daoyou/contracts/auction';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
+import { canDeployBeast } from '@daoyou/game-rules/beasts/projection';
+import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment/slot-names';
+import { MATERIAL_TYPE_NAMES } from '@daoyou/game-domain/items/material-facts';
+import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router';
 

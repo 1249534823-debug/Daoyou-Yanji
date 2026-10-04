@@ -7,12 +7,12 @@ import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
 import { useInventoryBag } from '@app/lib/resources/bag';
 import { useResourceMutation } from '@app/lib/resources/mutations';
 import { useCultivatorCondition } from '@app/lib/resources/player';
-import type { InventoryView } from '@daoyou/shared/contracts/inventory';
-import { ConsumableFactsSchema } from '@daoyou/shared/items/definitions/consumables';
-import { canUseDungeonRecoveryPill } from '@daoyou/shared/lib/dungeon/rest';
-import type { DungeonState } from '@daoyou/shared/lib/dungeon/types';
-import { dungeonRewardItemName } from '@daoyou/shared/rewards/dungeon';
-import type { Cultivator } from '@daoyou/shared/types/cultivator';
+import type { InventoryView } from '@daoyou/contracts/inventory';
+import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
+import { canUseDungeonRecoveryPill } from '@daoyou/game-rules/dungeon/rest';
+import type { DungeonState } from '@daoyou/game-domain/dungeon/state';
+import { dungeonRewardItemName } from '@daoyou/game-rules/rewards/dungeon';
+import type { Cultivator } from '@daoyou/game-domain/cultivator';
 import { useRef, useState } from 'react';
 
 export interface DungeonDisplayResources {

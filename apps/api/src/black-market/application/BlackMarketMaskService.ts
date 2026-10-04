@@ -1,6 +1,6 @@
-import { blackMarketUnit } from '@daoyou/shared/lib/blackMarketRules';
-import type { MaterialType } from '@daoyou/shared/types/constants';
-import type { Material } from '@daoyou/shared/types/cultivator';
+import { blackMarketUnit } from '@daoyou/game-rules/black-market/rules';
+import type { MaterialType } from '@daoyou/game-domain/inventory';
+import type { Material } from '@daoyou/game-domain/cultivator';
 
 const MASKS: Record<MaterialType, Array<[string, string]>> = {
   seed: [

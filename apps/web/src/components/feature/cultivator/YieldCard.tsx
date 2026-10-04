@@ -7,8 +7,8 @@ import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkBadge } from '@app/components/ui/InkBadge';
 import { InkButton } from '@app/components/ui/InkButton';
 import { consumeResourceChanges } from '@app/lib/resources/mutations';
-import { GeneratedMaterial } from '@daoyou/shared/engine/material/creation/types';
-import { getGameConceptInfo } from '@daoyou/shared/lib/gameConceptDisplay';
+import { GeneratedMaterial } from '@daoyou/game-domain/materials/generation';
+import { getGameConceptInfo } from '@daoyou/game-content/presentation/concepts';
 import { useEffect, useState } from 'react';
 
 interface YieldCardProps {

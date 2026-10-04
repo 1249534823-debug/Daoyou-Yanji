@@ -4,11 +4,11 @@ import {
   formatDungeonCostName,
   formatDungeonCostValue,
 } from '@app/lib/dungeon/formatDungeonCost';
-import type { DungeonOptionCost } from '@daoyou/shared/lib/dungeon/types';
+import type { DungeonOptionCost } from '@daoyou/game-domain/dungeon/state';
 import {
   getResourceDisplayName,
   getResourceIcon,
-} from '@daoyou/shared/lib/gameConceptDisplay';
+} from '@daoyou/game-content/presentation/concepts';
 import { format } from 'd3-format';
 
 interface ResourceCostCardProps {

@@ -3,7 +3,7 @@ import {
   AccountSetPasswordRequestSchema,
   type AccountSetPasswordRequest,
   type AccountSetPasswordResponse,
-} from '@daoyou/shared/contracts/account';
+} from '@daoyou/contracts/account';
 import { fromNodeHeaders } from 'better-auth/node';
 import type { Request } from 'express';
 import { SessionService } from '../auth/session.service.js';

@@ -1,19 +1,16 @@
 import { ConditionService } from '@server/cultivator/application/ConditionService.js';
-import { evaluateFateContext } from '@daoyou/shared/lib/fates';
+import { evaluateFateContext } from '@daoyou/game-rules/character/fates';
 import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
-import type { HuntTeam } from '@daoyou/shared/contracts/hunts';
+import type { HuntTeam } from '@daoyou/game-domain/hunts/team';
 import { prepareHuntReward } from '@server/hunts/application/HuntRewardService.js';
-import { HUNT_BOSSES, huntIsOpen } from '@daoyou/shared/hunts/config';
-import { huntRealmAllowed } from '@daoyou/shared/hunts/rules';
-import type { RealmType } from '@daoyou/shared/types/constants';
-import {
-  huntEnemies,
-  HUNT_SKILLS,
-  HUNT_STATUSES,
-  huntNpcCommand,
-} from '@daoyou/shared/engine/combat-v6/hunts/content';
-import { playerAppearances } from '@daoyou/shared/combat-v6/unit-appearance';
-import type { CombatV6UnitAppearance } from '@daoyou/shared/contracts/combatV6';
+import { HUNT_BOSSES } from '@daoyou/game-content/hunts/bosses';
+import { huntIsOpen } from '@daoyou/game-rules/hunts/config';
+import { huntRealmAllowed } from '@daoyou/game-rules/hunts/rules';
+import type { RealmType } from '@daoyou/constants/realms';
+import { HUNT_SKILLS, HUNT_STATUSES } from '@daoyou/game-content/hunts/combat';
+import { huntEnemies, huntNpcCommand } from '@daoyou/game-rules/hunts/content';
+import { playerAppearances } from '@daoyou/game-rules/combat/unit-appearance';
+import type { CombatV6UnitAppearance } from '@daoyou/game-domain/combat/display';
 import { db } from '@server/lib/drizzle/db.js';
 import { cultivators } from '@server/lib/drizzle/schema.js';
 import { getJetStreamClient } from '@server/lib/nats/index.js';
@@ -25,40 +22,26 @@ import {
 } from '@server/lib/repositories/combatV6ReplayRepository.js';
 import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
 import { hasActiveCombat } from '@server/combat/application/CombatOccupancy.js';
-import {
-  arenaBattle,
-  arenaDefaultCommand,
-  arenaWaitingUnits,
-  resolveArena,
-  validateArenaCommand,
-} from '@daoyou/shared/combat-v6/arena';
-import { AUTO_POLICY_VERSION, automaticCommands } from '@daoyou/shared/combat-v6/auto';
-import { validateCommandGroup } from '@daoyou/shared/combat-v6/controlled-commands';
+import { resolveArena } from '@server/combat/arena-view.js';
+import { arenaBattle, arenaDefaultCommand, arenaWaitingUnits, validateArenaCommand } from '@daoyou/game-rules/combat/arena';
+import { AUTO_POLICY_VERSION } from '@daoyou/game-domain/combat/auto-policy';
+import { automaticCommands } from '@daoyou/game-rules/combat/auto';
+import { validateCommandGroup } from '@daoyou/game-rules/combat/controlled-commands';
 import {
   combatV6ReplayView,
   createCombatV6Replay,
-} from '@daoyou/shared/combat-v6/replay';
-import { startReplayTimeline } from '@daoyou/shared/combat-v6/replay-timeline';
-import type { ArenaRoomV1 } from '@daoyou/shared/contracts/arena';
-import {
-  ARENA_PUBLIC_VIEW,
-  ARENA_V6_PROTOCOL,
-  type ArenaRuntime,
-  type ArenaV6Submit,
-} from '@daoyou/shared/contracts/combatV6Arena';
-import {
-  DOMAIN_EVENT_DEFINITIONS,
-  DOMAIN_EVENT_STREAM,
-  parseDomainEventEnvelope,
-} from '@daoyou/shared/contracts/domainEvents';
-import {
-  BEAST_SKILLS,
-  BEAST_STATUS_DEFS,
-  projectBeastRoster,
-} from '@daoyou/shared/engine/combat-v6/beasts';
-import type { SkillDef, StatusDef } from '@daoyou/shared/engine/combat-v6/core';
-import { projectCharacterToCombatV6 } from '@daoyou/shared/engine/combat-v6/projection';
-import { characterBattleSkills } from '@daoyou/shared/engine/combat-v6/projection/character-battle-skills';
+} from '@daoyou/game-rules/combat/replay';
+import { startReplayTimeline } from '@daoyou/game-rules/combat/replay-timeline';
+import type { ArenaRoomV1 } from '@daoyou/contracts/arena';
+import { ARENA_PUBLIC_VIEW } from '@daoyou/game-domain/combat/arena';
+import { ARENA_V6_PROTOCOL, type ArenaRuntime, type ArenaV6Submit } from '@daoyou/contracts/combatV6Arena';
+import { parseDomainEventEnvelope } from '@server/lib/mq/domainEventSchema.js';
+import { DOMAIN_EVENT_DEFINITIONS, DOMAIN_EVENT_STREAM } from '@daoyou/contracts/domainEvents';
+import { BEAST_SKILLS, BEAST_STATUS_DEFS } from '@daoyou/game-content/beasts/content';
+import { projectBeastRoster } from '@daoyou/game-rules/beasts/projection';
+import type { SkillDef, StatusDef } from '@daoyou/combat-core/types';
+import { projectCharacterToCombatV6 } from '@daoyou/game-rules/combat/projection/project-character';
+import { characterBattleSkills } from '@daoyou/game-rules/combat/projection/character-battle-skills';
 import { and, eq } from 'drizzle-orm';
 import { JSONCodec } from 'nats';
 import { ArenaRoomService } from '@server/arena/application/ArenaRoomService.js';

@@ -11,26 +11,26 @@ import {
   redisLockKeys,
   withRedisLock,
 } from '@server/lib/redis/lock.js';
-import type { MarketPurchaseResult } from '@daoyou/shared/contracts/market';
+import type { MarketPurchaseResult } from '@daoyou/contracts/market';
 import {
   BASE_PRICES,
   QUALITY_CHANCE_MAP,
   TYPE_CHANCE_MAP,
   TYPE_MULTIPLIERS,
-} from '@daoyou/shared/engine/material/creation/config';
-import { MARKET_PRESET_POOL } from '@daoyou/shared/engine/material/creation/marketPresets';
+} from '@daoyou/game-content/materials/config';
+import { MARKET_PRESET_POOL } from '@daoyou/game-content/materials/market-presets';
 import {
   getSpiritFieldMarketSeedSlotCount,
-} from '@daoyou/shared/engine/spirit-field';
-import { readSpiritFieldSeedSpec } from '@daoyou/shared/engine/spirit-field/seedMaterial';
-import { MaterialFactsSchema } from '@daoyou/shared/items/definitions/materials';
-import { findItemDefinition } from '@daoyou/shared/items/registry';
+} from '@daoyou/game-rules/spirit-field';
+import { readSpiritFieldSeedSpec } from '@daoyou/game-domain/spirit-field/seedMaterial';
+import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
+import { findItemDefinition } from '@daoyou/game-content/items/registry';
 import {
   evaluateFateContext,
   getMarketPurchasePriceMultiplier,
   scaleFateAdjustedCost,
-} from '@daoyou/shared/lib/fates';
-import { sampleBeastMarketStock } from '@daoyou/shared/lib/game/beastMarket';
+} from '@daoyou/game-rules/character/fates';
+import { sampleBeastMarketStock } from '@daoyou/game-rules/market/beast-stock';
 import {
   BLACK_MARKET_HIGH_TIER_MIN,
   getCurrentCycle,
@@ -45,21 +45,14 @@ import {
   MARKET_STALE_RETRY_MS,
   resolveLayerConfig,
   validateLayerAccess,
-} from '@daoyou/shared/lib/game/marketConfig';
-import type { MaterialType, Quality, RealmType } from '@daoyou/shared/types/constants';
-import { QUALITY_ORDER, QUALITY_VALUES } from '@daoyou/shared/types/constants';
-import type { PreHeavenFate } from '@daoyou/shared/types/cultivator';
-import type {
-  MarketAccessState,
-  MarketItemListing,
-  MarketLayer,
-  MarketListing,
-  MarketMaterialListing,
-  MysteryRevealContext,
-  RegionProfile,
-  ResolvedLayerConfig,
-} from '@daoyou/shared/types/market';
-import { MARKET_PRESET_FALLBACK_LAYERS } from '@daoyou/shared/types/market';
+} from '@daoyou/game-rules/world/marketConfig';
+import type { MaterialType } from '@daoyou/game-domain/inventory';
+import type { Quality } from '@daoyou/constants/qualities';
+import type { RealmType } from '@daoyou/constants/realms';
+import { QUALITY_ORDER, QUALITY_VALUES } from '@daoyou/constants/qualities';
+import type { PreHeavenFate } from '@daoyou/game-domain/cultivator';
+import type { MarketAccessState, MarketItemListing, MarketLayer, MarketListing, MarketMaterialListing, MysteryRevealContext, RegionProfile, ResolvedLayerConfig } from '@daoyou/game-domain/market';
+import { MARKET_PRESET_FALLBACK_LAYERS } from '@daoyou/game-content/market';
 import { and, eq, inArray, sql } from 'drizzle-orm';
 import { createHash } from 'node:crypto';
 import { grantInventory } from '@server/inventory/operations.js';

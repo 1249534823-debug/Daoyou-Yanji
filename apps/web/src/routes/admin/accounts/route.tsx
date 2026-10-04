@@ -8,7 +8,7 @@ import type {
   AdminAccountListItem,
   AdminAccountListResponse,
   AdminAccountModerationResponse,
-} from '@daoyou/shared/contracts/adminAccounts';
+} from '@daoyou/contracts/adminAccounts';
 import {
   Fragment,
   useCallback,

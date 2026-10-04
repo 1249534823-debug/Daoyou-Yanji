@@ -8,10 +8,10 @@ import {
   groupAlchemyBagMaterials,
   groupAlchemyStorageMaterials,
   type AlchemyBagMaterial,
-} from '@daoyou/shared/inventory/alchemy';
-import { inventoryStackIdentity } from '@daoyou/shared/inventory/stack-key';
-import { consumableFactsOf } from '@daoyou/shared/items/definitions/consumables';
-import type { Consumable } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-rules/inventory/alchemy';
+import { inventoryStackIdentity } from '@daoyou/game-rules/inventory/stack-key';
+import { consumableFactsOf } from '@daoyou/game-domain/items/consumable-facts';
+import type { Consumable } from '@daoyou/game-domain/cultivator';
 import { and, eq, inArray } from 'drizzle-orm';
 import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError.js';
 import {

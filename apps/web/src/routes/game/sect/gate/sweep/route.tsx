@@ -33,8 +33,8 @@ import type {
   SectTaskActionData,
   SectTasksData,
   SectTaskViewData,
-} from '@daoyou/shared/contracts/sect';
-import type { SweepDirection, SweepGameProgress } from '@daoyou/shared/engine/sect';
+} from '@daoyou/contracts/sect';
+import type { SweepDirection, SweepGameProgress } from '@daoyou/game-rules/sect-organization';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import {

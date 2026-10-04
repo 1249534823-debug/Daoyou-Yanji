@@ -3,13 +3,10 @@ import {
   tierColorMap,
 } from '@app/components/ui/InkBadge';
 import { InkTag } from '@app/components/ui/InkTag';
-import {
-  canChallengeDungeonRealm,
-  resolveDungeonMapConfig,
-  type MapNodeInfo,
-} from '@daoyou/shared/lib/game/mapSystem';
+import { type MapNodeInfo } from '@daoyou/game-domain/world/map';
+import { canChallengeDungeonRealm, resolveDungeonMapConfig } from '@daoyou/game-rules/world/dungeon';
 import { cn } from '@app/lib/cn';
-import type { RealmType } from '@daoyou/shared/types/constants';
+import type { RealmType } from '@daoyou/constants/realms';
 
 export function MapNodeCard({
   node,

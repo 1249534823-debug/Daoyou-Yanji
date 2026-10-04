@@ -3,8 +3,8 @@ import { InkButton, InkNotice } from '@app/components/ui';
 import type {
   SectContextData,
   SectPromotionEvaluationData,
-} from '@daoyou/shared/contracts/sect';
-import { SECT_RANK_LABELS } from '@daoyou/shared/engine/sect';
+} from '@daoyou/contracts/sect';
+import { SECT_RANK_LABELS } from '@daoyou/game-rules/sect-organization';
 import { cn } from '@app/lib/cn';
 import type { ReactNode } from 'react';
 import { getSectIdentityLabels } from './sectIdentityDisplay';

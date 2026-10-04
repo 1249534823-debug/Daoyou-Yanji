@@ -4,13 +4,11 @@ import {
   type DisplayItem,
 } from '@app/components/feature/items/itemPresentation';
 import { GameIcon } from '@app/components/ui/GameIcon';
-import type {
-  TowerRewardPreview,
-  TowerView,
-} from '@daoyou/shared/contracts/combatV6Tower';
-import type { ItemGrant } from '@daoyou/shared/inventory';
-import { itemDefinition } from '@daoyou/shared/inventory';
-import { materialFactsOf } from '@daoyou/shared/items/material';
+import type { TowerRewardPreview } from '@daoyou/game-domain/tower/reward';
+import type { TowerView } from '@daoyou/contracts/combatV6Tower';
+import type { ItemGrant } from '@daoyou/game-domain/items/inventory';
+import { itemDefinition } from '@daoyou/game-rules/inventory';
+import { materialFactsOf } from '@daoyou/game-domain/items/material';
 import { useState } from 'react';
 
 function rewardItem(item: ItemGrant): DisplayItem {

@@ -9,15 +9,15 @@ AI agents should read this first. Keep changes small, project-specific, and back
 - This repo is `NestJS + React SPA`, not Next.js or SSR.
 - Runtime stack: Node.js 24, NestJS 12 (Express/native ws), pnpm + Turborepo tooling, React 19, React Router 8, Vite, Tailwind CSS 4, PostgreSQL, Drizzle ORM, Better Auth, Redis, NATS, AI SDK.
 - Use the pinned `pnpm` version and `pnpm-lock.yaml` for development and deployment. Do not introduce Bun/npm/yarn lockfiles. Turborepo orchestrates package builds and typechecks; turbo watch rebuilds dependencies and restarts persistent development tasks.
-- pnpm workspaces: `apps/api`, `apps/web`, `packages/shared`. Each owns its runtime dependencies; root owns lint/test/maintenance tooling. Shared must not import either app; API and Web may import shared. ESLint (Web/shared/tools) and Oxlint (API) enforce these boundaries, repository direction, and combat core independence.
-- Path aliases are `@app` -> `apps/web/src`, `@server` -> `apps/api/src`, and `@daoyou/shared/*` resolves through the workspace package exports (no source alias bypass).
+- pnpm workspaces: `apps/api`, `apps/web`, and six compiled libraries under `packages/*`. The dependency graph and acceptance gates are in `docs/architecture-boundaries.md`. Each owns its runtime dependencies; root owns lint/test/maintenance tooling. Libraries must not import either app; apps consume package exports. The old shared workspace is removed. ESLint (Web/packages/tools) and Oxlint (API) enforce these boundaries, repository direction, and combat core independence.
+- Path aliases are `@app` -> `apps/web/src` and `@server` -> `apps/api/src`. `@daoyou/*` libraries resolve through workspace package exports (no source alias bypass); library-internal imports use relative source paths rather than their own dist exports.
 
 ## Key Directories
 
 - `apps/api/src/main.ts`: Node/Nest entrypoint, HTTP/WS adapters and shutdown coordination; runtime module owns cron and messaging lifecycle.
 - `apps/api/src`: Nest feature modules. Each feature owns its `application/` implementations (sects uses `organization/`); player owns state coordination, runtime owns jobs/message composition, and `lib` retains shared infrastructure.
 - `apps/web/src`: React SPA routes, layouts, game shell, UI, hooks, providers.
-- `packages/shared/src`: shared contracts, game engines, config, pure logic, domain types.
+- `packages/constants/src`, `packages/game-domain/src`, `packages/combat-core/src`, `packages/game-content/src`, `packages/game-rules/src`, `packages/contracts/src`: vocabulary, models, core, content, rules and protocols. Follow the dependency graph and acceptance checklist in `docs/architecture-boundaries.md`.
 - `apps/api/src/lib/drizzle/schema.ts`: Drizzle schema for `wanjiedaoyou_*` business tables.
 - `drizzle/`: Drizzle SQL migrations and snapshots.
 - `drizzle-auth/`: independent Drizzle migrations and snapshots for the fixed `better_auth` schema.
@@ -38,10 +38,10 @@ pnpm run db:migrate
 ```
 
 - `dev[:api|:web]` selects `env/local.env`; `prd[:api|:web]` selects `env/staging.env`. Node/Nest explicitly loads the selected file; maintenance scripts use `node --env-file=... --import tsx`.
-- `pnpm run build` uses Turbo to build the independent API and Web packages; Nest CLI 12 builds `apps/api` with its default tsc builder; shared is compiled first with tsc and exports JavaScript/declarations from dist; Vite builds `apps/web`. The old V5 resolver Worker target was retired in Phase 10H. Preserve the remaining CI/CD entrypoints.
-- Vitest uses node environment and discovers tests only under `packages/shared/src`.
+- `pnpm run build` uses Turbo to build the independent API and Web packages; Nest CLI 12 builds `apps/api` with its default tsc builder; libraries are compiled in dependency order with tsc and export JavaScript/declarations from dist; Vite builds `apps/web`. The old V5 resolver Worker target was retired in Phase 10H. Preserve the remaining CI/CD entrypoints.
+- Vitest uses node environment and discovers pure logic tests under `packages/*/src`; tests move with their owning domain during package extraction.
 - Docker runtime contains Node, the pnpm-deployed API production dependencies, package metadata and `dist`; ALTCHA uses the server-side `ALTCHA_HMAC_SECRET` and does not require a frontend site key.
-- GitHub Actions runs lint/typecheck/shared tests/build on PRs and master pushes; tag pushes build the API image and always publish latest.
+- GitHub Actions runs lint/typecheck/pure package tests/build on PRs and master pushes; tag pushes build the API image and always publish latest.
 
 ## Skills To Use
 
@@ -61,8 +61,12 @@ pnpm run db:migrate
 - Frontend route loaders are UX guards only; backend middleware is the security boundary.
 - `/api/auth/*` is Better Auth through `apps/api/src/lib/auth/handler.ts`.
 - `/internal/cron/*` uses Bearer `CRON_SECRET` when configured; production requires it, while non-production without `CRON_SECRET` currently allows the request.
-- Shared request/response contracts live in `packages/shared/src/contracts`; domain DTO/types live in `packages/shared/src/types`.
-- LLM calls should use `apps/api/src/utils/aiClient.ts`; BYOK validation truth is `packages/shared/src/config/llm.ts`. Server routing is one `LLM_PROVIDER` table (`provider[/model][:weight]`) parsed in `packages/shared/src/config/llmRouting.ts`; multiple routes are sticky by user id hash. Request BYOK still wins.
+- Request/response contracts live in `packages/contracts/src`; domain models live in `packages/game-domain/src`. Use the owning package exports and do not recreate moved definitions.
+- Resource protocol types and reducers use `@daoyou/contracts/resources`; complete runtime validators are bound in each app's `src/lib/resources/schemas.ts`. Keep the authoritative inventory and sect-delivery checks when changing resource parsing.
+- Domain-event transport metadata uses `@daoyou/contracts/domainEvents`; the API binds its parser to the game-rules payload validators in `src/lib/mq/domainEventSchema.ts`. Domain event data models live in `game-domain/events`.
+- Dev-tool request constructors live in contracts; `apps/api/src/dev-tools/dev-tools-input.ts` binds the current cultivation/root limits and complete reward/mail validators. Keep the local-only access policy in `contracts/dev-tools-access` and enforce it on the server.
+- Arena simulation and visibility projection use `game-rules/combat/arena`; `apps/api/src/combat/arena-view.ts` adds the existing API/protocol fields and decorates cached round results. Durable replay models/parsing live in `game-domain/combat/replay-archive`; message delivery envelopes stay in contracts.
+- LLM calls should use `apps/api/src/utils/aiClient.ts`; BYOK validation truth is `packages/contracts/src/llm/config.ts`. Server routing is one `LLM_PROVIDER` table (`provider[/model][:weight]`) parsed in `packages/contracts/src/llm/routing.ts`; multiple routes are sticky by user id hash. Request BYOK still wins.
 - Treat all LLM output as untrusted. Resource, reward, cost, drop, and other state-changing numbers need deterministic service/schema/resource-layer guards.
 - Server config: `apps/api/src/config/configuration.module.ts` uses `@nestjs/config`, ignores dotenv discovery, and publishes the validated immutable environment from `lib/config/environment.ts`. Use injected `AppConfigService` in Nest services and that snapshot in framework-independent libraries; do not add direct `process.env` reads outside it.
 - Redis access must go through `apps/api/src/lib/redis`; do not instantiate feature-local Redis clients.
@@ -108,11 +112,11 @@ pnpm run db:migrate
 
 ## Verification Checklist
 
-- Testing has only two layers: pure `packages/shared/src` unit tests and Codex browser/Playwright simulations following `docs/testing.md`. Do not add one-off smoke, E2E, seed, benchmark, or fault-injection scripts.
+- Testing has only two layers: pure `packages/*/src` unit tests and Codex browser/Playwright simulations following `docs/testing.md`. Do not add one-off smoke, E2E, seed, benchmark, or fault-injection scripts.
 - Local browser test accounts and their shared password are documented in `docs/testing.md` section 3. Reuse them; query the local database read-only to select existing accounts and characters instead of asking the user for known credentials again. Complete email verification through Mailpit and never apply these credentials or test writes to staging/production.
 
 - Unit tests are forbidden under `apps/web/src` and `apps/api/src`; do not add `*.test.*` or `*.spec.*` files there.
-- New unit tests are allowed only for pure, deterministic, reusable engine/domain logic under `packages/shared/src`.
+- New unit tests are allowed only for pure, deterministic, reusable engine/domain logic under `packages/*/src`. Integration between pure rules and the engine belongs to the higher-level rules package; bottom-level packages must not depend on higher layers for tests.
 - Do not write tests that exercise or mock databases, repositories, HTTP controllers, auth, Redis, LLM/SMTP providers, network APIs, or other third-party services.
 - Frontend and backend changes must be verified with lint, typecheck/build, code inspection, and focused manual/runtime checks instead of unit tests.
 - For eligible shared engine changes, pick focused tests first, then broader shared-engine checks if the blast radius is large.

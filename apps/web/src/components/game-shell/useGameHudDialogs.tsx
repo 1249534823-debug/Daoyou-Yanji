@@ -11,7 +11,7 @@ import {
   COMPREHENSION_INSIGHT_CAP,
   NORMAL_BREAKTHROUGH_THRESHOLD,
   PERFECT_BREAKTHROUGH_INSIGHT,
-} from '@daoyou/shared/config/cultivationTuning';
+} from '@daoyou/game-content/cultivation/cultivationTuning';
 import {
   QI_ACTION_COSTS,
   QI_DAILY_RESTORE_ITEM_LIMIT,
@@ -19,8 +19,8 @@ import {
   QI_NATURAL_RESTORE_INTERVAL_MS,
   QI_NATURAL_RESTORE_PER_INTERVAL,
   QI_OVERFLOW_MAX,
-} from '@daoyou/shared/config/qiSystem';
-import { getGameConceptInfo } from '@daoyou/shared/lib/gameConceptDisplay';
+} from '@daoyou/game-content/qi/config';
+import { getGameConceptInfo } from '@daoyou/game-content/presentation/concepts';
 import { useNavigate } from 'react-router';
 import { InfoTable, StatusDetailBlock } from './GameHudDialogContent';
 import type { GameHudSnapshot } from './useGameHudModel';

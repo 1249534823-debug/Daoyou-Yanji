@@ -52,7 +52,7 @@ export default tseslint.config(
     languageOptions: { globals: globals.node },
   },
   {
-    files: ['packages/shared/src/**/*.{ts,tsx}', 'apps/web/src/**/*.{ts,tsx}'],
+    files: ['packages/*/src/**/*.{ts,tsx}', 'apps/web/src/**/*.{ts,tsx}'],
     rules: {
       'no-restricted-imports': [
         'error',
@@ -71,7 +71,26 @@ export default tseslint.config(
     },
   },
   {
-    files: ['packages/shared/src/**/*.{ts,tsx}'],
+    files: ['apps/web/src/{lib,components,providers}/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            '@app/routes/**',
+            '**/routes/**',
+            '@server/*',
+            '@daoyou/api*',
+            '@daoyou/web*',
+            '**/apps/api/**',
+            '**/apps/web/**',
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ['packages/*/src/**/*.{ts,tsx}'],
     ignores: ['**/*.test.*', '**/*.spec.*'],
     rules: {
       'no-restricted-imports': [
@@ -83,7 +102,9 @@ export default tseslint.config(
     },
   },
   {
-    files: ['packages/shared/src/engine/combat-v6/**/*.ts'],
+    files: [
+      'packages/{constants,game-domain,game-content,game-rules,contracts}/src/**/*.ts',
+    ],
     ignores: ['**/*.test.*', '**/*.spec.*'],
     rules: {
       'no-restricted-imports': [
@@ -101,7 +122,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['packages/shared/src/engine/combat-v6/core/**/*.ts'],
+    files: ['packages/combat-core/src/**/*.ts'],
     ignores: ['**/*.test.*', '**/*.spec.*'],
     rules: {
       'no-restricted-imports': [

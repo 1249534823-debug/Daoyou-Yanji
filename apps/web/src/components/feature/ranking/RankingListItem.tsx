@@ -4,21 +4,21 @@ import {
 } from '@app/components/feature/consumables';
 import { InkBadge, InkButton, type Tier } from '@app/components/ui';
 import { cn } from '@app/lib/cn';
-import { isPillSpec } from '@daoyou/shared/lib/consumables';
-import { CONSUMABLE_TYPE_DISPLAY_MAP } from '@daoyou/shared/lib/gameConceptDisplay';
+import { isPillSpec } from '@daoyou/game-domain/consumables/identity';
+import { CONSUMABLE_TYPE_DISPLAY_MAP } from '@daoyou/game-content/presentation/concepts';
 import {
   formatCompactGameNumber,
   formatFullGameNumber,
-} from '@daoyou/shared/lib/numberFormat';
-import type { RealmType } from '@daoyou/shared/types/constants';
-import type { PillSpec } from '@daoyou/shared/types/consumable';
-import type { Consumable } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-rules/presentation/numbers';
+import type { RealmType } from '@daoyou/constants/realms';
+import type { PillSpec } from '@daoyou/game-domain/consumable';
+import type { Consumable } from '@daoyou/game-domain/cultivator';
 import type {
   BattleRankingItem,
   ItemRankingEntry,
   RankingsDisplayItem,
   WealthRankingEntry,
-} from '@daoyou/shared/types/rankings';
+} from '@daoyou/contracts/rankings';
 import { memo } from 'react';
 
 interface BattleRankingCardProps {

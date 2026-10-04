@@ -13,7 +13,7 @@ import {
 import type {
   SponsorshipCheckoutRequest,
   SponsorshipClaimRequest,
-} from '@daoyou/shared/contracts/sponsorship';
+} from '@daoyou/contracts/sponsorship';
 import { z } from 'zod';
 @Injectable()
 export class SponsorshipService {

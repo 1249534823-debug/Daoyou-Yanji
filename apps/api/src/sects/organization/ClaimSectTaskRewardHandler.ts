@@ -1,12 +1,12 @@
 import type {
   SectTaskActionData,
   SectTaskRewardReceipt,
-} from '@daoyou/shared/contracts/sect';
+} from '@daoyou/contracts/sect';
 import {
   resolveSectTaskClaimReward,
   SectTask,
   type SectTaskDefinition,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import type { SectCommandEffects } from '@server/sects/organization/SectCommandEffects.js';
 import type { SectDomainEventDispatcherFactory } from '@server/sects/organization/SectDomainEventDispatcher.js';
 import { invalidSectTask } from '@server/sects/organization/SectTaskApplicationSupport.js';

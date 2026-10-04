@@ -1,5 +1,5 @@
 import { Controller, HttpCode, Inject, Post, UseFilters } from '@nestjs/common';
-import { AdminItemGenerationSchema } from '@daoyou/shared/contracts/adminItemGeneration';
+import { AdminItemGenerationSchema } from '@daoyou/contracts/adminItemGeneration';
 import type { z } from 'zod';
 import { Access } from '../auth/access.js';
 import { JsonBody } from '../http/json-body.js';

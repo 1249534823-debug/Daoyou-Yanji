@@ -1,9 +1,9 @@
-import { BREAKTHROUGH_CHALLENGES } from '@daoyou/shared/engine/combat-v6/breakthrough/host';
+import { BREAKTHROUGH_CHALLENGES } from '@daoyou/game-content/combat/breakthrough';
 import type {
   TaskDefinition,
   TaskInstanceMetadata,
   TaskStageDefinition,
-} from '@daoyou/shared/types/task';
+} from '@daoyou/game-domain/tasks/types';
 
 type TaskLinkKind =
   | 'alchemy'

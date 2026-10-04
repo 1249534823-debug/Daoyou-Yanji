@@ -2,8 +2,8 @@ import { PerformancePlayer } from '@app/components/feature/performance/Performan
 import { GameLoadingState } from '@app/components/game-shell/GameLoadingState';
 import { InkButton, InkInput } from '@app/components/ui';
 import { useCultivatorIdentity } from '@app/lib/resources/player';
-import { listPerformanceScripts, getPerformanceScript } from '@daoyou/shared/performance/catalog';
-import { fillPerformanceScript, type PerformanceContext } from '@daoyou/shared/performance/schema';
+import { listPerformanceScripts, getPerformanceScript } from '@daoyou/game-content/performance/catalog';
+import { fillPerformanceScript, type PerformanceContext } from '@daoyou/game-domain/performance/schema';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 

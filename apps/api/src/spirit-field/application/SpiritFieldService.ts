@@ -16,12 +16,12 @@ import { qiCurrencyChange } from '@server/cultivator/application/QiResourceChang
 import { QiService } from '@server/cultivator/application/QiService.js';
 import { loadPlayerConsumableOperationFacts } from '@server/cultivator/application/readers/CultivatorConditionFactsReader.js';
 import { updateSpiritStones } from '@server/cultivator/application/readers/CultivatorStateRepository.js';
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
 import type {
   SpiritFieldCultivateRequest,
   SpiritFieldHarvestRequest,
   SpiritFieldSowRequest,
-} from '@daoyou/shared/contracts/spiritField';
+} from '@daoyou/contracts/spiritField';
 import {
   SPIRIT_FIELD_METHODS,
   SPIRIT_FIELD_STARTER_BATCHES,
@@ -36,14 +36,15 @@ import {
   settleSpiritFieldHarvest,
   type SpiritFieldCultivationMethod,
   type SpiritFieldPlotState,
-} from '@daoyou/shared/engine/spirit-field';
-import type { InventoryItem } from '@daoyou/shared/inventory';
-import { consumableFactsOf } from '@daoyou/shared/items/definitions/consumables';
-import { MaterialFactsSchema } from '@daoyou/shared/items/definitions/materials';
-import { seedFactsOf } from '@daoyou/shared/items/definitions/seeds';
+} from '@daoyou/game-rules/spirit-field';
+import type { InventoryItem } from '@daoyou/game-domain/items/inventory';
+import { consumableFactsOf } from '@daoyou/game-domain/items/consumable-facts';
+import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
+import { seedFactsOf } from '@daoyou/game-domain/items/seed-facts';
 import { SpiritFieldServiceError } from '@server/spirit-field/application/SpiritFieldError.js';
-import type { MaterialType, RealmType } from '@daoyou/shared/types/constants';
-import type { Consumable, Material } from '@daoyou/shared/types/cultivator';
+import type { MaterialType } from '@daoyou/game-domain/inventory';
+import type { RealmType } from '@daoyou/constants/realms';
+import type { Consumable, Material } from '@daoyou/game-domain/cultivator';
 import { and, eq } from 'drizzle-orm';
 import { findPlayerMutationRequest } from '@server/lib/repositories/playerStateRepository.js';
 import { grantInventory } from '@server/inventory/operations.js';

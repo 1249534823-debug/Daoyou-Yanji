@@ -1,4 +1,4 @@
-import { WORLD_CHAT_MESSAGE_TYPES } from '@daoyou/shared/types/world-chat';
+import { WORLD_CHAT_MESSAGE_TYPES } from '@daoyou/contracts/world-chat-messages';
 import { redis } from '@server/lib/redis/index.js';
 import type {
   WorldChatChannel,
@@ -6,7 +6,7 @@ import type {
   WorldChatMessageDTO,
   WorldChatMessageType,
   WorldChatPayload,
-} from '@daoyou/shared/types/world-chat';
+} from '@daoyou/contracts/world-chat-messages';
 import { randomUUID } from 'crypto';
 
 const WORLD_CHAT_LIST_KEY = 'world_chat:messages';

@@ -19,7 +19,7 @@ import type {
   SectMiningSessionData,
   SectSweepSessionData,
   SectTaskRewardReceipt,
-} from '@daoyou/shared/contracts/sect';
+} from '@daoyou/contracts/sect';
 import { z } from 'zod';
 import type {
   DecodedSectTaskOutcome,

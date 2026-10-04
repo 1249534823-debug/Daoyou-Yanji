@@ -2,7 +2,7 @@ import type {
   SectFacilityState,
   SectMapHotspot,
   SectPermissionState,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 
 export type SectMapMode = 'member' | 'visitor';
 

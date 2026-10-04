@@ -4,14 +4,14 @@ import { GameSceneFrame } from '@app/components/game-shell/GameSceneFrame';
 import { GameSceneTabs } from '@app/components/game-shell/GameSceneTabs';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkTooltip } from '@app/components/ui/InkTooltip';
-import { getLevelRealmStage } from '@daoyou/shared/config/realmProgression';
+import { getLevelRealmStage } from '@daoyou/game-domain/progression/realms';
 import {
   listBeastCodex,
   type BeastCodexEntry,
   type BeastCodexHabitat,
-} from '@daoyou/shared/engine/combat-v6/beasts/codex';
-import { getAtlasRegion } from '@daoyou/shared/lib/game/mapAtlas';
-import { getMapNode } from '@daoyou/shared/lib/game/mapSystem';
+} from '@daoyou/game-rules/beasts/codex';
+import { getAtlasRegion } from '@daoyou/game-rules/world/mapAtlas';
+import { getMapNode } from '@daoyou/game-content/world/map';
 import { useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
 import { BeastRosterScroll } from '../BeastRosterScroll';

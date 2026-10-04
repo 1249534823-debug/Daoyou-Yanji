@@ -1,56 +1,55 @@
-import {
-  CULTIVATION_PILL_MAX_QUALITY_BY_REALM,
-  getMinimumPillQualityByRealm,
-} from '@daoyou/shared/config/consumableSystem';
+import { getMinimumPillQualityByRealm } from '@daoyou/game-rules/consumables/scaling';
+import { CULTIVATION_PILL_MAX_QUALITY_BY_REALM } from '@daoyou/game-content/consumables/config';
 import {
   BODY_CULTIVATION_REALM_REQUIREMENTS,
   getBodyCultivationThresholdByLevel,
   getBodyTrackKeyFromPath,
   isBodyCultivationTrackPath,
   isLegacyTemperingTrackPath,
-} from '@daoyou/shared/lib/bodyCultivation/config';
-import { normalizeBodyCultivationState } from '@daoyou/shared/lib/bodyCultivation/normalize';
-import { getBodyCultivationSummary } from '@daoyou/shared/lib/bodyCultivation/summary';
-import { getBreakthroughFocusPillLabel } from '@daoyou/shared/lib/breakthroughPill';
-import { getConditionStatusTemplate } from '@daoyou/shared/lib/conditionStatusRegistry';
+} from '@daoyou/game-rules/body-cultivation/config';
+import { normalizeBodyCultivationState } from '@daoyou/game-rules/body-cultivation/normalize';
+import { getBodyCultivationSummary } from '@daoyou/game-rules/body-cultivation/summary';
+import { getBreakthroughFocusPillLabel } from '@daoyou/game-rules/consumables/breakthrough-pill';
+import { getConditionStatusTemplate } from '@daoyou/game-rules/condition/statuses';
 import {
   CULTIVATION_BOOST_STATUS_KEY,
   getCultivationBoostDisplayText,
-} from '@daoyou/shared/lib/cultivationBoost';
+} from '@daoyou/game-rules/consumables/cultivation-boost';
 import {
   getGameConceptLabel,
   getResourceLabel,
   getResourceText,
-} from '@daoyou/shared/lib/gameConceptDisplay';
-import { getPillAppearanceLabel } from '@daoyou/shared/lib/pillAppearance';
+} from '@daoyou/game-content/presentation/concepts';
+import { getPillAppearanceLabel } from '@daoyou/game-rules/alchemy/pillAppearance';
 import {
   BREAKTHROUGH_FOCUS_STATUS_KEY,
   CLEAR_MIND_STATUS_KEY,
   getBreakthroughFocusBonus,
   getProtectMeridiansReductionPercent,
   PROTECT_MERIDIANS_STATUS_KEY,
-} from '@daoyou/shared/lib/pillEffectScaling';
+} from '@daoyou/game-rules/alchemy/pillEffectScaling';
 import {
   getLongevityPillUsageLimit,
   getPillUsageKeywordLabel,
   getPillUsageRuleText,
   getPrimaryPillQuotaCategory,
   getRealmPillUsageLimit,
-} from '@daoyou/shared/lib/pillUsageText';
-import { getTrackConfig } from '@daoyou/shared/lib/trackConfigRegistry';
+} from '@daoyou/game-rules/alchemy/pillUsageText';
+import { getTrackConfig } from '@daoyou/game-rules/condition/tracks';
 import type {
   ConditionStatusKey,
   CultivatorCondition,
-} from '@daoyou/shared/types/condition';
-import { QUALITY_ORDER, type RealmType } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-domain/condition';
+import { QUALITY_ORDER } from '@daoyou/constants/qualities';
+import { type RealmType } from '@daoyou/constants/realms';
 import type {
   ConditionOperation,
   PillFamily,
   PillQuotaCategory,
   PillSpec,
   SpiritFruitSpec,
-} from '@daoyou/shared/types/consumable';
-import type { Consumable } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-domain/consumable';
+import type { Consumable } from '@daoyou/game-domain/cultivator';
 
 interface PillDisplayOptions {
   realm?: RealmType;

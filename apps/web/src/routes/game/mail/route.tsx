@@ -18,13 +18,13 @@ import { InkNotice } from '@app/components/ui/InkNotice';
 import { realtimeClient } from '@app/lib/realtime/realtimeClient';
 import { useResourceMutation } from '@app/lib/resources/mutations';
 import { usePlayerSession } from '@app/lib/resources/player';
-import { MAX_FRIENDS_PER_CULTIVATOR } from '@daoyou/shared/config/socialConfig';
+import { MAX_FRIENDS_PER_CULTIVATOR } from '@daoyou/game-content/social/config';
 import type {
   FriendCultivatorSummary,
   FriendSearchResponse,
   FriendSearchResult,
-} from '@daoyou/shared/contracts/friends';
-import { mailLocationText } from '@daoyou/shared/contracts/mail';
+} from '@daoyou/contracts/friends';
+import { mailLocationText } from '@daoyou/game-rules/mail/inventory';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router';
 

@@ -1,7 +1,7 @@
 import type {
   BlackMarketNpcId,
   BlackMarketNpcSummary,
-} from '@daoyou/shared/types/blackMarket';
+} from '@daoyou/game-domain/blackMarket';
 
 export interface BlackMarketNpcConfig extends Omit<
   BlackMarketNpcSummary,

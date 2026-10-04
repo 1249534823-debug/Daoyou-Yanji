@@ -3,8 +3,8 @@ import type { ItemShowcaseModalProps } from '@app/components/ui/ItemShowcaseModa
 import {
   getEquipmentSlotInfo,
   getGameConceptInfo,
-} from '@daoyou/shared/lib/gameConceptDisplay';
-import type { EquipmentSlot } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-content/presentation/concepts';
+import type { EquipmentSlot } from '@daoyou/game-domain/inventory';
 import { AffixChip } from './AffixChip';
 import { type ProductDisplayModel } from './abilityDisplay';
 import { getScoreMark } from './scoreMeta';

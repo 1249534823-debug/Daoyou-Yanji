@@ -6,7 +6,7 @@ import { useSectIdentityDialog } from '@app/components/feature/sect/useSectIdent
 import Link from '@app/components/router/AppLink';
 import { InkHorizontalScroll } from '@app/components/ui';
 import { GameImage } from '@app/components/ui/GameImage';
-import { getGameConceptInfo } from '@daoyou/shared/lib/gameConceptDisplay';
+import { getGameConceptInfo } from '@daoyou/game-content/presentation/concepts';
 import type { ReactNode } from 'react';
 import { useNavigate } from 'react-router';
 import { GameTopHudPlaceholder, HudMeter, HudTag } from './GameHudIndicators';

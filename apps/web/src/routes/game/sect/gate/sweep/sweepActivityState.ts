@@ -1,4 +1,4 @@
-import type { SectTasksData, SectTaskViewData } from '@daoyou/shared/contracts/sect';
+import type { SectTasksData, SectTaskViewData } from '@daoyou/contracts/sect';
 
 export const SWEEP_TASK_ID = 'gate_sweep';
 

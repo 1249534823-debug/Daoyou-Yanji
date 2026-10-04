@@ -7,8 +7,8 @@ import {
   type SectTaskOfferSnapshot,
   type SectTaskRecordPayload,
   type SectTaskRewardCadence,
-} from '@daoyou/shared/engine/sect';
-import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-rules/sect-organization';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { organizationError } from '@server/sects/organization/applicationSupport.js';
 import type {
   SectTaskOfferPolicyRegistry,

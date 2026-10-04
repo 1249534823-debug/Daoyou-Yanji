@@ -18,15 +18,15 @@ import { InkQuantityInput } from '@app/components/ui/InkQuantityInput';
 import { useInventoryBag } from '@app/lib/resources/bag';
 import { useCraftStorage } from '@app/lib/resources/craftStorage';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
-import { beastSkillPresentation } from '@daoyou/shared/combat-v6/beast-skill-presentation';
-import type { BeastManagementView } from '@daoyou/shared/contracts/combatV6Beasts';
-import type { InventoryView } from '@daoyou/shared/contracts/inventory';
-import { previewBeastFeeding } from '@daoyou/shared/engine/combat-v6/beasts/feeding';
-import { beastRefinementReason } from '@daoyou/shared/engine/combat-v6/beasts/refinement';
-import { BEAST_REFINEMENT } from '@daoyou/shared/engine/combat-v6/beasts/refinement-config';
-import { itemDefinition } from '@daoyou/shared/inventory';
-import { BEAST_REJUVENATION } from '@daoyou/shared/items/definitions/beast-rejuvenation';
-import { ConsumableFactsSchema } from '@daoyou/shared/items/definitions/consumables';
+import { beastSkillPresentation } from '@daoyou/game-rules/beasts/skill-presentation';
+import type { BeastManagementView } from '@daoyou/contracts/combatV6Beasts';
+import type { InventoryView } from '@daoyou/contracts/inventory';
+import { previewBeastFeeding } from '@daoyou/game-rules/beasts/feeding';
+import { beastRefinementReason } from '@daoyou/game-rules/beasts/refinement';
+import { BEAST_REFINEMENT } from '@daoyou/game-content/beasts/refinement-config';
+import { itemDefinition } from '@daoyou/game-rules/inventory';
+import { BEAST_REJUVENATION } from '@daoyou/game-content/items/beast-rejuvenation';
+import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
 import { useEffect, useRef, useState } from 'react';
 
 export function BeastBookDrawer({

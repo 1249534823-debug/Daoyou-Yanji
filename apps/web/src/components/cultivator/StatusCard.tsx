@@ -1,17 +1,17 @@
 import { InkCard } from '@app/components/ui/InkCard';
-import { getConditionStatusTemplate } from '@daoyou/shared/lib/conditionStatusRegistry';
+import { getConditionStatusTemplate } from '@daoyou/game-rules/condition/statuses';
 import {
   CULTIVATION_BOOST_STATUS_KEY,
   getCultivationBoostDisplayText,
-} from '@daoyou/shared/lib/cultivationBoost';
+} from '@daoyou/game-rules/consumables/cultivation-boost';
 import {
   BREAKTHROUGH_FOCUS_STATUS_KEY,
   CLEAR_MIND_STATUS_KEY,
   getBreakthroughFocusBonus,
   getProtectMeridiansReductionPercent,
   PROTECT_MERIDIANS_STATUS_KEY,
-} from '@daoyou/shared/lib/pillEffectScaling';
-import type { ConditionStatusInstance } from '@daoyou/shared/types/condition';
+} from '@daoyou/game-rules/alchemy/pillEffectScaling';
+import type { ConditionStatusInstance } from '@daoyou/game-domain/condition';
 
 interface StatusCardProps {
   buffs: ConditionStatusInstance[];

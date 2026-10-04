@@ -1,6 +1,6 @@
 import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import { cultivators } from '@server/lib/drizzle/schema.js';
-import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { eq } from 'drizzle-orm';
 import { SectError } from '@server/sects/application/SectError.js';
 import { StoryService } from '@server/story/application/StoryService.js';

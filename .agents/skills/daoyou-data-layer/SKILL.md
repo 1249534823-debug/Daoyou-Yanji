@@ -27,7 +27,7 @@ Table names below omit the `wanjiedaoyou_` prefix. The exact names and constrain
 | --- | --- | --- |
 | Character identity, permanent six attributes, condition | `cultivators` | `cultivatorRepository.ts`, `cultivator/application/readers`, V6 condition services |
 | Personal manuals and active slots | `cultivator_manual_states`, `cultivator_manual_slots` | `characterLoadoutRepository.ts`, `CombatV6ManualService.ts` |
-| Bag/storage item instances | `inventory_items` | `InventoryService.ts`, `packages/shared/src/inventory`, `packages/shared/src/items` |
+| Bag/storage item instances | `inventory_items` | `InventoryService.ts`, `packages/game-rules/src/inventory`, `packages/game-domain/src/items` |
 | Equipped V6 equipment | `cultivator_equipment_slots` | `characterLoadoutRepository.ts`, `InventoryService.ts` |
 | Beasts and lineups | `cultivator_beasts`, `cultivator_beast_lineups` | `combatV6BeastRepository.ts`, `CombatV6BeastService.ts` |
 | Sect progression | `sect_combat_states`, `sect_method_progress`, `sect_meridian_loadouts`, `sect_meridian_nodes` | `sectCombatRepository.ts` |
@@ -55,7 +55,7 @@ Repository names resolve under `apps/api/src/lib/repositories`; V6 service names
 ## Legacy Boundary
 
 - `creation_products`, `materials` and `consumables` still have residual code paths. Inspect their actual callers before modifying or deleting them; they are not fallback sources for V6 equipment/manuals or the unified bag.
-- Legacy product views use `packages/shared/src/legacy/products.ts`. Do not restore creation-v2 rehydration / `battleProjection` or treat `creation_products.is_equipped` as current V6 equipment state.
+- Legacy product views use `packages/game-domain/src/legacy/products.ts`. Do not restore creation-v2 rehydration / `battleProjection` or treat `creation_products.is_equipped` as current V6 equipment state.
 - `/api/battle-records/*` has been removed. V6 history uses the combat replay repository, not `battle_records_v2`.
 - `battle_records_v3`, `battle_replay_archives` and `bet_battles` are deprecated historical schema, with physical deletion deferred to a separate future migration. Read `docs/combat-v6-legacy-table-retirement.md` for that policy, but verify exact table names against schema. Do not generate DROP migrations simply while cleaning up skills or legacy references.
 - Do not infer that every older table is still present, or already physically deleted, from a DTO, directory or migration file alone.

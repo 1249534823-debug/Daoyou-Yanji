@@ -1,5 +1,5 @@
 import { apiFetch } from '@app/lib/api/fetch';
-import type { SponsorshipTierId } from '@daoyou/shared/lib/sponsorship';
+import type { SponsorshipTierId } from '@daoyou/game-domain/sponsorship';
 import { useEffect, useState } from 'react';
 
 type MeritProfileResponse = {

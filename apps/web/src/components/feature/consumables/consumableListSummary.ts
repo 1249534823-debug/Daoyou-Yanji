@@ -1,10 +1,10 @@
 import {
   isPillConsumable,
   isSpiritFruitConsumable,
-} from '@daoyou/shared/lib/consumables';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import type { RealmType } from '@daoyou/shared/types/constants';
-import type { Consumable } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-domain/consumables/identity';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
+import type { RealmType } from '@daoyou/constants/realms';
+import type { Consumable } from '@daoyou/game-domain/cultivator';
 import {
   toPillDisplayModel,
   toSpiritFruitDisplayModel,

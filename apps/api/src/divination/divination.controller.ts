@@ -11,7 +11,7 @@ import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   DivinationDrawSchema,
   DivinationInterpretSchema,
-} from '@daoyou/shared/contracts/divination';
+} from '@daoyou/contracts/divination';
 import type { Response } from 'express';
 import type { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';

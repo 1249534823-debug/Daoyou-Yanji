@@ -1,4 +1,4 @@
-import { inventoryStackIdentity } from '@daoyou/shared/inventory/stack-key';
+import { inventoryStackIdentity } from '@daoyou/game-rules/inventory/stack-key';
 import { createHash } from 'node:crypto';
 
 export function inventoryStackKey(

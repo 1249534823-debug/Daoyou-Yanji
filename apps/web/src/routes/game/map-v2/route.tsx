@@ -4,7 +4,8 @@ import {
   type HuntMapPoint,
 } from '@app/components/feature/hunts/HuntMapMarkers';
 import { useHunts } from '@app/components/feature/hunts/useHunts';
-import { huntMapHref, type HuntEvent } from '@daoyou/shared/hunts/config';
+import { type HuntEvent } from '@daoyou/game-domain/hunts/event';
+import { huntMapHref } from '@daoyou/game-rules/hunts/config';
 import {
   buildNodeActions,
   buildSectLandmarkActions,
@@ -20,13 +21,13 @@ import {
   getAtlasLocations,
   getAtlasRegion,
   hasAtlasMap,
-} from '@daoyou/shared/lib/game/mapAtlas';
+} from '@daoyou/game-rules/world/mapAtlas';
 import {
   matchesAtlasCategories,
   parseAtlasCategories,
   type AtlasCategory,
-} from '@daoyou/shared/lib/game/mapAtlasCategories';
-import { getWorldMapLocation } from '@daoyou/shared/lib/game/mapSystem';
+} from '@daoyou/game-rules/world/mapAtlasCategories';
+import { getWorldMapLocation } from '@daoyou/game-content/world/map';
 import {
   useEffect,
   useEffectEvent,

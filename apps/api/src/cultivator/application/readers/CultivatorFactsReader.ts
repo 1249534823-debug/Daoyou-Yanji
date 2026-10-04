@@ -7,9 +7,9 @@ import { cultivators, spiritualRoots } from '@server/lib/drizzle/schema.js';
 import type {
   CultivationProgress,
   Cultivator,
-} from '@daoyou/shared/types/cultivator';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-domain/cultivator';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { and, eq } from 'drizzle-orm';
 import { mapSpiritualRoots } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 

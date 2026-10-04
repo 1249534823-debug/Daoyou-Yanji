@@ -2,7 +2,7 @@ import {
   parseBackgroundCommandEnvelope,
   type BackgroundCommandEnvelope,
   type BackgroundCommandType,
-} from '@daoyou/shared/contracts/backgroundCommands';
+} from '@daoyou/contracts/backgroundCommands';
 import {
   BACKGROUND_COMMAND_CONSUMER,
   COMMAND_DEAD_LETTER_STREAM,

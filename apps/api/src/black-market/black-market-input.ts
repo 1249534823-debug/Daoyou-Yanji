@@ -1,4 +1,4 @@
-import { BLACK_MARKET_NPC_IDS } from '@daoyou/shared/types/blackMarket';
+import { BLACK_MARKET_NPC_IDS } from '@daoyou/game-domain/blackMarket';
 import { z } from 'zod';
 
 export const OpenSessionSchema = z.object({

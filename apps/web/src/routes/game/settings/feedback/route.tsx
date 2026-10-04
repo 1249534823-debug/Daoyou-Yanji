@@ -6,7 +6,7 @@ import {
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkChoiceButton } from '@app/components/ui/InkChoiceButton';
 import { InkInput } from '@app/components/ui/InkInput';
-import type { FeedbackType } from '@daoyou/shared/contracts/feedback';
+import type { FeedbackType } from '@daoyou/contracts/feedback';
 import { useState } from 'react';
 
 const FEEDBACK_TYPES: { value: FeedbackType; label: string }[] = [

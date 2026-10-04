@@ -2,7 +2,7 @@ import { BodyCultivationInspectionSection } from '@app/components/feature/cultiv
 import { LingGenMini } from '@app/components/func/LingGen';
 import { InkBadge } from '@app/components/ui';
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
-import type { CultivatorInspectionData } from '@daoyou/shared/contracts/player';
+import type { CultivatorInspectionData } from '@daoyou/contracts/player';
 import type { ReactNode } from 'react';
 import { CultivatorAttributeTable } from './CultivatorAttributeTable';
 import { CultivatorFateSection } from './CultivatorFateSection';

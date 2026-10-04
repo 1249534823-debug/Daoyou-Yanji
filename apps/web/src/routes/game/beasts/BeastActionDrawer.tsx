@@ -1,7 +1,7 @@
 import { InkModal } from '@app/components/layout/InkModal';
 import { InkButton } from '@app/components/ui/InkButton';
-import type { SummonedBeast } from '@daoyou/shared/engine/combat-v6/beasts';
-import { beastRestCost } from '@daoyou/shared/engine/combat-v6/beasts/progression';
+import type { SummonedBeast } from '@daoyou/game-domain/beasts/schema';
+import { beastRestCost } from '@daoyou/game-rules/beasts/progression';
 
 export type BeastAction = 'release' | 'rest';
 const labels = { release: '放生', rest: '休养' };

@@ -4,8 +4,8 @@ import { GameIcon } from '@app/components/ui/GameIcon';
 import { tierColorMap } from '@app/components/ui/inkBadgeTiers';
 import { useCultivatorIdentity } from '@app/lib/resources/player';
 import { cn } from '@app/lib/cn';
-import { getElementInfo } from '@daoyou/shared/lib/gameConceptDisplay';
-import type { Cultivator } from '@daoyou/shared/types/cultivator';
+import { getElementInfo } from '@daoyou/game-content/presentation/concepts';
+import type { Cultivator } from '@daoyou/game-domain/cultivator';
 import { useState } from 'react';
 import { CultivatorReincarnation } from './CultivatorReincarnation';
 

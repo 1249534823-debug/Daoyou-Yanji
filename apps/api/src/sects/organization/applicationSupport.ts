@@ -2,8 +2,8 @@ import {
   type SectDiscipleRank,
   type SectFacilityState,
   type SectOrganizationModule,
-} from '@daoyou/shared/engine/sect';
-import type { RealmType } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-rules/sect-organization';
+import type { RealmType } from '@daoyou/constants/realms';
 import { SectError } from '@server/sects/application/SectError.js';
 import type {
   SectFacilityRecord,

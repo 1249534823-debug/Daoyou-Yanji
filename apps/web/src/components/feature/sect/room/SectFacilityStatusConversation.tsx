@@ -12,7 +12,7 @@ import {
 import {
   describeSectFacilityStatus,
   type SectFacilityDialogueEmphasis,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import { useMemo } from 'react';
 import type { SectNpcConversationRendererProps } from './SectNpcConversationRegistry';
 

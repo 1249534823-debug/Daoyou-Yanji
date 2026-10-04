@@ -1,7 +1,7 @@
 import { getSectConstructionDailyStatus } from '@server/lib/redis/sectConstructionDaily.js';
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
-import type { SectConstructionMemberData } from '@daoyou/shared/contracts/sect';
-import { quoteSectConstructionDonation } from '@daoyou/shared/engine/sect';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
+import type { SectConstructionMemberData } from '@daoyou/contracts/sect';
+import { quoteSectConstructionDonation } from '@daoyou/game-rules/sect-organization';
 import type { SectBenefitService } from '@server/sects/organization/SectBenefitService.js';
 import {
   organizationError,

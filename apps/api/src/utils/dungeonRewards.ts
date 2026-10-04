@@ -3,7 +3,8 @@
  * 定义奖励评级、物品池、品质加成等常量
  */
 
-import type { MaterialType, Quality } from '@daoyou/shared/types/constants';
+import type { MaterialType } from '@daoyou/game-domain/inventory';
+import type { Quality } from '@daoyou/constants/qualities';
 
 /**
  * 奖励评级配置

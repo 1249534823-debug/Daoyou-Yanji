@@ -11,11 +11,9 @@ import { usePlayerSession } from '@app/lib/resources/player';
 import type {
   DivinationRecord,
   DivinationView,
-} from '@daoyou/shared/contracts/divination';
-import {
-  DIVINATION_DIRECTIONS,
-  type DivinationDirection,
-} from '@daoyou/shared/lib/divination';
+} from '@daoyou/contracts/divination';
+import { type DivinationDirection } from '@daoyou/game-domain/divination/types';
+import { DIVINATION_DIRECTIONS } from '@daoyou/game-content/divination/content';
 import {
   useCallback,
   useEffect,

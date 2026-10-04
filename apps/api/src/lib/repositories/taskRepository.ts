@@ -5,7 +5,7 @@ import type {
   TaskInstanceMetadata,
   TaskObjectiveState,
   TaskStatus,
-} from '@daoyou/shared/types/task';
+} from '@daoyou/game-domain/tasks/types';
 import { and, asc, eq, sql } from 'drizzle-orm';
 
 export type CultivatorTaskRecord = typeof schema.cultivatorTasks.$inferSelect;

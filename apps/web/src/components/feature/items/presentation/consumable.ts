@@ -1,5 +1,5 @@
 import { tierColorMap } from '@app/components/ui/inkBadgeTiers';
-import { ConsumableFactsSchema } from '@daoyou/shared/items/definitions/consumables';
+import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
 import {
   toPillDisplayModel,
   toSpiritFruitDisplayModel,

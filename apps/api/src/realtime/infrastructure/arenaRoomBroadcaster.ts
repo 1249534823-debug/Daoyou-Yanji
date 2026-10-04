@@ -7,8 +7,8 @@ import {
   parsePubSubEnvelope,
 } from '@server/realtime/infrastructure/pubSubEnvelope.js';
 import { encodeNatsSubjectToken } from '@server/realtime/infrastructure/natsCorePubSub.js';
-import type { ArenaRoomChangedPayloadV1 } from '@daoyou/shared/contracts/realtime';
-import type { ArenaRoomV1 } from '@daoyou/shared/contracts/arena';
+import type { ArenaRoomChangedPayloadV1 } from '@daoyou/contracts/realtime';
+import type { ArenaRoomV1 } from '@daoyou/contracts/arena';
 
 const SUBJECT_PREFIX = 'daoyou.realtime.arena-room.user';
 const ROOM_STATUSES = new Set([

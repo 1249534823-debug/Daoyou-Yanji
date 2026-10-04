@@ -1,8 +1,8 @@
-import type { SectContextData } from '@daoyou/shared/contracts/sect';
+import type { SectContextData } from '@daoyou/contracts/sect';
 import {
   SECT_RANK_LABELS,
   type SectOffice,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import { getSectDefinition } from './sectResources';
 
 const SECT_OFFICE_LABELS: Record<SectOffice, string> = {

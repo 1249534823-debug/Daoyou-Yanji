@@ -1,12 +1,12 @@
 import { itemPresentation } from '@app/components/feature/items/itemPresentation';
 import { ItemSlot } from '@app/components/feature/items/ItemSlot';
 import { GameIcon } from '@app/components/ui/GameIcon';
-import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '@daoyou/shared/engine/combat-v6/beasts/content';
-import { itemDefinition } from '@daoyou/shared/inventory';
-import { getGameConceptInfo } from '@daoyou/shared/lib/gameConceptDisplay';
-import { HUNT_DROP_POOL } from '@daoyou/shared/rewards/hunt';
-import { HUNT_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/shared/rewards/hunt-material-quality';
-import type { RealmType } from '@daoyou/shared/types/constants';
+import { BEAST_SUPERIOR_BOOK_SKILL_IDS } from '@daoyou/game-content/beasts/content';
+import { itemDefinition } from '@daoyou/game-rules/inventory';
+import { getGameConceptInfo } from '@daoyou/game-content/presentation/concepts';
+import { HUNT_DROP_POOL } from '@daoyou/game-rules/rewards/hunt';
+import { HUNT_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/game-rules/rewards/hunt-material-quality';
+import type { RealmType } from '@daoyou/constants/realms';
 import { useState } from 'react';
 
 const bookEntries = HUNT_DROP_POOL.groups.find((g) => g.id === 'book')!.entries;

@@ -7,11 +7,11 @@ import {
 import * as schema from '@server/lib/drizzle/schema.js';
 import { hasActiveDungeon } from '@server/dungeon/occupancy.js';
 import { loadCultivatorSectState } from '@server/lib/repositories/sectRepository.js';
-import { getOrInitCultivationProgress } from '@daoyou/shared/engine/cultivation/cultivationUtils';
-import type { CultivatorDisplayInput } from '@daoyou/shared/lib/cultivatorDisplay';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
-import type { CultivationProgress, Cultivator } from '@daoyou/shared/types/cultivator';
+import { getOrInitCultivationProgress } from '@daoyou/game-rules/cultivation/cultivationUtils';
+import type { CultivatorDisplayInput } from '@daoyou/game-domain/character/display';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
+import type { CultivationProgress, Cultivator } from '@daoyou/game-domain/cultivator';
 import { and, eq } from 'drizzle-orm';
 import { readCombatV6ConditionAuthority } from '@server/combat/application/CombatV6ConditionAuthority.js';
 import {

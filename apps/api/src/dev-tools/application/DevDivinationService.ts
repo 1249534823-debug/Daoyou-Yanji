@@ -1,5 +1,5 @@
 import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
-import { allowsLocalDevTools } from '@daoyou/shared/config/deployment';
+import { allowsLocalDevTools } from '@daoyou/contracts/dev-tools-access';
 import { eq } from 'drizzle-orm';
 import { db } from '@server/lib/drizzle/db.js';
 import { cultivators, dailyDivinations } from '@server/lib/drizzle/schema.js';

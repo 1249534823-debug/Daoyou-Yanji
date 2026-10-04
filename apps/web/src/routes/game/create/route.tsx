@@ -26,19 +26,19 @@ import {
   type CharacterGenerationQuota,
   type CharacterGenerationQuotaResponse,
   type GenerateCharacterResponse,
-} from '@daoyou/shared/contracts/character-generation';
+} from '@daoyou/contracts/character-generation';
 import { cn } from '@app/lib/cn';
 import {
   characterDisplayRows,
   formatCharacterAttributeValue as formatAttributeValue,
   formatCharacterAttributeModifier as formatModifier,
   projectCharacterDisplay,
-} from '@daoyou/shared/lib/cultivatorDisplay';
+} from '@daoyou/game-rules/character/display';
 import {
   getGameConceptIcon,
   getResourceLabel,
-} from '@daoyou/shared/lib/gameConceptDisplay';
-import type { Cultivator } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-content/presentation/concepts';
+import type { Cultivator } from '@daoyou/game-domain/cultivator';
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router';
 

@@ -9,9 +9,21 @@ importers:
 
   .:
     devDependencies:
-      '@daoyou/shared':
+      '@daoyou/combat-core':
         specifier: workspace:*
-        version: link:packages/shared
+        version: link:packages/combat-core
+      '@daoyou/constants':
+        specifier: workspace:*
+        version: link:packages/constants
+      '@daoyou/contracts':
+        specifier: workspace:*
+        version: link:packages/contracts
+      '@daoyou/game-content':
+        specifier: workspace:*
+        version: link:packages/game-content
+      '@daoyou/game-domain':
+        specifier: workspace:*
+        version: link:packages/game-domain
       '@eslint/js':
         specifier: 10.0.1
         version: 10.0.1(eslint@10.10.0(jiti@2.7.0))
@@ -81,9 +93,24 @@ importers:
       '@better-auth/i18n':
         specifier: ^1.7.4
         version: 1.7.4(@better-auth/core@1.7.4(@better-auth/utils@0.4.2)(@better-fetch/fetch@1.3.1)(better-call@1.4.0(zod@4.6.4))(jose@6.2.3)(kysely@0.28.17)(nanostores@1.3.0))(better-auth@1.7.4(drizzle-kit@0.31.10)(drizzle-orm@0.45.2(@types/pg@8.23.1)(kysely@0.28.17)(pg@8.23.0))(pg@8.23.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(vitest@4.1.11(@types/node@26.5.1)(esbuild@0.27.7)(jiti@2.7.0)(tsx@4.21.0)))
-      '@daoyou/shared':
+      '@daoyou/combat-core':
         specifier: workspace:*
-        version: link:../../packages/shared
+        version: link:../../packages/combat-core
+      '@daoyou/constants':
+        specifier: workspace:*
+        version: link:../../packages/constants
+      '@daoyou/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
+      '@daoyou/game-content':
+        specifier: workspace:*
+        version: link:../../packages/game-content
+      '@daoyou/game-domain':
+        specifier: workspace:*
+        version: link:../../packages/game-domain
+      '@daoyou/game-rules':
+        specifier: workspace:*
+        version: link:../../packages/game-rules
       '@microfleet/ioredis-lock':
         specifier: ^6.0.1
         version: 6.0.1(ioredis@5.11.1)
@@ -190,9 +217,24 @@ importers:
       '@better-fetch/fetch':
         specifier: ^1.3.1
         version: 1.3.1
-      '@daoyou/shared':
+      '@daoyou/combat-core':
         specifier: workspace:*
-        version: link:../../packages/shared
+        version: link:../../packages/combat-core
+      '@daoyou/constants':
+        specifier: workspace:*
+        version: link:../../packages/constants
+      '@daoyou/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
+      '@daoyou/game-content':
+        specifier: workspace:*
+        version: link:../../packages/game-content
+      '@daoyou/game-domain':
+        specifier: workspace:*
+        version: link:../../packages/game-domain
+      '@daoyou/game-rules':
+        specifier: workspace:*
+        version: link:../../packages/game-rules
       altcha:
         specifier: ^3.2.2
         version: 3.2.2
@@ -261,8 +303,66 @@ importers:
         specifier: ^8.3.0
         version: 8.3.0(@types/node@26.5.1)(esbuild@0.27.7)(jiti@2.7.0)(tsx@4.21.0)
 
-  packages/shared:
+  packages/combat-core: {}
+
+  packages/constants: {}
+
+  packages/contracts:
     dependencies:
+      '@daoyou/combat-core':
+        specifier: workspace:*
+        version: link:../combat-core
+      '@daoyou/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@daoyou/game-domain':
+        specifier: workspace:*
+        version: link:../game-domain
+      zod:
+        specifier: ^4.6.4
+        version: 4.6.4
+
+  packages/game-content:
+    dependencies:
+      '@daoyou/combat-core':
+        specifier: workspace:*
+        version: link:../combat-core
+      '@daoyou/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@daoyou/game-domain':
+        specifier: workspace:*
+        version: link:../game-domain
+      zod:
+        specifier: ^4.6.4
+        version: 4.6.4
+
+  packages/game-domain:
+    dependencies:
+      '@daoyou/combat-core':
+        specifier: workspace:*
+        version: link:../combat-core
+      '@daoyou/constants':
+        specifier: workspace:*
+        version: link:../constants
+      zod:
+        specifier: ^4.6.4
+        version: 4.6.4
+
+  packages/game-rules:
+    dependencies:
+      '@daoyou/combat-core':
+        specifier: workspace:*
+        version: link:../combat-core
+      '@daoyou/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@daoyou/game-content':
+        specifier: workspace:*
+        version: link:../game-content
+      '@daoyou/game-domain':
+        specifier: workspace:*
+        version: link:../game-domain
       d3-format:
         specifier: ^3.1.2
         version: 3.1.2

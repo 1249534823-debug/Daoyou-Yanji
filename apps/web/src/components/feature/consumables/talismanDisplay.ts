@@ -2,27 +2,25 @@ import {
   ATTRIBUTE_RESET_TALISMAN_NAME,
   ATTRIBUTE_RESET_TALISMAN_SCENARIO,
   isAttributeResetTalismanScenario,
-} from '@daoyou/shared/config/attributeResetTalisman';
-import { IDENTITY_RESHAPE_SCENARIO } from '@daoyou/shared/config/identityReshape';
-import {
-  QI_RESTORE_TALISMAN_SCENARIOS,
-  isQiRestoreTalismanScenario,
-} from '@daoyou/shared/config/qiSystem';
+} from '@daoyou/game-content/consumables/attributeResetTalisman';
+import { IDENTITY_RESHAPE_SCENARIO } from '@daoyou/game-content/identity-reshape';
+import { isQiRestoreTalismanScenario } from '@daoyou/game-rules/qi/actions';
+import { QI_RESTORE_TALISMAN_SCENARIOS } from '@daoyou/game-content/qi/config';
 import {
   SECT_MERIDIAN_RESET_TALISMAN_NAME,
   SECT_MERIDIAN_RESET_TALISMAN_SCENARIO,
   isSectMeridianResetTalismanScenario,
-} from '@daoyou/shared/config/sectMeridianResetTalisman';
+} from '@daoyou/game-content/consumables/sectMeridianResetTalisman';
 import {
   CHEAT_HEAVEN_TALISMAN_SCENARIO,
   isSectTransferTalismanScenario,
-} from '@daoyou/shared/config/sectTransferTalisman';
+} from '@daoyou/game-content/consumables/sectTransferTalisman';
 import {
   AUCTION_PRIVATE_LISTING_TALISMAN_SCENARIO,
   FRIEND_MAIL_TALISMAN_SCENARIO,
-} from '@daoyou/shared/config/socialConfig';
-import { isTalismanConsumable } from '@daoyou/shared/lib/consumables';
-import type { Consumable } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-content/social/config';
+import { isTalismanConsumable } from '@daoyou/game-domain/consumables/identity';
+import type { Consumable } from '@daoyou/game-domain/cultivator';
 
 const TALISMAN_SCENARIO_LABELS: Record<string, string> = {
   [ATTRIBUTE_RESET_TALISMAN_SCENARIO]: '根基属性重洗',

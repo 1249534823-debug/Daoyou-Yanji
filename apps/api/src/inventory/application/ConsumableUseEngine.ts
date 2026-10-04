@@ -7,28 +7,26 @@ import type { RedisLeaseContext } from '@server/lib/redis/lock.js';
 import { loadPlayerConsumableOperationFacts } from '@server/cultivator/application/readers/CultivatorConditionFactsReader.js';
 import { consumeConsumableById } from '@server/cultivator/application/readers/CultivatorInventoryRepository.js';
 import { replaceSpiritualRoots } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
-import { stripExpCapForStorage } from '@daoyou/shared/engine/cultivation/cultivationUtils';
+import { stripExpCapForStorage } from '@daoyou/game-rules/cultivation/cultivationUtils';
 import {
   ATTRIBUTE_RESET_TALISMAN_NAME,
   ATTRIBUTE_RESET_TALISMAN_SCENARIO,
-} from '@daoyou/shared/config/attributeResetTalisman';
-import {
-  QI_RESTORE_TALISMAN_SCENARIOS,
-  isQiRestoreTalismanScenario,
-} from '@daoyou/shared/config/qiSystem';
+} from '@daoyou/game-content/consumables/attributeResetTalisman';
+import { isQiRestoreTalismanScenario } from '@daoyou/game-rules/qi/actions';
+import { QI_RESTORE_TALISMAN_SCENARIOS } from '@daoyou/game-content/qi/config';
 import {
   SECT_MERIDIAN_RESET_TALISMAN_NAME,
   SECT_MERIDIAN_RESET_TALISMAN_SCENARIO,
-} from '@daoyou/shared/config/sectMeridianResetTalisman';
+} from '@daoyou/game-content/consumables/sectMeridianResetTalisman';
 import {
   isPillConsumable,
   isSpiritFruitConsumable,
   isTalismanConsumable,
-} from '@daoyou/shared/lib/consumables';
-import { canUseDungeonRecoveryPill } from '@daoyou/shared/lib/dungeon/rest';
-import { getAttributeLabel } from '@daoyou/shared/lib/gameConceptDisplay';
-import { getTrackConfig } from '@daoyou/shared/lib/trackConfigRegistry';
-import type { Consumable } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-domain/consumables/identity';
+import { canUseDungeonRecoveryPill } from '@daoyou/game-rules/dungeon/rest';
+import { getAttributeLabel } from '@daoyou/game-content/presentation/concepts';
+import { getTrackConfig } from '@daoyou/game-rules/condition/tracks';
+import type { Consumable } from '@daoyou/game-domain/cultivator';
 import { randomUUID } from 'crypto';
 import { and, eq, ne } from 'drizzle-orm';
 import {

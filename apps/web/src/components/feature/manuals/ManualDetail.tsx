@@ -1,21 +1,19 @@
 import { InkButton } from '@app/components/ui/InkButton';
 import { useInventoryBag } from '@app/lib/resources/bag';
-import type {
-  ManualAction,
-  ManualView,
-} from '@daoyou/shared/contracts/combatV6Manuals';
-import type { InventoryView } from '@daoyou/shared/contracts/inventory';
-import { manualAttributeValue } from '@daoyou/shared/engine/combat-v6/manuals/attributes';
-import { manualSlot } from '@daoyou/shared/engine/combat-v6/manuals/compiler';
+import type { ManualAction } from '@daoyou/game-domain/manuals/action';
+import type { ManualView } from '@daoyou/contracts/combatV6Manuals';
+import type { InventoryView } from '@daoyou/contracts/inventory';
+import { manualAttributeValue } from '@daoyou/game-rules/manuals/attributes';
+import { manualSlot } from '@daoyou/game-rules/manuals/compiler';
 import {
   CHARACTER_MANUALS_V1,
   manualRule,
-} from '@daoyou/shared/engine/combat-v6/manuals/content';
-import { manualEffectLines } from '@daoyou/shared/engine/combat-v6/manuals/presentation';
-import type { CharacterManualDefV1 } from '@daoyou/shared/engine/combat-v6/manuals/types';
-import { itemDefinition } from '@daoyou/shared/inventory';
-import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/shared/lib/characterAttributeLabels';
-import { manualJadeCost, previewManualAction } from '@daoyou/shared/manuals/action';
+} from '@daoyou/game-content/manuals/content';
+import { manualEffectLines } from '@daoyou/game-rules/manuals/presentation';
+import type { CharacterManualDefV1 } from '@daoyou/game-domain/manuals/types';
+import { itemDefinition } from '@daoyou/game-rules/inventory';
+import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character-attribute-labels';
+import { manualJadeCost, previewManualAction } from '@daoyou/game-rules/manuals/action';
 import { ManualProgress } from './ManualProgress';
 import { manualMechanismSummary } from './manualPresentation';
 

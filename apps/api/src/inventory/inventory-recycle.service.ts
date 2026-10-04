@@ -1,4 +1,4 @@
-import type { RecycleSelection } from '@daoyou/shared/contracts/recycle';
+import type { RecycleSelection } from '@daoyou/contracts/recycle';
 import { Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import type { DbClient } from '@server/lib/drizzle/db.js';

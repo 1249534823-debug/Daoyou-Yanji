@@ -1,5 +1,5 @@
 import { InkSection } from '@app/components/layout';
-import type { DungeonState } from '@daoyou/shared/lib/dungeon/types';
+import type { DungeonState } from '@daoyou/game-domain/dungeon/state';
 import { InkButton } from '../ui';
 import { ResourceCostCard } from './ResourceCostCard';
 

@@ -5,12 +5,12 @@ import {
   isPillConsumable,
   isSpiritFruitConsumable,
   isTalismanConsumable,
-} from '@daoyou/shared/lib/consumables';
-import { CONSUMABLE_TYPE_DISPLAY_MAP } from '@daoyou/shared/lib/gameConceptDisplay';
-import { calculatePillScore } from '@daoyou/shared/lib/pillScore';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import type { RealmType } from '@daoyou/shared/types/constants';
-import type { Consumable } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-domain/consumables/identity';
+import { CONSUMABLE_TYPE_DISPLAY_MAP } from '@daoyou/game-content/presentation/concepts';
+import { calculatePillScore } from '@daoyou/game-rules/alchemy/pillScore';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
+import type { RealmType } from '@daoyou/constants/realms';
+import type { Consumable } from '@daoyou/game-domain/cultivator';
 import type { ReactNode } from 'react';
 import { getConsumableListSummary } from './consumableListSummary';
 import { PillAppearanceMark, PillKeywordLine } from './pillDisplayComponents';

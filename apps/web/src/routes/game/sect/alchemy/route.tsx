@@ -16,7 +16,7 @@ import {
 import { createSectRoomNpcHref } from '@app/components/feature/sect/sectRoomNavigation';
 import { formatDocumentTitle } from '@app/lib/router/routeTitle';
 import { getSectBenefitMetric } from '@app/lib/sect/sectPresentation';
-import { STANDARD_SECT_PRESENTATION } from '@daoyou/shared/engine/sect';
+import { STANDARD_SECT_PRESENTATION } from '@daoyou/game-rules/sect-organization';
 import { useNavigate, useSearchParams } from 'react-router';
 import {
   SectPageLoading,

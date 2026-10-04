@@ -4,7 +4,7 @@ import {
   enlightenManual,
   readEnlightenment,
 } from '@server/enlightenment/application/EnlightenmentService.js';
-import type { EnlightenmentRequest } from '@daoyou/shared/contracts/enlightenment';
+import type { EnlightenmentRequest } from '@daoyou/contracts/enlightenment';
 
 @Injectable()
 export class EnlightenmentService {

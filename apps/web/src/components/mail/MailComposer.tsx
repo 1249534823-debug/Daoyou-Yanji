@@ -14,9 +14,10 @@ import {
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
 import { useInventoryBag } from '@app/lib/resources/bag';
 import { useResourceMutation } from '@app/lib/resources/mutations';
-import type { FriendCultivatorSummary } from '@daoyou/shared/contracts/friends';
-import type { InventoryView } from '@daoyou/shared/contracts/inventory';
-import { mailGiftBlockReason, SendMailSchema } from '@daoyou/shared/contracts/mail';
+import type { FriendCultivatorSummary } from '@daoyou/contracts/friends';
+import type { InventoryView } from '@daoyou/contracts/inventory';
+import { mailGiftBlockReason } from '@daoyou/game-rules/mail/inventory';
+import { SendMailSchema } from '@daoyou/contracts/mail';
 import { useRef, useState } from 'react';
 
 export function MailComposer({

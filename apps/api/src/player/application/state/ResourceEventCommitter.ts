@@ -5,16 +5,16 @@ import {
   type ScopedResourceChangeDescriptor,
   type ScopeVersionCommit,
 } from '@server/lib/repositories/playerStateRepository.js';
-import type { PlayerResourceMutationMeta } from '@daoyou/shared/contracts/player';
+import type { PlayerResourceMutationMeta } from '@daoyou/contracts/player';
 import { refreshCombatV6CharacterResources } from '@server/combat/character-resources.js';
-import { withCharacterPanelInvalidations } from '@daoyou/shared/lib/characterResourceChanges';
-import { withBagInvalidations } from '@daoyou/shared/lib/bagResourceChanges';
+import { withCharacterPanelInvalidations } from '@daoyou/contracts/resources/characterResourceChanges';
+import { withBagInvalidations } from '@daoyou/contracts/resources/bagResourceChanges';
 import {
   RESOURCE_TOPIC_SCOPE_KIND,
   type ResourceChange,
   type ResourceChangeDescriptor,
   type ResourceScope,
-} from '@daoyou/shared/contracts/resources';
+} from '@daoyou/contracts/resources';
 
 export type ResourceEventActor = {
   userId?: string | null;

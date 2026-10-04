@@ -3,23 +3,24 @@ import {
   BASE_TOXICITY_BY_TYPE,
   QUALITY_STABILITY_BONUS,
   type AlchemyMaterialType,
-} from '@daoyou/shared/config/alchemyConfig';
-import { MATERIAL_ESSENCE_BY_QUALITY } from '@daoyou/shared/config/alchemyEssenceConfig';
+} from '@daoyou/game-content/alchemy/alchemyConfig';
+import { MATERIAL_ESSENCE_BY_QUALITY } from '@daoyou/game-content/alchemy/alchemyEssenceConfig';
 import {
   getAlchemyPropertyFamily,
   getAlchemyPropertyLabel,
   isLongTermAlchemyProperty,
   normalizeWeightedAlchemyProperties,
   sortWeightedAlchemyProperties,
-} from '@daoyou/shared/lib/alchemyProperties';
+} from '@daoyou/game-rules/alchemy/alchemyProperties';
 import {
   calculateEffectiveEssence,
   calculateQualityPotential,
   calculateRawEssence,
   type AlchemyEssenceMaterial,
-} from '@daoyou/shared/lib/alchemyYield';
-import type { ElementType, Quality } from '@daoyou/shared/types/constants';
-import { QUALITY_ORDER } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-rules/alchemy/alchemyYield';
+import type { ElementType } from '@daoyou/constants/elements';
+import type { Quality } from '@daoyou/constants/qualities';
+import { QUALITY_ORDER } from '@daoyou/constants/qualities';
 import type {
   AlchemyBatchProfile,
   AlchemyFocusMode,
@@ -31,7 +32,7 @@ import type {
   PillFamily,
   PillQuotaCategory,
   WeightedAlchemyProperty,
-} from '@daoyou/shared/types/consumable';
+} from '@daoyou/game-domain/consumable';
 import { AlchemyServiceError } from '@server/alchemy/application/AlchemyServiceError.js';
 
 export interface PreparedAlchemyMaterial {

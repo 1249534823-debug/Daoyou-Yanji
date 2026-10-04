@@ -1,4 +1,4 @@
-import type { SectConstructionMemberData } from '@daoyou/shared/contracts/sect';
+import type { SectConstructionMemberData } from '@daoyou/contracts/sect';
 import { redis } from './index.js';
 
 const KEY_PREFIX = 'sect:construction:daily';

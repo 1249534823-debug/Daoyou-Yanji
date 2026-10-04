@@ -10,7 +10,7 @@ import {
   type SectNpcConversationRendererProps,
 } from '@app/components/feature/sect/room';
 import { useSectInfrastructureQuery } from '@app/components/feature/sect/sectResources';
-import { STANDARD_SECT_PRESENTATION } from '@daoyou/shared/engine/sect';
+import { STANDARD_SECT_PRESENTATION } from '@daoyou/game-rules/sect-organization';
 import { SectPermissionBoundary, SectScene } from '../components/SectScene';
 
 const registry = new SectNpcConversationRegistry([

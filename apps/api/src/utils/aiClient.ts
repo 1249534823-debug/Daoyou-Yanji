@@ -1,10 +1,10 @@
-import type { LlmByokConfig, LlmProviderId } from '@daoyou/shared/config/llm';
+import type { LlmByokConfig, LlmProviderId } from '@daoyou/contracts/llm/config';
 import {
   pickHighestWeightLlmRoute,
   pickLlmRouteByUserHash,
   resolveServerLlmRoutes,
   type LlmRoute,
-} from '@daoyou/shared/config/llmRouting';
+} from '@daoyou/contracts/llm/routing';
 import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
 import { getCurrentContext } from '@server/lib/http/context.js';
 import { recordLlmCallMetric } from '@server/lib/llm/metricsStore.js';

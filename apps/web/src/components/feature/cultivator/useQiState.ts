@@ -3,13 +3,13 @@ import {
   getEstimatedServerNowMs,
   useRecoveryClock,
 } from '@app/lib/resources/recoveryClock';
-import { QI_MAX } from '@daoyou/shared/config/qiSystem';
-import type { QiState } from '@daoyou/shared/contracts/qi';
+import { QI_MAX } from '@daoyou/game-content/qi/config';
+import type { QiState } from '@daoyou/contracts/qi';
 import {
   projectNaturalQiState,
   type NaturalQiProjection,
   type QiRecoveryStatus,
-} from '@daoyou/shared/lib/qi';
+} from '@daoyou/game-rules/qi/recovery';
 
 export interface QiRecoveryInfo {
   status: QiRecoveryStatus;

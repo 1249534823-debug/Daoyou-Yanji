@@ -1,5 +1,5 @@
 import { InkTooltip } from '@app/components/ui/InkTooltip';
-import { beastSkillPresentation } from '@daoyou/shared/combat-v6/beast-skill-presentation';
+import { beastSkillPresentation } from '@daoyou/game-rules/beasts/skill-presentation';
 
 const styles = {
   normal: 'border-ink/20 bg-bgpaper text-ink hover:border-ink/40',

@@ -1,4 +1,4 @@
-import type { InventoryView } from '@daoyou/shared/contracts/inventory';
+import type { InventoryView } from '@daoyou/contracts/inventory';
 import type { ReactNode } from 'react';
 import { InkButton } from '../../ui/InkButton';
 import { InventoryFilters } from './InventoryFilters';

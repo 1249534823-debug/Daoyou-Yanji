@@ -12,10 +12,10 @@ import {
   COMBAT_V6_CONDITION_CONSUMER,
 } from '@server/lib/repositories/messageConsumptionRepository.js';
 import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
-import { beastTradePreview } from '@daoyou/shared/contracts/beastTrade';
-import { settleWildResources } from '@daoyou/shared/engine/combat-v6/wild/rules';
-import { storyMarkForSignal } from '@daoyou/shared/story/signals';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
+import { beastTradePreview } from '@daoyou/game-domain/beasts/trade-preview';
+import { settleWildResources } from '@daoyou/game-rules/combat/wild/rules';
+import { storyMarkForSignal } from '@daoyou/game-rules/story/signals';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
 import { and, eq } from 'drizzle-orm';
 import { ConditionService } from '@server/cultivator/application/ConditionService.js';
 import { grantInventory } from '@server/inventory/operations.js';

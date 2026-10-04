@@ -11,7 +11,12 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/api/package.json ./apps/api/package.json
 COPY apps/web/package.json ./apps/web/package.json
-COPY packages/shared/package.json ./packages/shared/package.json
+COPY packages/constants/package.json ./packages/constants/package.json
+COPY packages/game-domain/package.json ./packages/game-domain/package.json
+COPY packages/combat-core/package.json ./packages/combat-core/package.json
+COPY packages/game-content/package.json ./packages/game-content/package.json
+COPY packages/contracts/package.json ./packages/contracts/package.json
+COPY packages/game-rules/package.json ./packages/game-rules/package.json
 RUN pnpm install --frozen-lockfile
 
 COPY . .

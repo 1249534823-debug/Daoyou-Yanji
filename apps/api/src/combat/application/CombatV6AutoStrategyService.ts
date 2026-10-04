@@ -4,13 +4,11 @@ import {
   removeCustomAutoStrategy,
   saveCustomAutoStrategy,
 } from '@server/lib/repositories/combatV6AutoStrategyRepository.js';
-import { autoStatusChoices } from '@daoyou/shared/combat-v6/auto-status-options';
-import {
-  defaultAutoStrategy,
-  type AutoStrategy,
-} from '@daoyou/shared/combat-v6/auto-strategy';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/shared/engine/combat-v6/content';
-import { projectCharacterToCombatV6 } from '@daoyou/shared/engine/combat-v6/projection';
+import { autoStatusChoices } from '@daoyou/game-content/combat/auto-status-options';
+import { type AutoStrategy } from '@daoyou/game-domain/combat/auto-strategy';
+import { defaultAutoStrategy } from '@daoyou/game-content/combat/auto-strategies';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import { projectCharacterToCombatV6 } from '@daoyou/game-rules/combat/projection/project-character';
 import { assembleCombatV6TrainingPlayer } from '@server/combat/application/CombatV6BuildService.js';
 
 export class AutoStrategyError extends Error {}

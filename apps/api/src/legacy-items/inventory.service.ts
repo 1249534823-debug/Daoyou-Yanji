@@ -1,11 +1,6 @@
-import {
-  ELEMENT_VALUES,
-  MATERIAL_TYPE_VALUES,
-  QUALITY_VALUES,
-  type ElementType,
-  type MaterialType,
-  type Quality,
-} from '@daoyou/shared/types/constants';
+import { ELEMENT_VALUES, type ElementType } from '@daoyou/constants/elements';
+import { MATERIAL_TYPE_VALUES, type MaterialType } from '@daoyou/game-domain/inventory';
+import { QUALITY_VALUES, type Quality } from '@daoyou/constants/qualities';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { getPaginatedInventoryByType } from '@server/cultivator/application/readers/CultivatorInventoryRepository.js';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';

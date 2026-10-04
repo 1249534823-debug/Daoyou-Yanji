@@ -3,8 +3,8 @@ import {
   InkButton,
   InkIdentifyCelebration,
 } from '@app/components/ui';
-import { getMaterialTypeInfo } from '@daoyou/shared/lib/gameConceptDisplay';
-import type { BlackMarketReveal } from '@daoyou/shared/types/blackMarket';
+import { getMaterialTypeInfo } from '@daoyou/game-content/presentation/concepts';
+import type { BlackMarketReveal } from '@daoyou/game-domain/blackMarket';
 
 const ratingTone: Record<BlackMarketReveal['rating'], string> = {
   血亏: 'text-crimson',

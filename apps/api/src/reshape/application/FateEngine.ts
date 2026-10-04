@@ -3,12 +3,12 @@ import { createHash } from 'node:crypto';
 import {
   normalizeFate as normalizeSharedFate,
   normalizeFates as normalizeSharedFates,
-} from '@daoyou/shared/lib/fates';
+} from '@daoyou/game-rules/character/fates';
 import type {
   FateGenerationCategory,
   PreHeavenFate,
-} from '@daoyou/shared/types/cultivator';
-import type { Quality } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-domain/cultivator';
+import type { Quality } from '@daoyou/constants/qualities';
 import {
   FATE_CANDIDATE_COUNT,
   FATE_DUAL_SIDED_CHANCE,

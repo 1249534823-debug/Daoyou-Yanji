@@ -8,16 +8,16 @@ import {
   LOW_TIER_ANCHOR_FACTOR,
   PRODUCE_PRICE_FACTOR_MIN,
   RECYCLE_PRICE_FACTOR_CAP,
-} from '@daoyou/shared/config/marketConfig';
+} from '@daoyou/game-content/economy/legacy-market';
 import {
   BASE_PRICES,
   TYPE_MULTIPLIERS,
-} from '@daoyou/shared/engine/material/creation/config';
-import { getMaterialTypeLabel } from '@daoyou/shared/lib/gameConceptDisplay';
-import { calculatePillRecycleUnitPrice as calculatePillRecyclePrice } from '@daoyou/shared/lib/pillRecyclePrice';
-import { QUALITY_ORDER, type Quality } from '@daoyou/shared/types/constants';
-import type { Consumable, Material } from '@daoyou/shared/types/cultivator';
-import type { HighTierAppraisal } from '@daoyou/shared/types/market';
+} from '@daoyou/game-content/materials/config';
+import { getMaterialTypeLabel } from '@daoyou/game-content/presentation/concepts';
+import { calculatePillRecycleUnitPrice as calculatePillRecyclePrice } from '@daoyou/game-rules/alchemy/pillRecyclePrice';
+import { QUALITY_ORDER, type Quality } from '@daoyou/constants/qualities';
+import type { Consumable, Material } from '@daoyou/game-domain/cultivator';
+import type { HighTierAppraisal } from '@daoyou/game-domain/market';
 
 const APPRAISAL_RATING_STEPS: HighTierAppraisal['rating'][] = [
   'C',

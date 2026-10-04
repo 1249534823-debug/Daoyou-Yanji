@@ -1,8 +1,8 @@
 import type {
   RetreatResultData,
   RetreatStreamEvent,
-} from '@daoyou/shared/contracts/retreat';
-import type { PlayerResourceMutationMeta } from '@daoyou/shared/contracts/player';
+} from '@daoyou/contracts/retreat';
+import type { PlayerResourceMutationMeta } from '@daoyou/contracts/player';
 
 export interface RetreatCultivatorSnapshot {
   name: string;

@@ -12,11 +12,11 @@ import {
   getPlayerPreHeavenFates,
   replacePreHeavenFates,
 } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
-import type { Consumable } from '@daoyou/shared/types/cultivator';
+import type { Consumable } from '@daoyou/game-domain/cultivator';
 import type {
   FateReshapeSessionDTO,
   FateReshapeSessionStore,
-} from '@daoyou/shared/types/fateReshape';
+} from '@daoyou/game-domain/fateReshape';
 import {
   getExecutor,
   type DbExecutor,

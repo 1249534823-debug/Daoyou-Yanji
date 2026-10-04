@@ -1,5 +1,5 @@
 import { consumables, materials } from '@server/lib/drizzle/schema.js';
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
 import { and, eq } from 'drizzle-orm';
 import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
 

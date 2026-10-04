@@ -1,9 +1,7 @@
-import { applyUnitDelta, contiguousEvents } from '@daoyou/shared/combat-v6/playback';
-import type {
-  CombatV6DeltaFrameV1,
-  CombatV6TrainingSessionViewV1,
-} from '@daoyou/shared/contracts/combatV6';
-import { appendBattleEntries, type BattleLog } from './presentation';
+import { applyUnitDelta, contiguousEvents } from '@daoyou/game-rules/combat/playback';
+import type { CombatV6DeltaFrameV1 } from '@daoyou/game-domain/combat/display';
+import type { CombatV6TrainingSessionViewV1 } from '@daoyou/contracts/combatV6';
+import { appendBattleEntries, type BattleLog } from '@daoyou/game-rules/combat/battle-log';
 
 export type CombatV6Session = Omit<
   CombatV6TrainingSessionViewV1,

@@ -1,6 +1,6 @@
 import { truncateText } from '@server/utils/llmPayload.js';
-import type { ResolvedDungeonMapConfig } from '@daoyou/shared/lib/game/mapSystem';
-import type { RealmType } from '@daoyou/shared/types/constants';
+import type { ResolvedDungeonMapConfig } from '@daoyou/game-domain/world/map';
+import type { RealmType } from '@daoyou/constants/realms';
 import type {
   DungeonOptionCost,
   DungeonRoundLlmContext,

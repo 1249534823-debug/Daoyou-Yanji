@@ -15,13 +15,13 @@ description: Daoyou NestJS API、认证、授权、Better Auth、ALTCHA、admin�
 - `apps/api/src/lib/auth/auth.ts`
 - `apps/api/src/lib/auth/handler.ts`
 - `apps/api/src/utils/aiClient.ts`
-- `packages/shared/src/config/llm.ts`
-- `packages/shared/src/config/llmRouting.ts`
-- `packages/shared/src/contracts`
+- `packages/contracts/src/llm/config.ts`
+- `packages/contracts/src/llm/routing.ts`
+- `packages/contracts/src`, including LLM configuration and external provider protocols
 
 ## Configuration and Workspace Boundary
 
-- API builds with `nest build` (Nest CLI 12 default tsc, NodeNext ESM); shared builds first with tsc and exports dist JavaScript/declarations; Web builds with Vite. API lint uses Oxlint with type-aware Promise checks and import boundaries; Web/shared/tools retain ESLint. API may import `@daoyou/shared/*`, never Web; shared cannot import either host. LLM generators and prompt rendering belong in `apps/api/src/lib/generation`.
+- API builds with `nest build` (Nest CLI 12 default tsc, NodeNext ESM); the six libraries build with tsc in dependency order and export dist JavaScript/declarations; Web builds with Vite. API lint uses Oxlint with type-aware Promise checks and import boundaries; Web/packages/tools retain ESLint. API consumes explicit `@daoyou/*` library exports, never Web; libraries cannot import either host. The old shared workspace is removed. `pnpm run check:boundaries` enforces package direction and declared dependencies. LLM generators and prompt rendering belong in `apps/api/src/lib/generation`.
 - Nest services inject `AppConfigService`; independent libraries read `getRuntimeEnvironment()`. The snapshot is validated once with Zod; dotenv discovery is disabled. Never log credential values on validation failure.
 - `DatabaseModule` exports the existing Drizzle client, preserving one pool and transaction propagation. Runtime closes it after request/message drain.
 
@@ -31,6 +31,10 @@ description: Daoyou NestJS API、认证、授权、Better Auth、ALTCHA、admin�
 - `/api/auth/*` is handled by Better Auth through `apps/api/src/lib/auth/handler.ts`.
 - `ApiExceptionFilter` handles uncaught API errors; route-specific filters and Zod pipes preserve existing response contracts. Better Auth uses its raw Node handler before business body parsing.
 - Frontend route loaders are UX guards only. Backend handlers are the security boundary.
+- Resource protocol types/reducers live in `@daoyou/contracts/resources`. Runtime parsing imports `apps/api/src/lib/resources/schemas.ts`, which binds the existing complete item-grant and sect-delivery validators; preserve that composition when moving repository or resource readers. The Web binding lives in its own `src/lib/resources/schemas.ts`.
+- Domain-event subjects/versions/envelopes live in `@daoyou/contracts/domainEvents`. Runtime envelope parsing imports `apps/api/src/lib/mq/domainEventSchema.ts`, which binds the actual game-rules payload validators. Event data models belong to game-domain; keep NATS metadata in contracts.
+- Dev-tool request parsing uses `apps/api/src/dev-tools/dev-tools-input.ts`, binding contracts constructors to the current numeric limits and full reward/mail validators. The pure `contracts/dev-tools-access` policy accepts local non-production only; server module/service checks remain authoritative.
+- Arena HTTP/WS views use `apps/api/src/combat/arena-view.ts`, which wraps game-rules projections with the existing API/protocol fields and supplies the round-result decorator. Replay archive models/parsing live in `game-domain/combat/replay-archive`; transport subjects and delivery messages remain in contracts.
 - Existing auth boundary:
   - Global `AccessGuard` requires login unless `@Access('public')` is declared.
   - `@Access('active')` resolves `user` / `activeCultivatorRef` through `SessionService`; it does not hydrate a full cultivator or inject a DB executor.
@@ -44,16 +48,16 @@ description: Daoyou NestJS API、认证、授权、Better Auth、ALTCHA、admin�
 
 - Browser API calls use `apiFetch` from `apps/web/src/lib/api/fetch.ts` to add `x-llm-provider`, `x-llm-api-key` and `x-llm-model` headers for `/api/` requests.
 - Server LLM calls should use `apps/api/src/utils/aiClient.ts` (`generateAiText`, `streamAiText`, `generateAiObject`, `generateAiArray`) so provider resolution, metrics, structured output, and retry behavior stay in one path.
-- Server-side `LLM_PROVIDER` is a route table: `provider[/model][:weight],...`. It covers one or many providers and one or many models. Multiple routes are sticky by user id hash on the full `provider + model`. BYOK request config still wins and does not enter the split. Read/parse in `packages/shared/src/config/llmRouting.ts`; `aiClient.ts` only maps env and picks.
-- Server accepts request-level BYOK only when provider, API key, and model pass `packages/shared/src/config/llm.ts`; partial or invalid configuration returns 400 without falling back to the server key.
-- Request provider IDs are allowlisted in `packages/shared/src/config/llm.ts`; adapters/endpoints are owned by `apps/api/src/lib/llm/providers.ts`. Do not accept arbitrary request Base URLs.
+- Server-side `LLM_PROVIDER` is a route table: `provider[/model][:weight],...`. It covers one or many providers and one or many models. Multiple routes are sticky by user id hash on the full `provider + model`. BYOK request config still wins and does not enter the split. Read/parse in `packages/contracts/src/llm/routing.ts`; `aiClient.ts` only maps env and picks.
+- Server accepts request-level BYOK only when provider, API key, and model pass `packages/contracts/src/llm/config.ts`; partial or invalid configuration returns 400 without falling back to the server key.
+- Request provider IDs are allowlisted in `packages/contracts/src/llm/config.ts`; adapters/endpoints are owned by `apps/api/src/lib/llm/providers.ts`. Do not accept arbitrary request Base URLs.
 - LLM metrics use in-memory fallback plus Redis key `admin:llm-metrics:events:v1`; do not add a parallel metrics store.
 - Prompt files under `apps/api/src/prompts/*.md` have `id:` headers. New prompt scenes usually also need `LlmSceneId`, caller `sceneId`, and schema/constraint updates.
 - Treat LLM output as untrusted input. Numeric state changes need Zod bounds and service/resource-layer guards.
 
 ## V6 Authority and Mutation Boundaries
 
-- Start with `apps/api/src/combat` and mode-specific feature modules, `packages/shared/src/contracts/combatV6*.ts`, and `apps/api/src/combat/application`.
+- Start with `apps/api/src/combat` and mode-specific feature modules, `packages/contracts/src/combatV6*.ts`, and `apps/api/src/combat/application`.
 - Resolve the actor from `activeCultivatorRef`; derive combat attributes, equipment, manuals and beasts server-side through `CombatV6BuildService.ts`. Client commands do not authorize client-supplied combat units, results or rewards.
 - Preserve session ownership/participant checks, `expectedRevision` validation, legal-command queries and Redis CAS. Spectator and replay views must retain their existing visibility checks.
 - State changes use the owning service's mutation/occupancy guards, transaction and resource response path (`CommandExecutors.ts`, `ResourceMutationResponse.ts`, `InventoryService.ts`). Check mode-specific exceptions such as dungeon recovery before reusing a blanket combat lock.
@@ -74,7 +78,7 @@ description: Daoyou NestJS API、认证、授权、Better Auth、ALTCHA、admin�
 2. Reuse the existing guards and `SessionService`. Do not hand-roll session parsing.
 3. Add or reuse Zod schemas for request bodies and query strings.
 4. Register controllers in feature modules imported by `apps/api/src/app.module.ts`; internal jobs belong to the runtime module and shared job services. Keep repositories and pure domain logic independent of Nest.
-5. If the route changes shared request/response shape, update `packages/shared/src/contracts` or `packages/shared/src/types`.
+5. If the route changes a request/response shape, update its owner in `packages/contracts/src`; domain models belong to `packages/game-domain/src`.
 6. If the route calls LLM or consumes LLM output, check prompt/schema bounds and service-layer guards.
 7. If adding a prompt scene, update prompt id, `LlmSceneId`, caller `sceneId`, and schema/constraint together.
 8. Verify server behavior with lint/build, code inspection, and focused manual/runtime checks; do not add route/service/provider tests.
@@ -86,7 +90,7 @@ description: Daoyou NestJS API、认证、授权、Better Auth、ALTCHA、admin�
 - Do not add admin files under `/api/admin` without explicit admin authorization.
 - Use the validated `llmConfig` from request context / framework-independent AsyncLocalStorage and configured provider adapters; do not bypass the provider allowlist or introduce a client Base URL. Singleton services must not store request identity or BYOK credentials in fields.
 - Do not make public list/ranking/community endpoints private without checking frontend/product usage.
-- Do not assume `packages/shared/src/api` exists; shared contracts live under `packages/shared/src/contracts`.
+- Do not assume `packages/shared/src/api` exists; protocols live under `packages/contracts/src`.
 - Do not bypass `aiClient.ts` for LLM calls.
 - Do not create feature-local Redis clients or SMTP transports.
 

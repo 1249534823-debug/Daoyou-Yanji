@@ -1,4 +1,4 @@
-import type { Material } from '@daoyou/shared/types/cultivator';
+import type { Material } from '@daoyou/game-domain/cultivator';
 
 export const HIDDEN_MYSTERY_REVEAL_KEY = '__serverHiddenMysteryReveal';
 

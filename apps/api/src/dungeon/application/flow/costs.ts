@@ -1,7 +1,7 @@
-import type { DungeonMaterialSelection } from '@daoyou/shared/contracts/combatV6Dungeon';
-import type { ResourceOperation } from '@daoyou/shared/engine/resource/types';
-import { consumeDungeonMaterials } from '@daoyou/shared/lib/dungeon/materialCosts';
-import type { DungeonOptionCost } from '@daoyou/shared/lib/dungeon/types';
+import type { DungeonMaterialSelection } from '@daoyou/game-domain/dungeon/actions';
+import type { ResourceOperation } from '@daoyou/game-domain/resources/operations';
+import { consumeDungeonMaterials } from '@daoyou/game-rules/dungeon/materialCosts';
+import type { DungeonOptionCost } from '@daoyou/game-domain/dungeon/state';
 import { and, eq } from 'drizzle-orm';
 import {
   getExecutor,

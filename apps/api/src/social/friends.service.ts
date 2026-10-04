@@ -1,4 +1,4 @@
-import { FRIEND_SEARCH_COOLDOWN_SECONDS } from '@daoyou/shared/config/socialConfig';
+import { FRIEND_SEARCH_COOLDOWN_SECONDS } from '@daoyou/game-content/social/config';
 import { HttpException, Injectable } from '@nestjs/common';
 import { acquireRedisCooldown } from '@server/lib/redis/cooldownLimiter.js';
 import {

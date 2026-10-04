@@ -84,7 +84,12 @@
 ├── apps/web/                    # React SPA（Vite → dist/）
 │   ├── src/
 │   └── public/
-├── packages/shared/src/         # 共享契约、类型及纯游戏规则
+├── packages/constants/          # 稳定基础词汇
+├── packages/game-domain/        # 领域模型、Schema 与不变量
+├── packages/combat-core/        # 确定性战斗内核
+├── packages/game-content/       # 游戏内容与数值表
+├── packages/game-rules/         # 纯玩法计算、生成与投影
+├── packages/contracts/          # 请求响应、资源与消息协议
 ├── drizzle/                     # 业务表迁移
 ├── drizzle-auth/                # Better Auth 独立迁移
 ├── scripts/                     # 部署、Compose 与 SponsorKit 工具

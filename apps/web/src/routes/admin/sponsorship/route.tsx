@@ -1,10 +1,6 @@
 import { apiFetch } from '@app/lib/api/fetch';
 import { InkButton } from '@app/components/ui/InkButton';
-import {
-  SPONSORSHIP_TIER_IDS,
-  SPONSORSHIP_TIER_META,
-  type SponsorshipTierId,
-} from '@daoyou/shared/lib/sponsorship';
+import { SPONSORSHIP_TIER_IDS, SPONSORSHIP_TIER_META, type SponsorshipTierId } from '@daoyou/game-domain/sponsorship';
 import { useCallback, useEffect, useState } from 'react';
 
 type TierConfig = { planId: string; minimumAmountFen: number };

@@ -5,7 +5,7 @@ import { GameSceneFrame } from '@app/components/game-shell';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
 import { useInventoryBag } from '@app/lib/resources/bag';
-import { BAG_CAPACITY } from '@daoyou/shared/inventory';
+import { BAG_CAPACITY } from '@daoyou/game-domain/items/bag';
 import { useState, useSyncExternalStore } from 'react';
 
 const compactQuery = '(max-width: 767px)';

@@ -1,10 +1,10 @@
-import type { CultivatorInspectionData } from '@daoyou/shared/contracts/player';
+import type { CultivatorInspectionData } from '@daoyou/contracts/player';
 import { cn } from '@app/lib/cn';
 import {
   characterDisplayRows,
   formatCharacterAttributeValue as formatAttributeValue,
   formatCharacterAttributeModifier as formatModifier,
-} from '@daoyou/shared/lib/cultivatorDisplay';
+} from '@daoyou/game-rules/character/display';
 import { useMemo } from 'react';
 
 function chunkPairs<T>(items: T[]): T[][] {

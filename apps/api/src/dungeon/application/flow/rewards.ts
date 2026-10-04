@@ -1,19 +1,13 @@
 import type { DbExecutor } from '@server/lib/drizzle/db.js';
 import { generateRealmMaterials } from '@server/inventory/application/MaterialRewardService.js';
-import { getRealmStageLevel } from '@daoyou/shared/config/realmProgression';
-import { MaterialFactsSchema } from '@daoyou/shared/items/definitions/materials';
-import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/shared/rewards/dungeon-material-quality';
-import {
-  getMapNode,
-  resolveDungeonMapConfig,
-} from '@daoyou/shared/lib/game/mapSystem';
-import {
-  planDungeonReward,
-  planDungeonStepResources,
-  type DungeonRewardEntry,
-  type DungeonRewardSource,
-} from '@daoyou/shared/rewards/dungeon';
-import type { RealmType } from '@daoyou/shared/types/constants';
+import { getRealmStageLevel } from '@daoyou/game-domain/progression/realms';
+import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
+import { DUNGEON_MATERIAL_QUALITY_CHANCE_BY_REALM } from '@daoyou/game-content/rewards/dungeon-material-quality';
+import { getMapNode } from '@daoyou/game-content/world/map';
+import { resolveDungeonMapConfig } from '@daoyou/game-rules/world/dungeon';
+import { type DungeonRewardEntry, type DungeonRewardSource } from '@daoyou/game-domain/dungeon/rewards';
+import { planDungeonReward, planDungeonStepResources } from '@daoyou/game-rules/rewards/dungeon';
+import type { RealmType } from '@daoyou/constants/realms';
 import type { DungeonState } from '@server/dungeon/application/flow/types.js';
 
 /** Resolve library facts before recording rewards; retries reuse recorded facts. */

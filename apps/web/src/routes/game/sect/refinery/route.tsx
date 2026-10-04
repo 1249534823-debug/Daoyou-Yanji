@@ -10,7 +10,7 @@ import {
   useSectInfrastructureQuery,
 } from '@app/components/feature/sect/sectResources';
 import { formatDocumentTitle } from '@app/lib/router/routeTitle';
-import { STANDARD_SECT_PRESENTATION } from '@daoyou/shared/engine/sect';
+import { STANDARD_SECT_PRESENTATION } from '@daoyou/game-rules/sect-organization';
 import { useSearchParams } from 'react-router';
 import {
   SectPageLoading,

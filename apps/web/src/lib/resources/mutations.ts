@@ -1,10 +1,10 @@
 import { resourceStore } from '@app/lib/resources/store';
-import type { ApiFailure } from '@daoyou/shared/contracts/http';
+import type { ApiFailure } from '@daoyou/contracts/http';
 import type {
   PlayerResourceMutationMeta,
   PlayerStateMutationResponse,
-} from '@daoyou/shared/contracts/player';
-import type { ResourceChange } from '@daoyou/shared/contracts/resources';
+} from '@daoyou/contracts/player';
+import type { ResourceChange } from '@daoyou/contracts/resources';
 import { useMemo } from 'react';
 
 export async function consumeResourceMutation<T>(

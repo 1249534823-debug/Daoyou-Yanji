@@ -1,11 +1,9 @@
 import type {
   AttributeAllocationRequest,
   AttributePreviewData,
-} from '@daoyou/shared/contracts/characterAttributes';
-import {
-  CHARACTER_ATTRIBUTE_LABELS,
-  projectCharacterDisplay,
-} from '@daoyou/shared/lib/cultivatorDisplay';
+} from '@daoyou/contracts/characterAttributes';
+import { CHARACTER_ATTRIBUTE_LABELS } from '@daoyou/game-domain/character-attribute-labels';
+import { projectCharacterDisplay } from '@daoyou/game-rules/character/display';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';

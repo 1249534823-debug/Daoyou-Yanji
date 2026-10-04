@@ -10,12 +10,10 @@ import { InkButton } from '@app/components/ui/InkButton';
 import { InkQuantityInput } from '@app/components/ui/InkQuantityInput';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
 import { usePlayerSession } from '@app/lib/resources/player';
-import type {
-  ManualMigrationResult,
-  ManualMigrationView,
-} from '@daoyou/shared/contracts/manualMigration';
-import type { ItemGrant } from '@daoyou/shared/inventory';
-import type { Quality } from '@daoyou/shared/types/constants';
+import type { ManualMigrationResult } from '@daoyou/game-domain/legacy/manual-migration';
+import type { ManualMigrationView } from '@daoyou/contracts/manualMigration';
+import type { ItemGrant } from '@daoyou/game-domain/items/inventory';
+import type { Quality } from '@daoyou/constants/qualities';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 const endpoint = '/api/manual-migration';

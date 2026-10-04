@@ -3,10 +3,10 @@ import { consumeResourceMutation } from '@app/lib/resources/mutations';
 import type {
   TaskChallengeResponse,
   TaskRewardClaimResponse,
-} from '@daoyou/shared/contracts/task';
-import { getNextMajorRealm } from '@daoyou/shared/lib/breakthroughPill';
-import type { Cultivator } from '@daoyou/shared/types/cultivator';
-import type { TaskInstance } from '@daoyou/shared/types/task';
+} from '@daoyou/contracts/task';
+import { getNextMajorRealm } from '@daoyou/game-rules/consumables/breakthrough-pill';
+import type { Cultivator } from '@daoyou/game-domain/cultivator';
+import type { TaskInstance } from '@daoyou/game-domain/tasks/types';
 
 async function readJsonOrThrow<T>(response: Response): Promise<T> {
   const payload = await response.json();

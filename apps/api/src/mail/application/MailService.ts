@@ -1,4 +1,4 @@
-import type { MailAttachment } from '@daoyou/shared/types/mail';
+import type { MailAttachment } from '@daoyou/game-domain/mail/attachment';
 import { db, getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
 import { mails } from '@server/lib/drizzle/schema.js';
 import { createDomainEvent } from '@server/lib/mq/domainEventWriter.js';
@@ -9,7 +9,7 @@ import { eq } from 'drizzle-orm';
 export type {
   MailAttachment,
   MailAttachmentType,
-} from '@daoyou/shared/types/mail';
+} from '@daoyou/game-domain/mail/attachment';
 
 export class MailService {
   static async sendNewRewardMail(

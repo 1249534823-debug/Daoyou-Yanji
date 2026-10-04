@@ -1,9 +1,9 @@
-import { arenaView } from '@daoyou/shared/combat-v6/arena';
+import { arenaView } from '@server/combat/arena-view.js';
 import type {
   ArenaRuntime,
   ArenaSocketMessage,
-} from '@daoyou/shared/contracts/combatV6Arena';
-import { ARENA_PUBLIC_VIEW } from '@daoyou/shared/contracts/combatV6Arena';
+} from '@daoyou/contracts/combatV6Arena';
+import { ARENA_PUBLIC_VIEW } from '@daoyou/game-domain/combat/arena';
 import { ArenaRoomService } from '@server/arena/application/ArenaRoomService.js';
 import {
   publishNatsCoreMessage,

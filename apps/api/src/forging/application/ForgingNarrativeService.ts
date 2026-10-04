@@ -2,12 +2,13 @@ import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
 import { renderPrompt } from '@server/lib/prompts/index.js';
 import { generateAiObject } from '@server/utils/aiClient.js';
 import { truncateText } from '@server/utils/llmPayload.js';
-import { equipmentRealm } from '@daoyou/shared/engine/combat-v6/equipment/realm';
-import type { DaoEquipmentSlot } from '@daoyou/shared/engine/combat-v6/equipment/types';
-import { DAO_WEAPONS, type DaoWeaponType } from '@daoyou/shared/engine/combat-v6/equipment/weapons';
-import { ForgedEquipmentCopySchema } from '@daoyou/shared/forging/narrative';
-import { EQUIPMENT_SLOT_NAMES } from '@daoyou/shared/items/definitions/equipment-blueprints';
-import type { MaterialFacts } from '@daoyou/shared/items/definitions/materials';
+import { equipmentRealm } from '@daoyou/game-rules/equipment/realm';
+import type { DaoEquipmentSlot } from '@daoyou/game-domain/equipment/types';
+import { DAO_WEAPONS } from '@daoyou/game-content/equipment/weapons';
+import { type DaoWeaponType } from '@daoyou/game-domain/equipment/weapons';
+import { ForgedEquipmentCopySchema } from '@daoyou/game-domain/equipment/narrative';
+import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment/slot-names';
+import type { MaterialFacts } from '@daoyou/game-domain/items/material-facts';
 import { z } from 'zod';
 
 // 提供商只接收基础 JSON Schema；Unicode 字数及纯文本规则在本地校验。

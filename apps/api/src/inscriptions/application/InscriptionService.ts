@@ -2,22 +2,14 @@ import type {
   InscriptionRequest,
   InscriptionResult,
   InscriptionView,
-} from '@daoyou/shared/contracts/inscriptions';
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
-import {
-  prepareInscriptionDraw,
-  prepareInscriptionEquipment,
-  prepareInscriptionStrengthen,
-  rollInscriptionDraw,
-  type InscriptionCost,
-} from '@daoyou/shared/inscriptions/rules';
-import {
-  addItems,
-  type InventoryItem,
-  type ItemGrant,
-} from '@daoyou/shared/inventory';
-import { inventoryStackIdentity } from '@daoyou/shared/inventory/stack-key';
-import { projectNaturalQiState } from '@daoyou/shared/lib/qi';
+} from '@daoyou/contracts/inscriptions';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
+import { type InscriptionCost } from '@daoyou/game-domain/inscriptions/types';
+import { prepareInscriptionDraw, prepareInscriptionEquipment, prepareInscriptionStrengthen, rollInscriptionDraw } from '@daoyou/game-rules/inscriptions/rules';
+import { type InventoryItem, type ItemGrant } from '@daoyou/game-domain/items/inventory';
+import { addItems } from '@daoyou/game-rules/inventory';
+import { inventoryStackIdentity } from '@daoyou/game-rules/inventory/stack-key';
+import { projectNaturalQiState } from '@daoyou/game-rules/qi/recovery';
 import { and, eq, gte, inArray, or, sql } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
 import { db, type DbExecutor } from '@server/lib/drizzle/db.js';

@@ -6,7 +6,7 @@
  * - 程序根据境界门槛和评级生成具体数值
  */
 
-import type { ElementType } from '@daoyou/shared/types/constants';
+import type { ElementType } from '@daoyou/constants/elements';
 
 /**
  * 奖励类型 - 限定为资源引擎支持的类型

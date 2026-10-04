@@ -1,18 +1,15 @@
-import type { CultivationProgress, Cultivator } from '@daoyou/shared/types/cultivator';
-import { COMPREHENSION_INSIGHT_CAP } from '@daoyou/shared/config/cultivationTuning';
-import {
-  calculateBattleExp,
-  calculateSceneCultivationExp,
-} from '@daoyou/shared/engine/cultivation/ExpBudgetCalculator';
-import type { DailyTaskDifficulty } from '@daoyou/shared/engine/cultivation/exp-gain-strategies/types';
-import { REALM_ORDER, type RealmType } from '@daoyou/shared/types/constants';
+import type { CultivationProgress, Cultivator } from '@daoyou/game-domain/cultivator';
+import { COMPREHENSION_INSIGHT_CAP } from '@daoyou/game-content/cultivation/cultivationTuning';
+import { calculateBattleExp, calculateSceneCultivationExp } from '@daoyou/game-rules/cultivation/exp-gain-strategies';
+import type { DailyTaskDifficulty } from '@daoyou/game-domain/cultivation/task-difficulty';
+import { REALM_ORDER, type RealmType } from '@daoyou/constants/realms';
 import {
   calculateExpProgress,
   canAttemptBreakthrough,
   getCultivationProgress,
   isBottleneckReached,
   syncBottleneckState,
-} from '@daoyou/shared/engine/cultivation/cultivationUtils';
+} from '@daoyou/game-rules/cultivation/cultivationUtils';
 
 /**
  * 修为增加来源

@@ -35,12 +35,12 @@ import type {
   SectTaskActionData,
   SectTasksData,
   SectTaskViewData,
-} from '@daoyou/shared/contracts/sect';
+} from '@daoyou/contracts/sect';
 import {
   MINING_DURATION_MS,
   MINING_MAX_SCORE,
   type MiningCastInput,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { MiningDropButton } from './MiningDropButton';

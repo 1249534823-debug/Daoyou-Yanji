@@ -1,5 +1,5 @@
-import type { CombatV6ReplayView } from '@daoyou/shared/combat-v6/replay';
-import { replaySeeker } from '@daoyou/shared/combat-v6/replay-timeline';
+import type { CombatV6ReplayView } from '@daoyou/game-rules/combat/replay';
+import { replaySeeker } from '@daoyou/game-rules/combat/replay-timeline';
 import {
   useCallback,
   useEffect,
@@ -11,7 +11,7 @@ import { Link } from 'react-router';
 import { CombatV6Details } from './CombatV6Details';
 import { CombatV6Log } from './CombatV6Log';
 import { CombatV6Roster } from './CombatV6Roster';
-import { appendBattleEntries, frameFeedback, unitLabels } from './presentation';
+import { appendBattleEntries, frameFeedback, unitLabels } from '@daoyou/game-rules/combat/battle-log';
 
 const none: string[] = [];
 const outcomes: Record<string, string> = {

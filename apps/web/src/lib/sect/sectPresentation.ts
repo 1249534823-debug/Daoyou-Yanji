@@ -1,15 +1,12 @@
-import type { SectFacilityEffectSnapshot } from '@daoyou/shared/engine/sect';
-import {
-  PRODUCTION_SECT_IDS,
-  PRODUCTION_SECT_PRESENTATIONS,
-} from '@daoyou/shared/engine/sect/content';
+import type { SectFacilityEffectSnapshot } from '@daoyou/game-rules/sect-organization';
+import { PRODUCTION_SECT_IDS, PRODUCTION_SECT_PRESENTATIONS } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
 
 export type {
   ResolvedSectPresentation,
   SectMapHotspot,
   SectPresentationTheme,
   SectSceneKey,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 
 export function getSectPresentation(sectId: string) {
   if (!PRODUCTION_SECT_IDS.includes(sectId)) {

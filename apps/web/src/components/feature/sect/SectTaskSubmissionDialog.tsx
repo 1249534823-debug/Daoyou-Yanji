@@ -12,12 +12,12 @@ import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
 import { useInventoryBag } from '@app/lib/resources/bag';
 import { useCraftStorage } from '@app/lib/resources/craftStorage';
 import { fetchSectSubmissionCandidates } from '@app/lib/sect/sectClient';
-import type { InventoryView } from '@daoyou/shared/contracts/inventory';
+import type { InventoryView } from '@daoyou/contracts/inventory';
 import type {
   SectSubmissionCandidatesData,
   SectTaskViewData,
-} from '@daoyou/shared/contracts/sect';
-import { describeSectDeliveryRequirement } from '@daoyou/shared/engine/sect';
+} from '@daoyou/contracts/sect';
+import { describeSectDeliveryRequirement } from '@daoyou/game-rules/sect-organization';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { SectTaskViewAction } from './SectTaskActions';
 import { useSectTaskInteraction } from './SectTaskInteractionProvider';

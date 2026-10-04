@@ -1,10 +1,10 @@
 import { tierColorMap } from '@app/components/ui/inkBadgeTiers';
-import { getLevelRealmStage } from '@daoyou/shared/config/realmProgression';
-import { daoFormationInscriptionOf } from '@daoyou/shared/engine/combat-v6/equipment/content';
-import { daoFormationMaxLevel } from '@daoyou/shared/engine/combat-v6/equipment/inscriptions';
-import { OPEN_EQUIPMENT_LEVELS } from '@daoyou/shared/engine/combat-v6/equipment/realm';
-import { EQUIPMENT_ATTRIBUTE_NAMES } from '@daoyou/shared/inventory/equipment';
-import { EQUIPMENT_SLOT_NAMES } from '@daoyou/shared/items/definitions/equipment-blueprints';
+import { getLevelRealmStage } from '@daoyou/game-domain/progression/realms';
+import { daoFormationInscriptionOf } from '@daoyou/game-content/equipment/content';
+import { daoFormationMaxLevel } from '@daoyou/game-rules/equipment/inscriptions';
+import { OPEN_EQUIPMENT_LEVELS } from '@daoyou/game-domain/equipment/levels';
+import { EQUIPMENT_ATTRIBUTE_NAMES } from '@daoyou/game-domain/equipment/inventory';
+import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment/slot-names';
 import { field, quantity } from './helpers';
 import type { ItemAdapter } from './types';
 

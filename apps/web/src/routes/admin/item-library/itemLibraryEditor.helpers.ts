@@ -1,12 +1,8 @@
-import type {
-  CreateItemLibraryEntry,
-  ItemLibraryEntry,
-} from '@daoyou/shared/lib/itemLibrary';
-import type {
-  ElementType,
-  MaterialType,
-  Quality,
-} from '@daoyou/shared/types/constants';
+import type { CreateItemLibraryEntry } from '@daoyou/contracts/itemLibrary';
+import type { ItemLibraryEntry } from '@daoyou/game-domain/items/library';
+import type { ElementType } from '@daoyou/constants/elements';
+import type { MaterialType } from '@daoyou/game-domain/inventory';
+import type { Quality } from '@daoyou/constants/qualities';
 
 export interface ItemLibraryDraft {
   rowId: string;

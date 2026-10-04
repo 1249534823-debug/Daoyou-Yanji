@@ -1,5 +1,5 @@
 import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
-import { allowsLocalDevTools } from '@daoyou/shared/config/deployment';
+import { allowsLocalDevTools } from '@daoyou/contracts/dev-tools-access';
 import { and, eq, inArray } from 'drizzle-orm';
 import { db } from '@server/lib/drizzle/db.js';
 import {

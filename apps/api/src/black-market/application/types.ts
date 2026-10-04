@@ -1,14 +1,14 @@
-import type { BlackMarketObservationCandidate } from '@daoyou/shared/lib/blackMarketObservations';
-import type { BlackMarketPricingState } from '@daoyou/shared/lib/blackMarketPricing';
-import type { BlackMarketBeliefPatch } from '@daoyou/shared/lib/blackMarketBelief';
+import type { BlackMarketObservationCandidate } from '@daoyou/game-rules/black-market/observations';
+import type { BlackMarketPricingState } from '@daoyou/game-rules/black-market/pricing';
+import type { BlackMarketBeliefPatch } from '@daoyou/game-rules/black-market/belief';
 import type {
   BlackMarketInspectionKind,
   BlackMarketMessage,
   BlackMarketNpcId,
   BlackMarketReveal,
   BlackMarketSessionPhase,
-} from '@daoyou/shared/types/blackMarket';
-import type { Material } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-domain/blackMarket';
+import type { Material } from '@daoyou/game-domain/cultivator';
 
 export interface BlackMarketInternalObservation extends BlackMarketObservationCandidate {
   source: 'surface' | 'inspection';
@@ -165,12 +165,12 @@ export interface BlackMarketTurnResult {
 }
 
 export interface BlackMarketPreparedTurn {
-  result: import('@daoyou/shared/types/blackMarket').BlackMarketInteractionResult;
+  result: import('@daoyou/game-domain/blackMarket').BlackMarketInteractionResult;
   sessionId: string;
   messageId: string;
   gesture: string;
   fallbackBody: string;
   replyContext: BlackMarketTurnContext;
   proposal: BlackMarketTurnProposal;
-  negotiationOutcome?: import('@daoyou/shared/lib/blackMarketNegotiation').BlackMarketNegotiationOutcome;
+  negotiationOutcome?: import('@daoyou/game-rules/black-market/negotiation').BlackMarketNegotiationOutcome;
 }

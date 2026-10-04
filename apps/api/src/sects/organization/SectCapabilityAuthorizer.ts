@@ -3,7 +3,7 @@ import type {
   SectCapabilityKey,
   SectDiscipleRank,
   SectOrganizationModule,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import { SectError } from '@server/sects/application/SectError.js';
 import type { SectMembershipRecord, SectModuleResolver } from '@server/sects/organization/ports.js';
 

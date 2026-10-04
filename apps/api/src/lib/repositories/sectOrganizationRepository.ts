@@ -13,7 +13,7 @@ import {
   sectStipendClaims,
   sectTaskRecords,
 } from '@server/lib/drizzle/schema.js';
-import type { SectDiscipleRank, SectOffice } from '@daoyou/shared/engine/sect';
+import type { SectDiscipleRank, SectOffice } from '@daoyou/game-rules/sect-organization';
 import {
   and,
   asc,

@@ -26,22 +26,19 @@ import {
   useCultivatorIdentity,
   usePlayerSession,
 } from '@app/lib/resources/player';
-import { MAX_DAILY_RANKING_CHALLENGES } from '@daoyou/shared/combat-v6/ranking';
-import type { RankingChallengeRequest } from '@daoyou/shared/contracts/combatV6Ranking';
-import type { CultivatorInspectionData } from '@daoyou/shared/contracts/player';
+import { MAX_DAILY_RANKING_CHALLENGES } from '@daoyou/game-rules/rankings/ranking';
+import type { RankingChallengeRequest } from '@daoyou/contracts/combatV6Ranking';
+import type { CultivatorInspectionData } from '@daoyou/contracts/player';
 import { cn } from '@app/lib/cn';
-import { getGameConceptInfo } from '@daoyou/shared/lib/gameConceptDisplay';
-import {
-  RANKING_REWARDS,
-  REALM_VALUES,
-  type RealmType,
-} from '@daoyou/shared/types/constants';
+import { getGameConceptInfo } from '@daoyou/game-content/presentation/concepts';
+import { RANKING_REWARDS } from '@daoyou/game-content/economy';
+import { REALM_VALUES, type RealmType } from '@daoyou/constants/realms';
 import type {
   BattleRankingItem,
   ItemRankingEntry,
   RankingsDisplayItem,
   WealthRankingEntry,
-} from '@daoyou/shared/types/rankings';
+} from '@daoyou/contracts/rankings';
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
 import { toRankingDetailItem } from './rankingDetailItem';

@@ -1,5 +1,5 @@
-import { BEAST_SPECIES } from '@daoyou/shared/engine/combat-v6/beasts/content';
-import { getWildRegion } from '@daoyou/shared/engine/combat-v6/wild/content';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
+import { getWildRegion } from '@daoyou/game-content/combat/wild/content';
 
 export function WildNodePreview({ nodeId }: { nodeId: string }) {
   const region = getWildRegion(nodeId);

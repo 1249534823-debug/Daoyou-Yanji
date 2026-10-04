@@ -3,8 +3,8 @@ import {
   type DbExecutor,
   type DbTransaction,
 } from '@server/lib/drizzle/db.js';
-import type { SectCraftContextKey } from '@daoyou/shared/engine/sect';
-import { productionSectRuntime } from '@daoyou/shared/engine/sect/content';
+import type { SectCraftContextKey } from '@daoyou/game-rules/sect-organization';
+import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
 import { ClaimSectTaskRewardHandler } from '@server/sects/organization/ClaimSectTaskRewardHandler.js';
 import { GetSectTasksQueryHandler } from '@server/sects/organization/GetSectTasksQueryHandler.js';
 import {

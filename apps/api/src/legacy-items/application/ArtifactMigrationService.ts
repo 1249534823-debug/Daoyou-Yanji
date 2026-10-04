@@ -12,13 +12,10 @@ import {
   artifactMigrationPlan,
   artifactMigrationRealm,
   drawArtifactBlueprints,
-} from '@daoyou/shared/artifact-migration/rules';
-import type {
-  ArtifactMigrationResult,
-  ArtifactMigrationView,
-  ExchangeArtifact,
-} from '@daoyou/shared/contracts/artifactMigration';
-import { generateForgedEquipment } from '@daoyou/shared/engine/combat-v6/equipment/forging';
+} from '@daoyou/game-rules/artifact-migration/rules';
+import type { ArtifactMigrationResult } from '@daoyou/game-domain/legacy/artifact-migration';
+import type { ArtifactMigrationView, ExchangeArtifact } from '@daoyou/contracts/artifactMigration';
+import { generateForgedEquipment } from '@daoyou/game-rules/equipment/forging';
 import { and, eq } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
 

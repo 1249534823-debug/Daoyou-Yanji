@@ -7,8 +7,8 @@ import {
   COMBAT_V6_REPLAY_SOURCES,
   type CombatV6HistoryPage,
   type CombatV6HistoryQuery,
-} from '@daoyou/shared/contracts/combatV6Replay';
-import type { CombatV6ReplayV1 } from '@daoyou/shared/contracts/combatV6Runtime';
+} from '@daoyou/contracts/combatV6Replay';
+import type { CombatV6ReplayV1 } from '@daoyou/game-domain/combat/replay-archive';
 import { and, desc, eq, inArray, isNotNull, isNull } from 'drizzle-orm';
 import { randomUUID } from 'crypto';
 

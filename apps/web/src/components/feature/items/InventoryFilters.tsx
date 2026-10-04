@@ -1,16 +1,13 @@
 import { InkModal } from '@app/components/layout/InkModal';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkDiscreteRange } from '@app/components/ui/InkDiscreteRange';
-import type { InventorySort } from '@daoyou/shared/inventory/sorting';
+import type { InventorySort } from '@daoyou/game-domain/items/sorting';
 import {
   INVENTORY_MATERIAL_TYPES,
   MATERIAL_TYPE_NAMES,
-} from '@daoyou/shared/items/definitions/materials';
-import {
-  ELEMENT_VALUES,
-  QUALITY_VALUES,
-  type ElementType,
-} from '@daoyou/shared/types/constants';
+} from '@daoyou/game-domain/items/material-facts';
+import { ELEMENT_VALUES, type ElementType } from '@daoyou/constants/elements';
+import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 import { useState } from 'react';
 import {
   defaultInventoryFilter,

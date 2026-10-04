@@ -10,10 +10,7 @@ import {
   startIdentityReshape,
 } from '@server/reshape/application/IdentityReshapeService.js';
 import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
-import {
-  IDENTITY_RESHAPE_DESCRIPTION_MAX_LENGTH,
-  IDENTITY_RESHAPE_DESCRIPTION_MIN_LENGTH,
-} from '@daoyou/shared/config/identityReshape';
+import { IDENTITY_RESHAPE_DESCRIPTION_MAX_LENGTH, IDENTITY_RESHAPE_DESCRIPTION_MIN_LENGTH } from '@daoyou/game-content/identity-reshape';
 import { z } from 'zod';
 const AnswerSchema = z.object({
   questionId: z.string().min(1).max(80),

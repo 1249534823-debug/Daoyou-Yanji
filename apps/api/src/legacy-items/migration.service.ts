@@ -10,8 +10,8 @@ import {
   manualMigrationAvailability,
   readManualMigration,
 } from '@server/legacy-items/application/ManualMigrationService.js';
-import type { ExchangeArtifact } from '@daoyou/shared/contracts/artifactMigration';
-import type { ExchangeManual } from '@daoyou/shared/contracts/manualMigration';
+import type { ExchangeArtifact } from '@daoyou/contracts/artifactMigration';
+import type { ExchangeManual } from '@daoyou/contracts/manualMigration';
 
 @Injectable()
 export class MigrationService {

@@ -15,11 +15,11 @@ import {
 } from '@server/cultivator/application/QiService.js';
 import { RetreatCommandError } from '@server/cultivator/application/RetreatApplicationService.js';
 import { YieldCommandError } from '@server/cultivator/application/YieldApplicationService.js';
-import { JournalRequestSchema } from '@daoyou/shared/contracts/playerJournal';
+import { JournalRequestSchema } from '@daoyou/contracts/playerJournal';
 import {
   RetreatRequestSchema,
   type RetreatRequest,
-} from '@daoyou/shared/contracts/retreat';
+} from '@daoyou/contracts/retreat';
 import type { Response as ExpressResponse } from 'express';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';

@@ -8,7 +8,7 @@ import {
   readDivination,
 } from '@server/divination/application/DivinationService.js';
 import { InventoryError } from '@server/inventory/operations.js';
-import type { DivinationStreamEvent } from '@daoyou/shared/contracts/divination';
+import type { DivinationStreamEvent } from '@daoyou/contracts/divination';
 
 @Injectable()
 export class DivinationService {

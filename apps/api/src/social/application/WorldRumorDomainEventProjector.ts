@@ -1,11 +1,11 @@
 import {
   isDomainEventType,
   type DomainEventEnvelope,
-} from '@daoyou/shared/contracts/domainEvents';
-import { alchemyShowcaseSnapshot } from '@daoyou/shared/items/alchemyShowcase';
-import { forgingShowcaseSnapshot } from '@daoyou/shared/items/forgingShowcase';
-import { QUALITY_ORDER } from '@daoyou/shared/types/constants';
-import type { WorldChatPayload } from '@daoyou/shared/types/world-chat';
+} from '@daoyou/contracts/domainEvents';
+import { alchemyShowcaseSnapshot } from '@daoyou/game-rules/alchemy/showcase';
+import { forgingShowcaseSnapshot } from '@daoyou/game-rules/forging/showcase';
+import { QUALITY_ORDER } from '@daoyou/constants/qualities';
+import type { WorldChatPayload } from '@daoyou/contracts/world-chat-messages';
 import type { FeatureCommandResult } from '@server/player/application/state/CommandExecutors.js';
 import { createAndPublishWorldChatMessage } from '@server/social/application/chatDelivery.js';
 

@@ -2,14 +2,14 @@ import { ItemSlot } from '@app/components/feature/items/ItemSlot';
 import { GameIcon } from '@app/components/ui/GameIcon';
 import { GameImage } from '@app/components/ui/GameImage';
 import { InkButton } from '@app/components/ui/InkButton';
-import type { InventoryView } from '@daoyou/shared/contracts/inventory';
-import { compileDaoEquipmentSpecialLoadoutV1 } from '@daoyou/shared/engine/combat-v6/equipment/compiler';
+import type { InventoryView } from '@daoyou/contracts/inventory';
+import { compileDaoEquipmentSpecialLoadoutV1 } from '@daoyou/game-rules/equipment/compiler';
 import type {
   DaoEquipmentInstanceV1,
   DaoEquipmentLoadoutV1,
   DaoEquipmentSlot,
-} from '@daoyou/shared/engine/combat-v6/equipment/types';
-import { EQUIPMENT_SLOT_NAMES } from '@daoyou/shared/items/definitions/equipment-blueprints';
+} from '@daoyou/game-domain/equipment/types';
+import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment/slot-names';
 
 type Item = InventoryView['items'][number];
 const columns: DaoEquipmentSlot[][] = [

@@ -2,7 +2,7 @@ import {
   ContributionBalance,
   SectTask,
   type SectDomainEvent,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import { organizationError } from '@server/sects/organization/applicationSupport.js';
 import type { SectTaskItemRewardGrantStrategyRegistry } from '@server/sects/organization/TaskRewardStrategies.js';
 import type {

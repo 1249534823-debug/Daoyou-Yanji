@@ -1,10 +1,8 @@
-import {
-  Quality,
-  RealmType,
-  SkillGrade,
-  SpiritualRootGrade,
-} from '@daoyou/shared/types/constants';
-import type { DungeonDifficultyTier } from '@daoyou/shared/lib/game/mapSystem';
+import { Quality } from '@daoyou/constants/qualities';
+import { RealmType } from '@daoyou/constants/realms';
+import { SkillGrade } from '@daoyou/game-domain/skills';
+import { SpiritualRootGrade } from '@daoyou/game-domain/character';
+import type { DungeonDifficultyTier } from '@daoyou/game-domain/dungeon/difficulty';
 
 /**
  * 品阶类型：品质、灵根等级、技能等级、境界

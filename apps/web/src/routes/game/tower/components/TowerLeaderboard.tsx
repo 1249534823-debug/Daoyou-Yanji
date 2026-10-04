@@ -1,8 +1,8 @@
 import { GameLoadingState, GameSceneTabs } from '@app/components/game-shell';
 import { InkSelect } from '@app/components/ui/InkSelect';
-import { TOWER_ELIGIBLE_REALMS } from '@daoyou/shared/lib/tower/helpers';
-import type { TowerLeaderboardEntry } from '@daoyou/shared/lib/tower/types';
-import type { RealmType } from '@daoyou/shared/types/constants';
+import { TOWER_ELIGIBLE_REALMS } from '@daoyou/game-rules/tower/helpers';
+import type { TowerLeaderboardEntry } from '@daoyou/game-domain/tower/state';
+import type { RealmType } from '@daoyou/constants/realms';
 
 interface TowerLeaderboardProps {
   activeRealm: RealmType;

@@ -1,16 +1,16 @@
-import { getRetreatQiCost } from '@daoyou/shared/config/qiSystem';
-import { BOTTLENECK_THRESHOLD } from '@daoyou/shared/config/cultivationTuning';
+import { getRetreatQiCost } from '@daoyou/game-rules/qi/actions';
+import { BOTTLENECK_THRESHOLD } from '@daoyou/game-content/cultivation/cultivationTuning';
 import {
   getActiveCultivationBoostStatus,
   getCultivationBoostPercent,
-} from '@daoyou/shared/lib/cultivationBoost';
-import { evaluateFateContext } from '@daoyou/shared/lib/fates';
+} from '@daoyou/game-rules/consumables/cultivation-boost';
+import { evaluateFateContext } from '@daoyou/game-rules/character/fates';
 import {
   getBreakthroughFocusBonus,
   getProtectMeridiansReductionPercent,
-} from '@daoyou/shared/lib/pillEffectScaling';
-import { isConditionStatusActive } from '@daoyou/shared/lib/condition';
-import type { Cultivator } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-rules/alchemy/pillEffectScaling';
+import { isConditionStatusActive } from '@daoyou/game-rules/condition';
+import type { Cultivator } from '@daoyou/game-domain/cultivator';
 
 type RetreatEfficiencyCultivator = Pick<
   Cultivator,

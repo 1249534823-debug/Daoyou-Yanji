@@ -7,21 +7,15 @@ import {
   type RedisLeaseContext,
 } from '@server/lib/redis/lock.js';
 import { streamAiText } from '@server/utils/aiClient.js';
-import { QI_RESTORE_TALISMAN_SCENARIOS } from '@daoyou/shared/config/qiSystem';
+import { QI_RESTORE_TALISMAN_SCENARIOS } from '@daoyou/game-content/qi/config';
 import type {
   DivinationRecord,
   DivinationStreamEvent,
   DivinationView,
-} from '@daoyou/shared/contracts/divination';
-import {
-  DIVINATION_DIRECTIONS,
-  divinationDayKey,
-  divinationRewardFacts,
-  fallbackDivination,
-  resolveDivination,
-  type DivinationDice,
-  type DivinationDirection,
-} from '@daoyou/shared/lib/divination';
+} from '@daoyou/contracts/divination';
+import { type DivinationDice, type DivinationDirection } from '@daoyou/game-domain/divination/types';
+import { DIVINATION_DIRECTIONS } from '@daoyou/game-content/divination/content';
+import { divinationDayKey, divinationRewardFacts, fallbackDivination, resolveDivination } from '@daoyou/game-rules/divination/rules';
 import { and, eq } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
 import { assertInventoryIdle, grantInventory } from '@server/inventory/operations.js';

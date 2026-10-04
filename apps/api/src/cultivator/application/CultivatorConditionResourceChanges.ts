@@ -1,18 +1,15 @@
-import { getOrInitCultivationProgress } from '@daoyou/shared/engine/cultivation/cultivationUtils';
-import { isAttributeResetTalismanScenario } from '@daoyou/shared/config/attributeResetTalisman';
-import { isSectMeridianResetTalismanScenario } from '@daoyou/shared/config/sectMeridianResetTalisman';
-import {
-  RESOURCE_DATA_SCHEMAS,
-  type ResourceChangeDescriptor,
-  type ResourceDataMap,
-} from '@daoyou/shared/contracts/resources';
-import { isTalismanConsumable } from '@daoyou/shared/lib/consumables';
-import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
+import { getOrInitCultivationProgress } from '@daoyou/game-rules/cultivation/cultivationUtils';
+import { isAttributeResetTalismanScenario } from '@daoyou/game-content/consumables/attributeResetTalisman';
+import { isSectMeridianResetTalismanScenario } from '@daoyou/game-content/consumables/sectMeridianResetTalisman';
+import { RESOURCE_DATA_SCHEMAS } from '@server/lib/resources/schemas.js';
+import { type ResourceChangeDescriptor, type ResourceDataMap } from '@daoyou/contracts/resources';
+import { isTalismanConsumable } from '@daoyou/game-domain/consumables/identity';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import type {
   Consumable,
   CultivationProgress,
   Cultivator,
-} from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-domain/cultivator';
 import {
   qiCurrencyChange,
   qiCurrencyPatch,

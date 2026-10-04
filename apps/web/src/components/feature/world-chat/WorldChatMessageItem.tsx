@@ -1,4 +1,4 @@
-import { huntEventById, huntMapHref } from '@daoyou/shared/hunts/config';
+import { huntEventById, huntMapHref } from '@daoyou/game-rules/hunts/config';
 import { BeastTradeDetails } from '@app/components/feature/beasts/BeastTradePreview';
 import { itemPresentation } from '@app/components/feature/items/itemPresentation';
 import { ItemPreview } from '@app/components/feature/items/ItemPreview';
@@ -6,12 +6,12 @@ import { InkModal } from '@app/components/layout';
 import type { Tier } from '@app/components/ui/InkBadge';
 import { InkBadge } from '@app/components/ui/InkBadge';
 import { useCultivatorIdentity } from '@app/lib/resources/player';
-import { BeastTradePreviewSchema } from '@daoyou/shared/contracts/beastTrade';
-import { isInventoryShowcase } from '@daoyou/shared/items/showcase';
+import { BeastTradePreviewSchema } from '@daoyou/game-rules/beasts/trade';
+import { isInventoryShowcase } from '@daoyou/game-domain/items/showcase';
 import { cn } from '@app/lib/cn';
 import type {
   WorldChatMessageDTO,
-} from '@daoyou/shared/types/world-chat';
+} from '@daoyou/contracts/world-chat-messages';
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router';
 

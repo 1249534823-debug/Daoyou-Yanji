@@ -1,7 +1,7 @@
 import type {
   InventoryActionSchema,
   InventoryQuerySchema,
-} from '@daoyou/shared/contracts/inventory';
+} from '@daoyou/contracts/inventory';
 import { Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import {

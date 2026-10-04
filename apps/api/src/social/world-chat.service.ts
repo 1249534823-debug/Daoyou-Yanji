@@ -1,7 +1,7 @@
 import type {
   WorldChatCreateMessageRequest,
   WorldChatListQuery,
-} from '@daoyou/shared/contracts/world-chat';
+} from '@daoyou/contracts/world-chat';
 import { Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';

@@ -1,4 +1,4 @@
-import type { FeedbackCreateRequest } from '@daoyou/shared/contracts/feedback';
+import type { FeedbackCreateRequest } from '@daoyou/contracts/feedback';
 import { Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import type { DbClient } from '@server/lib/drizzle/db.js';

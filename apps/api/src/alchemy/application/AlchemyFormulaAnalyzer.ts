@@ -5,18 +5,18 @@ import {
   GENERATABLE_ALCHEMY_PROPERTY_KEY_VALUES,
   getAlchemyPropertyLabel,
   normalizeWeightedAlchemyProperties,
-} from '@daoyou/shared/lib/alchemyProperties';
+} from '@daoyou/game-rules/alchemy/alchemyProperties';
 import type {
   AlchemyFormula,
   AlchemyRecipePlan,
   FormulaFitBand,
   FormulaMaterialJudgment,
-} from '@daoyou/shared/types/consumable';
+} from '@daoyou/game-domain/consumable';
 import {
   ALCHEMY_FOCUS_MODE_VALUES,
   FORMULA_FIT_BAND_VALUES,
   FORMULA_MATERIAL_VERDICT_VALUES,
-} from '@daoyou/shared/types/consumable';
+} from '@daoyou/game-domain/consumable';
 import { z } from 'zod';
 import type { PreparedAlchemyMaterial } from '@server/alchemy/application/AlchemyRecipeRules.js';
 

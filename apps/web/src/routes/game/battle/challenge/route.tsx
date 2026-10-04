@@ -5,13 +5,13 @@ import {
   mutationBody,
 } from '@app/components/feature/combat-v6/request';
 import { usePlayerSession } from '@app/lib/resources/player';
-import { MAX_DAILY_RANKING_CHALLENGES } from '@daoyou/shared/combat-v6/ranking';
-import type { CombatV6ReplayView } from '@daoyou/shared/combat-v6/replay';
+import { MAX_DAILY_RANKING_CHALLENGES } from '@daoyou/game-rules/rankings/ranking';
+import type { CombatV6ReplayView } from '@daoyou/game-rules/combat/replay';
 import {
   RankingChallengeSchema,
   type RankingChallengeRequest,
   type RankingChallengeResult,
-} from '@daoyou/shared/contracts/combatV6Ranking';
+} from '@daoyou/contracts/combatV6Ranking';
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';
 

@@ -1,8 +1,8 @@
 import type {
   ResourceChange,
   ResourceScope,
-} from '@daoyou/shared/contracts/resources';
-import { ResourceChangeSchema } from '@daoyou/shared/contracts/resources';
+} from '@daoyou/contracts/resources';
+import { ResourceChangeSchema } from '@server/lib/resources/schemas.js';
 import {
   encodeNatsSubjectToken,
   publishNatsCoreMessage,

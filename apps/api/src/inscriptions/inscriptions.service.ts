@@ -4,7 +4,7 @@ import {
   mutateInscriptions,
   readInscriptions,
 } from '@server/inscriptions/application/InscriptionService.js';
-import type { InscriptionRequest } from '@daoyou/shared/contracts/inscriptions';
+import type { InscriptionRequest } from '@daoyou/contracts/inscriptions';
 
 @Injectable()
 export class InscriptionsService {

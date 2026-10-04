@@ -1,6 +1,6 @@
 import { cn } from '@app/lib/cn';
 import type { ReactNode } from 'react';
-import { useInkUI } from '../providers/InkUIProvider';
+import { useInkUI } from '../providers/useInkUI.js';
 
 export interface GameSceneHelp {
   title: string;

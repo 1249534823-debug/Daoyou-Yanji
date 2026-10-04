@@ -6,16 +6,12 @@ import {
   consumeResourceChanges,
   useResourceMutation,
 } from '@app/lib/resources/mutations';
-import {
-  IDENTITY_RESHAPE_DESCRIPTION_MAX_LENGTH,
-  IDENTITY_RESHAPE_DESCRIPTION_MIN_LENGTH,
-  IDENTITY_RESHAPE_TALISMAN_NAME,
-} from '@daoyou/shared/config/identityReshape';
-import type { PlayerResourceMutationMeta } from '@daoyou/shared/contracts/player';
+import { IDENTITY_RESHAPE_DESCRIPTION_MAX_LENGTH, IDENTITY_RESHAPE_DESCRIPTION_MIN_LENGTH, IDENTITY_RESHAPE_TALISMAN_NAME } from '@daoyou/game-content/identity-reshape';
+import type { PlayerResourceMutationMeta } from '@daoyou/contracts/player';
 import type {
   IdentityReshapeAnswer,
   IdentityReshapeSessionDTO,
-} from '@daoyou/shared/types/identityReshape';
+} from '@daoyou/game-domain/identity-reshape';
 import {
   useCallback,
   useEffect,

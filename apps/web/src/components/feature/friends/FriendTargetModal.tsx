@@ -5,7 +5,7 @@ import { InkButton, InkNotice } from '@app/components/ui';
 import type {
   FriendCultivatorSummary,
   FriendTargetResponse,
-} from '@daoyou/shared/contracts/friends';
+} from '@daoyou/contracts/friends';
 import { useEffect, useState } from 'react';
 
 export interface FriendTargetModalProps {

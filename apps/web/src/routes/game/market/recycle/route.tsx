@@ -10,26 +10,22 @@ import { inventoryBagResource, useInventoryBag } from '@app/lib/resources/bag';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
 import { usePlayerSession } from '@app/lib/resources/player';
 import { resourceStore } from '@app/lib/resources/store';
-import type { InventoryView } from '@daoyou/shared/contracts/inventory';
+import type { InventoryView } from '@daoyou/contracts/inventory';
 import type {
   RecycleQuote,
   RecycleResult,
   RecycleSelection,
-} from '@daoyou/shared/contracts/recycle';
-import { recycleBlockingReason } from '@daoyou/shared/inventory/recycle';
-import { ConsumableFactsSchema } from '@daoyou/shared/items/definitions/consumables';
+} from '@daoyou/contracts/recycle';
+import { recycleBlockingReason } from '@daoyou/game-rules/inventory/recycle';
+import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
 import {
   INVENTORY_MATERIAL_TYPES,
   MATERIAL_TYPE_NAMES,
-} from '@daoyou/shared/items/definitions/materials';
-import { SeedFactsSchema } from '@daoyou/shared/items/definitions/seeds';
-import { materialFactsOf } from '@daoyou/shared/items/material';
-import { findItemDefinition } from '@daoyou/shared/items/registry';
-import {
-  QUALITY_ORDER,
-  QUALITY_VALUES,
-  type Quality,
-} from '@daoyou/shared/types/constants';
+} from '@daoyou/game-domain/items/material-facts';
+import { SeedFactsSchema } from '@daoyou/game-domain/items/seed-facts';
+import { materialFactsOf } from '@daoyou/game-domain/items/material';
+import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import { QUALITY_ORDER, QUALITY_VALUES, type Quality } from '@daoyou/constants/qualities';
 import { useEffect, useRef, useState } from 'react';
 
 type Item = InventoryView['items'][number];

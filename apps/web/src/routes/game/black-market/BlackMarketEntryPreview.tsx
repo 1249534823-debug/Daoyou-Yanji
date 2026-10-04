@@ -3,7 +3,7 @@ import { InkButton, InkNotice } from '@app/components/ui';
 import type {
   BlackMarketNpcSummary,
   BlackMarketNpcStatus,
-} from '@daoyou/shared/types/blackMarket';
+} from '@daoyou/game-domain/blackMarket';
 
 const OPENING_STEPS = [
   '你掀帘走近摊位……',

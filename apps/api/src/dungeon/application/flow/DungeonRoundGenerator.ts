@@ -1,15 +1,13 @@
-import { TYPE_DESCRIPTIONS } from '@daoyou/shared/engine/material/creation/config';
+import { TYPE_DESCRIPTIONS } from '@daoyou/game-content/materials/config';
 import {
   calculateDungeonMaterialCost,
   calculateDungeonResourceCost,
   calculateDungeonStatLoss,
-} from '@daoyou/shared/lib/dungeon/costPolicy';
-import {
-  getMapNode,
-  resolveDungeonMapConfig,
-  type SatelliteNode,
-} from '@daoyou/shared/lib/game/mapSystem';
-import { REALM_VALUES, type RealmType } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-rules/dungeon/costPolicy';
+import { type SatelliteNode } from '@daoyou/game-domain/world/map';
+import { getMapNode } from '@daoyou/game-content/world/map';
+import { resolveDungeonMapConfig } from '@daoyou/game-rules/world/dungeon';
+import { REALM_VALUES, type RealmType } from '@daoyou/constants/realms';
 import { renderPrompt } from '@server/lib/prompts/index.js';
 import { generateAiObject } from '@server/utils/aiClient.js';
 import { stableCompactStringify } from '@server/utils/llmPayload.js';

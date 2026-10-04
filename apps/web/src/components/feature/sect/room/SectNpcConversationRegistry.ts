@@ -1,7 +1,7 @@
 import type {
   SectRoomActorDefinition,
   SectRoomDefinition,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import type { ComponentType } from 'react';
 
 export interface SectNpcConversationRendererProps {

@@ -4,9 +4,9 @@ import { GameLoadingState } from '@app/components/game-shell/GameLoadingState';
 import { GameIcon } from '@app/components/ui/GameIcon';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkTag } from '@app/components/ui/InkTag';
-import type { WildRegionView } from '@daoyou/shared/contracts/combatV6Wild';
-import { BEAST_SPECIES } from '@daoyou/shared/engine/combat-v6/beasts/content';
-import { getMapNode } from '@daoyou/shared/lib/game/mapSystem';
+import type { WildRegionView } from '@daoyou/contracts/combatV6Wild';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
+import { getMapNode } from '@daoyou/game-content/world/map';
 import './wild-seeking.css';
 
 export function WildSeekingScene({

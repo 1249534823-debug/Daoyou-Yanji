@@ -1,7 +1,7 @@
 import { GameIcon } from '@app/components/ui/GameIcon';
 import { InkButton } from '@app/components/ui/InkButton';
 import { getDivination } from '@app/lib/divinationApi';
-import type { DivinationView } from '@daoyou/shared/contracts/divination';
+import type { DivinationView } from '@daoyou/contracts/divination';
 import { useEffect, useState } from 'react';
 
 export function DailyDivinationEntry() {

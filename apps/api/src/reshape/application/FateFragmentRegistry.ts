@@ -2,9 +2,9 @@ import type {
   FateEffectEntry,
   FateEffectPolarity,
   FateEffectType,
-} from '@daoyou/shared/types/cultivator';
-import type { Quality } from '@daoyou/shared/types/constants';
-import { QUALITY_ORDER } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-domain/cultivator';
+import type { Quality } from '@daoyou/constants/qualities';
+import { QUALITY_ORDER } from '@daoyou/constants/qualities';
 import {
   FATE_QUALITY_SCALE,
   FATE_ROLL_VERSION,

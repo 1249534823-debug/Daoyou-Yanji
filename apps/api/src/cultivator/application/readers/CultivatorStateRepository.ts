@@ -5,19 +5,16 @@ import {
 getOrInitCultivationProgress,
 stripExpCapForStorage,
 syncBottleneckState,
-} from '@daoyou/shared/engine/cultivation/cultivationUtils';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import { COMPREHENSION_INSIGHT_CAP } from '@daoyou/shared/config/cultivationTuning';
-import {
-RealmStage,
-RealmType
-} from '@daoyou/shared/types/constants';
+} from '@daoyou/game-rules/cultivation/cultivationUtils';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
+import { COMPREHENSION_INSIGHT_CAP } from '@daoyou/game-content/cultivation/cultivationTuning';
+import { RealmStage, RealmType } from '@daoyou/constants/realms';
 import type {
 BreakthroughHistoryEntry,
 CultivationProgress,
 Cultivator,
 RetreatRecord
-} from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-domain/cultivator';
 import { and,eq,sql } from 'drizzle-orm';
 import {
 db,

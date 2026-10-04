@@ -1,5 +1,5 @@
 import { sectTaskRendererRegistry } from '@app/lib/sect/presentation/compositionRoot';
-import type { SectTaskActionOutcome } from '@daoyou/shared/contracts/sect';
+import type { SectTaskActionOutcome } from '@daoyou/contracts/sect';
 import { createElement } from 'react';
 import type { ZodType } from 'zod';
 

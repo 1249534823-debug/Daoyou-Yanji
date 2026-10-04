@@ -1,7 +1,7 @@
 import type {
   CombatV6TrainingCommandRequestSchema,
   CombatV6TrainingCreateRequest,
-} from '@daoyou/shared/contracts/combatV6';
+} from '@daoyou/contracts/combatV6';
 import { Inject, Injectable } from '@nestjs/common';
 import {
   COMBAT_V6_TRAINING_CONTENT_VIEW,

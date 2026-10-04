@@ -15,8 +15,8 @@ import {
   type ArenaRoomStatusV1,
   type ArenaRoomV1,
   type ArenaTeamIdV1,
-} from '@daoyou/shared/contracts/arena';
-import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
+} from '@daoyou/contracts/arena';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 
 const ROOM_KEY_PREFIX = 'arena:room:v1:';
 const CODE_KEY_PREFIX = 'arena:room-code:v1:';

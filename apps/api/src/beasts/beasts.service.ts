@@ -1,10 +1,10 @@
 import type {
-  BeastAllocateSchema,
+  BeastAllocateRequest,
   BeastFusionRequest,
   BeastLineupRequestSchema,
   BeastRenameSchema,
   BeastRestSchema,
-} from '@daoyou/shared/contracts/combatV6Beasts';
+} from '@daoyou/contracts/combatV6Beasts';
 import { Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import type { DbClient } from '@server/lib/drizzle/db.js';
@@ -46,7 +46,7 @@ export class BeastsService {
       data: await restBeast(owner, input.beastId, input.expectedRevision),
     };
   }
-  async allocate(owner: string, input: z.infer<typeof BeastAllocateSchema>) {
+  async allocate(owner: string, input: BeastAllocateRequest) {
     return {
       success: true,
       data: await allocateBeastPoints(

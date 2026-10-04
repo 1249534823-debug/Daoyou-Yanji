@@ -9,7 +9,7 @@ import {
   type RealtimeChannelStatus,
   type RealtimeStatusSnapshot,
 } from '@app/lib/realtime/realtimeClient';
-import type { RealtimeChannel } from '@daoyou/shared/contracts/realtime';
+import type { RealtimeChannel } from '@daoyou/contracts/realtime';
 import { cn } from '@app/lib/cn';
 import { useEffect, useState } from 'react';
 import { SettingsSection, settingsLabelClass } from './SettingsFields';

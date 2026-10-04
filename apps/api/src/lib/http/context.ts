@@ -1,5 +1,5 @@
 import type { ActiveCultivatorRef, AuthUser } from '@server/lib/auth/types.js';
-import type { LlmByokConfig } from '@daoyou/shared/config/llm';
+import type { LlmByokConfig } from '@daoyou/contracts/llm/config';
 import { AsyncLocalStorage } from 'node:async_hooks';
 
 export type RequestContext = {

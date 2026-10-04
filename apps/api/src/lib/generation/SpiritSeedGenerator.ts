@@ -1,10 +1,7 @@
-import {
-  CREATION_MATERIAL_SEMANTIC_TAGS,
-  CreationTags,
-} from '@daoyou/shared/engine/shared/tag-domain';
-import { getSpiritFieldQualityBalance } from '@daoyou/shared/engine/spirit-field/config';
-import { buildSpiritFieldSeedMaterialFromPlant } from '@daoyou/shared/engine/spirit-field/seedMaterial';
-import { SpiritSeedGenerator as SpiritSeedSkeletonGenerator } from '@daoyou/shared/engine/spirit-field/SpiritSeedGenerator';
+import { CREATION_MATERIAL_SEMANTIC_TAGS, CreationTags } from '@daoyou/game-domain/legacy/tags/creationTags';
+import { getSpiritFieldQualityBalance } from '@daoyou/game-content/spirit-field/config';
+import { buildSpiritFieldSeedMaterialFromPlant } from '@daoyou/game-domain/spirit-field/seedMaterial';
+import { SpiritSeedGenerator as SpiritSeedSkeletonGenerator } from '@daoyou/game-rules/spirit-field/SpiritSeedGenerator';
 import {
   SPIRIT_FIELD_CULTIVATION_METHODS,
   SPIRIT_FIELD_OUTCOME_KINDS,
@@ -17,13 +14,10 @@ import {
   type SpiritSeedIdentity,
   type SpiritSeedRandomOptions,
   type SpiritSeedSkeleton,
-} from '@daoyou/shared/engine/spirit-field/types';
-import {
-  ELEMENT_VALUES,
-  type ElementType,
-  type Quality,
-} from '@daoyou/shared/types/constants';
-import type { Material } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-domain/spirit-field/types';
+import { ELEMENT_VALUES, type ElementType } from '@daoyou/constants/elements';
+import { type Quality } from '@daoyou/constants/qualities';
+import type { Material } from '@daoyou/game-domain/cultivator';
 import { renderPromptSystem, renderPromptUser } from '@server/lib/prompts/index.js';
 import { generateAiArray } from '@server/utils/aiClient.js';
 import { z } from 'zod';

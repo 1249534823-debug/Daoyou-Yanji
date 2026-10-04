@@ -1,7 +1,7 @@
 import { ItemSlot } from '@app/components/feature/items/ItemSlot';
 import { InkModal } from '@app/components/layout/InkModal';
-import type { HuntBattleReward } from '@daoyou/shared/contracts/hunts';
-import { dungeonRewardItemName } from '@daoyou/shared/rewards/dungeon';
+import type { HuntBattleReward } from '@daoyou/contracts/hunts';
+import { dungeonRewardItemName } from '@daoyou/game-rules/rewards/dungeon';
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { useHunts } from './useHunts';

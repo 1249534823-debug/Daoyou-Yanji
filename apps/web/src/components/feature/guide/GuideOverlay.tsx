@@ -3,15 +3,15 @@ import { InkButton } from '@app/components/ui';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
 import { usePlayerSession } from '@app/lib/resources/player';
 import { useStory } from '@app/lib/story/useStory';
-import { getGuideLesson } from '@daoyou/shared/guide/catalog';
+import { getGuideLesson } from '@daoyou/game-content/guide/catalog';
 import {
   advanceGuide,
   createGuideState,
   currentGuideStep,
   restoreGuideState,
   type GuideState,
-} from '@daoyou/shared/guide/interpreter';
-import type { GuideStep } from '@daoyou/shared/guide/schema';
+} from '@daoyou/game-rules/guide/interpreter';
+import type { GuideStep } from '@daoyou/game-domain/guide/schema';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 type ShownStep = Extract<GuideStep, { type: 'look' | 'press' }>;

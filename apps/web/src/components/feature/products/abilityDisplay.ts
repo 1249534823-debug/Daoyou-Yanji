@@ -3,12 +3,13 @@ import {
   legacyRecord,
   legacyText,
   type LegacyAttributeModifier,
-} from '@daoyou/shared/legacy/products';
+} from '@daoyou/game-domain/legacy/products';
 import {
   getAttributeInfo,
   type AttributeKey,
-} from '@daoyou/shared/lib/gameConceptDisplay';
-import type { ElementType, Quality } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-content/presentation/concepts';
+import type { ElementType } from '@daoyou/constants/elements';
+import type { Quality } from '@daoyou/constants/qualities';
 
 export type AffixRarityTone = 'muted' | 'info' | 'rare' | 'legendary';
 export interface AffixView {

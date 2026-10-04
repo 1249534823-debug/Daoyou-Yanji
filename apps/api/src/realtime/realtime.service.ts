@@ -2,8 +2,8 @@ import {
   REALTIME_CHANNELS,
   type RealtimeChannel,
   type RealtimeServerEvent,
-} from '@daoyou/shared/contracts/realtime';
-import type { ResourceScope } from '@daoyou/shared/contracts/resources';
+} from '@daoyou/contracts/realtime';
+import type { ResourceScope } from '@daoyou/contracts/resources';
 import { Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import type { DbClient } from '@server/lib/drizzle/db.js';

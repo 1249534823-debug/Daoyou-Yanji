@@ -1,6 +1,6 @@
 import { apiFetch } from '@app/lib/api/fetch';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
-import type { AlchemyFormula, PillFamily } from '@daoyou/shared/types/consumable';
+import type { AlchemyFormula, PillFamily } from '@daoyou/game-domain/consumable';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { FormulaPagination } from './alchemyTypes';
 

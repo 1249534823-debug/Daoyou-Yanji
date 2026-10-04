@@ -22,11 +22,11 @@ import { useResourceMutation } from '@app/lib/resources/mutations';
 import type {
   SectContributionRankingData,
   SectMembersData,
-} from '@daoyou/shared/contracts/sect';
+} from '@daoyou/contracts/sect';
 import {
   SECT_RANK_LABELS,
   STANDARD_SECT_PRESENTATION,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import { useEffect, useState } from 'react';
 import {
   postJson,

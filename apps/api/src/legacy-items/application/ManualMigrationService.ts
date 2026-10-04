@@ -8,20 +8,10 @@ import {
   grantInventory,
   InventoryError,
 } from '@server/inventory/operations.js';
-import type {
-  ExchangeManual,
-  ManualMigrationPolicy,
-  ManualMigrationResult,
-  ManualMigrationSource,
-  ManualMigrationView,
-} from '@daoyou/shared/contracts/manualMigration';
-import {
-  buildManualMigrationPolicy,
-  drawLegacyManual,
-  MANUAL_MIGRATION_CONFIG,
-  manualMigrationPlan,
-  validateManualSelection,
-} from '@daoyou/shared/manual-migration/rules';
+import type { ManualMigrationPolicy, ManualMigrationResult, ManualMigrationSource } from '@daoyou/game-domain/legacy/manual-migration';
+import type { ExchangeManual, ManualMigrationView } from '@daoyou/contracts/manualMigration';
+import { MANUAL_MIGRATION_CONFIG } from '@daoyou/game-content/legacy/manual-migration';
+import { buildManualMigrationPolicy, drawLegacyManual, manualMigrationPlan, validateManualSelection } from '@daoyou/game-rules/manual-migration/rules';
 import { and, eq } from 'drizzle-orm';
 import { randomInt } from 'node:crypto';
 

@@ -1,4 +1,4 @@
-import { publicUnitAppearances } from '@daoyou/shared/combat-v6/unit-appearance';
+import { publicUnitAppearances } from '@daoyou/game-rules/combat/unit-appearance';
 import { db, type DbExecutor } from '@server/lib/drizzle/db.js';
 import {
   cultivatorBeasts,
@@ -17,39 +17,34 @@ import { assembleCombatV6TrainingPlayer } from '@server/combat/application/Comba
 import { ConditionService } from '@server/cultivator/application/ConditionService.js';
 import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
-import { automaticCommands } from '@daoyou/shared/combat-v6/auto';
+import { automaticCommands } from '@daoyou/game-rules/combat/auto';
 import {
   combatV6Display,
   combatV6DisplayEvent,
   combatV6Playback,
   combatV6Units,
   visibleUnitNames,
-} from '@daoyou/shared/combat-v6/presentation';
-import { createCombatV6Replay } from '@daoyou/shared/combat-v6/replay';
-import { liveReplayDelta } from '@daoyou/shared/combat-v6/replay-timeline';
-import type { CombatV6CommandGroup } from '@daoyou/shared/contracts/combatV6';
-import type {
-  DungeonEncounterView,
-  DungeonSessionView,
-} from '@daoyou/shared/contracts/combatV6Dungeon';
-import { beastDeathIds } from '@daoyou/shared/engine/combat-v6/beasts';
+} from '@daoyou/game-rules/combat/presentation';
+import { createCombatV6Replay } from '@daoyou/game-rules/combat/replay';
+import { liveReplayDelta } from '@daoyou/game-rules/combat/replay-timeline';
+import type { CombatV6CommandGroup } from '@daoyou/game-domain/combat/commands';
+import type { DungeonEncounterView } from '@daoyou/game-domain/dungeon/actions';
+import type { DungeonSessionView } from '@daoyou/contracts/combatV6Dungeon';
+import { beastDeathIds } from '@daoyou/game-rules/beasts/progression';
 import {
   beastVictoryExperience,
   gainBeastExp,
-} from '@daoyou/shared/engine/combat-v6/beasts/progression';
-import {
-  carryDungeonBeastResources,
-  createDungeonHost,
-  DungeonHost,
-  type DungeonBattleSnapshot,
-} from '@daoyou/shared/engine/combat-v6/dungeon/host';
-import { projectCharacterToCombatV6 } from '@daoyou/shared/engine/combat-v6/projection';
-import { combatCharacterLevel } from '@daoyou/shared/engine/combat-v6/projection/character-level';
-import { evaluateFateContext } from '@daoyou/shared/lib/fates';
-import { getMapNode, resolveDungeonMapConfig } from '@daoyou/shared/lib/game/mapSystem';
-import { appendDungeonReward } from '@daoyou/shared/rewards/dungeon';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import type { RealmType } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-rules/beasts/progression';
+import { type DungeonBattleSnapshot } from '@daoyou/game-domain/combat/dungeon';
+import { carryDungeonBeastResources, createDungeonHost, DungeonHost } from '@daoyou/game-rules/combat/dungeon/host';
+import { projectCharacterToCombatV6 } from '@daoyou/game-rules/combat/projection/project-character';
+import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
+import { evaluateFateContext } from '@daoyou/game-rules/character/fates';
+import { getMapNode } from '@daoyou/game-content/world/map';
+import { resolveDungeonMapConfig } from '@daoyou/game-rules/world/dungeon';
+import { appendDungeonReward } from '@daoyou/game-rules/rewards/dungeon';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
+import type { RealmType } from '@daoyou/constants/realms';
 import { and, eq, ne } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
 import { hasActiveDungeon } from '@server/dungeon/application/flow/occupancy.js';

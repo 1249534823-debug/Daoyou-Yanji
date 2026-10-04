@@ -21,7 +21,7 @@ import { getSectBenefitMetric } from '@app/lib/sect/sectPresentation';
 import {
   describeSectFacilityStatus,
   STANDARD_SECT_PRESENTATION,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import { Suspense, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
 import {

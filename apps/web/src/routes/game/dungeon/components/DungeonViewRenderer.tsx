@@ -3,29 +3,28 @@ import { InkSection } from '@app/components/layout';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkCard } from '@app/components/ui/InkCard';
 import { InkNotice } from '@app/components/ui/InkNotice';
+import type { BattleCallbackData } from '@app/lib/hooks/dungeon/types';
 import { DungeonViewState } from '@app/lib/hooks/dungeon/useDungeonViewModel';
-import type { DungeonMaterialSelection } from '@daoyou/shared/contracts/combatV6Dungeon';
-import { isConditionStatusActive } from '@daoyou/shared/lib/condition';
-import { getConditionStatusTemplate } from '@daoyou/shared/lib/conditionStatusRegistry';
-import { dungeonReadiness } from '@daoyou/shared/lib/dungeon/readiness';
+import { getMapNode } from '@daoyou/game-content/world/map';
+import type { Cultivator } from '@daoyou/game-domain/cultivator';
+import type { DungeonMaterialSelection } from '@daoyou/game-domain/dungeon/actions';
 import type {
   DungeonOption,
   DungeonRecoverAction,
   DungeonState,
-} from '@daoyou/shared/lib/dungeon/types';
-import {
-  canChallengeDungeonRealm,
-  getMapNode,
-} from '@daoyou/shared/lib/game/mapSystem';
-import type { Cultivator } from '@daoyou/shared/types/cultivator';
-import type { TaskInstance } from '@daoyou/shared/types/task';
+} from '@daoyou/game-domain/dungeon/state';
+import type { TaskInstance } from '@daoyou/game-domain/tasks/types';
+import { isConditionStatusActive } from '@daoyou/game-rules/condition';
+import { getConditionStatusTemplate } from '@daoyou/game-rules/condition/statuses';
+import { dungeonReadiness } from '@daoyou/game-rules/dungeon/readiness';
+import { canChallengeDungeonRealm } from '@daoyou/game-rules/world/dungeon';
 import { DungeonSceneScreen } from '../dungeonScene';
 import {
   resolveDungeonSceneDescriptor,
   type DungeonSceneState,
 } from '../dungeonSceneRegistry';
 import { BattlePreparation } from './BattlePreparation';
-import { BattleCallbackData, DungeonBattle } from './DungeonBattle';
+import { DungeonBattle } from './DungeonBattle';
 import { DungeonExploring } from './DungeonExploring';
 import { DungeonLooting } from './DungeonLooting';
 import { DungeonMapSelector } from './DungeonMapSelector';

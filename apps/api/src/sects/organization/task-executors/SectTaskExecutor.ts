@@ -2,7 +2,7 @@ import {
   SectTaskSubmissionInputSchema,
   type SectTaskActionOutcome,
   type SectTaskSubmissionInput,
-} from '@daoyou/shared/contracts/sect';
+} from '@daoyou/contracts/sect';
 import {
   describeSectDeliveryRequirement,
   matchSectDeliveryRequirement,
@@ -28,7 +28,7 @@ import {
   type SectTaskDefinition,
   type SectTaskRecordPayload,
   type SweepDirection,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import { z, type ZodType } from 'zod';
 import { SectError } from '@server/sects/application/SectError.js';
 import type {

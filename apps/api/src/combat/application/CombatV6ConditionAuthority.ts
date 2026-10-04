@@ -7,14 +7,14 @@ import { hasActiveDungeon } from '@server/dungeon/occupancy.js';
 import {
   characterIdentityRow,
 } from '@server/lib/repositories/sectCombatRepository.js';
-import { projectCharacterDisplaySnapshot } from '@daoyou/shared/lib/cultivatorDisplay';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
+import { projectCharacterDisplaySnapshot } from '@daoyou/game-rules/character/display';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { CombatV6WildStore } from '@server/combat/application/CombatV6WildStore.js';
 import { activeSectTaskBattle } from '@server/combat/application/CombatV6SectTaskOccupancy.js';
 import { activeBreakthroughBattle } from '@server/combat/application/CombatV6BreakthroughOccupancy.js';
-import { SectTaskRecordPayloadSchema } from '@daoyou/shared/engine/sect';
-import { SectV6TargetSchema } from '@daoyou/shared/contracts/combatV6SectTask';
+import { SectTaskRecordPayloadSchema } from '@daoyou/game-rules/sect-organization';
+import { SectV6TargetSchema } from '@daoyou/game-domain/combat/sect-target';
 
 /** Read-model annotation only. Never persisted into cultivators.condition. */
 export async function readCombatV6ConditionAuthority(

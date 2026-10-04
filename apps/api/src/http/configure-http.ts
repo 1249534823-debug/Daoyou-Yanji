@@ -5,7 +5,7 @@ import { apiCorsOptions } from '@server/lib/http/cors.js';
 import { isAllowedWriteOrigin } from '@server/lib/http/originPolicy.js';
 import { getRequestIp } from '@server/lib/http/requestIp.js';
 import { checkApiIpRateLimit } from '@server/lib/redis/apiIpRateLimiter.js';
-import { LlmByokConfigSchema } from '@daoyou/shared/config/llm';
+import { LlmByokConfigSchema } from '@daoyou/contracts/llm/config';
 import { fromNodeHeaders, toNodeHandler } from 'better-auth/node';
 import cors from 'cors';
 import type { NextFunction, Response } from 'express';

@@ -2,7 +2,7 @@ import { RoomView } from '@app/components/feature/room';
 import type {
   BlackMarketNpcId,
   BlackMarketOverview,
-} from '@daoyou/shared/types/blackMarket';
+} from '@daoyou/game-domain/blackMarket';
 import type { ReactNode } from 'react';
 
 export function BlackMarketRoom({

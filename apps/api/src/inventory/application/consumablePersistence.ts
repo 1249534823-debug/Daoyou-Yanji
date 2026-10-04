@@ -1,7 +1,8 @@
 import * as schema from '@server/lib/drizzle/schema.js';
-import { assertConsumableSpec, stableSerializeConsumableSpec } from '@daoyou/shared/lib/consumables';
-import type { Consumable } from '@daoyou/shared/types/cultivator';
-import type { ConsumableType, Quality } from '@daoyou/shared/types/constants';
+import { assertConsumableSpec, stableSerializeConsumableSpec } from '@daoyou/game-domain/consumables/identity';
+import type { Consumable } from '@daoyou/game-domain/cultivator';
+import type { ConsumableType } from '@daoyou/game-domain/inventory';
+import type { Quality } from '@daoyou/constants/qualities';
 
 export type ConsumableRow = typeof schema.consumables.$inferSelect;
 

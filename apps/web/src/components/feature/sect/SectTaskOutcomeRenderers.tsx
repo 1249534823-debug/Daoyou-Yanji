@@ -2,7 +2,7 @@ import { InkButton, InkDialog, InkNotice } from '@app/components/ui';
 import type { SectOutcomeRendererProps } from '@app/lib/sect/presentation/core/registry';
 import type {
   SectTaskRewardReceipt,
-} from '@daoyou/shared/contracts/sect';
+} from '@daoyou/contracts/sect';
 import { createSectRoomNpcHref } from './sectRoomNavigation';
 import { useSectTaskInteraction } from './SectTaskInteractionProvider';
 

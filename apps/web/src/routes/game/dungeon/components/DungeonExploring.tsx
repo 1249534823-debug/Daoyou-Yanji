@@ -8,15 +8,15 @@ import {
   formatDungeonCostName,
   formatDungeonCostValue,
 } from '@app/lib/dungeon/formatDungeonCost';
-import type { DungeonMaterialSelection } from '@daoyou/shared/contracts/combatV6Dungeon';
+import type { DungeonMaterialSelection } from '@daoyou/game-domain/dungeon/actions';
 import type {
   DungeonOption,
   DungeonOptionCost,
   DungeonRound,
   DungeonState,
-} from '@daoyou/shared/lib/dungeon/types';
-import { getResourceIcon } from '@daoyou/shared/lib/gameConceptDisplay';
-import type { Cultivator } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-domain/dungeon/state';
+import { getResourceIcon } from '@daoyou/game-content/presentation/concepts';
+import type { Cultivator } from '@daoyou/game-domain/cultivator';
 import { useState } from 'react';
 import { DungeonMaterialSubmission } from './DungeonMaterialSubmission';
 import type { DungeonDisplayResources } from './DungeonRunPanel';

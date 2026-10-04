@@ -1,7 +1,7 @@
 import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
-import type { SectRuntime } from '@daoyou/shared/engine/sect';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
+import type { SectRuntime } from '@daoyou/game-rules/sect-organization';
 
 export type SectCommandArgs = {
   userId: string;

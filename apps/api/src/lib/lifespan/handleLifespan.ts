@@ -3,12 +3,12 @@ import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import { invalidateActiveCultivatorRef } from '@server/lib/auth/activeCultivator.js';
 import { findActiveCultivatorOwnerId } from '@server/lib/repositories/cultivatorRepository.js';
 import { updateCultivator } from '@server/cultivator/application/readers/CultivatorStateRepository.js';
-import type { BreakthroughModifiers } from '@daoyou/shared/engine/cultivation/breakthroughCalculator';
+import type { BreakthroughModifiers } from '@daoyou/game-domain/cultivation/breakthrough-modifiers';
 import type {
   LifespanExhaustedStoryPayload,
   RetreatStoryCultivator,
 } from '@server/utils/prompts.js';
-import { RealmStage, RealmType } from '@daoyou/shared/types/constants';
+import { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { eq } from 'drizzle-orm';
 
 export interface ConsumeLifespanResult {

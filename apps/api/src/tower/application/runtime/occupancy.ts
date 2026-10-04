@@ -1,7 +1,7 @@
 import {
   towerRunOccupancy,
   type TowerLifecycleState,
-} from '@daoyou/shared/lib/tower/lifecycle';
+} from '@daoyou/game-rules/tower/lifecycle';
 import { redis } from '@server/lib/redis/index.js';
 import { parseRedisJson } from '@server/lib/redis/json.js';
 

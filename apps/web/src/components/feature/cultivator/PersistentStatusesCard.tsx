@@ -1,17 +1,17 @@
 import { GameSceneSection } from '@app/components/game-shell/GameSceneSection';
 import { InkButton } from '@app/components/ui';
 import { useCultivatorProgress } from '@app/lib/resources/player';
-import { getBodyCultivationSummary } from '@daoyou/shared/lib/bodyCultivation/summary';
+import { getBodyCultivationSummary } from '@daoyou/game-rules/body-cultivation/summary';
 import { cn } from '@app/lib/cn';
 import {
   getBreakthroughPenaltyPercent,
   getPillToxicityRecoveryMultiplier,
   getPillToxicityStage,
   isConditionStatusActive,
-} from '@daoyou/shared/lib/condition';
-import { evaluateFateContext } from '@daoyou/shared/lib/fates';
-import { getAllTrackConfigs } from '@daoyou/shared/lib/trackConfigRegistry';
-import type { ConditionTrackPath } from '@daoyou/shared/types/condition';
+} from '@daoyou/game-rules/condition';
+import { evaluateFateContext } from '@daoyou/game-rules/character/fates';
+import { getAllTrackConfigs } from '@daoyou/game-rules/condition/tracks';
+import type { ConditionTrackPath } from '@daoyou/game-domain/condition';
 import { useCultivatorDisplayProjection } from './useCultivatorDisplayProjection';
 
 const TRACK_ORDER: ConditionTrackPath[] = [

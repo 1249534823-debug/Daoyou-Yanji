@@ -3,8 +3,8 @@ import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerS
 import {
   isDomainEventType,
   type DomainEventEnvelope,
-} from '@daoyou/shared/contracts/domainEvents';
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
+} from '@daoyou/contracts/domainEvents';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
 import type { FeatureCommandResult } from '@server/player/application/state/CommandExecutors.js';
 import { readPlayerTaskSummary } from '@server/player/application/PlayerResourceReaderService.js';
 import { TaskService } from '@server/tasks/application/TaskService.js';

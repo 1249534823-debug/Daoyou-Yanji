@@ -1,11 +1,11 @@
-import type { SectScenePresentation } from '@daoyou/shared/engine/sect';
+import type { SectScenePresentation } from '@daoyou/game-rules/sect-organization';
 import type {
   AlchemyFormula,
   AlchemyFormulaDiscoveryCandidate,
   AlchemyYieldDisplayProfile,
   FormulaAnalysisResult,
-} from '@daoyou/shared/types/consumable';
-import type { Consumable, Material } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-domain/consumable';
+import type { Consumable, Material } from '@daoyou/game-domain/cultivator';
 
 export type AlchemyWorkspacePhase =
   'preparing' | 'observing' | 'firing' | 'result';

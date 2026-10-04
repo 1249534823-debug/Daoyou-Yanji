@@ -1,7 +1,7 @@
 import { GameIcon } from '@app/components/ui/GameIcon';
 import { InkTag } from '@app/components/ui/InkTag';
-import type { TowerView } from '@daoyou/shared/contracts/combatV6Tower';
-import type { TowerEnemyRole } from '@daoyou/shared/lib/tower/formations';
+import type { TowerView } from '@daoyou/contracts/combatV6Tower';
+import type { TowerEnemyRole } from '@daoyou/game-domain/tower/formations';
 import { useState } from 'react';
 
 const ROLE_LABELS: Record<TowerEnemyRole, string> = {

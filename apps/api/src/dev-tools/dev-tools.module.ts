@@ -1,4 +1,4 @@
-import { allowsLocalDevTools } from '@daoyou/shared/config/deployment';
+import { allowsLocalDevTools } from '@daoyou/contracts/dev-tools-access';
 import {
   Inject,
   Module,

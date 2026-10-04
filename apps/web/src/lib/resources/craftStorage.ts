@@ -1,7 +1,7 @@
 import { combatV6Request } from '@app/components/feature/combat-v6/request';
 import type { InventoryFilter } from '@app/components/feature/items/inventoryFilterModel';
 import { usePlayerSession } from '@app/lib/resources/player';
-import type { InventoryView } from '@daoyou/shared/contracts/inventory';
+import type { InventoryView } from '@daoyou/contracts/inventory';
 import { useCallback, useEffect, useState } from 'react';
 
 export function useCraftStorage(filter: InventoryFilter, enabled: boolean) {

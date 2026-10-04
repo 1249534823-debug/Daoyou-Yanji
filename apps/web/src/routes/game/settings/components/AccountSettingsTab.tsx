@@ -16,8 +16,8 @@ import {
 import type { AuthActionError } from '@app/lib/auth/authState';
 import { toAuthActionError } from '@app/lib/auth/authState';
 import { authClient } from '@app/lib/auth/client';
-import type { AccountSetPasswordResponse } from '@daoyou/shared/contracts/account';
-import type { ApiFailure } from '@daoyou/shared/contracts/http';
+import type { AccountSetPasswordResponse } from '@daoyou/contracts/account';
+import type { ApiFailure } from '@daoyou/contracts/http';
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router';
 import {

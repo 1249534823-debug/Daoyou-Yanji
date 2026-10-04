@@ -1,7 +1,7 @@
 import { renderPrompt } from '@server/lib/prompts/index.js';
 import { generateAiObject, streamAiText } from '@server/utils/aiClient.js';
 import { truncateText } from '@server/utils/llmPayload.js';
-import type { BlackMarketNegotiationOutcome } from '@daoyou/shared/lib/blackMarketNegotiation';
+import type { BlackMarketNegotiationOutcome } from '@daoyou/game-rules/black-market/negotiation';
 import { z } from 'zod';
 import type { BlackMarketTurnContext, BlackMarketTurnProposal } from '@server/black-market/application/types.js';
 

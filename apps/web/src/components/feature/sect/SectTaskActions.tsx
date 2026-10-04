@@ -1,6 +1,6 @@
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton } from '@app/components/ui';
-import type { SectTaskViewData } from '@daoyou/shared/contracts/sect';
+import type { SectTaskViewData } from '@daoyou/contracts/sect';
 import { useEffect, useState } from 'react';
 import { createSectRoomNpcHref } from './sectRoomNavigation';
 import {

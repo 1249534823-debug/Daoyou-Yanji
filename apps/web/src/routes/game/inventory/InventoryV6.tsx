@@ -28,19 +28,18 @@ import { useCultivatorIdentity } from '@app/lib/resources/player';
 import type {
   InventoryAction,
   InventoryView,
-} from '@daoyou/shared/contracts/inventory';
+} from '@daoyou/contracts/inventory';
 import type {
   DaoEquipmentInstanceV1,
   DaoEquipmentSlot,
-} from '@daoyou/shared/engine/combat-v6/equipment/types';
-import { combatCharacterLevel } from '@daoyou/shared/engine/combat-v6/projection/character-level';
-import { BAG_CAPACITY, itemDefinition } from '@daoyou/shared/inventory';
-import {
-  sortInventoryItems,
-  type InventorySort,
-} from '@daoyou/shared/inventory/sorting';
-import { ConsumableFactsSchema } from '@daoyou/shared/items/definitions/consumables';
-import { EQUIPMENT_SLOT_NAMES } from '@daoyou/shared/items/definitions/equipment-blueprints';
+} from '@daoyou/game-domain/equipment/types';
+import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
+import { BAG_CAPACITY } from '@daoyou/game-domain/items/bag';
+import { itemDefinition } from '@daoyou/game-rules/inventory';
+import { type InventorySort } from '@daoyou/game-domain/items/sorting';
+import { sortInventoryItems } from '@daoyou/game-rules/inventory/sorting';
+import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
+import { EQUIPMENT_SLOT_NAMES } from '@daoyou/game-domain/equipment/slot-names';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router';
 import { EquipmentAction, EquipmentRack } from './EquipmentRack';

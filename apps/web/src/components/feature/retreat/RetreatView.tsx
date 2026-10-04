@@ -6,10 +6,10 @@ import {
   GameSceneTabs,
 } from '@app/components/game-shell';
 import { InkButton, InkInput, InkNotice } from '@app/components/ui';
-import { COMPREHENSION_INSIGHT_CAP } from '@daoyou/shared/config/cultivationTuning';
-import { QI_ACTION_COSTS } from '@daoyou/shared/config/qiSystem';
-import { getGameConceptLabel } from '@daoyou/shared/lib/gameConceptDisplay';
-import type { TaskInstance } from '@daoyou/shared/types/task';
+import { COMPREHENSION_INSIGHT_CAP } from '@daoyou/game-content/cultivation/cultivationTuning';
+import { QI_ACTION_COSTS } from '@daoyou/game-content/qi/config';
+import { getGameConceptLabel } from '@daoyou/game-content/presentation/concepts';
+import type { TaskInstance } from '@daoyou/game-domain/tasks/types';
 
 import { cn } from '@app/lib/cn';
 import { useState } from 'react';
@@ -441,7 +441,7 @@ export type RetreatViewProps = {
     facilityLevel: number;
     experienceBonusPercent: number;
     facilityLabel: string;
-    scene: import('@daoyou/shared/engine/sect').SectScenePresentation;
+    scene: import('@daoyou/game-rules/sect-organization').SectScenePresentation;
     onExit?(): void;
   };
 };

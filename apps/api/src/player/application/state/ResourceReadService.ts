@@ -3,8 +3,8 @@ import type {
   ResourceReadResponse,
   ResourceScope,
   ResourceTopic,
-} from '@daoyou/shared/contracts/resources';
-import { RESOURCE_DATA_SCHEMAS } from '@daoyou/shared/contracts/resources';
+} from '@daoyou/contracts/resources';
+import { RESOURCE_DATA_SCHEMAS } from '@server/lib/resources/schemas.js';
 import {
   db,
   runDbTasks,

@@ -1,8 +1,8 @@
 import { InkModal } from '@app/components/layout';
-import { consumableFactsOf } from '@daoyou/shared/items/definitions/consumables';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import type { RealmType } from '@daoyou/shared/types/constants';
-import type { Consumable } from '@daoyou/shared/types/cultivator';
+import { consumableFactsOf } from '@daoyou/game-domain/items/consumable-facts';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
+import type { RealmType } from '@daoyou/constants/realms';
+import type { Consumable } from '@daoyou/game-domain/cultivator';
 import { ItemPreview } from '../items/ItemPreview';
 
 interface ConsumableDetailModalProps {

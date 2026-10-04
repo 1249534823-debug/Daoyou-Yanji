@@ -5,11 +5,7 @@ import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkInput } from '@app/components/ui/InkInput';
 import { usePlayerMailSummary } from '@app/lib/resources/player';
-import {
-  SPONSORSHIP_TIER_IDS,
-  SPONSORSHIP_TIER_META,
-  type SponsorshipTierId,
-} from '@daoyou/shared/lib/sponsorship';
+import { SPONSORSHIP_TIER_IDS, SPONSORSHIP_TIER_META, type SponsorshipTierId } from '@daoyou/game-domain/sponsorship';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { MeritTierCard } from './components/MeritTierCard';
 import { MeritWall, type MeritPublicRow } from './components/MeritWall';

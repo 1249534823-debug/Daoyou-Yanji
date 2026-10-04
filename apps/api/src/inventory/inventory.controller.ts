@@ -11,7 +11,7 @@ import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import {
   InventoryActionSchema,
   InventoryQuerySchema,
-} from '@daoyou/shared/contracts/inventory';
+} from '@daoyou/contracts/inventory';
 import type { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { CombatErrors } from '../combat/combat-errors.js';

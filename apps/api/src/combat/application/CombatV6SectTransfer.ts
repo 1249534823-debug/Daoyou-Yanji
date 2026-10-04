@@ -12,12 +12,10 @@ import {
 import {
   createEmptySectCombatProgressV6,
   createFreshCombatV6MethodLevels,
-} from '@daoyou/shared/engine/combat-v6/build-state';
-import {
-  COMBAT_V6_SECT_DEFINITIONS,
-  type CombatV6SectId,
-} from '@daoyou/shared/engine/combat-v6/content';
-import { transferSectProgress } from '@daoyou/shared/engine/combat-v6/sect-progression';
+} from '@daoyou/game-rules/sects/build-state';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import { type CombatV6SectId } from '@daoyou/game-domain/combat/content';
+import { transferSectProgress } from '@daoyou/game-rules/sects/progression';
 import { eq } from 'drizzle-orm';
 import { InventoryError } from '@server/inventory/operations.js';
 

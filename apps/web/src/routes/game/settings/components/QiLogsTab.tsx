@@ -1,7 +1,7 @@
 import { apiFetch } from '@app/lib/api/fetch';
 import { GameLoadingState } from '@app/components/game-shell/GameLoadingState';
 import { InkButton } from '@app/components/ui/InkButton';
-import type { QiLogEntry, QiLogsResponse } from '@daoyou/shared/contracts/qi';
+import type { QiLogEntry, QiLogsResponse } from '@daoyou/contracts/qi';
 import { useEffect, useState } from 'react';
 import {
   SettingsMessage,

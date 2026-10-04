@@ -6,24 +6,17 @@ import { journalOperationKey } from '@server/lib/repositories/playerJournalRepos
 import {
   ARENA_SPARRING_RULES_V1,
   type ArenaRoomV1,
-} from '@daoyou/shared/contracts/arena';
-import type {
-  HuntLobby,
-  HuntMember,
-  HuntTeam,
-  HuntTeamCommand,
-} from '@daoyou/shared/contracts/hunts';
-import {
-  huntEventById,
-  huntIsOpen,
-  type HuntEvent,
-} from '@daoyou/shared/hunts/config';
+} from '@daoyou/contracts/arena';
+import type { HuntMember, HuntTeam } from '@daoyou/game-domain/hunts/team';
+import type { HuntLobby, HuntTeamCommand } from '@daoyou/contracts/hunts';
+import { type HuntEvent } from '@daoyou/game-domain/hunts/event';
+import { huntEventById, huntIsOpen } from '@daoyou/game-rules/hunts/config';
 import {
   huntRealmAllowed,
   huntStartError,
   selectHuntTeam,
-} from '@daoyou/shared/hunts/rules';
-import { REALM_VALUES, type RealmType } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-rules/hunts/rules';
+import { REALM_VALUES, type RealmType } from '@daoyou/constants/realms';
 import { and, eq } from 'drizzle-orm';
 import { hasActiveCombat } from '@server/combat/application/CombatOccupancy.js';
 import { ArenaV6Error, createArenaV6 } from '@server/combat/application/CombatV6ArenaService.js';

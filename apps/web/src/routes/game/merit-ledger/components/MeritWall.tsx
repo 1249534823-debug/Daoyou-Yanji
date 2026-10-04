@@ -1,9 +1,5 @@
 import { MeritStamp } from '@app/components/feature/merit/MeritStamp';
-import {
-  SPONSORSHIP_TIER_IDS,
-  SPONSORSHIP_TIER_META,
-  type SponsorshipTierId,
-} from '@daoyou/shared/lib/sponsorship';
+import { SPONSORSHIP_TIER_IDS, SPONSORSHIP_TIER_META, type SponsorshipTierId } from '@daoyou/game-domain/sponsorship';
 
 export type MeritPublicRow = {
   cultivatorId: string;

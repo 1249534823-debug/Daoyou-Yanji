@@ -13,7 +13,7 @@ import {
   type PlayerJournalPage,
   type PlayerJournalQuerySchema,
   type StoredJournalEvent,
-} from '@daoyou/shared/contracts/playerJournal';
+} from '@daoyou/contracts/playerJournal';
 import { and, desc, eq, sql } from 'drizzle-orm';
 import { createHash } from 'node:crypto';
 import type { z } from 'zod';

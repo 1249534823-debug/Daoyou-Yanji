@@ -9,14 +9,14 @@ import {
   UseFilters,
 } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
-import { CombatAutoRequestSchema } from '@daoyou/shared/combat-v6/auto';
+import { CombatAutoRequestSchema } from '@daoyou/contracts/combatAuto';
 import {
   CombatV6TrainingCommandRequestSchema,
   CombatV6TrainingEventsQuerySchema,
   CombatV6TrainingRevisionRequestSchema,
-} from '@daoyou/shared/contracts/combatV6';
-import { TOWER_BLESSING_IDS } from '@daoyou/shared/lib/tower/blessings';
-import { TOWER_ELIGIBLE_REALMS } from '@daoyou/shared/lib/tower/helpers';
+} from '@daoyou/contracts/combatV6';
+import { TOWER_BLESSING_IDS } from '@daoyou/game-domain/tower/blessings';
+import { TOWER_ELIGIBLE_REALMS } from '@daoyou/game-rules/tower/helpers';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { FirstQuery } from '../http/first-query.js';

@@ -5,7 +5,7 @@ import {
   type SectCraftContextKey,
   type SectDiscipleRank,
   type SectOrganizationModule,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import type {
   SectBenefitQueryContext,
   SectMembershipRecord,

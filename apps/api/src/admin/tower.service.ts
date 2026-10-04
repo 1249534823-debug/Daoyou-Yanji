@@ -6,15 +6,15 @@ import {
   regenerateTowerWeek,
   towerWeekFingerprint,
 } from '@server/lib/repositories/towerRepository.js';
-import type { AdminTowerView } from '@daoyou/shared/contracts/adminTower';
+import type { AdminTowerView } from '@daoyou/contracts/adminTower';
 import {
   publishedTowerEncounter,
   publishedTowerPreviews,
-} from '@daoyou/shared/engine/combat-v6/tower/published';
+} from '@daoyou/game-rules/tower/published';
 import {
   getNextTowerSeasonMeta,
   getTowerSeasonMeta,
-} from '@daoyou/shared/lib/tower/season';
+} from '@daoyou/game-rules/tower/season';
 import { z } from 'zod';
 import { TowerQuerySchema, TowerRegenerateSchema } from './tower-input.js';
 @Injectable()

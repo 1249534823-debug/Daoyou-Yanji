@@ -3,7 +3,7 @@ import {
   RoomView,
   type RoomActorView,
 } from '@app/components/feature/room';
-import type { SectRoomDefinition } from '@daoyou/shared/engine/sect';
+import type { SectRoomDefinition } from '@daoyou/game-rules/sect-organization';
 import { createElement, useMemo, useState } from 'react';
 import type { SectNpcConversationRegistry } from './SectNpcConversationRegistry';
 

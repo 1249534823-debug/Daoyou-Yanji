@@ -13,13 +13,13 @@ import type {
   ArenaRoomV1,
   ArenaStartResponseV1,
   ArenaTeamIdV1,
-} from '@daoyou/shared/contracts/arena';
+} from '@daoyou/contracts/arena';
 import {
   ARENA_ROOM_MAX_SEATS_PER_TEAM,
   allArenaSeatsReady,
   hasBothArenaTeams,
   isArenaRoomActive,
-} from '@daoyou/shared/contracts/arena';
+} from '@daoyou/contracts/arena';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router';
 

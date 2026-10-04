@@ -5,7 +5,7 @@ import { usePlayerSession } from '@app/lib/resources/player';
 import type {
   WorldChatChannel,
   WorldChatMessageDTO,
-} from '@daoyou/shared/types/world-chat';
+} from '@daoyou/contracts/world-chat-messages';
 import {
   useCallback,
   useEffect,

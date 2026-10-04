@@ -2,7 +2,7 @@ import type { SectTaskActionRendererProps } from '@app/components/feature/sect/S
 import type {
   SectTaskActionOutcome,
   SectTaskViewData,
-} from '@daoyou/shared/contracts/sect';
+} from '@daoyou/contracts/sect';
 import type { ComponentType } from 'react';
 import type { ZodType } from 'zod';
 

@@ -1,11 +1,11 @@
 import type { MapNodeAction } from '@app/components/feature/map/mapActions';
 import { GameIcon } from '@app/components/ui/GameIcon';
-import { ATLAS_REGIONS, hasAtlasMap } from '@daoyou/shared/lib/game/mapAtlas';
+import { ATLAS_REGIONS, hasAtlasMap } from '@daoyou/game-rules/world/mapAtlas';
 import {
   ATLAS_CATEGORY_IDS,
   getAtlasCategory,
-} from '@daoyou/shared/lib/game/mapAtlasCategories';
-import type { WorldMapLocation } from '@daoyou/shared/lib/game/mapSystem';
+} from '@daoyou/game-rules/world/mapAtlasCategories';
+import type { WorldMapLocation } from '@daoyou/game-domain/world/map';
 import { useEffect, useRef } from 'react';
 import { AtlasNodePanel } from './AtlasNodePanel';
 import { ATLAS_CATEGORY_STYLE } from './atlasMarkerStyle';

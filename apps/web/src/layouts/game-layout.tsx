@@ -35,10 +35,8 @@ import {
   useMatches,
   useNavigate,
 } from 'react-router';
-import {
-  SpecialSceneProvider,
-  useSpecialSceneBackOverride,
-} from './special-scene';
+import { SpecialSceneProvider } from './special-scene';
+import { useSpecialSceneBackOverride } from './useSpecialSceneBack.js';
 
 type SpecialBackAction = {
   type: 'path';

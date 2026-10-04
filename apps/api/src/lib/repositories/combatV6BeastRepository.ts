@@ -4,20 +4,16 @@ import {
   cultivatorBeasts,
   cultivators,
 } from '@server/lib/drizzle/schema.js';
-import type { WildSettlement } from '@daoyou/shared/contracts/combatV6Wild';
-import {
-  BeastLineupSchema,
-  type BeastRoster,
-  BeastSchema,
-  type SummonedBeast,
-  loseBeastLifespan,
-} from '@daoyou/shared/engine/combat-v6/beasts';
+import type { WildSettlement } from '@daoyou/game-domain/wild/settlement';
+import { BeastLineupSchema, type BeastRoster, type SummonedBeast } from '@daoyou/game-domain/beasts/schema';
+import { BeastSchema } from '@daoyou/game-rules/beasts/schema';
+import { loseBeastLifespan } from '@daoyou/game-rules/beasts/progression';
 import {
   BEAST_CAPACITY,
   gainBeastExp,
-} from '@daoyou/shared/engine/combat-v6/beasts/progression';
-import { combatCharacterLevel } from '@daoyou/shared/engine/combat-v6/projection/character-level';
-import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-rules/beasts/progression';
+import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { and, eq, inArray } from 'drizzle-orm';
 
 /** Identity and ownership have a single authority in relational columns. */

@@ -1,7 +1,7 @@
 import { GameImage } from '@app/components/ui/GameImage';
 import { cn } from '@app/lib/cn';
-import type { SponsorshipTierId } from '@daoyou/shared/lib/sponsorship';
-import { SPONSORSHIP_TIER_META } from '@daoyou/shared/lib/sponsorship';
+import type { SponsorshipTierId } from '@daoyou/game-domain/sponsorship';
+import { SPONSORSHIP_TIER_META } from '@daoyou/game-domain/sponsorship';
 
 type MeritStampPresentation = {
   stampSrc: string;

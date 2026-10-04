@@ -5,7 +5,7 @@ import type { LanguageModel } from 'ai';
 import {
   LLM_PROVIDER_DEFAULT_MODELS,
   type LlmProviderId,
-} from '@daoyou/shared/config/llm';
+} from '@daoyou/contracts/llm/config';
 
 export interface LlmProviderDef {
   id: LlmProviderId;

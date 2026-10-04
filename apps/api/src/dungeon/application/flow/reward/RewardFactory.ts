@@ -10,22 +10,17 @@
  * - 材料生成简化，使用 AI 提供的元素和类型信息
  */
 
-import type { ResourceOperation } from '@daoyou/shared/engine/resource/types';
-import { YieldCalculator } from '@daoyou/shared/engine/yield/YieldCalculator';
-import { calculateDungeonExp } from '@daoyou/shared/engine/cultivation/ExpBudgetCalculator';
-import {
-  getDungeonRewardBonus,
-  type DungeonDifficultyTier,
-} from '@daoyou/shared/lib/game/mapSystem';
-import type {
-  ElementType,
-  MaterialType,
-  Quality,
-  RealmStage,
-  RealmType,
-} from '@daoyou/shared/types/constants';
-import { QUALITY_VALUES } from '@daoyou/shared/types/constants';
-import type { Material } from '@daoyou/shared/types/cultivator';
+import type { ResourceOperation } from '@daoyou/game-domain/resources/operations';
+import { YieldCalculator } from '@daoyou/game-rules/yield/YieldCalculator';
+import { calculateDungeonExp } from '@daoyou/game-rules/cultivation/exp-gain-strategies';
+import { type DungeonDifficultyTier } from '@daoyou/game-domain/dungeon/difficulty';
+import { getDungeonRewardBonus } from '@daoyou/game-rules/world/dungeon';
+import type { ElementType } from '@daoyou/constants/elements';
+import type { MaterialType } from '@daoyou/game-domain/inventory';
+import type { Quality } from '@daoyou/constants/qualities';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
+import { QUALITY_VALUES } from '@daoyou/constants/qualities';
+import type { Material } from '@daoyou/game-domain/cultivator';
 import type { PlayerInfo } from '@server/dungeon/application/flow/types.js';
 import {
   REALM_QUALITY_CAP,

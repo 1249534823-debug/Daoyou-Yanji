@@ -9,7 +9,7 @@ import { InkButton } from '@app/components/ui/InkButton';
 import { InkCard } from '@app/components/ui/InkCard';
 import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
 import { InkList, InkListItem } from '@app/components/ui/InkList';
-import { getResourceTypeLabel } from '@daoyou/shared/lib/gameConceptDisplay';
+import { getResourceTypeLabel } from '@daoyou/game-content/presentation/concepts';
 import { useEffect, useState } from 'react';
 
 /**

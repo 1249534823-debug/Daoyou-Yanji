@@ -18,12 +18,12 @@ import {
   type SectRuntime,
   type SectSubmissionItemFacts,
   type SectSubmissionItemKind,
-} from '@daoyou/shared/engine/sect';
-import { itemDefinition } from '@daoyou/shared/inventory';
-import { InventoryEquipmentSchema } from '@daoyou/shared/inventory/equipment';
-import { ConsumableFactsSchema } from '@daoyou/shared/items/definitions/consumables';
-import { MaterialFactsSchema } from '@daoyou/shared/items/definitions/materials';
-import { materialFactsOf } from '@daoyou/shared/items/material';
+} from '@daoyou/game-rules/sect-organization';
+import { itemDefinition } from '@daoyou/game-rules/inventory';
+import { InventoryEquipmentSchema } from '@daoyou/game-rules/inventory/equipment';
+import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
+import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
+import { materialFactsOf } from '@daoyou/game-domain/items/material';
 import { and, eq, inArray } from 'drizzle-orm';
 import {
   assertInventoryIdle,

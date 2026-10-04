@@ -1,6 +1,6 @@
 import type { CreationProductRecord } from '@server/lib/repositories/creationProductRepository.js';
-import { legacyModifiers, legacyRecord } from '@daoyou/shared/legacy/products';
-import type { Artifact } from '@daoyou/shared/types/cultivator';
+import { legacyModifiers, legacyRecord } from '@daoyou/game-domain/legacy/products';
+import type { Artifact } from '@daoyou/game-domain/cultivator';
 
 function safeRecordJson(value: unknown): Record<string, unknown> {
   return legacyRecord(value);

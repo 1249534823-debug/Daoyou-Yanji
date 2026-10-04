@@ -3,35 +3,24 @@ import type {
   InventoryAction,
   InventoryQuerySchema,
   InventoryView,
-} from '@daoyou/shared/contracts/inventory';
-import { previewBeastFeeding } from '@daoyou/shared/engine/combat-v6/beasts/feeding';
-import { refineBeast } from '@daoyou/shared/engine/combat-v6/beasts/refinement';
-import { BEAST_REFINEMENT } from '@daoyou/shared/engine/combat-v6/beasts/refinement-config';
-import { rejuvenateBeast } from '@daoyou/shared/engine/combat-v6/beasts/rejuvenation';
-import {
-  compileDaoEquipmentSpecialLoadoutV1,
-  type DaoEquipmentInstanceV1,
-} from '@daoyou/shared/engine/combat-v6/equipment';
-import {
-  addItems,
-  BAG_CAPACITY,
-  emptySlot,
-  InventoryItemSchema,
-  itemDefinition,
-  learnBeastSkill,
-  sameStack,
-  sortBag,
-  type InventoryItem,
-  type ItemGrant,
-} from '@daoyou/shared/inventory';
-import { changeEquipmentLocation } from '@daoyou/shared/inventory/equipment-location';
-import { INVENTORY_KINDS } from '@daoyou/shared/inventory/sorting';
-import { BEAST_REJUVENATION } from '@daoyou/shared/items/definitions/beast-rejuvenation';
-import { ConsumableFactsSchema } from '@daoyou/shared/items/definitions/consumables';
-import { MaterialFactsSchema } from '@daoyou/shared/items/definitions/materials';
-import { SeedFactsSchema } from '@daoyou/shared/items/definitions/seeds';
-import { ITEM_DEFINITIONS } from '@daoyou/shared/items/registry';
-import { QUALITY_VALUES } from '@daoyou/shared/types/constants';
+} from '@daoyou/contracts/inventory';
+import { previewBeastFeeding } from '@daoyou/game-rules/beasts/feeding';
+import { refineBeast } from '@daoyou/game-rules/beasts/refinement';
+import { BEAST_REFINEMENT } from '@daoyou/game-content/beasts/refinement-config';
+import { rejuvenateBeast } from '@daoyou/game-rules/beasts/rejuvenation';
+import { compileDaoEquipmentSpecialLoadoutV1 } from '@daoyou/game-rules/equipment/compiler';
+import { type DaoEquipmentInstanceV1 } from '@daoyou/game-domain/equipment/types';
+import { BAG_CAPACITY } from '@daoyou/game-domain/items/bag';
+import { type InventoryItem, type ItemGrant } from '@daoyou/game-domain/items/inventory';
+import { addItems, emptySlot, InventoryItemSchema, itemDefinition, learnBeastSkill, sameStack, sortBag } from '@daoyou/game-rules/inventory';
+import { changeEquipmentLocation } from '@daoyou/game-rules/inventory/equipment-location';
+import { INVENTORY_KINDS } from '@daoyou/game-domain/items/sorting';
+import { BEAST_REJUVENATION } from '@daoyou/game-content/items/beast-rejuvenation';
+import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
+import { MaterialFactsSchema } from '@daoyou/game-domain/items/material-facts';
+import { SeedFactsSchema } from '@daoyou/game-domain/items/seed-facts';
+import { ITEM_DEFINITIONS } from '@daoyou/game-content/items/registry';
+import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 import {
   and,
   asc,

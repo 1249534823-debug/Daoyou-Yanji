@@ -1,10 +1,8 @@
-import { FRIEND_MAIL_TALISMAN_SCENARIO } from '@daoyou/shared/config/socialConfig';
-import {
-  mailGiftBlockReason,
-  type SendMailRequest,
-} from '@daoyou/shared/contracts/mail';
-import { itemDefinition, ItemGrantSchema } from '@daoyou/shared/inventory';
-import type { MailAttachment } from '@daoyou/shared/types/mail';
+import { FRIEND_MAIL_TALISMAN_SCENARIO } from '@daoyou/game-content/social/config';
+import { mailGiftBlockReason } from '@daoyou/game-rules/mail/inventory';
+import { type SendMailRequest } from '@daoyou/contracts/mail';
+import { itemDefinition, ItemGrantSchema } from '@daoyou/game-rules/inventory';
+import type { MailAttachment } from '@daoyou/game-domain/mail/attachment';
 import {
   consumeFirstTalismanByScenario,
   TalismanScenarioError,

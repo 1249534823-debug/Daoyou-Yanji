@@ -4,8 +4,8 @@ import {
   type DbTransaction,
 } from '@server/lib/drizzle/db.js';
 import { cultivatorStories } from '@server/lib/drizzle/schema.js';
-import { parseStoryProgress } from '@daoyou/shared/story/catalog';
-import type { StoryProgress } from '@daoyou/shared/story/schema';
+import { parseStoryProgress } from '@daoyou/game-rules/story/progress';
+import type { StoryProgress } from '@daoyou/game-domain/story/schema';
 import { and, eq } from 'drizzle-orm';
 
 export type CultivatorStoryRecord = typeof cultivatorStories.$inferSelect;

@@ -1,9 +1,9 @@
 import {
   ALCHEMY_INPUT_CONSTRAINTS,
   ALCHEMY_MAX_DOSE,
-} from '@daoyou/shared/config/alchemyInput';
-import { JournalRequestSchema } from '@daoyou/shared/contracts/playerJournal';
-import { PILL_FAMILY_VALUES } from '@daoyou/shared/types/consumable';
+} from '@daoyou/game-content/alchemy/alchemyInput';
+import { JournalRequestSchema } from '@daoyou/contracts/playerJournal';
+import { PILL_FAMILY_VALUES } from '@daoyou/game-domain/consumable';
 import { z } from 'zod';
 
 export const DiscoveryConfirmSchema = z.object({

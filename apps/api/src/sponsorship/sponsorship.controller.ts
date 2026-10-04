@@ -17,7 +17,7 @@ import {
   SponsorshipVisibilityRequestSchema,
   type SponsorshipCheckoutRequest,
   type SponsorshipClaimRequest,
-} from '@daoyou/shared/contracts/sponsorship';
+} from '@daoyou/contracts/sponsorship';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { apiErrorFilter } from '../http/error-filter.js';
 import { FirstQuery } from '../http/first-query.js';

@@ -1,7 +1,7 @@
 import {
   LlmByokConfigSchema,
   type LlmByokConfig,
-} from '@daoyou/shared/config/llm';
+} from '@daoyou/contracts/llm/config';
 
 export const LLM_STORAGE_KEY = 'daoyou_llm_config';
 

@@ -1,23 +1,12 @@
 import { apiFetch } from '@app/lib/api/fetch';
 import { realtimeClient } from '@app/lib/realtime/realtimeClient';
-import type { ApiFailure } from '@daoyou/shared/contracts/http';
+import type { ApiFailure } from '@daoyou/contracts/http';
 import type {
   PlayerResourceEventsResponse,
   PlayerStateMutationResponse,
-} from '@daoyou/shared/contracts/player';
-import {
-  advanceContiguousResourceCursor,
-  createResourceCacheKey,
-  getResourceScopeTransitionKinds,
-  orderResourceChanges,
-  ResourceChangeSchema,
-  type ResourceCacheKey,
-  type ResourceChange,
-  type ResourceDataMap,
-  type ResourceScope,
-  type ResourceScopeKind,
-  type ResourceTopic,
-} from '@daoyou/shared/contracts/resources';
+} from '@daoyou/contracts/player';
+import { ResourceChangeSchema } from '@app/lib/resources/schemas';
+import { advanceContiguousResourceCursor, createResourceCacheKey, getResourceScopeTransitionKinds, orderResourceChanges, type ResourceCacheKey, type ResourceChange, type ResourceDataMap, type ResourceScope, type ResourceScopeKind, type ResourceTopic } from '@daoyou/contracts/resources';
 
 export type ResourceStatus = 'idle' | 'loading' | 'ready' | 'stale' | 'error';
 

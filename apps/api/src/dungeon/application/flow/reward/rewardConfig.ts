@@ -4,7 +4,8 @@
  * 定义每个境界的奖励数值范围和评级倍率
  */
 
-import type { Quality, RealmType } from '@daoyou/shared/types/constants';
+import type { Quality } from '@daoyou/constants/qualities';
+import type { RealmType } from '@daoyou/constants/realms';
 import type { RewardRangeConfig, ValueRange } from '@server/dungeon/application/flow/reward/types.js';
 
 /**

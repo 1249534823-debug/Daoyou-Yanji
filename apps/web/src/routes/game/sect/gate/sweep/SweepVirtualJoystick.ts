@@ -1,5 +1,5 @@
 import { GAME_VIRTUAL_JOYSTICK_ASSETS } from '@app/components/feature/game-activity/virtualJoystickAssets';
-import { SWEEP_CANVAS, type SweepDirection } from '@daoyou/shared/engine/sect';
+import { SWEEP_CANVAS, type SweepDirection } from '@daoyou/game-rules/sect-organization';
 import * as Phaser from 'phaser';
 import VirtualJoystick from 'phaser4-rex-plugins/plugins/virtualjoystick.js';
 

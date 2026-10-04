@@ -1,5 +1,5 @@
 import { clientEnv } from '@app/lib/env';
-import type { RealtimeChannel } from '@daoyou/shared/contracts/realtime';
+import type { RealtimeChannel } from '@daoyou/contracts/realtime';
 
 export function resolveApiUrl(input: string) {
   if (!input.startsWith('/api/')) {

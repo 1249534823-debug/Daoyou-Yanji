@@ -8,35 +8,32 @@ import {
   useCultivatorProgress,
   useUnreadMailCount,
 } from '@app/lib/resources/player';
-import {
-  type CultivatorDisplayInput,
-  type CultivatorDisplaySnapshot,
-} from '@daoyou/shared/lib/cultivatorDisplay';
-import type { Cultivator } from '@daoyou/shared/types/cultivator';
+import { type CultivatorDisplayInput, type CultivatorDisplaySnapshot } from '@daoyou/game-domain/character/display';
+import type { Cultivator } from '@daoyou/game-domain/cultivator';
 import {
   BOTTLENECK_THRESHOLD,
   COMPREHENSION_INSIGHT_CAP,
-} from '@daoyou/shared/config/cultivationTuning';
+} from '@daoyou/game-content/cultivation/cultivationTuning';
 import {
   getBodyCultivationSummary,
   type BodyCultivationSummary,
-} from '@daoyou/shared/lib/bodyCultivation/summary';
+} from '@daoyou/game-rules/body-cultivation/summary';
 import {
   getPillToxicityStage,
   isConditionStatusActive,
-} from '@daoyou/shared/lib/condition';
-import { getConditionStatusTemplate } from '@daoyou/shared/lib/conditionStatusRegistry';
+} from '@daoyou/game-rules/condition';
+import { getConditionStatusTemplate } from '@daoyou/game-rules/condition/statuses';
 import {
   getGameConceptLabel,
   getResourceLabel,
   getResourceText,
-} from '@daoyou/shared/lib/gameConceptDisplay';
+} from '@daoyou/game-content/presentation/concepts';
 import {
   getMarrowWashSummary,
   type MarrowWashSummary,
-} from '@daoyou/shared/lib/marrowWash';
-import type { ConditionStatusKey } from '@daoyou/shared/types/condition';
-import { RealmType } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-rules/body-cultivation/marrow-wash';
+import type { ConditionStatusKey } from '@daoyou/game-domain/condition';
+import { RealmType } from '@daoyou/constants/realms';
 
 export interface GameHudMetric {
   key: 'hp' | 'mp' | 'cultivation' | 'insight';

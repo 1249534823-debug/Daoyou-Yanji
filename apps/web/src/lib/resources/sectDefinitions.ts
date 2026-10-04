@@ -1,4 +1,4 @@
-import type { ResourceTopic } from '@daoyou/shared/contracts/resources';
+import type { ResourceTopic } from '@daoyou/contracts/resources';
 import {
   defaultResourceReducer,
   loadResourceEndpoint,

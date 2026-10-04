@@ -1,13 +1,13 @@
 import { GameIcon } from '@app/components/ui/GameIcon';
 import type { GameSettings } from '@app/lib/game-setting';
 import { cn } from '@app/lib/cn';
-import { getAtlasRegion } from '@daoyou/shared/lib/game/mapAtlas';
+import { getAtlasRegion } from '@daoyou/game-rules/world/mapAtlas';
 import {
   ATLAS_CATEGORY_IDS,
   getAtlasCategory,
   type AtlasCategory,
-} from '@daoyou/shared/lib/game/mapAtlasCategories';
-import type { WorldMapLocation } from '@daoyou/shared/lib/game/mapSystem';
+} from '@daoyou/game-rules/world/mapAtlasCategories';
+import type { WorldMapLocation } from '@daoyou/game-domain/world/map';
 import {
   useEffect,
   useEffectEvent,

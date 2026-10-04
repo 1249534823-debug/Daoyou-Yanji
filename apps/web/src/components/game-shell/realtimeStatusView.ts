@@ -1,5 +1,5 @@
 import type { RealtimeChannelStatus } from '@app/lib/realtime/realtimeClient';
-import type { RealtimeChannel } from '@daoyou/shared/contracts/realtime';
+import type { RealtimeChannel } from '@daoyou/contracts/realtime';
 
 export const REALTIME_CHANNEL_META: Record<RealtimeChannel, { label: string }> = {
   'world-chat': { label: '聊天服务器' },

@@ -1,15 +1,12 @@
-import type { InventoryView } from '@daoyou/shared/contracts/inventory';
-import { itemDefinition } from '@daoyou/shared/inventory';
-import { INVENTORY_KINDS } from '@daoyou/shared/inventory/sorting';
+import type { InventoryView } from '@daoyou/contracts/inventory';
+import { itemDefinition } from '@daoyou/game-rules/inventory';
+import { INVENTORY_KINDS } from '@daoyou/game-domain/items/sorting';
 import {
   INVENTORY_MATERIAL_TYPES,
   MaterialFactsSchema,
-} from '@daoyou/shared/items/definitions/materials';
-import {
-  QUALITY_VALUES,
-  type ElementType,
-  type Quality,
-} from '@daoyou/shared/types/constants';
+} from '@daoyou/game-domain/items/material-facts';
+import { QUALITY_VALUES, type Quality } from '@daoyou/constants/qualities';
+import { type ElementType } from '@daoyou/constants/elements';
 
 type Item = InventoryView['items'][number];
 

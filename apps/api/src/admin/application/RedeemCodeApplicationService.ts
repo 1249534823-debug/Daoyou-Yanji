@@ -1,6 +1,6 @@
 import { redeemCodeClaims, redeemCodes } from '@server/lib/drizzle/schema.js';
 import { resolveRedeemCodeRewardAttachments } from '@server/lib/redeem/reward.js';
-import { materializeRewardAttachments } from '@daoyou/shared/contracts/adminRewards';
+import { materializeRewardAttachments } from '@daoyou/game-rules/rewards/items';
 import { and, eq, sql } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
 import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';

@@ -12,7 +12,7 @@ import {
   WorldChatCreateMessageSchema,
   type SectChatListQuery,
   type WorldChatCreateMessageRequest,
-} from '@daoyou/shared/contracts/world-chat';
+} from '@daoyou/contracts/world-chat';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { apiErrorFilter } from '../http/error-filter.js';
 import { FirstQuery } from '../http/first-query.js';

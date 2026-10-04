@@ -1,40 +1,35 @@
 import type {
-  DevGrantSchema,
+  DevGrant,
   ForgeRequest,
   ForgeView,
   VaultQuerySchema,
   VaultView,
   WithdrawMaterialSchema,
   WithdrawVaultPageSchema,
-} from '@daoyou/shared/contracts/forging';
-import {
-  BEAST_SPECIES,
-  BeastSchema,
-  generateStarterBeast,
-} from '@daoyou/shared/engine/combat-v6/beasts';
+} from '@daoyou/contracts/forging';
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts/content';
+import { BeastSchema } from '@daoyou/game-rules/beasts/schema';
+import { generateStarterBeast } from '@daoyou/game-rules/beasts/generator';
 import {
   BEAST_CAPACITY,
   gainBeastExp,
   nextBeastExp,
-} from '@daoyou/shared/engine/combat-v6/beasts/progression';
-import { generateForgedEquipment } from '@daoyou/shared/engine/combat-v6/equipment/forging';
-import { buildSpiritFieldSeedMaterialFromPlant } from '@daoyou/shared/engine/spirit-field/seedMaterial';
-import { forgingCost, forgingInputs, validateForgeWeaponType } from '@daoyou/shared/forging/rules';
-import { storyMarkForSignal } from '@daoyou/shared/story/signals';
-import {
-  addItems,
-  itemDefinition,
-  type InventoryItem,
-} from '@daoyou/shared/inventory';
-import { consumableFactsOf } from '@daoyou/shared/items/definitions/consumables';
+} from '@daoyou/game-rules/beasts/progression';
+import { generateForgedEquipment } from '@daoyou/game-rules/equipment/forging';
+import { buildSpiritFieldSeedMaterialFromPlant } from '@daoyou/game-domain/spirit-field/seedMaterial';
+import { forgingCost, forgingInputs, validateForgeWeaponType } from '@daoyou/game-rules/forging/rules';
+import { storyMarkForSignal } from '@daoyou/game-rules/story/signals';
+import { type InventoryItem } from '@daoyou/game-domain/items/inventory';
+import { addItems, itemDefinition } from '@daoyou/game-rules/inventory';
+import { consumableFactsOf } from '@daoyou/game-domain/items/consumable-facts';
 import {
   INVENTORY_MATERIAL_TYPES,
   MaterialFactsSchema,
-} from '@daoyou/shared/items/definitions/materials';
-import { seedFactsOf } from '@daoyou/shared/items/definitions/seeds';
-import { legacyMaterialUnavailableReason } from '@daoyou/shared/items/legacy-material';
-import { materialFactsOf } from '@daoyou/shared/items/material';
-import { parseMailAttachments } from '@daoyou/shared/lib/itemLibrary';
+} from '@daoyou/game-domain/items/material-facts';
+import { seedFactsOf } from '@daoyou/game-domain/items/seed-facts';
+import { legacyMaterialUnavailableReason } from '@daoyou/game-rules/items/legacy-material';
+import { materialFactsOf } from '@daoyou/game-domain/items/material';
+import { parseMailAttachments } from '@daoyou/game-rules/mail/attachments';
 import { and, asc, count, eq, gte, ilike, inArray, or, sql } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
 import type { z } from 'zod';
@@ -531,7 +526,7 @@ async function withdrawVaultItem(
   return { withdrawn: row.quantity, stored };
 }
 
-export async function grantDevResources(input: z.infer<typeof DevGrantSchema>) {
+export async function grantDevResources(input: DevGrant) {
   return mutate(input.cultivatorId, async (tx) => {
     const ids: string[] = [];
     for (const grant of input.grants) {

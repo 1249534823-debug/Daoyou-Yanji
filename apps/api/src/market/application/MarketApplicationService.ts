@@ -1,5 +1,5 @@
-import type { MarketBuyInput } from '@daoyou/shared/contracts/market';
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
+import type { MarketBuyInput } from '@daoyou/contracts/market';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
 import type { CultivatorQueriesService } from '@server/cultivator/cultivator-queries.service.js';
 import type { DbClient, DbTransaction } from '@server/lib/drizzle/db.js';
 import { cultivators } from '@server/lib/drizzle/schema.js';

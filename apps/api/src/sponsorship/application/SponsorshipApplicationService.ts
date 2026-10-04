@@ -27,14 +27,8 @@ import {
 import { hashSponsorshipClaimCode } from '@server/lib/sponsorship/claimCode.js';
 import { requireSponsorshipProvider } from '@server/lib/sponsorship/providerRegistry.js';
 import type { ProviderOrder } from '@server/lib/sponsorship/types.js';
-import {
-  formatSponsorshipMonth,
-  highestSponsorshipTier,
-  isSponsorshipOrderAccepted,
-  resolveSponsorshipTier,
-  SPONSORSHIP_TIER_META,
-  type SponsorshipTierId,
-} from '@daoyou/shared/lib/sponsorship';
+import { SPONSORSHIP_TIER_META, type SponsorshipTierId } from '@daoyou/game-domain/sponsorship';
+import { formatSponsorshipMonth, highestSponsorshipTier, isSponsorshipOrderAccepted, resolveSponsorshipTier } from '@daoyou/game-rules/sponsorship';
 import {
   and,
   asc,

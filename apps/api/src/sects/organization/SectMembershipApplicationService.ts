@@ -1,16 +1,16 @@
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
 import type {
   SectMemberData,
   SectContextData,
   SectInfrastructureData,
   SectPromotionEvaluationData,
   SectStipendData,
-} from '@daoyou/shared/contracts/sect';
+} from '@daoyou/contracts/sect';
 import {
   PromotionRequirementSpecification,
   SectMembership,
-} from '@daoyou/shared/engine/sect';
-import type { Cultivator } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-rules/sect-organization';
+import type { Cultivator } from '@daoyou/game-domain/cultivator';
 import type { SectBenefitService } from '@server/sects/organization/SectBenefitService.js';
 import type { SectDomainEventDispatcherFactory } from '@server/sects/organization/SectDomainEventDispatcher.js';
 import {

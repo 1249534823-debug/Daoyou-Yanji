@@ -3,11 +3,11 @@ import { GameIcon } from '@app/components/ui/GameIcon';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkNotice } from '@app/components/ui/InkNotice';
 import { InkSelect } from '@app/components/ui/InkSelect';
-import type { AdminTowerView } from '@daoyou/shared/contracts/adminTower';
+import type { AdminTowerView } from '@daoyou/contracts/adminTower';
 import {
   TOWER_ELIGIBLE_REALMS,
   TOWER_MIN_REALM,
-} from '@daoyou/shared/lib/tower/helpers';
+} from '@daoyou/game-rules/tower/helpers';
 import { useEffect, useState } from 'react';
 
 const kindLabels = { normal: '普通', elite: '精英', boss: '首领' };

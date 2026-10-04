@@ -4,7 +4,7 @@ import {
   subscribePwaInstall,
 } from '@app/lib/pwaInstall';
 import { useCallback, useMemo, useSyncExternalStore } from 'react';
-import { useInkUI } from './InkUIProvider';
+import { useInkUI } from './useInkUI.js';
 import { PwaInstallContext } from './pwaInstallContext';
 
 function ManualInstallInstructions({ ios }: { ios: boolean }) {

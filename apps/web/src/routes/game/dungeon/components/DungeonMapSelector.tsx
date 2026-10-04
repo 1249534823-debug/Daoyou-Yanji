@@ -1,9 +1,9 @@
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkCard } from '@app/components/ui/InkCard';
 import { InkNotice } from '@app/components/ui/InkNotice';
-import { dungeonReadiness } from '@daoyou/shared/lib/dungeon/readiness';
-import { MapNodeInfo } from '@daoyou/shared/lib/game/mapSystem';
-import type { RealmType } from '@daoyou/shared/types/constants';
+import { dungeonReadiness } from '@daoyou/game-rules/dungeon/readiness';
+import { MapNodeInfo } from '@daoyou/game-domain/world/map';
+import type { RealmType } from '@daoyou/constants/realms';
 import { MapNodeCard } from '../MapNodeCard';
 type NoviceDungeonReadiness = ReturnType<typeof dungeonReadiness>;
 

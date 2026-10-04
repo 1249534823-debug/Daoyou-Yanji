@@ -1,4 +1,5 @@
-import { RANKING_REWARDS, REALM_VALUES } from '@daoyou/shared/types/constants';
+import { RANKING_REWARDS } from '@daoyou/game-content/economy';
+import { REALM_VALUES } from '@daoyou/constants/realms';
 import {
   generateDailyMarketMaterialLibraryEntries,
   ITEM_LIBRARY_SYSTEM_USER_ID,

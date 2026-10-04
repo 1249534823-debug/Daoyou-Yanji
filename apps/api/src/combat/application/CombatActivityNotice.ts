@@ -9,8 +9,8 @@ import { activeSectTaskBattle } from '@server/combat/application/CombatV6SectTas
 import { CombatV6WildStore } from '@server/combat/application/CombatV6WildStore.js';
 import { pendingRanking } from '@server/combat/application/CombatV6RankingService.js';
 import { towerRunKey } from '@server/tower/occupancy.js';
-import type { CombatActivityNotice } from '@daoyou/shared/contracts/combatActivity';
-import { shouldExpireTowerRun } from '@daoyou/shared/lib/tower/lifecycle';
+import type { CombatActivityNotice } from '@daoyou/contracts/combatActivity';
+import { shouldExpireTowerRun } from '@daoyou/game-rules/tower/lifecycle';
 import { and, eq, inArray, isNotNull, ne, or } from 'drizzle-orm';
 
 const runtime = new CombatV6RuntimeStore();

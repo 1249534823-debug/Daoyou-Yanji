@@ -1,20 +1,16 @@
 import * as creationProductRepository from '@server/lib/repositories/creationProductRepository.js';
 import { calculateSingleElixirScore } from '@server/utils/rankingUtils.js';
-import { legacyProductForGrant } from '@daoyou/shared/legacy/products';
-import { buildConsumableStackKey } from '@daoyou/shared/lib/consumables';
-import {
-  ELEMENT_VALUES,
-  ElementType,
-  MaterialType,
-  Quality,
-  QUALITY_ORDER,
-} from '@daoyou/shared/types/constants';
+import { legacyProductForGrant } from '@daoyou/game-domain/legacy/products';
+import { buildConsumableStackKey } from '@daoyou/game-domain/consumables/identity';
+import { ELEMENT_VALUES, ElementType } from '@daoyou/constants/elements';
+import { MaterialType } from '@daoyou/game-domain/inventory';
+import { Quality, QUALITY_ORDER } from '@daoyou/constants/qualities';
 import type {
   Artifact,
   Consumable,
   Cultivator,
   Material,
-} from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-domain/cultivator';
 import {
   and,
   asc,

@@ -1,7 +1,7 @@
 import type {
   WorldChatChannel,
   WorldChatMessageDTO,
-} from '@daoyou/shared/types/world-chat';
+} from '@daoyou/contracts/world-chat-messages';
 
 export const PAGE_SIZE = 20;
 

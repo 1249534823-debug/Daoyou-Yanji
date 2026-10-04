@@ -3,7 +3,7 @@ import {
   mutateManuals,
   readManuals,
 } from '@server/combat/application/CombatV6ManualService.js';
-import type { ManualActionSchema } from '@daoyou/shared/contracts/combatV6Manuals';
+import type { ManualActionSchema } from '@daoyou/game-domain/manuals/action';
 import type { z } from 'zod';
 
 @Injectable()

@@ -7,7 +7,7 @@ import {
 } from '@server/lib/drizzle/schema.js';
 import { readBeastRoster } from '@server/lib/repositories/combatV6BeastRepository.js';
 import { readCustomAutoStrategy } from '@server/lib/repositories/combatV6AutoStrategyRepository.js';
-import { defaultAutoStrategy } from '@daoyou/shared/combat-v6/auto-strategy';
+import { defaultAutoStrategy } from '@daoyou/game-content/combat/auto-strategies';
 import {
   characterIdentityRow,
   findActiveSectMembership,
@@ -18,23 +18,19 @@ import {
 } from '@server/lib/repositories/sectCombatRepository.js';
 import { lockCultivatorForStateMutation } from '@server/lib/repositories/playerStateRepository.js';
 import { ResourceEventCommitter } from '@server/player/application/state/ResourceEventCommitter.js';
-import type {
-  SectPathSelectionRequest,
-  SectCombatView,
-} from '@daoyou/shared/contracts/combatV6';
-import { COMBAT_V6_BUILD_ERROR_CODE } from '@daoyou/shared/contracts/combatV6';
+import type { SectCombatView } from '@daoyou/game-domain/sects/build';
+import type { SectPathSelectionRequest } from '@daoyou/contracts/combatV6';
+import { COMBAT_V6_BUILD_ERROR_CODE } from '@daoyou/contracts/combatV6';
 import {
   createSectCombatView,
   createFreshCombatV6MethodLevels,
-} from '@daoyou/shared/engine/combat-v6/build-state';
-import {
-  COMBAT_V6_SECT_DEFINITIONS,
-  type CombatV6SectId,
-} from '@daoyou/shared/engine/combat-v6/content';
-import type { CombatV6TrainingPlayerInput } from '@daoyou/shared/engine/combat-v6/encounter';
-import { projectCharacterToCombatV6 } from '@daoyou/shared/engine/combat-v6/projection';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-rules/sects/build-state';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import { type CombatV6SectId } from '@daoyou/game-domain/combat/content';
+import type { CombatV6TrainingPlayerInput } from '@daoyou/game-domain/combat/encounter';
+import { projectCharacterToCombatV6 } from '@daoyou/game-rules/combat/projection/project-character';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { and, eq, isNull, sql } from 'drizzle-orm';
 import { assertCombatV6MutationAllowed } from '@server/combat/application/CombatV6MutationGuard.js';
 

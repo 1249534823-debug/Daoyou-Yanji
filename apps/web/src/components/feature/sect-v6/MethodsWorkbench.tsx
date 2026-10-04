@@ -1,13 +1,11 @@
 import { InkButton } from '@app/components/ui/InkButton';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/shared/engine/combat-v6/content';
-import {
-  methodLevelCap,
-  methodTrainingCost,
-} from '@daoyou/shared/engine/combat-v6/sect-progression';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import { methodLevelCap } from '@daoyou/game-rules/sects/progression-pack';
+import { methodTrainingCost } from '@daoyou/game-rules/sects/progression';
 import {
   SECT_PANEL_LABELS,
   sectSkillCatalog,
-} from '@daoyou/shared/engine/combat-v6/sect-progression/presentation';
+} from '@daoyou/game-rules/sects/presentation';
 import { useMemo, useState } from 'react';
 import {
   actionProblem,

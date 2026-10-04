@@ -7,7 +7,7 @@ import type {
   ResourceCacheKey,
   ResourceDataMap,
   ResourceTopic,
-} from '@daoyou/shared/contracts/resources';
+} from '@daoyou/contracts/resources';
 import { useCallback, useMemo, useSyncExternalStore } from 'react';
 
 const unavailableSnapshot: ResourceSnapshot<never> = {

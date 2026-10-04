@@ -11,12 +11,8 @@ import {
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import { isRedisLockContention } from '@server/lib/redis/lock.js';
 import { ArenaV6Error } from '@server/combat/application/CombatV6ArenaService.js';
-import {
-  HuntCreateTeamSchema,
-  HuntEventIdSchema,
-  HuntTeamCommandSchema,
-  type HuntTeamCommand,
-} from '@daoyou/shared/contracts/hunts';
+import { HuntEventIdSchema } from '@daoyou/game-domain/hunts/event-id';
+import { HuntCreateTeamSchema, HuntTeamCommandSchema, type HuntTeamCommand } from '@daoyou/contracts/hunts';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { apiErrorFilter } from '../http/error-filter.js';

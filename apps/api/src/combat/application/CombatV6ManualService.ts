@@ -15,14 +15,12 @@ import {
   getOrInitCultivationProgress,
   stripExpCapForStorage,
   syncBottleneckState,
-} from '@daoyou/shared/engine/cultivation/cultivationUtils';
-import type {
-  ManualAction,
-  ManualView,
-} from '@daoyou/shared/contracts/combatV6Manuals';
-import { manualJadeCost, previewManualAction } from '@daoyou/shared/manuals/action';
-import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
-import type { CultivationProgress } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-rules/cultivation/cultivationUtils';
+import type { ManualAction } from '@daoyou/game-domain/manuals/action';
+import type { ManualView } from '@daoyou/contracts/combatV6Manuals';
+import { manualJadeCost, previewManualAction } from '@daoyou/game-rules/manuals/action';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
+import type { CultivationProgress } from '@daoyou/game-domain/cultivator';
 import { and, eq } from 'drizzle-orm';
 import {
   assertInventoryIdle,

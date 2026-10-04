@@ -17,7 +17,7 @@ import {
   createActivityImmersiveNavigationState,
   requestActivityImmersiveMode,
 } from '@app/lib/gameActivityImmersive';
-import { STANDARD_SECT_PRESENTATION } from '@daoyou/shared/engine/sect';
+import { STANDARD_SECT_PRESENTATION } from '@daoyou/game-rules/sect-organization';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { SectPermissionBoundary, SectScene } from '../components/SectScene';

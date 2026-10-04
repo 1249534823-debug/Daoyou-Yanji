@@ -5,14 +5,12 @@ import { InkModal } from '@app/components/layout';
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkButton, InkInput, InkNotice, InkSelect } from '@app/components/ui';
 import { useResourceMutation } from '@app/lib/resources/mutations';
-import {
-  AUCTION_MAX_UNIT_PRICE,
-  calculateAuctionSettlement,
-} from '@daoyou/shared/config/auctionConfig';
-import { AuctionBeastListSchema } from '@daoyou/shared/contracts/auction';
-import { beastAuctionBlockReason } from '@daoyou/shared/contracts/beastTrade';
-import type { BeastManagementView } from '@daoyou/shared/contracts/combatV6Beasts';
-import type { FriendCultivatorSummary } from '@daoyou/shared/contracts/friends';
+import { AUCTION_MAX_UNIT_PRICE } from '@daoyou/game-domain/auction/limits';
+import { calculateAuctionSettlement } from '@daoyou/game-rules/auction/settlement';
+import { AuctionBeastListSchema } from '@daoyou/contracts/auction';
+import { beastAuctionBlockReason } from '@daoyou/game-rules/beasts/trade';
+import type { BeastManagementView } from '@daoyou/contracts/combatV6Beasts';
+import type { FriendCultivatorSummary } from '@daoyou/contracts/friends';
 import { useEffect, useRef, useState } from 'react';
 import { combatV6Request } from '../feature/combat-v6/request';
 

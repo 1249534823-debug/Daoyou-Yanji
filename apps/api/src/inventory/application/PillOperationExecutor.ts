@@ -1,52 +1,48 @@
-import { getOrInitCultivationProgress } from '@daoyou/shared/engine/cultivation/cultivationUtils';
-import { COMPREHENSION_INSIGHT_CAP } from '@daoyou/shared/config/cultivationTuning';
-import {
-  CULTIVATION_PILL_MAX_QUALITY_BY_REALM,
-  getMinimumPillQualityByRealm,
-  PILL_TOXICITY_CAP,
-  REALM_PILL_USAGE_LIMITS,
-} from '@daoyou/shared/config/consumableSystem';
-import type { CultivatorDisplayInput } from '@daoyou/shared/lib/cultivatorDisplay';
+import { getOrInitCultivationProgress } from '@daoyou/game-rules/cultivation/cultivationUtils';
+import { COMPREHENSION_INSIGHT_CAP } from '@daoyou/game-content/cultivation/cultivationTuning';
+import { getMinimumPillQualityByRealm } from '@daoyou/game-rules/consumables/scaling';
+import { CULTIVATION_PILL_MAX_QUALITY_BY_REALM, PILL_TOXICITY_CAP, REALM_PILL_USAGE_LIMITS } from '@daoyou/game-content/consumables/config';
+import type { CultivatorDisplayInput } from '@daoyou/game-domain/character/display';
 import {
   BODY_CULTIVATION_REALM_REQUIREMENTS,
   BODY_REALM_LABELS,
   getBodyTrackKeyFromPath,
   isBodyCultivationTrackPath,
   isLegacyTemperingTrackPath,
-} from '@daoyou/shared/lib/bodyCultivation/config';
+} from '@daoyou/game-rules/body-cultivation/config';
 import {
   createDefaultBodyCultivationState,
   normalizeBodyCultivationState,
-} from '@daoyou/shared/lib/bodyCultivation/normalize';
-import { getConditionStatusCureTargets } from '@daoyou/shared/lib/condition';
-import { getConditionStatusTemplate } from '@daoyou/shared/lib/conditionStatusRegistry';
+} from '@daoyou/game-rules/body-cultivation/normalize';
+import { getConditionStatusCureTargets } from '@daoyou/game-rules/condition';
+import { getConditionStatusTemplate } from '@daoyou/game-rules/condition/statuses';
 import {
   isPillConsumable,
   isSpiritFruitConsumable,
-} from '@daoyou/shared/lib/consumables';
+} from '@daoyou/game-domain/consumables/identity';
 import {
   CULTIVATION_BOOST_STATUS_KEY,
   getCultivationBoostPercent,
-} from '@daoyou/shared/lib/cultivationBoost';
+} from '@daoyou/game-rules/consumables/cultivation-boost';
 import {
   advanceMarrowWashTowardBreakthrough,
   getMarrowWashLevelCapByCultivationRealm,
   getNextMarrowWashBreakthroughLevel,
   isMarrowWashBreakthroughRequired,
   normalizeMarrowWashState,
-} from '@daoyou/shared/lib/marrowWash';
+} from '@daoyou/game-rules/body-cultivation/marrow-wash';
 import {
   BREAKTHROUGH_FOCUS_STATUS_KEY,
   CLEAR_MIND_STATUS_KEY,
   getBreakthroughFocusBonus,
   getProtectMeridiansReductionPercent,
   PROTECT_MERIDIANS_STATUS_KEY,
-} from '@daoyou/shared/lib/pillEffectScaling';
+} from '@daoyou/game-rules/alchemy/pillEffectScaling';
 import {
   getPillUsageLimitReachedText,
   getPrimaryPillQuotaCategory,
-} from '@daoyou/shared/lib/pillUsageText';
-import { getTrackConfig } from '@daoyou/shared/lib/trackConfigRegistry';
+} from '@daoyou/game-rules/alchemy/pillUsageText';
+import { getTrackConfig } from '@daoyou/game-rules/condition/tracks';
 import type {
   BodyCultivationTrackPath,
   ConditionStatusDuration,
@@ -54,14 +50,14 @@ import type {
   ConditionStatusKey,
   ConditionTrackPath,
   CultivatorCondition,
-} from '@daoyou/shared/types/condition';
-import { QUALITY_ORDER } from '@daoyou/shared/types/constants';
-import type { ConditionOperation, PillSpec } from '@daoyou/shared/types/consumable';
+} from '@daoyou/game-domain/condition';
+import { QUALITY_ORDER } from '@daoyou/constants/qualities';
+import type { ConditionOperation, PillSpec } from '@daoyou/game-domain/consumable';
 import type {
   Consumable,
   CultivationProgress,
   Cultivator,
-} from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-domain/cultivator';
 import { ConditionService } from '@server/cultivator/application/ConditionService.js';
 
 const EXECUTION_ORDER: ConditionOperation['type'][] = [

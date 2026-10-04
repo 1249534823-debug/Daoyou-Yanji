@@ -2,15 +2,15 @@ import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
 import {
   getOrInitCultivationProgress,
   stripExpCapForStorage,
-} from '@daoyou/shared/engine/cultivation/cultivationUtils';
-import { allowsLocalDevTools } from '@daoyou/shared/config/deployment';
-import type { DevCultivatorPatch } from '@daoyou/shared/contracts/devTools';
-import { compileCurrentSectCombatV6 } from '@daoyou/shared/engine/combat-v6/content';
-import { combatCharacterLevel } from '@daoyou/shared/engine/combat-v6/projection/character-level';
-import { SECT_PROGRESSION } from '@daoyou/shared/engine/combat-v6/sect-progression/pack';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
-import type { CultivationProgress } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-rules/cultivation/cultivationUtils';
+import { allowsLocalDevTools } from '@daoyou/contracts/dev-tools-access';
+import type { DevCultivatorPatch } from '@daoyou/contracts/devTools';
+import { compileCurrentSectCombatV6 } from '@daoyou/game-rules/sects';
+import { getRealmStageLevel as combatCharacterLevel } from '@daoyou/game-domain/progression/realms';
+import { SECT_PROGRESSION } from '@daoyou/game-rules/sects/progression-pack';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
+import type { CultivationProgress } from '@daoyou/game-domain/cultivator';
 import { and, eq } from 'drizzle-orm';
 import { db } from '@server/lib/drizzle/db.js';
 import {

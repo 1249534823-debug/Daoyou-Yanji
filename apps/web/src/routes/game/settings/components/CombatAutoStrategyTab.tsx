@@ -1,13 +1,8 @@
 import { apiFetch } from '@app/lib/api/fetch';
 import { InkButton } from '@app/components/ui/InkButton';
-import { autoStatusChoices } from '@daoyou/shared/combat-v6/auto-status-options';
-import {
-  autoComparison,
-  MAX_AUTO_STRATEGY_RULES,
-  SaveAutoStrategySchema,
-  type AutoComparison,
-  type AutoStrategy,
-} from '@daoyou/shared/combat-v6/auto-strategy';
+import { autoStatusChoices } from '@daoyou/game-content/combat/auto-status-options';
+import { MAX_AUTO_STRATEGY_RULES, SaveAutoStrategySchema, type AutoComparison, type AutoStrategy } from '@daoyou/game-domain/combat/auto-strategy';
+import { autoComparison } from '@daoyou/game-rules/combat/auto-strategy';
 import { useEffect, useState } from 'react';
 import { SettingsMessage } from './SettingsFields';
 

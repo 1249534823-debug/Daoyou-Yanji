@@ -8,38 +8,36 @@ import {
   type PreparedAlchemyMaterial,
 } from '@server/alchemy/application/AlchemyRecipeRules.js';
 import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
-import { ELEMENT_PREFIX_MAP } from '@daoyou/shared/config/alchemyConfig';
-import { ALCHEMY_MAX_DOSE } from '@daoyou/shared/config/alchemyInput';
-import type { ResourceOperationSettlement } from '@daoyou/shared/engine/resource/types';
-import type { AlchemyBagMaterial } from '@daoyou/shared/inventory/alchemy';
+import { ELEMENT_PREFIX_MAP } from '@daoyou/game-content/alchemy/alchemyConfig';
+import { ALCHEMY_MAX_DOSE } from '@daoyou/game-content/alchemy/alchemyInput';
+import type { ResourceOperationSettlement } from '@daoyou/game-domain/resources/operations';
+import type { AlchemyBagMaterial } from '@daoyou/game-rules/inventory/alchemy';
 import {
   calculateAlchemyCost,
   calculateHighestMaterialRank,
-} from '@daoyou/shared/lib/alchemyCost';
-import { normalizeAlchemyEffectRoute } from '@daoyou/shared/lib/alchemyEffectResolver';
-import { isAlchemyMaterialType } from '@daoyou/shared/lib/alchemyMaterials';
+} from '@daoyou/game-rules/alchemy/alchemyCost';
+import { normalizeAlchemyEffectRoute } from '@daoyou/game-rules/alchemy/alchemyEffectResolver';
+import { isAlchemyMaterialType } from '@daoyou/game-rules/alchemy/alchemyMaterials';
 import {
   calculateAlchemyQiCost,
   rollAlchemyYieldProfile,
   toAlchemyYieldDisplayProfile,
-} from '@daoyou/shared/lib/alchemyYield';
+} from '@daoyou/game-rules/alchemy/alchemyYield';
 import {
   getBreakthroughPillLabel,
   getNextMajorRealm,
-} from '@daoyou/shared/lib/breakthroughPill';
+} from '@daoyou/game-rules/consumables/breakthrough-pill';
 import {
   evaluateFateContext,
   getAlchemySpiritStoneMultiplier,
   scaleFateAdjustedCost,
-} from '@daoyou/shared/lib/fates';
-import type {
-  ElementType,
-  MaterialType,
-  Quality,
-  RealmType,
-} from '@daoyou/shared/types/constants';
-import type { AlchemyRecipePlan, PillSpec } from '@daoyou/shared/types/consumable';
-import type { Consumable, PreHeavenFate } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-rules/character/fates';
+import type { ElementType } from '@daoyou/constants/elements';
+import type { MaterialType } from '@daoyou/game-domain/inventory';
+import type { Quality } from '@daoyou/constants/qualities';
+import type { RealmType } from '@daoyou/constants/realms';
+import type { AlchemyRecipePlan, PillSpec } from '@daoyou/game-domain/consumable';
+import type { Consumable, PreHeavenFate } from '@daoyou/game-domain/cultivator';
 import { and, eq, sql } from 'drizzle-orm';
 import {
   consumeAlchemyMaterials,
@@ -84,7 +82,7 @@ export interface ImprovisedAlchemyCraftResult {
   consumables?: Consumable[];
   /** 本炉新增数量，不能使用合堆后的库存行作为结果展示数据。 */
   craftedConsumables?: Consumable[];
-  yieldProfile?: import('@daoyou/shared/types/consumable').AlchemyYieldDisplayProfile;
+  yieldProfile?: import('@daoyou/game-domain/consumable').AlchemyYieldDisplayProfile;
   formulaDiscovery?: Awaited<ReturnType<typeof buildDiscoveryCandidate>>;
 }
 
@@ -228,7 +226,7 @@ function buildFallbackDescription(
 function buildAlchemySpec(
   synthesis: ReturnType<typeof synthesizeAlchemyFromPlan>,
   materialNames: string[],
-  route: import('@daoyou/shared/types/consumable').AlchemyEffectRoute,
+  route: import('@daoyou/game-domain/consumable').AlchemyEffectRoute,
 ): Omit<PillSpec, 'operations'> {
   return {
     kind: 'pill',

@@ -1,12 +1,10 @@
 import {
   reduceInventoryResourcePage,
   type ResourceTopic,
-} from '@daoyou/shared/contracts/resources';
-import type {
-  ElementType,
-  MaterialType,
-  Quality,
-} from '@daoyou/shared/types/constants';
+} from '@daoyou/contracts/resources';
+import type { ElementType } from '@daoyou/constants/elements';
+import type { MaterialType } from '@daoyou/game-domain/inventory';
+import type { Quality } from '@daoyou/constants/qualities';
 import { loadResourceEndpoint, resolveTopicScope } from './definitionCore';
 import type { ResourceDefinition } from './store';
 

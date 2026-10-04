@@ -2,22 +2,22 @@ import { describeJournal } from '@server/player/application/JournalSettlement.js
 import {
   getOrInitCultivationProgress,
   stripExpCapForStorage,
-} from '@daoyou/shared/engine/cultivation/cultivationUtils';
+} from '@daoyou/game-rules/cultivation/cultivationUtils';
 import type {
   EnlightenmentRequest,
   EnlightenmentResult,
   EnlightenmentView,
-} from '@daoyou/shared/contracts/enlightenment';
-import { addItems } from '@daoyou/shared/inventory';
-import { inventoryStackIdentity } from '@daoyou/shared/inventory/stack-key';
-import { evaluateFateContext } from '@daoyou/shared/lib/fates';
-import { projectNaturalQiState } from '@daoyou/shared/lib/qi';
+} from '@daoyou/contracts/enlightenment';
+import { addItems } from '@daoyou/game-rules/inventory';
+import { inventoryStackIdentity } from '@daoyou/game-rules/inventory/stack-key';
+import { evaluateFateContext } from '@daoyou/game-rules/character/fates';
+import { projectNaturalQiState } from '@daoyou/game-rules/qi/recovery';
 import {
   prepareEnlightenment,
   rollEnlightenment,
-} from '@daoyou/shared/manuals/enlightenment';
-import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
-import type { CultivationProgress } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-rules/manuals/enlightenment';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
+import type { CultivationProgress } from '@daoyou/game-domain/cultivator';
 import { and, eq, inArray, or } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
 import { db, type DbExecutor } from '@server/lib/drizzle/db.js';

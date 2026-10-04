@@ -1,5 +1,5 @@
-import { AUCTION_ITEM_TYPES } from '@daoyou/shared/contracts/auction';
-import { QUALITY_VALUES } from '@daoyou/shared/types/constants';
+import { AUCTION_ITEM_TYPES } from '@daoyou/game-domain/auction/types';
+import { QUALITY_VALUES } from '@daoyou/constants/qualities';
 import { z } from 'zod';
 
 export const ListingsSchema = z.object({

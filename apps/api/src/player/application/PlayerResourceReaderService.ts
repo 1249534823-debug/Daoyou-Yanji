@@ -18,16 +18,16 @@ import {
 import { getPlayerIdentityCultivatorById } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 import { QiService } from '@server/cultivator/application/QiService.js';
 import { getSectCombatView } from '@server/combat/application/CombatV6BuildService.js';
-import { getOrInitCultivationProgress } from '@daoyou/shared/engine/cultivation/cultivationUtils';
+import { getOrInitCultivationProgress } from '@daoyou/game-rules/cultivation/cultivationUtils';
 import {
   PLAYER_RESOURCE_KEYS,
   type PlayerResourceKey,
   type PlayerResourceMap,
   type PlayerResourcesData,
-} from '@daoyou/shared/contracts/player';
-import type { ResourceTopic } from '@daoyou/shared/contracts/resources';
-import { RESOURCE_DATA_SCHEMAS } from '@daoyou/shared/contracts/resources';
-import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
+} from '@daoyou/contracts/player';
+import type { ResourceTopic } from '@daoyou/contracts/resources';
+import { RESOURCE_DATA_SCHEMAS } from '@server/lib/resources/schemas.js';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { and, desc, eq, sql } from 'drizzle-orm';
 
 export function readPlayerResourcesSnapshot(args: {

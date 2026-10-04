@@ -4,7 +4,7 @@ import {
   reserveSectConstructionDaily,
   type SectConstructionDailyRecord,
 } from '@server/lib/redis/sectConstructionDaily.js';
-import { quoteSectConstructionDonation } from '@daoyou/shared/engine/sect';
+import { quoteSectConstructionDonation } from '@daoyou/game-rules/sect-organization';
 import { sectOrganizationFacade } from '@server/sects/organization/index.js';
 import { SectError } from '@server/sects/application/SectError.js';
 import {

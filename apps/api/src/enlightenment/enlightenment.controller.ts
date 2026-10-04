@@ -15,8 +15,8 @@ import { QiServiceError } from '@server/cultivator/application/QiService.js';
 import {
   EnlightenmentRequestSchema,
   type EnlightenmentRequest,
-} from '@daoyou/shared/contracts/enlightenment';
-import { InventoryRuleError } from '@daoyou/shared/inventory';
+} from '@daoyou/contracts/enlightenment';
+import { InventoryRuleError } from '@daoyou/game-domain/items/bag';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { apiErrorFilter } from '../http/error-filter.js';

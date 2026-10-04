@@ -7,7 +7,7 @@ import {
   type SectNpcConversationRendererProps,
 } from '@app/components/feature/sect/room';
 import { createSectRoomNpcHref } from '@app/components/feature/sect/sectRoomNavigation';
-import { STANDARD_SECT_PRESENTATION } from '@daoyou/shared/engine/sect';
+import { STANDARD_SECT_PRESENTATION } from '@daoyou/game-rules/sect-organization';
 import { useNavigate, useSearchParams } from 'react-router';
 import { SectPermissionBoundary, SectScene } from '../components/SectScene';
 

@@ -1,8 +1,5 @@
-import type { ArenaRoomV1 } from '@daoyou/shared/contracts/arena';
-import {
-  REALM_STAGE_VALUES,
-  REALM_VALUES,
-} from '@daoyou/shared/types/constants';
+import type { ArenaRoomV1 } from '@daoyou/contracts/arena';
+import { REALM_STAGE_VALUES, REALM_VALUES } from '@daoyou/constants/realms';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';

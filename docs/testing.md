@@ -4,7 +4,7 @@
 
 ## 1. 纯单元测试
 
-- 仅放在 `packages/shared/src`，验证确定性、可复用的引擎和领域逻辑。
+- 仅放在 `packages/*/src`，验证确定性、可复用的引擎和领域逻辑。
 - 使用 Vitest；先运行受影响的测试，再根据影响范围运行 `pnpm run test`。
 - 不引入数据库、Redis、HTTP、认证或第三方服务模拟；不在 `apps/api/src`、`apps/web/src` 或 `scripts` 添加单元测试。
 
@@ -56,7 +56,7 @@ Lint、TypeScript／构建、Prettier 是静态质量检查，不是额外一层
 }
 ```
 
-新库存材料使用 `type: item`、`definitionId: material.v1`、`instanceData: { name, type, rank, element?, description? }`。传承灵印使用注册的定义 ID；随机道装使用 `{ "type": "equipment", "slot": "weapon", "level": 10 }`，法兵默认生成剑，可加 `weaponType` 指定 `axe/blade/spear/staff/sword/fan/bell/brush/banner`，非武器不得指定。全部定义在 `packages/shared/src/items/definitions`，参数边界见 `packages/shared/src/contracts/forging.ts`。
+新库存材料使用 `type: item`、`definitionId: material.v1`、`instanceData: { name, type, rank, element?, description? }`。传承灵印使用注册的定义 ID；随机道装使用 `{ "type": "equipment", "slot": "weapon", "level": 10 }`，法兵默认生成剑，可加 `weaponType` 指定 `axe/blade/spear/staff/sword/fan/bell/brush/banner`，非武器不得指定。全部定义在 `packages/game-content/src/items`，参数边界见 `packages/contracts/src/forging.ts`。
 
 旧丹药／消耗品验收可提交 `{ "type": "vault-consumable", "facts": { name, type, quality, description, prompt, score, spec }, "quantity": 2 }`，facts 须符合 `ConsumableFactsSchema`，quantity 为 1–3960；沿用历史消耗品发放入口写入洞府宝库，再通过正式取出操作转换。新版消耗品直接发放使用 `type: item`、`definitionId: consumable.v1` 及同一完整 facts 作为 instanceData。该能力仍只在纯本地开放。
 
@@ -197,7 +197,7 @@ curl -X DELETE http://127.0.0.1:3001/api/dev/cultivators/角色UUID/divination
 
 ## 架构边界回归验收
 
-涉及 workspace、Nest Provider、shared 包入口、请求或布局加载边界时，复用本地账号与正式界面。以下为可重复步骤，实际结果需在每次任务重新记录，不把本文当作通过证据。
+涉及 workspace、Nest Provider、内部库公开入口、请求或布局加载边界时，复用本地账号与正式界面。以下为可重复步骤，实际结果需在每次任务重新记录，不把本文当作通过证据。
 
 | 范围 | 步骤 | 预期 |
 | --- | --- | --- |
@@ -210,6 +210,6 @@ curl -X DELETE http://127.0.0.1:3001/api/dev/cultivators/角色UUID/divination
 | API 地址/BYOK | 临时使用本地 API 显式地址和非真实 BYOK 测试值；查看网络请求 | API 地址正确、请求头合并、Cookie 正常；非 API 请求不带 BYOK；finally 恢复原设置 |
 | 实时恢复 | 打开资源/聊天页面，重连或刷新后检查当前内容 | 无重复消息/资源，版本和快照恢复；发送测试聊天仅限明确授权的本地测试场景 |
 | 运行依赖 | 读取 /api/health-check；以缺少 Redis 的生产配置尝试启动本地构建 | 正常设施全 up；缺少生产 Redis 明确拒绝启动，不接触生产服务 |
-| 交付 | frozen install、lint、typecheck、shared tests、API/Web build；必要时构建本地 Docker 镜像 | 包边界有效，两个应用独立产物可构建；不发布镜像、不执行额外迁移 |
+| 交付 | frozen install、lint、typecheck、纯逻辑包测试、API/Web build；必要时构建本地 Docker 镜像 | 包边界有效，两个应用独立产物可构建；不发布镜像、不执行额外迁移 |
 
 发布采用停机维护、SPA／API 配套更新，清单见 [架构审查与规范第 11 节](monorepo-architecture.md#停机维护发布清单)。旧 SPA／新 API 的混合版本兼容不作为验收要求。跨应用、活动状态或消息协议变化时，记录配套产物身份、留存状态处理及回滚条件；停机不会自动清除 Redis 活动状态或 NATS 待处理消息。

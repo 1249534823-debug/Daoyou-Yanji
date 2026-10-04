@@ -5,7 +5,7 @@ import {
   SectRoutedRoom,
   type SectNpcConversationRendererProps,
 } from '@app/components/feature/sect/room';
-import { STANDARD_SECT_PRESENTATION } from '@daoyou/shared/engine/sect';
+import { STANDARD_SECT_PRESENTATION } from '@daoyou/game-rules/sect-organization';
 import { useState } from 'react';
 import { SectPermissionBoundary, SectScene } from '../components/SectScene';
 

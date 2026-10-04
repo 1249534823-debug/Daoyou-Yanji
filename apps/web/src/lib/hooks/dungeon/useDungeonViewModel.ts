@@ -1,16 +1,16 @@
 import { useQiActionConfirm } from '@app/components/feature/cultivator/useQiActionConfirm';
-import { BattleCallbackData } from '@app/routes/game/dungeon/components/DungeonBattle';
-import { QI_ACTION_COSTS } from '@daoyou/shared/config/qiSystem';
-import type { DungeonMaterialSelection } from '@daoyou/shared/contracts/combatV6Dungeon';
-import type { ResourceOperation } from '@daoyou/shared/engine/resource/types';
+import { QI_ACTION_COSTS } from '@daoyou/game-content/qi/config';
+import type { DungeonMaterialSelection } from '@daoyou/game-domain/dungeon/actions';
 import type {
   DungeonOption,
   DungeonRecoverAction,
   DungeonRound,
   DungeonSettlement,
   DungeonState,
-} from '@daoyou/shared/lib/dungeon/types';
+} from '@daoyou/game-domain/dungeon/state';
+import type { ResourceOperation } from '@daoyou/game-domain/resources/operations';
 import { useMemo } from 'react';
+import type { BattleCallbackData } from './types';
 import { useDungeonActions } from './useDungeonActions';
 import { useDungeonState } from './useDungeonState';
 

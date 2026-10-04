@@ -1,15 +1,6 @@
 import { apiFetch } from '@app/lib/api/fetch';
-import {
-  applyResourceChange,
-  RESOURCE_DATA_SCHEMAS,
-  RESOURCE_TOPIC_SCOPE_KIND,
-  type ResourceChange,
-  type ResourceDataMap,
-  type ResourceReadResponse,
-  type ResourceScope,
-  type ResourceScopeKind,
-  type ResourceTopic,
-} from '@daoyou/shared/contracts/resources';
+import { RESOURCE_DATA_SCHEMAS } from '@app/lib/resources/schemas';
+import { applyResourceChange, RESOURCE_TOPIC_SCOPE_KIND, type ResourceChange, type ResourceDataMap, type ResourceReadResponse, type ResourceScope, type ResourceScopeKind, type ResourceTopic } from '@daoyou/contracts/resources';
 import type {
   ResourceReducerResult,
   ResourceRuntimeScopes,

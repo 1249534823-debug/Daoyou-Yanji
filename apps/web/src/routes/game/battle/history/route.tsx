@@ -8,7 +8,7 @@ import {
 } from '@app/components/game-shell';
 import { InkButton, InkNotice } from '@app/components/ui';
 import { usePlayerSession } from '@app/lib/resources/player';
-import type { CombatV6HistoryPage } from '@daoyou/shared/contracts/combatV6Replay';
+import type { CombatV6HistoryPage } from '@daoyou/contracts/combatV6Replay';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router';
 

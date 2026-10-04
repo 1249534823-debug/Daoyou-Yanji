@@ -2,7 +2,7 @@ import {
   SWEEP_CANVAS,
   SWEEP_GRID_COLUMNS,
   type SweepCell,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 
 export const SWEEP_CELL_WIDTH = 78;
 export const SWEEP_CELL_HEIGHT = 66;

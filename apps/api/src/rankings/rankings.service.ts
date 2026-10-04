@@ -1,14 +1,11 @@
-import type { RankingChallengeRequest } from '@daoyou/shared/contracts/combatV6Ranking';
-import { ConsumableFactsSchema } from '@daoyou/shared/items/definitions/consumables';
-import {
-  QUALITY_VALUES,
-  REALM_VALUES,
-  type RealmType,
-} from '@daoyou/shared/types/constants';
+import type { RankingChallengeRequest } from '@daoyou/contracts/combatV6Ranking';
+import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
+import { QUALITY_VALUES } from '@daoyou/constants/qualities';
+import { REALM_VALUES, type RealmType } from '@daoyou/constants/realms';
 import type {
   ItemRankingEntry,
   WealthRankingEntry,
-} from '@daoyou/shared/types/rankings';
+} from '@daoyou/contracts/rankings';
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';

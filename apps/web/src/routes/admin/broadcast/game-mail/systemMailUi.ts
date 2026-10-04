@@ -1,5 +1,5 @@
 import { apiFetch } from '@app/lib/api/fetch';
-import type { RewardSelection } from '@daoyou/shared/contracts/adminRewards';
+import type { RewardSelection } from '@daoyou/game-domain/rewards/selection';
 import type { RewardSelectionDraft } from '../../_components/RewardSelectionEditor.helpers';
 
 export function rewardDrafts(

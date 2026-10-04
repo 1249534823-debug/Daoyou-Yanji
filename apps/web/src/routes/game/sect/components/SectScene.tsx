@@ -19,7 +19,7 @@ import {
   type SectCapabilityKey,
   type SectDiscipleRank,
   type SectSceneKey,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import type { ReactNode } from 'react';
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router';

@@ -6,8 +6,8 @@ import {
   unpackTowerLeaderboardScore,
   type TowerLeaderboardEntry,
   type TowerWeeklyRecord,
-} from '@daoyou/shared/lib/tower';
-import type { RealmType } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-rules/tower';
+import type { RealmType } from '@daoyou/constants/realms';
 import { and, eq, inArray } from 'drizzle-orm';
 
 function getTowerLeaderboardKey(seasonKey: string, realm: RealmType) {

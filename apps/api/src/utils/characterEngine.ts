@@ -1,5 +1,5 @@
 import { CharacterGenerator } from '@server/lib/generation/CharacterGenerator.js';
-import type { Cultivator } from '@daoyou/shared/types/cultivator';
+import type { Cultivator } from '@daoyou/game-domain/cultivator';
 
 /**
  * @deprecated Use CharacterGenerator.generate() directly from @server/lib/generation/CharacterGenerator

@@ -24,7 +24,7 @@ import {
 import {
   describeSectFacilityStatus,
   STANDARD_SECT_PRESENTATION,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { SectPermissionBoundary, SectScene } from '../components/SectScene';

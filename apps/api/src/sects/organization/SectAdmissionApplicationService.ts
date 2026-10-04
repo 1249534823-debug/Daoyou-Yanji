@@ -1,6 +1,6 @@
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
-import type { SectContextData } from '@daoyou/shared/contracts/sect';
-import type { SectAdmissionContext, SectRuntime } from '@daoyou/shared/engine/sect';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
+import type { SectContextData } from '@daoyou/contracts/sect';
+import type { SectAdmissionContext, SectRuntime } from '@daoyou/game-rules/sect-organization';
 import { SectError } from '@server/sects/application/SectError.js';
 import type {
   SectAdmissionRepository,

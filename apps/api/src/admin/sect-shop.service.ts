@@ -6,10 +6,8 @@ import {
   SectShopError,
   updateSectShopItem,
 } from '@server/sects/application/SectShopService.js';
-import {
-  SectShopItemMutationSchema,
-  SectShopListQuerySchema,
-} from '@daoyou/shared/contracts/sectShop';
+import { ItemExchangeShopItemMutationSchema as SectShopItemMutationSchema } from '@daoyou/game-rules/shops/exchange';
+import { SectShopListQuerySchema } from '@daoyou/contracts/sectShop';
 
 @Injectable()
 export class AdminSectShopService {

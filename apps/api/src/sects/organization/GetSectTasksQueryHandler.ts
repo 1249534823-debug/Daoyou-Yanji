@@ -1,4 +1,4 @@
-import type { SectTasksData, SectTaskViewData } from '@daoyou/shared/contracts/sect';
+import type { SectTasksData, SectTaskViewData } from '@daoyou/contracts/sect';
 import { SectCapabilityAuthorizer } from '@server/sects/organization/SectCapabilityAuthorizer.js';
 import {
   requireSectMembership,

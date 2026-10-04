@@ -1,5 +1,5 @@
-import type { SectPathSelectionRequest } from '@daoyou/shared/contracts/combatV6';
-import type { SectV6ActionSchema } from '@daoyou/shared/contracts/combatV6Sect';
+import type { SectPathSelectionRequest } from '@daoyou/contracts/combatV6';
+import type { SectV6ActionSchema } from '@daoyou/game-domain/sects/actions';
 import { Inject, Injectable } from '@nestjs/common';
 import {
   getSectCombatView,

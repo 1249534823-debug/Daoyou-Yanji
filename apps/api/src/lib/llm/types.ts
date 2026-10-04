@@ -1,4 +1,4 @@
-import type { LlmProviderId } from '@daoyou/shared/config/llm';
+import type { LlmProviderId } from '@daoyou/contracts/llm/config';
 
 export type LlmSceneId =
   | 'alchemy-formula-analysis'

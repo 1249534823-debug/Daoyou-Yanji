@@ -6,10 +6,8 @@ import {
 } from '@app/components/feature/items/ItemSlot';
 import { InkModal } from '@app/components/layout';
 import { InkButton } from '@app/components/ui';
-import type {
-  AuctionAssetType,
-  AuctionListingView,
-} from '@daoyou/shared/contracts/auction';
+import type { AuctionAssetType } from '@daoyou/game-domain/auction/types';
+import type { AuctionListingView } from '@daoyou/contracts/auction';
 import { useState, type ReactNode } from 'react';
 
 type Actions = (listing: AuctionListingView, close: () => void) => ReactNode;

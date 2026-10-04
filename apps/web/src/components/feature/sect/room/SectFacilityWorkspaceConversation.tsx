@@ -10,7 +10,7 @@ import {
   useSectInfrastructureQuery,
 } from '@app/components/feature/sect/sectResources';
 import { createSectRoomNpcHref } from '@app/components/feature/sect/sectRoomNavigation';
-import { describeSectFacilityStatus } from '@daoyou/shared/engine/sect';
+import { describeSectFacilityStatus } from '@daoyou/game-rules/sect-organization';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import type { SectNpcConversationRendererProps } from './SectNpcConversationRegistry';

@@ -5,9 +5,9 @@ import {
   BeastTransferSchema,
   planBeastMailClaims,
   receiveTradedBeast,
-} from '@daoyou/shared/contracts/beastTrade';
-import { BEAST_CAPACITY } from '@daoyou/shared/engine/combat-v6/beasts/progression';
-import type { MailAttachment } from '@daoyou/shared/types/mail';
+} from '@daoyou/game-rules/beasts/trade';
+import { BEAST_CAPACITY } from '@daoyou/game-rules/beasts/progression';
+import type { MailAttachment } from '@daoyou/game-domain/mail/attachment';
 import { count, eq } from 'drizzle-orm';
 import {
   assertBeastIdle,

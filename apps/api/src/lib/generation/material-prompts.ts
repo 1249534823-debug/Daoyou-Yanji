@@ -1,8 +1,8 @@
 import {
   QUALITY_TO_RANK,
   TYPE_DESCRIPTIONS,
-} from '@daoyou/shared/engine/material/creation/config';
-import type { MaterialSkeleton } from '@daoyou/shared/engine/material/creation/types';
+} from '@daoyou/game-content/materials/config';
+import type { MaterialSkeleton } from '@daoyou/game-domain/materials/generation';
 import { renderPromptSystem, renderPromptUser } from '@server/lib/prompts/index.js';
 
 export function getMaterialGenerationPrompt(): string {

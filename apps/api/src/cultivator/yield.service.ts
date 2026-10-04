@@ -3,7 +3,7 @@ import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import { renderPrompt } from '@server/lib/prompts/index.js';
 import { executeYieldCommand } from '@server/cultivator/application/YieldApplicationService.js';
 import { streamAiText } from '@server/utils/aiClient.js';
-import { getGameConceptLabel } from '@daoyou/shared/lib/gameConceptDisplay';
+import { getGameConceptLabel } from '@daoyou/game-content/presentation/concepts';
 
 type YieldExecution = Awaited<ReturnType<typeof executeYieldCommand>>;
 type YieldStreamEvent =

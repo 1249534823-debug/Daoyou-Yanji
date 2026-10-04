@@ -1,4 +1,4 @@
-import { publicUnitAppearances } from '@daoyou/shared/combat-v6/unit-appearance';
+import { publicUnitAppearances } from '@daoyou/game-rules/combat/unit-appearance';
 import { db, type DbTransaction } from '@server/lib/drizzle/db.js';
 import { cultivators, cultivatorTasks } from '@server/lib/drizzle/schema.js';
 import { dungeonPlayer } from '@server/dungeon/combat-player.js';
@@ -11,31 +11,25 @@ import {
   findCultivatorTaskById,
   updateCultivatorTask,
 } from '@server/lib/repositories/taskRepository.js';
-import { automaticCommands } from '@daoyou/shared/combat-v6/auto';
+import { automaticCommands } from '@daoyou/game-rules/combat/auto';
 import {
   combatV6Display,
   combatV6DisplayEvent,
   combatV6Units,
   visibleUnitNames,
-} from '@daoyou/shared/combat-v6/presentation';
-import { createCombatV6Replay } from '@daoyou/shared/combat-v6/replay';
-import { liveReplayDelta } from '@daoyou/shared/combat-v6/replay-timeline';
-import type { CombatV6CommandGroup } from '@daoyou/shared/contracts/combatV6';
-import {
-  BreakthroughBattlePointerSchema,
-  type BreakthroughRuntime,
-  type BreakthroughSessionView,
-} from '@daoyou/shared/contracts/combatV6Breakthrough';
-import { beastDeathIds } from '@daoyou/shared/engine/combat-v6/beasts';
-import {
-  BREAKTHROUGH_CHALLENGES,
-  BreakthroughHost,
-  createBreakthroughHost,
-  type BreakthroughChallengeId,
-} from '@daoyou/shared/engine/combat-v6/breakthrough/host';
-import { hasActiveConditionStatus } from '@daoyou/shared/lib/condition';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import type { TaskInstanceMetadata } from '@daoyou/shared/types/task';
+} from '@daoyou/game-rules/combat/presentation';
+import { createCombatV6Replay } from '@daoyou/game-rules/combat/replay';
+import { liveReplayDelta } from '@daoyou/game-rules/combat/replay-timeline';
+import type { CombatV6CommandGroup } from '@daoyou/game-domain/combat/commands';
+import { BreakthroughBattlePointerSchema } from '@daoyou/game-domain/tasks/breakthrough-pointer';
+import { type BreakthroughRuntime, type BreakthroughSessionView } from '@daoyou/contracts/combatV6Breakthrough';
+import { beastDeathIds } from '@daoyou/game-rules/beasts/progression';
+import { type BreakthroughChallengeId } from '@daoyou/game-domain/combat/breakthrough';
+import { BREAKTHROUGH_CHALLENGES } from '@daoyou/game-content/combat/breakthrough';
+import { BreakthroughHost, createBreakthroughHost } from '@daoyou/game-rules/combat/breakthrough/host';
+import { hasActiveConditionStatus } from '@daoyou/game-rules/condition';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
+import type { TaskInstanceMetadata } from '@daoyou/game-domain/tasks/types';
 import { eq } from 'drizzle-orm';
 import { randomInt, randomUUID } from 'node:crypto';
 import { ConditionService } from '@server/cultivator/application/ConditionService.js';

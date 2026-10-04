@@ -1,7 +1,7 @@
 import type {
   ResourceChangeDescriptor,
   ResourceDataMap,
-} from '@daoyou/shared/contracts/resources';
+} from '@daoyou/contracts/resources';
 
 export type QiSettlementBaseline = {
   qiAfter: number;

@@ -1,7 +1,7 @@
 import type {
   SectTaskAvailabilityDecision,
   SectTaskDefinition,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import { SectError } from '@server/sects/application/SectError.js';
 import type { SectMembershipRecord, SectQueryContext } from '@server/sects/organization/ports.js';
 

@@ -1,5 +1,5 @@
-import type { MarketBuyInput } from '@daoyou/shared/contracts/market';
-import type { RecycleRequestSchema } from '@daoyou/shared/contracts/recycle';
+import type { MarketBuyInput } from '@daoyou/contracts/market';
+import type { RecycleRequestSchema } from '@daoyou/contracts/recycle';
 import { Inject, Injectable } from '@nestjs/common';
 import { CultivatorQueriesService } from '@server/cultivator/cultivator-queries.service.js';
 import { InventoryRecycleService } from '@server/inventory/inventory-recycle.service.js';

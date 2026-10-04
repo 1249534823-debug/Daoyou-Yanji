@@ -1,14 +1,12 @@
 import { GameIcon } from '@app/components/ui/GameIcon';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkQuantityInput } from '@app/components/ui/InkQuantityInput';
-import { consumableFactsOf } from '@daoyou/shared/items/definitions/consumables';
+import { consumableFactsOf } from '@daoyou/game-domain/items/consumable-facts';
 import { cn } from '@app/lib/cn';
 import { FurnaceGatherEffect } from '../craft/FurnaceGatherEffect';
 import { ItemSlot } from '../items/ItemSlot';
-import {
-  ALCHEMY_MAX_DOSE,
-  useAlchemyCraftSession,
-} from './alchemyCraftContext';
+import { ALCHEMY_MAX_DOSE } from './useAlchemyCraftSessionState.js';
+import { useAlchemyCraftSession } from './alchemyCraftContext';
 
 const ringPositions = (count: number): [number, number][] =>
   Array.from({ length: count }, (_, index) => {

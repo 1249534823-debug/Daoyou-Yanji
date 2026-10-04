@@ -1,8 +1,9 @@
-import type { ResourceOperation } from '@daoyou/shared/engine/resource/types';
-import { ItemGrantSchema } from '@daoyou/shared/inventory';
-import { DUNGEON_COST_RANK_VALUES } from '@daoyou/shared/lib/dungeon/costPolicy';
-import type { DungeonEndDisposition } from '@daoyou/shared/lib/dungeon/settlementPolicy';
-import { ENEMY_RACE_VALUES, REALM_STAGE_VALUES } from '@daoyou/shared/types/constants';
+import type { ResourceOperation } from '@daoyou/game-domain/resources/operations';
+import { ItemGrantSchema } from '@daoyou/game-rules/inventory';
+import { DUNGEON_COST_RANK_VALUES } from '@daoyou/game-domain/dungeon/cost';
+import type { DungeonEndDisposition } from '@daoyou/game-domain/dungeon/settlement';
+import { ENEMY_RACE_VALUES } from '@daoyou/game-domain/character';
+import { REALM_STAGE_VALUES } from '@daoyou/constants/realms';
 import { z } from 'zod';
 
 // === AI Interaction Schemas ===
@@ -464,7 +465,7 @@ export type DungeonRecoverAction =
   'retry' | 'retry_continue' | 'retry_settle' | 'safe_retreat' | 'force_quit';
 
 export interface DungeonCostLedgerEntry {
-  materialSelections?: import('@daoyou/shared/contracts/combatV6Dungeon').DungeonMaterialSelection[];
+  materialSelections?: import('@daoyou/game-domain/dungeon/actions').DungeonMaterialSelection[];
   actionId: string;
   round: number;
   choiceId?: number;
@@ -481,7 +482,7 @@ export interface DungeonGainLedgerEntry {
 }
 
 export interface DungeonPendingAction {
-  materialSelections?: import('@daoyou/shared/contracts/combatV6Dungeon').DungeonMaterialSelection[];
+  materialSelections?: import('@daoyou/game-domain/dungeon/actions').DungeonMaterialSelection[];
   actionId: string;
   choiceId?: number;
   choiceText?: string;
@@ -495,11 +496,11 @@ export interface DungeonPendingAction {
 // === Internal State Management ===
 
 export interface DungeonState {
-  encounter?: import('@daoyou/shared/contracts/combatV6Dungeon').DungeonEncounterView;
+  encounter?: import('@daoyou/game-domain/dungeon/actions').DungeonEncounterView;
   rewardSeed?: number;
-  v6Rewards?: import('@daoyou/shared/rewards/dungeon').DungeonRewardEntry[];
+  v6Rewards?: import('@daoyou/game-domain/dungeon/rewards').DungeonRewardEntry[];
   beastResources?: Record<string, { hp: number; mp: number }>;
-  endDisposition?: import('@daoyou/shared/lib/dungeon/settlementPolicy').DungeonEndDisposition;
+  endDisposition?: import('@daoyou/game-domain/dungeon/settlement').DungeonEndDisposition;
   runId?: string;
   cultivatorId: string;
   mapNodeId: string;

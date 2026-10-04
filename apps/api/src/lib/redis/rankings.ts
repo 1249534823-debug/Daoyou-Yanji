@@ -3,13 +3,13 @@ import { cultivators, sectMemberships } from '@server/lib/drizzle/schema.js';
 import {
   MAX_DAILY_RANKING_CHALLENGES,
   rankingDay,
-} from '@daoyou/shared/combat-v6/ranking';
-import { SECT_DISCIPLE_RANKS, SECT_RANK_LABELS } from '@daoyou/shared/engine/sect';
-import { productionSectRuntime } from '@daoyou/shared/engine/sect/content';
-import { getBodyCultivationRankingTag } from '@daoyou/shared/lib/bodyCultivation/ranking';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import { REALM_VALUES, type RealmType } from '@daoyou/shared/types/constants';
-import type { BattleRankingItem } from '@daoyou/shared/types/rankings';
+} from '@daoyou/game-rules/rankings/ranking';
+import { SECT_DISCIPLE_RANKS, SECT_RANK_LABELS } from '@daoyou/game-rules/sect-organization';
+import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
+import { getBodyCultivationRankingTag } from '@daoyou/game-rules/body-cultivation/ranking';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
+import { REALM_VALUES, type RealmType } from '@daoyou/constants/realms';
+import type { BattleRankingItem } from '@daoyou/contracts/rankings';
 import { and, eq, inArray } from 'drizzle-orm';
 import { redis } from './index.js';
 import { rankingQuotaKey } from './rankingChallenge.js';

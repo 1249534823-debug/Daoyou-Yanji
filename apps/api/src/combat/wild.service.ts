@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
 import { wildSessions } from '@server/combat/application/CombatV6WildSessionService.js';
-import type { CombatV6TrainingCommandRequestSchema } from '@daoyou/shared/contracts/combatV6';
-import type { WildExploreRequestSchema } from '@daoyou/shared/contracts/combatV6Wild';
+import type { CombatV6TrainingCommandRequestSchema } from '@daoyou/contracts/combatV6';
+import type { WildExploreRequestSchema } from '@daoyou/contracts/combatV6Wild';
 import type { z } from 'zod';
 
 @Injectable()

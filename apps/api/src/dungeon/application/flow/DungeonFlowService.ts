@@ -1,28 +1,19 @@
-import { getRealmStageNaturalAttributeValue } from '@daoyou/shared/config/realmProgression';
+import { getRealmStageNaturalAttributeValue } from '@daoyou/game-rules/progression/attributes';
 import type {
   ResourceOperation,
   ResourceOperationResult,
   ResourceOperationSettlement,
-} from '@daoyou/shared/engine/resource/types';
-import { DUNGEON_LIFESPAN_COST_MAX } from '@daoyou/shared/lib/dungeon/costPolicy';
-import {
-  canChallengeDungeonRealm,
-  getMapNode,
-  isSatelliteNode,
-  resolveDungeonMapConfig,
-} from '@daoyou/shared/lib/game/mapSystem';
+} from '@daoyou/game-domain/resources/operations';
+import { DUNGEON_LIFESPAN_COST_MAX } from '@daoyou/game-content/dungeon/cost';
+import { getMapNode, isSatelliteNode } from '@daoyou/game-content/world/map';
+import { canChallengeDungeonRealm, resolveDungeonMapConfig } from '@daoyou/game-rules/world/dungeon';
 import {
   appendDungeonReward,
   dungeonRewardItemName,
-} from '@daoyou/shared/rewards/dungeon';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import {
-  REALM_STAGE_VALUES,
-  REALM_VALUES,
-  RealmType,
-  type RealmStage,
-} from '@daoyou/shared/types/constants';
-import type { Cultivator } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-rules/rewards/dungeon';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
+import { REALM_STAGE_VALUES, REALM_VALUES, RealmType, type RealmStage } from '@daoyou/constants/realms';
+import type { Cultivator } from '@daoyou/game-domain/cultivator';
 import { assertCombatV6MutationAllowed } from '@server/combat/mutation-policy.js';
 import { ConditionService } from '@server/cultivator/application/ConditionService.js';
 import { QiService } from '@server/cultivator/application/QiService.js';
@@ -105,7 +96,7 @@ type DungeonSettlementOptions = {
 };
 
 type DungeonFlowOptions = {
-  materialSelections?: import('@daoyou/shared/contracts/combatV6Dungeon').DungeonMaterialSelection[];
+  materialSelections?: import('@daoyou/game-domain/dungeon/actions').DungeonMaterialSelection[];
   deferPersistence?: boolean;
   lease?: RedisLeaseContext;
 };

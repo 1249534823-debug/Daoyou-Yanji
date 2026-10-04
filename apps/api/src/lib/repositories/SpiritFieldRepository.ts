@@ -4,7 +4,7 @@ import {
   createDefaultSpiritFieldPlots,
   normalizeSpiritFieldPlots,
   type SpiritFieldPlotState,
-} from '@daoyou/shared/engine/spirit-field';
+} from '@daoyou/game-rules/spirit-field';
 import { eq, sql } from 'drizzle-orm';
 
 export interface SpiritFieldRecord {

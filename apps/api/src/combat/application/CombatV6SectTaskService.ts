@@ -1,23 +1,23 @@
-import { automaticCommands } from '@daoyou/shared/combat-v6/auto';
+import { automaticCommands } from '@daoyou/game-rules/combat/auto';
 import {
   combatV6Display,
   combatV6DisplayEvent,
   combatV6Units,
   visibleUnitNames,
-} from '@daoyou/shared/combat-v6/presentation';
-import { createCombatV6Replay } from '@daoyou/shared/combat-v6/replay';
-import { liveReplayDelta } from '@daoyou/shared/combat-v6/replay-timeline';
-import { publicUnitAppearances } from '@daoyou/shared/combat-v6/unit-appearance';
-import type { CombatV6CommandGroup } from '@daoyou/shared/contracts/combatV6';
+} from '@daoyou/game-rules/combat/presentation';
+import { createCombatV6Replay } from '@daoyou/game-rules/combat/replay';
+import { liveReplayDelta } from '@daoyou/game-rules/combat/replay-timeline';
+import { publicUnitAppearances } from '@daoyou/game-rules/combat/unit-appearance';
+import type { CombatV6CommandGroup } from '@daoyou/game-domain/combat/commands';
 import {
   type SectTaskBattleRuntime,
   type SectTaskSessionView,
-} from '@daoyou/shared/contracts/combatV6SectTask';
-import { beastDeathIds } from '@daoyou/shared/engine/combat-v6/beasts';
-import { SectBattleHost } from '@daoyou/shared/engine/combat-v6/sect/host';
-import { SectTaskRecordPayloadSchema } from '@daoyou/shared/engine/sect';
-import { productionSectRuntime } from '@daoyou/shared/engine/sect/content';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
+} from '@daoyou/contracts/combatV6SectTask';
+import { beastDeathIds } from '@daoyou/game-rules/beasts/progression';
+import { SectBattleHost } from '@daoyou/game-rules/combat/sect/host';
+import { SectTaskRecordPayloadSchema } from '@daoyou/game-rules/sect-organization';
+import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
 import { db } from '@server/lib/drizzle/db.js';
 import {
   combatReplayArchives,
@@ -241,7 +241,7 @@ export async function changeSectTaskBattle(
                 actor.cultivatorId,
                 definition.presentation.title,
               );
-              let changes: import('@daoyou/shared/contracts/resources').ResourceChangeDescriptor[] =
+              let changes: import('@daoyou/contracts/resources').ResourceChangeDescriptor[] =
                 [];
               if (host.trace().outcome === 'victory') {
                 const fulfilled = await fulfillSectV6Task({

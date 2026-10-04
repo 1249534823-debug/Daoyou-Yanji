@@ -12,10 +12,7 @@ import {
   updateSponsorshipConfigAsAdmin,
 } from '@server/sponsorship/application/SponsorshipApplicationService.js';
 import { requireSponsorshipProvider } from '@server/lib/sponsorship/providerRegistry.js';
-import {
-  AfdianSponsorshipConfigSchema,
-  SPONSORSHIP_TIER_IDS,
-} from '@daoyou/shared/lib/sponsorship';
+import { AfdianSponsorshipConfigSchema, SPONSORSHIP_TIER_IDS } from '@daoyou/game-domain/sponsorship';
 import { z } from 'zod';
 
 const TierConfigSchema = z

@@ -7,9 +7,9 @@ import {
   listOwnedCombatV6Replays,
 } from '@server/lib/repositories/combatV6ReplayRepository.js';
 import { CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore.js';
-import { combatV6ReplayView } from '@daoyou/shared/combat-v6/replay';
-import { COMBAT_V6_REPLAY_ERROR_CODE } from '@daoyou/shared/contracts/combatV6';
-import type { CombatV6HistoryQuerySchema } from '@daoyou/shared/contracts/combatV6Replay';
+import { combatV6ReplayView } from '@daoyou/game-rules/combat/replay';
+import { COMBAT_V6_REPLAY_ERROR_CODE } from '@daoyou/contracts/combatV6';
+import type { CombatV6HistoryQuerySchema } from '@daoyou/contracts/combatV6Replay';
 import type { z } from 'zod';
 
 @Injectable()

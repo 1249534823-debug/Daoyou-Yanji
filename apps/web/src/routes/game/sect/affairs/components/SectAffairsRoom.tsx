@@ -19,7 +19,7 @@ import {
   decodeSectTaskOutcome,
   readRewardReceiptOutcome,
 } from '@app/components/feature/sect/sectTaskOutcomeRegistry';
-import type { SectTaskViewData } from '@daoyou/shared/contracts/sect';
+import type { SectTaskViewData } from '@daoyou/contracts/sect';
 import {
   describeSectPromotionStatus,
   SECT_RANK_LABELS,
@@ -29,7 +29,7 @@ import {
   type SectRoomActorDefinition,
   type SectTaskDialogueEmphasis,
   type SectTaskDialogueSegment,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import { useEffect, useMemo, useState } from 'react';
 
 const TASK_KINDS: readonly SectAffairsTaskKind[] = [

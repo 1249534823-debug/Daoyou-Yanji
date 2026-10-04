@@ -1,9 +1,9 @@
-import { MAX_FRIENDS_PER_CULTIVATOR } from '@daoyou/shared/config/socialConfig';
+import { MAX_FRIENDS_PER_CULTIVATOR } from '@daoyou/game-content/social/config';
 import type {
   FriendCultivatorSummary,
   FriendSearchResult,
   FriendTargetResponse,
-} from '@daoyou/shared/contracts/friends';
+} from '@daoyou/contracts/friends';
 import {
   getExecutor,
   type DbExecutor,

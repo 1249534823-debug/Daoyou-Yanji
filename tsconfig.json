@@ -2,8 +2,7 @@
   "compilerOptions": {
     "paths": {
       "@app/*": ["./apps/web/src/*"],
-      "@server/*": ["./apps/api/src/*"],
-      "@daoyou/shared/*": ["./packages/shared/src/*"]
+      "@server/*": ["./apps/api/src/*"]
     }
   },
   "files": [],

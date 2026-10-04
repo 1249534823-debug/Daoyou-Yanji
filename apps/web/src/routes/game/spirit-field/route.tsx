@@ -16,13 +16,13 @@ import { InkDetailDrawer } from '@app/components/ui/InkDetailDrawer';
 import { useInventoryBag } from '@app/lib/resources/bag';
 import { useCraftStorage } from '@app/lib/resources/craftStorage';
 import { useResourceMutation } from '@app/lib/resources/mutations';
-import type { InventoryView } from '@daoyou/shared/contracts/inventory';
-import { canPlantSpiritFieldSeed } from '@daoyou/shared/engine/spirit-field/rules';
-import { ConsumableFactsSchema } from '@daoyou/shared/items/definitions/consumables';
-import { SeedFactsSchema } from '@daoyou/shared/items/definitions/seeds';
-import { materialFactsOf } from '@daoyou/shared/items/material';
-import { findItemDefinition } from '@daoyou/shared/items/registry';
-import type { RealmType } from '@daoyou/shared/types/constants';
+import type { InventoryView } from '@daoyou/contracts/inventory';
+import { canPlantSpiritFieldSeed } from '@daoyou/game-rules/spirit-field/rules';
+import { ConsumableFactsSchema } from '@daoyou/game-domain/items/consumable-facts';
+import { SeedFactsSchema } from '@daoyou/game-domain/items/seed-facts';
+import { materialFactsOf } from '@daoyou/game-domain/items/material';
+import { findItemDefinition } from '@daoyou/game-content/items/registry';
+import type { RealmType } from '@daoyou/constants/realms';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 type Resource = {

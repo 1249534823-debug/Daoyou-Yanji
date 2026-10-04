@@ -1,7 +1,7 @@
 import { CombatV6Page } from '@app/components/feature/combat-v6/CombatV6Page';
 import { CombatV6ReplayPlayer } from '@app/components/feature/combat-v6/CombatV6ReplayPlayer';
 import { combatV6Request } from '@app/components/feature/combat-v6/request';
-import type { CombatV6ReplayView } from '@daoyou/shared/combat-v6/replay';
+import type { CombatV6ReplayView } from '@daoyou/game-rules/combat/replay';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router';
 

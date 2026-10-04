@@ -17,9 +17,9 @@ import {
   useCultivatorCondition,
   useCultivatorIdentity,
 } from '@app/lib/resources/player';
-import type { BodyCultivationBreakthroughResultData } from '@daoyou/shared/contracts/bodyCultivation';
-import { previewBodyCultivationRealmBreakthrough } from '@daoyou/shared/lib/bodyCultivation/breakthrough';
-import { BODY_REALM_LABELS } from '@daoyou/shared/lib/bodyCultivation/config';
+import type { BodyCultivationBreakthroughResultData } from '@daoyou/contracts/bodyCultivation';
+import { previewBodyCultivationRealmBreakthrough } from '@daoyou/game-rules/body-cultivation/breakthrough';
+import { BODY_REALM_LABELS } from '@daoyou/game-rules/body-cultivation/config';
 import { cn } from '@app/lib/cn';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';

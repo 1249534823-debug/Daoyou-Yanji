@@ -18,13 +18,13 @@ import {
 import type {
   MarketBuyInput,
   MarketPurchaseResult,
-} from '@daoyou/shared/contracts/market';
+} from '@daoyou/contracts/market';
 import {
   getMarketNodeSwitchOptions,
   resolveMarketSwitchLayer,
-} from '@daoyou/shared/lib/game/marketConfig';
-import { formatCompactGameNumber } from '@daoyou/shared/lib/numberFormat';
-import type { MarketAccessState, MarketListing } from '@daoyou/shared/types/market';
+} from '@daoyou/game-rules/world/marketConfig';
+import { formatCompactGameNumber } from '@daoyou/game-rules/presentation/numbers';
+import type { MarketAccessState, MarketListing } from '@daoyou/game-domain/market';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router';
 

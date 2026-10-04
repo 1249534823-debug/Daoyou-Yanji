@@ -12,13 +12,10 @@ import {
   type EnlightenmentRequest,
   type EnlightenmentResult,
   type EnlightenmentView,
-} from '@daoyou/shared/contracts/enlightenment';
-import type { InventoryView } from '@daoyou/shared/contracts/inventory';
-import {
-  enlightenmentMaterialProblem,
-  prepareEnlightenment,
-  type EnlightenmentPreview,
-} from '@daoyou/shared/manuals/enlightenment';
+} from '@daoyou/contracts/enlightenment';
+import type { InventoryView } from '@daoyou/contracts/inventory';
+import { type EnlightenmentPreview } from '@daoyou/game-domain/manuals/enlightenment';
+import { enlightenmentMaterialProblem, prepareEnlightenment } from '@daoyou/game-rules/manuals/enlightenment';
 import { useEffect, useRef, useState } from 'react';
 import { combatV6Request, mutationBody } from '../combat-v6/request';
 import type { InventoryFilter } from '../items/inventoryFilterModel';

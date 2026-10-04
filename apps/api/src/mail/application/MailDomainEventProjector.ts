@@ -1,6 +1,6 @@
 import type { DbTransaction } from '@server/lib/drizzle/db.js';
-import type { DomainEventEnvelope } from '@daoyou/shared/contracts/domainEvents';
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
+import type { DomainEventEnvelope } from '@daoyou/contracts/domainEvents';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
 import { readPlayerMailSummary } from '@server/player/application/PlayerResourceReaderService.js';
 
 export async function projectMailCreated(

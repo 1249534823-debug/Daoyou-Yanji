@@ -8,11 +8,11 @@ import {
   reducePerformance,
   type PerformanceLogEntry,
   type PerformanceState,
-} from '@daoyou/shared/performance/interpreter';
+} from '@daoyou/game-rules/performance/interpreter';
 import type {
   PerformanceContext,
   PerformanceScript,
-} from '@daoyou/shared/performance/schema';
+} from '@daoyou/game-domain/performance/schema';
 import { useEffect, useRef, useState } from 'react';
 
 const choiceMarks = ['一', '二', '三', '四'] as const;

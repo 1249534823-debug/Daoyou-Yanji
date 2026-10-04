@@ -6,15 +6,15 @@ import {
 } from '@app/components/feature/products';
 import { InkModal } from '@app/components/layout';
 import { ItemShowcaseModal } from '@app/components/ui/ItemShowcaseModal';
-import { seedFactsOf } from '@daoyou/shared/items/definitions/seeds';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import type { RealmType } from '@daoyou/shared/types/constants';
+import { seedFactsOf } from '@daoyou/game-domain/items/seed-facts';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
+import type { RealmType } from '@daoyou/constants/realms';
 import type {
   Consumable,
   CultivationTechnique,
   Material,
   Skill,
-} from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-domain/cultivator';
 import type { ItemDetailPayload } from './itemDetailPayload';
 import { ItemPreview } from './ItemPreview';
 

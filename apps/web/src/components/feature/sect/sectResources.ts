@@ -19,14 +19,14 @@ import { getSectPresentation } from '@app/lib/sect/sectPresentation';
 import {
   SectPromotionEvaluationDataSchema,
   SectStipendDataSchema,
-} from '@daoyou/shared/contracts/sect';
+} from '@daoyou/contracts/sect';
 import {
   resolveSectBenefitSnapshot,
   resolveSectPresentation,
   type CultivatorSectState,
   type ResolvedSectPresentation,
-} from '@daoyou/shared/engine/sect';
-import { productionSectRuntime } from '@daoyou/shared/engine/sect/content';
+} from '@daoyou/game-rules/sect-organization';
+import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { z } from 'zod';
 

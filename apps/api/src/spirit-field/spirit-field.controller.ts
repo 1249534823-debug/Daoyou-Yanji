@@ -20,7 +20,7 @@ import {
   SpiritFieldCultivateRequestSchema,
   SpiritFieldHarvestRequestSchema,
   SpiritFieldSowRequestSchema,
-} from '@daoyou/shared/contracts/spiritField';
+} from '@daoyou/contracts/spiritField';
 import type { Response as ExpressResponse } from 'express';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';

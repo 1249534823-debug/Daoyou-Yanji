@@ -10,25 +10,15 @@ import { parseRedisJson } from '@server/lib/redis/json.js';
 import { redisLockKeys, withRedisLock } from '@server/lib/redis/lock.js';
 import { generateAiObject } from '@server/utils/aiClient.js';
 import { normalizeFreeformLlmInput } from '@server/utils/llmPayload.js';
-import {
-  describeIdentityReshapeAnswers,
-  getIdentityReshapeQuestions,
-  IDENTITY_RESHAPE_DESCRIPTION_MAX_LENGTH,
-  IDENTITY_RESHAPE_DESCRIPTION_MIN_LENGTH,
-  IDENTITY_RESHAPE_QUESTION_COUNT,
-  IDENTITY_RESHAPE_SCENARIO,
-  IDENTITY_RESHAPE_SESSION_TTL_SECONDS,
-  IDENTITY_RESHAPE_TALISMAN_NAME,
-  selectIdentityReshapeQuestions,
-  validateIdentityReshapeAnswers,
-} from '@daoyou/shared/config/identityReshape';
+import { IDENTITY_RESHAPE_DESCRIPTION_MAX_LENGTH, IDENTITY_RESHAPE_DESCRIPTION_MIN_LENGTH, IDENTITY_RESHAPE_QUESTION_COUNT, IDENTITY_RESHAPE_SCENARIO, IDENTITY_RESHAPE_SESSION_TTL_SECONDS, IDENTITY_RESHAPE_TALISMAN_NAME } from '@daoyou/game-content/identity-reshape';
+import { describeIdentityReshapeAnswers, getIdentityReshapeQuestions, selectIdentityReshapeQuestions, validateIdentityReshapeAnswers } from '@daoyou/game-rules/identity-reshape';
 import {
   IdentityReshapeCandidateSchema,
   type IdentityReshapeAnswer,
   type IdentityReshapeNameCheck,
   type IdentityReshapeSessionDTO,
   type IdentityReshapeSessionStore,
-} from '@daoyou/shared/types/identityReshape';
+} from '@daoyou/game-domain/identity-reshape';
 import { and, eq, sql } from 'drizzle-orm';
 import { findBagTalisman } from '@server/inventory/application/BagConsumables.js';
 import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';

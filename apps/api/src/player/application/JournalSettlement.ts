@@ -5,18 +5,14 @@ import {
   sectMemberships,
 } from '@server/lib/drizzle/schema.js';
 import { journalOperationKey } from '@server/lib/repositories/playerJournalRepository.js';
-import {
-  PlayerJournalEventSchema,
-  type JournalActivity,
-  type JournalChange,
-  type PlayerJournalEvent,
-} from '@daoyou/shared/contracts/playerJournal';
-import type { InventoryItem } from '@daoyou/shared/inventory';
+import { type JournalChange } from '@daoyou/game-domain/journal/changes';
+import { PlayerJournalEventSchema, type JournalActivity, type PlayerJournalEvent } from '@daoyou/contracts/playerJournal';
+import type { InventoryItem } from '@daoyou/game-domain/items/inventory';
 import {
   compactJournalChanges,
   inventoryJournalChanges,
-} from '@daoyou/shared/playerJournal';
-import type { CultivationProgress } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-rules/journal/changes';
+import type { CultivationProgress } from '@daoyou/game-domain/cultivator';
 import { and, eq } from 'drizzle-orm';
 
 // Only explicitly enrolled settlements collect changes. The transaction owns the

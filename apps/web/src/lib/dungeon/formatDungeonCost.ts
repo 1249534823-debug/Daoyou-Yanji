@@ -1,10 +1,10 @@
-import type { DungeonOptionCost } from '@daoyou/shared/lib/dungeon/types';
-import type { MaterialType } from '@daoyou/shared/types/constants';
+import type { DungeonOptionCost } from '@daoyou/game-domain/dungeon/state';
+import type { MaterialType } from '@daoyou/game-domain/inventory';
 import {
   getMaterialTypeLabel,
   getResourceTypeLabel,
-} from '@daoyou/shared/lib/gameConceptDisplay';
-import { getResourceDisplayName } from '@daoyou/shared/lib/gameConceptDisplay';
+} from '@daoyou/game-content/presentation/concepts';
+import { getResourceDisplayName } from '@daoyou/game-content/presentation/concepts';
 
 function formatMaterialCostName(cost: DungeonOptionCost) {
   if (cost.name) {

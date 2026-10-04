@@ -1,6 +1,6 @@
 import { Controller, Get, Inject } from '@nestjs/common';
 import type { AuthUser } from '@server/lib/auth/types.js';
-import { RESOURCE_SCOPE_KINDS } from '@daoyou/shared/contracts/resources';
+import { RESOURCE_SCOPE_KINDS } from '@daoyou/contracts/resources';
 import { z } from 'zod';
 import { CurrentUser } from '../auth/access.js';
 import { FirstQuery } from '../http/first-query.js';

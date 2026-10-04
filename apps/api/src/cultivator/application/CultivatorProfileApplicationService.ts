@@ -10,9 +10,9 @@ import {
 import {
   getRealmStageNaturalAttributeValue,
   getRealmStageUnallocatedAttributeBudget,
-} from '@daoyou/shared/config/realmProgression';
-import type { ResourceChangeDescriptor } from '@daoyou/shared/contracts/resources';
-import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
+} from '@daoyou/game-rules/progression/attributes';
+import type { ResourceChangeDescriptor } from '@daoyou/contracts/resources';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
 import { and, eq } from 'drizzle-orm';
 import {
   AttributeResetService,

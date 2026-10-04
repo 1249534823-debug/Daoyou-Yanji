@@ -1,7 +1,7 @@
-import type { InventoryView } from '@daoyou/shared/contracts/inventory';
-import type { ItemDefinition } from '@daoyou/shared/items/types';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
-import type { RealmType } from '@daoyou/shared/types/constants';
+import type { InventoryView } from '@daoyou/contracts/inventory';
+import type { ItemDefinition } from '@daoyou/game-domain/items/definition';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
+import type { RealmType } from '@daoyou/constants/realms';
 
 export type DisplayItem = Pick<
   InventoryView['items'][number],

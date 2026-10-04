@@ -6,10 +6,8 @@ import {
   ReputationShopError,
   updateReputationShopItem,
 } from '@server/reputation-shop/application/ReputationShopService.js';
-import {
-  ReputationShopItemMutationSchema,
-  ReputationShopListQuerySchema,
-} from '@daoyou/shared/contracts/reputationShop';
+import { ItemExchangeShopItemMutationSchema as ReputationShopItemMutationSchema } from '@daoyou/game-rules/shops/exchange';
+import { ReputationShopListQuerySchema } from '@daoyou/contracts/reputationShop';
 
 @Injectable()
 export class AdminReputationShopService {

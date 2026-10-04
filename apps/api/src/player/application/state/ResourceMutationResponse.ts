@@ -1,7 +1,7 @@
 import type {
   PlayerResourceMutationMeta,
   PlayerStateMutationResponse,
-} from '@daoyou/shared/contracts/player';
+} from '@daoyou/contracts/player';
 
 export function toPlayerStateMutationResponse<T>(committed: {
   result: T;

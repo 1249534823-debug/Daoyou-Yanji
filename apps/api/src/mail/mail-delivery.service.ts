@@ -1,4 +1,4 @@
-import type { MailAttachment } from '@daoyou/shared/types/mail';
+import type { MailAttachment } from '@daoyou/game-domain/mail/attachment';
 import { Injectable } from '@nestjs/common';
 import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import { sendMailInTransaction } from './application/MailService.js';

@@ -1,4 +1,4 @@
-import type { BodyCultivationTrackSummary } from '@daoyou/shared/lib/bodyCultivation/summary';
+import type { BodyCultivationTrackSummary } from '@daoyou/game-rules/body-cultivation/summary';
 
 export function getTrackProgressPercent(
   track: BodyCultivationTrackSummary,

@@ -1,13 +1,8 @@
 import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import { createTransactionalMessage } from '@server/lib/repositories/transactionalMessageRepository.js';
-import type {
-  DomainEventData,
-  DomainEventType,
-} from '@daoyou/shared/contracts/domainEvents';
-import {
-  DOMAIN_EVENT_DEFINITIONS,
-  parseDomainEventEnvelope,
-} from '@daoyou/shared/contracts/domainEvents';
+import type { DomainEventData, DomainEventType } from '@daoyou/game-domain/events/payloads';
+import { parseDomainEventEnvelope } from '@server/lib/mq/domainEventSchema.js';
+import { DOMAIN_EVENT_DEFINITIONS } from '@daoyou/contracts/domainEvents';
 import { randomUUID } from 'node:crypto';
 
 export interface DomainEventWriter {

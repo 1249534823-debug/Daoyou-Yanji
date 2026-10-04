@@ -15,12 +15,12 @@ import {
 import {
   calculateInnRecoveryLossRange,
   calculateInnRecoverySpiritStoneCost,
-} from '@daoyou/shared/config/innRecovery';
-import { isConditionStatusActive } from '@daoyou/shared/lib/condition';
+} from '@daoyou/game-rules/condition/inn-recovery';
+import { isConditionStatusActive } from '@daoyou/game-rules/condition';
 import {
   evaluateFateContext,
   getInnSpiritStoneMultiplier,
-} from '@daoyou/shared/lib/fates';
+} from '@daoyou/game-rules/character/fates';
 import { useState } from 'react';
 
 type InnRecoveryResponse = {

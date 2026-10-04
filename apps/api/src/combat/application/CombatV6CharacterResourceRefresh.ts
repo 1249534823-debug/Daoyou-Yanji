@@ -1,8 +1,8 @@
 import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import { cultivators } from '@server/lib/drizzle/schema.js';
-import { rebaseCharacterResources } from '@daoyou/shared/lib/cultivatorDisplay';
-import { evaluateFateContext } from '@daoyou/shared/lib/fates';
-import type { CultivatorCondition } from '@daoyou/shared/types/condition';
+import { rebaseCharacterResources } from '@daoyou/game-rules/character/display';
+import { evaluateFateContext } from '@daoyou/game-rules/character/fates';
+import type { CultivatorCondition } from '@daoyou/game-domain/condition';
 import { eq } from 'drizzle-orm';
 import { getCultivatorPreHeavenFates } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 import { readCombatV6ConditionAuthority } from '@server/combat/application/CombatV6ConditionAuthority.js';

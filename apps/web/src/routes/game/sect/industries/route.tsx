@@ -23,7 +23,7 @@ import {
   STANDARD_SECT_PRESENTATION,
   type SectConstructionDonationAmount,
   type SectFacilityState,
-} from '@daoyou/shared/engine/sect';
+} from '@daoyou/game-rules/sect-organization';
 import { useMemo, useState } from 'react';
 import {
   postJson,

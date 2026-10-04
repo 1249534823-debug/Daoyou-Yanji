@@ -1,5 +1,5 @@
 import { SectError } from '@server/sects/application/SectError.js';
-import { SectIdempotencyKeySchema } from '@daoyou/shared/contracts/sect';
+import { SectIdempotencyKeySchema } from '@daoyou/contracts/sect';
 import { createHash } from 'node:crypto';
 
 export type SectCommandRequest = {

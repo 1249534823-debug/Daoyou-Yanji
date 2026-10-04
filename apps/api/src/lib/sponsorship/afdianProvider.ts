@@ -3,8 +3,8 @@ import {
   buildAfdianCheckoutUrl,
   buildAfdianWebhookSignedText,
   createAfdianApiEnvelope,
-} from '@daoyou/shared/lib/afdianProtocol';
-import { parseCnyAmountToFen } from '@daoyou/shared/lib/sponsorship';
+} from '@daoyou/contracts/afdian';
+import { parseCnyAmountToFen } from '@daoyou/game-rules/sponsorship';
 import { createHash, createPublicKey, verify as verifySignature } from 'node:crypto';
 import { z } from 'zod';
 import type {

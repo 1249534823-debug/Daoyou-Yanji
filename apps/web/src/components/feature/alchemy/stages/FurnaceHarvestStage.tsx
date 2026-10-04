@@ -1,5 +1,5 @@
 import { InkButton } from '@app/components/ui';
-import { consumableFactsOf } from '@daoyou/shared/items/definitions/consumables';
+import { consumableFactsOf } from '@daoyou/game-domain/items/consumable-facts';
 import { ItemSlot } from '../../items/ItemSlot';
 import { useAlchemyCraftSession } from '../alchemyCraftContext';
 

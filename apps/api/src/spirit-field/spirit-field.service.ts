@@ -12,7 +12,7 @@ import type {
   SpiritFieldCultivateRequest,
   SpiritFieldHarvestRequest,
   SpiritFieldSowRequest,
-} from '@daoyou/shared/contracts/spiritField';
+} from '@daoyou/contracts/spiritField';
 
 @Injectable()
 export class SpiritFieldService {

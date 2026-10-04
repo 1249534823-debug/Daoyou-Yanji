@@ -142,7 +142,7 @@ export function useCombatV6Session<T extends CombatV6Session>(
   );
   const submit = useCallback(
     async (
-      commands: import('@daoyou/shared/contracts/combatV6').CombatV6CommandGroup,
+      commands: import('@daoyou/game-domain/combat/commands').CombatV6CommandGroup,
     ) => {
       let completed = false;
       await run(async () => {

@@ -1,6 +1,6 @@
-import { manualMechanismValue } from '@daoyou/shared/engine/combat-v6/manuals/mechanism';
-import { manualMechanismDescription } from '@daoyou/shared/engine/combat-v6/manuals/presentation';
-import type { CharacterManualDefV1 } from '@daoyou/shared/engine/combat-v6/manuals/types';
+import { manualMechanismValue } from '@daoyou/game-rules/manuals/mechanism';
+import { manualMechanismDescription } from '@daoyou/game-rules/manuals/presentation';
+import type { CharacterManualDefV1 } from '@daoyou/game-domain/manuals/types';
 
 export function manualMechanismSummary(
   manual: CharacterManualDefV1,

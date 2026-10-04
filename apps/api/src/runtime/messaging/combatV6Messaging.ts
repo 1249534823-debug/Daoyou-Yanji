@@ -1,15 +1,7 @@
-import {
-  COMBAT_V6_REPLAY_STREAM,
-  COMBAT_V6_REPLAY_SUBJECT,
-  CombatV6ReplayArchiveMessageV1Schema,
-  parseCombatV6Replay,
-  type CombatV6ReplayArchiveMessageV1,
-  type CombatV6ReplayV1,
-} from '@daoyou/shared/contracts/combatV6Runtime';
-import {
-  DOMAIN_EVENT_STREAM,
-  parseDomainEventEnvelope,
-} from '@daoyou/shared/contracts/domainEvents';
+import { parseCombatV6Replay, type CombatV6ReplayV1 } from '@daoyou/game-domain/combat/replay-archive';
+import { COMBAT_V6_REPLAY_STREAM, COMBAT_V6_REPLAY_SUBJECT, CombatV6ReplayArchiveMessageV1Schema, type CombatV6ReplayArchiveMessageV1 } from '@daoyou/contracts/combatV6Runtime';
+import { parseDomainEventEnvelope } from '@server/lib/mq/domainEventSchema.js';
+import { DOMAIN_EVENT_STREAM } from '@daoyou/contracts/domainEvents';
 import {
   startArenaV6Coordinator,
   stopArenaV6Coordinator,

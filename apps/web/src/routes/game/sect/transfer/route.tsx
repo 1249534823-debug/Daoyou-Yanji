@@ -8,10 +8,10 @@ import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { InkBadge, InkButton, InkCard, InkNotice } from '@app/components/ui';
 import { useResourceMutation } from '@app/lib/resources/mutations';
 import { usePlayerSession } from '@app/lib/resources/player';
-import { CHEAT_HEAVEN_TALISMAN_NAME } from '@daoyou/shared/config/sectTransferTalisman';
-import type { SectTransferPreviewData } from '@daoyou/shared/contracts/sect';
-import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/shared/engine/combat-v6/content';
-import { SECT_RANK_LABELS } from '@daoyou/shared/engine/sect';
+import { CHEAT_HEAVEN_TALISMAN_NAME } from '@daoyou/game-content/consumables/sectTransferTalisman';
+import type { SectTransferPreviewData } from '@daoyou/contracts/sect';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import { SECT_RANK_LABELS } from '@daoyou/game-rules/sect-organization';
 import { useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 

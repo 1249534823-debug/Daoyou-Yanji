@@ -22,7 +22,7 @@ import {
   type CharacterGenerationQuota,
   type CharacterGenerationQuotaResponse,
   type GenerateCharacterResponse,
-} from '@daoyou/shared/contracts/character-generation';
+} from '@daoyou/contracts/character-generation';
 import { z } from 'zod';
 
 const GenerateCharacterSchema = z.object({ userInput: z.string() });

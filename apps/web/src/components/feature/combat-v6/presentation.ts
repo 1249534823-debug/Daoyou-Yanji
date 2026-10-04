@@ -1,4 +1,4 @@
-import type { CombatV6SkillCommandOption } from '@daoyou/shared/engine/combat-v6/core';
+import type { CombatV6SkillCommandOption } from '@daoyou/combat-core/types';
 
 export {
   appendBattleEntries,
@@ -6,12 +6,12 @@ export {
   frameFeedback,
   reasonText,
   unitLabels,
-} from '@daoyou/shared/combat-v6/battle-log';
+} from '@daoyou/game-rules/combat/battle-log';
 export type {
   ActionEntry,
   BattleLog,
   LogLine,
-} from '@daoyou/shared/combat-v6/battle-log';
+} from '@daoyou/game-rules/combat/battle-log';
 
 export const combatV6HistorySources = {
   ranking: '天骄榜',

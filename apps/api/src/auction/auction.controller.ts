@@ -14,7 +14,7 @@ import {
   AuctionBeastListSchema,
   AuctionBuySchema,
   AuctionListSchema,
-} from '@daoyou/shared/contracts/auction';
+} from '@daoyou/contracts/auction';
 import { z } from 'zod';
 import { Access, CurrentCultivator } from '../auth/access.js';
 import { FirstQuery } from '../http/first-query.js';

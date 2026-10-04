@@ -3,7 +3,7 @@ import type {
   ArenaSessionView,
   ArenaSocketMessage,
   ArenaV6Submit,
-} from '@daoyou/shared/contracts/combatV6Arena';
+} from '@daoyou/contracts/combatV6Arena';
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { combatV6Request, CombatV6RequestError, mutationBody } from './request';
 import { emptySession, reduceSession } from './session';
@@ -215,7 +215,7 @@ export function useArenaV6Session(battleId: string, spectator = false) {
   );
   const submit = useCallback(
     async (
-      commands: import('@daoyou/shared/contracts/combatV6').CombatV6CommandGroup,
+      commands: import('@daoyou/game-domain/combat/commands').CombatV6CommandGroup,
     ) => {
       const session = latest.current;
       if (spectator || !session || !connected || retry)

@@ -1,6 +1,6 @@
 import { useInkUI } from '@app/components/providers/InkUIProvider';
 import { realtimeClient } from '@app/lib/realtime/realtimeClient';
-import type { RealtimeChannel } from '@daoyou/shared/contracts/realtime';
+import type { RealtimeChannel } from '@daoyou/contracts/realtime';
 import { useEffect, useRef } from 'react';
 import { REALTIME_CHANNEL_META } from './realtimeStatusView';
 

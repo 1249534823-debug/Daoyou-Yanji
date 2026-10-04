@@ -8,7 +8,7 @@
 - 当前开放 10 个栖息地，覆盖已有 18 个物种。每次随机组成 1–3 只编组，物种可重复。分布优先遵循生活习性，再兼顾携带境界。
 - 每只灵兽暂定 5% 概率为 0 级幼崽；移除旧每日 20 次上限，以灵气消耗约束寻觅。两项属于本次实施默认值，可继续调优。
 - 成年五维额外点数先均衡分配，再在均值 ±30% 的整数边界内转移，总量不变。幼崽无额外加点。资质、成长、出生技能沿用灵兽内容包。
-- 区域配置：`packages/shared/src/engine/combat-v6/wild/data/wild.json`；统一费用：`packages/shared/src/config/qiSystem.ts`；掉落：`packages/shared/src/rewards/data/wild.json`。
+- 区域配置：`packages/game-content/src/combat/wild/data/wild.json`；统一费用：`packages/game-content/src/qi/config.ts`；掉落：`packages/game-content/src/rewards/data/wild.json`。
 
 ## 栖息地分布
 

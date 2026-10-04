@@ -3,20 +3,18 @@ import type { InventoryFilter } from '@app/components/feature/items/inventoryFil
 import { useInventoryBag } from '@app/lib/resources/bag';
 import { useCraftStorage } from '@app/lib/resources/craftStorage';
 import { consumeResourceMutation } from '@app/lib/resources/mutations';
-import type { ForgeRequest, ForgeView } from '@daoyou/shared/contracts/forging';
-import type { InventoryView } from '@daoyou/shared/contracts/inventory';
-import {
-  equipmentRealm,
-  isOpenEquipmentLevel,
-} from '@daoyou/shared/engine/combat-v6/equipment/realm';
-import type { DaoEquipmentInstanceV1 } from '@daoyou/shared/engine/combat-v6/equipment/types';
-import type { DaoWeaponType } from '@daoyou/shared/engine/combat-v6/equipment/weapons';
-import { FORGE_INTENT_MAX_LENGTH } from '@daoyou/shared/forging/narrative';
-import { forgingCost, forgingInputs } from '@daoyou/shared/forging/rules';
-import { itemDefinition } from '@daoyou/shared/inventory';
-import { FORGING_MATERIAL_TYPES } from '@daoyou/shared/items/definitions/materials';
-import { materialFactsOf } from '@daoyou/shared/items/material';
-import { QUALITY_ORDER } from '@daoyou/shared/types/constants';
+import type { ForgeRequest, ForgeView } from '@daoyou/contracts/forging';
+import type { InventoryView } from '@daoyou/contracts/inventory';
+import { isOpenEquipmentLevel } from '@daoyou/game-domain/equipment/levels';
+import { equipmentRealm } from '@daoyou/game-rules/equipment/realm';
+import type { DaoEquipmentInstanceV1 } from '@daoyou/game-domain/equipment/types';
+import type { DaoWeaponType } from '@daoyou/game-domain/equipment/weapons';
+import { FORGE_INTENT_MAX_LENGTH } from '@daoyou/game-domain/equipment/narrative';
+import { forgingCost, forgingInputs } from '@daoyou/game-rules/forging/rules';
+import { itemDefinition } from '@daoyou/game-rules/inventory';
+import { FORGING_MATERIAL_TYPES } from '@daoyou/game-domain/items/material-facts';
+import { materialFactsOf } from '@daoyou/game-domain/items/material';
+import { QUALITY_ORDER } from '@daoyou/constants/qualities';
 import { useEffect, useRef, useState } from 'react';
 import { combatV6Request, mutationBody } from '../combat-v6/request';
 

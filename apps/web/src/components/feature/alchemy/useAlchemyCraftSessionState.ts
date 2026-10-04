@@ -11,9 +11,9 @@ import {
 import {
   ALCHEMY_INPUT_CONSTRAINTS,
   ALCHEMY_MAX_DOSE,
-} from '@daoyou/shared/config/alchemyInput';
-import type { AlchemyFormula, AlchemyMode } from '@daoyou/shared/types/consumable';
-import type { Material } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-content/alchemy/alchemyInput';
+import type { AlchemyFormula, AlchemyMode } from '@daoyou/game-domain/consumable';
+import type { Material } from '@daoyou/game-domain/cultivator';
 import {
   createElement,
   useCallback,

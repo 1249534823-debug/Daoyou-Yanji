@@ -1,5 +1,5 @@
 import { isRedisLockContention, withRedisLock } from '@server/lib/redis/lock.js';
-import type { ArenaRoomV1 } from '@daoyou/shared/contracts/arena';
+import type { ArenaRoomV1 } from '@daoyou/contracts/arena';
 import { ArenaRoomService } from '@server/arena/application/ArenaRoomService.js';
 import { createArenaV6 } from '@server/combat/application/CombatV6ArenaService.js';
 import { CombatV6ArenaStore } from '@server/combat/application/CombatV6ArenaStore.js';

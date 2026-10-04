@@ -1,5 +1,6 @@
-import { createFreshCombatV6MethodLevels } from '@daoyou/shared/engine/combat-v6/build-state';
-import { COMBAT_V6_SECT_DEFINITIONS, type CombatV6SectId } from '@daoyou/shared/engine/combat-v6/content';
+import { createFreshCombatV6MethodLevels } from '@daoyou/game-rules/sects/build-state';
+import { COMBAT_V6_SECT_DEFINITIONS } from '@daoyou/game-content/sects/registry';
+import { type CombatV6SectId } from '@daoyou/game-domain/combat/content';
 import {
   type DbExecutor,
   type DbTransaction,
@@ -10,17 +11,17 @@ import {
   sectCombatStates,
   sectMethodProgress,
 } from '@server/lib/drizzle/schema.js';
-import { getOrInitCultivationProgress } from '@daoyou/shared/engine/cultivation/cultivationUtils';
-import type { ResourceDataMap } from '@daoyou/shared/contracts/resources';
+import { getOrInitCultivationProgress } from '@daoyou/game-rules/cultivation/cultivationUtils';
+import type { ResourceDataMap } from '@daoyou/contracts/resources';
 import {
   type CultivatorSectState,
   type SectDefinition,
   type SectRuntime,
   type SectTrainingCost,
-} from '@daoyou/shared/engine/sect';
-import { productionSectRuntime } from '@daoyou/shared/engine/sect/content';
-import type { RealmStage, RealmType } from '@daoyou/shared/types/constants';
-import type { CultivationProgress } from '@daoyou/shared/types/cultivator';
+} from '@daoyou/game-rules/sect-organization';
+import { productionSectRuntime } from '@daoyou/game-rules/sect-organization/production/productionRuntime';
+import type { RealmStage, RealmType } from '@daoyou/constants/realms';
+import type { CultivationProgress } from '@daoyou/game-domain/cultivator';
 import { and, eq, sql } from 'drizzle-orm';
 
 export type SectMembershipRow = typeof sectMemberships.$inferSelect;

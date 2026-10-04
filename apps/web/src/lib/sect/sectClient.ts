@@ -3,7 +3,7 @@ import { consumeResourceMutation } from '@app/lib/resources/mutations';
 import type {
   SectSubmissionCandidatesData,
   SectTaskActionData,
-} from '@daoyou/shared/contracts/sect';
+} from '@daoyou/contracts/sect';
 
 const taskBattleRequests = new Map<string, Promise<SectTaskActionData>>();
 

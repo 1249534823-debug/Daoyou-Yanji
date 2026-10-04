@@ -1,14 +1,9 @@
-import type { DungeonExpectedState } from '@daoyou/shared/contracts/combatV6Dungeon';
-import {
-  RESOURCE_DATA_SCHEMAS,
-  type ResourceChangeDescriptor,
-} from '@daoyou/shared/contracts/resources';
-import { dungeonReadiness } from '@daoyou/shared/lib/dungeon/readiness';
-import {
-  canChallengeDungeonRealm,
-  getMapNode,
-  isSatelliteNode,
-} from '@daoyou/shared/lib/game/mapSystem';
+import type { DungeonExpectedState } from '@daoyou/contracts/combatV6Dungeon';
+import { RESOURCE_DATA_SCHEMAS } from '@server/lib/resources/schemas.js';
+import { type ResourceChangeDescriptor } from '@daoyou/contracts/resources';
+import { dungeonReadiness } from '@daoyou/game-rules/dungeon/readiness';
+import { getMapNode, isSatelliteNode } from '@daoyou/game-content/world/map';
+import { canChallengeDungeonRealm } from '@daoyou/game-rules/world/dungeon';
 import { dungeonPlayer } from '@server/dungeon/application/flow/combatV6.js';
 import {
   type DungeonFlowService,
@@ -34,7 +29,7 @@ type DungeonCommand =
       actionId: string;
       runId: string;
       round: number;
-      materialSelections: import('@daoyou/shared/contracts/combatV6Dungeon').DungeonMaterialSelection[];
+      materialSelections: import('@daoyou/game-domain/dungeon/actions').DungeonMaterialSelection[];
     }
   | { kind: 'battle-begin'; encounterId: string }
   | {

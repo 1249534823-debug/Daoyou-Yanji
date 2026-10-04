@@ -13,14 +13,14 @@ import {
   RewardItemSchema,
   materializeRewardItem,
   rewardDisplayItem,
-} from '@daoyou/shared/contracts/adminRewards';
+} from '@daoyou/game-rules/rewards/items';
 import {
   REPUTATION_SHOP_MAX_PRICE,
   type ReputationShopItemMutation,
   type ReputationShopItemStatus,
   type ReputationShopItemView,
-} from '@daoyou/shared/contracts/reputationShop';
-import { getItemExchangePurchaseWeek } from '@daoyou/shared/lib/itemExchangeShop';
+} from '@daoyou/contracts/reputationShop';
+import { getItemExchangePurchaseWeek } from '@daoyou/game-rules/shops/purchase';
 import { and, asc, desc, eq, sql, type SQL } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
 import { grantInventory } from '@server/inventory/operations.js';

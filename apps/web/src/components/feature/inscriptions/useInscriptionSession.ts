@@ -10,7 +10,7 @@ import {
   type InscriptionRequest,
   type InscriptionResult,
   type InscriptionView,
-} from '@daoyou/shared/contracts/inscriptions';
+} from '@daoyou/contracts/inscriptions';
 import { useEffect, useRef, useState } from 'react';
 import { combatV6Request, mutationBody } from '../combat-v6/request';
 

@@ -2,7 +2,7 @@ import { getRuntimeEnvironment } from '@server/lib/config/environment.js';
 import { ConfigurationModule } from './config/configuration.module.js';
 import { Module } from '@nestjs/common';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
-import { allowsLocalDevTools } from '@daoyou/shared/config/deployment';
+import { allowsLocalDevTools } from '@daoyou/contracts/dev-tools-access';
 import { AccountModule } from './account/account.module.js';
 import { AdminModule } from './admin/admin.module.js';
 import { AlchemyModule } from './alchemy/alchemy.module.js';

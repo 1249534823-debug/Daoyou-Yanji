@@ -1,8 +1,8 @@
 import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
 import { materials } from '@server/lib/drizzle/schema.js';
-import type { Material } from '@daoyou/shared/types/cultivator';
+import type { Material } from '@daoyou/game-domain/cultivator';
 import { and, asc, eq, sql } from 'drizzle-orm';
-import { readSpiritFieldSeedSpec } from '@daoyou/shared/engine/spirit-field/seedMaterial';
+import { readSpiritFieldSeedSpec } from '@daoyou/game-domain/spirit-field/seedMaterial';
 
 export type MaterialInventoryWrite = Pick<
   Material,

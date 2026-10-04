@@ -6,9 +6,9 @@ import { DivinationError } from '@server/divination/application/DivinationServic
 import { grantDevResources } from '@server/forging/application/ForgingService.js';
 import { InventoryError } from '@server/inventory/operations.js';
 import { QiServiceError } from '@server/cultivator/application/QiService.js';
-import { DevCultivatorPatchSchema } from '@daoyou/shared/contracts/devTools';
-import { DevGrantSchema } from '@daoyou/shared/contracts/forging';
-import { InventoryRuleError } from '@daoyou/shared/inventory';
+
+import { DevCultivatorPatchSchema, DevGrantSchema } from './dev-tools-input.js';
+import { InventoryRuleError } from '@daoyou/game-domain/items/bag';
 import { z } from 'zod';
 
 @Injectable()
