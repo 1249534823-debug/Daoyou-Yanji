@@ -4,27 +4,6 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-const sharedImportBoundaries = [
-  '@server/*',
-  '@app/*',
-  '@daoyou/api*',
-  '@daoyou/web*',
-  'node:*',
-  '**/apps/**',
-  '@nestjs/**',
-  'express',
-  'pg',
-  'drizzle-orm',
-  'drizzle-orm/**',
-  'ioredis',
-  'nats',
-  'react',
-  'react-dom',
-  'react-dom/**',
-  'clsx',
-  'tailwind-merge',
-];
-
 export default tseslint.config(
   { ignores: ['**/dist/**', 'apps/api/**'] },
   {
@@ -35,12 +14,8 @@ export default tseslint.config(
   {
     files: ['apps/web/**/*.{ts,tsx}'],
     languageOptions: { globals: globals.browser },
-    plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
-    },
+    extends: [reactHooks.configs.flat.recommended, reactRefresh.configs.vite],
     rules: {
-      ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true, allowExportNames: ['loader'] },
@@ -52,92 +27,9 @@ export default tseslint.config(
     languageOptions: { globals: globals.node },
   },
   {
-    files: ['packages/*/src/**/*.{ts,tsx}', 'apps/web/src/**/*.{ts,tsx}'],
-    rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: [
-            '@server/*',
-            '@daoyou/api',
-            '@daoyou/api/*',
-            '@daoyou/web',
-            '@daoyou/web/*',
-            '**/apps/api/**',
-            '**/apps/web/**',
-          ],
-        },
-      ],
-    },
-  },
-  {
-    files: ['apps/web/src/{lib,components,providers}/**/*.{ts,tsx}'],
-    rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: [
-            '@app/routes/**',
-            '**/routes/**',
-            '@server/*',
-            '@daoyou/api*',
-            '@daoyou/web*',
-            '**/apps/api/**',
-            '**/apps/web/**',
-          ],
-        },
-      ],
-    },
-  },
-  {
-    files: ['packages/*/src/**/*.{ts,tsx}'],
-    ignores: ['**/*.test.*', '**/*.spec.*'],
-    rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: sharedImportBoundaries,
-        },
-      ],
-    },
-  },
-  {
-    files: [
-      'packages/{constants,game-domain,game-content,game-rules,contracts}/src/**/*.ts',
-    ],
-    ignores: ['**/*.test.*', '**/*.spec.*'],
-    rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: [
-            { group: sharedImportBoundaries },
-            {
-              regex: '(?:^|/)(?:battle-v5|creation-v2)(?:/|$)',
-              message: 'V6 must not depend on retired engines.',
-            },
-          ],
-        },
-      ],
-    },
-  },
-  {
     files: ['packages/combat-core/src/**/*.ts'],
     ignores: ['**/*.test.*', '**/*.spec.*'],
     rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: [
-            { group: sharedImportBoundaries },
-            {
-              regex:
-                '(?:^|/)(?:rules-daoyou|projection|content|battle-v5|creation-v2)(?:/|$)',
-              message: 'Combat core receives rules and content from its host.',
-            },
-          ],
-        },
-      ],
       'no-restricted-properties': [
         'error',
         { object: 'Math', property: 'random', message: 'Use the battle RNG.' },

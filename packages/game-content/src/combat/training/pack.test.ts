@@ -1,4 +1,3 @@
-import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 import raw from './data/training.json' with { type: 'json' };
@@ -8,9 +7,6 @@ import { COMBAT_V6_TRAINING_CONTENT_V1 } from './content.js';
 
 describe('训练遭遇配置', () => {
   it('Schema 同步', () => expect(z.toJSONSchema(TrainingPackShape, { reused: 'ref' })).toEqual(schema));
-  it('全部21单位、六场景、技能状态保持迁移前内容与顺序', () => {
-    expect(createHash('sha256').update(JSON.stringify(COMBAT_V6_TRAINING_CONTENT_V1)).digest('hex')).toBe('302834d0f108662aec1929cff94ec4c51f404f72b08eb1e026527db1e5459eaa');
-  });
   it('基础面板和模板配方决定敌友实际输入', () => {
     const data = structuredClone(raw);
     data.tiers[0].attrs.hp = data.tiers[0].attrs.maxHp = 6001;

@@ -21,7 +21,7 @@ description: Daoyou NestJS API、认证、授权、Better Auth、ALTCHA、admin�
 
 ## Configuration and Workspace Boundary
 
-- API builds with `nest build` (Nest CLI 12 default tsc, NodeNext ESM); the six libraries build with tsc in dependency order and export dist JavaScript/declarations; Web builds with Vite. API lint uses Oxlint with type-aware Promise checks and import boundaries; Web/packages/tools retain ESLint. API consumes explicit `@daoyou/*` library exports, never Web; libraries cannot import either host. The old shared workspace is removed. `pnpm run check:boundaries` enforces package direction and declared dependencies. LLM generators and prompt rendering belong in `apps/api/src/lib/generation`.
+- API builds with `nest build` (Nest CLI 12 default tsc, NodeNext ESM); the six libraries build with tsc in dependency order and export dist JavaScript/declarations; Web builds with Vite. API lint uses Oxlint correctness rules with type-aware Promise checks; Web/packages/tools retain ESLint. API consumes explicit `@daoyou/*` library exports, never Web; libraries cannot import either host. The old shared workspace is removed. The migration-only package-boundary script and import restrictions are retired; package direction and declared dependencies remain architecture conventions. LLM generators and prompt rendering belong in `apps/api/src/lib/generation`.
 - Nest services inject `AppConfigService`; independent libraries read `getRuntimeEnvironment()`. The snapshot is validated once with Zod; dotenv discovery is disabled. Never log credential values on validation failure.
 - `DatabaseModule` exports the existing Drizzle client, preserving one pool and transaction propagation. Runtime closes it after request/message drain.
 

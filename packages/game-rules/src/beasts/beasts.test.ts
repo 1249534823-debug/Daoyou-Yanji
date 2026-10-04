@@ -291,3 +291,53 @@ describe('手游参照召唤兽派生公式', () => {
     ).toBe(376);
   });
 });
+
+it.each([
+  {
+    speciesId: 'combat.wild.species.spirit-fox',
+    ranges: [
+      [672, 840],
+      [864, 1080],
+      [2880, 3600],
+      [1536, 1920],
+      [864, 1080],
+    ],
+    growth: [982, 1030],
+  },
+  {
+    speciesId: 'combat.wild.species.rock-boar',
+    ranges: [
+      [816, 1020],
+      [1180, 1440],
+      [3960, 4950],
+      [1536, 1920],
+      [576, 720],
+    ],
+    growth: [1012, 1060],
+  },
+  {
+    speciesId: 'combat.wild.species.wind-wolf',
+    ranges: [
+      [1104, 1380],
+      [624, 780],
+      [2160, 2700],
+      [960, 1200],
+      [864, 1080],
+    ],
+    growth: [952, 1000],
+  },
+])(
+  'species $speciesId rolls stay within the confirmed design ranges',
+  ({ speciesId, ranges, growth }) => {
+    const id = '00000000-0000-4000-8000-000000000001';
+    for (let seed = 0; seed < 128; seed++) {
+      const beast = generateStarterBeast(id, id, speciesId, seed);
+      Object.values(beast.aptitudes).forEach((value, i) => {
+        expect(value).toBeGreaterThanOrEqual(ranges[i][0]);
+        expect(value).toBeLessThanOrEqual(ranges[i][1]);
+      });
+      expect(beast.growth).toBeGreaterThanOrEqual(growth[0] / 1000);
+      expect(beast.growth).toBeLessThanOrEqual(growth[1] / 1000);
+    }
+  },
+);

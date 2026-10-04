@@ -5,9 +5,35 @@ import { generateForgedEquipment } from '../../equipment/forging.js';
 import { generateDaoEquipmentV2 } from '../../equipment/generator.js';
 import { projectCharacterToCombatV6 } from './project-character.js';
 import { type CharacterCombatInput } from '@daoyou/game-domain/combat';
-import baseline from './fixtures/character-build.json' with { type: 'json' };
 
-const input = baseline.inputs[0] as unknown as CharacterCombatInput;
+const input: CharacterCombatInput = {
+  cultivator: {
+    id: 'a1',
+    name: '装配基线',
+    realm: '炼气',
+    realm_stage: '后期',
+    attributes: {
+      vitality: 10,
+      strength: 20,
+      spirit: 30,
+      endurance: 40,
+      speed: 50,
+      willpower: 60,
+    },
+  },
+  equipment: {},
+  manuals: {
+    version: 1,
+    revision: 0,
+    learned: [],
+    build: {
+      slots: [],
+    },
+  },
+  side: 0,
+  slot: 0,
+  resourcePolicy: 'full',
+};
 const weaponInput = {
   id: 'meridian-weapon', createdAt: '2026-09-22', seed: 17,
   templateId: 'dao_equipment.standard.weapon.v1', equipmentLevel: 10,

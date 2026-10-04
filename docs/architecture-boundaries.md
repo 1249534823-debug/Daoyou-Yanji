@@ -2,6 +2,8 @@
 
 日期：2026-10-04。目标：NestJS 模块化单体、React SPA，以及按职责拆分的内部编译包（tsc 输出 JavaScript 和声明文件）。
 
+> 2026-10-04 配置简化：迁移已完成，包边界检查脚本及 ESLint/Oxlint 的迁移导入限制已退役，lint 改为推荐规则／原生 correctness 基线加必要的代码正确性约束。依赖图与公共 API 约定继续适用；下文脚本和 Quality CI 的执行记录属于历史验收，当前 GitHub Actions 仅在 tag 推送时构建并推送镜像。
+
 ## 当前迁移目标与验收
 
 用户已授权按顺序推进六包拆分，直到移除旧 shared 并完成验收。下面的目标替代后文历史批次中“保留三个工作区”的决策；历史实施记录不作为本轮完成证据。
@@ -17,7 +19,7 @@
 
 旧 shared workspace 已删除，不保留兼容 barrel。所有类型与运行值导入都受包方向限制；测试依赖上层玩法时，应归入拥有该玩法的包，而不是让底层包反向依赖。应用之间不互相导入，各自消费包 exports，不通过源码别名绕过边界。
 
-实际迁移细化：装备、功法、内容定义与人物投影的模型共同引用 `SkillDef`、`LineupUnit`、`CombatV6VersionStamp` 等内核类型。将这些中立模型归入 game-domain，并允许它单向 type-only 依赖 combat-core；边界检查禁止运行值导入。这样保留权威类型、保持内核零业务依赖，也避免为了初始图形复制类型或引入无业务价值的泛型。领域包仍不依赖游戏内容、规则、契约和应用。
+实际迁移细化：装备、功法、内容定义与人物投影的模型共同引用 `SkillDef`、`LineupUnit`、`CombatV6VersionStamp` 等内核类型。将这些中立模型归入 game-domain，并允许它单向 type-only 依赖 combat-core；架构约定禁止运行值导入。这样保留权威类型、保持内核零业务依赖，也避免为了初始图形复制类型或引入无业务价值的泛型。领域包仍不依赖游戏内容、规则、契约和应用。
 
 执行顺序和完成条件：
 
@@ -320,7 +322,7 @@ Docker 本地镜像 `daoyou-monorepo-review:local` 构建通过，以非 root �
 - 领域模型、Schema 构造器、内容目录和绑定完整校验的规则仍由各自的包负责。入口合并不改变 `contracts ↔ game-domain ↔ game-rules` 的依赖方向；API 原有组合位置保留。
 - 类型入口保留被合并模块的类型声明，包括没有被直接 import、但可能被推导出的公开函数签名引用的类型。仅按直接调用统计删除类型会使消费者的声明生成失败（本批曾发现 TalismanSpec 的 TS2883，并已修正）。
 - 轻量入口与重型内容初始化保持分开：content 的 `equipment/base`、`equipment/forging`、`equipment/special`；domain 的 `character/generation`、`equipment/authoring/*`、`sects/commands`；rules 的 `inventory/stacking`、`sect-organization/tasks`、`combat/log`、`combat/appearance`、`combat/presentation`、炼体进度/训练及两类消耗品规则。它们是加载与职责边界，不应仅为减少行数继续合并。
-- `game-content/authoring/**` 面向内容校验测试和维护工具；边界检查禁止应用和库的非测试源码消费它。包内校验仍通过相对路径访问自身实现。五个原始 JSON 入口 `authoring/equipment/{base,forging}`、`authoring/beasts/{species,skills,progression}` 单独保留，以维持既有内容替换测试的 mock 边界。
+- `game-content/authoring/**` 面向内容校验测试和维护工具；应用和库的非测试源码不得消费它。包内校验仍通过相对路径访问自身实现。五个原始 JSON 入口 `authoring/equipment/{base,forging}`、`authoring/beasts/{species,skills,progression}` 单独保留，以维持既有内容替换测试的 mock 边界。
 - 没有添加全包 `sideEffects: false`，原注册表与 Schema 初始化校验仍执行。导出数量下降不等于所有加载成本下降；新增入口必须同时考虑消费关系和首屏依赖。
 
 上述规则进入 `AGENTS.md`；技能中的实际包导入路径同步更新。`check-package-boundaries.ts` 新增 runtime/authoring 和 public 具名导出检查，随现有 `pnpm run lint` 进入 CI。临时违规探针验证两条规则均能拒绝对应导入/再导出，探针已删除。

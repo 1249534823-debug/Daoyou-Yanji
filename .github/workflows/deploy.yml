@@ -9,11 +9,7 @@ env:
   APP_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/daoyou-app
 
 jobs:
-  quality:
-    uses: ./.github/workflows/quality-check.yml
-
   build-and-push:
-    needs: quality
     runs-on: ubuntu-latest
     environment: production
     steps:

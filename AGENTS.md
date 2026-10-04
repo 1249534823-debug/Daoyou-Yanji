@@ -9,7 +9,7 @@ AI agents should read this first. Keep changes small, project-specific, and back
 - This repo is `NestJS + React SPA`, not Next.js or SSR.
 - Runtime stack: Node.js 24, NestJS 12 (Express/native ws), pnpm + Turborepo tooling, React 19, React Router 8, Vite, Tailwind CSS 4, PostgreSQL, Drizzle ORM, Better Auth, Redis, NATS, AI SDK.
 - Use the pinned `pnpm` version and `pnpm-lock.yaml` for development and deployment. Do not introduce Bun/npm/yarn lockfiles. Turborepo orchestrates package builds and typechecks; turbo watch rebuilds dependencies and restarts persistent development tasks.
-- pnpm workspaces: `apps/api`, `apps/web`, and six compiled libraries under `packages/*`. The dependency graph and acceptance gates are in `docs/architecture-boundaries.md`. Each owns its runtime dependencies; root owns lint/test/maintenance tooling. Libraries must not import either app; apps consume package exports. The old shared workspace is removed. ESLint (Web/packages/tools) and Oxlint (API) enforce these boundaries, repository direction, and combat core independence.
+- pnpm workspaces: `apps/api`, `apps/web`, and six compiled libraries under `packages/*`. The dependency graph and acceptance gates are in `docs/architecture-boundaries.md`. Each owns its runtime dependencies; root owns lint/test/maintenance tooling. Libraries must not import either app; apps consume package exports. The old shared workspace is removed. ESLint (Web/packages/tools) and Oxlint (API) check code correctness; migration-only import restrictions and the package-boundary script are retired. Keep the dependency direction above as an architecture convention.
 - Path aliases are `@app` -> `apps/web/src` and `@server` -> `apps/api/src`. `@daoyou/*` libraries resolve through workspace package exports (no source alias bypass); library-internal imports use relative source paths rather than their own dist exports.
 - Public package APIs use business subpaths with explicit named exports in `src/public`; small modules with intentional loading boundaries may remain direct exports. Do not add wildcard exports or a package-wide barrel. Keep lightweight models/helpers separate from complete validators and content registries. `game-content/authoring/*` is for content validation tests and maintenance tools, not application/runtime imports. See the public API policy in `docs/architecture-boundaries.md`.
 
@@ -42,7 +42,7 @@ pnpm run db:migrate
 - `pnpm run build` uses Turbo to build the independent API and Web packages; Nest CLI 12 builds `apps/api` with its default tsc builder; libraries are compiled in dependency order with tsc and export JavaScript/declarations from dist; Vite builds `apps/web`. The old V5 resolver Worker target was retired in Phase 10H. Preserve the remaining CI/CD entrypoints.
 - Vitest uses node environment and discovers pure logic tests under `packages/*/src`; tests move with their owning domain during package extraction.
 - Docker runtime contains Node, the pnpm-deployed API production dependencies, package metadata and `dist`; ALTCHA uses the server-side `ALTCHA_HMAC_SECRET` and does not require a frontend site key.
-- GitHub Actions runs lint/typecheck/pure package tests/build on PRs and master pushes; tag pushes build the API image and always publish latest.
+- GitHub Actions only builds and pushes the API image on tag pushes, always publishing latest; quality checks are run locally as needed.
 
 ## Skills To Use
 

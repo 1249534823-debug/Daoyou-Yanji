@@ -42,7 +42,7 @@ Arena rules project an `ArenaSnapshot`; the API's `combat/arena-view.ts` adds AP
 ## Engine Boundary
 
 - `core` is a pure, rules-independent we-go engine. It must not import Daoyou rules, projection or sect content. Keep sect-specific behavior in content/rules rather than adding sect ID branches to core.
-- V6 must not import `battle-v5` or `creation-v2`; inspect `eslint.config.js` for enforced dependency boundaries. Old directory names or residual legacy DTOs do not establish a supported engine API.
+- V6 must not import `battle-v5` or `creation-v2`; this remains an architecture convention after retiring migration-only import restrictions. Old directory names or residual legacy DTOs do not establish a supported engine API.
 - V5 `AttributeSet`, `AbilityFactory`, `AbilityConfig`, `projectAbilityConfig` and `battleProjection` are not the V6 pipeline. Do not restore them to implement current combat or items.
 - Use the V6 core types and existing content pack validators. `GameplayTags` / `CreationTags` in the old shared tag domain are not a universal V6 tag contract.
 - Preserve seeded RNG and deterministic command/round behavior. Keep clocks, DB, Redis, network and LLM calls out of shared engine logic; pass required inputs from the host.

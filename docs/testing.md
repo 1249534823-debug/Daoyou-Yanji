@@ -8,6 +8,31 @@
 - 使用 Vitest；先运行受影响的测试，再根据影响范围运行 `pnpm run test`。
 - 不引入数据库、Redis、HTTP、认证或第三方服务模拟；不在 `apps/api/src`、`apps/web/src` 或 `scripts` 添加单元测试。
 
+### 测试保留与清理
+
+- 保留能说明业务错误的断言：非法输入、经济数量与费用边界、确定性、不修改输入、状态转换、实际战斗效果及仍在使用的兼容逻辑。
+- 迁移完成后移除只证明新旧实现完全一致的整包哈希。混合文件只删这类断言，保留配置联动、引用完整性和拒绝非法内容的测试。
+- 不把源码关键词扫描、固定目录树、静态文案和美术文件存在性作为领域单元测试。架构约束通过代码审查核对，文案和素材在相关页面验收。
+- 不按文件名或运行耗时删除测试。`phase` 可能仍验证真实战斗规则，`legacy`／`migration` 可能仍保护正式兑换和存量数据；先查实际调用方。
+
+2026-10-04 清理记录：盘点 256 个测试文件，清理前 2402 个用例通过。此次处理如下，运行时实现不变：
+
+| 对象（路径相对 `packages/`） | 处理及依据 |
+| --- | --- |
+| `game-rules/src/sect-organization/testing/architecture/architectureGuard.test.ts` | 删除目录形状、源码关键词和已退役接口名扫描；原文件中的宗门结构与关键词限制不再由单元测试自动检查，后续改动仍须遵守架构文档并进行代码审查 |
+| `game-rules/src/equipment/generation-baseline.test.ts` | 删除旧生成流的整批哈希；保留装备生成、随机阈值、打造、器形和阵纹专项测试 |
+| `game-rules/src/beasts/generation-baseline.test.ts` | 删除生成／成长／投影整批哈希；三个物种的资质、成长范围用例并入 `beasts.test.ts` |
+| `game-rules/src/combat/projection/character-build.test.ts` 及 `fixtures/character-build.json` | 删除整个人物投影哈希和大型快照；经脉装备测试使用的唯一输入移到该测试内，保留属性贡献、资源策略及装备联动专项测试 |
+| `game-content/src/combat/training/pack.test.ts`、`game-rules/src/sects/progression/pack.test.ts`、`game-rules/src/sects/skill-learning.test.ts`、`game-rules/src/rewards/dungeon-pack.test.ts` | 仅删除迁移等价哈希，保留 Schema 同步、配置生效和错误输入测试 |
+| `game-content/src/items/equipment-blueprints.test.ts` | 删除图纸静态数量、名称和禁止字符断言 |
+| `game-rules/src/sect-organization/production/onboardingPresentation.test.ts`、`affairsPresentation.test.ts` | 删除固定 NPC 姓名、地图说明、剧情段数和素材文件扫描；访客入口用例并入后者，保留任务和设施交互绑定 |
+| `game-rules/src/world/mapAtlas.test.ts` | 仅删除固定“大晋 20 地点”断言；保留区域归属、全地点覆盖和锚点检查 |
+| `game-rules/src/tower/strategy-value.test.ts` | 删除 420 场阶段校准比较：仅要求至少一个策略的胜率、伤害或回合数不同，不能判定策略是否正确；保留实际护卫／治疗／重击机制、平衡及七境界通关测试 |
+
+旧法宝与旧功法兑换的规则和契约测试继续保留：`apps/api/src/legacy-items` 和对应前端页面仍调用它们。`combat-core/src/phase-3-primitives.test.ts`、幻境 `phase-two.test.ts`／`phase-three.test.ts` 也继续保留，它们覆盖现行资源扣除、战斗与通关行为。
+
+本轮清理后 `pnpm run test` 通过 249 个文件／2360 个用例，净移除 42 个用例；测试及其快照净减少 1998 行。`pnpm run lint`、`pnpm run typecheck`、`git diff --check` 均通过。测试命令已包含六个库的构建；因本次仅修改测试及文档，未另跑应用完整构建和浏览器验收。
+
 ## 2. Codex 浏览器／Playwright 模拟
 
 由 Codex 在当次开发任务中操作真实本地页面，不将操作固化为一次性仓库脚本。

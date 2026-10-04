@@ -51,13 +51,6 @@ describe('world atlas location coverage', () => {
     },
   );
 
-  it('keeps 20 locations in Dajin after separating north and south', () => {
-    expect(
-      getAtlasLocations().filter(
-        (location) => getAtlasRegion(location)?.id === 'dajin',
-      ),
-    ).toHaveLength(20);
-  });
 
   it('resolves every existing location, including satellites and sects, to a region', () => {
     for (const location of getAtlasLocations()) {

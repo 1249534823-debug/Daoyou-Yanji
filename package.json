@@ -15,7 +15,7 @@
     "dev": "turbo watch dev --env-mode=loose",
     "dev:api": "turbo watch dev --filter=@daoyou/api --env-mode=loose",
     "dev:web": "turbo watch dev --filter=@daoyou/web --env-mode=loose",
-    "lint": "pnpm run check:boundaries && eslint . && pnpm --filter @daoyou/api run lint",
+    "lint": "eslint . && pnpm --filter @daoyou/api run lint",
     "prd": "turbo watch prd --env-mode=loose",
     "prd:api": "turbo watch prd --filter=@daoyou/api --env-mode=loose",
     "prd:web": "turbo watch prd --filter=@daoyou/web --env-mode=loose",
@@ -25,8 +25,7 @@
     "sponsors:render": "node scripts/render-sponsors.ts",
     "sponsors:sync": "pnpm run sponsors:fetch && pnpm run sponsors:render && pnpm run sponsors:check",
     "test": "turbo run build --filter=\"./packages/*\" && vitest run",
-    "typecheck": "turbo run typecheck && tsc --noEmit -p tsconfig.node.json",
-    "check:boundaries": "node scripts/check-package-boundaries.ts"
+    "typecheck": "turbo run typecheck && tsc --noEmit -p tsconfig.node.json"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

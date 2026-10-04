@@ -28,7 +28,13 @@ pnpm run dev                    # 启动 API 与 Vite
 - `packages/*`：由 tsc 编译为 `dist` 中的 JavaScript 与声明文件，JSON 内容随编译复制。API 在运行时加载，Web 由 Vite 打包，不独立部署。常量、领域模型、战斗 core、内容、玩法规则与契约分别位于 `constants`、`game-domain`、`combat-core`、`game-content`、`game-rules`、`contracts`；旧 shared 已清退，依赖方向和验收进度见 [应用边界](architecture-boundaries.md)。宿主使用明确的 `exports`，不以TS／Vite源码别名绕过边界；包内使用相对源码导入，避免类型检查读取自身陈旧 dist。公开叶子入口需单独注册。
 - 根目录保留 `pnpm-workspace.yaml`、单一 `pnpm-lock.yaml`、`turbo.json`、lint/test/typecheck、迁移配置和部署入口。内部依赖使用 `workspace:*`，各包自行声明依赖。
 
-Web/packages/根工具使用 ESLint，API 使用 `oxlint --type-aware`。`pnpm run check:boundaries` 检查声明依赖、公开入口、相对路径越界、类型/运行值/测试导入和 workspace 环；已接入 lint。API 的仓储与 Service 约束位于 `apps/api/.oxlintrc.json`；Promise 检查保留类型信息。LLM生成和提示词位于API的 `lib/generation`；共同的修为与突破计算位于共享包。
+Web/packages/根工具使用 ESLint 的 JS、TypeScript、React Hooks 推荐规则及 Vite Fast Refresh 配置，API 使用 `oxlint --type-aware`。
+
+Oxlint 以 TypeScript 插件的 `correctness: error` 为基线，补充原有推荐规则中未被基线覆盖的检查；保留全 API 的 `no-floating-promises` 和入口、HTTP、Runtime、Realtime 的 `no-misused-promises`。新增的 `await-thenable`、`no-base-to-string`、`no-misused-spread`、`no-redundant-type-constituents`、`no-useless-default-assignment`、`restrict-template-expressions`、`unbound-method` 暂不启用，避免配置整理扩大为既有业务代码的类型规则整改。
+
+迁移完成后已删除包边界检查脚本、`check:boundaries` 命令及两套 linter 的导入限制；包依赖方向、公开入口和数据库注入仍遵循架构约定。战斗内核继续禁止直接使用 `Math.random()` 和 `Date.now()`。
+
+LLM生成和提示词位于API的 `lib/generation`；共同的修为与突破计算位于共享包。
 
 Nest `ConfigurationModule` 使用 `@nestjs/config`、关闭dotenv自动发现，并提供一次Zod校验后的不可变环境快照。Nest服务注入 `AppConfigService`，使用类型化的 `get()` 读取配置，独立仓储／基础库使用 `getRuntimeEnvironment()`。端口、数据库URL、连接池上限、认证配置和消息配置在启动时校验；production还要求Redis地址与cron密钥且禁止 `APP_ENV=local`。错误只报告字段与约束，不输出凭据。
 

@@ -1,4 +1,3 @@
-import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 import {
@@ -13,10 +12,6 @@ import { compileSectDefinitionV6 } from './compiler.js';
 import { createEmptySectCombatProgressV6, createFreshCombatV6MethodLevels } from './build-state.js';
 
 describe('宗门技能学习配置', () => {
-  it('技能、状态、流派和心法保持基线（含比例伤害分类）', () => {
-    // 九劫 paths revision 4 将共鸣文案中的奔雷更名为九霄神雷；机制由专项测试验证。
-    expect(createHash('sha256').update(JSON.stringify(COMBAT_V6_SECT_DEFINITIONS)).digest('hex')).toBe("3419722218ff4dcf2d494bbee4100ef963a05031aeabb3fd3948b9dbf6779513");
-  });
   it('Schema 与编辑器一致', () => {
     expect(z.toJSONSchema(SectSkillLearningShape)).toEqual(schema);
   });

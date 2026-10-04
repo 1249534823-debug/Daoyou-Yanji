@@ -1,16 +1,10 @@
-import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 import { SECTS_PROGRESSION_PROGRESSION_DATA as raw } from '@daoyou/game-content/sects/progression';
 import { SECTS_PROGRESSION_PROGRESSION_SCHEMA as schema } from '@daoyou/game-content/authoring/sects';
 import { SectProgressionPackShape, loadSectProgressionPack, configuredMethodCost, configuredMeridianCost } from '../progression-pack.js';
-import { methodTrainingCost, meridianUnlockCost } from '../progression.js';
 
 describe('宗门养成配置', () => {
-  it('保留迁移前全部 180 级心法和七层经脉费用', () => {
-    const costs = [Array.from({ length: 180 }, (_, i) => methodTrainingCost(i + 1)), Array.from({ length: 7 }, (_, i) => meridianUnlockCost(i + 1))];
-    expect(createHash('sha256').update(JSON.stringify(costs)).digest('hex')).toBe('8a0fd8b55fa34709a63fbec9205209d9336bda428ac0c33e249e0657e435462d');
-  });
   it('编辑器 Schema 与运行时结构一致', () => {
     expect(z.toJSONSchema(SectProgressionPackShape)).toEqual(schema);
   });
