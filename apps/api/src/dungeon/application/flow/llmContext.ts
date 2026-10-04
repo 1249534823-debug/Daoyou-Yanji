@@ -1,22 +1,16 @@
 import { truncateText } from '@server/utils/llmPayload.js';
 import type { ResolvedDungeonMapConfig } from '@daoyou/game-domain/world/map';
-import type { RealmType } from '@daoyou/constants/realms';
 import type {
-  DungeonOptionCost,
   DungeonRoundLlmContext,
-  DungeonSettlementLlmContext,
   DungeonState,
   History,
   RewardBlueprint,
 } from '@server/dungeon/application/flow/types.js';
 
 const HISTORY_LIMIT = 4;
-const JOURNEY_LIMIT = 5;
 const SCENE_SUMMARY_MAX_CHARS = 140;
 const OUTCOME_SUMMARY_MAX_CHARS = 90;
 const MAP_DESCRIPTION_MAX_CHARS = 100;
-const FALLBACK_TEXT = '未见分明痕迹';
-const DUNGEON_REWARD_BLUEPRINT_LIMIT = 6;
 
 function uniqueStrings(values: Array<string | undefined | null>): string[] {
   return Array.from(
@@ -55,31 +49,6 @@ function summarizeHistoryEntry(entry: History) {
   };
 }
 
-function summarizeJourney(history: History[]): string[] {
-  return history.slice(-JOURNEY_LIMIT).map((entry) => {
-    const scene = truncateText(entry.scene, 36) || FALLBACK_TEXT;
-    const choice = entry.choice
-      ? `选${truncateText(entry.choice, 18)}`
-      : '未留抉择';
-    const outcome = entry.outcome
-      ? `；结果${truncateText(entry.outcome, 24)}`
-      : '';
-    return `第${entry.round}轮：${scene}；${choice}${outcome}`;
-  });
-}
-
-function summarizeRewards(
-  rewards: RewardBlueprint[],
-): DungeonSettlementLlmContext['securedRewards'] {
-  return rewards.map((reward) => ({
-    ...(reward.name ? { name: truncateText(reward.name, 18) } : {}),
-    ...(reward.material_type ? { material_type: reward.material_type } : {}),
-    ...(typeof reward.reward_score === 'number'
-      ? { reward_score: reward.reward_score }
-      : {}),
-  }));
-}
-
 function summarizeRewardNames(rewards: RewardBlueprint[]): string[] {
   return rewards
     .map((reward) => {
@@ -102,55 +71,6 @@ function buildCombatStyleSummary(state: DungeonState): string {
   ]);
 
   return parts.join('，') || '路数未明';
-}
-
-function buildSacrificeSummary(
-  costs: DungeonOptionCost[] | undefined,
-): DungeonSettlementLlmContext['committedCosts'] {
-  if (!costs?.length) return [];
-
-  const grouped = new Map<
-    string,
-    {
-      type: DungeonOptionCost['type'];
-      count: number;
-      totalValue: number;
-      sample?: string;
-    }
-  >();
-
-  for (const cost of costs) {
-    const key = `${cost.type}:${cost.required_type ?? ''}:${cost.required_quality ?? ''}`;
-    const current = grouped.get(key) ?? {
-      type: cost.type,
-      count: 0,
-      totalValue: 0,
-    };
-    current.count += 1;
-    current.totalValue +=
-      typeof cost.value === 'number' && Number.isFinite(cost.value)
-        ? cost.value
-        : 0;
-
-    if (!current.sample) {
-      if (cost.type === 'material') {
-        current.sample = [cost.required_quality, cost.required_type]
-          .filter(Boolean)
-          .join(' ');
-      } else if (cost.desc) {
-        current.sample = truncateText(cost.desc, 20);
-      }
-    }
-
-    grouped.set(key, current);
-  }
-
-  return Array.from(grouped.values()).map((entry) => ({
-    type: entry.type,
-    count: entry.count,
-    totalValue: Number(entry.totalValue.toFixed(4)),
-    ...(entry.sample ? { sample: entry.sample } : {}),
-  }));
 }
 
 function buildBattleAftermath(history: History[]): string | undefined {
@@ -226,38 +146,5 @@ export function buildDungeonRoundLlmContext(args: {
     ...(pendingChoice ? { pendingChoice } : {}),
     ...(battleAftermath ? { battleAftermath } : {}),
     securedRewardNames: summarizeRewardNames(state.accumulatedRewards),
-  };
-}
-
-export function buildDungeonSettlementLlmContext(args: {
-  state: DungeonState;
-  mapRealm: RealmType;
-  endDisposition: DungeonSettlementLlmContext['endDisposition'];
-  pendingCosts?: DungeonOptionCost[];
-}): DungeonSettlementLlmContext {
-  const { state, mapRealm, endDisposition } = args;
-  const committedCosts = [
-    ...(state.summary_of_sacrifice ?? []),
-    ...(args.pendingCosts ?? []),
-  ];
-
-  return {
-    setting: {
-      name: state.location.location,
-      realmRequirement: mapRealm,
-    },
-    player: {
-      name: state.playerInfo.name,
-      realm: state.playerInfo.realm,
-    },
-    journey: summarizeJourney(state.history),
-    dangerScore: state.dangerScore,
-    committedCosts: buildSacrificeSummary(committedCosts),
-    securedRewards: summarizeRewards(state.accumulatedRewards),
-    remainingExtraRewardSlots: Math.max(
-      0,
-      DUNGEON_REWARD_BLUEPRINT_LIMIT - state.accumulatedRewards.length,
-    ),
-    endDisposition,
   };
 }

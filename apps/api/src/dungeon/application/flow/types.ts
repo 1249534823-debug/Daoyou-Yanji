@@ -1,7 +1,6 @@
 import type { ResourceOperation } from '@daoyou/game-domain/resources/operations';
 import { ItemGrantSchema } from '@daoyou/game-rules/inventory';
 import { DUNGEON_COST_RANK_VALUES } from '@daoyou/game-domain/dungeon/cost';
-import type { DungeonEndDisposition } from '@daoyou/game-domain/dungeon/settlement';
 import { ENEMY_RACE_VALUES } from '@daoyou/game-domain/character';
 import { REALM_STAGE_VALUES } from '@daoyou/constants/realms';
 import { z } from 'zod';
@@ -367,34 +366,6 @@ export const DungeonSettlementSchema = z
   })
   .describe('结算信息');
 
-export function createDungeonSettlementLlmSchema(args: {
-  remainingRewardSlots: number;
-  endDisposition: DungeonEndDisposition;
-}) {
-  const rewardTierSchema =
-    args.endDisposition === 'abandoned_before_battle'
-      ? z.literal('D')
-      : args.endDisposition === 'retreated_after_battle'
-        ? z.enum(['C', 'D'])
-        : z.enum(['S', 'A', 'B', 'C', 'D']);
-
-  return z.object({
-    ending_narrative:
-      NarrativeSchema.describe('只收束已发生历程的面向玩家结局叙事'),
-    reward_tier: rewardTierSchema.describe('本次副本的内部评级枚举'),
-    reward_blueprints: z
-      .array(RewardBlueprintLlmSchema)
-      .max(Math.max(0, args.remainingRewardSlots))
-      .describe('仅包含结算阶段新增且有剧情依据的材料'),
-  });
-}
-
-export const DungeonSettlementGeneratedSchema = z.object({
-  ending_narrative: NarrativeSchema,
-  reward_tier: z.enum(['S', 'A', 'B', 'C', 'D']),
-  reward_blueprints: z.array(RewardBlueprintLlmSchema).max(6),
-});
-
 export const PlayerInfoSchema = z.object({
   id: z.string().optional(),
   name: z.string(),
@@ -578,31 +549,4 @@ export interface DungeonRoundLlmContext {
   };
   battleAftermath?: string;
   securedRewardNames: string[];
-}
-
-export interface DungeonSettlementLlmContext {
-  setting: {
-    name: string;
-    realmRequirement: string;
-  };
-  player: {
-    name: string;
-    realm: string;
-  };
-  journey: string[];
-  dangerScore: number;
-  committedCosts: Array<{
-    type: DungeonOptionCost['type'];
-    count: number;
-    totalValue: number;
-    sample?: string;
-  }>;
-  securedRewards: Array<{
-    name?: string;
-    material_type?: RewardBlueprint['material_type'];
-    reward_score?: number;
-  }>;
-  remainingExtraRewardSlots: number;
-  endDisposition:
-    'completed' | 'retreated_after_battle' | 'abandoned_before_battle';
 }

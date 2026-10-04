@@ -77,13 +77,6 @@ export function resolveDungeonMutationResult(
   return { type: 'none' };
 }
 
-export function shouldRefreshCultivatorAfterDungeonMutation(
-  resolution: DungeonMutationResolution,
-) {
-  void resolution;
-  return false;
-}
-
 /**
  * 副本视图模型 Hook
  */

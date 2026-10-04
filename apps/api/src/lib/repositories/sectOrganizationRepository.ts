@@ -4,10 +4,7 @@ import {
   type DbTransaction,
 } from '@server/lib/drizzle/db.js';
 import {
-  consumables,
-  creationProducts,
   cultivators,
-  materials,
   sectFacilities,
   sectMemberships,
   sectStipendClaims,
@@ -487,62 +484,6 @@ export async function spendCultivatorSpiritStones(
   return row
     ? { spent: true, balance: row.balance }
     : { spent: false as const };
-}
-
-export async function consumeOwnedMaterial(
-  itemId: string,
-  quantity: number,
-  tx: DbTransaction,
-) {
-  const [row] = await tx
-    .select()
-    .from(materials)
-    .where(eq(materials.id, itemId))
-    .limit(1);
-  if (!row || row.quantity < quantity) return false;
-  if (row.quantity === quantity)
-    await tx.delete(materials).where(eq(materials.id, itemId));
-  else
-    await tx
-      .update(materials)
-      .set({ quantity: row.quantity - quantity })
-      .where(eq(materials.id, itemId));
-  return true;
-}
-
-export async function consumeOwnedConsumable(
-  itemId: string,
-  quantity: number,
-  tx: DbTransaction,
-) {
-  const [row] = await tx
-    .select()
-    .from(consumables)
-    .where(eq(consumables.id, itemId))
-    .limit(1);
-  if (!row || row.quantity < quantity) return false;
-  if (row.quantity === quantity)
-    await tx.delete(consumables).where(eq(consumables.id, itemId));
-  else
-    await tx
-      .update(consumables)
-      .set({ quantity: row.quantity - quantity })
-      .where(eq(consumables.id, itemId));
-  return true;
-}
-
-export async function consumeOwnedArtifact(itemId: string, tx: DbTransaction) {
-  const rows = await tx
-    .delete(creationProducts)
-    .where(
-      and(
-        eq(creationProducts.id, itemId),
-        eq(creationProducts.productType, 'artifact'),
-        eq(creationProducts.isEquipped, false),
-      ),
-    )
-    .returning({ id: creationProducts.id });
-  return rows.length === 1;
 }
 
 export async function listSectMembers(

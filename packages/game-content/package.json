@@ -190,7 +190,6 @@
     "./manuals/enlightenment": "./dist/manuals/enlightenment.js",
     "./inscriptions/config": "./dist/inscriptions/config.js",
     "./legacy/manual-migration": "./dist/legacy/manual-migration.js",
-    "./dungeon/settlement": "./dist/dungeon/settlement.js",
     "./dungeon/cost": "./dist/dungeon/cost.js",
     "./identity-reshape": "./dist/identity-reshape.js",
     "./divination/fortunes": "./dist/divination/fortunes.js",

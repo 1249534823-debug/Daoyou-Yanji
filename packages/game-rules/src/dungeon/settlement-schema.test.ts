@@ -1,7 +1,8 @@
 import { expect, it } from 'vitest';
 import { createDungeonSettlementSchema } from '@daoyou/game-domain/dungeon/state';
 import { ItemGrantSchema } from '../inventory/index.js';
-import { DungeonSettlementSchema } from './settlement-schema.js';
+
+const DungeonSettlementSchema = createDungeonSettlementSchema(ItemGrantSchema);
 
 it('秘境结算保留奖励数量、个体事实及注入的 refinement', () => {
   const settlement = {

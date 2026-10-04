@@ -82,7 +82,7 @@ pnpm run db:migrate
 - Game scenes use `handle={scene(...)}`; the scene id must exist in `apps/web/src/components/game-shell/gameNavigation.ts`.
 - `/game` uses distinct genesis, narrative, viewport, activity, combat, map and dungeon layouts. V6 battles have `CombatV6Layout`; inspect `route-definitions/game.tsx` and its branches for the actual wrapper before changing a scene.
 - Main-flow game UI must follow `daoyou-game-ui`: identity layer, task layer, and navigation layer stay separate.
-- Do not add `InkPageShell` to game routes.
+- `InkPageShell` and the duplicate path-based `gameShellRegistry` are retired; use the actual route-definition layout nesting.
 - Cross-route reusable UI belongs in `apps/web/src/components/feature/**`, `apps/web/src/components/ui/**`, or `apps/web/src/components/game-shell/**`; `apps/web/src/routes/game/**/components` is page-private.
 - Reuse `apps/web/src/lib/resources` hooks/store, `fetchJsonCached`, `useTaskList`, and provider contexts before adding new page-level state.
 

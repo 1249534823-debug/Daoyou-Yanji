@@ -104,11 +104,6 @@ export class DungeonController {
     return this.dungeon.history(actor.cultivatorId, page, pageSize);
   }
 
-  @Get('limit')
-  limit(@CurrentCultivator() actor: ActiveCultivatorRef) {
-    return this.dungeon.limit(actor.cultivatorId);
-  }
-
   @Post('looting/continue')
   @HttpCode(200)
   @UseFilters(DungeonContinueErrors)

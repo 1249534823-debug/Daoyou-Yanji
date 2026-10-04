@@ -1,13 +1,14 @@
+import type { DungeonEndDisposition } from '@daoyou/game-domain/dungeon/settlement';
 import { renderPrompt } from '@server/lib/prompts/index.js';
 import { generateAiObject } from '@server/utils/aiClient.js';
 import { stableCompactStringify } from '@server/utils/llmPayload.js';
 import { z } from 'zod';
-import type { DungeonSettlementLlmContext, DungeonState } from './types.js';
+import type { DungeonState } from './types.js';
 
 /** LLM supplies ending prose/rating; flow owns deterministic rewards and commits. */
 export async function generateDungeonEnding(
   state: DungeonState,
-  endDisposition: DungeonSettlementLlmContext['endDisposition'],
+  endDisposition: DungeonEndDisposition,
 ) {
   const prompt = renderPrompt('dungeon-settlement', {
     userContextJson: stableCompactStringify({

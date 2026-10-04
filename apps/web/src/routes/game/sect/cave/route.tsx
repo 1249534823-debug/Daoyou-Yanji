@@ -16,7 +16,7 @@ function SectCaveBody() {
   return (
     <SectScene sceneKey="cave" mood="cave">
       <div className="grid min-h-64 place-items-center bg-[radial-gradient(circle_at_50%_35%,rgba(255,255,255,.78),transparent_25%),linear-gradient(90deg,rgba(63,67,59,.12),transparent_18%,transparent_82%,rgba(63,67,59,.12))] px-8 py-10 text-center">
-        <InkCard highlighted className="max-w-lg">
+        <InkCard variant="highlighted" className="max-w-lg">
           <p className="text-ink-secondary text-xs tracking-[0.3em]">
             弟子居所 · 门禁已启
           </p>

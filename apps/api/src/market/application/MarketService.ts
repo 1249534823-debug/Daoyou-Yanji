@@ -1136,11 +1136,3 @@ export async function preGenerateNextCycle(nodeId: string, layer: MarketLayer) {
   if (exists) return;
   await generateAndCache(nodeId, layer, nextCycle);
 }
-
-export const __marketServiceTestHooks = {
-  applyMysteryLayer,
-  buildMarketSampleRequests,
-  computePrice,
-  generateListings,
-  rollMysteryPriceNoiseMultiplier,
-};

@@ -15,7 +15,7 @@ import { createCultivatorFromTemp } from '@server/genesis/application/Cultivator
 import { FATE_REROLL_LIMIT } from '@server/reshape/application/FateConfig.js';
 import { FateEngine } from '@server/reshape/application/FateEngine.js';
 import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
-import { generateCultivatorFromAI } from '@server/utils/characterEngine.js';
+import { CharacterGenerator } from '@server/lib/generation/CharacterGenerator.js';
 import { normalizeFreeformLlmInput } from '@server/utils/llmPayload.js';
 import {
   CHARACTER_GENERATION_LIMIT_REACHED_CODE,
@@ -104,7 +104,7 @@ export class GenesisService {
         },
         429,
       );
-    const { cultivator } = await generateCultivatorFromAI(userInput);
+    const { cultivator } = await CharacterGenerator.generate(userInput);
     const tempCultivatorId = await saveTempCharacter(cultivator);
     return {
       success: true,

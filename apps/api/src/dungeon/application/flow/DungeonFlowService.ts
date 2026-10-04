@@ -1,3 +1,4 @@
+import type { DungeonEndDisposition } from '@daoyou/game-domain/dungeon/settlement';
 import { getRealmStageNaturalAttributeValue } from '@daoyou/game-rules/progression/attributes';
 import type {
   ResourceOperation,
@@ -59,7 +60,6 @@ import {
   DungeonRecoverAction,
   DungeonRound,
   DungeonSettlement,
-  DungeonSettlementLlmContext,
   DungeonState,
 } from '@server/dungeon/application/flow/types.js';
 import type { DungeonRunStore } from './DungeonRunStore.js';
@@ -90,7 +90,7 @@ type DungeonSettlementResult = {
 type DungeonSettlementOptions = {
   skipInjury?: boolean;
   abandonedBattle?: boolean;
-  endDisposition?: DungeonSettlementLlmContext['endDisposition'];
+  endDisposition?: DungeonEndDisposition;
   pendingAction?: DungeonPendingAction;
   deferPersistence?: boolean;
 };

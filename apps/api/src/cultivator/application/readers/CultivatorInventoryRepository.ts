@@ -306,34 +306,6 @@ export async function getPaginatedInventoryByType<T extends InventoryType>(
   };
 }
 
-// ===== 资源管理引擎底层操作 =====
-
-/**
- * [安全守卫] 资源变化量安全限制
- * 防止外部 LLM 注入极端数值导致经济系统崩溃
- * - MAX_SINGLE_DELTA: 单次操作允许的最大变化量（绝对值）
- * - RESOURCE_CEILING: 资源绝对上限
- */
-
-/**
- * 添加材料到物品栏（如果已存在则增加数量）
- */
-export async function addMaterialToInventory(
-  userId: string,
-  cultivatorId: string,
-  material: Material,
-  tx?: DbTransaction,
-): Promise<Material> {
-  const q = getExecutor(tx);
-  await assertCultivatorOwnership(userId, cultivatorId, q);
-  if (!tx) {
-    return getExecutor().transaction((transaction) =>
-      addMaterialToInventoryInTransaction(cultivatorId, material, transaction),
-    );
-  }
-  return addMaterialToInventoryInTransaction(cultivatorId, material, tx);
-}
-
 export async function addMaterialToInventoryInTransaction(
   cultivatorId: string,
   material: Material,
@@ -415,53 +387,6 @@ export async function removeMaterialFromInventoryInTransaction(
   return changes;
 }
 
-export async function consumeMaterialById(
-  userId: string,
-  cultivatorId: string,
-  materialId: string,
-  quantity: number,
-  tx?: DbTransaction,
-): Promise<
-  { operation: 'upsert'; item: Material } | { operation: 'remove'; id: string }
-> {
-  const dbInstance = getExecutor(tx);
-  await assertCultivatorOwnership(userId, cultivatorId, dbInstance);
-  const rows = await dbInstance
-    .select()
-    .from(schema.materials)
-    .where(
-      and(
-        eq(schema.materials.id, materialId),
-        eq(schema.materials.cultivatorId, cultivatorId),
-      ),
-    )
-    .limit(1);
-
-  const existing = rows[0];
-  if (!existing) {
-    throw new Error('材料不存在或已被耗尽');
-  }
-
-  if (existing.quantity < quantity) {
-    throw new Error(`材料数量不足，当前仅有 ${existing.quantity}`);
-  }
-
-  if (existing.quantity === quantity) {
-    await dbInstance
-      .delete(schema.materials)
-      .where(eq(schema.materials.id, existing.id));
-    return { operation: 'remove', id: existing.id };
-  }
-
-  const [updated] = await dbInstance
-    .update(schema.materials)
-    .set({ quantity: existing.quantity - quantity })
-    .where(eq(schema.materials.id, existing.id))
-    .returning();
-  if (!updated) throw new Error('材料数量更新失败');
-  return { operation: 'upsert', item: mapMaterialRow(updated) };
-}
-
 function sortMaterialsByQualityAsc<
   T extends {
     id: string;
@@ -482,25 +407,6 @@ function sortMaterialsByQualityAsc<
 
     return a.id.localeCompare(b.id);
   });
-}
-
-/**
- * 添加法宝到物品栏
- */
-export async function addArtifactToInventory(
-  userId: string,
-  cultivatorId: string,
-  artifact: Artifact,
-  tx?: DbTransaction,
-): Promise<Artifact> {
-  const dbInstance = getExecutor(tx);
-  await assertCultivatorOwnership(userId, cultivatorId, dbInstance);
-  if (!tx) {
-    return getExecutor().transaction((transaction) =>
-      addArtifactToInventoryInTransaction(cultivatorId, artifact, transaction),
-    );
-  }
-  return addArtifactToInventoryInTransaction(cultivatorId, artifact, tx);
 }
 
 export async function addArtifactToInventoryInTransaction(
@@ -544,29 +450,6 @@ export async function addArtifactToInventoryInTransaction(
     dbInstance,
   );
   return mapArtifactRow(toArtifactFromProduct(inserted));
-}
-
-/**
- * 添加消耗品到物品栏（如果已存在则增加数量）
- */
-export async function addConsumableToInventory(
-  userId: string,
-  cultivatorId: string,
-  consumable: Consumable,
-  tx?: DbTransaction,
-): Promise<Consumable> {
-  const dbInstance = getExecutor(tx);
-  await assertCultivatorOwnership(userId, cultivatorId, dbInstance);
-  if (!tx) {
-    return getExecutor().transaction((transaction) =>
-      addConsumableToInventoryInTransaction(
-        cultivatorId,
-        consumable,
-        transaction,
-      ),
-    );
-  }
-  return addConsumableToInventoryInTransaction(cultivatorId, consumable, tx);
 }
 
 export async function addConsumableToInventoryInTransaction(

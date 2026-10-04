@@ -5,10 +5,6 @@ import {
   changeDungeonBattle,
   getDungeonBattle,
 } from '@server/dungeon/application/flow/combatV6.js';
-import {
-  checkDungeonLimit,
-  getDungeonLimitConfig,
-} from '@server/dungeon/application/flow/dungeonLimiter.js';
 import type { ActiveCultivatorRef } from '@server/lib/auth/types.js';
 import type { DbClient } from '@server/lib/drizzle/db.js';
 import { dungeonHistories } from '@server/lib/drizzle/schema.js';
@@ -78,14 +74,6 @@ export class DungeonService {
           totalPages: Math.ceil(total / pageSize),
         },
       },
-    };
-  }
-
-  async limit(owner: string) {
-    const limit = await checkDungeonLimit(owner);
-    return {
-      success: true,
-      data: { ...limit, dailyLimit: getDungeonLimitConfig().dailyLimit },
     };
   }
 

@@ -53,7 +53,7 @@
 ## 禁止项
 
 - 游戏页面不得新增 `InkPageShell` 依赖
-- `InkPageShell` 当前只允许 auth 流程通过 `AuthPageShell` 间接使用，不再属于游戏主流程布局组件
+- 失联的 `InkPageShell` 已删除；认证页面使用独立的 `components/auth/AuthPageShell.tsx`，游戏布局以 `route-definitions/**` 的真实嵌套为准，不保留路径匹配式的第二套壳注册表
 - `quickActionGroups`、`QuickActionsGrid`、`useHomeViewModel` 不再作为导航或首页编排来源
 - `components/game-shell/immersiveSceneDescriptor.ts` 已废弃；副本或专属页需要私有 scene descriptor 时，放在对应路由族内部
 

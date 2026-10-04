@@ -127,6 +127,36 @@ Docker 本地镜像 `daoyou-monorepo-review:local` 构建通过，以非 root �
 
 六包结构迁移及上述本地回归已完成。没有将本次抽样回归描述为所有玩法验收：新登录/自然续期、多玩家新竞技胜利结算、真实目标环境的维护发布与回滚未在本轮重跑；历史道装迁移仍在已排除范围。它们继续属于业务/发布验收，不能由本地结构通过替代。
 
+### 结构迁移后的废弃代码下线（2026-10-04）
+
+本批从干净的 `c6f68d33`（结构优化）开始，按用户追加要求审查并下线过时代码。六包迁移的历史验收数据保留在上文；本节记录清理后的实际结果。唯一删除的 HTTP 路由是 `/api/dungeon/limit`，其余改动为无消费者代码退役、兼容调用迁移和测试辅助产物隔离。
+
+审查以 API/Web 启动入口和维护脚本为根，解析静态导入、再导出、字面量动态导入及内联类型导入，并按 workspace exports 还原到源码；随后核对全仓符号引用、Nest 模块/路由及当前业务替代路径。初次扫描 2,047 个 TS/TSX 文件，生产入口不可达候选 33 个；不可达或名称含 legacy 本身均不作为删除依据。清理后扫描 2,016 个文件，生产入口可达 1,755 个，剩余 5 个非测试文件候选均为被测试使用的辅助文件。该静态检查不证明所有导出成员、外部消费者或历史数据都已没有用途。
+
+| 下线范围 | 依据与当前路径 |
+| --- | --- |
+| 秘境每日次数接口、Redis limiter、Web Hook | Web Hook 没有消费者，次数扣除函数没有调用；现有开始流程由 `QiService` 的 `dungeon_start` 灵气预留控制。删除接口后返回 404，不再提供失效的每日两次信息；没有清空 Redis 数据 |
+| 旧秘境奖励表、结算 policy、LLM 奖励 Schema/上下文及修为工具 | 当前奖励由 `dungeon/application/flow/rewards.ts` 与 `game-rules/rewards/dungeon` 确定性计算，结尾生成器只提供叙事与评级；旧实现没有生产消费者 |
+| Web 孤立组件与过渡层 | 删除旧 StatusCard、PersistentStatusesCard、秘境进度/费用卡、TypewriterText、InkPageShell、gameShellRegistry、旧 inventory 资源入口；实际路由嵌套与现有资源存储保持。InkCard 唯一旧 `highlighted` 调用改为等价的 `variant="highlighted"` |
+| 领域/规则兼容入口 | 删除无消费者的 dictionaries、tags 及若干 barrel/别名；角色生成从旧包装器直接调用 `CharacterGenerator.generate`，参数和返回值保持 |
+| API 无调用成员 | 删除 7 个旧资产仓储包装/扣除函数、Market/在线状态旧测试钩子、废弃 SectPermission 别名及恒为 false 的秘境刷新辅助函数；仍被调用的事务入口保留 |
+| 测试辅助产物 | 保留 5 份被测试引用的夹具/辅助源码，撤销其中 3 个包导出，并从生产编译排除。结算完整校验回归测试保留，在测试内组合 Schema |
+
+共删除 31 个文件及 13 个公开子路径导出；13 个导出中有 3 个属于仍保留源码的测试辅助文件。删除的 `settlementPolicy.test.ts` 仅覆盖同期退役的旧策略，因此测试从 256 文件/2,409 项降为 255 文件/2,401 项，现行奖励与校验测试仍保留。
+
+明确保留：洞府旧储藏室、功法/道装兑换及其读写链路、仍被调用的旧资产事务函数和数据库表；历史物品 `quality_hint`、炼丹 `yieldQuantity` / `secondaryEffectMultiplierBonus`、待处理消息兼容分支及历史资源文件。这些仍涉及在线入口或存量事实，不能随目录改造删除。表级退役继续参照 [旧表退役记录](combat-v6-legacy-table-retirement.md)，本批没有执行数据库迁移、删表或资产数据清理。
+
+本批验证：
+
+- `pnpm install --frozen-lockfile`、`pnpm run lint`（8 个 workspace、11,505 个导入）、`pnpm run typecheck`（14 个 Turbo 任务及根工具类型检查）全部通过。
+- `pnpm run test`：255 个文件、2,401 项全部通过。清除八个 workspace 的旧 dist 后，`pnpm exec turbo run build --force` 完成 8 项构建；Phaser 大 chunk 提示仍存在。
+- `pnpm --filter @daoyou/api deploy --prod /tmp/daoyou-retirement-api-20261004` 成功；独立生产目录内 617 个公开 exports（含 JSON）均可加载，21 个资源主题、领域事件、开发工具 Schema 和竞技 API 适配可初始化。删除文件对应的 JS/声明/映射以及 5 份测试辅助文件均未进入产物；没有 shared、Web 包或 workspace 源码。
+- 本地编译 API 启动成功，health-check 的数据库、Redis、NATS 和消息状态全 up；已移除的 `/api/dungeon/limit` 返回 404。浏览器既有本地道友 2 会话下，秘境准备页正常显示，背包保留 34/40 格及既有物品，未观察到浏览器 error 日志。
+- 寄魂庐页面显示既有身份权限门槛，未进入内部卡片；`highlighted` 调用迁移只完成静态等价核对及编译检查，不记作该卡片的视觉验收。没有执行新角色 LLM 生成、新秘境结算、兑换写入、完整玩法回归或生产/预发布验收；本轮未重建 Docker 镜像，独立生产目录验证不替代容器验收。
+- 游戏 UI 技能 quick_validate 与 `git diff --check` 通过；同步修正 AGENTS、UI 技能及布局所有权文档中的已删除入口。
+
+本批未提交、推送或部署。临时浏览器、API 和 Web 已关闭；API SIGTERM 日志确认请求排空、消息停止、数据库/Redis 关闭及 shutdown complete，本地基础服务保持原状。构建、测试和运行日志保存在 `/tmp/daoyou-retirement-*.log`；静态审查工具只用于本地检查，未新增仓库测试脚本。
+
 ### 后续演进的边界
 
 当前目标稳定在两应用、六库。constants 只收稳定词汇；数值和目录继续进入 game-content，领域事实进入 game-domain，执行计算进入 game-rules，HTTP/实时信封进入 contracts。服务端环境、数据库设置键及供应商连接配置由 API 自己拥有。禁止重新建立聚合 shared/utils 来回收这些职责。

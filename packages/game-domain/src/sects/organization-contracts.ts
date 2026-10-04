@@ -3,8 +3,6 @@ import type { RealmType } from '@daoyou/constants/realms';
 import type { SectDiscipleRank, SectRankRequirement } from './organization.js';
 
 export type SectCapabilityKey = string;
-/** @deprecated Use SectCapabilityKey. */
-export type SectPermission = SectCapabilityKey;
 
 export interface SectPermissionState {
   granted: boolean;

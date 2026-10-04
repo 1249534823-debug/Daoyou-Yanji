@@ -10,7 +10,7 @@ import type { CreateBattleInput } from '@daoyou/combat-core/types';
 import { daoyouRulesetV6 } from './daoyou/index.js';
 import { COMBAT_V6_SEAL_CURVE_WILD_VERSIONS } from '@daoyou/game-domain/combat/versions';
 
-/** Deterministic workloads shared by presentation regression checks and the size benchmark. */
+/** Deterministic workloads shared by presentation regression checks. */
 export const presentationScenarios = [
   '1v3',
   '16-attack',

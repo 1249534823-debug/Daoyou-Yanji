@@ -34,8 +34,6 @@ const inkCardVariants = cva(
 export interface InkCardProps extends VariantProps<typeof inkCardVariants> {
   children: ReactNode;
   className?: string;
-  /** @deprecated 使用 variant="highlighted" 代替 */
-  highlighted?: boolean;
 }
 
 /**
@@ -45,17 +43,13 @@ export interface InkCardProps extends VariantProps<typeof inkCardVariants> {
 export function InkCard({
   children,
   className = '',
-  highlighted = false,
   variant,
   padding,
 }: InkCardProps) {
-  // 兼容旧的 highlighted prop
-  const effectiveVariant = highlighted ? 'highlighted' : variant;
-
   return (
     <div
       className={cn(
-        inkCardVariants({ variant: effectiveVariant, padding }),
+        inkCardVariants({ variant, padding }),
         className,
       )}
     >

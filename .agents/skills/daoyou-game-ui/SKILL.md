@@ -168,7 +168,6 @@ description: 为本项目的主流程游戏 UI 提供抽象规范与审查方法
 - `apps/web/src/routes/game`
 - `apps/web/src/router.tsx` 与 `apps/web/src/route-definitions/**`
 - `apps/web/src/components/game-shell/gameNavigation.ts`
-- `apps/web/src/lib/router/gameShellRegistry.ts`
 - `docs/game-layout-ownership.md`
 
 优先复用现有主流程原语，而不是重新发明一套页面局部样式约定。只有当现有原语无法表达当前规则时，才新增一个职责单一的组件。
@@ -178,7 +177,7 @@ description: 为本项目的主流程游戏 UI 提供抽象规范与审查方法
 - `apps/web/src/route-definitions/**` 中的 route、`handle={scene(...)}` 和 document title
 - `apps/web/src/components/game-shell/gameNavigation.ts` 中对应 scene metadata、dock label、href
 - 需要 immersive chrome 时的特殊返回 descriptor
-- `apps/web/src/lib/router/gameShellRegistry.ts`、`apps/web/src/lib/router/routeTitle.ts` 的注册与标题行为
+- `apps/web/src/route-definitions/**` 的实际布局嵌套与 `apps/web/src/lib/router/routeTitle.ts` 的标题行为
 - `docs/game-layout-ownership.md` 是否仍准确
 
 ## Review Questions

@@ -241,34 +241,6 @@ export function recordRealtimeConnectionClose(cultivatorId: string): void {
   localConnectionCounts.set(cultivatorId, current - 1);
 }
 
-export async function __recordRealtimeConnectionOpenForTests(
-  cultivatorId: string,
-): Promise<void> {
-  const next = (localConnectionCounts.get(cultivatorId) ?? 0) + 1;
-  localConnectionCounts.set(cultivatorId, next);
-  if (next !== 1) {
-    return;
-  }
-
-  setMemoryOnline(cultivatorId, true);
-  await syncOnlineChangeToRedis(cultivatorId, true);
-}
-
-export async function __recordRealtimeConnectionCloseForTests(
-  cultivatorId: string,
-): Promise<void> {
-  const current = localConnectionCounts.get(cultivatorId) ?? 0;
-  if (current <= 1) {
-    localConnectionCounts.delete(cultivatorId);
-    lastActivePersistedAt.delete(cultivatorId);
-    setMemoryOnline(cultivatorId, false);
-    await syncOnlineChangeToRedis(cultivatorId, false);
-    return;
-  }
-
-  localConnectionCounts.set(cultivatorId, current - 1);
-}
-
 export async function getOnlineUsersSnapshot(): Promise<AdminOnlineUsersSnapshot> {
   const today = formatLocalDate(new Date());
   try {
@@ -304,15 +276,6 @@ export async function getOnlineCultivatorIds(
       ),
     );
   }
-}
-
-export function __resetOnlinePresenceForTests(): void {
-  localConnectionCounts.clear();
-  memoryOnlineCultivators.clear();
-  lastActivePersistedAt.clear();
-  memoryToday = formatLocalDate(new Date());
-  memoryTodayPeakOnline = 0;
-  memoryAllTimePeakOnline = 0;
 }
 
 export function getLocalPresenceStats() {
