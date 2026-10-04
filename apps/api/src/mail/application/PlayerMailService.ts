@@ -1,5 +1,3 @@
-import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
-import * as schema from '@server/lib/drizzle/schema.js';
 import { FRIEND_MAIL_TALISMAN_SCENARIO } from '@daoyou/shared/config/socialConfig';
 import {
   mailGiftBlockReason,
@@ -7,19 +5,24 @@ import {
 } from '@daoyou/shared/contracts/mail';
 import { itemDefinition, ItemGrantSchema } from '@daoyou/shared/inventory';
 import type { MailAttachment } from '@daoyou/shared/types/mail';
-import { and, eq } from 'drizzle-orm';
-import { assertFriend, FriendServiceError } from '@server/social/application/FriendService.js';
+import {
+  consumeFirstTalismanByScenario,
+  TalismanScenarioError,
+} from '@server/inscriptions/application/TalismanScenarioService.js';
 import {
   assertInventoryIdle,
   InventoryError,
   inventoryItemOf,
   saveInventoryPlan,
 } from '@server/inventory/operations.js';
-import { MailService } from '@server/mail/application/MailService.js';
+import type { DbTransaction } from '@server/lib/drizzle/db.js';
+import * as schema from '@server/lib/drizzle/schema.js';
 import {
-  consumeFirstTalismanByScenario,
-  TalismanScenarioError,
-} from '@server/inscriptions/application/TalismanScenarioService.js';
+  assertFriend,
+  FriendServiceError,
+} from '@server/social/application/FriendService.js';
+import { and, eq } from 'drizzle-orm';
+import type { MailDeliveryService } from '../mail-delivery.service.js';
 
 export type PlayerMailAttachmentInput = NonNullable<
   SendMailRequest['attachment']
@@ -128,14 +131,17 @@ async function detachAttachment(
   };
 }
 
-export async function sendPlayerMail(input: {
-  senderCultivatorId: string;
-  senderName: string;
-  recipientCultivatorId: string;
-  content: string;
-  attachment?: PlayerMailAttachmentInput;
-  tx?: DbTransaction;
-}): Promise<{
+export async function sendPlayerMail(
+  delivery: MailDeliveryService,
+  input: {
+    senderCultivatorId: string;
+    senderName: string;
+    recipientCultivatorId: string;
+    content: string;
+    attachment?: PlayerMailAttachmentInput;
+    tx: DbTransaction;
+  },
+): Promise<{
   recipientName: string;
   attachmentCount: number;
 }> {
@@ -164,7 +170,7 @@ export async function sendPlayerMail(input: {
         : null;
       const attachments = detached ? [detached] : [];
 
-      await MailService.sendMail(
+      await delivery.send(
         input.recipientCultivatorId,
         `来自${input.senderName}的传音`,
         input.content,
@@ -191,7 +197,5 @@ export async function sendPlayerMail(input: {
     }
   };
 
-  return input.tx
-    ? persist(input.tx)
-    : getExecutor().transaction((tx) => persist(tx));
+  return persist(input.tx);
 }

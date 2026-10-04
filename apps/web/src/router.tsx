@@ -20,11 +20,6 @@ export const router = createBrowserRouter(
     >
       <Route index lazy={lazyRoute(() => import('@app/routes/index/route'))} />
       <Route
-        path="/battle-replay/:shareCode"
-        lazy={lazyRoute(() => import('@app/routes/battle-replay/route'))}
-        handle={title('公开战谱')}
-      />
-      <Route
         path="/combat-replay/:shareCode"
         lazy={lazyRoute(() => import('@app/routes/combat-replay/route'))}
         handle={title('公开战谱')}

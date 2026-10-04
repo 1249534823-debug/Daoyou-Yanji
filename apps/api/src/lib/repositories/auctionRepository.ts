@@ -109,8 +109,9 @@ export interface FindActiveListingsOptions {
 
 export async function findActiveListings(
   options: FindActiveListingsOptions = {},
+  executor?: DbExecutor,
 ): Promise<{ listings: AuctionListing[]; total: number }> {
-  const q = getExecutor();
+  const q = executor ?? getExecutor();
   const {
     scope = 'all',
     assetType,

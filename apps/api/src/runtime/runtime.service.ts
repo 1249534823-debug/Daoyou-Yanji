@@ -16,6 +16,8 @@ import type { Server } from 'node:http';
 import { DatabaseService } from '../database/database.service.js';
 import { RequestWorkService } from '../http/request-work.service.js';
 import { CronService } from './cron.service.js';
+import { InternalCronService } from './internal-cron.service.js';
+import { createBackgroundCommandHandlers } from './messaging/backgroundCommandConsumer.js';
 
 @Injectable()
 export class RuntimeService
@@ -30,13 +32,17 @@ export class RuntimeService
     @Inject(CombatV6TrainingSessionService)
     private readonly training: CombatV6TrainingSessionService,
     @Inject(DatabaseService) private readonly database: DatabaseService,
+    @Inject(InternalCronService) private readonly jobs: InternalCronService,
     @Inject(CronService) private readonly cron: CronService,
     @Inject(HttpAdapterHost) private readonly http: HttpAdapterHost,
     @Inject(RequestWorkService) private readonly work: RequestWorkService,
   ) {}
 
   async onApplicationBootstrap(): Promise<void> {
-    await registerMessageInfrastructure(this.training);
+    await registerMessageInfrastructure(
+      this.training,
+      createBackgroundCommandHandlers(this.jobs),
+    );
     this.cron.start();
   }
 

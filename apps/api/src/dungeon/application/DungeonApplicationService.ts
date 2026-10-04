@@ -15,14 +15,14 @@ import {
   type DungeonPersistenceSettlement,
 } from '@server/dungeon/application/flow/DungeonFlowService.js';
 import type { DbTransaction } from '@server/lib/drizzle/db.js';
-import { redis } from '@server/lib/redis/index.js';
 import {
   redisLockKeys,
-  withRedisLock,
   type RedisLeaseContext,
+  type withRedisLock,
 } from '@server/lib/redis/lock.js';
+import type { Redis } from 'ioredis';
 
-import { playerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
+import type { PlayerCommandExecutor } from '@server/player/application/state/CommandExecutors.js';
 
 import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
 
@@ -64,102 +64,103 @@ export class DungeonStartError extends Error {
   }
 }
 
-/** A synchronized read cannot report an old round while a command is still generating. */
-export function readDungeonState(
-  flow: DungeonFlowService,
-  cultivatorId: string,
-  runId?: string,
-) {
-  return withRedisLock(
-    {
-      key: redisLockKeys.cultivatorMutation(cultivatorId),
-      context: 'dungeon-read',
-      timeoutMs: 30000,
-      retries: 0,
-    },
-    async () => flow.getState(cultivatorId, runId),
-  );
-}
-
 type DungeonDeferredResult = Record<string, unknown> & {
   persist?: (tx: DbTransaction) => Promise<DungeonPersistenceSettlement | void>;
   afterCommit?: () => Promise<void>;
 };
 
-export async function executeDungeonCommand(
-  flow: DungeonFlowService,
-  args: {
+export class DungeonApplicationService {
+  constructor(
+    private readonly flow: DungeonFlowService,
+    private readonly commands: PlayerCommandExecutor,
+    private readonly cache: Pick<Redis, 'get' | 'set'>,
+    private readonly withLock: typeof withRedisLock,
+  ) {}
+  /** A synchronized read cannot report an old round while a command is still generating. */
+  readDungeonState(cultivatorId: string, runId?: string) {
+    return this.withLock(
+      {
+        key: redisLockKeys.cultivatorMutation(cultivatorId),
+        context: 'dungeon-read',
+        timeoutMs: 30000,
+        retries: 0,
+      },
+      async () => this.flow.getState(cultivatorId, runId),
+    );
+  }
+
+  async executeDungeonCommand(args: {
     userId: string;
     cultivatorId: string;
     command: DungeonCommand;
-  },
-) {
-  const source = dungeonCommandSource(args.command);
-  const requestId =
-    args.command.kind === 'battle-execute'
-      ? (args.command.requestId ?? null)
-      : null;
-  const cacheKey =
-    args.command.kind === 'battle-execute' && args.command.requestId
-      ? dungeonBattleResultCacheKey({
-          cultivatorId: args.cultivatorId,
-          battleId: args.command.battleId,
-          requestId: args.command.requestId,
-        })
-      : null;
-  if (cacheKey) {
-    const cached = await redis.get(cacheKey);
-    if (cached) return JSON.parse(cached) as unknown;
-  }
-  const response = await withRedisLock(
-    {
-      key: redisLockKeys.cultivatorMutation(args.cultivatorId),
-      context: source,
-      timeoutMs: 240_000,
-      retries: 0,
-    },
-    async (lease) => {
-      if (args.command.kind === 'start') {
-        await assertDungeonStartReady({
+  }) {
+    const source = dungeonCommandSource(args.command);
+    const requestId =
+      args.command.kind === 'battle-execute'
+        ? (args.command.requestId ?? null)
+        : null;
+    const cacheKey =
+      args.command.kind === 'battle-execute' && args.command.requestId
+        ? dungeonBattleResultCacheKey({
+            cultivatorId: args.cultivatorId,
+            battleId: args.command.battleId,
+            requestId: args.command.requestId,
+          })
+        : null;
+    if (cacheKey) {
+      const cached = await this.cache.get(cacheKey);
+      if (cached) return JSON.parse(cached) as unknown;
+    }
+    const response = await this.withLock(
+      {
+        key: redisLockKeys.cultivatorMutation(args.cultivatorId),
+        context: source,
+        timeoutMs: 240_000,
+        retries: 0,
+      },
+      async (lease) => {
+        if (args.command.kind === 'start') {
+          await assertDungeonStartReady({
+            userId: args.userId,
+            cultivatorId: args.cultivatorId,
+            mapNodeId: args.command.mapNodeId,
+          });
+        }
+        const prepared = await prepareDungeonCommand(
+          this.flow,
+          args.cultivatorId,
+          args.command,
+          lease,
+        );
+        lease.assertHeld();
+        const hooks = asDeferredResult(prepared);
+        const persist = hooks?.persist;
+        const afterCommit = hooks?.afterCommit;
+        const result = hooks ? stripDungeonHooks(hooks) : prepared;
+        const committed = await this.commands.execute({
+          coordination: { mode: 'redis', lease },
           userId: args.userId,
           cultivatorId: args.cultivatorId,
-          mapNodeId: args.command.mapNodeId,
+          source,
+          requestId,
+          allowEmpty: true,
+          command: (tx) =>
+            executeDungeonPersistenceCommand({
+              cultivatorId: args.cultivatorId,
+              result,
+              persist,
+              tx,
+            }),
         });
-      }
-      const prepared = await prepareDungeonCommand(
-        flow,
-        args.cultivatorId,
-        args.command,
-        lease,
-      );
-      lease.assertHeld();
-      const hooks = asDeferredResult(prepared);
-      const persist = hooks?.persist;
-      const afterCommit = hooks?.afterCommit;
-      const result = hooks ? stripDungeonHooks(hooks) : prepared;
-      const committed = await playerCommandExecutor.execute({
-        coordination: { mode: 'redis', lease },
-        userId: args.userId,
-        cultivatorId: args.cultivatorId,
-        source,
-        requestId,
-        allowEmpty: true,
-        command: (tx) =>
-          executeDungeonPersistenceCommand({
-            cultivatorId: args.cultivatorId,
-            result,
-            persist,
-            tx,
-          }),
-      });
-      if (afterCommit) await afterCommit();
-      return toPlayerStateMutationResponse(committed);
-    },
-  );
-  if (cacheKey) {
-    await redis.set(cacheKey, JSON.stringify(response), 'EX', 3600);
+        if (afterCommit) await afterCommit();
+        return toPlayerStateMutationResponse(committed);
+      },
+    );
+    if (cacheKey) {
+      await this.cache.set(cacheKey, JSON.stringify(response), 'EX', 3600);
+    }
+    return response;
   }
-  return response;
 }
 
 async function assertDungeonStartReady(args: {

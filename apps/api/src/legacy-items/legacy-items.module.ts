@@ -13,18 +13,15 @@ import {
   ManualMigrationController,
 } from './migration.controller.js';
 import { MigrationService } from './migration.service.js';
-import { ProductsController } from './products.controller.js';
-import { ProductsService } from './products.service.js';
 
 @Module({
   imports: [DatabaseModule],
   controllers: [
     LegacyInventoryController,
-    ProductsController,
     ArtifactMigrationController,
     ManualMigrationController,
-    ],
-  providers: [ProductsService, MigrationService, LegacyInventoryService],
+  ],
+  providers: [MigrationService, LegacyInventoryService],
 })
 export class LegacyItemsModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

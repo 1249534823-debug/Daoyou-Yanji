@@ -78,7 +78,12 @@ export const gameDockGroups: GameNavGroup[] = [
         sceneLabel: '修炼室',
         href: '/game/retreat',
       },
-      { id: 'divination', sceneLabel: '每日占卜', href: '/game/divination', expandedDockLabel: '🎲 每日占卜' },
+      {
+        id: 'divination',
+        sceneLabel: '每日占卜',
+        href: '/game/divination',
+        expandedDockLabel: '🎲 每日占卜',
+      },
       {
         id: 'inn',
         sceneLabel: '灵眼之泉',
@@ -111,16 +116,6 @@ export const gameDockGroups: GameNavGroup[] = [
         id: 'manual-migration',
         sceneLabel: '旧功法传承',
         href: '/game/manual-migration',
-      },
-      {
-        id: 'techniques',
-        sceneLabel: '所修功法',
-      },
-      {
-        id: 'skills',
-        sceneLabel: '所修神通',
-        href: '/game/skills',
-        expandedDockLabel: '📖 所修神通',
       },
       {
         id: 'sect-abilities',
@@ -174,7 +169,11 @@ export const gameDockGroups: GameNavGroup[] = [
         href: '/game/beasts',
         expandedDockLabel: '🐯 灵兽袋',
       },
-      { id: 'beast-fusion', sceneLabel: '灵兽融合', href: '/game/beasts/fusion' },
+      {
+        id: 'beast-fusion',
+        sceneLabel: '灵兽融合',
+        href: '/game/beasts/fusion',
+      },
       { id: 'beast-codex', sceneLabel: '灵兽图鉴', href: '/game/beasts/codex' },
       {
         id: 'inventory',
@@ -203,14 +202,6 @@ export const gameDockGroups: GameNavGroup[] = [
       {
         id: 'gongfa-enlightenment',
         sceneLabel: '功法参悟',
-      },
-      {
-        id: 'enlightenment-replace',
-        sceneLabel: '参悟抉择',
-      },
-      {
-        id: 'skill-enlightenment',
-        sceneLabel: '神通推演',
       },
     ],
   },

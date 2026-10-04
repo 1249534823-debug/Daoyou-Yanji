@@ -1,12 +1,15 @@
+import type { MailAttachment } from '@daoyou/shared/types/mail';
 import { db, getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
 import { mails } from '@server/lib/drizzle/schema.js';
 import { createDomainEvent } from '@server/lib/mq/domainEventWriter.js';
 import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher.js';
-import type { MailAttachment } from '@daoyou/shared/types/mail';
-import { eq } from 'drizzle-orm';
 import { newRewardAttachment } from '@server/mail/application/MailInventory.js';
+import { eq } from 'drizzle-orm';
 
-export type { MailAttachment, MailAttachmentType } from '@daoyou/shared/types/mail';
+export type {
+  MailAttachment,
+  MailAttachmentType,
+} from '@daoyou/shared/types/mail';
 
 export class MailService {
   static async sendNewRewardMail(
@@ -27,32 +30,8 @@ export class MailService {
     type: 'system' | 'reward' = 'system',
     tx?: DbTransaction,
   ) {
-    // If there are attachments, force type to reward
-    const mailType = attachments.length > 0 ? 'reward' : type;
-
-    const persist = async (q: DbTransaction) => {
-      const [mail] = await q
-        .insert(mails)
-        .values({
-          cultivatorId,
-          title,
-          content,
-          type: mailType,
-          attachments,
-          isRead: false,
-          isClaimed: false,
-        })
-        .returning({ id: mails.id });
-      if (!mail) throw new Error('邮件创建失败');
-      const event = await createMailNotification(
-        q,
-        mail.id,
-        cultivatorId,
-        mailType,
-        attachments.length,
-      );
-      return { ...mail, domainEventId: event.id };
-    };
+    const persist = (q: DbTransaction) =>
+      sendMailInTransaction(cultivatorId, title, content, attachments, type, q);
 
     if (tx) return persist(tx);
     const mail = await db.transaction(persist);
@@ -123,6 +102,40 @@ export class MailService {
       orderBy: (mails, { desc }) => [desc(mails.createdAt)],
     });
   }
+}
+
+export async function sendMailInTransaction(
+  cultivatorId: string,
+  title: string,
+  content: string,
+  attachments: MailAttachment[],
+  type: 'system' | 'reward',
+  q: DbTransaction,
+) {
+  // If there are attachments, force type to reward
+  const mailType = attachments.length > 0 ? 'reward' : type;
+
+  const [mail] = await q
+    .insert(mails)
+    .values({
+      cultivatorId,
+      title,
+      content,
+      type: mailType,
+      attachments,
+      isRead: false,
+      isClaimed: false,
+    })
+    .returning({ id: mails.id });
+  if (!mail) throw new Error('邮件创建失败');
+  const event = await createMailNotification(
+    q,
+    mail.id,
+    cultivatorId,
+    mailType,
+    attachments.length,
+  );
+  return { ...mail, domainEventId: event.id };
 }
 
 async function createMailNotification(

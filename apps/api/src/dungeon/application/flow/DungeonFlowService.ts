@@ -26,9 +26,9 @@ import type { Cultivator } from '@daoyou/shared/types/cultivator';
 import { assertCombatV6MutationAllowed } from '@server/combat/mutation-policy.js';
 import { ConditionService } from '@server/cultivator/application/ConditionService.js';
 import { QiService } from '@server/cultivator/application/QiService.js';
-import { readCraftReadinessFacts } from '@server/cultivator/facts.js';
 import { getPlayerIdentityCultivatorById } from '@server/cultivator/application/readers/CultivatorProfileRepository.js';
 import { updateCultivator } from '@server/cultivator/application/readers/CultivatorStateRepository.js';
+import { readCraftReadinessFacts } from '@server/cultivator/facts.js';
 import {
   beginDungeonBattle,
   dungeonPlayer,
@@ -46,26 +46,21 @@ import type { RewardBlueprint } from '@server/dungeon/application/flow/reward/in
 import { RewardFactory } from '@server/dungeon/application/flow/reward/index.js';
 import { resolveDungeonReward } from '@server/dungeon/application/flow/rewards.js';
 import { grantInventory } from '@server/inventory/operations.js';
-import { getExecutor, type DbTransaction } from '@server/lib/drizzle/db.js';
-import { dungeonHistories, dungeonRuns } from '@server/lib/drizzle/schema.js';
+import type { DbClient, DbTransaction } from '@server/lib/drizzle/db.js';
 import { createDomainEvent } from '@server/lib/mq/domainEventWriter.js';
 import { publishTransactionalMessageBestEffort } from '@server/lib/mq/transactionalMessagePublisher.js';
-import { renderPrompt } from '@server/lib/prompts/index.js';
-import { redis } from '@server/lib/redis/index.js';
 import {
   isRedisLockContention,
   redisLockKeys,
-  withRedisLock,
   type RedisLeaseContext,
+  type withRedisLock,
 } from '@server/lib/redis/lock.js';
 import { findActiveCultivatorOwnerId } from '@server/lib/repositories/cultivatorRepository.js';
-import { resourceEngine } from '@server/player/application/state/ResourceEngine.js';
-import { generateAiObject } from '@server/utils/aiClient.js';
+import type { ResourceEngine } from '@server/player/application/state/ResourceEngine.js';
 import { stableCompactStringify } from '@server/utils/llmPayload.js';
 import { randomUUID } from 'crypto';
-import { and, desc, eq, isNull, ne } from 'drizzle-orm';
-import { z } from 'zod';
-import { generateDungeonRound } from './DungeonRoundGenerator.js';
+import type { generateDungeonRound } from './DungeonRoundGenerator.js';
+import type { generateDungeonEnding } from './DungeonSettlementGenerator.js';
 
 import {
   DungeonOptionCost,
@@ -76,28 +71,11 @@ import {
   DungeonSettlementLlmContext,
   DungeonState,
 } from '@server/dungeon/application/flow/types.js';
+import type { DungeonRunStore } from './DungeonRunStore.js';
+import { DungeonFlowError, DungeonFlowErrorCode } from './errors.js';
 
-const REDIS_TTL = 3600; // 1 hour expiration for active sessions
 const FLOW_LOCK_TTL_SECONDS = 180;
-const RUN_TERMINAL_STATUSES = new Set(['FINISHED']);
-export const DungeonFlowErrorCode = {
-  NOT_FOUND: 'DUNGEON_NOT_FOUND',
-  INVALID_STATE: 'DUNGEON_INVALID_STATE',
-} as const;
-
-export type DungeonFlowErrorCode =
-  (typeof DungeonFlowErrorCode)[keyof typeof DungeonFlowErrorCode];
-
-export class DungeonFlowError extends Error {
-  constructor(
-    public code: DungeonFlowErrorCode,
-    message: string,
-    public status: 404 | 409,
-  ) {
-    super(message);
-    this.name = 'DungeonFlowError';
-  }
-}
+export { DungeonFlowError, DungeonFlowErrorCode } from './errors.js';
 
 class DungeonSettlementRecoverableError extends Error {
   constructor(
@@ -288,16 +266,7 @@ function assertDungeonRealmEligible(
   }
 }
 
-// Helper to generate Redis key
-function getDungeonKey(cultivatorId: string) {
-  return `dungeon:active:${cultivatorId}`;
-}
-
 type DungeonBattleCachePayload = DungeonBattlePayload | DungeonEncounterPayload;
-
-function isActiveRunStatus(status: string | null | undefined) {
-  return Boolean(status && !RUN_TERMINAL_STATUSES.has(status));
-}
 
 function cloneCosts(
   costs: DungeonOptionCost[] | undefined,
@@ -311,7 +280,14 @@ function cloneCosts(
 }
 
 export class DungeonFlowService {
-  constructor(private readonly generateRound: typeof generateDungeonRound) {}
+  constructor(
+    private readonly generateRound: typeof generateDungeonRound,
+    private readonly generateEnding: typeof generateDungeonEnding,
+    private readonly database: DbClient,
+    private readonly runs: DungeonRunStore,
+    private readonly resources: ResourceEngine,
+    private readonly withLock: typeof withRedisLock,
+  ) {}
 
   private buildFallbackOption(
     state: Pick<DungeonState, 'currentRound' | 'maxRounds'>,
@@ -421,24 +397,6 @@ export class DungeonFlowService {
     return state;
   }
 
-  private async loadActiveRun(cultivatorId: string) {
-    const rows = await getExecutor()
-      .select()
-      .from(dungeonRuns)
-      .where(
-        and(
-          eq(dungeonRuns.cultivatorId, cultivatorId),
-          isNull(dungeonRuns.endedAt),
-        ),
-      )
-      .orderBy(desc(dungeonRuns.updatedAt))
-      .limit(1);
-
-    const row = rows[0];
-    if (!row || !isActiveRunStatus(row.status)) return null;
-    return row;
-  }
-
   private async markRecoverable(
     cultivatorId: string,
     state: DungeonState,
@@ -470,7 +428,7 @@ export class DungeonFlowService {
         await this.persistStateRecord(cultivatorId, state, battlePayload, tx);
       },
       afterCommit: async () => {
-        await this.saveRedisState(cultivatorId, state);
+        await this.runs.saveRedisState(cultivatorId, state);
       },
     };
   }
@@ -490,7 +448,7 @@ export class DungeonFlowService {
     }
 
     try {
-      return await withRedisLock(
+      return await this.withLock(
         {
           key: redisLockKeys.dungeonCommand(cultivatorId),
           context,
@@ -694,7 +652,7 @@ export class DungeonFlowService {
     let qiReservationOpen = false;
 
     try {
-      const existingSession = await this.loadActiveRun(cultivatorId);
+      const existingSession = await this.runs.loadActiveRun(cultivatorId);
       if (existingSession) {
         throw new Error('当前已有正在进行的副本，请先完成或放弃');
       }
@@ -813,7 +771,7 @@ export class DungeonFlowService {
             } satisfies DungeonPersistenceSettlement;
           },
           afterCommit: async () => {
-            await this.saveRedisState(cultivatorId, state);
+            await this.runs.saveRedisState(cultivatorId, state);
           },
         };
       }
@@ -915,7 +873,7 @@ export class DungeonFlowService {
           actionCosts,
           materialSelections,
         );
-      const result = await getExecutor().transaction(async (tx) => {
+      const result = await this.database.transaction(async (tx) => {
         const applied = await applyDungeonCosts(
           userId,
           cultivatorId,
@@ -1042,7 +1000,7 @@ export class DungeonFlowService {
             );
           },
           afterCommit: async () => {
-            await this.saveRedisState(cultivatorId, state);
+            await this.runs.saveRedisState(cultivatorId, state);
           },
         };
       }
@@ -1180,7 +1138,7 @@ export class DungeonFlowService {
           );
         },
         afterCommit: async () => {
-          await this.saveRedisState(cultivatorId, state);
+          await this.runs.saveRedisState(cultivatorId, state);
         },
       };
     }
@@ -1211,7 +1169,7 @@ export class DungeonFlowService {
         409,
       );
     }
-    const run = await this.loadActiveRun(cultivatorId);
+    const run = await this.runs.loadActiveRun(cultivatorId);
     const prepared = run?.battlePayload as DungeonEncounterPayload | undefined;
     if (!prepared?.encounter || prepared.preview.id !== encounterId)
       throw new Error('遭遇输入缺失');
@@ -1463,30 +1421,13 @@ export class DungeonFlowService {
         state.v6Rewards ?? [],
         await resolveDungeonReward(state, 'completion', 'completion'),
       );
-    const endingPrompt = renderPrompt('dungeon-settlement', {
-      userContextJson: stableCompactStringify({
-        history: state.history,
-        endDisposition,
-        rewards: state.v6Rewards,
-      }),
-    });
     const ending = state.settlement
       ? undefined
-      : await generateAiObject({
-          system: endingPrompt.system,
-          prompt: endingPrompt.user,
-          schema: z.object({
-            narrative: z.string().min(12).max(600),
-            rating: z.enum(['S', 'A', 'B', 'C', 'D']),
-          }),
-          name: 'DungeonSettlement',
-          sceneId: 'dungeon-settlement',
-        });
+      : await this.generateEnding(state, endDisposition);
     const settlement: DungeonSettlement = state.settlement ?? {
-      ending_narrative: ending!.output.narrative,
+      ending_narrative: ending!.narrative,
       settlement: {
-        reward_tier:
-          endDisposition === 'completed' ? ending!.output.rating : 'C',
+        reward_tier: endDisposition === 'completed' ? ending!.rating : 'C',
         reward_blueprints: [],
         performance_tags:
           endDisposition === 'completed' ? ['功成身退'] : ['及时止损'],
@@ -1502,7 +1443,7 @@ export class DungeonFlowService {
         throw new Error('无法获取修真者所属用户');
       }
       if (!deferPersistence) {
-        const result = await getExecutor().transaction(async (tx) => {
+        const result = await this.database.transaction(async (tx) => {
           const applied = await applyDungeonCosts(
             userId,
             state.cultivatorId,
@@ -1614,15 +1555,15 @@ export class DungeonFlowService {
       ];
       if (!deferPersistence) {
         const runId = state.runId;
-        const result = await getExecutor().transaction(async (tx) => {
-          await this.assertTerminalRunCanCommit(tx, state);
+        const result = await this.database.transaction(async (tx) => {
+          await this.runs.assertTerminalRunCanCommit(tx, state);
           await grantInventory(
             state.cultivatorId,
             settlement.inventoryRewards ?? [],
             tx,
           );
           await grantDungeonBeastExperience(state, tx);
-          const applied = await resourceEngine.applyInTransaction({
+          const applied = await this.resources.applyInTransaction({
             userId,
             cultivatorId: state.cultivatorId,
             gain: realGains as ResourceOperation[],
@@ -1632,17 +1573,13 @@ export class DungeonFlowService {
             throw new Error(applied.errors?.join('; ') || '资源获得失败');
           }
           if (applied.success && runId) {
-            await tx
-              .update(dungeonRuns)
-              .set({
-                runState: {
-                  ...state,
-                  gainLedger: nextGainLedger,
-                  realGains,
-                },
-                gainLedger: nextGainLedger,
-              })
-              .where(eq(dungeonRuns.id, runId));
+            await this.runs.recordSettlementGain(
+              tx,
+              runId,
+              state,
+              nextGainLedger,
+              realGains,
+            );
           }
           return applied;
         });
@@ -1679,14 +1616,14 @@ export class DungeonFlowService {
     };
 
     if (!deferPersistence) {
-      await getExecutor().transaction(async (tx) => {
+      await this.database.transaction(async (tx) => {
         await this.archiveDungeon(state, settlement, realGains, {
           tx,
           clearRedis: false,
         });
         await recordDungeonSettledEvent(tx);
       });
-      await redis.del(getDungeonKey(state.cultivatorId));
+      await this.runs.clearRedisState(state.cultivatorId);
       publishTransactionalMessageBestEffort(domainEventId, {
         source: 'dungeon_settlement',
         cultivatorId: state.cultivatorId,
@@ -1703,7 +1640,7 @@ export class DungeonFlowService {
       settlement,
       realGains,
       persist: async (tx) => {
-        await this.assertTerminalRunCanCommit(tx, state);
+        await this.runs.assertTerminalRunCanCommit(tx, state);
 
         let consumedSettlement: DungeonPersistenceSettlement | undefined;
         let gainedSettlement: DungeonPersistenceSettlement | undefined;
@@ -1736,24 +1673,20 @@ export class DungeonFlowService {
             tx,
           );
           await grantDungeonBeastExperience(state, tx);
-          const gainResult = await resourceEngine.applyInTransaction({
+          const gainResult = await this.resources.applyInTransaction({
             userId,
             cultivatorId: state.cultivatorId,
             gain: realGains as ResourceOperation[],
             tx,
           });
           if (gainResult.success && runId) {
-            await tx
-              .update(dungeonRuns)
-              .set({
-                runState: {
-                  ...state,
-                  gainLedger: nextGainLedger,
-                  realGains,
-                },
-                gainLedger: nextGainLedger,
-              })
-              .where(eq(dungeonRuns.id, runId));
+            await this.runs.recordSettlementGain(
+              tx,
+              runId,
+              state,
+              nextGainLedger,
+              realGains,
+            );
           }
           if (!gainResult.success) {
             throw new Error(gainResult.errors?.join('; ') || '资源获得失败');
@@ -1773,7 +1706,7 @@ export class DungeonFlowService {
         );
       },
       afterCommit: async () => {
-        await redis.del(getDungeonKey(state.cultivatorId));
+        await this.runs.clearRedisState(state.cultivatorId);
         publishTransactionalMessageBestEffort(domainEventId, {
           source: 'dungeon_settlement',
           cultivatorId: state.cultivatorId,
@@ -1793,143 +1726,24 @@ export class DungeonFlowService {
   ) {
     this.normalizeState(state);
     await this.persistStateRecord(cultivatorId, state, battlePayload);
-    await this.saveRedisState(cultivatorId, state);
+    await this.runs.saveRedisState(cultivatorId, state);
   }
 
-  private async persistStateRecord(
+  private persistStateRecord(
     cultivatorId: string,
     state: DungeonState,
     battlePayload?: DungeonBattleCachePayload,
     tx?: DbTransaction,
   ) {
     this.normalizeState(state);
-    const values = {
-      cultivatorId,
-      mapNodeId: state.mapNodeId,
-      status: state.status,
-      currentRound: state.currentRound,
-      maxRounds: state.maxRounds,
-      dangerScore: state.dangerScore,
-      runState: state,
-      costLedger: state.costLedger ?? [],
-      gainLedger: state.gainLedger ?? [],
-      pendingAction: state.pendingAction ?? null,
-      activeBattleId: state.activeBattleId ?? null,
-      battlePayload: battlePayload ?? null,
-    };
-    const q = tx ?? getExecutor();
-
-    if (state.runId) {
-      await q
-        .update(dungeonRuns)
-        .set(values)
-        .where(eq(dungeonRuns.id, state.runId));
-    } else {
-      const inserted = await q
-        .insert(dungeonRuns)
-        .values(values)
-        .returning({ id: dungeonRuns.id });
-      state.runId = inserted[0]?.id;
-      if (state.runId) {
-        await q
-          .update(dungeonRuns)
-          .set({ runState: state })
-          .where(eq(dungeonRuns.id, state.runId));
-      }
-    }
-  }
-
-  private async assertTerminalRunCanCommit(
-    tx: DbTransaction,
-    state: DungeonState,
-  ) {
-    if (!state.runId) {
-      return;
-    }
-
-    const claimed = await tx
-      .update(dungeonRuns)
-      .set({
-        status: 'FINISHED',
-        endedAt: new Date(),
-      })
-      .where(
-        and(
-          eq(dungeonRuns.id, state.runId),
-          isNull(dungeonRuns.endedAt),
-          ne(dungeonRuns.status, 'FINISHED'),
-        ),
-      )
-      .returning({ id: dungeonRuns.id });
-
-    if (claimed.length === 1) {
-      return;
-    }
-
-    const [run] = await tx
-      .select({ id: dungeonRuns.id })
-      .from(dungeonRuns)
-      .where(eq(dungeonRuns.id, state.runId))
-      .limit(1);
-    if (!run) {
-      throw new DungeonFlowError(
-        DungeonFlowErrorCode.NOT_FOUND,
-        '副本已失效',
-        404,
-      );
-    }
-
-    throw new DungeonFlowError(
-      DungeonFlowErrorCode.INVALID_STATE,
-      '当前副本已完成，请刷新查看结算',
-      409,
-    );
-  }
-
-  private async saveRedisState(cultivatorId: string, state: DungeonState) {
-    await redis.set(
-      getDungeonKey(cultivatorId),
-      JSON.stringify(state),
-      'EX',
-      REDIS_TTL,
-    );
+    return this.runs.persistStateRecord(cultivatorId, state, battlePayload, tx);
   }
 
   async getState(cultivatorId: string, runId?: string) {
-    const key = getDungeonKey(cultivatorId);
-    const run = runId
-      ? (
-          await getExecutor()
-            .select()
-            .from(dungeonRuns)
-            .where(
-              and(
-                eq(dungeonRuns.id, runId),
-                eq(dungeonRuns.cultivatorId, cultivatorId),
-              ),
-            )
-            .limit(1)
-        )[0]
-      : await this.loadActiveRun(cultivatorId);
-    let state: DungeonState | null;
-    if (run) {
-      state = run.runState as DungeonState;
-      state.runId = run.id;
-      state.status = run.status as DungeonState['status'];
-      state.currentRound = run.currentRound;
-      state.maxRounds = run.maxRounds;
-      state.dangerScore = run.dangerScore;
-      state.costLedger = (run.costLedger as DungeonState['costLedger']) ?? [];
-      state.gainLedger = (run.gainLedger as DungeonState['gainLedger']) ?? [];
-      state.pendingAction =
-        (run.pendingAction as DungeonState['pendingAction']) ?? undefined;
-      state.activeBattleId = run.activeBattleId ?? state.activeBattleId;
-      this.normalizeState(state);
-      if (!runId) await redis.set(key, JSON.stringify(state), 'EX', REDIS_TTL);
-    } else {
-      state = null;
-    }
+    const state = await this.runs.getState(cultivatorId, runId);
     if (!state) return null;
+    this.normalizeState(state);
+    if (!runId) await this.runs.saveRedisState(cultivatorId, state);
     return this.normalizeState(state);
   }
 
@@ -1993,7 +1807,7 @@ export class DungeonFlowService {
     return mapNode;
   }
 
-  async archiveDungeon(
+  archiveDungeon(
     state: DungeonState,
     settlement: DungeonSettlement,
     realGains?: ResourceOperation[],
@@ -2008,46 +1822,12 @@ export class DungeonFlowService {
     state.recoverableActions = undefined;
     state.activeBattleId = undefined;
 
-    const archive = async (tx: DbTransaction) => {
-      if (!state.archiveHistoryCommittedAt) {
-        await tx.insert(dungeonHistories).values({
-          cultivatorId: state.cultivatorId,
-          theme: state.theme,
-          result: settlement,
-          log: state.history
-            .map((h) => `[Round ${h.round}] ${h.scene} -> Choice: ${h.choice}`)
-            .join('\n'),
-          realGains: realGains ?? null,
-        });
-        state.archiveHistoryCommittedAt = new Date().toISOString();
-      }
-
-      if (state.runId) {
-        await tx
-          .update(dungeonRuns)
-          .set({
-            status: 'FINISHED',
-            runState: this.normalizeState(state),
-            costLedger: state.costLedger ?? [],
-            gainLedger: state.gainLedger ?? [],
-            pendingAction: null,
-            activeBattleId: null,
-            battlePayload: null,
-            endedAt: new Date(),
-          })
-          .where(eq(dungeonRuns.id, state.runId));
-      }
-    };
-
-    if (options.tx) {
-      await archive(options.tx);
-    } else {
-      await getExecutor().transaction(archive);
-    }
-
-    if (options.clearRedis !== false) {
-      await redis.del(getDungeonKey(state.cultivatorId));
-    }
+    return this.runs.archiveDungeon(
+      this.normalizeState(state),
+      settlement,
+      realGains,
+      options,
+    );
   }
 
   /**
@@ -2202,4 +1982,3 @@ export class DungeonFlowService {
     });
   }
 }
-

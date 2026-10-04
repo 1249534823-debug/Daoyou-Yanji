@@ -28,18 +28,6 @@ export const cultivationRoutes = [
     )}
   />,
   <Route
-    path="techniques"
-    lazy={lazyRoute(() => import('@app/routes/game/techniques/route'))}
-    handle={scene(
-      {
-        id: 'techniques',
-        presentation: 'archive',
-        summary: '旧日功法归档，留存往昔修行记录。',
-      },
-      '【所修功法】',
-    )}
-  />,
-  <Route
     path="craft/refine"
     lazy={lazyRoute(() => import('@app/routes/game/craft/refine/route'))}
     handle={scene(
@@ -84,30 +72,6 @@ export const cultivationRoutes = [
         summary: '参悟玉简，将所学铭刻于道基。',
       },
       '【功法参悟】',
-    )}
-  />,
-  <Route
-    path="enlightenment/replace"
-    lazy={lazyRoute(
-      () => import('@app/routes/game/enlightenment/replace/route'),
-    )}
-    handle={scene(
-      {
-        id: 'enlightenment-replace',
-        summary: '确认是否用新功法替换当前所学。',
-      },
-      '参悟抉择',
-    )}
-  />,
-  <Route
-    path="enlightenment/skill"
-    lazy={lazyRoute(() => import('@app/routes/game/enlightenment/skill/route'))}
-    handle={scene(
-      {
-        id: 'skill-enlightenment',
-        summary: '排定材料与悟性，推演一门神通。',
-      },
-      '【神通推演】',
     )}
   />,
   <Route

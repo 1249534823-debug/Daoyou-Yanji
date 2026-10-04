@@ -212,4 +212,4 @@ curl -X DELETE http://127.0.0.1:3001/api/dev/cultivators/角色UUID/divination
 | 运行依赖 | 读取 /api/health-check；以缺少 Redis 的生产配置尝试启动本地构建 | 正常设施全 up；缺少生产 Redis 明确拒绝启动，不接触生产服务 |
 | 交付 | frozen install、lint、typecheck、shared tests、API/Web build；必要时构建本地 Docker 镜像 | 包边界有效，两个应用独立产物可构建；不发布镜像、不执行额外迁移 |
 
-旧 SPA 与新 API、旧消息与新消费者的兼容发布顺序见 [架构审查与规范](monorepo-architecture.md)。跨应用协议变化时，在发布记录中写明前后端版本、迁移状态和回滚条件。
+发布采用停机维护、SPA／API 配套更新，清单见 [架构审查与规范第 11 节](monorepo-architecture.md#停机维护发布清单)。旧 SPA／新 API 的混合版本兼容不作为验收要求。跨应用、活动状态或消息协议变化时，记录配套产物身份、留存状态处理及回滚条件；停机不会自动清除 Redis 活动状态或 NATS 待处理消息。

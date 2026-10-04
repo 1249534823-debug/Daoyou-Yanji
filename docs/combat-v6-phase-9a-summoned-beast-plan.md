@@ -99,7 +99,7 @@
 
 - PvE 提交改为 `{ expectedRevision, commands: [{ unitId, command }] }`；擂台为 `{ round, requestId, commands }`。服务端一次验证并保存完整控制组，不保留旧单指令协议。
 - `command` 增加 `summon`／`recall`；会话通过 `controlledCommandOptions` 返回人物与当前宠物的选择。先选人物只是客户端草稿，宠物选择完成才发送一次 HTTP 请求。
-- 本阶段版本戳使用 `COMBAT_V6_PHASE_9A_*_VERSIONS`，包含 `daoyou_rules_v7` 及各玩法的召唤兽内容／编译器版本。归档保留冻结的单位与技能展示资料。
+- 本阶段历史归档使用 `daoyou_rules_v7` 及各玩法的召唤兽内容／编译器版本；阶段版本常量已退役。当前入口使用 `version.ts` 中的 `COMBAT_V6_SEAL_CURVE_*_VERSIONS`，保留既有持久化版本值。归档保留冻结的单位与技能展示资料。
 - 发布需停机、完成迁移并硬切前后端，旧页面必须刷新；旧活动会话不作为兼容目标。迁移仅已在纯本地 PostgreSQL 应用，未执行远程迁移或部署。
 
 ### 验证记录

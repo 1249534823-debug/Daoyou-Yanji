@@ -1015,8 +1015,7 @@ export const cultivatorStories = pgTable(
 );
 
 /**
- * @deprecated V5 历史战绩。本次退役版本上线后的下一版本删除表及 schema。
- * 10J 已解除战报分享、旧仓储和 retention 清理引用，仅保留历史 schema。
+ * @deprecated V5 历史战绩，无运行时消费者；本轮保留结构与数据，后续单独安排删除。
  * 删除时先解除 betBattles 的外键依赖。当前 V6 战绩使用 combatReplayArchives。
  * 计划见 docs/combat-v6-legacy-table-retirement.md；本版不得生成 DROP。
  */
@@ -1058,8 +1057,7 @@ export const battleRecordsV3 = pgTable(
 );
 
 /**
- * @deprecated 10H 已下线的 V5 在线回放历史表，无运行时读写及自动清理。
- * 本次退役版本上线后的下一版本删除表、schema 及仅供本表使用的历史 JSON 类型。
+ * @deprecated V5 在线回放历史表，无运行时读写及自动清理；本轮保留结构与数据。
  * 计划见 docs/combat-v6-legacy-table-retirement.md；本版不得生成 DROP。
  */
 export const battleReplayArchives = pgTable(
@@ -1923,8 +1921,8 @@ export const auctionListings = pgTable(
 );
 
 /**
- * @deprecated 10D 已下线的赌战历史表，无运行时读写及自动清理。
- * 本次退役版本上线后的下一版本删除，顺序先于 battleRecordsV3（存在外键）。
+ * @deprecated 赌战历史表，无运行时读写及自动清理；本轮保留结构与数据。
+ * 后续删除顺序先于 battleRecordsV3（存在外键）。
  * 计划见 docs/combat-v6-legacy-table-retirement.md；本版不得生成 DROP。
  */
 export const betBattles = pgTable(

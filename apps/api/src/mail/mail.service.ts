@@ -6,20 +6,18 @@ import type { DbClient } from '@server/lib/drizzle/db.js';
 import { mails } from '@server/lib/drizzle/schema.js';
 import { publicMailAttachment } from '@server/mail/application/MailInventory.js';
 import type { MailAttachment } from '@server/mail/application/MailService.js';
-import {
-  claimAllCultivatorMail,
-  claimCultivatorMail,
-  markAllCultivatorMailRead,
-  markCultivatorMailRead,
-  sendCultivatorMail,
-} from '@server/mail/application/PlayerMailApplicationService.js';
-import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
 import { scheduleSystemMailObservation } from '@server/mail/application/SystemMailService.js';
+import { toPlayerStateMutationResponse } from '@server/player/application/state/ResourceMutationResponse.js';
 import { and, desc, eq, sql } from 'drizzle-orm';
+import { PlayerMailApplicationService } from './application/PlayerMailApplicationService.js';
 
 @Injectable()
 export class MailService {
-  constructor(@Inject(DRIZZLE_DATABASE) private readonly database: DbClient) {}
+  constructor(
+    @Inject(DRIZZLE_DATABASE) private readonly database: DbClient,
+    @Inject(PlayerMailApplicationService)
+    private readonly application: PlayerMailApplicationService,
+  ) {}
 
   async list(cultivatorId: string, pageValue?: string, pageSizeValue?: string) {
     scheduleSystemMailObservation(cultivatorId, 'mailbox');
@@ -60,31 +58,31 @@ export class MailService {
 
   async send(actor: ActiveCultivatorRef, input: SendMailRequest) {
     return toPlayerStateMutationResponse(
-      await sendCultivatorMail({ actor, ...input }),
+      await this.application.sendCultivatorMail({ actor, ...input }),
     );
   }
 
   async claim(actor: ActiveCultivatorRef, mailId: string) {
     return toPlayerStateMutationResponse(
-      await claimCultivatorMail({ actor, mailId }),
+      await this.application.claimCultivatorMail({ actor, mailId }),
     );
   }
 
   async claimAll(actor: ActiveCultivatorRef, requestId: string) {
     return toPlayerStateMutationResponse(
-      await claimAllCultivatorMail({ actor, requestId }),
+      await this.application.claimAllCultivatorMail({ actor, requestId }),
     );
   }
 
   async read(actor: ActiveCultivatorRef, mailId: string) {
     return toPlayerStateMutationResponse(
-      await markCultivatorMailRead({ actor, mailId }),
+      await this.application.markCultivatorMailRead({ actor, mailId }),
     );
   }
 
   async readAll(actor: ActiveCultivatorRef) {
     return toPlayerStateMutationResponse(
-      await markAllCultivatorMailRead({ actor }),
+      await this.application.markAllCultivatorMailRead({ actor }),
     );
   }
 }

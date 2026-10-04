@@ -2,7 +2,6 @@
 
 > 后续工具链调整：API 已切换到 Nest CLI 默认 tsc 和 Oxlint，shared 独立编译并通过 dist 入口交付；开发命令使用 Turbo watch。下文的 Rspack／源码包描述保留为切换前审查记录，现行操作见 [本地开发](local-development.md)。
 
-
 审查日期：2026-10-03。目标：NestJS 后端 + React SPA/Vite + pnpm workspace + Turborepo。
 
 第 1—6 节保留前次架构整理的审查与验证记录；第 7 节记录按推荐顺序实施的后续六个阶段；第 8 节为提交后的现状复审与继续顺序。本文区分首次审查发现和各轮重构后的状态。代码、依赖图、构建产物与本地运行是判断依据；历史迁移文档不等同于生产验收。复审时结构改动已提交，目标环境发布结果尚未核验。
@@ -22,7 +21,7 @@
 | 根目录 | 锁文件、workspace、Turbo、lint/test、维护和迁移配置、CI/CD | 仓库级工具管理合理；工具使用 shared 时也声明 workspace 依赖 |
 | `apps/api` | Nest HTTP/SSE/WS、认证、应用编排、持久化、Redis、NATS、LLM、调度 | 独立后端，不承担 SPA 渲染 |
 | `apps/web` | React 19 SPA、React Router、浏览器状态、游戏 UI、静态资源 | Vite 独立构建，无 SSR/Next.js 层 |
-| `packages/shared` | Zod 契约、类型、规则、引擎、内容、共同业务展示计算 | 内部 TypeScript 源码包，应用构建时打包，不独立运行 |
+| `packages/shared` | Zod 契约、类型、规则、引擎、内容、共同业务展示计算 | tsc 编译包，通过 dist JavaScript／声明交付，不独立运行 |
 | `drizzle` / `drizzle-auth` | 业务表和 Better Auth 的独立迁移流 | 所有权不同，保持独立合理 |
 | `docker` / `scripts` | API 镜像、本地基础设施、发布和维护入口 | 与前端静态交付分离 |
 
@@ -44,7 +43,7 @@ flowchart LR
 
 ### 功能与应用实现
 
-外层 Controller、Guard、Pipe、Filter、Interceptor 已使用 Nest。功能模块由 `app.module.ts` 组装。认证采用全局 `AccessGuard` 与 `@Access`，Better Auth 原始认证请求保留独立处理；框架异常映射和显式构造器 `@Inject` 与当前 Rspack 编译配置一致。
+外层 Controller、Guard、Pipe、Filter、Interceptor 已使用 Nest。功能模块由 `app.module.ts` 组装。认证采用全局 `AccessGuard` 与 `@Access`，Better Auth 原始认证请求保留独立处理；框架异常映射和显式构造器 `@Inject` 与关闭隐式 design-type 元数据的编译配置一致。
 
 首次审查时 `lib/services` 有 191 文件、约 4.67 万行。业务实现可以不经过 Nest Module 的依赖声明跨目录调用，维护者难以判断归属。
 
@@ -295,3 +294,74 @@ PostgreSQL 管理长期角色/资产/资源版本和回放。Redis 管理活跃�
 发布阶段的完成条件调整为：同一配套版本的远端质量检查通过；维护入口有效；请求与消息按现有顺序排空；API 与 SPA 更新后健康检查、认证、实时连接及资源同步通过；浏览器重新加载当前 SPA；配套版本回滚有实测记录。若改动持久模型、活动状态或消息协议，另行确认数据恢复与 Redis／NATS 留存状态的处理，不因采用停机发布而假定这些状态消失。具体发布决策见 [应用边界](architecture-boundaries.md#停机维护与配套发布)。
 
 本次仅更新规划文档，没有修改发布脚本、执行停机、数据库迁移或部署。
+
+## 11. 拍卖、邮件、秘境与 Runtime 依赖收口
+
+实施日期：2026-10-04。以下依据本轮工作树与本地最终构建，不把此前测试记录当作本轮结果。历史道装数据迁移排除；本轮无数据库模型、HTTP 契约或游戏规则改动，未提交、推送或部署。
+
+### 实施结果
+
+| 阶段 | 本轮落地 | 边界与验收 |
+| --- | --- | --- |
+| 拍卖纵向改造 | `AuctionModule` 组合 `AuctionOperations`、`AuctionApplicationService`；注入既有数据库、Redis／锁、角色查询、玩家命令和邮件投递 | HTTP 与后台过期任务复用同一 Provider；保留角色／货单锁、请求指纹、批量过期事务及提交后缓存清理 |
+| 邮件／背包边界 | `PlayerMailApplicationService` 接入 DI；`MailDeliveryService.send` 要求调用方提供事务；公开附件呈现及背包脱敏入口 | 邮件和通知 outbox 在同一事务；玩家赠送不再自行回退新事务；背包仍通过窄的 transaction-aware operations 供其他领域调用 |
+| 秘境职责拆分 | `DungeonApplicationService` 负责命令锁、提交和响应；`DungeonRunStore` 负责持久记录、恢复、终局条件更新、历史与缓存；轮次／结尾 LLM 各自有生成入口 | Flow 保留探索状态机、资格、代价和确定性收益；先切换终局状态再归一化，沿用原去重条件、缓存 key／TTL 和 afterCommit 顺序 |
+| Player／Runtime 组合 | `PlayerStateModule` 导出原有 ResourceEngine，复用既有命令实例；后台 consumer 接受由注入的 `InternalCronService` 创建的完整命令映射 | 消息 requestedAt 继续传入排名／材料任务；重试、working 心跳、死信、双向 ACK、启动回滚与停机排空顺序保持 |
+| 业务验收 | 本地公开材料寄售／成交／返还／领取、请求重放；秘境入场／进程恢复／下一轮／安全撤离结算 | 结果详见下表；未把一条路径推广为全部玩法已验收 |
+| 发布准备 | 沿用同 revision 的 tag 质量门禁、API 镜像身份、SPA build ID 与 75 秒停止宽限；明确配套维护发布清单 | 准备完成，目标环境维护／部署／回滚尚未执行 |
+
+Redis Provider 包装的是现有 lazy client 和锁实现，没有增加客户端。玩家状态 Provider 使用既有实例，避免框架外调用方与 Nest 各自形成一套协调器。无状态规则／映射、带显式事务的领域函数可以继续作为普通函数，不要求为了目录形式再包装服务。Oxlint 新增拍卖／邮件访问角色、背包公开入口的约束，并禁止拍卖跨入邮件私有 application 实现。
+
+```mermaid
+flowchart TD
+    Runtime[RuntimeModule] --> Auction[AuctionModule]
+    Auction --> Mail[MailModule]
+    Auction --> Player[PlayerStateModule]
+    Auction --> Character[CultivatorModule]
+    Mail --> Player
+    Mail --> Character
+    Dungeon[DungeonModule] --> Player
+    Dungeon --> Store[DungeonRunStore]
+    Dungeon --> Generation[轮次与结尾生成]
+    Auction --> Redis[RedisModule]
+    Mail --> Redis
+    Dungeon --> Redis
+    Store --> DB[DatabaseModule / 单一 Pool]
+```
+
+### 本轮真实本地结果
+
+环境为 `env/local.env`，API 3001／SPA 5174，使用既有 local1／local2 测试角色，基础设施未重建。买卖采用串行正常登录，核对各次实际身份。
+
+| 行为 | 结果 |
+| --- | --- |
+| 上架与重放 | local2 将现有自测玄铁 1 件以 100 灵石上架；重放原 requestId 返回 200、`replayed: true` 及原 listingId |
+| 下架与返还 | 货单下架后只生成本次返还邮件；通过页面领取 1 件材料回随身物品，数量恢复为 2 |
+| 成交与重放 | 再上架 1 件，local1 购买扣 100 灵石；原购买请求重放 200、`replayed: true`，没有再次扣款 |
+| 双方邮件领取 | 买方领取材料；重复领取返回 200、`replayed: true`。卖方页面领取 97 灵石；只读数据库核对买方 467578、卖方 42660 灵石，材料分别 5 件／1 件 |
+| 认证 | 无 Cookie 的拍卖读取返回 401；无 Bearer 的 internal cron 请求返回 401。未执行批量过期来触碰排除的历史附件 |
+| 秘境恢复 | 新 run `bb29e045-b2f5-43ed-b679-25fc4a914d21` 进入第一轮；SIGTERM API、启动同一最新产物并刷新，原 run／轮次／正文／抉择恢复，随后成功推进第二轮 |
+| 秘境结算 | 正式安全离开，结尾生成成功；到账灵石 210、修为 60，无物品。run 为 FINISHED、结算 gain ledger 一条、历史一条；重复 quit 返回 409“探索状态已变化”，没有再次结算 |
+| 资源与设施 | 卖方最终灵石 42870、修为 2351 与 HUD／数据库一致；readiness 的 database／redis／nats／messaging 全 up；正常关闭完成调度 → HTTP → 消息 → DB／Redis 排空 |
+
+本轮消费一次真实秘境入场灵气，保留正式买卖、收益及历史。未发放准备性资源、修补历史附件或改写数据库；两份新寄售均已结束，本次邮件均已领取，秘境已结束。临时浏览器页和本轮 API／Web 进程在验收后清理，原本地设施保留。截图保存在当次任务产物。
+
+### 检查与结论
+
+- `pnpm run lint`、`pnpm run typecheck`、`pnpm run build` 通过；后续秘境生成／存储拆分后再次运行 `pnpm run build:server`、API lint 和全仓 typecheck，通过。Web／shared 未改动时允许 Turbo 命中缓存；API 的最后改动实际由 Nest tsc 重建。Vite 既有 Phaser chunk 体积提示保留。
+- 生产源码静态运行值 import／re-export 图覆盖 1637 文件，未发现循环、应用互相导入、shared 反向依赖或未解析的内部入口。此检查不覆盖动态调用、所有运行时依赖或远端配置。
+- 核对事务向下传递、锁 key／TTL、幂等指纹、资源事件、批量过期、邮件 outbox 和消息生命周期；静态审查与本地结果共同支持本轮结构改造。
+- 未新增 API／Web 单测或一次性验收脚本。未重跑 shared 单测与 Docker 构建：本轮未改共享领域逻辑、依赖／锁文件、Docker 交付链。工作树中的并行旧功能清理保持原样，不计作本轮改动或覆盖范围。
+- 未验证本轮私有寄售成功、灵兽成交、邮件一键领取全部分支、完整五轮秘境通关、消息故障／重复终局、自然 Cookie 续期和多人胜利。这些仍属于业务／发布验收，不能由结构通过推导成功。
+
+三个工作区、编译包交付、应用所有权、依赖组合与生命周期达到本次 NestJS 模块化单体 + React SPA 的架构目标。后续优先补业务与发布证据；当前没有证据要求拆更多 workspace／服务、引入 SSR，或机械地将全部普通领域函数改成 Injectable。若后续对复杂结算规则进行功能改动，再以代价／收益／事件职责为单位拆分 Flow，保持事务内同步一致性。
+
+### 停机维护发布清单
+
+1. 选择同一个 revision，完成 frozen install、lint、typecheck、shared tests、API／SPA build；确认该 revision 的远端质量任务成功，记录不可变镜像 tag／digest 与 SPA build ID，保留上一套配套产物。
+2. 在实际入口／代理启用维护，停止新请求。向 API 发出正常停止信号，观察排空完成；沿用生产 Compose 的 75 秒停止宽限，不通过清空 Redis／NATS 代替排空。
+3. 在维护窗口更新配套 API 与 SPA；本轮无 DB 变更，历史道装迁移排除。其他版本如有模型／活动状态／消息协议变化，单独列出兼容或恢复处理和备份，不能假定停机消除了留存状态。
+4. 保持维护入口，核对 revision／build ID、readiness、正常登录／Cookie、HTTP、实时连接、资源快照和本次受影响流程。确认后开放入口，让浏览器重新加载当前 SPA。
+5. 如需回滚，在维护窗口恢复上一套 API／SPA，重复相同检查；有数据变化时执行事先确定的数据恢复策略。本轮仅准备清单，真实目标环境的维护入口和配套回滚仍需实测。
+
+旧 SPA／新 API 的混合版本兼容和滚动发布不纳入本计划。API 与 SPA 仍各自构建、各自记录产物身份，在同一维护窗口配套切换。

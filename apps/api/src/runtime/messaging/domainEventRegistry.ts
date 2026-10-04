@@ -23,7 +23,10 @@ import {
   startTransactionalMessageRelay,
   stopTransactionalMessageRelay,
 } from '@server/lib/mq/transactionalMessageRelay.js';
-import { closeNatsConnection, getNatsConnection } from '@server/lib/nats/index.js';
+import {
+  closeNatsConnection,
+  getNatsConnection,
+} from '@server/lib/nats/index.js';
 import { claimMessageForConsumer } from '@server/lib/repositories/messageConsumptionRepository.js';
 import { projectMailCreated } from '@server/mail/application/MailDomainEventProjector.js';
 import { projectSystemMailAudience } from '@server/mail/application/SystemMailService.js';
@@ -36,6 +39,7 @@ import {
   isBackgroundCommandConsumerHealthy,
   startBackgroundCommandConsumer,
   stopBackgroundCommandConsumer,
+  type BackgroundCommandHandlers,
 } from '@server/runtime/messaging/backgroundCommandConsumer.js';
 import {
   isCombatV6MessagingHealthy,
@@ -53,13 +57,14 @@ let registered = false;
 
 export async function registerMessageInfrastructure(
   training: CombatV6TrainingSessionService,
+  backgroundCommands: BackgroundCommandHandlers,
 ): Promise<void> {
   if (registered) return;
   try {
     await getNatsConnection();
     await ensureMessageTopology();
     const starts = await Promise.allSettled([
-      startBackgroundCommandConsumer(),
+      startBackgroundCommandConsumer(backgroundCommands),
       startDomainEventConsumer({
         consumerName: DOMAIN_EVENT_CONSUMERS.systemMailProjector.name,
         concurrency: DOMAIN_EVENT_CONSUMERS.systemMailProjector.concurrency,

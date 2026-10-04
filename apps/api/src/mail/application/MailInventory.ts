@@ -14,7 +14,7 @@ import type { Consumable, Material } from '@daoyou/shared/types/cultivator';
 import type { MailAttachment } from '@daoyou/shared/types/mail';
 import type { DbTransaction } from '@server/lib/drizzle/db.js';
 import { grantInventory } from '@server/inventory/operations.js';
-import { sanitizeMaterialForClient } from '@server/inventory/application/materialDetailsPrivacy.js';
+import { sanitizeMaterialForClient } from '@server/inventory/presentation.js';
 
 /** Only used when producing new rewards; never converts stored mail on claim. */
 export function newRewardAttachment(item: MailAttachment): MailAttachment {

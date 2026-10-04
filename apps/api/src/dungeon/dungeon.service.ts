@@ -2,10 +2,6 @@ import type { CombatV6TrainingCommandRequestSchema } from '@daoyou/shared/contra
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { DRIZZLE_DATABASE } from '@server/database/database.service.js';
 import {
-  executeDungeonCommand,
-  readDungeonState,
-} from '@server/dungeon/application/DungeonApplicationService.js';
-import {
   changeDungeonBattle,
   getDungeonBattle,
 } from '@server/dungeon/application/flow/combatV6.js';
@@ -18,20 +14,23 @@ import type { DbClient } from '@server/lib/drizzle/db.js';
 import { dungeonHistories } from '@server/lib/drizzle/schema.js';
 import { desc, eq, sql } from 'drizzle-orm';
 import type { z } from 'zod';
-import { DungeonFlowService } from './application/flow/DungeonFlowService.js';
+import { DungeonApplicationService } from './application/DungeonApplicationService.js';
 
 @Injectable()
 export class DungeonService {
   constructor(
     @Inject(DRIZZLE_DATABASE) private readonly database: DbClient,
-    @Inject(DungeonFlowService) private readonly flow: DungeonFlowService,
+    @Inject(DungeonApplicationService)
+    private readonly application: DungeonApplicationService,
   ) {}
 
   execute(
     actor: ActiveCultivatorRef,
-    command: Parameters<typeof executeDungeonCommand>[1]['command'],
+    command: Parameters<
+      DungeonApplicationService['executeDungeonCommand']
+    >[0]['command'],
   ) {
-    return executeDungeonCommand(this.flow, {
+    return this.application.executeDungeonCommand({
       userId: actor.userId,
       cultivatorId: actor.cultivatorId,
       command,
@@ -39,7 +38,7 @@ export class DungeonService {
   }
 
   async state(owner: string, runId?: string) {
-    return { state: await readDungeonState(this.flow, owner, runId) };
+    return { state: await this.application.readDungeonState(owner, runId) };
   }
 
   async history(owner: string, pageQuery?: string, pageSizeQuery?: string) {

@@ -122,7 +122,9 @@
         "src/**/*.service.ts",
         "src/market/**/*.ts",
         "src/inventory/**/*.ts",
-        "src/lib/mq/**/*.ts"
+        "src/lib/mq/**/*.ts",
+        "src/auction/**/*.ts",
+        "src/mail/**/*.ts"
       ]
     },
     {
@@ -166,7 +168,9 @@
       },
       "excludeFiles": [
         "src/market/**/*.service.ts",
-        "src/inventory/**/*.service.ts"
+        "src/inventory/**/*.service.ts",
+        "src/auction/**/*.service.ts",
+        "src/mail/**/*.service.ts"
       ]
     },
     {
@@ -284,6 +288,91 @@
                   "@server/runtime/**"
                 ],
                 "message": "Business message registration belongs to Runtime; MQ libraries own transport."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["src/auction/**/*.ts"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": ["@app/*", "@daoyou/web*", "**/apps/web/**"]
+              },
+              {
+                "group": [
+                  "@server/cultivator/application/**",
+                  "@server/inventory/application/**"
+                ],
+                "message": "Auction and Mail use public character facts and inventory operations/presentation."
+              },
+              {
+                "group": ["@server/mail/application/**"],
+                "message": "Auction uses MailDeliveryService and public attachment presentation."
+              }
+            ],
+            "paths": [
+              {
+                "name": "@server/lib/drizzle/db.js",
+                "importNames": ["db", "getExecutor"],
+                "message": "Inject DRIZZLE_DATABASE in Nest services; pass it to repository calls."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["src/mail/**/*.ts"],
+      "excludeFiles": ["src/**/*.service.ts"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": ["@app/*", "@daoyou/web*", "**/apps/web/**"]
+              },
+              {
+                "group": [
+                  "@server/cultivator/application/**",
+                  "@server/inventory/application/**"
+                ],
+                "message": "Auction and Mail use public character facts and inventory operations/presentation."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["src/mail/**/*.service.ts"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": ["@app/*", "@daoyou/web*", "**/apps/web/**"]
+              },
+              {
+                "group": [
+                  "@server/cultivator/application/**",
+                  "@server/inventory/application/**"
+                ],
+                "message": "Auction and Mail use public character facts and inventory operations/presentation."
+              }
+            ],
+            "paths": [
+              {
+                "name": "@server/lib/drizzle/db.js",
+                "importNames": ["db", "getExecutor"],
+                "message": "Inject DRIZZLE_DATABASE in Nest services; pass it to repository calls."
               }
             ]
           }

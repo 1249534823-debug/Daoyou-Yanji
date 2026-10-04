@@ -44,7 +44,6 @@ class AdminNotFoundController {
     'api/admin/system-mails{/{*path}}',
     'api/admin/sponsorship{/{*path}}',
     'api/admin/tower-enemy-sets{/{*path}}',
-    'api/admin/manual-migration{/{*path}}',
   ])
   @HttpCode(404)
   notFound() {

@@ -10,18 +10,8 @@ import {
   consumerRetryDelayMs,
 } from '@server/lib/mq/natsTopology.js';
 import { getJetStreamClient } from '@server/lib/nats/index.js';
-import {
-  runAuctionExpireJob,
-  runExpiredDataCleanupJob,
-  runMarketRefreshCronJob,
-  runMaterialLibraryDailyGenerationJob,
-  runRankRewardsJob,
-  runResourceReplayCleanupJob,
-  runSponsorshipAdminDigestJob,
-  runSponsorshipCleanupJob,
-  runSponsorshipReconcileJob,
-} from '@server/runtime/jobs/internalCron.js';
 import { JSONCodec, type ConsumerMessages, type JsMsg } from 'nats';
+import type { InternalCronService } from '../internal-cron.service.js';
 
 const MAX_PROCESSING_ATTEMPTS = 10;
 const WORKING_INTERVAL_MS = 30_000;
@@ -36,23 +26,29 @@ let healthy = false;
 let cancelRestartWait: (() => void) | undefined;
 const activeHandlers = new Set<Promise<void>>();
 
-const handlers = {
-  'auction.expire': () => runAuctionExpireJob(),
-  'ranking.rewards.distribute': (command) =>
-    runRankRewardsJob(new Date(command.requestedAt)),
-  'market.refresh': () => runMarketRefreshCronJob(),
-  'resource-replay.cleanup': () => runResourceReplayCleanupJob(),
-  'expired-data.cleanup': () => runExpiredDataCleanupJob(),
-  'material-library.generate': (command) =>
-    runMaterialLibraryDailyGenerationJob(new Date(command.requestedAt)),
-  'sponsorship.reconcile': () => runSponsorshipReconcileJob(false),
-  'sponsorship.deep-reconcile': () => runSponsorshipReconcileJob(true),
-  'sponsorship.cleanup': () => runSponsorshipCleanupJob(),
-  'sponsorship.admin-digest': () => runSponsorshipAdminDigestJob(),
-} satisfies Record<
+export type BackgroundCommandHandlers = Record<
   BackgroundCommandType,
   (command: BackgroundCommandEnvelope) => Promise<unknown>
 >;
+
+export function createBackgroundCommandHandlers(
+  jobs: InternalCronService,
+): BackgroundCommandHandlers {
+  return {
+    'auction.expire': () => jobs.auctionExpire(),
+    'ranking.rewards.distribute': (command) =>
+      jobs.rankRewards(new Date(command.requestedAt)),
+    'market.refresh': () => jobs.marketRefresh(),
+    'resource-replay.cleanup': () => jobs.resourceReplayCleanup(),
+    'expired-data.cleanup': () => jobs.expiredDataCleanup(),
+    'material-library.generate': (command) =>
+      jobs.materialLibraryGeneration(new Date(command.requestedAt)),
+    'sponsorship.reconcile': () => jobs.sponsorshipReconcile(),
+    'sponsorship.deep-reconcile': () => jobs.sponsorshipDeepReconcile(),
+    'sponsorship.cleanup': () => jobs.sponsorshipCleanup(),
+    'sponsorship.admin-digest': () => jobs.sponsorshipAdminDigest(),
+  };
+}
 
 async function publishDeadLetter(
   message: JsMsg,
@@ -83,7 +79,10 @@ async function publishDeadLetter(
   );
 }
 
-async function processMessage(message: JsMsg): Promise<void> {
+async function processMessage(
+  message: JsMsg,
+  commandHandlers: BackgroundCommandHandlers,
+): Promise<void> {
   let command: BackgroundCommandEnvelope | null = null;
   const workingTimer = setInterval(() => {
     try {
@@ -103,7 +102,7 @@ async function processMessage(message: JsMsg): Promise<void> {
         `后台命令 subject 不一致: ${command.subject} != ${message.subject}`,
       );
     }
-    await handlers[command.type](command);
+    await commandHandlers[command.type](command);
     const acknowledged = await message.ackAck({ timeout: 5_000 });
     if (!acknowledged) throw new Error('后台命令 JetStream 双向 ACK 未确认');
   } catch (error) {
@@ -133,7 +132,9 @@ async function processMessage(message: JsMsg): Promise<void> {
   }
 }
 
-export async function startBackgroundCommandConsumer(): Promise<void> {
+export async function startBackgroundCommandConsumer(
+  commandHandlers: BackgroundCommandHandlers,
+): Promise<void> {
   if (consumerTask) return;
   stopping = false;
 
@@ -144,6 +145,7 @@ export async function startBackgroundCommandConsumer(): Promise<void> {
     rejectInitialStart = reject;
   });
   consumerTask = superviseBackgroundCommandConsumer(
+    commandHandlers,
     resolveInitialStart,
     rejectInitialStart,
   );
@@ -156,6 +158,7 @@ export async function startBackgroundCommandConsumer(): Promise<void> {
 }
 
 async function superviseBackgroundCommandConsumer(
+  commandHandlers: BackgroundCommandHandlers,
   resolveInitialStart: () => void,
   rejectInitialStart: (error: unknown) => void,
 ): Promise<void> {
@@ -186,7 +189,7 @@ async function superviseBackgroundCommandConsumer(
       }
 
       for await (const message of messages) {
-        const handler = processMessage(message).finally(() => {
+        const handler = processMessage(message, commandHandlers).finally(() => {
           handlers.delete(handler);
           activeHandlers.delete(handler);
         });

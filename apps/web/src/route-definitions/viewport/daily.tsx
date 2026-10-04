@@ -137,16 +137,4 @@ export const dailyRoutes = [
       '任务中心',
     )}
   />,
-  <Route
-    path="skills"
-    lazy={lazyRoute(() => import('@app/routes/game/skills/route'))}
-    handle={scene(
-      {
-        id: 'skills',
-        presentation: 'archive',
-        summary: '旧日诸术归卷，留存往昔修行记录。',
-      },
-      '【所修神通】',
-    )}
-  />,
 ];

@@ -550,4 +550,3 @@ interface CombatV6PanelContribution {
 | 旧战斗记录 | 继续由 v5 读取，不强转 v6 |
 
 ---
-

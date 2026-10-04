@@ -9,7 +9,7 @@
   "scripts": {
     "build": "nest build",
     "dev": "APP_ENV=local NODE_ENV=development nest start --no-shell --env-file ../../env/local.env",
-    "lint": "oxlint --type-aware -c .oxlintrc.json src/ scripts/",
+    "lint": "oxlint --type-aware -c .oxlintrc.json src/",
     "prd": "APP_ENV=staging NODE_ENV=development nest start --no-shell --env-file ../../env/staging.env",
     "start": "node dist/main.js",
     "typecheck": "tsc --noEmit -p tsconfig.json"

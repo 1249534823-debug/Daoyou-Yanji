@@ -1,3 +1,9 @@
+import { RANKING_REWARDS, REALM_VALUES } from '@daoyou/shared/types/constants';
+import {
+  generateDailyMarketMaterialLibraryEntries,
+  ITEM_LIBRARY_SYSTEM_USER_ID,
+} from '@server/admin/application/MaterialLibraryService.js';
+import type { AuctionOperations } from '@server/auction/application/AuctionService.js';
 import { db, getExecutor } from '@server/lib/drizzle/db.js';
 import { cultivators } from '@server/lib/drizzle/schema.js';
 import { redis } from '@server/lib/redis/index.js';
@@ -18,13 +24,9 @@ import {
   type ExpiredDataCleanupResult,
 } from '@server/lib/repositories/retentionRepository.js';
 import { prunePublishedTransactionalMessages } from '@server/lib/repositories/transactionalMessageRepository.js';
-import { expireListings } from '@server/auction/application/AuctionService.js';
+import { getSponsorshipProvider } from '@server/lib/sponsorship/providerRegistry.js';
 import type { MailAttachment } from '@server/mail/application/MailService.js';
 import { runMarketRefreshJob } from '@server/market/application/MarketScheduler.js';
-import {
-  generateDailyMarketMaterialLibraryEntries,
-  ITEM_LIBRARY_SYSTEM_USER_ID,
-} from '@server/admin/application/MaterialLibraryService.js';
 import { sendWeeklyRankingRewardCommand } from '@server/rankings/application/RankingApplicationService.js';
 import {
   cleanupSponsorshipSensitiveData,
@@ -32,8 +34,6 @@ import {
   retryPendingSponsorshipWork,
   sendSponsorshipAdminDigest,
 } from '@server/sponsorship/application/SponsorshipApplicationService.js';
-import { getSponsorshipProvider } from '@server/lib/sponsorship/providerRegistry.js';
-import { RANKING_REWARDS, REALM_VALUES } from '@daoyou/shared/types/constants';
 import { eq } from 'drizzle-orm';
 
 const RANK_REWARD_SETTLED_PREFIX = 'golden_rank:weekly_rewards:settled:';
@@ -223,9 +223,11 @@ async function withJobLock<T extends CronJobResult>(
   }
 }
 
-export async function runAuctionExpireJob(): Promise<CronJobResult> {
+export async function runAuctionExpireJob(
+  auction: AuctionOperations,
+): Promise<CronJobResult> {
   return withJobLock('auction-expire', async () => {
-    const processed = await expireListings();
+    const processed = await auction.expireListings();
     return {
       success: true,
       processed,

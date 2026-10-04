@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { AuctionOperations } from '@server/auction/application/AuctionService.js';
 import {
   runAuctionExpireJob,
   runExpiredDataCleanupJob,
@@ -12,11 +13,15 @@ import {
 } from '@server/runtime/jobs/internalCron.js';
 @Injectable()
 export class InternalCronService {
+  constructor(
+    @Inject(AuctionOperations) private readonly auction: AuctionOperations,
+  ) {}
+
   auctionExpire() {
-    return runAuctionExpireJob();
+    return runAuctionExpireJob(this.auction);
   }
-  rankRewards() {
-    return runRankRewardsJob();
+  rankRewards(scheduledAt?: Date) {
+    return runRankRewardsJob(scheduledAt);
   }
   marketRefresh() {
     return runMarketRefreshCronJob();
@@ -27,8 +32,8 @@ export class InternalCronService {
   expiredDataCleanup() {
     return runExpiredDataCleanupJob();
   }
-  materialLibraryGeneration() {
-    return runMaterialLibraryDailyGenerationJob();
+  materialLibraryGeneration(scheduledAt?: Date) {
+    return runMaterialLibraryDailyGenerationJob(scheduledAt);
   }
   sponsorshipReconcile() {
     return runSponsorshipReconcileJob(false);

@@ -933,3 +933,12 @@ DevToolsModule仅在`allowsLocalDevTools(APP_ENV, NODE_ENV)`为true时导入，�
 - 文档原称 `env/local.env`已纳入Git，实际被忽略。新增仅含专用本地容器凭据的 `env/local.example.env`，首次复制后使用；现有环境文件及其真实密钥未改写或纳入Git。维护命令改用Node＋tsx，两条宗门维护命令在本地dry-run均成功且记录数为0；历史验收日志保留原始Bun命令。
 - 检查：`pnpm install --frozen-lockfile`、`pnpm run lint`、`pnpm run typecheck`、`pnpm run build`、`pnpm run sponsors:check`、Docker构建／运行、浏览器读取、模块依赖审计和 `git diff --check`通过。`pnpm run test`为237文件、2401通过／2失败，仍是forging材料堆叠及宗门技能内容hash，未改断言。该次本地启动中auction-expire还遇到持久寄售附件的Zod校验错误；未修改该业务服务或历史数据，不能把健康检查当作该业务分支成功证据。
 - 跳过：未新增API／数据库单测，未改schema或执行数据库迁移，未执行staging测试写入，未推送镜像或部署真实生产，未重跑本批未修改的全部玩法。上方特殊数据／自然续期及生产发布验收继续保留。
+
+
+## 第五十九批：拍卖、邮件、秘境与 Runtime 依赖收口（2026-10-04）
+
+- 拍卖和玩家邮件应用服务由 Nest Module 组合；MailDeliveryService 强制加入调用方事务，邮件与通知 outbox 同时提交。Player／Redis 模块复用既有协调器和客户端，无第二套 Pool／Redis 连接。
+- 秘境独立 DungeonRunStore 和结尾生成入口，Flow 保留状态机与确定性收益；Runtime 后台命令通过注入的 InternalCronService 创建处理映射，保持消息时间、ACK／重试和排空顺序。
+- 本地公开材料上架／下架返还、跨账号成交、双方邮件领取以及请求重放通过。最新构建秘境启动后重启恢复第一轮，推进第二轮并安全退出，到账 210 灵石／60 修为；run FINISHED、结算账本及历史各一条，重复退出 409。
+- lint／typecheck／build 与静态依赖审查通过；本轮未改 shared 引擎或镜像交付配置，未重复 shared 单测／Docker 构建。没有新增 API／Web 测试、执行 DB 迁移、提交／推送或部署。保留并行旧功能清理。
+- 历史道装数据迁移排除；用户确认停机维护、SPA／API 配套更新，无旧 SPA／新 API 混合版本兼容要求。完整结果、未覆盖项与目标环境维护／回滚清单见 [架构记录第 11 节](monorepo-architecture.md#11-拍卖邮件秘境与-runtime-依赖收口)，不能将架构完成等同于全部业务／生产验收完成。
