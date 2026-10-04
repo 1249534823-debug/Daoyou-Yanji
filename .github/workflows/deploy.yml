@@ -45,6 +45,9 @@ jobs:
           push: true
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
+          # Share intermediate build layers across release tags.
+          cache-from: type=registry,ref=${{ env.APP_IMAGE_NAME }}:buildcache
+          cache-to: type=registry,ref=${{ env.APP_IMAGE_NAME }}:buildcache,mode=max
 
       - name: Record release identity
         env:
