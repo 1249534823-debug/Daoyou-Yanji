@@ -528,13 +528,13 @@ export function resolveAliveTarget(
     current &&
     isStanding(current) &&
     current.side !== source.side &&
-    !isUntargetableBy(ctx, source, current, false)
+    !isUntargetableBy(ctx, source, current)
   ) {
     return current
   }
 
   const fallback = ctx.state.units
-    .filter((u) => u.side !== source.side && isStanding(u) && !isUntargetableBy(ctx, source, u, false))
+    .filter((u) => u.side !== source.side && isStanding(u) && !isUntargetableBy(ctx, source, u))
     .sort((a, b) => a.slot - b.slot)[0]
   if (fallback && current && current.id !== fallback.id) {
     ctx.emit({ type: EventType.Retarget, unitId: source.id, from: current.id, to: fallback.id })

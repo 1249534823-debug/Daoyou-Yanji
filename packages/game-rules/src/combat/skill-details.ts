@@ -33,7 +33,7 @@ function beastPassiveDescription(skill: SkillDef): string | undefined {
     case 'eternity':
       return `获得可延长增益时持续时间增加 ${percent(effect.factor - 1)}%，向下取整，最多额外 ${effect.maxExtra} 回合；不延长隐身、控制与特殊入场效果。`;
     case 'stealth':
-      return `每场首次出战时隐身 ${effect.minDuration}～${effect.maxDuration} 回合（含入场回合），不能施法，自身造成的物理伤害降低 ${percent(1 - effect.physicalFactor)}%。灵觉可看破，群法仍可命中；召回后不重新触发。`;
+      return `每场首次出战时隐身 ${effect.minDuration}～${effect.maxDuration} 回合（含入场回合），使没有灵觉或看破效果的敌人无法攻击自身。期间不能施法，自身造成的物理伤害降低 ${percent(1 - effect.physicalFactor)}%；召回后不重新触发。`;
     case 'perception':
       return `能看破隐身，攻击隐身目标。${effect.dodgeBonus ? `躲避增加 ${effect.dodgeBonus} 点。` : ''}`;
     case 'spellRepeat':
