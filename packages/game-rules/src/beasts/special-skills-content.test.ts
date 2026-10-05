@@ -1,0 +1,83 @@
+import { BEAST_SPECIES } from '@daoyou/game-content/beasts';
+import { findItemDefinition } from '@daoyou/game-content/items';
+import type { SummonedBeast } from '@daoyou/game-domain/beasts';
+import { expect, it } from 'vitest';
+import { learnBeastSkill } from '../inventory/index.js';
+import { generateCapturedBeast } from './generator.js';
+import {
+  beastAttributes,
+  beastPanel,
+  projectBeastRoster,
+} from './projection.js';
+
+const id = '00000000-0000-4000-8000-000000000001';
+function beast(name: string, skills: string[], level = 60): SummonedBeast {
+  const species = BEAST_SPECIES.find((entry) => entry.name === name)!;
+  return {
+    ...generateCapturedBeast(id, id, species.id, level, 42),
+    skills,
+    skillSlotCapacity: skills.length,
+  };
+}
+function project(input: SummonedBeast) {
+  return projectBeastRoster(
+    {
+      beasts: [input],
+      lineup: { carriedBeastIds: [id], leadBeastId: id, revision: 0 },
+    },
+    id,
+    0,
+    0,
+  )[0];
+}
+
+it.each([0, 60, 180])(
+  '瑞气盈身在 %d 级使用完整体质与成长，只增加气血面板',
+  (level) => {
+    const base = beast('麒麟', [], level);
+    base.allocatedAttributes.constitution = 57;
+    const enhanced = {
+      ...base,
+      skills: ['beast.auspicious-vitality'],
+      skillSlotCapacity: 1,
+    };
+    const hp = Math.floor(beastAttributes(base).constitution * base.growth * 2);
+    const panel = beastPanel(base);
+    expect(beastPanel(enhanced)).toEqual({
+      ...panel,
+      hp: panel.hp + hp,
+      maxHp: panel.maxHp + hp,
+    });
+    expect(project(enhanced).attrs).toEqual(beastPanel(enhanced));
+  },
+);
+
+it.each(['鸣蛇', '烛尾狐', '九尾狐'])(
+  '出奇制胜在%s中均正常投影为被动',
+  (name) => {
+    const unit = project(beast(name, ['beast.surprise-spell'], 0));
+    expect(unit.passives).toEqual(['beast.surprise-spell']);
+  },
+);
+
+it('观照万象在其他物种中仍正常投影为主动技能', () => {
+  const unit = project(beast('鸣蛇', ['beast.all-seeing'], 0));
+  expect(unit.skills).toEqual(['beast.all-seeing']);
+  expect(unit.passives).toEqual([]);
+});
+
+it.each([
+  'beast.all-seeing',
+  'beast.mountain-breaker',
+  'beast.karmic-retribution',
+  'beast.radiant-barrier',
+  'beast.auspicious-vitality',
+  'beast.bloodthirsty-pursuit',
+  'beast.surprise-spell',
+])('特殊技能%s不注册灵印，不能通过伪造灵印ID领悟', (skillId) => {
+  const definitionId = `book.${skillId}`;
+  expect(findItemDefinition(definitionId)).toBeUndefined();
+  expect(() =>
+    learnBeastSkill(beast('鸣蛇', [], 0), definitionId, 180, 0),
+  ).toThrow();
+});

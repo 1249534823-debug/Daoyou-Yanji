@@ -1,7 +1,7 @@
 {
   "$schema": "./species.schema.json",
   "formatVersion": 2,
-  "contentRevision": 13,
+  "contentRevision": 15,
   "species": [
     {
       "id": "combat.wild.species.spirit-fox",
@@ -38,8 +38,13 @@
         "max": 1030
       },
       "birthSkills": {
-        "core": ["beast.spirit-flame"],
-        "candidates": ["beast.wisdom", "beast.meditation"]
+        "core": [
+          "beast.spirit-flame"
+        ],
+        "candidates": [
+          "beast.wisdom",
+          "beast.meditation"
+        ]
       }
     },
     {
@@ -122,7 +127,11 @@
       },
       "birthSkills": {
         "core": [],
-        "candidates": ["beast.stealth", "beast.sneak-attack", "beast.agility"]
+        "candidates": [
+          "beast.stealth",
+          "beast.sneak-attack",
+          "beast.agility"
+        ]
       }
     },
     {
@@ -161,7 +170,11 @@
       },
       "birthSkills": {
         "core": [],
-        "candidates": ["beast.perception", "beast.parry", "beast.regeneration"]
+        "candidates": [
+          "beast.perception",
+          "beast.parry",
+          "beast.regeneration"
+        ]
       }
     },
     {
@@ -199,8 +212,13 @@
         "max": 1090
       },
       "birthSkills": {
-        "core": ["beast.wildfire"],
-        "candidates": ["beast.meditation", "beast.spell-fluctuation"]
+        "core": [
+          "beast.wildfire"
+        ],
+        "candidates": [
+          "beast.meditation",
+          "beast.spell-fluctuation"
+        ]
       }
     },
     {
@@ -238,8 +256,13 @@
         "max": 1080
       },
       "birthSkills": {
-        "core": ["beast.poison"],
-        "candidates": ["beast.sneak-attack", "beast.defense"]
+        "core": [
+          "beast.poison"
+        ],
+        "candidates": [
+          "beast.sneak-attack",
+          "beast.defense"
+        ]
       }
     },
     {
@@ -365,7 +388,9 @@
         "max": 1130
       },
       "birthSkills": {
-        "core": ["beast.stealth"],
+        "core": [
+          "beast.stealth"
+        ],
         "candidates": [
           "beast.sneak-attack",
           "beast.agility",
@@ -408,7 +433,9 @@
         "max": 1160
       },
       "birthSkills": {
-        "core": ["beast.advanced-defense"],
+        "core": [
+          "beast.advanced-defense"
+        ],
         "candidates": [
           "beast.sluggish",
           "beast.water-attack",
@@ -451,7 +478,9 @@
         "max": 1200
       },
       "birthSkills": {
-        "core": ["beast.flood"],
+        "core": [
+          "beast.flood"
+        ],
         "candidates": [
           "beast.advanced-poison",
           "beast.strength",
@@ -544,7 +573,8 @@
           "beast.advanced-counter",
           "beast.parry",
           "beast.strength",
-          "beast.perception"
+          "beast.perception",
+          "beast.barrier-breaker"
         ]
       }
     },
@@ -583,7 +613,9 @@
         "max": 1205
       },
       "birthSkills": {
-        "core": ["beast.wildfire"],
+        "core": [
+          "beast.wildfire"
+        ],
         "candidates": [
           "beast.wisdom",
           "beast.meditation",
@@ -627,7 +659,9 @@
         "max": 1225
       },
       "birthSkills": {
-        "core": ["beast.thunderstorm"],
+        "core": [
+          "beast.thunderstorm"
+        ],
         "candidates": [
           "beast.advanced-spell-fluctuation",
           "beast.agility",
@@ -670,7 +704,9 @@
         "max": 1235
       },
       "birthSkills": {
-        "core": ["beast.advanced-perception"],
+        "core": [
+          "beast.advanced-perception"
+        ],
         "candidates": [
           "beast.counter",
           "beast.strength",
@@ -714,7 +750,9 @@
         "max": 1240
       },
       "birthSkills": {
-        "core": ["beast.ghost"],
+        "core": [
+          "beast.ghost"
+        ],
         "candidates": [
           "beast.meditation",
           "beast.spell-fluctuation",
@@ -759,8 +797,14 @@
         "max": 1220
       },
       "birthSkills": {
-        "core": ["beast.advanced-exorcism", "beast.spirit-flame"],
-        "candidates": ["beast.strength", "beast.perception"]
+        "core": [
+          "beast.advanced-exorcism",
+          "beast.spirit-flame"
+        ],
+        "candidates": [
+          "beast.strength",
+          "beast.perception"
+        ]
       }
     },
     {
@@ -803,7 +847,8 @@
           "beast.advanced-agility",
           "beast.sneak-attack",
           "beast.perception",
-          "beast.critical"
+          "beast.critical",
+          "beast.wind-strike"
         ]
       }
     },
@@ -842,10 +887,12 @@
         "max": 1260
       },
       "birthSkills": {
-        "core": ["beast.water-attack"],
+        "core": [
+          "beast.water-attack"
+        ],
         "candidates": [
           "beast.advanced-spell-resistance",
-          "beast.spell-reflection",
+          "beast.radiant-barrier",
           "beast.meditation"
         ]
       }
@@ -932,7 +979,7 @@
         "core": [],
         "candidates": [
           "beast.advanced-parry",
-          "beast.strength",
+          "beast.karmic-retribution",
           "beast.perception",
           "beast.reflection",
           "beast.miracle"
@@ -974,11 +1021,14 @@
         "max": 1300
       },
       "birthSkills": {
-        "core": ["beast.water-attack"],
+        "core": [
+          "beast.water-attack"
+        ],
         "candidates": [
           "beast.advanced-spell-combo",
-          "beast.wisdom",
-          "beast.regeneration"
+          "beast.surprise-spell",
+          "beast.regeneration",
+          "beast.unanticipated"
         ]
       }
     },
@@ -1017,11 +1067,14 @@
         "max": 1285
       },
       "birthSkills": {
-        "core": ["beast.wildfire"],
+        "core": [
+          "beast.wildfire"
+        ],
         "candidates": [
           "beast.spell-resistance",
           "beast.meditation",
-          "beast.wisdom"
+          "beast.wisdom",
+          "beast.mind-shatter"
         ]
       }
     },
@@ -1065,7 +1118,8 @@
           "beast.advanced-reflection",
           "beast.water-attack",
           "beast.regeneration",
-          "beast.sluggish"
+          "beast.sluggish",
+          "beast.spirit-guard"
         ]
       }
     },
@@ -1108,7 +1162,7 @@
         "candidates": [
           "beast.advanced-critical",
           "beast.parry",
-          "beast.strength",
+          "beast.mountain-breaker",
           "beast.counter",
           "beast.perception"
         ]
@@ -1149,8 +1203,13 @@
         "max": 1335
       },
       "birthSkills": {
-        "core": ["beast.wildfire"],
-        "candidates": ["beast.advanced-spell-mastery", "beast.agility"]
+        "core": [
+          "beast.wildfire"
+        ],
+        "candidates": [
+          "beast.advanced-spell-mastery",
+          "beast.agility"
+        ]
       }
     },
     {
@@ -1193,7 +1252,8 @@
           "beast.advanced-miracle",
           "beast.water-attack",
           "beast.wisdom",
-          "beast.parry"
+          "beast.parry",
+          "beast.innate-wisdom"
         ]
       }
     },
@@ -1237,7 +1297,7 @@
           "beast.advanced-lifesteal",
           "beast.critical",
           "beast.agility",
-          "beast.parry"
+          "beast.bloodthirsty-pursuit"
         ]
       }
     },
@@ -1279,7 +1339,7 @@
         "core": [],
         "candidates": [
           "beast.advanced-lifesteal",
-          "beast.strength",
+          "beast.overwhelming-might",
           "beast.sluggish",
           "beast.regeneration",
           "beast.defense"
@@ -1321,7 +1381,9 @@
         "max": 1365
       },
       "birthSkills": {
-        "core": ["beast.flood"],
+        "core": [
+          "beast.flood"
+        ],
         "candidates": [
           "beast.advanced-spell-critical",
           "beast.spell-resistance",
@@ -1364,7 +1426,9 @@
         "max": 1355
       },
       "birthSkills": {
-        "core": ["beast.wildfire"],
+        "core": [
+          "beast.wildfire"
+        ],
         "candidates": [
           "beast.advanced-divine-revival",
           "beast.perception",
@@ -1412,7 +1476,7 @@
           "beast.advanced-miracle",
           "beast.advanced-regeneration",
           "beast.falling-rock",
-          "beast.parry"
+          "beast.auspicious-vitality"
         ]
       }
     },
@@ -1451,11 +1515,13 @@
         "max": 1370
       },
       "birthSkills": {
-        "core": ["beast.advanced-perception"],
+        "core": [
+          "beast.advanced-perception"
+        ],
         "candidates": [
           "beast.advanced-exorcism",
-          "beast.parry",
-          "beast.strength"
+          "beast.all-seeing",
+          "beast.water-attack"
         ]
       }
     }

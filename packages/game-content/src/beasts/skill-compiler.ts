@@ -24,6 +24,125 @@ export function compileBeastSkill(entry: BeastSkillContent): SkillDef {
     effects: [],
   };
   switch (e.type) {
+    case 'allSeeing':
+      return {
+        ...identity,
+        cooldownRounds: e.cooldownRounds,
+        tags: [SkillTag.Spell],
+        targeting: { side: TargetSide.Enemy, count: 1 },
+        effects: [{ type: EffectType.InvokeAttackSkills }],
+      };
+    case 'mountainBreaker':
+      return {
+        ...identity,
+        costMp: `level + ${e.costMpBase}`,
+        tags: [SkillTag.Physical],
+        formula: FormulaFamily.AttackDifference,
+        modifiers: [{ hitAdd: 'level * 2 + 10', when: { skillIds: [entry.id] } }],
+        targeting: { side: TargetSide.Enemy, count: 1 },
+        effects: [
+          { type: EffectType.PhysicalHit, coeff: 1, power: 'level * 8' },
+        ],
+      };
+    case 'karmicRetribution':
+      return {
+        ...identity,
+        costMp: `level + ${e.costMpBase}`,
+        tags: [SkillTag.Physical],
+        formula: FormulaFamily.Physical,
+        targeting: { side: TargetSide.Enemy, count: 1 },
+        effects: [
+          {
+            type: EffectType.RandomBranch,
+            branchId: `${entry.id}.karma`,
+            chance: e.evilChance,
+            successEffects: [
+              {
+                type: EffectType.PhysicalHit,
+                resultFactors: [e.evilFactor],
+                critMultiplier: 1.5,
+                cannotMiss: true,
+              },
+            ],
+            failureEffects: [
+              {
+                type: EffectType.PhysicalHit,
+                resultFactors: [e.goodFactor],
+                critMultiplier: 2,
+                healInstead: true,
+                cannotMiss: true,
+              },
+            ],
+          },
+        ],
+      };
+    case 'radiantBarrier':
+      return {
+        ...passive,
+        hooks: [
+          {
+            on: HookName.AfterDamage,
+            targetIsSelf: true,
+            chance: e.chance,
+            when: { sourceHpRatioAbove: 0 },
+            aim: HookAim.Self,
+            effects: [
+              {
+                type: EffectType.ApplyBarrier,
+                id: `${entry.id}.barrier`,
+                kind: entry.id,
+                name: entry.name,
+                power: `hpDamage * ${e.ratio}`,
+                duration: 1,
+                untilBattleEnd: true,
+                stack: true,
+                maxPower: `maxHp * ${e.maxHpRatio}`,
+                decayPerRound: e.decayRatio,
+              },
+            ],
+          },
+        ],
+      };
+    case 'constitutionGrowthHp':
+      // Maximum HP is applied by beastPanel, shared by display and battle.
+      return passive;
+    case 'bloodthirstyPursuit':
+      return {
+        ...passive,
+        hooks: [
+          {
+            on: HookName.AfterAction,
+            sourceIsSelf: true,
+            when: {
+              skillIds: [BUILTIN_SKILL_ID.Attack],
+              actionReducedTargetToZero: true,
+              oncePerRound: true,
+            },
+            aim: HookAim.Others,
+            effects: [
+              {
+                type: EffectType.PhysicalHit,
+                resultFactors: [e.factor],
+              },
+            ],
+          },
+        ],
+      };
+    case 'surpriseSpell':
+      return {
+        ...passive,
+        hooks: [
+          {
+            on: HookName.OnHitCalc,
+            sourceIsSelf: true,
+            requireKind: DamageKind.Spell,
+            when: {
+              expression: 'if(entryRound >= 2, spellActionsSinceEntry == 0, 0)',
+            },
+            effects: [{ type: EffectType.ModifyStrike, factor: e.factor }],
+          },
+        ],
+      };
     case 'ghost':
       return {
         ...passive,

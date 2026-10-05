@@ -3,6 +3,7 @@
 import type { CombatV6CommandGroup } from '@daoyou/game-domain/combat';
 
 import type { BattleState, CombatV6CommandOptions, SkillDef, StatusDef } from '@daoyou/combat-core/types';
+import { isActiveAttackSkill } from '@daoyou/combat-core';
 
 import { observeAutoBattle } from './auto-observation.js';
 
@@ -139,13 +140,13 @@ function chooseBeastCandidate(
   overrides: Record<string, SkillDef>,
 ): AutoCandidate | undefined {
   const attack = candidates.find((entry) => entry.command.type === 'attack');
-  const spell = candidates.find((entry) => {
+  const skillAction = candidates.find((entry) => {
     if (entry.command.type !== 'skill') return false;
     const skillId = entry.command.skillId;
     const skill = overrides[skillId] ?? skills.find((item) => item.id === skillId);
-    return skill?.effects.some((effect) => effect.type === 'spellHit');
+    return skill && (isActiveAttackSkill(skill) || skill.effects.some(effect => effect.type === 'invokeAttackSkills'));
   });
-  // A pet's active offensive spell must outperform its physical attack after
-  // target, hit chance and resource cost; defensive arts do not mark it a caster.
-  return spell && (!attack || spell.score > attack.score) ? spell : attack ?? candidates[0];
+  // Active offense must outperform an ordinary attack after target, hit chance
+  // and resource cost; defensive arts remain outside this preference.
+  return skillAction && (!attack || skillAction.score > attack.score) ? skillAction : attack ?? candidates[0];
 }

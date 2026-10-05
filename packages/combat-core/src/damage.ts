@@ -24,6 +24,8 @@ export type StrikeInput = {
   kind: DamageKindType
   coeff: number
   resultFactor?: number
+  critMultiplier?: number
+  healInstead?: boolean
   mpDamageRatio?: number
   power: number
   trueDamage?: boolean
@@ -54,7 +56,7 @@ export function resolveStrike(ctx: BattleContext, input: StrikeInput): void {
   const modifiers = combatModifiers(ctx, source, { target, skill, skillId, kind: input.kind, origin })
   src.hit += modifierValue(modifiers, 'hitAdd', source, target, skill, ctx)
   src.physicalAtk += modifierValue(modifiers, 'physicalAttackAdd', source, target, skill, ctx)
-  const protector = input.kind === DamageKind.Physical && !modifiers.some(m => m.ignoreProtection) ? findProtector(ctx, target) : undefined
+  const protector = input.kind === DamageKind.Physical && !input.healInstead && !modifiers.some(m => m.ignoreProtection) ? findProtector(ctx, target) : undefined
   if (protector) ctx.emit({ type: EventType.ProtectTrigger, protectorId: protector.id, originalTargetId: target.id })
 
   if (!input.cannotMiss && input.kind !== DamageKind.Fixed && !rollHit(ctx, source, target, src, dst, input.kind)) return
@@ -87,8 +89,17 @@ export function resolveStrike(ctx: BattleContext, input: StrikeInput): void {
   })
   const strikeInput = { ...input, defenseIgnore: defenseIgnoreHook.defenseIgnore }
   let raw = computeBase(ctx, source, target, src, dst, strikeInput, fury)
-  raw = crit ? Math.floor(raw * (ctx.rules.formulas.critMultiplier + modifierValue(modifiers, 'critMultiplierAdd', source, target, skill, ctx))) : raw
+  const critAdd = modifierValue(modifiers, 'critMultiplierAdd', source, target, skill, ctx)
+  // An explicit critical multiplier belongs with the final result factor, avoiding
+  // intermediate rounding (e.g. a 2x strike becoming exactly 3x on a critical).
+  const resultCritFactor = crit && input.critMultiplier !== undefined ? input.critMultiplier + critAdd : 1
+  raw = crit && input.critMultiplier === undefined ? Math.floor(raw * (ctx.rules.formulas.critMultiplier + critAdd)) : raw
   if (input.kind !== DamageKind.Fixed) raw = applyFluctuation(ctx, raw, input.kind, source)
+  if (input.healInstead) {
+    ctx.emit({ type: EventType.Hit, sourceId: source.id, targetId: target.id, kind: input.kind, crit, fury })
+    applyHeal(ctx, source, target, raw * (input.resultFactor ?? 1) * resultCritFactor, false, true, false)
+    return
+  }
   raw = applyDefend(ctx, target, input.kind, raw)
   raw = floorAtLeast(MIN_DAMAGE, raw * damageTakenFactor(target, input.kind))
 
@@ -124,7 +135,7 @@ export function resolveStrike(ctx: BattleContext, input: StrikeInput): void {
   const defenseModifiers = combatModifiers(ctx, target, { target: source, skill, skillId, kind: input.kind, origin })
   const incomingFactor = Math.max(0, 1 + modifierValue(defenseModifiers, 'damageTakenBonus', target, source, skill, ctx))
   const incomingAdd = modifierValue(defenseModifiers, 'damageTakenAdd', target, source, skill, ctx)
-  const amount = floorAtLeast(MIN_DAMAGE, ((hooked.damage ?? raw) * (1 + modifierValue(modifiers, 'damageBonus', source, target, skill, ctx)) + modifierValue(modifiers, 'damageAdd', source, target, skill, ctx)) * repeatFactor * relationFactor * dealtFactor * sourceBoundFactor * (input.resultFactor ?? 1) * incomingFactor + incomingAdd)
+  const amount = floorAtLeast(MIN_DAMAGE, ((hooked.damage ?? raw) * (1 + modifierValue(modifiers, 'damageBonus', source, target, skill, ctx)) + modifierValue(modifiers, 'damageAdd', source, target, skill, ctx)) * repeatFactor * relationFactor * dealtFactor * sourceBoundFactor * (input.resultFactor ?? 1) * resultCritFactor * incomingFactor + incomingAdd)
 
   ctx.emit({
     type: EventType.Hit,
@@ -359,6 +370,15 @@ export function applyDamage(
       origin,
     })
   }
+  ctx.hooks.emit(HookName.AfterDamage, {
+    source,
+    target,
+    damage: enteringHp,
+    hpDamage,
+    kind,
+    skillId: ctx.currentAction?.skillId,
+    origin,
+  })
   breakStatusesOnDamage(ctx, target)
   if (hp <= 0) ctx.applyHpZero(target, source, ctx.currentAction?.skillId, kind, origin)
   return hpDamage
@@ -391,7 +411,8 @@ function redirectOverflow(
     const enteringHp = origin === DamageOrigin.Status ? bounced : absorbBarriers(ctx, caster, bounced)
     if (enteringHp <= 0) return kept
     const hp = atLeast(0, caster.attrs.hp - enteringHp)
-    recordHpDamage(ctx, caster, caster.attrs.hp - hp)
+    const hpDamage = caster.attrs.hp - hp
+    recordHpDamage(ctx, caster, hpDamage)
     caster.attrs.hp = hp
     ctx.emit({
       type: EventType.Damage,
@@ -401,6 +422,7 @@ function redirectOverflow(
       hpAfter: hp,
       kind,
     })
+    ctx.hooks.emit(HookName.AfterDamage, { source, target: caster, damage: enteringHp, hpDamage, kind, origin, skillId: ctx.currentAction?.skillId })
     if (hp <= 0) ctx.applyHpZero(caster, source, ctx.currentAction?.skillId)
   }
   return kept

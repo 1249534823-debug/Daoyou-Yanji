@@ -27,6 +27,8 @@ export type BattleContext = {
   checkEnd: (reason?: BattleResult["reason"]) => void
   /** >0 时命中不再触发 afterHit/onBeHit，避免连击/反击/反震互爆 */
   suppressHooks: number
+  invokeAttackSkills: (source: Unit, skill: SkillDef, targets: Unit[]) => void
+  invokingAttackSkills?: boolean
   /** 当前这次出手；OnHitCalc / when.skillIds 读这里。 */
   currentAction?: {
     triggeredTargets?: string[]
@@ -36,6 +38,7 @@ export type BattleContext = {
     initialSourceStatusIds?: string[]
     initialHpRatio?: number
     killedTargetIds?: UnitId[]
+    hpZeroTargetIds?: UnitId[]
     skillId: SkillId
     sourceId: UnitId
     primaryTargetId?: UnitId

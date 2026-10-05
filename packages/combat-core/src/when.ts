@@ -84,6 +84,7 @@ export function matchesWhen(ctx: Pick<BattleContext, 'statusDefs' | 'currentActi
   if (when.targetHasStandingPet !== undefined && (!scope.target || units.some(u => u.kind === 'pet' && u.ownerId === scope.target!.id && isStanding(u)) !== when.targetHasStandingPet)) return false
   if (when.actionSucceeded && (!ctx.currentAction || ctx.currentAction.failed)) return false
   if (when.actionKilledTarget !== undefined && (Boolean(scope.target && ctx.currentAction?.killedTargetIds?.includes(scope.target.id)) !== when.actionKilledTarget)) return false
+  if (when.actionReducedTargetToZero !== undefined && (Boolean(scope.target && ctx.currentAction?.hpZeroTargetIds?.includes(scope.target.id)) !== when.actionReducedTargetToZero)) return false
   if (when.sourceInitialHpRatioMin !== undefined && (ctx.currentAction?.initialHpRatio ?? hpRatio(scope.source)) < when.sourceInitialHpRatioMin) return false
   const skillId = scope.skillId ?? scope.skill?.id ?? ctx.currentAction?.skillId
   const skill = scope.skill

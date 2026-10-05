@@ -46,8 +46,8 @@ it('减少必带物种，同时保留六目灵猿和幽冥虎的完整出生表'
 
 it('变异沿用普通抽取值加成，不受普通出生上沿截断', () => {
   for (const [name, key, expected] of [
-    ['麒麟', 'growth', 1.518],
-    ['谛听', 'attack', 2090],
+    ['麒麟', 'growth', 1.449],
+    ['谛听', 'attack', 1995],
   ] as const) {
     const species = structuredClone(
       BEAST_SPECIES.find((s) => s.name === name)!,

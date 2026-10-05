@@ -26,6 +26,9 @@ type EffectHandler<T extends SkillEffect = SkillEffect> = (
 ) => void
 
 const handlers: { [K in SkillEffect["type"]]?: EffectHandler<Extract<SkillEffect, { type: K }>> } = {
+  [EffectType.InvokeAttackSkills]: (ctx, source, skill, _effect, targets) => {
+    ctx.invokeAttackSkills(source, skill, targets)
+  },
   [EffectType.Repeat]: (ctx, source, skill, effect, targets, env) => {
     const count = effect.min + Math.floor(ctx.rng.next() * (effect.max - effect.min + 1))
     for (let i = 0; i < count && isStanding(source) && !ctx.state.result; i++) {
@@ -106,6 +109,9 @@ const handlers: { [K in SkillEffect["type"]]?: EffectHandler<Extract<SkillEffect
         }).barrier ?? 0,
         duration: evalExpr(effect.duration, { ...env, target }),
         untilBattleEnd: effect.untilBattleEnd,
+        stack: effect.stack,
+        maxAmount: effect.maxPower === undefined ? undefined : evalExpr(effect.maxPower, { ...env, target }),
+        decayPerRound: effect.decayPerRound,
       })
     }
   },
@@ -207,6 +213,7 @@ export function applyEffect(
     effect.type !== EffectType.SkipNextAction &&
     effect.type !== EffectType.RandomBranch &&
     effect.type !== EffectType.Repeat &&
+    effect.type !== EffectType.InvokeAttackSkills &&
     effect.type !== EffectType.ApplyStatus &&
     effect.type !== EffectType.RemoveStatus &&
     effect.type !== EffectType.CopyStatus &&
@@ -475,6 +482,8 @@ function handleHit(
         kind,
         coeff: coeffs[i] ?? coeffs[coeffs.length - 1] ?? 1,
         resultFactor: effect.resultFactors?.[i],
+        critMultiplier: effect.type === EffectType.PhysicalHit ? effect.critMultiplier : undefined,
+        healInstead: effect.type === EffectType.PhysicalHit ? effect.healInstead : undefined,
         mpDamageRatio: effect.type === EffectType.PhysicalHit ? effect.mpDamageRatio : undefined,
         power: evalExpr(effect.power, { ...env, target: t }),
         trueDamage,

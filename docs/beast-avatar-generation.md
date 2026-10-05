@@ -2,6 +2,10 @@
 
 美术设计统一遵循 [写意墨像](../.agents/skills/daoyou-ink-portraits/SKILL.md)，导出与接入遵循其 [素材交付要求](../.agents/skills/daoyou-ink-portraits/references/beast-avatar-delivery.md)。本文件仅记录当前采用的写意墨像素材。
 
+## 青鸾替换琥珀蝉（2026-10-05）
+
+青鸾使用独立的双足凤鸟墨像，256×256 透明 WebP；替换原蝉的素材及注册。采用提示词、固定参考、尾羽构图修正和导出信息见[青鸾采用记录](art/qingluan-avatar.md)，配置与页面验收见[再设计记录](combat-v6-beast-rebalance-design.md#7-实施与验收结果)。
+
 ## 补齐狰、蛇颈玄龟、三足金蟾（2026-09-18）
 
 用户授权为这三种使用 emoji 的物种生成并接入立绘，其他物种延后。使用内置 imagegen；固定男修、女修墨像仅作为笔墨参考，路径为 `.agents/skills/daoyou-ink-portraits/references/male-baseline.webp` 与 `female-baseline.webp`。不使用已选灵兽稿作为其他物种的造型模板。
@@ -305,3 +309,65 @@ Render these ghost flames using translucent low-saturation cobalt/blue-cyan COLO
 STYLE remains Chinese freehand ink portrait, broad structural washes, broken directional brush strokes, sparse deep ink anchors; no photorealistic fur or 3D effects.
 Real RGBA transparent background around the animal AND between flame tongues. No paper background, checkerboard, text, watermark, calligraphy, stamp. Complete tiger ears, paws, tail AND flame tips inside square canvas with a small clear margin.
 ```
+
+## 谛听：采用紫墨赭金版（2026-10-05）
+
+用户选定 `output/imagegen/diting-purple-redesign/diting-purple-v1.png` 并明确要求替换进游戏。保留紫墨兽躯、赭金独角与卷鬃、狮尾尾簇、宽额虎首及侧首察声的形态，不再修改原稿。像素图提供紫金色形灵感，传说提供辨听意象；不将本次配色宣称为古籍固有颜色，也不将谛听造型推广为其他物种模板。
+
+从 1254×1254 RGBA 原稿按 alpha≥4 的边界 `(58,43)—(1240,1225)` 裁掉外圈透明区，保留内部留白与半透明笔触，等比导出 256×256 WebP（质量90、alpha质量100），替换 `apps/web/public/assets/icons/beast-diting.webp`，35398字节。沿用 `icon:beast-diting` 和已有统一注册，不改物种文案、数值或技能。
+
+原稿出处、实际生成提示词及采用依据见 [谛听紫墨头像](art/diting-purple-avatar.md)。已检查纸色与深底的24/30/48/60/72px显示；本地游戏图鉴桌面30px列表／60px详情、390×844手机24px列表／48px详情均加载新稿，未见意外裁断、纸底或棋盘底。截图及导出统计保存在 `output/imagegen/diting-purple-redesign/`。
+
+后续采用逐只看稿的节奏；朱厌、毕方、金乌与白泽均已获用户确认并接入，见下节。下一只为穷奇。
+
+## 朱厌：采用朱赭白首版（2026-10-05）
+
+用户确认 `output/imagegen/zhuyan-cinnabar-redesign/zhuyan-cinnabar-v1.png`，要求替换并进入下一个物种。保留朱赭兽躯、白首赤足、青灰猿面与沉肩前倾的承重姿态，不重绘选稿。颜色和长臂体势参考用户像素图，猿形、白首赤足取自《山海经·西山经》；不修改技能、数值或物种文案。
+
+原稿1254×1254，按alpha≥4边界 `(52,27)—(1232,1228)` 裁切，等比贴合256×256透明画布，WebP质量90、alpha质量100。正式文件 `apps/web/public/assets/icons/beast-zhuyan.webp` 为39284字节，可见边界 `(2,0)—(254,256)`，沿用 `icon:beast-zhuyan` 注册。原稿出处和完整实际提示词见[朱厌头像](art/zhuyan-avatar.md)。
+
+本地图鉴桌面30px列表／60px详情、390×844手机24px列表／48px详情均显示新稿，图片正常加载且未见裁断；控制台未记录error。另检查纸色、深底及24/30/48/60/72px预览。截图和导出数据留在 `output/imagegen/zhuyan-cinnabar-redesign/`，本轮深浅底对照位于 `output/imagegen/bifang-blue-redesign/review-paper-dark.png`。
+
+## 毕方：采用青墨赤纹版（2026-10-05）
+
+用户确认`output/imagegen/bifang-blue-redesign/bifang-blue-v1.png`并要求替换进游戏。保留青蓝鸟身、朱红冠翼、白喙、鹤形长颈和独足支撑。色形关系取自用户像素参考，鹤形、一足、赤文青质白喙依据《山海经·西山经》；具体冠羽与翼姿属于美术选择。原稿冠羽较长、翼幅和羽束数量较多、胸腹白色较明显，用户已看稿采用这些实际造型；未重绘，也未修改物种文案、数值或技能。
+
+原稿1254×1254，按alpha≥4边界`(102,17)—(1222,1237)`裁切，使用Lanczos3等比贴合256×256透明画布，WebP质量90、alpha质量100。正式文件`apps/web/public/assets/icons/beast-bifang.webp`为26944字节，alpha范围0—255，可见边界`(10,0)—(245,256)`，沿用`icon:beast-bifang`注册。原稿出处、完整实际提示词与造型边界见[毕方头像](art/bifang-avatar.md)，导出统计见`output/imagegen/bifang-blue-redesign/production-export.json`。
+
+纸色与深底24/30/48/60/72px预览可辨青赤色形，24—30px独足较细，48px及以上更清楚；对照截图为`output/imagegen/bifang-blue-redesign/review-paper-dark.png`。正式接入后复用已有本地服务检查图鉴：桌面30px列表／60px详情、390×844手机24px列表／48px详情均加载正式素材，natural尺寸256×256、`complete=true`，未见挤压或意外裁断；控制台error与warn均为空。截图为`output/imagegen/bifang-blue-redesign/game-desktop.png`与`game-mobile.png`。纯素材及文档改动，已检查导出、显示与`git diff --check`，未另跑lint、typecheck、完整生产build和test。
+
+## 金乌：采用黑墨金红v2版（2026-10-05）
+
+用户确认`output/imagegen/golden-crow-solar-redesign/golden-crow-solar-v2.png`并要求替换进游戏。保留黑墨乌身、赭金肩翼、朱红羽端、不对称腾起双翼和恰好三条分离腿足。乌形、三足及日之精是传说依据，金红配色来自用户像素参考的美术启发。首稿最高翼尖截断，v2针对这一处修复画布与羽尖，用户采用完整翼尖的v2；不修改物种文案、数值或技能。
+
+选稿1254×1254 RGBA、alpha范围0—255，按alpha≥4边界`(88,52)—(1182,1224)`裁切，Lanczos3等比贴合256×256透明画布，WebP质量90、alpha质量100。正式文件`apps/web/public/assets/icons/beast-golden-crow.webp`为30302字节，可见边界`(8,0)—(247,256)`，沿用`icon:beast-golden-crow`注册。导出统计为`output/imagegen/golden-crow-solar-redesign/production-export.json`，原稿出处、两次完整实际提示词及采用边界见[金乌头像](art/golden-crow-avatar.md)。胸腹浓墨较满、羽层和眼喙较细、喙端略下弯是用户已看稿接受的造型边界。
+
+纸色与深底24/30/48/60/72px检查中，金红翼势在小尺寸可辨，24—30px三足细节较弱，48px及以上更清楚。正式接入后复用既有本地服务检查渡劫图鉴：桌面30px列表／60px详情、390×844手机24px列表／48px详情均加载正式素材，natural尺寸256×256、`complete=true`，未见意外裁断；控制台error/warn均为空。截图为`output/imagegen/golden-crow-solar-redesign/game-desktop.png`与`game-mobile.png`。纯素材及文档改动，已检查导出、显示与`git diff --check`，未另跑lint、typecheck、完整生产build和test。
+
+## 白泽：采用白墨金角版（2026-10-05）
+
+用户确认`output/imagegen/baize-white-gold-redesign/baize-white-gold-v1.png`并要求替换进游戏。保留白墨兽躯、赭金分叉双角、青灰颈肩尾部、宽额短吻与沉静驻足的察看神态。白身金角色形取自像素参考，知察神韵取自《云笈七签》卷一百《轩辕本纪》，狮面双角参考后世白泽图像；分叉与具体颜色是美术选择，不误称为《山海经》正文固定外貌。不修改物种文案、数值或技能。
+
+选稿1254×1254 RGBA、alpha范围0—255，按alpha≥4边界`(46,28)—(1231,1231)`裁切，Lanczos3等比贴合256×256透明画布，WebP质量90、alpha质量100。正式文件`apps/web/public/assets/icons/beast-baize.webp`为30788字节，可见边界`(2,0)—(254,256)`，沿用`icon:beast-baize`注册。正式统计为`output/imagegen/baize-white-gold-redesign/production-export.json`，原稿出处、完整实际提示词及采用边界见[白泽头像](art/baize-avatar.md)。明显分叉双角、较长层叠胸鬃、丰厚尾簇、较细的眼面毛束与朝右头部均属于用户看稿采用的实际造型，不宣称提示中的收束胸鬃和全部笔墨要求已实现。
+
+候选阶段纸色与深底24/30/48/60/72px预览可辨白身、金角与青灰，24—30px下双角分叉、远侧足和眼神细节较弱，48px及以上更清楚。正式接入后首次桌面30px列表／60px详情已正常显示，截图为`output/imagegen/baize-white-gold-redesign/game-desktop.png`。同期Vite代码热更新出现模块重载错误，随后重载时本地服务连接被拒绝；这一历史错误保留，不将全过程日志称为始终无错。
+
+执行`pnpm run dev:web`恢复标准Turbo watch开发服务，六个依赖库编译后Vite就绪。在新浏览器页复查大乘图鉴，桌面30px列表／60px详情、390×844手机24px列表／48px详情均加载正式素材，生产图`complete=true`、natural尺寸256×256，无意外裁断；恢复后的新页error/warn均为空。截图为`output/imagegen/baize-white-gold-redesign/game-desktop-restored.png`与`game-mobile.png`。已检查正式导出、显示与`git diff --check`，开发启动包含依赖库编译，未另跑lint、typecheck、完整生产build和test；检查后保留前端服务运行以恢复开发状态，未改代码或游戏数据。
+
+## 穷奇：采用赭金赤翼v2版（2026-10-05）
+
+用户确认`output/imagegen/qiongqi-ochre-red-redesign/qiongqi-ochre-red-v2.png`并要求替换进游戏。保留赭金虎躯、粗黑虎纹、赤色双翼、四足和单条环纹尾。取《山海经·海内北经》虎形有翼的穷奇，不混入《西山经》另一牛形描述；金赭虎身、赤色羽翼和无角均属像素参考启发下的美术选择，不新增火系能力。首稿右侧翼缘触边，v2只作画布与外轮廓修正，用户采用完整轮廓的v2；不修改物种文案、数值或技能。
+
+选稿1254×1254 RGBA、alpha范围0—255，按alpha≥4边界`(66,72)—(1221,1199)`裁切，Lanczos3等比贴合256×256透明画布，WebP质量90、alpha质量100。正式文件`apps/web/public/assets/icons/beast-qiongqi.webp`为35370字节，可见边界`(0,3)—(256,253)`，沿用`icon:beast-qiongqi`注册；正式统计为`output/imagegen/qiongqi-ochre-red-redesign/production-export.json`。原稿出处、两次完整实际提示词及采用边界见[穷奇头像](art/qiongqi-avatar.md)。实际为前爪一伸一收、近翼大幅展开的逼近／扑落姿态，不记作静伏半折翼；虎面、虎纹和羽束较细，淡墨与留白较少，是用户看稿采用的实际边界。
+
+候选阶段纸色与深底24/30/48/60/72px检查可辨赭金虎身与赤翼，48px及以上虎面、四足和虎纹更清楚；对照截图与透明统计留在`output/imagegen/qiongqi-ochre-red-redesign/`。正式检查期间本地服务曾短暂不可用，页面出现connection refused；既有`dev:web`的Turbo watch在同期代码修改后自行重启恢复，未另启动服务或修改配置，不将全过程记作始终无错。
+
+恢复后1280×720桌面大乘图鉴列表30px／详情60px、390×844手机列表24px／详情48px均加载正式素材，`currentSrc`为`http://127.0.0.1:5174/assets/icons/beast-qiongqi.webp`、`complete=true`、natural尺寸256×256；赭金虎身与赤翼可读，未见裁断或挤压，恢复后的error/warn均为空。截图为`output/imagegen/qiongqi-ochre-red-redesign/game-desktop.png`与`game-mobile.png`。已执行透明导出、浏览器检查、`rg`路径核对与`git diff --check`；既有开发服务后台有依赖库重建，未独立运行lint、typecheck、完整生产build或test，未修改代码或游戏数据。本轮首批六只均已获用户确认并接入，继续按逐只看稿的节奏处理后续物种。
+
+## 九尾狐：采用白躯赤尾v2版（2026-10-05）
+
+用户确认`output/imagegen/nine-tailed-fox-cinnabar-redesign/nine-tailed-fox-cinnabar-v2.png`并要求替换进游戏。白狐与朱红耳尾提取自像素参考和现有物种设定，狐形九尾依据《山海经·南山经》青丘段；不把白红配色称为古籍指定颜色，也不新增传说衍生的玩法能力。v1下尾红白卷折造成额外尾末错觉，v2保留上方五尾、重组下方四尾的单一收尖与间隔，用户采用数量更清楚的v2；不修改物种文案、数值或技能。
+
+选稿1254×1254 RGBA、alpha范围0—255，按alpha≥4边界`(50,32)—(1230,1219)`裁切，Lanczos3等比贴合256×256透明画布，WebP质量90、alpha质量100。正式文件`apps/web/public/assets/icons/beast-nine-tailed-fox.webp`为36674字节，可见边界`(1,0)—(255,256)`，沿用`icon:beast-nine-tailed-fox`注册，复用既存旧素材备份。正式统计为`output/imagegen/nine-tailed-fox-cinnabar-redesign/production-export.json`，原稿出处、两次完整实际提示词及采用边界见[九尾狐头像](art/nine-tailed-fox-avatar.md)。大图可辨上五下四共九尾；四肢中一前足抬收、另一前足落稳，两后足支撑。胸颈厚鬃、繁尾近扇形、较精细眼面与尾纹、最下尾和后腿局部重叠均属用户已接受的实际边界，不宣称全部轻薄减笔要求已实现。
+
+候选阶段纸色与深底24/30/48/60/72px检查首先可辨白狐与赤色多尾，48—72px尖耳、狐体和尾间分隔更清楚，不承诺小列表逐条数清九尾。正式接入后复用既有本地服务，1280×720桌面合体图鉴列表30px／详情60px、390×844手机列表24px／详情48px均加载生产图`/assets/icons/beast-nine-tailed-fox.webp`，`complete=true`、natural尺寸256×256；白狐赤尾清楚，无意外裁断，error/warn均为空，本次验收无服务报错或重启。截图为`output/imagegen/nine-tailed-fox-cinnabar-redesign/game-desktop.png`与`game-mobile.png`。已检查正式导出、浏览器、路径与`git diff --check`，未独立运行lint、typecheck、完整生产build或test，未修改同期代码或游戏数据。后续按用户要求继续祸斗，保持逐只看稿的节奏。

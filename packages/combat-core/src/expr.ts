@@ -193,6 +193,8 @@ class Parser {
     if (name === 'allyMaxMagicAtk') return Math.max(0, ...(this.env.state?.units.filter(u => u.side === this.env.source.side && u.id !== this.env.source.id && u.kind === 'player').map(u => u.attrs.magicAtk) ?? []))
     if (name === 'targetDeployedPets') return this.env.state?.units.filter(u => u.kind === 'pet' && u.ownerId === this.env.target?.id && u.marks.includes('battle:deployed')).length ?? 0
     if (name === "round") return this.env.state?.round ?? 0
+    if (name === "entryRound") return this.env.source.entryRound ?? 0
+    if (name === "spellActionsSinceEntry") return this.env.source.spellActionsSinceEntry ?? 0
     if (name === "enemyDownedPlayers") return this.env.state?.units.filter(u => u.side !== this.env.source.side && u.kind === "player" && u.flags.downed && !u.flags.escaped).length ?? 0
     if (name.startsWith("enemyStatus.") || name.startsWith("allyStatus.")) {
       const enemy = name.startsWith("enemyStatus.")

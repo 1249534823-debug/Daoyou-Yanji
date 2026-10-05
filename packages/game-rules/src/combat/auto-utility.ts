@@ -1,5 +1,7 @@
 import type { CombatV6CommandOptions, Command, SkillDef, SkillEffect, StatusDef, Unit } from '@daoyou/combat-core/types';
 import { evalExpr, skillLevelOf } from '@daoyou/combat-core/expr';
+import { isActiveAttackSkill } from '@daoyou/combat-core';
+import { FailReason } from '@daoyou/combat-core/enums';
 import { matchesWhen, targetStatusStacks } from '@daoyou/combat-core/when';
 import { daoyouRulesetV6 } from './daoyou/index.js';
 import type { AutoObservation } from './auto-observation.js';
@@ -150,6 +152,35 @@ export function rankAutoActions(
           if (targets.length) source.combatFacts[effect.key] = evalExpr(effect.value, { state: context.state, source, target: targets[0], skillLevel: skillLevelOf(source, skill.id), targets: selected.length });
           continue;
         }
+        if (effect.type === 'invokeAttackSkills') {
+          const children = [...new Set(source.skills)].flatMap(id => {
+            const child = source.skillOverrides[id] ?? skills.find(entry => entry.id === id);
+            const option = options.skills.find(entry => entry.skillId === id);
+            if (!child || !isActiveAttackSkill(child) || !option) return [];
+            if (option.reasons.length && option.reasons.every(reason => reason === 'cooldown' || reason === 'skill-condition')) return [];
+            return [{ child, option }];
+          });
+          const parentMp = options.skills.find(option => option.skillId === skill.id)?.costs.mp ?? 0;
+          // Any unaffordable child can be shuffled first and stop the entire sequence.
+          if (children.some(({ option }) => option.reasons.some(reason => reason !== FailReason.InsufficientMp)) ||
+            parentMp + children.reduce((sum, { option }) => sum + option.costs.mp, 0) > source.attrs.mp) {
+            notes.add('连续施法可能因资源不足或控制中断，优先可靠的单项攻击');
+            continue;
+          }
+          for (const { child, option } of children) {
+            const pool = option.selectableTargetIds.flatMap(id => observation.units.filter(unit => unit.id === id));
+            const childTargets = [...targets.filter(target => pool.includes(target)), ...pool.filter(target => !targets.includes(target))].slice(0, option.targetCount);
+            if (!childTargets.length) continue;
+            const result = evaluate(child, childTargets);
+            benefits.offense += probability * result.benefits.offense;
+            benefits.survival += probability * result.benefits.survival;
+            benefits.control += probability * result.benefits.control;
+            benefits.economy += probability * (result.benefits.economy + option.costs.mp / Math.max(1, source.attrs.maxMp) * 40 * (2 - source.attrs.mp / Math.max(1, source.attrs.maxMp)));
+            intentions.push(...result.intentions.map(intent => ({ ...intent, damage: intent.damage * probability, healing: intent.healing * probability })));
+          }
+          notes.add('连续施法按当前技能及法力估算；实际顺序随机');
+          continue;
+        }
         if (effect.type === 'repeat') {
           // Deterministic midpoint estimate; no RNG or actual damage is performed.
           for (let i = 0; i < Math.round((effect.min + effect.max) / 2); i++) effects(effect.effects, targets, probability);
@@ -251,6 +282,7 @@ export function rankAutoActions(
               const coeff = Array.isArray(effect.coeff)
                 ? (effect.coeff[Math.min(hit, effect.coeff.length - 1)] ?? 1)
                 : (effect.coeff ?? 1);
+              const resultFactor = effect.resultFactors?.[Math.min(hit, effect.resultFactors.length - 1)] ?? 1;
               damage += formulas.baseDamage({
                 source,
                 target: defender,
@@ -268,14 +300,20 @@ export function rankAutoActions(
                 schoolTerm: skill.schoolTerm,
                 splash: skill.splash,
                 targetCount: selected.length,
-              });
+              }) * resultFactor;
             }
-            const chance =
+            const chance = 'cannotMiss' in effect && effect.cannotMiss ? 1 :
               kind === 'physical'
                 ? formulas.physicalHitChance(source, target)
                 : kind === 'spell'
                   ? formulas.spellHitChance(source, target)
                   : 1;
+            if (effect.type === 'physicalHit' && effect.healInstead) {
+              const healing = Math.min(Math.max(0, target.attrs.maxHp - target.wound - target.attrs.hp), damage * chance);
+              benefits.survival += probability * (friendly ? 1 : -1) * healing / Math.max(1, target.attrs.maxHp) * 100;
+              intentions.push({ ...intent, healing: healing * probability });
+              continue;
+            }
             damage *=
               kind === 'physical'
                 ? taken(target, 'damageTakenPhysical')

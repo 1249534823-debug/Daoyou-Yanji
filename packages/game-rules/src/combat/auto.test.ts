@@ -938,7 +938,7 @@ describe('当前场次托管', () => {
       }
     }
   });
-  it('法术灵兽选有效攻击法术，缺蓝降级；物理灵兽普通攻击', () => {
+  it('灵兽选择优于普攻的主动物法技能，缺蓝或技能伤害不足时普攻', () => {
     const physical: SkillDef = {
       id: 'pet-physical',
       name: '物理技',
@@ -962,6 +962,8 @@ describe('当前场次托管', () => {
     expect(petCommand().type).toBe('attack');
     pet.attrs.mp = 100;
     pet.skills = ['pet-physical'];
+    expect(petCommand()).toMatchObject({ type: 'skill', skillId: 'pet-physical' });
+    pet.skillOverrides['pet-physical'] = { ...physical, effects: [{ type: 'physicalHit', coeff: 0.1 }] };
     expect(petCommand().type).toBe('attack');
   });
   it('大乘红尘正常构筑会进攻，而不是反复施放剑意增益', () => {

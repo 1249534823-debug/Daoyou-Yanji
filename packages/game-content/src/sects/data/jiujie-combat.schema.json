@@ -130,6 +130,7 @@
             "physical",
             "spell",
             "dragon",
+            "attackDifference",
             "judge",
             "fixed"
           ]
@@ -180,6 +181,7 @@
                   "onHitCalc",
                   "onDefenseIgnoreCalc",
                   "onBeHit",
+                  "afterDamage",
                   "afterHit",
                   "afterStrike",
                   "onFatal",

@@ -1,7 +1,7 @@
 {
   "$schema": "./skills.schema.json",
   "formatVersion": 1,
-  "contentRevision": 16,
+  "contentRevision": 19,
   "skills": [
     {
       "id": "beast.spirit-flame",
@@ -892,6 +892,197 @@
       },
       "icon": "🚫",
       "flavorText": "免疫控制、减益和持续伤害，无法获得增益；减轻法术伤害，却更怕灵魂体攻击。"
+    },
+    {
+      "id": "beast.all-seeing",
+      "name": "观照万象",
+      "book": false,
+      "advanced": true,
+      "effect": {
+        "type": "allSeeing",
+        "cooldownRounds": 150
+      },
+      "icon": "👁️",
+      "flavorText": "观照自身所掌握的攻伐本领，在一次行动中依次施展。"
+    },
+    {
+      "id": "beast.mountain-breaker",
+      "name": "摧山",
+      "book": false,
+      "advanced": true,
+      "effect": {
+        "type": "mountainBreaker",
+        "costMpBase": 20
+      },
+      "icon": "👊",
+      "flavorText": "奋力重击一个目标，双方物理攻击之差影响威力。"
+    },
+    {
+      "id": "beast.karmic-retribution",
+      "name": "善恶有报",
+      "book": false,
+      "advanced": true,
+      "effect": {
+        "type": "karmicRetribution",
+        "costMpBase": 10,
+        "evilChance": 0.7,
+        "evilFactor": 2,
+        "goodFactor": 0.5
+      },
+      "icon": "⚖️",
+      "flavorText": "一击贯注异息，或重创敌人，或反为其恢复气血。"
+    },
+    {
+      "id": "beast.radiant-barrier",
+      "name": "凝光炼彩",
+      "book": false,
+      "advanced": true,
+      "effect": {
+        "type": "radiantBarrier",
+        "chance": 0.25,
+        "ratio": 0.5,
+        "maxHpRatio": 0.3,
+        "decayRatio": 0.15
+      },
+      "icon": "🌈",
+      "flavorText": "受伤时有机会凝聚灵光化作护盾，护盾会逐渐消散。"
+    },
+    {
+      "id": "beast.auspicious-vitality",
+      "name": "瑞气盈身",
+      "book": false,
+      "advanced": true,
+      "effect": {
+        "type": "constitutionGrowthHp",
+        "multiplier": 2
+      },
+      "icon": "🌿",
+      "flavorText": "血肉间瑞气充盈，体质与成长额外增加气血上限。"
+    },
+    {
+      "id": "beast.bloodthirsty-pursuit",
+      "name": "嗜血追击",
+      "book": false,
+      "advanced": true,
+      "effect": {
+        "type": "bloodthirstyPursuit",
+        "factor": 0.5
+      },
+      "icon": "🩸",
+      "flavorText": "普通攻击将目标气血击空后，继续追击另一个敌人。"
+    },
+    {
+      "id": "beast.surprise-spell",
+      "name": "出奇制胜",
+      "book": false,
+      "advanced": true,
+      "effect": {
+        "type": "surpriseSpell",
+        "factor": 1.25
+      },
+      "icon": "✨",
+      "flavorText": "入场时收敛灵息，首道法术出其不意，威力更强。"
+    },
+    {
+      "id": "beast.innate-wisdom",
+      "name": "灵慧天成",
+      "book": false,
+      "advanced": true,
+      "effect": {
+        "type": "magicAttributeBoost",
+        "multiplier": 0.4
+      },
+      "icon": "✨",
+      "flavorText": "天生灵慧，内蕴灵息澄澈凝实，施展术法时威力更盛。"
+    },
+    {
+      "id": "beast.overwhelming-might",
+      "name": "凶威滔天",
+      "book": false,
+      "advanced": true,
+      "effect": {
+        "type": "strengthGrowthTradeoff",
+        "attackMultiplier": 0.2,
+        "defenseMultiplier": 0.2
+      },
+      "icon": "💪",
+      "flavorText": "凶威贯入筋骨，攻势愈发猛烈，护身之势却随之减弱。"
+    },
+    {
+      "id": "beast.spirit-guard",
+      "name": "灵罡护体",
+      "book": false,
+      "advanced": true,
+      "effect": {
+        "type": "spellDefense",
+        "costMpBase": 50,
+        "costMpLevelDivisor": 2,
+        "takenFactor": 0.35,
+        "duration": 6
+      },
+      "icon": "🛡️",
+      "flavorText": "收拢灵息，凝成护体灵罡，抵御袭来的术法。"
+    },
+    {
+      "id": "beast.wind-strike",
+      "name": "凌风掠影",
+      "book": false,
+      "advanced": true,
+      "effect": {
+        "type": "swiftStrike",
+        "costMpBase": 50,
+        "costMpLevelDivisor": 2,
+        "strengthMultiplier": 1.5,
+        "speedDivisor": 3,
+        "playerFactor": 0.5
+      },
+      "icon": "💨",
+      "flavorText": "身形疾掠，一击即逝，将筋骨之力与疾行之势凝于一瞬。"
+    },
+    {
+      "id": "beast.barrier-breaker",
+      "name": "壁垒击破",
+      "book": false,
+      "advanced": true,
+      "effect": {
+        "type": "barrierBreaker",
+        "costMpBase": 10,
+        "defendFactor": 1.5,
+        "powerPerLevel": 1
+      },
+      "icon": "⚔️",
+      "flavorText": "迎着守势猛击，破开坚甲之力；对手收势防守时，此击更为猛烈。"
+    },
+    {
+      "id": "beast.mind-shatter",
+      "name": "摧心裂魄",
+      "book": false,
+      "advanced": true,
+      "effect": {
+        "type": "mindShatter",
+        "costMpBase": 10,
+        "costMpLevelDivisor": 2,
+        "physicalFactor": 0.95,
+        "mpDamageFactor": 1.25,
+        "mpDamageDivisor": 10,
+        "mpLevelDivisor": 2,
+        "periodicStrengthDivisor": 12,
+        "periodicBase": 1
+      },
+      "icon": "⚔️",
+      "flavorText": "凶猛一击震乱目标灵息，伤其气血，并使法力继续流失。"
+    },
+    {
+      "id": "beast.unanticipated",
+      "name": "出其不意",
+      "book": false,
+      "advanced": true,
+      "effect": {
+        "type": "unanticipated",
+        "factor": 1.15
+      },
+      "icon": "✨",
+      "flavorText": "灵息倏变，攻势难料，以同伴尚未施展的本领突袭敌人。"
     }
   ],
   "families": [
