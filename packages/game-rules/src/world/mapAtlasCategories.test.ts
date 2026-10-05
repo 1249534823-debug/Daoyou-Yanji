@@ -1,3 +1,4 @@
+import { getWorldMapLocation } from '@daoyou/game-content/world/map';
 import { describe, expect, it } from 'vitest';
 import { getAtlasLocations } from './mapAtlas.js';
 import {
@@ -7,7 +8,6 @@ import {
   matchesAtlasCategories,
   parseAtlasCategories,
 } from './mapAtlasCategories.js';
-import { getWorldMapLocation } from '@daoyou/game-content/world/map';
 
 const location = (id: string) => getWorldMapLocation(id)!;
 
@@ -34,7 +34,7 @@ describe('atlas single-purpose locations', () => {
     }
     expect(
       nodes.filter((node) => getAtlasCategory(node) === 'wild'),
-    ).toHaveLength(10);
+    ).toHaveLength(26);
     expect(
       nodes.filter((node) => getAtlasCategory(node) === 'dungeon'),
     ).toHaveLength(31);
@@ -56,7 +56,7 @@ describe('atlas single-purpose locations', () => {
       getAtlasLocations().filter((node) =>
         matchesAtlasCategories(node, ['wild', 'dungeon']),
       ),
-    ).toHaveLength(41);
+    ).toHaveLength(57);
   });
 
   it('uses actual dungeon entrances rather than lore tags or dangerous names', () => {

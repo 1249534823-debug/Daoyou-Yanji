@@ -6,7 +6,7 @@
 
 变异规则见 [变异灵兽](../../../../../docs/combat-v6-beast-mutation.md)：野外独立抽取身份，五项资质和成长统一提高 10%，技能规则不变。`rollBeastTraits` 的可选第三参数为 `isMutant`；洗炼保留身份并从物种范围重抽，新个体必须包含培养身份和初始等级，变异统一生成0级宝宝；不做旧身份推断。
 
-当前物种包 `formatVersion: 2`、`contentRevision: 11`，包含炼气至化神十八种物种，炼气、元婴、化神各四种，筑基、金丹各三种。讨论中的“结丹”对应游戏实际境界键“金丹”。每条配置包含名称、图标、习性描述、开放境界、携带等级、是否可领取为初始伙伴、五项资质范围、成长范围及出生技能规则。不再提供固定定位或物种加点偏好。
+当前物种包 `formatVersion: 2`、`contentRevision: 12`，包含炼气至渡劫三十四种物种，筑基、金丹各三种，其余境界各四种。讨论中的“结丹”对应游戏实际境界键“金丹”。每条配置包含名称、图标、习性描述、开放境界、携带等级、是否可领取为初始伙伴、五项资质范围、成长范围及出生技能规则。不再提供固定定位或物种加点偏好。
 
 | 字段 | 策划含义 |
 | --- | --- |
@@ -15,11 +15,11 @@
 | `aptitudes.*.{min,max}` | 五项资质的独立整数闭区间 |
 | `growthMilli.{min,max}` | 成长千分整数闭区间，生成后除以1000 |
 | `birthSkills.core` | 0至2项出生／洗炼必带技能，可被传承灵印覆盖 |
-| `birthSkills.candidates` | 普通候选池，与必带合计3至6项；每个候选独立以1/2获得 |
+| `birthSkills.candidates` | 候选池，默认普通技能；琥珀蝉、獬豸含已确认的高级候选；与必带合计3至6项；每个候选独立以1/2获得 |
 | `generation.minBirthSkills` / `maxBirthSkills` | 全包出生技能数量边界，当前0至6；各物种上限为自己的天生全集 |
 | `generation.starterLevel` / `lifespan` | 初始伙伴等级10、初始及最大寿命1000 |
 
-物种目录不依赖野外怪物目录。野外编排通过稳定ID引用物种并调用同一个抽取函数；十八种均已加入对应开放境界的捕捉池，野外个体与捕获后的灵兽共用个体事实。狰沿用原犀牛ID，三足金蟾使用独立新ID并进入黑水潭。咪咪加入初始伙伴和青溪坡，幽冥虎进入化神栖地不见天。完整名称、资质、出生技能和ID映射见[设计确认基准](../../../../../.agents/skills/daoyou-beast-design/references/first-release.md)。
+物种目录不依赖野外怪物目录。野外编排通过稳定ID引用物种并调用同一个抽取函数；三十四种均已加入捕捉池，合体及以上十二种为稀有异兽，区域概率独立配置，野外个体与捕获后的灵兽共用个体事实。狰沿用原犀牛ID，三足金蟾使用独立新ID并进入黑水潭。咪咪加入初始伙伴和青溪坡，幽冥虎进入化神栖地不见天。后续十六种见[扩展基准](../../../../../.agents/skills/daoyou-beast-design/references/later-realms.md)。首批名称、资质、出生技能和ID映射见[设计确认基准](../../../../../.agents/skills/daoyou-beast-design/references/first-release.md)。
 
 `rollBeastTraits(species, seed)`位于`packages/game-rules/src/beasts/trait-generator.ts`，接受经过`loadBeastPacks`校验的物种配置，返回`aptitudes`、`growth`、`skills`。不创建身份、等级、主人、库存或加点，不读取数据库、时间或全局随机数。资质按攻击、防御、体力、法力、速度抽取，随后抽成长；候选技能使用另一条种子流，按候选表顺序各自独立判定。变更技能池不会扰动数值抽签，变更数值范围不会扰动技能抽签。
 
@@ -160,4 +160,4 @@ pnpm run build
 
 ## 融合：fusion.json
 
-`fusion-config.ts`与`fusion.schema.json`共同校验配置；档位唯一且权重合计100。双宝宝宝宝率`babyChance=0.95`，其他组合假宝宝率`pseudoBabyChance=0.25`，非必带不同技能各按`skillChance=0.5`继承。资质和成长档位、融合上限集中在此文件，出生及变异不受融合上限裁剪。规则与点数预算见[宝宝体系与融合](../../../../../docs/combat-v6-beast-fusion.md)。融合个体使用独立版本`summoned_beast_fusion_v1`，不受出生技能数上限限制。
+`fusion-config.ts`与`fusion.schema.json`共同校验配置；档位唯一且权重合计100。双宝宝宝宝率`babyChance=0.95`，其他组合假宝宝率`pseudoBabyChance=0.25`，非必带不同技能各按`skillChance=0.5`继承。资质和成长档位、兜底上限集中在此文件：成长1.500，五项资质各100000（结构安全边界），已取消首批物种定标的低上限，出生及变异不受融合上限裁剪。规则与点数预算见[宝宝体系与融合](../../../../../docs/combat-v6-beast-fusion.md)。融合个体使用独立版本`summoned_beast_fusion_v1`，不受出生技能数上限限制。

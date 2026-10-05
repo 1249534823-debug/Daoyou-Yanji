@@ -4,6 +4,8 @@ import { GameSceneFrame } from '@app/components/game-shell/GameSceneFrame';
 import { GameSceneTabs } from '@app/components/game-shell/GameSceneTabs';
 import { InkButton } from '@app/components/ui/InkButton';
 import { InkTooltip } from '@app/components/ui/InkTooltip';
+import { BEAST_RARE_SPECIES_IDS } from '@daoyou/game-content/beasts';
+import { getMapNode } from '@daoyou/game-content/world/map';
 import { getLevelRealmStage } from '@daoyou/game-domain/progression';
 import {
   listBeastCodex,
@@ -11,7 +13,6 @@ import {
   type BeastCodexHabitat,
 } from '@daoyou/game-rules/beasts/presentation';
 import { getAtlasRegion } from '@daoyou/game-rules/world/atlas';
-import { getMapNode } from '@daoyou/game-content/world/map';
 import { useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
 import { BeastRosterScroll } from '../BeastRosterScroll';
@@ -158,6 +159,7 @@ function CodexDetail({
             {entry.name}
           </h2>
           <p className="text-ink-secondary mt-1 text-xs leading-6">
+            {BEAST_RARE_SPECIES_IDS.has(entry.id) ? '稀有异兽 · ' : ''}
             {entry.realm} · 携带要求{' '}
             {getLevelRealmStage(entry.carryLevel).label}
           </p>
