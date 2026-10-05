@@ -51,6 +51,7 @@ pnpm run db:migrate
 - `daoyou-game-ui`: `GameViewportLayout` main-flow scene UI structure and review rules.
 - `daoyou-item-preview`: 新增道具或调整物品预览字段、文案、层级、交互与适配器时，遵循 [.agents/skills/daoyou-item-preview/SKILL.md](.agents/skills/daoyou-item-preview/SKILL.md) 的固定展示规范和分类基线，避免恢复已删除的冗余信息。
 - `daoyou-ink-portraits`: 玩家、NPC、BOSS 与灵兽写意墨像立绘的固定笔墨基准、物种设计方法、彩墨与视觉验收；见 `.agents/skills/daoyou-ink-portraits/SKILL.md`。
+- `daoyou-skill-totems`: 技能图标的水墨图腾构形、机制辨识、固定验收参考与小尺寸防漂移；见 [.agents/skills/daoyou-skill-totems/SKILL.md](.agents/skills/daoyou-skill-totems/SKILL.md)。
 - `daoyou-map-art`: 世界总览与独立区域地图的国画水墨、彩墨、地域辨识、空间尺度及素材交付；见 [.agents/skills/daoyou-map-art/SKILL.md](.agents/skills/daoyou-map-art/SKILL.md)。
 - `daoyou-game-core-domain`: combat-v6 core/rules/projection, sects, equipment, manuals, beasts, and shared inventory/reward rules.
 - `daoyou-beast-design`: 灵兽物种、生灵层次、命名、资质成长及出生技能池设计与审查；扩充或调整物种前读取 `.agents/skills/daoyou-beast-design/SKILL.md`，实施同时遵守领域技能。

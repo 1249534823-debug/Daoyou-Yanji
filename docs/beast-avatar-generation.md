@@ -2,6 +2,10 @@
 
 美术设计统一遵循 [写意墨像](../.agents/skills/daoyou-ink-portraits/SKILL.md)，导出与接入遵循其 [素材交付要求](../.agents/skills/daoyou-ink-portraits/references/beast-avatar-delivery.md)。本文件仅记录当前采用的写意墨像素材。
 
+## 补齐剩余五种（2026-10-05）
+
+烛尾狐、钢背猪、精灵狼、双尾蝎、抱月熊已完成彩墨重设计并接入游戏与官网。当前34种全部有专属透明头像及官网高清立绘；本文件后文的29种／5种emoji盘点为此前时点。采用稿、修正与验证见[五种立绘记录](art/remaining-five-avatars.md)。
+
 ## 青鸾替换琥珀蝉（2026-10-05）
 
 青鸾使用独立的双足凤鸟墨像，256×256 透明 WebP；替换原蝉的素材及注册。采用提示词、固定参考、尾羽构图修正和导出信息见[青鸾采用记录](art/qingluan-avatar.md)，配置与页面验收见[再设计记录](combat-v6-beast-rebalance-design.md#7-实施与验收结果)。
