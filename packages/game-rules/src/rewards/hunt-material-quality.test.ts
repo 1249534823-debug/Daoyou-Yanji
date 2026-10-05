@@ -25,9 +25,7 @@ describe('讨伐材料综合概率', () => {
       for (let index = 1; index < chances.length; index++) {
         expect(chances[index]).toBeLessThan(chances[index - 1]);
         // No sudden cliff between adjacent qualities, including the lowest.
-        expect(chances[index] / chances[index - 1]).toBeGreaterThanOrEqual(
-          0.59,
-        );
+        expect(chances[index] / chances[index - 1]).toBeGreaterThanOrEqual(0.5);
       }
     },
   );

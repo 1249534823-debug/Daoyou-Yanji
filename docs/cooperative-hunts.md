@@ -53,6 +53,8 @@
 
 讨伐服务和材料预览共用 `hunt-material-quality.ts`。只有讨伐启用严格品质选材；云游和挂机原来的选材逻辑不变。奖励池 version 从2升至3，新开战使用新曲线；旧战局沿用已生成的奖励事实。升版会更新新开战的灵印、灵露固定随机样本，二者掉率不变。
 
+本轮验证（2026-10-05）：旧算法在新性质测试中有8项失败；更新后运行 `pnpm exec vitest run packages/game-rules/src/rewards/hunt.test.ts packages/game-rules/src/rewards/hunt-material-quality.test.ts packages/game-rules/src/rewards/dungeon-material-quality.test.ts packages/game-rules/src/hunts`，7个文件、93项通过，覆盖两件保底、品质范围、平滑递减、渡劫目标分布及全部品质门槛跨境界不倒挂。`pnpm run lint`、`pnpm run build`、修改源文件的Prettier检查与 `git diff --check` 通过。本轮仅调整共享纯规则与数值，未运行全量单测、浏览器胜利发奖或生产材料库检查，未部署。
+
 旧版验证（2026-09-30）：`bun run test packages/shared/src/rewards/hunt-material-quality.test.ts packages/shared/src/rewards/hunt.test.ts packages/shared/src/rewards/dungeon-material-quality.test.ts` 共 22 项通过，覆盖归一化、品质范围、七个境界的累计概率、两件材料前提和高品质不倒挂。`bun run lint`、`bun run build`、修改代码的 Prettier 检查和 `git diff --check` 通过。本地材料库只读查询确认所有品质均有已发布材料；未新增服务／数据库单测，未执行本轮浏览器胜利发奖、生产材料库检查或全量单测，尚未部署。
 
 ## 八类目标

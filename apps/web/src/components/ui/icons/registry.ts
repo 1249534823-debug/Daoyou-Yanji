@@ -92,6 +92,47 @@ export const iconRegistry: ReadonlyMap<string, string> = new Map([
   ],
   ['beast-skill-parry', '/assets/icons/beast-skill-parry-totem-v2.webp'],
 
+  [
+    'beast-skill-mountain-breaker',
+    '/assets/icons/beast-skill-mountain-breaker-totem-v2.webp',
+  ],
+  [
+    'beast-skill-karmic-retribution',
+    '/assets/icons/beast-skill-karmic-retribution-totem-v2.webp',
+  ],
+  ['beast-skill-combo', '/assets/icons/beast-skill-combo-totem-v2.webp'],
+  ['beast-skill-counter', '/assets/icons/beast-skill-counter-totem-v2.webp'],
+  ['beast-skill-critical', '/assets/icons/beast-skill-critical-totem-v2.webp'],
+  [
+    'beast-skill-lifesteal',
+    '/assets/icons/beast-skill-lifesteal-totem-v2.webp',
+  ],
+  [
+    'beast-skill-reflection',
+    '/assets/icons/beast-skill-reflection-totem-v2.webp',
+  ],
+  ['beast-skill-defense', '/assets/icons/beast-skill-defense-totem-v2.webp'],
+  ['beast-skill-agility', '/assets/icons/beast-skill-agility-totem-v2.webp'],
+  ['beast-skill-sluggish', '/assets/icons/beast-skill-sluggish-totem-v2.webp'],
+  [
+    'beast-skill-regeneration',
+    '/assets/icons/beast-skill-regeneration-totem-v2.webp',
+  ],
+  ['beast-skill-ghost', '/assets/icons/beast-skill-ghost-totem-v2.webp'],
+  ['beast-skill-eternity', '/assets/icons/beast-skill-eternity-totem-v2.webp'],
+  [
+    'beast-skill-water-attack',
+    '/assets/icons/beast-skill-water-attack-totem-v2.webp',
+  ],
+  [
+    'beast-skill-spell-critical',
+    '/assets/icons/beast-skill-spell-critical-totem-v2.webp',
+  ],
+  [
+    'beast-skill-spell-fluctuation',
+    '/assets/icons/beast-skill-spell-fluctuation-totem-v2.webp',
+  ],
+
   ['cultivator-male-avatar', '/assets/icons/cultivator-male-avatar.png'],
   ['cultivator-female-avatar', '/assets/icons/cultivator-female-avatar.png'],
   ['beast-spirit-fox', '/assets/icons/beast-spirit-fox.webp'],

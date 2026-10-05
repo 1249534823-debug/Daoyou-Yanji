@@ -29,7 +29,7 @@
         "coefficient": 1,
         "physicalFactor": 0.75
       },
-      "icon": "⚔️",
+      "icon": "icon:beast-skill-combo",
       "flavorText": "普通攻击命中后有机会追加一击，但自身造成的物理伤害会降低。"
     },
     {
@@ -43,7 +43,7 @@
         "coefficient": 1,
         "physicalFactor": 0.8
       },
-      "icon": "⚔️",
+      "icon": "icon:beast-skill-combo",
       "flavorText": "普通攻击命中后有机会追加一击，但自身造成的物理伤害会降低。"
     },
     {
@@ -56,7 +56,7 @@
         "chance": 0.3,
         "coefficient": 0.5
       },
-      "icon": "↩️",
+      "icon": "icon:beast-skill-counter",
       "flavorText": "受到物理攻击并损失气血时，有机会反击攻击者。"
     },
     {
@@ -69,7 +69,7 @@
         "chance": 0.3,
         "coefficient": 1
       },
-      "icon": "↩️",
+      "icon": "icon:beast-skill-counter",
       "flavorText": "受到物理攻击并损失气血时，有机会反击攻击者。"
     },
     {
@@ -82,7 +82,7 @@
         "kind": "physical",
         "chance": 0.1
       },
-      "icon": "💥",
+      "icon": "icon:beast-skill-critical",
       "flavorText": "物理攻击更容易打出暴击。"
     },
     {
@@ -95,7 +95,7 @@
         "kind": "physical",
         "chance": 0.2
       },
-      "icon": "💥",
+      "icon": "icon:beast-skill-critical",
       "flavorText": "物理攻击更容易打出暴击。"
     },
     {
@@ -108,7 +108,7 @@
         "kind": "spell",
         "chance": 0.1
       },
-      "icon": "✨",
+      "icon": "icon:beast-skill-spell-critical",
       "flavorText": "法术攻击更容易打出暴击。"
     },
     {
@@ -121,7 +121,7 @@
         "kind": "spell",
         "chance": 0.15
       },
-      "icon": "✨",
+      "icon": "icon:beast-skill-spell-critical",
       "flavorText": "法术攻击更容易打出暴击。"
     },
     {
@@ -134,7 +134,7 @@
         "resource": "hp",
         "levelDivisor": 2
       },
-      "icon": "🌱",
+      "icon": "icon:beast-skill-regeneration",
       "flavorText": "每回合结束时恢复自身气血。"
     },
     {
@@ -147,7 +147,7 @@
         "resource": "hp",
         "levelDivisor": 1
       },
-      "icon": "🌱",
+      "icon": "icon:beast-skill-regeneration",
       "flavorText": "每回合结束时恢复自身气血。"
     },
     {
@@ -185,7 +185,7 @@
         "type": "speed",
         "factor": 1.1
       },
-      "icon": "💨",
+      "icon": "icon:beast-skill-agility",
       "flavorText": "提高自身速度。"
     },
     {
@@ -197,7 +197,7 @@
         "type": "speed",
         "factor": 1.2
       },
-      "icon": "💨",
+      "icon": "icon:beast-skill-agility",
       "flavorText": "提高自身速度。"
     },
     {
@@ -233,7 +233,7 @@
         "type": "speed",
         "factor": 0.8
       },
-      "icon": "🐢",
+      "icon": "icon:beast-skill-sluggish",
       "flavorText": "降低自身速度。"
     },
     {
@@ -278,7 +278,7 @@
         "powerBase": 10,
         "powerPerLevel": 1
       },
-      "icon": "💧",
+      "icon": "icon:beast-skill-water-attack",
       "flavorText": "以水流攻击一个目标，造成法术伤害。"
     },
     {
@@ -290,7 +290,7 @@
         "type": "lifesteal",
         "ratio": 0.25
       },
-      "icon": "🩸",
+      "icon": "icon:beast-skill-lifesteal",
       "flavorText": "物理攻击使目标损失气血时，按伤害量恢复自身气血。"
     },
     {
@@ -302,7 +302,7 @@
         "type": "lifesteal",
         "ratio": 0.3
       },
-      "icon": "🩸",
+      "icon": "icon:beast-skill-lifesteal",
       "flavorText": "物理攻击使目标损失气血时，按伤害量恢复自身气血。"
     },
     {
@@ -316,7 +316,7 @@
         "chance": 0.3,
         "ratio": 0.25
       },
-      "icon": "🪞",
+      "icon": "icon:beast-skill-reflection",
       "flavorText": "受到物理攻击并损失气血时，有机会将部分伤害反震给攻击者。"
     },
     {
@@ -330,7 +330,7 @@
         "chance": 0.3,
         "ratio": 0.5
       },
-      "icon": "🪞",
+      "icon": "icon:beast-skill-reflection",
       "flavorText": "受到物理攻击并损失气血时，有机会将部分伤害反震给攻击者。"
     },
     {
@@ -495,7 +495,7 @@
         "perLevel": 0.6,
         "spellFactor": 0.9
       },
-      "icon": "🛡️",
+      "icon": "icon:beast-skill-defense",
       "flavorText": "物理防御随等级提高，但自身造成的法术伤害降低。"
     },
     {
@@ -508,7 +508,7 @@
         "perLevel": 0.8,
         "spellFactor": 0.95
       },
-      "icon": "🛡️",
+      "icon": "icon:beast-skill-defense",
       "flavorText": "物理防御随等级提高，但自身造成的法术伤害降低。"
     },
     {
@@ -642,7 +642,7 @@
         "max": 1.25,
         "suppressReflection": false
       },
-      "icon": "🎲",
+      "icon": "icon:beast-skill-spell-fluctuation",
       "flavorText": "法术伤害忽高忽低。"
     },
     {
@@ -656,7 +656,7 @@
         "max": 1.6,
         "suppressReflection": true
       },
-      "icon": "🎲",
+      "icon": "icon:beast-skill-spell-fluctuation",
       "flavorText": "法术伤害起伏更大，法术攻击也不会触发灵法反震。"
     },
     {
@@ -803,7 +803,7 @@
         "factor": 1.5,
         "maxExtra": 3
       },
-      "icon": "⏳",
+      "icon": "icon:beast-skill-eternity",
       "flavorText": "自身获得的部分增益持续更久。"
     },
     {
@@ -816,7 +816,7 @@
         "factor": 2,
         "maxExtra": 6
       },
-      "icon": "⏳",
+      "icon": "icon:beast-skill-eternity",
       "flavorText": "自身获得的部分增益持续更久。"
     },
     {
@@ -828,7 +828,7 @@
         "type": "ghost",
         "delay": 5
       },
-      "icon": "👻",
+      "icon": "icon:beast-skill-ghost",
       "flavorText": "死亡后等待数回合复起，但无法接受普通气血恢复。"
     },
     {
@@ -840,7 +840,7 @@
         "type": "ghost",
         "delay": 5
       },
-      "icon": "👻",
+      "icon": "icon:beast-skill-ghost",
       "flavorText": "死亡后等待数回合复起，但无法接受普通气血恢复。"
     },
     {
@@ -914,7 +914,7 @@
         "type": "mountainBreaker",
         "costMpBase": 20
       },
-      "icon": "👊",
+      "icon": "icon:beast-skill-mountain-breaker",
       "flavorText": "奋力重击一个目标，双方物理攻击之差影响威力。"
     },
     {
@@ -929,7 +929,7 @@
         "evilFactor": 2,
         "goodFactor": 0.5
       },
-      "icon": "⚖️",
+      "icon": "icon:beast-skill-karmic-retribution",
       "flavorText": "一击贯注异息，或重创敌人，或反为其恢复气血。"
     },
     {
