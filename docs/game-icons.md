@@ -21,6 +21,10 @@ React 图标入口为 `apps/web/src/components/ui/GameIcon.tsx`。普通字符�
 
 初始灵兽选择、灵兽名册与详情头像统一通过 `BeastIcon` 渲染。新增或改动图标使用同一入口；灵兽头像的当前写意墨像素材见 [生成记录](beast-avatar-generation.md)。
 
+灵兽技能首批采用 25 枚写意彩墨图标，导出为 256×256 RGBA 无损 WebP，保留验收稿的透明安全边距。注册名称统一为 `beast-skill-技能标识`，技能配置在 `packages/game-content/src/beasts/data/skills.json` 中填写 `icon:beast-skill-技能标识`；12 个特殊技能、红莲业火和 12 个普通／高级家族共覆盖 37 条技能配置。普通与高级的同家族技能共用主体，仍由名称和分级样式区分。
+
+共享 `BeastSkillTile` 使用 `GameIcon`，覆盖灵兽详情、图鉴、合成和交易详情；战斗技能选择也沿用同一入口。技能图标按界面图标正常显示，不受人物墨像的图片透明度设置影响。
+
 静态文件随 Vite 构建复制到 `dist/assets/icons/`。新增或替换后检查注册路径与部署产物；同名图标更新素材时可给文件名添加版本号并更新注册路径，业务图标名称不变，避免旧缓存。
 
 Phaser 等 Canvas 渲染器通过 `GameIcon.resolveSource(iconValue)` 获取同一注册资源，再交给纹理加载器；协议解析仍由 `GameIcon.tsx` 集中处理，业务侧不拼接图标路径。新版地图的五类单一用途节点、筛选项和详情共用这一套透明 WebP 资源。

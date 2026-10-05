@@ -63,7 +63,7 @@ export const BeastSkillsPackShape = z.strictObject({
         book: z.boolean(),
         advanced: z.boolean(),
         flavorText: z.string().trim().min(1).max(200),
-        icon: z.string().trim().min(1).max(32),
+        icon: z.string().trim().min(1).max(64),
         effect: z.discriminatedUnion('type', [
           z.strictObject({
             type: z.literal('groupSpell'),

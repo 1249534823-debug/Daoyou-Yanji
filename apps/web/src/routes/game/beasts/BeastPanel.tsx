@@ -118,23 +118,23 @@ export function BeastPanel({
   return (
     <div className="@container min-w-0 space-y-5">
       <div className="grid grid-cols-[96px_minmax(0,1fr)] items-start gap-x-3 gap-y-2 @min-[30rem]:grid-cols-[128px_minmax(0,1fr)] @min-[30rem]:gap-x-5 @min-[38rem]:grid-cols-[160px_minmax(0,1fr)]">
-        <div className="row-span-2 flex items-center justify-center @min-[30rem]:row-span-1">
+        <div className="row-span-2 flex flex-col items-center justify-center gap-1 @min-[30rem]:row-span-1">
           <BeastIcon
             speciesId={beast.speciesId}
             isMutant={beast.isMutant}
             className="text-[96px] @min-[30rem]:text-[128px] @min-[38rem]:text-[160px]"
           />
+          {isLead ? <BeastLeadSeal /> : null}
         </div>
         <div className="contents min-w-0 @min-[30rem]:block">
           <div className="min-w-0">
-            <div className="mb-1 flex flex-wrap items-center gap-2">
+            <div className="mb-1 flex items-center gap-1">
               <h2
-                className="max-w-full min-w-0 truncate text-xl"
+                className="min-w-0 truncate text-lg @min-[30rem]:text-xl"
                 title={beast.name}
               >
                 {beast.name}
               </h2>
-              {isLead ? <BeastLeadSeal /> : null}
               {beast.isMutant ? (
                 <BeastMutationTag isMutant />
               ) : (
@@ -146,21 +146,26 @@ export function BeastPanel({
                       : '幼崽'}
                 </InkTag>
               )}
-              <InkButton variant="ghost" disabled={pending} onClick={rename}>
+              <InkButton
+                variant="ghost"
+                className="shrink-0 px-0 text-sm tracking-normal"
+                disabled={pending}
+                onClick={rename}
+              >
                 改名
               </InkButton>
             </div>
-            {definition && definition.name !== beast.name ? (
-              <p className="text-ink-secondary text-xs">
-                物种 · {definition.name}
-              </p>
-            ) : null}
-            <div className="text-ink-secondary flex flex-wrap gap-x-3 text-xs leading-6">
-              <span className="whitespace-nowrap">
-                等级 <span className="font-mono">{beast.level}</span>
+            <div className="text-ink-secondary flex items-center gap-1 text-xs leading-6 whitespace-nowrap">
+              <span className="min-w-0 truncate" title={definition?.name}>
+                {definition?.name ?? '—'}
               </span>
-              <span>
-                携带要求{' '}
+              <span aria-hidden>·</span>
+              <span className="shrink-0">
+                <span className="font-mono">{beast.level}</span>级
+              </span>
+              <span aria-hidden>·</span>
+              <span className="shrink-0" title="携带要求">
+                需
                 {definition
                   ? getLevelRealmStage(definition.carryLevel).label
                   : '—'}
@@ -168,24 +173,6 @@ export function BeastPanel({
             </div>
           </div>
           <div className="col-start-2 min-w-0 @min-[30rem]:mt-2">
-            <div className="text-ink-secondary flex flex-wrap items-center gap-x-3 text-xs">
-              <span className="whitespace-nowrap">
-                成长{' '}
-                <span className="font-mono">{beast.growth.toFixed(3)}</span>
-              </span>
-              <span className="inline-flex items-center gap-1 whitespace-nowrap">
-                寿命{' '}
-                <span className="font-mono">
-                  {beast.currentLifespan} / {beast.maxLifespan}
-                </span>
-                <InkTooltip label="寿命与入场规则">
-                  每场满气血、法力入场。野外死亡每场扣除一次
-                  {BEAST_PROGRESSION.lifespan.deathLoss}寿命；不足
-                  {BEAST_PROGRESSION.lifespan.deployMinimum}
-                  不能出战，切磋与练功不消耗寿命。
-                </InkTooltip>
-              </span>
-            </div>
             <div
               className="bg-ink/10 mt-2 h-1 overflow-hidden"
               role="progressbar"
@@ -304,6 +291,27 @@ export function BeastPanel({
             ).map(([key, label]) => (
               <Stat key={key} label={label} value={beast.aptitudes[key]} />
             ))}
+            <div className="border-ink/8 flex flex-wrap items-center justify-between gap-x-3 border-b py-1.5">
+              <dt className="text-ink-secondary text-xs">成长</dt>
+              <dd className="ml-auto font-mono text-sm">
+                {beast.growth.toFixed(3)}
+              </dd>
+            </div>
+            <div className="border-ink/8 col-span-2 flex flex-wrap items-center justify-between gap-x-3 border-b py-1.5 lg:col-span-1">
+              <dt className="text-ink-secondary text-xs">寿命</dt>
+              <dd className="ml-auto font-mono text-sm">
+                <InkTooltip
+                  label={`寿命 ${beast.currentLifespan}/${beast.maxLifespan}，查看寿命与入场规则`}
+                  triggerClassName="text-ink hover:text-ink-secondary focus-visible:outline-ink inline-flex h-6 shrink-0 cursor-help items-center whitespace-nowrap underline decoration-dotted underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2"
+                  triggerContent={`${beast.currentLifespan}/${beast.maxLifespan}`}
+                >
+                  每场满气血、法力入场。野外死亡每场扣除一次
+                  {BEAST_PROGRESSION.lifespan.deathLoss}寿命；不足
+                  {BEAST_PROGRESSION.lifespan.deployMinimum}
+                  不能出战，切磋与练功不消耗寿命。
+                </InkTooltip>
+              </dd>
+            </div>
           </dl>
         </section>
       </div>

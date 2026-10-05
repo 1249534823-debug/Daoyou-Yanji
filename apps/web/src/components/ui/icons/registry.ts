@@ -9,6 +9,56 @@ export const iconRegistry: ReadonlyMap<string, string> = new Map([
   ['map-sect', '/assets/icons/map-sect.webp'],
   ['map-landmark', '/assets/icons/map-landmark.webp'],
 
+  ['beast-skill-all-seeing', '/assets/icons/beast-skill-all-seeing.webp'],
+  [
+    'beast-skill-bloodthirsty-pursuit',
+    '/assets/icons/beast-skill-bloodthirsty-pursuit.webp',
+  ],
+  [
+    'beast-skill-surprise-spell',
+    '/assets/icons/beast-skill-surprise-spell.webp',
+  ],
+  ['beast-skill-innate-wisdom', '/assets/icons/beast-skill-innate-wisdom.webp'],
+  ['beast-skill-unanticipated', '/assets/icons/beast-skill-unanticipated.webp'],
+  [
+    'beast-skill-overwhelming-might',
+    '/assets/icons/beast-skill-overwhelming-might.webp',
+  ],
+  ['beast-skill-spirit-guard', '/assets/icons/beast-skill-spirit-guard.webp'],
+  ['beast-skill-wind-strike', '/assets/icons/beast-skill-wind-strike.webp'],
+  [
+    'beast-skill-barrier-breaker',
+    '/assets/icons/beast-skill-barrier-breaker.webp',
+  ],
+  ['beast-skill-mind-shatter', '/assets/icons/beast-skill-mind-shatter.webp'],
+  [
+    'beast-skill-radiant-barrier',
+    '/assets/icons/beast-skill-radiant-barrier.webp',
+  ],
+  [
+    'beast-skill-auspicious-vitality',
+    '/assets/icons/beast-skill-auspicious-vitality.webp',
+  ],
+  [
+    'beast-skill-spell-reflection',
+    '/assets/icons/beast-skill-spell-reflection.webp',
+  ],
+  [
+    'beast-skill-spell-resistance',
+    '/assets/icons/beast-skill-spell-resistance.webp',
+  ],
+  ['beast-skill-miracle', '/assets/icons/beast-skill-miracle.webp'],
+  ['beast-skill-spell-combo', '/assets/icons/beast-skill-spell-combo.webp'],
+  ['beast-skill-exorcism', '/assets/icons/beast-skill-exorcism.webp'],
+  ['beast-skill-wisdom', '/assets/icons/beast-skill-wisdom.webp'],
+  ['beast-skill-spell-mastery', '/assets/icons/beast-skill-spell-mastery.webp'],
+  ['beast-skill-concentration', '/assets/icons/beast-skill-concentration.webp'],
+  ['beast-skill-denial', '/assets/icons/beast-skill-denial.webp'],
+  ['beast-skill-wildfire', '/assets/icons/beast-skill-wildfire.webp'],
+  ['beast-skill-meditation', '/assets/icons/beast-skill-meditation.webp'],
+  ['beast-skill-sneak-attack', '/assets/icons/beast-skill-sneak-attack.webp'],
+  ['beast-skill-parry', '/assets/icons/beast-skill-parry.webp'],
+
   ['cultivator-male-avatar', '/assets/icons/cultivator-male-avatar.png'],
   ['cultivator-female-avatar', '/assets/icons/cultivator-female-avatar.png'],
   ['beast-mingshe', '/assets/icons/beast-mingshe.webp'],

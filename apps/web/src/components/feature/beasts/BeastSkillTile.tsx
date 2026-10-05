@@ -1,3 +1,4 @@
+import { GameIcon } from '@app/components/ui/GameIcon';
 import { InkTooltip } from '@app/components/ui/InkTooltip';
 import { beastSkillPresentation } from '@daoyou/game-rules/beasts/presentation';
 
@@ -26,12 +27,10 @@ export function BeastSkillTile({ skillId }: { skillId: string }) {
       triggerClassName={`flex aspect-square w-full min-w-0 [container-type:inline-size] flex-col items-center justify-center gap-1 rounded-xs border px-1 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal ${styles[skill.style]}`}
       triggerContent={
         <>
-          <span
-            aria-hidden
+          <GameIcon
+            value={skill.icon}
             className={`text-[min(24px,40cqw)] leading-none ${unavailable ? 'opacity-50 grayscale' : ''}`}
-          >
-            {skill.icon}
-          </span>
+          />
           <span
             className={`flex h-[22px] items-center justify-center text-center ${skill.style === 'advanced' ? 'font-medium' : ''}`}
           >
