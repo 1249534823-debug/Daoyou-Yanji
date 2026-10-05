@@ -117,144 +117,152 @@ export function BeastPanel({
           : undefined;
   return (
     <div className="@container min-w-0 space-y-5">
-      <div className="grid grid-cols-[136px_minmax(0,1fr)] items-center gap-3 @min-[28rem]:grid-cols-[220px_minmax(0,1fr)] @min-[28rem]:gap-6">
-        <div className="flex h-[148px] items-center justify-center @min-[28rem]:h-[236px]">
+      <div className="grid grid-cols-[96px_minmax(0,1fr)] items-start gap-x-3 gap-y-2 @min-[30rem]:grid-cols-[128px_minmax(0,1fr)] @min-[30rem]:gap-x-5 @min-[38rem]:grid-cols-[160px_minmax(0,1fr)]">
+        <div className="row-span-2 flex items-center justify-center @min-[30rem]:row-span-1">
           <BeastIcon
             speciesId={beast.speciesId}
             isMutant={beast.isMutant}
-            className="text-[132px] @min-[28rem]:text-[212px]"
+            className="text-[96px] @min-[30rem]:text-[128px] @min-[38rem]:text-[160px]"
           />
         </div>
-        <div className="min-w-0">
-          <div className="mb-1 flex flex-wrap items-center gap-2">
-            <h2 className="min-w-0 max-w-full truncate text-xl" title={beast.name}>
-              {beast.name}
-            </h2>
-            {isLead ? <BeastLeadSeal /> : null}
-            {beast.isMutant ? (
-              <BeastMutationTag isMutant />
-            ) : (
-              <InkTag className="shrink-0 text-xs">
-                {beast.originKind === 'wild'
-                  ? '野生'
-                  : beast.originKind === 'pseudo_baby'
+        <div className="contents min-w-0 @min-[30rem]:block">
+          <div className="min-w-0">
+            <div className="mb-1 flex flex-wrap items-center gap-2">
+              <h2
+                className="max-w-full min-w-0 truncate text-xl"
+                title={beast.name}
+              >
+                {beast.name}
+              </h2>
+              {isLead ? <BeastLeadSeal /> : null}
+              {beast.isMutant ? (
+                <BeastMutationTag isMutant />
+              ) : (
+                <InkTag className="shrink-0 text-xs">
+                  {beast.originKind === 'wild'
                     ? '野生'
-                    : '幼崽'}
-              </InkTag>
-            )}
-            <InkButton variant="ghost" disabled={pending} onClick={rename}>
-              改名
-            </InkButton>
-          </div>
-          {definition && definition.name !== beast.name ? (
-            <p className="text-ink-secondary text-xs">
-              物种 · {definition.name}
-            </p>
-          ) : null}
-          <p className="text-ink-secondary text-xs leading-6">
-            等级{' '}
-            <span className="font-mono">{beast.level}</span> · 携带要求{' '}
-            {definition ? getLevelRealmStage(definition.carryLevel).label : '—'}
-          </p>
-          {beast.originKind === 'wild' && (
-            <p className="text-ink-secondary text-xs">
-              初始{beast.initialLevel}级，较同级幼崽少
-              {50 + 2 * Math.min(beast.level, beast.initialLevel)}属性点
-            </p>
-          )}
-          <div className="text-ink-secondary flex flex-wrap items-center gap-x-3 text-xs">
-            <span>
-              成长 <span className="font-mono">{beast.growth.toFixed(3)}</span>
-            </span>
-            <span>
-              寿命{' '}
-              <span className="font-mono">
-                {beast.currentLifespan} / {beast.maxLifespan}
+                    : beast.originKind === 'pseudo_baby'
+                      ? '野生'
+                      : '幼崽'}
+                </InkTag>
+              )}
+              <InkButton variant="ghost" disabled={pending} onClick={rename}>
+                改名
+              </InkButton>
+            </div>
+            {definition && definition.name !== beast.name ? (
+              <p className="text-ink-secondary text-xs">
+                物种 · {definition.name}
+              </p>
+            ) : null}
+            <div className="text-ink-secondary flex flex-wrap gap-x-3 text-xs leading-6">
+              <span className="whitespace-nowrap">
+                等级 <span className="font-mono">{beast.level}</span>
               </span>
-            </span>
-            <InkTooltip label="寿命与入场规则">
-              每场满气血、法力入场。野外死亡每场扣除一次
-              {BEAST_PROGRESSION.lifespan.deathLoss}寿命；不足
-              {BEAST_PROGRESSION.lifespan.deployMinimum}
-              不能出战，切磋与练功不消耗寿命。
-            </InkTooltip>
+              <span>
+                携带要求{' '}
+                {definition
+                  ? getLevelRealmStage(definition.carryLevel).label
+                  : '—'}
+              </span>
+            </div>
           </div>
-          <div
-            className="bg-ink/10 mt-2 h-1 overflow-hidden"
-            role="progressbar"
-            aria-label="升级修为"
-            aria-valuemin={0}
-            aria-valuemax={exp}
-            aria-valuenow={Math.min(beast.exp, exp)}
-          >
+          <div className="col-start-2 min-w-0 @min-[30rem]:mt-2">
+            <div className="text-ink-secondary flex flex-wrap items-center gap-x-3 text-xs">
+              <span className="whitespace-nowrap">
+                成长{' '}
+                <span className="font-mono">{beast.growth.toFixed(3)}</span>
+              </span>
+              <span className="inline-flex items-center gap-1 whitespace-nowrap">
+                寿命{' '}
+                <span className="font-mono">
+                  {beast.currentLifespan} / {beast.maxLifespan}
+                </span>
+                <InkTooltip label="寿命与入场规则">
+                  每场满气血、法力入场。野外死亡每场扣除一次
+                  {BEAST_PROGRESSION.lifespan.deathLoss}寿命；不足
+                  {BEAST_PROGRESSION.lifespan.deployMinimum}
+                  不能出战，切磋与练功不消耗寿命。
+                </InkTooltip>
+              </span>
+            </div>
             <div
-              className="bg-teal h-full"
-              style={{ width: `${Math.min(100, (beast.exp / exp) * 100)}%` }}
-            />
-          </div>
-          <div className="text-ink-secondary mt-1 flex flex-wrap justify-between gap-x-2 text-xs">
-            <span>{capped ? '已达当前培养上限' : '修为'}</span>
-            <span className="font-mono">
-              {beast.exp.toLocaleString()} / {exp.toLocaleString()}
-            </span>
-          </div>
-        </div>
-        <div className="col-span-2 flex flex-wrap gap-2 sm:col-start-2">
-          <div className="flex items-center">
-            <InkButton
-              variant={isLead ? 'secondary' : 'primary'}
-              pending={
-                pending &&
-                (pendingLineup === 'lead' || pendingLineup === 'unlead')
-              }
-              disabled={
-                pending ||
-                (!isLead &&
-                  (!canDeployBeast(beast, ownerLevel) || (!carried && full)))
-              }
-              onClick={() => lineup(isLead ? 'unlead' : 'lead')}
+              className="bg-ink/10 mt-2 h-1 overflow-hidden"
+              role="progressbar"
+              aria-label="升级修为"
+              aria-valuemin={0}
+              aria-valuemax={exp}
+              aria-valuenow={Math.min(beast.exp, exp)}
             >
-              {isLead ? '取消首发' : '设为首发'}
-            </InkButton>
-            {!isLead && (reason || (!carried && full)) ? (
-              <InkTooltip label="设为首发条件">
-                {reason ?? '携带灵兽已满（最多6只）'}
-              </InkTooltip>
-            ) : null}
+              <div
+                className="bg-teal h-full"
+                style={{ width: `${Math.min(100, (beast.exp / exp) * 100)}%` }}
+              />
+            </div>
+            <div className="text-ink-secondary mt-1 flex flex-wrap justify-between gap-x-2 text-xs">
+              <span>{capped ? '已达当前培养上限' : '修为'}</span>
+              <span className="font-mono">
+                {beast.exp.toLocaleString()} / {exp.toLocaleString()}
+              </span>
+            </div>
           </div>
-          <div className="flex items-center">
-            <InkButton
-              variant={carried ? 'secondary' : 'default'}
-              pending={pending && pendingLineup === 'carry'}
-              disabled={pending || (!carried && full)}
-              onClick={() => lineup('carry')}
-            >
-              {carried ? '取消携带' : '携带出战'}
-            </InkButton>
-            {!carried && full ? (
-              <InkTooltip label="携带出战条件">
-                携带灵兽已满（最多6只）。
-              </InkTooltip>
-            ) : null}
-          </div>
-          <div className="flex items-center">
-            <InkButton disabled={pending || capped} onClick={feed}>
-              喂养
-            </InkButton>
-            {capped ? (
-              <InkTooltip label="喂养条件">已达当前培养上限。</InkTooltip>
-            ) : null}
-          </div>
-          <div className="flex items-center">
-            <InkButton
-              disabled={pending || beast.currentLifespan >= beast.maxLifespan}
-              onClick={() => act('rest')}
-            >
-              休养
-            </InkButton>
-            {beast.currentLifespan >= beast.maxLifespan ? (
-              <InkTooltip label="休养条件">寿命已满。</InkTooltip>
-            ) : null}
+          <div className="col-span-2 grid grid-cols-2 gap-x-2 gap-y-1 @min-[30rem]:mt-2 @min-[44rem]:flex @min-[44rem]:flex-wrap">
+            <div className="flex items-center">
+              <InkButton
+                variant={isLead ? 'secondary' : 'primary'}
+                pending={
+                  pending &&
+                  (pendingLineup === 'lead' || pendingLineup === 'unlead')
+                }
+                disabled={
+                  pending ||
+                  (!isLead &&
+                    (!canDeployBeast(beast, ownerLevel) || (!carried && full)))
+                }
+                onClick={() => lineup(isLead ? 'unlead' : 'lead')}
+              >
+                {isLead ? '取消首发' : '设为首发'}
+              </InkButton>
+              {!isLead && (reason || (!carried && full)) ? (
+                <InkTooltip label="设为首发条件">
+                  {reason ?? '携带灵兽已满（最多6只）'}
+                </InkTooltip>
+              ) : null}
+            </div>
+            <div className="flex items-center">
+              <InkButton
+                variant={carried ? 'secondary' : 'default'}
+                pending={pending && pendingLineup === 'carry'}
+                disabled={pending || (!carried && full)}
+                onClick={() => lineup('carry')}
+              >
+                {carried ? '取消携带' : '携带出战'}
+              </InkButton>
+              {!carried && full ? (
+                <InkTooltip label="携带出战条件">
+                  携带灵兽已满（最多6只）。
+                </InkTooltip>
+              ) : null}
+            </div>
+            <div className="flex items-center">
+              <InkButton disabled={pending || capped} onClick={feed}>
+                喂养
+              </InkButton>
+              {capped ? (
+                <InkTooltip label="喂养条件">已达当前培养上限。</InkTooltip>
+              ) : null}
+            </div>
+            <div className="flex items-center">
+              <InkButton
+                disabled={pending || beast.currentLifespan >= beast.maxLifespan}
+                onClick={() => act('rest')}
+              >
+                休养
+              </InkButton>
+              {beast.currentLifespan >= beast.maxLifespan ? (
+                <InkTooltip label="休养条件">寿命已满。</InkTooltip>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>

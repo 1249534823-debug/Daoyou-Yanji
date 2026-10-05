@@ -148,14 +148,14 @@ function CodexDetail({
 }) {
   return (
     <div className="@container min-w-0 space-y-5">
-      <div className="grid grid-cols-[136px_minmax(0,1fr)] items-center gap-x-3 @min-[28rem]:grid-cols-[220px_minmax(0,1fr)] @min-[28rem]:gap-x-6">
-        <div className="row-span-2 flex h-[148px] items-center justify-center @min-[28rem]:row-span-1 @min-[28rem]:h-[236px]">
+      <div className="grid grid-cols-[96px_minmax(0,1fr)] items-center gap-x-3 gap-y-2 @min-[30rem]:grid-cols-[128px_minmax(0,1fr)] @min-[30rem]:items-start @min-[30rem]:gap-x-5 @min-[38rem]:grid-cols-[160px_minmax(0,1fr)]">
+        <div className="row-span-2 flex items-center justify-center @min-[30rem]:row-span-1">
           <BeastIcon
             speciesId={entry.id}
-            className="text-[132px] @min-[28rem]:text-[212px]"
+            className="text-[96px] @min-[30rem]:text-[128px] @min-[38rem]:text-[160px]"
           />
         </div>
-        <div className="contents min-w-0 @min-[28rem]:block">
+        <div className="contents min-w-0 @min-[30rem]:block">
           <h2 className="self-end truncate text-xl" title={entry.name}>
             {entry.name}
           </h2>
@@ -164,7 +164,7 @@ function CodexDetail({
             {entry.realm} · 携带要求{' '}
             {getLevelRealmStage(entry.carryLevel).label}
           </p>
-          <p className="text-ink-secondary col-span-2 mt-2 text-sm leading-6">
+          <p className="text-ink-secondary col-span-2 text-sm leading-6 @min-[30rem]:mt-2">
             {entry.description}
           </p>
         </div>

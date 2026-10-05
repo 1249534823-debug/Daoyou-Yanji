@@ -1,6 +1,6 @@
 # 麒麟青绿赭金头像
 
-采用日期：2026-10-05。用户确认`qilin-jade-gold-v2.png`并要求替换进游戏，完成后审查还有哪些物种未重新设计。本轮仅换立绘，不打开网页验收；网页效果由用户亲自验收。
+采用日期：2026-10-05。用户确认`qilin-jade-gold-v2.png`并要求替换进游戏，完成后仅盘点还有哪些物种未重新设计，下一只待选择。本轮仅换立绘，不打开网页验收；网页效果由用户亲自验收。
 
 ## 采用依据与素材
 
@@ -11,7 +11,8 @@
 - 使用内置image_gen一次全新生成、一次针对最高角尖的画布修正，未用CLI、程序化改色、补画或抠图。v1输入依次为项目根目录下`output/imagegen/zhuyan-cinnabar-redesign/pixel-reference.png`、`.agents/skills/daoyou-ink-portraits/references/male-baseline.webp`和同目录`female-baseline.webp`；v2唯一输入为本地v1。
 - v1原出处：`/Users/churcht/.codex/generated_images/01a10b03-ffb0-7b20-be3a-33aeaa94b738/exec-75929904-37bb-4c7f-a020-17944b327b82.png`；项目副本`output/imagegen/qilin-jade-gold-redesign/qilin-jade-gold-v1.png`。
 - v2原出处：`/Users/churcht/.codex/generated_images/01a10b03-ffb0-7b20-be3a-33aeaa94b738/exec-a5ccad62-c1a8-4f4b-b6b6-555ea6894bc1.png`；项目选稿`output/imagegen/qilin-jade-gold-redesign/qilin-jade-gold-v2.png`。两轮默认目录原稿均保留，项目副本与原稿一致。
-- 正式素材为`apps/web/public/assets/icons/beast-qilin.webp`，沿用`icon:beast-qilin`注册。旧正式图备份为`output/imagegen/qilin-jade-gold-redesign/original-beast-qilin.webp`，正式导出统计见同目录`production-export.json`。
+- 正式素材为`apps/web/public/assets/icons/beast-qilin.webp`，沿用`icon:beast-qilin`注册。从1254×1254选稿按alpha≥4边界`(225,35)—(1180,1210)`裁掉透明外边距，Lanczos3等比贴合256×256透明画布，WebP质量90、alpha质量100，30730字节；保留内部负形与半透明笔触。
+- 正式文件SHA-256为`f884d089ee173fd27a3ebcce893c7cf86972901e56fd2b2ee3898ab779aae83e`。旧正式图备份为`output/imagegen/qilin-jade-gold-redesign/original-beast-qilin.webp`，SHA-256为`dc86ccafa7b032bf84e154e9b6752498eb14f79244f96b74680f3e8e82e4464b`，覆盖前已核对与旧正式图一致；正式导出统计见同目录`production-export.json`。
 
 ## 修框经过与已采用造型
 
@@ -28,6 +29,8 @@ v2只针对取景过满与最高角尖截断，用同一张v1缩小整体构图�
 v2原稿1254×1254 RGBA、alpha范围0—255，透明像素1032140、半透明像素540141。独立源图、256px候选预览及候选阶段内存纸色合成未见明确必须修复的解剖或框裁缺陷、明显脏底；角枝间、腿间及尾与后臀间留白真实透明，无烘焙纸张矩形、棋盘纹或背景景物。
 
 `validation-v1.json`记录首稿角尖触框，`validation-v2.json`的候选状态与`productionPreserved`属于采用前记录；正式接入以`production-export.json`为准。`qilin-jade-gold-v2-preview.webp`仅作候选阶段缩小检查，不替代正式导出统计。
+
+正式WebP的alpha范围0—255，可见边界`(24,0)—(232,256)`，高边占满、宽边居中，源稿SHA-256为`851855e32c6f3deb6759237d14809739fcf15a4f7ee0b00b011a1c11cf568da6`。已核对源稿、正式图与备份路径及hash。
 
 按用户要求，只替换立绘，不打开网页、不启动预览服务器，不做桌面／手机网页验收；网页效果由用户亲自验收。仅核对静态源图与导出图、alpha／边界、路径、SHA-256、两轮提示词和差异。纯素材及记录，未独立运行lint、typecheck、完整生产build或test，未修改同期应用代码、配置和游戏数据。下文两段实际完整提示词分别与`prompt.txt`及`prompt-v2.txt`逐字一致；详见[头像采用记录](../beast-avatar-generation.md)。
 
