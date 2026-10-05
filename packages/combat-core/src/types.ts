@@ -245,6 +245,8 @@ export type Unit = {
   /** 所有伤害路径的实际掉血累计；不含护盾、过量伤害和技能气血成本。 */
   hpDamageThisRound?: { round: number; amount: number };
   skillUses?: Record<string, number>;
+  /** Paid active-skill uses by this unit; all allied pets contribute to novelty. */
+  skillsUsedThisRound?: { round: number; skillIds: SkillId[] };
   cooldowns?: Record<string, number>;
   resources: CombatResourceState[];
   barriers: BarrierState[];

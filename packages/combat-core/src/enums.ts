@@ -198,6 +198,7 @@ export type StatusHit = (typeof StatusHit)[keyof typeof StatusHit];
 
 /** 伤害公式族。具体算法在 rules-daoyou，引擎只把名字传过去。 */
 export const FormulaFamily = {
+  GuardBreak: 'guardBreak',
   Physical: 'physical',
   Spell: 'spell',
   Dragon: 'dragon',
@@ -284,6 +285,7 @@ export const EventType = {
 export type EventType = (typeof EventType)[keyof typeof EventType];
 
 export const StatusTick = {
+  RoundStart: 'roundStart',
   RoundEnd: 'roundEnd',
 } as const;
 export type StatusTick = (typeof StatusTick)[keyof typeof StatusTick];

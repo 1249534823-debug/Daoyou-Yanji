@@ -116,16 +116,18 @@ export function BeastPanel({
           ? '寿命不足，请先休养'
           : undefined;
   return (
-    <div className="min-w-0 space-y-5">
-      <div className="grid grid-cols-[72px_minmax(0,1fr)] items-center gap-3 sm:grid-cols-[130px_minmax(0,1fr)] sm:gap-6">
-        <div className="from-teal/10 before:border-teal/15 relative flex aspect-square items-center justify-center bg-radial to-transparent before:absolute before:inset-1 before:rounded-full before:border sm:before:inset-3">
-          <span aria-hidden className="font-sans text-5xl sm:text-7xl">
-            <BeastIcon speciesId={beast.speciesId} isMutant={beast.isMutant} />
-          </span>
+    <div className="@container min-w-0 space-y-5">
+      <div className="grid grid-cols-[136px_minmax(0,1fr)] items-center gap-3 @min-[28rem]:grid-cols-[220px_minmax(0,1fr)] @min-[28rem]:gap-6">
+        <div className="flex h-[148px] items-center justify-center @min-[28rem]:h-[236px]">
+          <BeastIcon
+            speciesId={beast.speciesId}
+            isMutant={beast.isMutant}
+            className="text-[132px] @min-[28rem]:text-[212px]"
+          />
         </div>
         <div className="min-w-0">
-          <div className="mb-1 flex items-center gap-2">
-            <h2 className="truncate text-xl" title={beast.name}>
+          <div className="mb-1 flex flex-wrap items-center gap-2">
+            <h2 className="min-w-0 max-w-full truncate text-xl" title={beast.name}>
               {beast.name}
             </h2>
             {isLead ? <BeastLeadSeal /> : null}

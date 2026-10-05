@@ -1062,7 +1062,7 @@
         "type": "mindShatter",
         "costMpBase": 10,
         "costMpLevelDivisor": 2,
-        "physicalFactor": 0.95,
+        "physicalFactor": 0.9,
         "mpDamageFactor": 1.25,
         "mpDamageDivisor": 10,
         "mpLevelDivisor": 2,

@@ -208,7 +208,7 @@ export function applyEffect(
   env: ExprEnv,
 ): void {
   // 休息、给自己上状态、驱散可以没有敌方目标。
-  env = { ...env, state: ctx.state, normalTargetIds: ctx.currentAction?.normalTargetIds, killedTargetIds: ctx.currentAction?.killedTargetIds }
+  env = { ...env, state: ctx.state, allyPetSkillUnused: ctx.currentAction?.sourceId === source.id ? ctx.currentAction.allyPetSkillUnused : false, normalTargetIds: ctx.currentAction?.normalTargetIds, killedTargetIds: ctx.currentAction?.killedTargetIds }
   if (
     effect.type !== EffectType.SkipNextAction &&
     effect.type !== EffectType.RandomBranch &&
@@ -485,6 +485,8 @@ function handleHit(
         critMultiplier: effect.type === EffectType.PhysicalHit ? effect.critMultiplier : undefined,
         healInstead: effect.type === EffectType.PhysicalHit ? effect.healInstead : undefined,
         mpDamageRatio: effect.type === EffectType.PhysicalHit ? effect.mpDamageRatio : undefined,
+        defenseSubtract: effect.type === EffectType.PhysicalHit ? evalExpr(effect.defenseSubtract, { ...env, target: t }) : undefined,
+        defendFactor: effect.type === EffectType.PhysicalHit ? effect.defendFactor : undefined,
         power: evalExpr(effect.power, { ...env, target: t }),
         trueDamage,
         defenseIgnore:

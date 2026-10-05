@@ -35,6 +35,8 @@ export type StrikeInput = {
   schoolTerm?: SchoolTerm
   splash?: SplashSpec
   defenseIgnore?: number
+  defenseSubtract?: number
+  defendFactor?: number
   skillId?: string
   isPrimary?: boolean
   cannotMiss?: boolean
@@ -100,7 +102,7 @@ export function resolveStrike(ctx: BattleContext, input: StrikeInput): void {
     applyHeal(ctx, source, target, raw * (input.resultFactor ?? 1) * resultCritFactor, false, true, false)
     return
   }
-  raw = applyDefend(ctx, target, input.kind, raw)
+  raw = applyDefend(ctx, target, input.kind, raw, input.defendFactor)
   raw = floorAtLeast(MIN_DAMAGE, raw * damageTakenFactor(target, input.kind))
 
   const hooked = ctx.hooks.emit(HookName.OnHitCalc, {
@@ -259,18 +261,21 @@ function computeBase(
         ? FormulaFamily.Physical
         : FormulaFamily.Spell)
   const defenseIgnore = Math.min(1, Math.max(0, input.defenseIgnore ?? 0))
+  const targetAttrs = { ...dst,
+    physicalDef: input.kind === DamageKind.Physical
+      ? Math.max(0, dst.physicalDef - Math.max(0, input.defenseSubtract ?? 0)) : dst.physicalDef }
   const effectiveTarget =
     (input.kind === DamageKind.Physical || input.kind === DamageKind.Spell) && defenseIgnore > 0
       ? withAttrs(target, {
-          ...dst,
+          ...targetAttrs,
           physicalDef: input.kind === DamageKind.Physical
-            ? Math.floor(dst.physicalDef * (1 - defenseIgnore))
-            : dst.physicalDef,
+            ? Math.floor(targetAttrs.physicalDef * (1 - defenseIgnore))
+            : targetAttrs.physicalDef,
           magicDef: input.kind === DamageKind.Spell
             ? Math.floor(dst.magicDef * (1 - defenseIgnore))
             : dst.magicDef,
         })
-      : withAttrs(target, dst)
+      : withAttrs(target, targetAttrs)
   return ctx.rules.formulas.baseDamage({
     family,
     kind: input.kind,
@@ -303,9 +308,9 @@ function applyFluctuation(ctx: BattleContext, raw: number, kind: DamageKindType,
   return floorAtLeast(MIN_DAMAGE, raw * ctx.rng.range(min, max))
 }
 
-function applyDefend(ctx: BattleContext, target: Unit, kind: DamageKindType, raw: number): number {
+function applyDefend(ctx: BattleContext, target: Unit, kind: DamageKindType, raw: number, factor?: number): number {
   if (kind !== DamageKind.Physical || !target.flags.defending) return raw
-  return floorAtLeast(MIN_DAMAGE, raw * ctx.rules.formulas.defendPhysicalFactor)
+  return floorAtLeast(MIN_DAMAGE, raw * (factor ?? ctx.rules.formulas.defendPhysicalFactor))
 }
 
 /** silent=true 表示来自钩子的二次打击，不再触发 onBeHit（避免反击/反震互爆）。 */

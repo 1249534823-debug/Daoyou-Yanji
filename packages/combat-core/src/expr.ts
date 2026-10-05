@@ -181,6 +181,10 @@ class Parser {
     if (name === 'normalTarget') return this.env.target && this.env.normalTargetIds?.includes(this.env.target.id) ? 1 : 0
     if (name === 'enemyPlayers') return this.env.state?.units.filter(u => u.side !== this.env.source.side && u.kind === 'player').length ?? 0
     if (name === 'targetIsPet') return this.env.target?.kind === 'pet' ? 1 : 0
+    if (name === 'targetIsPlayer') return this.env.target?.kind === 'player' ? 1 : 0
+    if (name === 'targetDefending') return this.env.target?.flags.defending ? 1 : 0
+    if (name.startsWith('targetFact.')) return this.env.target?.combatFacts?.[name.slice(11)] ?? 0
+    if (name === 'allyPetSkillUnused') return this.env.allyPetSkillUnused ? 1 : 0
     if (name.startsWith('targetKnown.')) return this.env.target && [...this.env.target.skills, ...this.env.target.passives].includes(name.slice(12)) ? 1 : 0
     if (name.startsWith('targetEffective.')) return this.env.target ? effectiveAttrs(this.env.target)[name.slice(16) as keyof Unit['attrs']] ?? 0 : 0
     if (name.startsWith('effective.')) return effectiveAttrs(this.env.source)[name.slice(10) as keyof Unit['attrs']] ?? 0

@@ -147,23 +147,24 @@ function CodexDetail({
   onTravel: (habitat: BeastCodexHabitat) => void;
 }) {
   return (
-    <div className="min-w-0 space-y-5">
-      <div className="grid grid-cols-[72px_minmax(0,1fr)] items-center gap-3 sm:grid-cols-[112px_minmax(0,1fr)] sm:gap-6">
-        <div className="from-teal/10 before:border-teal/15 relative flex aspect-square items-center justify-center bg-radial to-transparent before:absolute before:inset-1 before:rounded-full before:border sm:before:inset-3">
-          <span aria-hidden className="font-sans text-5xl sm:text-6xl">
-            <BeastIcon speciesId={entry.id} />
-          </span>
+    <div className="@container min-w-0 space-y-5">
+      <div className="grid grid-cols-[136px_minmax(0,1fr)] items-center gap-x-3 @min-[28rem]:grid-cols-[220px_minmax(0,1fr)] @min-[28rem]:gap-x-6">
+        <div className="row-span-2 flex h-[148px] items-center justify-center @min-[28rem]:row-span-1 @min-[28rem]:h-[236px]">
+          <BeastIcon
+            speciesId={entry.id}
+            className="text-[132px] @min-[28rem]:text-[212px]"
+          />
         </div>
-        <div className="min-w-0">
-          <h2 className="truncate text-xl" title={entry.name}>
+        <div className="contents min-w-0 @min-[28rem]:block">
+          <h2 className="self-end truncate text-xl" title={entry.name}>
             {entry.name}
           </h2>
-          <p className="text-ink-secondary mt-1 text-xs leading-6">
+          <p className="text-ink-secondary mt-1 self-start text-xs leading-6">
             {BEAST_RARE_SPECIES_IDS.has(entry.id) ? '稀有异兽 · ' : ''}
             {entry.realm} · 携带要求{' '}
             {getLevelRealmStage(entry.carryLevel).label}
           </p>
-          <p className="text-ink-secondary mt-2 text-sm leading-6">
+          <p className="text-ink-secondary col-span-2 mt-2 text-sm leading-6">
             {entry.description}
           </p>
         </div>

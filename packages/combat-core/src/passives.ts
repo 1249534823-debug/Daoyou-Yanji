@@ -76,6 +76,7 @@ export function bindDataHooks(ctx: BattleContext): void {
           if (hook.limitConsumption === "onAttempt") consumeWhen(ctx, hook.when, scope)
 
           const env = {
+            allyPetSkillUnused: ctx.currentAction?.sourceId === unit.id ? ctx.currentAction.allyPetSkillUnused : false,
             ...makeEnv(unit, skill, hctx.target ? [hctx.target] : []),
             state: ctx.state,
             normalTargetIds: ctx.currentAction?.normalTargetIds,

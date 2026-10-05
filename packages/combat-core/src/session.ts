@@ -13,7 +13,7 @@ import { teamFled, teamWiped, unitById } from './unit-query.js';
 import { SeededRng } from "./rng.js"
 import { bindDataHooks } from "./passives.js"
 import { clearBarriers, tickBarriers } from "./barriers.js"
-import { applyStatus, expireRoundEndStatuses, tickStatuses } from './status.js';
+import { applyStatus, expireRoundEndStatuses, tickRoundStartStatuses, tickStatuses } from './status.js';
 import { clearCombatStatuses } from './status-removal.js';
 import type {
   BattleEvent,
@@ -211,6 +211,8 @@ export class BattleSession {
       }
     }
     this.ctx.hooks.emit(HookName.OnRoundStart)
+    tickRoundStartStatuses(this.ctx)
+    this.finishIfNeeded()
     this.syncRng()
   }
 

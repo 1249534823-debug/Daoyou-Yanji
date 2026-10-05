@@ -763,6 +763,20 @@ function resolveSkillAction(
     });
   }
 
+  // Lock before the effects: one group spell/repeat shares the same decision,
+  // while invoked child skills each enter their own paid action scope.
+  if (unit.kind === UnitKind.Pet || unit.combatFacts?.isBeast === 1) {
+    ctx.currentAction.allyPetSkillUnused = !ctx.state.units.some(ally =>
+      ally.side === unit.side && (ally.kind === UnitKind.Pet || ally.combatFacts?.isBeast === 1) &&
+      ally.skillsUsedThisRound?.round === ctx.state.round &&
+      ally.skillsUsedThisRound.skillIds.includes(skill.id));
+    if (unit.skillsUsedThisRound?.round !== ctx.state.round)
+      unit.skillsUsedThisRound = { round: ctx.state.round, skillIds: [] };
+    if (!unit.skillsUsedThisRound.skillIds.includes(skill.id))
+      unit.skillsUsedThisRound.skillIds.push(skill.id);
+    env.allyPetSkillUnused = ctx.currentAction.allyPetSkillUnused;
+  }
+
   if (skill.capture) {
     const target = targets[0]!;
     const chance = Math.max(

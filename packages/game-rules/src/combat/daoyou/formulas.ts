@@ -71,6 +71,12 @@ function magicStrikeV3(input: StrikeFormulaInput): number {
 }
 
 const families: Record<string, (input: StrikeFormulaInput) => number> = {
+  [FormulaFamily.GuardBreak]: (input) => {
+    const attack = input.source.attrs.physicalAtk * (input.fury ? input.furyMultiplier ?? DaoyouRule.physicalFuryAtkMultiplier : 1)
+    const factor = input.target.flags.defending ? input.coeff : 1
+    const raw = physicalBase(attack, input.target.attrs.physicalDef) * factor + input.power
+    return finish(applyCultivate(raw, input.source.attrs.attackCultivate - input.target.attrs.defenseCultivate))
+  },
   [FormulaFamily.AttackDifference]: (input) => {
     const attack = input.source.attrs.physicalAtk * (input.fury ? input.furyMultiplier ?? DaoyouRule.physicalFuryAtkMultiplier : 1)
     const difference = attack - input.target.attrs.physicalAtk

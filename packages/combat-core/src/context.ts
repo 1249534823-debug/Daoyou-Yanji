@@ -31,6 +31,7 @@ export type BattleContext = {
   invokingAttackSkills?: boolean
   /** 当前这次出手；OnHitCalc / when.skillIds 读这里。 */
   currentAction?: {
+    allyPetSkillUnused?: boolean
     triggeredTargets?: string[]
     normalTargetIds?: UnitId[]
     initialOwnedStatusKindsByTarget?: Record<UnitId, string[]>

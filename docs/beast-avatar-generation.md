@@ -371,3 +371,43 @@ Real RGBA transparent background around the animal AND between flame tongues. No
 选稿1254×1254 RGBA、alpha范围0—255，按alpha≥4边界`(50,32)—(1230,1219)`裁切，Lanczos3等比贴合256×256透明画布，WebP质量90、alpha质量100。正式文件`apps/web/public/assets/icons/beast-nine-tailed-fox.webp`为36674字节，可见边界`(1,0)—(255,256)`，沿用`icon:beast-nine-tailed-fox`注册，复用既存旧素材备份。正式统计为`output/imagegen/nine-tailed-fox-cinnabar-redesign/production-export.json`，原稿出处、两次完整实际提示词及采用边界见[九尾狐头像](art/nine-tailed-fox-avatar.md)。大图可辨上五下四共九尾；四肢中一前足抬收、另一前足落稳，两后足支撑。胸颈厚鬃、繁尾近扇形、较精细眼面与尾纹、最下尾和后腿局部重叠均属用户已接受的实际边界，不宣称全部轻薄减笔要求已实现。
 
 候选阶段纸色与深底24/30/48/60/72px检查首先可辨白狐与赤色多尾，48—72px尖耳、狐体和尾间分隔更清楚，不承诺小列表逐条数清九尾。正式接入后复用既有本地服务，1280×720桌面合体图鉴列表30px／详情60px、390×844手机列表24px／详情48px均加载生产图`/assets/icons/beast-nine-tailed-fox.webp`，`complete=true`、natural尺寸256×256；白狐赤尾清楚，无意外裁断，error/warn均为空，本次验收无服务报错或重启。截图为`output/imagegen/nine-tailed-fox-cinnabar-redesign/game-desktop.png`与`game-mobile.png`。已检查正式导出、浏览器、路径与`git diff --check`，未独立运行lint、typecheck、完整生产build或test，未修改同期代码或游戏数据。后续按用户要求继续祸斗，保持逐只看稿的节奏。
+
+## 祸斗：采用首稿炭黑火鬃v1版（2026-10-05）
+
+用户明确选择`output/imagegen/huodou-ember-redesign/huodou-ember-v1.png`的长毛狼式肩背、火鬃与蓬尾并要求接入，随后继续旋龟。炭黑兽躯和赤赭／焦橙肩背尾末取自像素参考启发，犬形食火意象借《太平广记》所引《原化记》的“蜗斗”；《赤雅》同名记述分开引用，不拼成统一原典食性。长毛狼相、四足低行和单条蓬尾均按用户明确选定首稿保留，未采用收短轮廓的v2；不修改物种文案、数值、技能或配置。
+
+选稿1254×1254 RGBA、alpha范围0—255，按alpha≥4边界`(61,117)—(1248,1166)`裁切，Lanczos3等比contain贴合256×256透明画布，WebP质量90、alpha质量100。正式文件`apps/web/public/assets/icons/beast-huodou.webp`为30160字节，可见边界`(0,15)—(256,241)`，沿用`icon:beast-huodou`注册；经旧素材备份hash匹配核对后覆盖正式文件，正式统计见`output/imagegen/huodou-ember-redesign/production-export.json`。原稿出处、完整首稿实际提示词、用户选定造型与未采用修正史见[祸斗头像](art/huodou-avatar.md)。
+
+依照用户新增要求，本次只替换立绘，不打开网页验收；网页效果由用户亲自验收。已做静态源图／导出图查看、alpha统计、素材路径／hash、提示词与`git diff --check`核对，不将已有候选网页截图当作正式接入结果。未独立运行lint、typecheck、完整生产build或test，保留所有同期代码、配置与游戏数据。
+
+## 旋龟：采用橄榄青绿v1版（2026-10-05）
+
+用户确认`output/imagegen/xuangui-green-redesign/xuangui-green-v1.png`并要求替换进游戏，继续后续物种。鸟首、龟身和长蛇尾依据《山海经·南山经》“鸟首虺尾”，橄榄绿宽甲、青绿头颈四肢与长尾、赭黄鸟喙和腹甲来自像素参考启发；不新增传说效用或游戏能力。保留用户已看稿的挺起鸟颈、鹰钩喙、较粗蛇尾、较厚实连续墨面及较细的甲片分界、眼喙和足爪，不将初始低伏／中短颈与全部减笔要求记作实现；不重绘或修改物种文案、数值、技能和配置。
+
+选稿1254×1254 RGBA、alpha范围0—255，按alpha≥4边界`(47,109)—(1241,1178)`裁切，Lanczos3等比贴合256×256透明画布，WebP质量90、alpha质量100。正式文件`apps/web/public/assets/icons/beast-xuangui.webp`为29718字节，可见边界`(0,13)—(256,242)`，沿用`icon:beast-xuangui`注册，经旧素材备份hash匹配核对后覆盖；正式统计见`output/imagegen/xuangui-green-redesign/production-export.json`。原稿出处、完整实际提示词、采用形态及技术边界见[旋龟头像](art/xuangui-avatar.md)。
+
+本轮按用户要求只换立绘，不打开网页，不做桌面／手机网页验收，网页效果由用户亲自验收。已核对静态源图／导出图、alpha／边界、素材路径／hash、提示词与`git diff --check`，未独立运行lint、typecheck、完整生产build或test，保留所有同期代码、配置和游戏数据。下一只按逐只看稿的节奏继续饕餮。
+
+## 饕餮：采用青绿金牙v1版（2026-10-05）
+
+用户确认`output/imagegen/taotie-verdigris-redesign/taotie-verdigris-v1.png`并要求替换进游戏，下一只继续应龙。青绿厚躯、金角牙和朱红舌来自像素参考启发；贪食意象取《山海经》郭璞注与传统兽面纹，区分《北山经》正文名为狍鸮的形态，不混入人面、腋目或人手，不称为正文完整复原，也不新增游戏能力。保留用户已看稿的下颌上弯大獠牙、凶悍怒张、厚肩狮形守门兽感、较粗长弯尾及连续实体墨面、细眼牙口爪；不按提示重绘或修改物种文案、数值、技能与配置。
+
+选稿1254×1254 RGBA、alpha范围0—255，按alpha≥4边界`(27,91)—(1245,1196)`裁切，Lanczos3等比贴合256×256透明画布，WebP质量90、alpha质量100。正式文件`apps/web/public/assets/icons/beast-taotie.webp`为36304字节，可见边界`(0,12)—(256,244)`，沿用`icon:beast-taotie`注册，经旧素材备份hash匹配核对后覆盖；正式统计见`output/imagegen/taotie-verdigris-redesign/production-export.json`。原稿出处、完整实际提示词、采用形态与技术边界见[饕餮头像](art/taotie-avatar.md)。
+
+本轮按用户要求只换立绘，不打开网页，不做桌面／手机网页验收，网页效果由用户亲自验收。已核对静态源图／导出图、alpha／边界、素材路径／hash、提示词与`git diff --check`，未独立运行lint、typecheck、完整生产build或test，保留所有同期应用代码、配置及游戏数据。
+
+## 应龙：采用蓝墨赭金v2版（2026-10-05）
+
+用户确认`output/imagegen/yinglong-blue-gold-redesign/yinglong-blue-gold-v2.png`并要求替换进游戏，下一只继续麒麟。蓝墨长龙、赭金角鬃与腹带来自像素参考启发，水雨意象取《山海经·大荒东经》《大荒北经》，有翼的解释取郭璞注及《艺文类聚》所引《广雅》，不混作正文形态描述，也不称蓝金配色或具体羽翼形状为古籍规定。保留项目双翼四足与连续盘身，不新增游戏能力。v1翼尖、右翼缘与尾末触框，v2只修复取景和外轮廓；用户采用完整轮廓的v2，不重绘或修改物种文案、数值、技能与配置。
+
+实际清俊有威仪，蓝金盘身与宽幅双翼鲜明，较密的羽层、角枝和鬃、较精细头面及羽状分叉尾簇均为用户已看稿接受的边界；不把单尖尾或全部疏朗减笔要求记作已经实现。选稿1254×1254 RGBA、alpha范围0—255，按alpha≥4边界`(67,81)—(1196,1188)`裁切，Lanczos3等比贴合256×256透明画布，WebP质量90、alpha质量100。正式文件`apps/web/public/assets/icons/beast-yinglong.webp`为39308字节，可见边界`(0,2)—(256,253)`，沿用`icon:beast-yinglong`注册，经旧素材备份hash匹配核对后覆盖；正式统计见`output/imagegen/yinglong-blue-gold-redesign/production-export.json`，原稿出处、两轮完整实际提示词、修框经过与采用边界见[应龙头像](art/yinglong-avatar.md)。
+
+本轮按用户要求只换立绘，不打开网页，不做桌面／手机网页验收，网页效果由用户亲自验收。已核对静态源图／导出图、alpha／边界、素材路径／hash、两轮提示词与`git diff --check`，未独立运行lint、typecheck、完整生产build或test，保留所有同期应用代码、配置及游戏数据。
+
+## 麒麟：采用青绿赭金v2版（2026-10-05）
+
+用户确认`output/imagegen/qilin-jade-gold-redesign/qilin-jade-gold-v2.png`并要求替换进游戏，完成后审查尚未重新设计的物种。像素板没有直接麒麟参考，本稿青金配色仅借英招格的色彩关系，不迁移英招的翼、人面或解剖，不以天禄作麒麟原型，也不称为古籍规定颜色。鹿身、牛尾与温润瑞兽意象取《尔雅》《说文解字》《礼记》，原典一角与项目分枝长角分开处理，本稿采用双分枝角，不称精确复原，也不新增游戏能力。v1最高角尖触框，v2仅修复取景和角末；用户采用完整角尖的v2，不重绘或修改物种文案、数值、技能与配置。
+
+实际长分枝角、丰鬃、大幅卷曲尾簇、细密金边鳞、较精细头面蹄端及清俊温和缓步均为用户已看稿接受的边界，不把短鬃、小尾簇、简鳞或完全疏朗减笔记作已经实现。选稿1254×1254 RGBA、alpha范围0—255，按alpha≥4边界`(225,35)—(1180,1210)`裁切，正式素材为`apps/web/public/assets/icons/beast-qilin.webp`，沿用`icon:beast-qilin`注册。正式统计见`output/imagegen/qilin-jade-gold-redesign/production-export.json`，原稿出处、两轮完整实际提示词、修框经过与采用边界见[麒麟头像](art/qilin-avatar.md)。
+
+本轮按用户要求只换立绘，不打开网页，不做桌面／手机网页验收，网页效果由用户亲自验收。已核对静态源图／导出图、alpha／边界、素材路径／hash、两轮提示词与`git diff --check`，未独立运行lint、typecheck、完整生产build或test，保留所有同期应用代码、配置及游戏数据。

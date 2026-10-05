@@ -117,7 +117,7 @@ export function beastCombatFacts(beast: SummonedBeast) {
       ? sum + Math.floor(beast.level * effect.perLevel)
       : sum;
   }, 0);
-  return { strength: beastAttributes(beast).strength, defenseTraining };
+  return { isBeast: 1, strength: beastAttributes(beast).strength, defenseTraining };
 }
 
 export function projectBeastRoster(

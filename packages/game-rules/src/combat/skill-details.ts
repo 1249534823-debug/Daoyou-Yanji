@@ -41,9 +41,9 @@ function beastPassiveDescription(skill: SkillDef): string | undefined {
     case 'swiftStrike':
       return `消耗向下取整的自身等级 ÷ ${effect.costMpLevelDivisor} + ${effect.costMpBase} 法力，必中攻击 1 个目标。固定伤害为完整力量属性 × ${effect.strengthMultiplier} + 当前有效速度 ÷ ${effect.speedDivisor}，人物单位受到的伤害为 ${percent(effect.playerFactor)}%；不暴击。`;
     case 'barrierBreaker':
-      return `消耗自身等级 + ${effect.costMpBase} 法力，必中攻击 1 个目标，附加自身等级 × ${effect.powerPerLevel} 威力。忽略铁骨或高级铁骨增加的物理防御，仍计算目标基础防御；目标执行防御指令时，伤害为未防御时的 ${percent(effect.defendFactor)}%。`;
+      return `消耗自身等级 + ${effect.costMpBase} 法力，必中攻击 1 个目标。忽略铁骨或高级铁骨增加的物理防御，仍计算目标基础防御；目标执行防御指令时，基础物理伤害提高至 ${percent(effect.defendFactor)}%，随后附加自身等级 × ${effect.powerPerLevel} 威力。`;
     case 'mindShatter':
-      return `消耗向下取整的自身等级 ÷ ${effect.costMpLevelDivisor} + ${effect.costMpBase} 法力，攻击 1 个目标，造成普通物理伤害的 ${percent(effect.physicalFactor)}%。目标同时损失（本次实际气血损失 ÷ ${effect.mpDamageDivisor} + 自身等级 ÷ ${effect.mpLevelDivisor}）× ${effect.mpDamageFactor} 法力，向下取整；下一回合再损失完整力量属性 ÷ ${effect.periodicStrengthDivisor} + ${effect.periodicBase} 法力，向下取整。持续损耗不叠加，保留较高值。`;
+      return `消耗向下取整的自身等级 ÷ ${effect.costMpLevelDivisor} + ${effect.costMpBase} 法力，必中攻击 1 个目标，造成普通物理伤害的 ${percent(effect.physicalFactor)}%。目标同时损失（本次实际气血损失 ÷ ${effect.mpDamageDivisor} + 自身等级 ÷ ${effect.mpLevelDivisor}）× ${effect.mpDamageFactor} 法力，向下取整；下一回合再损失完整力量属性 ÷ ${effect.periodicStrengthDivisor} + ${effect.periodicBase} 法力，向下取整。持续损耗不叠加，保留较高值。`;
     case 'unanticipated':
       return `使用本回合己方灵兽尚未施展过的技能时，伤害结果提高 ${percent(effect.factor - 1)}%；同一次群体攻击与灵法连击均获得加成，每回合重新判定。不限物种，不限入场回合。`;
     case 'ghost':

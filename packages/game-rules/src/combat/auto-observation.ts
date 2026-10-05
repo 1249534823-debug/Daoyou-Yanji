@@ -53,7 +53,10 @@ export function observeAutoBattle(
           wound: owned ? unit.wound : 0,
           skills: owned ? [...unit.skills] : [],
           passives: owned ? [...unit.passives] : [],
-          combatFacts: owned ? { ...unit.combatFacts } : undefined,
+          combatFacts: owned ? { ...unit.combatFacts }
+            : unit.combatFacts?.isCharacter === 1 || unit.combatFacts?.isBeast === 1
+              ? { isCharacter: Number(unit.combatFacts?.isCharacter === 1), isBeast: Number(unit.combatFacts?.isBeast === 1) }
+              : undefined,
           skillUses: owned ? { ...unit.skillUses } : undefined,
           cooldowns: owned ? { ...unit.cooldowns } : undefined,
           entryRound: owned ? unit.entryRound : undefined,

@@ -127,6 +127,7 @@
         "formula": {
           "type": "string",
           "enum": [
+            "guardBreak",
             "physical",
             "spell",
             "dragon",

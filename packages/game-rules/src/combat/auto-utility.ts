@@ -273,8 +273,9 @@ export function rankAutoActions(
             const declared = modifiers(target, kind);
             const modifier = (key: 'damageBonus' | 'defenseIgnoreAdd' | 'barrierDamageBonus') => declared.reduce((sum, m) => sum + value(m[key]), 0);
             const ignore = Math.max(0, Math.min(1, value('defenseIgnore' in effect ? effect.defenseIgnore : undefined) + modifier('defenseIgnoreAdd')));
+            const defenseSubtract = effect.type === 'physicalHit' ? Math.max(0, value(effect.defenseSubtract)) : 0;
             const defender = { ...target, attrs: { ...target.attrs,
-              physicalDef: kind === 'physical' ? target.attrs.physicalDef * (1 - ignore) : target.attrs.physicalDef,
+              physicalDef: kind === 'physical' ? Math.max(0, target.attrs.physicalDef - defenseSubtract) * (1 - ignore) : target.attrs.physicalDef,
               magicDef: kind === 'spell' ? target.attrs.magicDef * (1 - ignore) : target.attrs.magicDef,
             } };
             let damage = 0;
@@ -314,6 +315,8 @@ export function rankAutoActions(
               intentions.push({ ...intent, healing: healing * probability });
               continue;
             }
+            if (effect.type === 'physicalHit' && target.flags.defending)
+              damage *= effect.defendFactor ?? formulas.defendPhysicalFactor;
             damage *=
               kind === 'physical'
                 ? taken(target, 'damageTakenPhysical')
@@ -416,6 +419,20 @@ export function rankAutoActions(
                 const healing = Math.min(Math.max(0, target.attrs.maxHp - target.wound - target.attrs.hp), value(def.healingPerRound) * duration * taken(source, 'healDealt') * taken(target, 'healTaken'));
                 survival += (friendly ? 1 : -1) * healing / Math.max(1, target.attrs.maxHp) * 100;
                 intent.healing = healing * probability;
+              }
+              if (friendly && def) {
+                let prevented = 0;
+                for (const enemy of observation.units.filter(unit => alive(unit) && unit.side !== target.side)) {
+                  for (const kind of ['physical', 'spell'] as const) {
+                    const key = kind === 'physical' ? 'damageTakenPhysical' : 'damageTakenSpell';
+                    const reduction = Math.max(0, 1 - (def[key] ?? 1));
+                    if (!reduction) continue;
+                    prevented += formulas.baseDamage({ source: enemy, target, kind, family: kind, coeff: 1, power: 0, fury: false }) * taken(target, key) * reduction * duration;
+                  }
+                }
+                // Predict only from the public attribute baseline, never from
+                // an enemy's hidden skills or queued command.
+                survival += Math.min(target.attrs.hp, prevented) / Math.max(1, target.attrs.maxHp) * 100 * (1 + 3 * (1 - ratio(target)));
               }
               const inert = def?.category === 'buff' && def.untilBattleEnd && def.dispellable === false && !def.blocksAction && !def.blocksSpell && !def.blocksPhysical && !def.attrMods && !def.speedMod && !def.modifiers?.length && !def.onTick && !def.damageDealtPhysical && !def.damageDealtSpell && !def.damageTakenPhysical && !def.damageTakenSpell && !def.protectsTarget && !def.blockedCommands?.length && !def.blocksArts;
               const attributeValue = inert ? 0 : def?.attrMods

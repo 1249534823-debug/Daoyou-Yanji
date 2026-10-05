@@ -67,5 +67,28 @@ export const BEAST_STATUS_DEFS: StatusDef[] =
               },
             },
           ]
-        : [],
+        : skill.effect.type === 'spellDefense'
+          ? [{
+              id: `${skill.id}.status`,
+              name: skill.name,
+              kind: 'beast.spell-defense',
+              category: StatusCategory.Buff,
+              damageTakenSpell: skill.effect.takenFactor,
+              expireSameRound: true,
+            }]
+          : skill.effect.type === 'mindShatter'
+            ? [{
+                id: `${skill.id}.status`,
+                name: '灵息震乱',
+                kind: 'beast.mp-drain',
+                category: StatusCategory.Dot,
+                ticks: StatusTick.RoundStart,
+                priority: `floor(fact.strength / ${skill.effect.periodicStrengthDivisor} + ${skill.effect.periodicBase})`,
+                onTick: {
+                  type: TickKind.Dot,
+                  mpPower: `floor(fact.strength / ${skill.effect.periodicStrengthDivisor} + ${skill.effect.periodicBase})`,
+                  snapshot: true,
+                },
+              }]
+            : [],
   );
