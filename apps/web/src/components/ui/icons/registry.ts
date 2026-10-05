@@ -13,7 +13,7 @@ export const iconRegistry: ReadonlyMap<string, string> = new Map([
   ['cultivator-female-avatar', '/assets/icons/cultivator-female-avatar.png'],
   ['beast-mingshe', '/assets/icons/beast-mingshe.webp'],
   ['beast-shen-clam', '/assets/icons/beast-shen-clam.webp'],
-  ['beast-amber-cicada', '/assets/icons/beast-amber-cicada.webp'],
+  ['beast-qingluan', '/assets/icons/beast-qingluan.webp'],
   ['beast-xiezhi', '/assets/icons/beast-xiezhi.webp'],
   ['beast-nine-tailed-fox', '/assets/icons/beast-nine-tailed-fox.webp'],
   ['beast-huodou', '/assets/icons/beast-huodou.webp'],

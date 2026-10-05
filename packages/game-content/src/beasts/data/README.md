@@ -15,7 +15,7 @@
 | `aptitudes.*.{min,max}` | 五项资质的独立整数闭区间 |
 | `growthMilli.{min,max}` | 成长千分整数闭区间，生成后除以1000 |
 | `birthSkills.core` | 0至2项出生／洗炼必带技能，可被传承灵印覆盖 |
-| `birthSkills.candidates` | 候选池，默认普通技能；琥珀蝉、獬豸含已确认的高级候选；与必带合计3至6项；每个候选独立以1/2获得 |
+| `birthSkills.candidates` | 候选池，按逐物种已确认设计包含普通或高级技能；与必带合计3至6项；每个候选独立以1/2获得 |
 | `generation.minBirthSkills` / `maxBirthSkills` | 全包出生技能数量边界，当前0至6；各物种上限为自己的天生全集 |
 | `generation.starterLevel` / `lifespan` | 初始伙伴等级10、初始及最大寿命1000 |
 
@@ -161,3 +161,7 @@ pnpm run build
 ## 融合：fusion.json
 
 `fusion-config.ts`与`fusion.schema.json`共同校验配置；档位唯一且权重合计100。双宝宝宝宝率`babyChance=0.95`，其他组合假宝宝率`pseudoBabyChance=0.25`，非必带不同技能各按`skillChance=0.5`继承。资质和成长档位、兜底上限集中在此文件：成长1.500，五项资质各100000（结构安全边界），已取消首批物种定标的低上限，出生及变异不受融合上限裁剪。规则与点数预算见[宝宝体系与融合](../../../../../docs/combat-v6-beast-fusion.md)。融合个体使用独立版本`summoned_beast_fusion_v1`，不受出生技能数上限限制。
+
+## 2026-10-05 后期再平衡
+
+物种修订13：青鸾替换琥珀蝉，化神至渡劫收紧出生区间；普通出生／洗炼成长最高1.380、攻资最高1900，融合及存量事实不受该出生范围裁剪。34种为16种无必带、17种单必带、幽冥虎1种双必带；六目灵猿与幽冥虎的完整出生表保持不变。详见[再设计与验收](../../../../../docs/combat-v6-beast-rebalance-design.md)。

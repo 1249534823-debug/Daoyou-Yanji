@@ -745,7 +745,7 @@
     {
       "id": "WILD_RESIN_GROVE",
       "wild_encounter_id": "combat.wild.region.resin-grove",
-      "name": "玄黄裂渊·凝脂古林",
+      "name": "玄黄裂渊·听泉古林",
       "parent_id": "DJ_RIFT_01",
       "type": "灵兽栖息地",
       "realm_requirement": "炼虚",
@@ -754,7 +754,7 @@
         "野外寻觅",
         "灵兽栖息"
       ],
-      "description": "古木树脂凝成琥珀般的厚壳，蝉蜕悬在枝隙，薄翅掠过时带动叶底细光。"
+      "description": "古木根系攀住涧壁，泉声穿林，青鸾沿树冠掠过，银翅螳螂静伏枝叶间。"
     },
     {
       "id": "WILD_BROKEN_UPLAND",

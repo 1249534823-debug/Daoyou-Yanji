@@ -1,7 +1,7 @@
 {
   "$schema": "./wild.schema.json",
   "formatVersion": 4,
-  "contentRevision": 9,
+  "contentRevision": 10,
   "regions": [
     {
       "nodeId": "SAT_TN_08",
@@ -273,14 +273,14 @@
     {
       "nodeId": "WILD_RESIN_GROVE",
       "id": "combat.wild.region.resin-grove",
-      "name": "凝脂古林",
-      "description": "古木树脂凝成琥珀般的厚壳，蝉蜕悬在枝隙，薄翅掠过时带动叶底细光。",
+      "name": "听泉古林",
+      "description": "古木根系攀住涧壁，泉声穿林，青鸾沿树冠掠过，银翅螳螂静伏枝叶间。",
       "searchText": "你收敛气息，沿着灵息与兽迹细细寻觅……",
       "realmRequirement": "炼虚",
       "scenery": "forest",
       "species": [
         {
-          "speciesId": "combat.wild.species.amber-cicada",
+          "speciesId": "combat.wild.species.qingluan",
           "minLevel": 105,
           "maxLevel": 115
         },
@@ -333,7 +333,7 @@
           "maxLevel": 135
         },
         {
-          "speciesId": "combat.wild.species.amber-cicada",
+          "speciesId": "combat.wild.species.qingluan",
           "minLevel": 125,
           "maxLevel": 135
         },
@@ -493,7 +493,7 @@
           "maxLevel": 155
         },
         {
-          "speciesId": "combat.wild.species.amber-cicada",
+          "speciesId": "combat.wild.species.qingluan",
           "minLevel": 145,
           "maxLevel": 155
         },

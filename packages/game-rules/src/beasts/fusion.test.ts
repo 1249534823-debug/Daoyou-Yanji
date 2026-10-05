@@ -104,7 +104,7 @@ describe('融合与宝宝身份', () => {
       ),
     ).toBeCloseTo(99.4);
   });
-  it('后续物种融合保留高成长与资质，不受首批出生上限截断', () => {
+  it('融合与存量材料可超过新版普通出生的1.380成长和1900攻资', () => {
     const qilin = BEAST_SPECIES.find((s) => s.name === '麒麟')!;
     const [a, b] = pair().map((beast) => ({
       ...beast,
@@ -125,6 +125,26 @@ describe('融合与宝宝身份', () => {
     expect(results.some((c) => c.growth > 1.43)).toBe(true);
     expect(results.some((c) => c.aptitudes.attack > 3000)).toBe(true);
     expect(results.every((c) => c.aptitudes.attack > 1991)).toBe(true);
+  });
+  it('候选化不再凭空补技能，保留必带的两个物种仍自动获得原核心', () => {
+    for (const [name, expected] of [
+      ['麒麟', []],
+      ['六目灵猿', ['beast.advanced-perception']],
+      ['幽冥虎', ['beast.advanced-exorcism', 'beast.spirit-flame']],
+    ] as const) {
+      const speciesId = BEAST_SPECIES.find((s) => s.name === name)!.id;
+      const [a, b] = pair().map((beast) => ({
+        ...beast,
+        speciesId,
+        skills: [],
+        skillSlotCapacity: 0,
+      }));
+      for (let seed = 0; seed < 32; seed++) {
+        const result = fuseBeasts(a, b, ids[2], seed);
+        expect(result.skills).toEqual(expected);
+        expect(result.skillSlotCapacity).toBe(expected.length);
+      }
+    }
   });
   it('30级野生总点数290，出生亏损固定，后续升级恢复正常增量', () => {
     const wild = generateWildIndividual(
