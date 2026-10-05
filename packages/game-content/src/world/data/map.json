@@ -80,6 +80,19 @@
       "description": "天南驭兽师汇集的坊市，灵印匠与灵药师在此售卖灵兽传承和洗炼灵露。"
     },
     {
+      "id": "TN_BAIQI_01",
+      "name": "天南·百器集",
+      "region": "天南",
+      "realm_requirement": "炼气",
+      "market_config": {
+        "enabled": true,
+        "allowed_layers": ["common", "treasure"],
+        "region_profile": "equipment"
+      },
+      "tags": ["基础道装", "炼气", "筑基"],
+      "description": "天南炼器师经营的成装集市，专售炼气与筑基境界的基础道装。购入后按境界要求穿戴，无需图纸与铸造材料。"
+    },
+    {
       "id": "TN_ZMG_01",
       "name": "坠魔谷",
       "region": "天南",

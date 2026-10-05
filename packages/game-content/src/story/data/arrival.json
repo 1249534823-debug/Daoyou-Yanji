@@ -48,7 +48,7 @@
         }
       ],
       "scene": "inventory",
-      "prompt": "理清储物袋，看看随身物品与穿戴的位置。",
+      "prompt": "打开储物袋，看看随身物品和已穿戴道装分别在哪里。",
       "href": "/game/inventory?guide=inventory-basics"
     },
     {
@@ -147,7 +147,7 @@
         }
       ],
       "scene": "sect-refinery",
-      "prompt": "选好图纸与青石，核对消耗，完成第一件兵器。",
+      "prompt": "选好图纸和青石，核对消耗，再开炉铸出第一件兵器。",
       "href": "/game/sect/refinery?workspace=craft&guide=forge-first-weapon",
       "mode": "all",
       "grant": "first-weapon"
@@ -207,7 +207,7 @@
         }
       ],
       "scene": "cultivator",
-      "prompt": "了解根基与属性分配方法，按所学流派自行决定投入，也可以稍后再分配。",
+      "prompt": "看看根基怎么分配，按所学流派来加点；拿不准可以先留着，熟悉战斗后再决定。",
       "href": "/game/cultivator?allocate=1&guide=first-attributes"
     },
     {
