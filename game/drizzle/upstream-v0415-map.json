@@ -1,0 +1,252 @@
+{
+  "upstreamRef": "c0b267df8ef3a6f4ef38732c79a3020068c2b3dd",
+  "preservedLocalThrough": 39,
+  "migrations": [
+    {
+      "upstream": "0034_flowery_squadron_sinister",
+      "local": "0040_upstream_0034_flowery_squadron_sinister",
+      "upstreamWhen": 1788508381899,
+      "localWhen": 1789178530986,
+      "upstreamSha256": "86630cd8321472dfd40ab2b4cd09120e86ae926198fdba538ca77b4f4c2ac4d1",
+      "localSha256": "0cec762748a32ce3d078a1004c539e97b112e078ec88d1d1e5d5172d7db34023",
+      "adaptedForLiveData": true
+    },
+    {
+      "upstream": "0035_even_crusher_hogan",
+      "local": "0041_upstream_0035_even_crusher_hogan",
+      "upstreamWhen": 1788516324786,
+      "localWhen": 1789178530987,
+      "upstreamSha256": "6629ff2f5f1689a00e9a25bfcb220743f2c4a0e9841608290f17f6b524efef65",
+      "localSha256": "6629ff2f5f1689a00e9a25bfcb220743f2c4a0e9841608290f17f6b524efef65",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0036_unified_v6_replay",
+      "local": "0042_upstream_0036_unified_v6_replay",
+      "upstreamWhen": 1788670113128,
+      "localWhen": 1789178530988,
+      "upstreamSha256": "8ad39b6c92de2bdb420857eff04dc4738889a90172e3b82644c10dcd5d5a4db6",
+      "localSha256": "c608e95ea01be4d73f3c7a9134126fdf95e11d4f4fa6706194cf5141fd6dfaa6",
+      "adaptedForLiveData": true
+    },
+    {
+      "upstream": "0037_v6_replay_history_metadata",
+      "local": "0043_upstream_0037_v6_replay_history_metadata",
+      "upstreamWhen": 1788676248284,
+      "localWhen": 1789178530989,
+      "upstreamSha256": "e91f3777da2c4cb04e643287f9fd9c7194ea3afa81e6d60f074d60a15290909a",
+      "localSha256": "e91f3777da2c4cb04e643287f9fd9c7194ea3afa81e6d60f074d60a15290909a",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0038_v6_summoned_beasts",
+      "local": "0044_upstream_0038_v6_summoned_beasts",
+      "upstreamWhen": 1788691868265,
+      "localWhen": 1789178530990,
+      "upstreamSha256": "648c75479c18391234d0cbdd356f2669b572fca968651492ecdd53bba4142514",
+      "localSha256": "648c75479c18391234d0cbdd356f2669b572fca968651492ecdd53bba4142514",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0039_inventory_v6",
+      "local": "0045_upstream_0039_inventory_v6",
+      "upstreamWhen": 1788755523519,
+      "localWhen": 1789178530991,
+      "upstreamSha256": "4d5d128c12f7c68dd61d9a1784e628c6ae5bafe8b14e5497a0237fc3022010c2",
+      "localSha256": "4d5d128c12f7c68dd61d9a1784e628c6ae5bafe8b14e5497a0237fc3022010c2",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0040_inventory_slot_capacity",
+      "local": "0046_upstream_0040_inventory_slot_capacity",
+      "upstreamWhen": 1788760243550,
+      "localWhen": 1789178530992,
+      "upstreamSha256": "aaf45c9c85e03301ad1f93a820b6b9a50077dde401cdafeed7ce0c48065e6348",
+      "localSha256": "aaf45c9c85e03301ad1f93a820b6b9a50077dde401cdafeed7ce0c48065e6348",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0041_inventory_stack_key",
+      "local": "0047_upstream_0041_inventory_stack_key",
+      "upstreamWhen": 1788787559076,
+      "localWhen": 1789178530993,
+      "upstreamSha256": "1d7a028a0dab392b5085bbb4f313a49c7d5f56e4c5c86b417c546cd127daaf99",
+      "localSha256": "1d7a028a0dab392b5085bbb4f313a49c7d5f56e4c5c86b417c546cd127daaf99",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0042_v6_sect_depth",
+      "local": "0048_upstream_0042_v6_sect_depth",
+      "upstreamWhen": 1788792210469,
+      "localWhen": 1789178530994,
+      "upstreamSha256": "e955c75932eae5e3bf7c56d63e65015d917fd251c2e1a6435842891936ae1c98",
+      "localSha256": "e955c75932eae5e3bf7c56d63e65015d917fd251c2e1a6435842891936ae1c98",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0043_manual-level-progression",
+      "local": "0049_upstream_0043_manual-level-progression",
+      "upstreamWhen": 1789048437114,
+      "localWhen": 1789178530995,
+      "upstreamSha256": "94c365c384450af306730679a6617f2640b50eb338391888a48ff733dbcd04cc",
+      "localSha256": "94c365c384450af306730679a6617f2640b50eb338391888a48ff733dbcd04cc",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0044_domain_ownership_cutover",
+      "local": "0050_upstream_0044_domain_ownership_cutover",
+      "upstreamWhen": 1789050374352,
+      "localWhen": 1789178530996,
+      "upstreamSha256": "2c562d2635d3fde5ae7dd8fd5c491c93a60a297f50e27edad1b7b7a28d38a62f",
+      "localSha256": "5c98c585c97588a52a9e3a66fa913bcc485807c0d67bb9cfbc46344ccecda546",
+      "adaptedForLiveData": true
+    },
+    {
+      "upstream": "0045_replay_protocol_cutover",
+      "local": "0051_upstream_0045_replay_protocol_cutover",
+      "upstreamWhen": 1789053555643,
+      "localWhen": 1789178530997,
+      "upstreamSha256": "b89d7994af4d114c7396defb735edfee5766bf49c02e833f62f06b1867b1204b",
+      "localSha256": "b89d7994af4d114c7396defb735edfee5766bf49c02e833f62f06b1867b1204b",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0046_realm_attribute_level_budget",
+      "local": "0052_upstream_0046_realm_attribute_level_budget",
+      "upstreamWhen": 1789142259856,
+      "localWhen": 1789178530998,
+      "upstreamSha256": "c949f741d7d83a91a78f2211637d31039819874bb214454ccf5b34ef3c066132",
+      "localSha256": "c949f741d7d83a91a78f2211637d31039819874bb214454ccf5b34ef3c066132",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0047_equipment_outside_bag",
+      "local": "0053_upstream_0047_equipment_outside_bag",
+      "upstreamWhen": 1789446143788,
+      "localWhen": 1789446143788,
+      "upstreamSha256": "3f99324342556d64faf4dea4e58dd1116621bf4774f3e7ca87af856130a9d908",
+      "localSha256": "3f99324342556d64faf4dea4e58dd1116621bf4774f3e7ca87af856130a9d908",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0048_competitive_replay_retention",
+      "local": "0054_upstream_0048_competitive_replay_retention",
+      "upstreamWhen": 1789465138319,
+      "localWhen": 1789465138319,
+      "upstreamSha256": "540ab6e9a874a725962f7c954deacc6d94d252b79d7de33d179cb57bf2b3a680",
+      "localSha256": "540ab6e9a874a725962f7c954deacc6d94d252b79d7de33d179cb57bf2b3a680",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0049_manual_first_release",
+      "local": "0055_upstream_0049_manual_first_release",
+      "upstreamWhen": 1789533721588,
+      "localWhen": 1789533721588,
+      "upstreamSha256": "5fb589e998e2ed473e00bad16da880a6853b2a0c5f92cadf48e32566f2753524",
+      "localSha256": "4d3d384d1a0cc294bcb02e6ba9fbb00a17bb483842042888e97b314e790a0675",
+      "adaptedForLiveData": true
+    },
+    {
+      "upstream": "0050_wild_searches",
+      "local": "0056_upstream_0050_wild_searches",
+      "upstreamWhen": 1789641663428,
+      "localWhen": 1789641663428,
+      "upstreamSha256": "d620cab1e825a3416432b33037a2c180ec3c8702d96a7842376806a489e3e479",
+      "localSha256": "d620cab1e825a3416432b33037a2c180ec3c8702d96a7842376806a489e3e479",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0051_daily_divination",
+      "local": "0057_upstream_0051_daily_divination",
+      "upstreamWhen": 1789812205839,
+      "localWhen": 1789812205839,
+      "upstreamSha256": "9e145745cb70509d2d5acc3d4444980f52370ba68d75accfac7a9df09ea4bb50",
+      "localSha256": "9e145745cb70509d2d5acc3d4444980f52370ba68d75accfac7a9df09ea4bb50",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0052_tower_week_publication",
+      "local": "0058_upstream_0052_tower_week_publication",
+      "upstreamWhen": 1789819171928,
+      "localWhen": 1789819171928,
+      "upstreamSha256": "a2c87b388e790e339bc3726bd4753b42e6fc5fc79425d53176639cac85f0ac26",
+      "localSha256": "a2c87b388e790e339bc3726bd4753b42e6fc5fc79425d53176639cac85f0ac26",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0053_beast_fusion",
+      "local": "0059_upstream_0053_beast_fusion",
+      "upstreamWhen": 1789833248784,
+      "localWhen": 1789833248784,
+      "upstreamSha256": "efaf3f470cfe7a7592eb56cd78fe90df12bf49308a64b281172c71837243ecb3",
+      "localSha256": "efaf3f470cfe7a7592eb56cd78fe90df12bf49308a64b281172c71837243ecb3",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0054_admin_inventory_rewards",
+      "local": "0060_upstream_0054_admin_inventory_rewards",
+      "upstreamWhen": 1790156976107,
+      "localWhen": 1790156976107,
+      "upstreamSha256": "e142e8d6d4dc6d118492937ee02b32a544054b7524395211d5003e2544a851bd",
+      "localSha256": "bf70d256a299d18076b1a6787f3efa0e664db110be4acf8969a4e535cacbbc05",
+      "adaptedForLiveData": true
+    },
+    {
+      "upstream": "0055_system_mail_campaigns",
+      "local": "0061_upstream_0055_system_mail_campaigns",
+      "upstreamWhen": 1790173730799,
+      "localWhen": 1790173730799,
+      "upstreamSha256": "0179c8bd8822a32dc5cc54ac031e2f5393543ffea91fe2ccdaea594f5bcd1331",
+      "localSha256": "0179c8bd8822a32dc5cc54ac031e2f5393543ffea91fe2ccdaea594f5bcd1331",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0056_cultivator_stories",
+      "local": "0062_upstream_0056_cultivator_stories",
+      "upstreamWhen": 1790175589827,
+      "localWhen": 1790175589827,
+      "upstreamSha256": "fe79f671620699b294d73127118cfbb48ffd0d034a809fcd995735af5f59cdbf",
+      "localSha256": "fe79f671620699b294d73127118cfbb48ffd0d034a809fcd995735af5f59cdbf",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0057_consumable_stack_identity",
+      "local": "0063_upstream_0057_consumable_stack_identity",
+      "upstreamWhen": 1790318696206,
+      "localWhen": 1790318696206,
+      "upstreamSha256": "0fa6992fdef25adfde9776fbb4eaa805520e1cd9d7a4f04ab3c5b0b9ab656938",
+      "localSha256": "0fa6992fdef25adfde9776fbb4eaa805520e1cd9d7a4f04ab3c5b0b9ab656938",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0058_shocking_zaladane",
+      "local": "0064_upstream_0058_shocking_zaladane",
+      "upstreamWhen": 1790563497713,
+      "localWhen": 1790563497713,
+      "upstreamSha256": "efacaf31a728521abf6b6aaf64dd044189aae0af45502540defd1a5195074c02",
+      "localSha256": "efacaf31a728521abf6b6aaf64dd044189aae0af45502540defd1a5195074c02",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0059_cloudy_ink",
+      "local": "0065_upstream_0059_cloudy_ink",
+      "upstreamWhen": 1790578141727,
+      "localWhen": 1790578141727,
+      "upstreamSha256": "aa4f58536b9193b0fb149ad98f0d84a394695c6a56efb5abd8243dd875bc6384",
+      "localSha256": "aa4f58536b9193b0fb149ad98f0d84a394695c6a56efb5abd8243dd875bc6384",
+      "adaptedForLiveData": false
+    },
+    {
+      "upstream": "0060_player_journal",
+      "local": "0066_upstream_0060_player_journal",
+      "upstreamWhen": 1790763373538,
+      "localWhen": 1790763373538,
+      "upstreamSha256": "c2063e1d919dc45aff55e40015e6825e30d65a1505d815b6f794a5b17a49717e",
+      "localSha256": "c2063e1d919dc45aff55e40015e6825e30d65a1505d815b6f794a5b17a49717e",
+      "adaptedForLiveData": false
+    }
+  ],
+  "additionalMigrations": [
+    "0067_preserve_legacy_material_listings"
+  ]
+}

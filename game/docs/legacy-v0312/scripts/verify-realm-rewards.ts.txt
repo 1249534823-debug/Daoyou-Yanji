@@ -1,0 +1,378 @@
+/** Manual acceptance, isolated fictional actors only; controlled defeated-round fixtures exercise actual dungeon settlement. */
+import { eq } from 'drizzle-orm';
+import assert from 'node:assert/strict';
+import type { DbTransaction } from '../src/server/lib/drizzle/db';
+import type { DungeonState } from '../src/server/lib/dungeon/types';
+assert.equal(process.env.NODE_ENV, 'test');
+assert.equal(new URL(process.env.DATABASE_URL!).hostname, 'admin-test-db');
+assert.equal(new URL(process.env.DATABASE_URL!).pathname, '/admin_ui_test');
+assert.equal(new URL(process.env.REDIS_URL!).hostname, 'admin-test-redis');
+const { db } = await import('../src/server/lib/drizzle/db');
+const s = await import('../src/server/lib/drizzle/schema');
+const { default: app } = await import('../src/server/app');
+const { EnemyGenerator } = await import('../src/shared/engine/enemyGenerator');
+const { createCultivator } =
+  await import('../src/server/lib/services/cultivator/CultivatorProfileRepository');
+const { executeDungeonCommand, executeDungeonPersistenceCommand } =
+  await import('../src/server/lib/services/DungeonApplicationService');
+const { dungeonService } = await import('../src/server/lib/dungeon/service_v2');
+const { getSecretRealmMatcher } =
+  await import('../src/server/lib/services/SecretRealmMatcher');
+const { withRedisLock, redisLockKeys } =
+  await import('../src/server/lib/redis/lock');
+const { playerCommandExecutor } =
+  await import('../src/server/lib/services/CommandExecutors');
+const { createItemLibraryEntry } =
+  await import('../src/server/lib/repositories/itemLibraryRepository');
+const { compileSecretRealmRewards, applySecretRealmGains } =
+  await import('../src/server/lib/services/SecretRealmRewards');
+const fixture = await Bun.file('output/admin-ui-fixtures.json').json();
+assert.equal(fixture.testOnly, true);
+const origin = fixture.origin;
+const checks: string[] = [];
+const pass = (n: string) => {
+  checks.push(n);
+  console.log('REALM_PASS', n);
+};
+type Actor = { userId: string; cultivatorId: string };
+const actors: Actor[] = [];
+const itemId = 'realm-check-' + crypto.randomUUID().slice(0, 8);
+async function api(
+  method: string,
+  body?: unknown,
+  cookie = fixture.admin.cookie,
+) {
+  return app.request(
+    origin +
+      '/api/admin/secret-realms' +
+      (method === 'PATCH' ? '/tianling' : ''),
+    {
+      method,
+      headers: {
+        origin,
+        'content-type': 'application/json',
+        ...(cookie ? { cookie } : {}),
+      },
+      ...(body ? { body: JSON.stringify(body) } : {}),
+    },
+  );
+}
+async function setting() {
+  const [row] = await db
+    .select()
+    .from(s.secretRealms)
+    .where(eq(s.secretRealms.id, 'tianling'));
+  return row;
+}
+async function patch(rewards: unknown, enabled = true) {
+  const current = await setting();
+  return api('PATCH', { enabled, version: current.version, rewards });
+}
+async function actor() {
+  const userId = crypto.randomUUID();
+  const model = new EnemyGenerator().buildDraft({
+    realm: '炼气',
+    realmStage: '初期',
+    race: '人族',
+    difficulty: 35,
+    variantSeed: 'realm-reward-check',
+    name: '隔离奖励验收',
+  }).cultivator;
+  const c = await createCultivator(userId, model);
+  assert.ok(c.id);
+  const a = { userId, cultivatorId: c.id };
+  actors.push(a);
+  await db
+    .update(s.cultivators)
+    .set({ qi: 200, qiLastRefreshedAt: new Date(), spirit_stones: 1000 })
+    .where(eq(s.cultivators.id, c.id));
+  return a;
+}
+const start = (a: Actor) =>
+  executeDungeonCommand({
+    ...a,
+    command: { kind: 'start', mapNodeId: 'SAT_TIANLING_01' },
+  });
+type Prepared = {
+  persist: (
+    tx: DbTransaction,
+  ) => Promise<
+    | import('../src/server/lib/dungeon/service_v2').DungeonPersistenceSettlement
+    | void
+  >;
+  realGains: unknown;
+};
+async function prepare(
+  a: Actor,
+  rounds: number[],
+  disposition: 'completed' | 'retreated_after_battle' = 'completed',
+) {
+  const state = await dungeonService.getState(a.cultivatorId);
+  assert.ok(state?.secretRealm);
+  state.secretRealm.defeatedRounds = rounds;
+  state.currentRound = 3;
+  return (
+    dungeonService as unknown as {
+      performSettlement: (
+        state: DungeonState,
+        opts: unknown,
+      ) => Promise<Prepared>;
+    }
+  ).performSettlement(state, {
+    deferPersistence: true,
+    endDisposition: disposition,
+  });
+}
+async function commit(a: Actor, prepared: Prepared) {
+  return withRedisLock(
+    {
+      key: redisLockKeys.cultivatorMutation(a.cultivatorId),
+      context: 'realm_check',
+      retries: 0,
+    },
+    (lease) =>
+      playerCommandExecutor.execute({
+        coordination: { mode: 'redis', lease },
+        userId: a.userId,
+        cultivatorId: a.cultivatorId,
+        source: 'realm_isolated_acceptance',
+        allowEmpty: true,
+        command: (tx) =>
+          executeDungeonPersistenceCommand({
+            cultivatorId: a.cultivatorId,
+            result: {},
+            persist: prepared.persist,
+            tx,
+          }),
+      }),
+  );
+}
+const read = async (a: Actor) =>
+  (
+    await db
+      .select()
+      .from(s.cultivators)
+      .where(eq(s.cultivators.id, a.cultivatorId))
+  )[0];
+getSecretRealmMatcher(
+  new URL('../dist/secret-realm-matcher.js', import.meta.url),
+);
+for (let i = 0; i < 300 && getSecretRealmMatcher().health() !== 'up'; i++)
+  await new Promise((r) => setTimeout(r, 100));
+assert.equal(getSecretRealmMatcher().health(), 'up');
+const previous = await setting();
+try {
+  await db
+    .insert(s.secretRealms)
+    .values({ id: 'tianling', enabled: true })
+    .onConflictDoNothing();
+  assert.equal((await api('GET', undefined, '')).status, 401);
+  assert.equal(
+    (await api('PATCH', { enabled: true, version: 1 }, fixture.normal.cookie))
+      .status,
+    403,
+  );
+  pass('管理员权限');
+  assert.equal(
+    (await compileSecretRealmRewards(null)).operations[0].data?.name,
+    '天灵丹',
+  );
+  pass('默认天灵丹兼容');
+  for (const rewards of [
+    [{ type: 'qi', quantity: -1 }],
+    [{ type: 'item', itemId: 'missing-item', quantity: 1 }],
+    [{ type: 'attribute', attribute: 'maxHp', quantity: 1 }],
+  ]) {
+    assert.equal((await patch(rewards)).status, 400);
+  }
+  pass('无效奖励与下架道具拒绝');
+  await createItemLibraryEntry({
+    userId: fixture.admin.userId,
+    entry: {
+      type: 'material',
+      itemId,
+      status: 'published',
+      payload: { name: '隔离验收灵草', type: 'herb', rank: '凡品' },
+      editorConfig: {},
+    },
+  });
+  const rewards = [
+    { type: 'tianling_pill', quantity: 2 },
+    { type: 'spirit_stones', quantity: 123 },
+    { type: 'qi', quantity: 20 },
+    { type: 'cultivation_exp', quantity: 7 },
+    { type: 'attribute', attribute: 'vitality', quantity: 3 },
+    { type: 'item', itemId, quantity: 4 },
+  ];
+  const oldVersion = (await setting()).version;
+  assert.equal((await patch(rewards)).status, 200);
+  assert.equal(
+    (await api('PATCH', { enabled: false, version: oldVersion, rewards }))
+      .status,
+    409,
+  );
+  pass('版本冲突与配置审计');
+  assert.ok(
+    (
+      await db
+        .select()
+        .from(s.secretRealmAudit)
+        .where(eq(s.secretRealmAudit.version, oldVersion + 1))
+    ).some((r) =>
+      r.rewards?.some((x) => x.type === 'item' && x.itemId === itemId),
+    ),
+  );
+  const a = await actor();
+  await start(a);
+  const state = await dungeonService.getState(a.cultivatorId);
+  assert.equal(state?.rewardSnapshot?.length, 6);
+  assert.equal(state?.rewardConfigVersion, oldVersion + 1);
+  assert.equal((await read(a)).spirit_stones, 1000);
+  pass('真实入场锁定奖励且不提前发放');
+  await db
+    .update(s.itemLibrary)
+    .set({ status: 'archived' })
+    .where(eq(s.itemLibrary.itemId, itemId));
+  assert.equal(
+    (await patch([{ type: 'spirit_stones', quantity: 999 }], false)).status,
+    200,
+  );
+  const before = await read(a);
+  const prepared = await prepare(a, [1, 2, 3]);
+  const outcomes = await Promise.allSettled([
+    commit(a, prepared),
+    commit(a, prepared),
+  ]);
+  assert.equal(
+    outcomes.filter((x) => x.status === 'fulfilled').length,
+    1,
+    JSON.stringify(
+      outcomes.map((x) => (x.status === 'rejected' ? String(x.reason) : 'ok')),
+    ),
+  );
+  const after = await read(a);
+  assert.equal(after.spirit_stones, before.spirit_stones + 123);
+  assert.equal(after.vitality, before.vitality + 3);
+  assert.equal(after.qi, before.qi + 20);
+  const pills = await db
+    .select()
+    .from(s.consumables)
+    .where(eq(s.consumables.cultivatorId, a.cultivatorId));
+  assert.equal(pills.find((p) => p.name === '天灵丹')?.quantity, 2);
+  const herbs = await db
+    .select()
+    .from(s.materials)
+    .where(eq(s.materials.cultivatorId, a.cultivatorId));
+  assert.equal(herbs.find((p) => p.name === '隔离验收灵草')?.quantity, 4);
+  pass('配置变更、道具下架、关闭后在途奖励仍按快照发放');
+  pass('并发结算与重复提交只发一次');
+  const b = await actor();
+  await assert.rejects(start(b), /暂未开放/);
+  pass('关闭禁止新入场');
+  assert.equal(
+    (await patch([{ type: 'spirit_stones', quantity: 123 }])).status,
+    200,
+  );
+  await start(b);
+  const bp = await prepare(b, [1, 2]);
+  await commit(b, bp);
+  assert.equal((await read(b)).spirit_stones, 1000);
+  pass('未击败首领无奖励');
+  const c = await actor();
+  await start(c);
+  await commit(c, await prepare(c, [1, 2, 3], 'retreated_after_battle'));
+  assert.equal((await read(c)).spirit_stones, 1000);
+  pass('中途撤退无通关奖励');
+  const d = await actor();
+  await start(d);
+  const ds = await dungeonService.getState(d.cultivatorId);
+  assert.ok(ds);
+  ds.rewardSnapshot = [
+    { type: 'spirit_stones', value: 123 },
+    { type: 'attribute', value: 2, metadata: { attribute: 'invalid' } },
+  ];
+  await dungeonService.saveState(d.cultivatorId, ds);
+  const dp = await prepare(d, [1, 2, 3]);
+  await assert.rejects(commit(d, dp));
+  assert.equal((await read(d)).spirit_stones, 1000);
+  assert.equal(
+    (
+      await db
+        .select()
+        .from(s.dungeonRuns)
+        .where(eq(s.dungeonRuns.id, ds.runId!))
+    )[0].endedAt,
+    null,
+  );
+  pass('奖励中途失败整笔回滚并可重试');
+  await db
+    .update(s.cultivators)
+    .set({ qi: 295, qiLastRefreshedAt: new Date() })
+    .where(eq(s.cultivators.id, d.cultivatorId));
+  await db.transaction((tx) =>
+    applySecretRealmGains({ ...d, gain: [{ type: 'qi', value: 20 }], tx }),
+  );
+  assert.equal((await read(d)).qi, 300);
+  await db.transaction((tx) =>
+    applySecretRealmGains({
+      ...d,
+      gain: [
+        { type: 'qi', value: 20 },
+        { type: 'spirit_stones', value: 3 },
+      ],
+      tx,
+    }),
+  );
+  assert.equal((await read(d)).spirit_stones, 1003);
+  pass('灵气上限不会阻塞其他奖励');
+  await db
+    .update(s.cultivators)
+    .set({ vitality: 2147483647 })
+    .where(eq(s.cultivators.id, d.cultivatorId));
+  await assert.rejects(
+    db.transaction((tx) =>
+      applySecretRealmGains({
+        ...d,
+        gain: [
+          { type: 'spirit_stones', value: 2 },
+          { type: 'attribute', value: 1, metadata: { attribute: 'vitality' } },
+        ],
+        tx,
+      }),
+    ),
+  );
+  assert.equal((await read(d)).spirit_stones, 1003);
+  pass('属性溢出整体回滚');
+  const fixed = await dungeonService.getState(d.cultivatorId);
+  assert.ok(fixed);
+  fixed.rewardSnapshot = [{ type: 'spirit_stones', value: 123 }];
+  await dungeonService.saveState(d.cultivatorId, fixed);
+  await commit(d, await prepare(d, [1, 2, 3]));
+  assert.equal((await read(d)).spirit_stones, 1126);
+  pass('失败后恢复重试');
+  await Bun.write(
+    'output/realm-rewards/backend-verification.json',
+    JSON.stringify({
+      isolated: true,
+      checks,
+      controlledDefeatedRounds: true,
+      passed: true,
+    }),
+  );
+  console.log('REALM_REWARDS_RUNTIME_PASS', checks.length);
+} finally {
+  getSecretRealmMatcher().close();
+  for (const a of actors)
+    await db.delete(s.cultivators).where(eq(s.cultivators.id, a.cultivatorId));
+  await db.delete(s.itemLibrary).where(eq(s.itemLibrary.itemId, itemId));
+  if (previous)
+    await db
+      .update(s.secretRealms)
+      .set({
+        enabled: previous.enabled,
+        version: previous.version,
+        rewards: previous.rewards,
+      })
+      .where(eq(s.secretRealms.id, 'tianling'));
+}
+process.exit(0);

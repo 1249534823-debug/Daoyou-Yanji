@@ -1,0 +1,151 @@
+import { db } from '@server/lib/drizzle/db';
+import { itemLibrary, reputationShopItems, sectShopItems } from '@server/lib/drizzle/schema';
+import { computeItemLibrarySampleKey } from '@server/lib/services/itemLibrarySampleKey';
+import { CreateItemLibraryEntrySchema, ItemLibraryEntrySchema, type CreateItemLibraryEntry } from '@shared/lib/itemLibrary';
+import { ItemExchangeShopItemMutationSchema } from '@shared/contracts/itemExchangeShop';
+import { QUALITY_VALUES, REALM_VALUES, REALM_STAGE_VALUES, type Quality } from '@shared/types/constants';
+import type { ConditionOperation, PillFamily, PillQuotaCategory, PillSpec } from '@shared/types/consumable';
+import { buildPresetArtifact } from '@shared/engine/cultivator/creation/presetProducts';
+import { serializeProductModel, rehydrateStoredProductModel } from '@shared/engine/creation-v2/persistence/ProductPersistenceMapper';
+import { calculateProductScore } from '@shared/engine/creation-v2/persistence/ScoreCalculator';
+import { buildRestorePercent, buildInsightGain, buildLifespanGain, buildDetoxPower, buildPositivePillToxicity, buildBodyTrackAdvance, buildBreakthroughFocusOperation, buildProtectMeridiansOperation, buildClearMindOperation } from '@shared/lib/pillEffectScaling';
+import { buildCultivationBoostOperation } from '@shared/lib/cultivationBoost';
+import { getHealingCuredStatus } from '@shared/lib/healingPill';
+import { calculatePillScore } from '@shared/lib/pillScore';
+import { TALISMAN_SCENARIO_OPTIONS } from '@shared/config/talismanScenarios';
+
+const actor = process.env.ADMIN_USER_IDS?.split(',')[0];
+if (!actor) throw new Error('Administrator not configured');
+const prefix = 'yanji_stage_v1_';
+const entries: CreateItemLibraryEntry[] = [];
+const prices = [5, 10, 25, 60, 150, 350, 800, 1600];
+const gearPrices = [40, 100, 240, 500, 1000, 2000, 3500, 6000, 7500];
+const qualityByRealm: Quality[] = ['凡品','灵品','玄品','真品','地品','天品','仙品','神品','神品'];
+type PillDef = { key: string; name: string; family: PillFamily; quota: PillQuotaCategory; ops: ConditionOperation[]; description: string };
+for (const [qi, quality] of QUALITY_VALUES.entries()) {
+  const defs: PillDef[] = [
+    { key:'healing', name:'回春丹', family:'healing', quota:'none', ops:[
+      {type:'restore_resource',resource:'hp',mode:'percent',value:buildRestorePercent(quality)},
+      {type:'remove_status',status:getHealingCuredStatus(quality)}], description:'回复气血并治疗本品阶可处理的伤势。' },
+    { key:'mana', name:'归元丹', family:'mana', quota:'none', ops:[
+      {type:'restore_resource',resource:'mp',mode:'percent',value:buildRestorePercent(quality)}], description:'回复法力，适合历练后调息。' },
+    { key:'detox', name:'涤尘丹', family:'detox', quota:'none', ops:[
+      {type:'change_gauge',gauge:'pillToxicity',delta:-buildDetoxPower(quality)}], description:'清理积累的丹毒，不额外增加丹毒。' },
+    { key:'cultivation', name:'聚灵丹', family:'cultivation', quota:'cultivation', ops:[
+      buildCultivationBoostOperation(quality)], description:'提高下一次闭关修为收益，仍受服丹额度约束。' },
+    { key:'insight', name:'明悟丹', family:'insight', quota:'long_term', ops:[
+      {type:'gain_progress',target:'comprehension_insight',value:buildInsightGain(quality)}], description:'增长感悟，已有感悟不会超出系统上限。' },
+    { key:'breakthrough', name:'凝关丹', family:'breakthrough', quota:'long_term', ops:[
+      buildBreakthroughFocusOperation(quality)], description:'辅助一次突破，不保证成功，不能跳过境界要求。' },
+    { key:'protect', name:'护脉丹', family:'breakthrough', quota:'long_term', ops:[
+      buildProtectMeridiansOperation(quality)], description:'减轻一次突破失败的修为损失。' },
+    { key:'clear', name:'清心丹', family:'insight', quota:'long_term', ops:[
+      buildClearMindOperation(quality)], description:'凝神清心，抵御心魔，按系统次数结算。' },
+    { key:'longevity', name:'延年丹', family:'longevity', quota:'longevity', ops:[
+      {type:'increase_lifespan',value:buildLifespanGain(quality)}], description:'温养生机、增加寿元，受寿元丹服用规则限制。' },
+    { key:'marrow', name:'洗髓丹', family:'marrow_wash', quota:'long_term', ops:[
+      {type:'advance_track',track:'marrow_wash',value:buildBodyTrackAdvance(quality)}], description:'积累洗髓进度，不直接赠送属性或突破。' },
+    { key:'hybrid', name:'双元丹', family:'hybrid', quota:'none', ops:[
+      {type:'restore_resource',resource:'hp',mode:'percent',value:buildRestorePercent(quality)*0.5},
+      {type:'restore_resource',resource:'mp',mode:'percent',value:buildRestorePercent(quality)*0.5}], description:'均衡恢复气血与法力，单项回复弱于专用丹药。' },
+  ];
+  for (const [track, name] of [['skin','金肤丹'],['sinew_bone','锻骨丹'],['organs','养腑丹'],['qi_blood','凝血丹'],['primordial_spirit','蕴神丹']] as const) {
+    defs.push({key:track,name,family:'tempering',quota:'long_term',
+      ops:[{type:'advance_track',track:`body.${track}`,value:buildBodyTrackAdvance(quality)}],
+      description:'积累对应部位炼体进度，按现有炼体规则生效。'});
+  }
+  for (const def of defs) {
+    const toxicity = def.key === 'detox' ? 0 : buildPositivePillToxicity(quality);
+    const spec: PillSpec = {kind:'pill',family:def.family,operations:[...def.ops,
+      ...(toxicity ? [{type:'change_gauge' as const,gauge:'pillToxicity' as const,delta:toxicity}] : [])],
+      consumeRules:{scene:'out_of_battle_only',quotaCategory:def.quota},
+      alchemyMeta:{source:'improvised',sourceMaterials:[],dominantElement:'木',
+        stability:60,toxicityRating:toxicity,appearance:'middle',tags:['宗门制式','限量兑换']}};
+    entries.push(CreateItemLibraryEntrySchema.parse({itemId:`${prefix}pill_${qi}_${def.key}`,
+      type:'consumable',status:'published',editorConfig:{source:prefix,qualityIndex:qi},
+      payload:{name:`${quality}·${def.name}`,type:'丹药',quality,description:def.description,
+        spec,score:calculatePillScore({quality,spec}) ?? undefined}}));
+  }
+}
+const slots = [
+  {slot:'weapon',suffix:'剑',affix:'artifact-panel-weapon-dual-atk',element:'金'},
+  {slot:'armor',suffix:'法衣',affix:'artifact-panel-armor-dual-def',element:'土'},
+  {slot:'accessory',suffix:'灵佩',affix:'artifact-panel-accessory-utility',element:'水'},
+] as const;
+const names = ['青岚','玄基','紫霄','太清','照神','虚极','归一','太上','御劫'];
+for (const [ri,realm] of REALM_VALUES.entries()) {
+  for (const [si,realmStage] of REALM_STAGE_VALUES.entries()) {
+    for (const s of slots) {
+      const quality = qualityByRealm[ri];
+      const name = `${names[ri]}${s.suffix}·${realmStage}`;
+      const description = `${realm}${realmStage}制式法宝；数值按本境界与品阶生成。可经限量兑换获得，同阶段也可通过炼器打造。非稀有神兵。`;
+      const artifact = buildPresetArtifact({name,description,quality,realm,realmStage,
+        slot:s.slot,element:s.element,affixIds:[s.affix],creatorName:'宗门器阁',
+        creatorCultivatorId:actor,isEquipped:false});
+      const productModel = serializeProductModel(artifact.productModel);
+      if (!rehydrateStoredProductModel(productModel,artifact.element)) throw new Error('Invalid artifact');
+      entries.push(CreateItemLibraryEntrySchema.parse({
+        itemId:`${prefix}gear_${ri}_${si}_${s.slot}`,type:'artifact',status:'published',
+        editorConfig:{realm,realmStage,quality,slot:s.slot,element:s.element,affixIds:[s.affix]},
+        payload:{name,description,quality:artifact.quality,slot:s.slot,element:s.element,productModel,
+          score:calculateProductScore(artifact.productModel.balanceMetrics,artifact.productModel.affixes)}}));
+    }
+  }
+}
+const talismanTiers = [3,4,3,4,4,2,2,0,1,0,1,2,3];
+for (const [i, option] of TALISMAN_SCENARIO_OPTIONS.entries()) {
+  const qi = talismanTiers[i];
+  entries.push(CreateItemLibraryEntrySchema.parse({
+    itemId:`${prefix}talisman_${option.value}`,type:'consumable',status:'published',
+    editorConfig:{source:prefix,qualityIndex:qi},
+    payload:{name:option.label.split('·')[0],type:'符箓',quality:QUALITY_VALUES[qi],
+      description:`${option.label}，按游戏原有场景和消耗规则生效。`,
+      spec:{kind:'talisman',scenario:option.value,sessionMode:'consume_on_action'}}}));
+}
+const before = await db.select().from(itemLibrary);
+const materialRepresentatives = new Map<string, typeof before[number]>();
+for (const row of before) {
+  if(row.status !== 'published' || row.type !== 'material') continue;
+  const key = `${row.quality}:${row.category}`;
+  if (!materialRepresentatives.has(key)) materialRepresentatives.set(key,row);
+}
+if (materialRepresentatives.size !== 64) throw new Error('Material coverage incomplete');
+const summary = {materials:materialRepresentatives.size, pills:entries.filter(x=>x.itemId.includes('_pill_')).length,
+  artifacts:entries.filter(x=>x.type==='artifact').length,talismans:TALISMAN_SCENARIO_OPTIONS.length};
+await Bun.write('output/stage-catalog-preview.json',JSON.stringify({summary,entries},null,2));
+console.log(JSON.stringify({preview:summary}));
+if (!process.argv.includes('--apply')) process.exit(0);
+await db.transaction(async tx => {
+  for (const entry of entries) {
+    const payload = entry.payload;
+    const quality = entry.type==='material' ? entry.payload.rank : entry.payload.quality;
+    const element = entry.type==='material' ? entry.payload.element : entry.type==='artifact' ? entry.payload.element : undefined;
+    const category = entry.type==='artifact' ? entry.payload.slot : entry.payload.type;
+    await tx.insert(itemLibrary).values({itemId:entry.itemId,type:entry.type,status:entry.status,
+      name:payload.name,description:payload.description ?? null,quality,element,category,
+      payload,editorConfig:entry.editorConfig,sampleKey:computeItemLibrarySampleKey(entry.itemId),
+      createdBy:actor,updatedBy:actor}).onConflictDoNothing({target:itemLibrary.itemId});
+  }
+  const targets = [...entries.map(e=>({itemId:e.itemId,type:e.type,
+    quality:e.type==='material'?e.payload.rank:e.payload.quality})),
+    ...[...materialRepresentatives.values()].map(e=>({itemId:e.itemId,type:e.type,quality:e.quality}))];
+  for (const [i,t] of targets.entries()) {
+    const qi = Math.max(0,QUALITY_VALUES.indexOf(t.quality as Quality));
+    const gear = t.itemId.match(/_gear_(\d+)_(\d+)_/);
+    const price = gear ? Math.min(9500,Math.round(gearPrices[Number(gear[1])]*(1+Number(gear[2])*0.08)))
+      : prices[qi]*(t.type==='material'?1: t.itemId.includes('longevity')?5:3);
+    const input = ItemExchangeShopItemMutationSchema.parse({itemLibraryItemId:t.itemId,
+      price,quantity:1,perUserLimit:t.type==='artifact'?1:t.type==='material'?5:2,
+      status:'active',sortOrder:i});
+    const table = t.type==='artifact'||t.itemId.includes('talisman_') ? reputationShopItems : sectShopItems;
+    await tx.insert(table).values({...input,createdBy:actor,updatedBy:actor})
+      .onConflictDoNothing({target:table.itemLibraryItemId});
+  }
+});
+const after = await db.select().from(itemLibrary);
+for(const row of after.filter(r=>r.itemId.startsWith(prefix))) {
+  ItemLibraryEntrySchema.parse({...row});
+}
+console.log(JSON.stringify({applied:true,...summary}));
+process.exit(0);
+

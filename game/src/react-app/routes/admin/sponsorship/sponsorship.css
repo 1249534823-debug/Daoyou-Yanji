@@ -1,0 +1,399 @@
+.admin-ui .sponsorship-admin-page {
+  display: grid;
+  gap: 24px;
+}
+
+.admin-ui .sponsorship-admin-page .admin-page-heading {
+  margin-bottom: 0;
+}
+
+.admin-ui .sponsorship-focus-section {
+  min-width: 0;
+  scroll-margin-top: 20px;
+}
+
+.admin-ui .sponsorship-focus-section:focus {
+  outline: none;
+}
+
+.admin-ui .sponsorship-focus-section[hidden] {
+  display: none;
+}
+
+.admin-ui .sponsorship-notice {
+  margin: 0;
+  padding: 14px 18px;
+  border: 1px solid var(--admin-border);
+  border-left: 3px solid var(--admin-primary);
+  border-radius: 8px;
+  background: var(--admin-surface);
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.admin-ui .sponsorship-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  color: var(--admin-muted);
+  font-size: 12px;
+}
+
+.admin-ui .sponsorship-table-scroll {
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.admin-ui .sponsorship-orders-table {
+  width: 100%;
+  min-width: 820px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+}
+
+.admin-ui .sponsorship-orders-table th {
+  padding: 12px 14px;
+  color: var(--admin-muted);
+  background: #f5f4ee;
+  font-size: 12px;
+  font-weight: 550;
+}
+
+.admin-ui .sponsorship-orders-table td {
+  padding: 18px 14px;
+  border-bottom: 1px solid var(--admin-border);
+  vertical-align: top;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.admin-ui .sponsorship-orders-table .sponsorship-order-id {
+  max-width: 200px;
+  font-family: ui-monospace, monospace;
+  font-weight: 600;
+}
+
+.admin-ui .sponsorship-order-error {
+  max-width: 240px;
+  color: var(--admin-muted);
+}
+
+.admin-ui .sponsorship-order-controls {
+  min-width: 124px;
+}
+
+.admin-ui .sponsorship-order-controls > .admin-btn,
+.admin-ui .sponsorship-order-actions > summary {
+  width: 100%;
+}
+
+.admin-ui .sponsorship-order-actions {
+  margin-top: 6px;
+}
+
+.admin-ui .sponsorship-order-actions > summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.admin-ui .sponsorship-order-actions > summary::-webkit-details-marker {
+  display: none;
+}
+
+.admin-ui .sponsorship-order-actions > summary::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  margin-left: 3px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+}
+
+.admin-ui .sponsorship-order-actions[open] > summary::after {
+  transform: rotate(225deg) translate(-1px, -1px);
+}
+
+.admin-ui .sponsorship-order-action-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--admin-border);
+}
+
+.admin-ui .sponsorship-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-size: 12px;
+  color: var(--admin-muted);
+}
+
+.admin-ui .sponsorship-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.admin-ui .sponsorship-detail-block {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid var(--admin-border);
+  border-radius: 8px;
+  background: #f8f7f2;
+}
+
+.admin-ui .sponsorship-detail-block h4 {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.admin-ui .sponsorship-detail-block p,
+.admin-ui .sponsorship-muted {
+  margin: 0;
+  color: var(--admin-muted);
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.admin-ui .sponsorship-detail-block p + p {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--admin-border);
+}
+
+.admin-ui .sponsorship-snapshot-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--admin-border);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.admin-ui .sponsorship-snapshot-content {
+  max-width: 100%;
+  max-height: 384px;
+  margin: 0;
+  padding: 16px;
+  overflow: auto;
+  border: 1px solid var(--admin-border);
+  border-radius: 6px;
+  background: #f5f4ee;
+  font-size: 12px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.admin-ui .sponsorship-settings {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+
+.admin-ui .sponsorship-tier-grid,
+.admin-ui .sponsorship-manual-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.admin-ui .sponsorship-tier {
+  display: grid;
+  min-width: 0;
+  gap: 18px;
+  margin: 0;
+  padding: 20px;
+  border: 1px solid var(--admin-border);
+  border-radius: 8px;
+  background: #f8f7f2;
+}
+
+.admin-ui .sponsorship-tier legend {
+  padding: 0 8px;
+  color: var(--admin-ink);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.admin-ui .sponsorship-field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  font-size: 13px;
+}
+
+.admin-ui .sponsorship-field > span {
+  color: var(--admin-muted);
+}
+
+.admin-ui .sponsorship-field > .admin-field {
+  width: 100%;
+}
+
+.admin-ui .sponsorship-field-wide {
+  grid-column: 1 / -1;
+}
+
+.admin-ui .sponsorship-manual-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  padding: 14px 18px;
+  border: 1px solid var(--admin-border);
+  border-radius: 8px;
+  background: #f8f7f2;
+}
+
+.admin-ui .sponsorship-manual-options label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;
+  font-size: 13px;
+}
+
+.admin-ui .sponsorship-manual-options input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--admin-primary);
+}
+
+.admin-ui .sponsorship-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--admin-border);
+}
+
+@media (max-width: 760px) {
+  .admin-ui .sponsorship-orders-table,
+  .admin-ui .sponsorship-orders-table tbody {
+    display: block;
+    min-width: 0;
+  }
+
+  .admin-ui .sponsorship-orders-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .admin-ui .sponsorship-orders-table tr {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 16px;
+    padding: 18px;
+    border: 1px solid var(--admin-border);
+    border-radius: 8px;
+  }
+
+  .admin-ui .sponsorship-orders-table tr + tr {
+    margin-top: 16px;
+  }
+
+  .admin-ui .sponsorship-orders-table td {
+    display: block;
+    min-width: 0;
+    max-width: none;
+    padding: 0;
+    border: 0;
+  }
+
+  .admin-ui .sponsorship-orders-table td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 4px;
+    color: var(--admin-muted);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .admin-ui .sponsorship-orders-table .sponsorship-order-id,
+  .admin-ui .sponsorship-order-error,
+  .admin-ui .sponsorship-order-controls,
+  .admin-ui .sponsorship-empty-row td {
+    grid-column: 1 / -1;
+    max-width: none;
+  }
+
+  .admin-ui .sponsorship-orders-table .sponsorship-order-controls {
+    padding-top: 14px;
+    border-top: 1px solid var(--admin-border);
+  }
+
+  .admin-ui .sponsorship-orders-table .sponsorship-order-controls::before {
+    display: none;
+  }
+
+  .admin-ui .sponsorship-order-action-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-ui .sponsorship-order-action-list > :last-child {
+    grid-column: 1 / -1;
+  }
+
+  .admin-ui .sponsorship-empty-row td::before {
+    display: none;
+  }
+
+  .admin-ui .sponsorship-detail-grid,
+  .admin-ui .sponsorship-tier-grid,
+  .admin-ui .sponsorship-manual-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-ui .sponsorship-admin-page,
+  .admin-ui .sponsorship-settings {
+    gap: 20px;
+  }
+
+  .admin-ui .sponsorship-filter {
+    width: 100%;
+  }
+
+  .admin-ui .sponsorship-filter select {
+    flex: 1;
+  }
+
+  .admin-ui .sponsorship-tier,
+  .admin-ui .sponsorship-detail-block {
+    padding: 16px;
+  }
+
+  .admin-ui .sponsorship-pagination {
+    gap: 10px;
+  }
+
+  .admin-ui .sponsorship-pagination span {
+    order: -1;
+    width: 100%;
+    text-align: center;
+  }
+
+  .admin-ui .sponsorship-pagination > .admin-btn,
+  .admin-ui .sponsorship-form-actions > .admin-btn {
+    flex: 1;
+  }
+}

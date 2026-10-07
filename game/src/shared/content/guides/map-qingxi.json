@@ -1,0 +1,24 @@
+{
+  "id": "map-qingxi",
+  "title": "青溪坡",
+  "steps": [
+    {
+      "type": "look",
+      "anchor": "map.world",
+      "text": "展开舆图，天南在这里。"
+    },
+    {
+      "type": "press",
+      "anchor": "map.tiannan",
+      "text": "点进天南，看看太岳山一带。"
+    },
+    {
+      "type": "look",
+      "anchor": "map.qingxi",
+      "text": "青溪坡就在这道溪水旁。先停在舆图上，出门后再过去。"
+    },
+    {
+      "type": "end"
+    }
+  ]
+}

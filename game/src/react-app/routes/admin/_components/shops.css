@@ -1,0 +1,185 @@
+.admin-ui .shops-admin-page {
+  display: grid;
+  gap: 24px;
+}
+
+.admin-ui .shops-admin-page .admin-page-heading {
+  margin-bottom: 0;
+}
+
+.admin-ui .shops-focus-section {
+  min-width: 0;
+  scroll-margin-top: 20px;
+}
+
+.admin-ui .shops-focus-section:focus {
+  outline: none;
+}
+
+.admin-ui .shops-focus-section[hidden] {
+  display: none;
+}
+
+.admin-ui .shops-product-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.admin-ui .shops-product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--admin-border);
+}
+
+.admin-ui .shops-product:first-child {
+  padding-top: 0;
+}
+
+.admin-ui .shops-product:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.admin-ui .shops-product-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.admin-ui .shops-product-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-ui .shops-product-heading h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+
+.admin-ui .shops-product-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin: 14px 0 0;
+  font-size: 13px;
+}
+
+.admin-ui .shops-product-facts > div {
+  display: grid;
+  gap: 4px;
+}
+
+.admin-ui .shops-product-facts dt,
+.admin-ui .shops-product-description,
+.admin-ui .shops-draft-hint {
+  color: var(--admin-muted);
+}
+
+.admin-ui .shops-product-facts dt {
+  font-size: 12px;
+}
+
+.admin-ui .shops-product-facts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.admin-ui .shops-product-description {
+  margin: 12px 0 0;
+  font-size: 13px;
+  line-height: 1.8;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.admin-ui .shops-product-actions,
+.admin-ui .shops-editor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-ui .shops-product-actions {
+  flex-shrink: 0;
+}
+
+.admin-ui .shops-editor-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 22px 20px;
+}
+
+.admin-ui .shops-editor-fields > * {
+  min-width: 0;
+}
+
+.admin-ui .shops-editor-actions {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--admin-border);
+}
+
+.admin-ui .shops-draft-hint {
+  margin-left: auto;
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .admin-ui .shops-editor-fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-ui .shops-editor-fields > :first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-ui .shops-admin-page {
+    gap: 20px;
+  }
+
+  .admin-ui .shops-product {
+    display: grid;
+    gap: 18px;
+  }
+
+  .admin-ui .shops-product-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .admin-ui .shops-product-actions {
+    padding-top: 14px;
+    border-top: 1px solid var(--admin-border);
+  }
+
+  .admin-ui .shops-product-actions > * {
+    flex: 1;
+  }
+
+  .admin-ui .shops-editor-fields {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .admin-ui .shops-editor-actions > .admin-btn {
+    flex: 1;
+  }
+
+  .admin-ui .shops-draft-hint {
+    width: 100%;
+    margin: 3px 0 0;
+  }
+}

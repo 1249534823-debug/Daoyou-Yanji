@@ -1,0 +1,118 @@
+/** 独立容器测试库专用；绝不连接运营数据库。 */
+import assert from 'node:assert/strict';
+import { randomUUID } from 'node:crypto';
+import { eq } from 'drizzle-orm';
+
+assert.equal(new URL(process.env.DATABASE_URL!).hostname, 'feature-db');
+assert.equal(new URL(process.env.REDIS_URL!).hostname, 'feature-redis');
+const { db } = await import('../src/server/lib/drizzle/db');
+const schema = await import('../src/server/lib/drizzle/schema');
+const { authUsers, authAccounts } = await import('../src/server/lib/auth/schema');
+const { auth } = await import('../src/server/lib/auth/auth');
+const { default: app } = await import('../src/server/app');
+const { QI_MAX } = await import('../src/shared/config/qiSystem');
+const { TIANLING_PILL } = await import('../src/shared/config/secretRealmPill');
+const { addConsumableToInventoryInTransaction } = await import('../src/server/lib/services/cultivator/CultivatorInventoryRepository');
+const { consumeCultivatorConsumable } = await import('../src/server/lib/services/CultivatorConditionApplicationService');
+const origin = process.env.BETTER_AUTH_URL!;
+const results: string[] = [];
+const ok = (name: string) => { results.push(name); console.log('PASS', name); };
+async function fixture(email: string) {
+  const id = randomUUID();
+  await db.insert(authUsers).values({ id, name: '秘境验收道友', email, emailVerified: true });
+  const password = randomUUID();
+  await db.insert(authAccounts).values({ id: randomUUID(), userId: id, accountId: id, providerId: 'credential', updatedAt: new Date(), password: await (await auth.$context).password.hash(password) });
+  const { EnemyGenerator } = await import('../src/shared/engine/enemyGenerator');
+  const { createCultivator } = await import('../src/server/lib/services/cultivator/CultivatorProfileRepository');
+  const model = new EnemyGenerator().buildDraft({ realm: '炼气', realmStage: '初期', race: '人族', difficulty: 35, variantSeed: 'native-test-player', name: '秘境验收道友' }).cultivator;
+  const cultivator = await createCultivator(id, model);
+  await db.update(schema.cultivators).set({ qi: 200, qiLastRefreshedAt: new Date() }).where(eq(schema.cultivators.id, cultivator.id));
+  const login = await auth.api.signInEmail({ body: { email, password }, asResponse: true, headers: new Headers({ origin }) });
+  assert.equal(login.status, 200);
+  const cookie = login.headers.getSetCookie().map((x) => x.split(';')[0]).join('; ');
+  assert.ok(cookie);
+  return { userId: id, cultivatorId: cultivator.id, cookie };
+}
+const stamp = randomUUID().slice(0, 8);
+const adminEmail = `realm-admin-${stamp}@example.invalid`;
+process.env.ADMIN_EMAILS = adminEmail;
+const admin = await fixture(adminEmail);
+const player = await fixture(`realm-player-${stamp}@example.invalid`);
+const other = await fixture(`realm-other-${stamp}@example.invalid`);
+async function api(path: string, actor: typeof player | null, method = 'GET', body?: unknown) {
+  return app.request(`${origin}/api${path}`, { method, headers: { origin, 'content-type': 'application/json', ...(actor ? { cookie: actor.cookie } : {}) }, ...(body ? { body: JSON.stringify(body) } : {}) });
+}
+const { executeDungeonCommand } = await import('../src/server/lib/services/DungeonApplicationService');
+const { dungeonService } = await import('../src/server/lib/dungeon/service_v2');
+const { redis } = await import('../src/server/lib/redis');
+const { TIANLING_MAP_NODE_ID } = await import('../src/shared/config/secretRealms');
+const { createSecretRealmEnemy } = await import('../src/server/lib/services/SecretRealmCombat');
+assert.equal((await api('/secret-realms', null)).status, 401);
+assert.equal((await api('/admin/secret-realms', player)).status, 403);
+const list = await (await api('/admin/secret-realms', admin)).json() as { realms: { version: number }[] };
+let version = list.realms[0].version;
+const toggle = async (enabled: boolean) => {
+  assert.equal((await api('/admin/secret-realms/tianling', admin, 'PATCH', { enabled, version })).status, 200); version++;
+};
+await toggle(true);
+const command = (actor: typeof player, command: Parameters<typeof executeDungeonCommand>[0]['command']) => executeDungeonCommand({ userId: actor.userId, cultivatorId: actor.cultivatorId, command });
+const startedAt = Date.now();
+await command(player, { kind: 'start', mapNodeId: TIANLING_MAP_NODE_ID });
+console.log('MATCH_DURATION_MS', Date.now() - startedAt);
+let state = await dungeonService.getState(player.cultivatorId);
+assert.equal(state?.maxRounds, 3);
+assert.equal(state?.secretRealm?.encounters.length, 3);
+const configured = structuredClone(state!.secretRealm!);
+for (const encounter of configured.encounters) {
+  const a = createSecretRealmEnemy(encounter), b = createSecretRealmEnemy(encounter);
+  assert.deepEqual(a.attributes, b.attributes);
+  assert.deepEqual(a.skills, b.skills);
+  assert.deepEqual(a.cultivations, b.cultivations);
+}
+await redis.del(`dungeon:active:${player.cultivatorId}`);
+state = await dungeonService.getState(player.cultivatorId);
+assert.deepEqual(state?.secretRealm, configured);
+ok('三关匹配参数和敌人技能固定，清缓存后从数据库恢复');
+await toggle(false);
+await assert.rejects(command(other, { kind: 'start', mapNodeId: TIANLING_MAP_NODE_ID }));
+assert.equal((await api('/secret-realms/tianling/claim', player, 'POST', { won: true })).status, 409);
+ok('关闭禁止入场，客户端不能伪造通关领奖');
+for (let round = 1; round <= 3; round++) {
+  await command(player, { kind: 'action', choiceId: 1, actionId: randomUUID() });
+  state = await dungeonService.getState(player.cultivatorId);
+  assert.ok(state?.activeBattleId);
+  const battleId = state.activeBattleId;
+  await assert.rejects(command(other, { kind: 'battle-execute', battleId }));
+  await command(player, { kind: 'battle-execute', battleId, requestId: randomUUID() });
+  state = await dungeonService.getState(player.cultivatorId);
+  assert.equal(state?.status, 'LOOTING', `第${round}关未获胜`);
+  assert.ok(state.secretRealm?.defeatedRounds.includes(round));
+  if (round < 3) assert.equal((await db.select().from(schema.consumables).where(eq(schema.consumables.cultivatorId, player.cultivatorId))).length, 0);
+  await command(player, { kind: 'looting-continue' });
+}
+let pills = await db.select().from(schema.consumables).where(eq(schema.consumables.cultivatorId, player.cultivatorId));
+assert.equal(pills.length, 1); assert.equal(pills[0].quantity, 1); assert.equal(pills[0].name, '天灵丹');
+await assert.rejects(command(player, { kind: 'looting-continue' }));
+assert.equal((await db.select().from(schema.consumables).where(eq(schema.consumables.cultivatorId, player.cultivatorId)))[0].quantity, 1);
+ok('原生三场战斗全部胜利才发丹，关闭不阻断在途挑战，不可重复结算');
+await toggle(true);
+await assert.rejects(command(player, { kind: 'start', mapNodeId: TIANLING_MAP_NODE_ID }));
+await command(other, { kind: 'start', mapNodeId: TIANLING_MAP_NODE_ID });
+await command(other, { kind: 'quit' });
+assert.equal((await db.select().from(schema.consumables).where(eq(schema.consumables.cultivatorId, other.cultivatorId))).length, 0);
+ok('每日限额生效，提前退出无通关奖励');
+await db.update(schema.cultivators).set({ qi: 17, qiLastRefreshedAt: new Date() }).where(eq(schema.cultivators.id, player.cultivatorId));
+const [before] = await db.select().from(schema.cultivators).where(eq(schema.cultivators.id, player.cultivatorId));
+await assert.rejects(consumeCultivatorConsumable({ actor: other, consumableId: pills[0].id }));
+const consumed = await consumeCultivatorConsumable({ actor: player, consumableId: pills[0].id });
+assert.ok(consumed.state.changes.some(c => c.resourceTopic === 'player.currency'));
+const [after] = await db.select().from(schema.cultivators).where(eq(schema.cultivators.id, player.cultivatorId));
+assert.equal(after.qi, QI_MAX); assert.deepEqual(after.condition, before.condition);
+await db.transaction(tx => addConsumableToInventoryInTransaction(player.cultivatorId, structuredClone(TIANLING_PILL), tx));
+pills = await db.select().from(schema.consumables).where(eq(schema.consumables.cultivatorId, player.cultivatorId));
+await assert.rejects(consumeCultivatorConsumable({ actor: player, consumableId: pills[0].id }));
+assert.equal((await db.select().from(schema.consumables).where(eq(schema.consumables.cultivatorId, player.cultivatorId)))[0].quantity, 1);
+ok('天灵丹仅补个人天地灵气，满值不扣丹，越权拒绝');
+await Bun.write('output/native-realm-verification.json', JSON.stringify({ results, admin, player, other, origin }, null, 2));
+console.log('NATIVE_VERIFICATION_COMPLETE', results.length);
+process.exit(0);

@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+assert.equal(process.env.NODE_ENV, 'test');
+const database=new URL(process.env.DATABASE_URL);
+assert.equal(database.hostname,'admin-test-db');assert.equal(database.pathname,'/admin_ui_test');
+const fixtures=JSON.parse(await fs.readFile('output/admin-ui-fixtures.json','utf8'));
+assert.equal(fixtures.testOnly,true);assert.equal(fixtures.origin,'http://localhost:38209');
+const {createFeedback}=await import('../src/server/lib/repositories/feedbackRepository.ts');
+const feedback=await createFeedback({userId:fixtures.normal.userId,type:'bug',content:'界面验收：希望道具功能按用途分区，并在手机上直接查看列表。用于检查长段落和详情面板，这条反馈完全是测试数据。'});
+fixtures.feedbackId=feedback.id;
+await fs.writeFile('output/admin-ui-fixtures.json',JSON.stringify(fixtures,null,2));
+console.log('EXTRA_FIXTURE_READY');process.exit(0);

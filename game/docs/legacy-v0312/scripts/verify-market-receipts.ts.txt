@@ -1,0 +1,201 @@
+/** Isolated real DB/Redis verification. Never point at production. Run with Bun. */
+import assert from 'node:assert/strict';
+const database = new URL(process.env.DATABASE_URL ?? '');
+const redisUrl = new URL(process.env.REDIS_URL ?? '');
+assert.equal(process.env.NODE_ENV, 'test');
+assert.equal(database.hostname, 'admin-test-db');
+assert.equal(database.pathname, '/admin_ui_test');
+assert.equal(redisUrl.hostname, 'admin-test-redis');
+const { db } = await import('../src/server/lib/drizzle/db');
+const { cultivators, marketPurchaseReceipts, materials } =
+  await import('../src/server/lib/drizzle/schema');
+const { redis } = await import('../src/server/lib/redis');
+const { eq, and } = await import('drizzle-orm');
+const { getCurrentCycle, getDefaultMarketNodeId } =
+  await import('../src/shared/lib/game/marketConfig');
+const {
+  prepareMarketItemPurchase,
+  prepareBatchMarketPurchase,
+  getMarketListings,
+} = await import('../src/server/lib/services/MarketService');
+const { executeMarketPurchaseCommand } =
+  await import('../src/server/lib/services/MarketApplicationService');
+const { playerCommandExecutor } =
+  await import('../src/server/lib/services/CommandExecutors');
+const userId = crypto.randomUUID();
+const [actor] = await db
+  .insert(cultivators)
+  .values({
+    userId,
+    name: 'isolated-market-receipts',
+    prompt: 'fixture',
+    realm: '炼气',
+    realm_stage: '初期',
+    vitality: 10,
+    spirit: 10,
+    speed: 10,
+    willpower: 10,
+    spirit_stones: 10000,
+  })
+  .returning();
+const nodeId = getDefaultMarketNodeId();
+const layer = 'common' as const;
+const cycle = getCurrentCycle(layer);
+const cacheKey = `market:v2:listings:${nodeId}:${layer}:${cycle}`;
+const boughtKey = `market:v2:bought:${userId}:${nodeId}:${layer}:${cycle}`;
+const ids = Array.from({ length: 8 }, () => crypto.randomUUID());
+const listings = ids.map((id, i) => ({
+  id,
+  nodeId,
+  layer,
+  name: `测试材料${i}`,
+  type: 'herb',
+  rank: '凡品',
+  quantity: 1,
+  price: 10,
+  details: {},
+  description: 'isolated fixture',
+}));
+const oldCache = await redis.get(cacheKey);
+const report: string[] = [];
+const input = (listingId: string) => ({
+  userId,
+  cultivatorId: actor.id,
+  nodeId,
+  layer,
+  listingId,
+  quantity: 1,
+  cultivatorRealm: '炼气' as const,
+});
+const balance = async () =>
+  (await db.select().from(cultivators).where(eq(cultivators.id, actor.id)))[0]
+    .spirit_stones;
+const countReceipts = async () =>
+  (
+    await db
+      .select()
+      .from(marketPurchaseReceipts)
+      .where(eq(marketPurchaseReceipts.userId, userId))
+  ).length;
+try {
+  await redis.set(
+    cacheKey,
+    JSON.stringify({ listings, generatedAt: Date.now() }),
+  );
+  const prepared = await prepareMarketItemPurchase(input(ids[0]));
+  const outcomes = await Promise.allSettled(
+    Array.from({ length: 8 }, () =>
+      db.transaction((tx) => prepared.commit(tx)),
+    ),
+  );
+  assert.equal(outcomes.filter((x) => x.status === 'fulfilled').length, 1);
+  assert.equal(await balance(), 9990);
+  assert.equal(await countReceipts(), 1);
+  report.push(
+    '8 concurrent commits: exactly one debit, receipt and inventory grant',
+  );
+  assert.equal(
+    (
+      await db
+        .select()
+        .from(materials)
+        .where(eq(materials.cultivatorId, actor.id))
+    ).reduce((n, r) => n + r.quantity, 0),
+    1,
+  );
+  await redis.del(boughtKey); // Deliberately never run afterCommit: crash-after-commit scenario.
+  await assert.rejects(async () =>
+    db.transaction(async (tx) =>
+      (await prepareMarketItemPurchase(input(ids[0]))).commit(tx),
+    ),
+  );
+  const view = await getMarketListings({
+    userId,
+    nodeId,
+    layer,
+    cultivatorRealm: '炼气',
+  });
+  assert.equal(view.listings.find((x) => x.id === ids[0])?.quantity, 0);
+  report.push(
+    'missing Redis marker still rejects duplicate and renders sold out',
+  );
+  const rollback = await prepareMarketItemPurchase(input(ids[1]));
+  await assert.rejects(
+    db.transaction(async (tx) => {
+      await rollback.commit(tx);
+      throw new Error('isolated rollback');
+    }),
+  );
+  assert.equal(await balance(), 9990);
+  assert.equal(await countReceipts(), 1);
+  await db.transaction((tx) => rollback.commit(tx));
+  report.push(
+    'failure after writes rolls back receipt/debit/inventory; retry succeeds',
+  );
+  const batch = await prepareBatchMarketPurchase({
+    ...input(ids[0]),
+    items: [
+      { listingId: ids[2], quantity: 1 },
+      { listingId: ids[3], quantity: 1 },
+    ],
+  });
+  const single = await prepareMarketItemPurchase(input(ids[3]));
+  await db.transaction((tx) => single.commit(tx));
+  const before = await balance();
+  await assert.rejects(db.transaction((tx) => batch.commit(tx)));
+  assert.equal(await balance(), before);
+  assert.equal(
+    (
+      await db
+        .select()
+        .from(marketPurchaseReceipts)
+        .where(
+          and(
+            eq(marketPurchaseReceipts.userId, userId),
+            eq(marketPurchaseReceipts.listingId, ids[2]),
+          ),
+        )
+    ).length,
+    0,
+  );
+  report.push('overlapping batch collision rolls back every item and charge');
+  await redis.sadd(boughtKey, ids[4]);
+  await prepareMarketItemPurchase(input(ids[4]));
+  await redis.del(boughtKey);
+  await assert.rejects(async () =>
+    db.transaction(async (tx) =>
+      (await prepareMarketItemPurchase(input(ids[4]))).commit(tx),
+    ),
+  );
+  report.push('legacy marker persisted and survives cache loss');
+  const idem = await prepareMarketItemPurchase(input(ids[5]));
+  const command = () =>
+    playerCommandExecutor.execute({
+      userId,
+      cultivatorId: actor.id,
+      source: 'market_buy',
+      coordination: { mode: 'database-only' },
+      idempotency: idem.idempotency,
+      command: (tx) => executeMarketPurchaseCommand(idem, tx, actor.id),
+    });
+  const first = await command(),
+    second = await command();
+  assert.deepEqual(
+    JSON.parse(JSON.stringify(first.result)),
+    JSON.parse(JSON.stringify(second.result)),
+  );
+  assert.equal(second.state.replayed, true);
+  report.push(
+    'existing command executor replays exact purchase without a second charge',
+  );
+  console.log(JSON.stringify({ success: true, checks: report }, null, 2));
+} finally {
+  await db
+    .delete(marketPurchaseReceipts)
+    .where(eq(marketPurchaseReceipts.userId, userId));
+  await db.delete(cultivators).where(eq(cultivators.id, actor.id));
+  await redis.del(boughtKey);
+  if (oldCache !== null) await redis.set(cacheKey, oldCache);
+  else await redis.del(cacheKey);
+}
+process.exit(0);

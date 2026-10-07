@@ -1,0 +1,217 @@
+.stone-statistics .stone-filter {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) minmax(180px, 2fr) auto;
+  gap: 16px;
+  align-items: end;
+}
+.stone-filter label {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+.stone-day-controls,
+.stone-paging,
+.stone-paging > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.stone-paging {
+  justify-content: space-between;
+  color: var(--admin-muted);
+  font-size: 13px;
+}
+.stone-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.stone-summary .admin-readout {
+  min-width: 0;
+}
+.stone-summary strong {
+  display: block;
+  margin-top: 12px;
+  font-size: 28px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.stone-summary span,
+.stone-hint {
+  color: var(--admin-muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.stone-income {
+  color: #3c704e;
+}
+.stone-expense {
+  color: #aa4338;
+}
+.stone-coverage {
+  padding: 14px 16px;
+  background: #f8f3e6;
+  border: 1px solid #e8dec4;
+  border-radius: 8px;
+  color: #756443;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.stone-coverage span {
+  display: block;
+}
+.stone-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.stone-table th,
+.stone-table td {
+  text-align: left;
+  padding: 14px 10px;
+  border-bottom: 1px solid var(--admin-border);
+  font-variant-numeric: tabular-nums;
+}
+.stone-table th {
+  color: var(--admin-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+.stone-table td:first-child {
+  max-width: 240px;
+  overflow-wrap: anywhere;
+}
+.stone-table small {
+  display: block;
+  margin-top: 4px;
+  color: var(--admin-muted);
+  font-size: 12px;
+}
+.stone-detail-drawer .admin-drawer-header h2 {
+  overflow-wrap: anywhere;
+}
+.stone-ledger {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.stone-entry-list {
+  display: grid;
+  gap: 14px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.stone-entry-list li {
+  border: 1px solid var(--admin-border);
+  border-radius: 9px;
+  padding: 16px;
+  background: var(--admin-surface);
+  min-width: 0;
+}
+.stone-entry-top {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 15px;
+}
+.stone-entry-top strong {
+  overflow-wrap: anywhere;
+}
+.stone-entry-list time {
+  display: block;
+  color: var(--admin-muted);
+  font-size: 12px;
+  margin-top: 8px;
+}
+.stone-entry-list dl {
+  margin: 14px 0 0;
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+}
+.stone-entry-list dl > div {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.stone-entry-list dt {
+  color: var(--admin-muted);
+}
+.stone-entry-list dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+.stone-error {
+  padding: 16px;
+  border: 1px solid #e4bdb8;
+  border-radius: 9px;
+  background: #fff8f7;
+  color: #a33c33;
+}
+.stone-error p {
+  margin: 0 0 12px;
+}
+@media (max-width: 899px) {
+  .stone-statistics .stone-filter {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .stone-filter > .admin-btn {
+    grid-column: 1/-1;
+  }
+  .stone-table td:first-child {
+    max-width: none;
+  }
+}
+@media (max-width: 599px) {
+  .stone-statistics .stone-filter,
+  .stone-summary {
+    grid-template-columns: 1fr;
+  }
+  .stone-summary .admin-readout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .stone-summary strong {
+    margin: 0;
+    font-size: 24px;
+  }
+  .stone-day-controls {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .stone-day-controls .admin-btn {
+    padding-inline: 6px;
+  }
+  .stone-paging > div {
+    width: 100%;
+  }
+  .stone-paging > div > .admin-btn {
+    flex: 1;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+  .stone-summary {
+    grid-template-columns: 1fr;
+  }
+  .stone-summary .admin-readout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .stone-summary strong {
+    margin: 0;
+    font-size: 24px;
+  }
+}

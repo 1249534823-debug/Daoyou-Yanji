@@ -1,0 +1,33 @@
+import assert from 'node:assert/strict';
+import {eq} from 'drizzle-orm';
+assert.equal(process.env.NODE_ENV,'test');assert.equal(new URL(process.env.DATABASE_URL!).hostname,'admin-test-db');assert.equal(new URL(process.env.REDIS_URL!).hostname,'admin-test-redis');
+const {db}=await import('../src/server/lib/drizzle/db');const s=await import('../src/server/lib/drizzle/schema');
+const {createItemLibraryEntry}=await import('../src/server/lib/repositories/itemLibraryRepository');
+const {buildPresetArtifact}=await import('../src/shared/engine/cultivator/creation/presetProducts');
+const {serializeProductModel}=await import('../src/shared/engine/creation-v2/persistence/ProductPersistenceMapper');
+const {ItemLibraryConsumablePayloadSchema,ItemLibraryArtifactPayloadSchema}=await import('../src/shared/lib/itemLibrary');
+const {TIANLING_PILL}=await import('../src/shared/config/secretRealmPill');
+const {compileSecretRealmRewards,applySecretRealmGains}=await import('../src/server/lib/services/SecretRealmRewards');
+const f=await Bun.file('output/admin-ui-fixtures.json').json();assert.equal(f.testOnly,true);
+const art=buildPresetArtifact({name:'验收青锋剑',slot:'weapon',element:'金',affixIds:['artifact-panel-weapon-dual-atk','artifact-panel-atk','artifact-defense-mana-recovery'],realm:'筑基',realmStage:'初期',creatorName:'隔离验收',creatorCultivatorId:'isolated-fixture',isEquipped:false});
+const artifact=await createItemLibraryEntry({userId:f.admin.userId,entry:{type:'artifact',itemId:'realm-ui-artifact',status:'published',payload:ItemLibraryArtifactPayloadSchema.parse({...art,productModel:serializeProductModel(art.productModel)}),editorConfig:{slot:'weapon',element:'金',affixIds:['artifact-panel-weapon-dual-atk']}}});
+const pill=await createItemLibraryEntry({userId:f.admin.userId,entry:{type:'consumable',itemId:'realm-ui-pill',status:'published',payload:ItemLibraryConsumablePayloadSchema.parse({...TIANLING_PILL,name:'验收回春丹',description:'恢复少量气血。',spec:{...TIANLING_PILL.spec,operations:[{type:'restore_resource',resource:'hp',mode:'flat',value:10}]}}),editorConfig:{}}});
+const material=await createItemLibraryEntry({userId:f.admin.userId,entry:{type:'material',itemId:'realm-ui-material',status:'published',payload:{name:'验收灵草',type:'herb',rank:'凡品'},editorConfig:{}}});
+await Bun.write('output/realm-rewards/item-fixtures.json',JSON.stringify({isolated:true,artifact:{id:artifact.itemId,name:artifact.name},pill:{id:pill.itemId,name:pill.name},material:{id:material.itemId,name:material.name}}));
+const userId=crypto.randomUUID();const [c]=await db.insert(s.cultivators).values({userId,name:'隔离道具验收',prompt:'隔离测试',realm:'炼气',realm_stage:'初期',vitality:10,spirit:10,speed:10,willpower:10}).returning();
+try{
+ const compiled=await compileSecretRealmRewards([{type:'item',itemId:artifact.itemId,quantity:2},{type:'item',itemId:pill.itemId,quantity:3},{type:'item',itemId:material.itemId,quantity:4}]);
+ assert.equal(compiled.operations.length,4);
+ await db.transaction(tx=>applySecretRealmGains({userId,cultivatorId:c.id,gain:compiled.operations,tx}));
+ const products=await db.select().from(s.creationProducts).where(eq(s.creationProducts.cultivatorId,c.id));
+ assert.equal(products.length,2);assert.ok(products.every(p=>p.productType==='artifact'&&!p.isEquipped));assert.notEqual(products[0].id,products[1].id);
+ const pills=await db.select().from(s.consumables).where(eq(s.consumables.cultivatorId,c.id));assert.equal(pills[0].quantity,3);
+ const materials=await db.select().from(s.materials).where(eq(s.materials.cultivatorId,c.id));assert.equal(materials[0].quantity,4);
+ await assert.rejects(compileSecretRealmRewards([{type:'item',itemId:artifact.itemId,quantity:11}]),/最多10/);
+ const gains:import('../src/shared/engine/resource/types').ResourceOperation[]=[{type:'qi',value:300}];
+ await db.update(s.cultivators).set({qi:295,qiLastRefreshedAt:new Date()}).where(eq(s.cultivators.id,c.id));
+ await db.transaction(tx=>applySecretRealmGains({userId,cultivatorId:c.id,gain:gains,tx}));assert.equal(gains[0].value,5);
+ console.log('ITEM_REWARDS_PASS artifact2 pill3 material4 cappedQiActual5');
+ await Bun.write('output/realm-rewards/item-verification.json',JSON.stringify({isolated:true,passed:true,artifactQuantity:2,distinctArtifactIds:true,pillQuantity:3,materialQuantity:4,artifactMax10:true,actualQiGain:5}));
+}finally{await db.delete(s.cultivators).where(eq(s.cultivators.id,c.id))}
+process.exit(0);

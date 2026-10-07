@@ -1,0 +1,24 @@
+{
+  "id": "beast-pouch",
+  "title": "灵兽袋",
+  "steps": [
+    {
+      "type": "look",
+      "anchor": "beast.bag",
+      "text": "这是灵兽袋。带回来的灵兽会出现在这里。"
+    },
+    {
+      "type": "look",
+      "anchor": "beast.roster",
+      "text": "同行的灵兽列在名册里。排在最前面的会先上场。"
+    },
+    {
+      "type": "look",
+      "anchor": "beast.detail",
+      "text": "点开一只灵兽，可以看它的等级、资质和本领。袋中若还没有灵兽，这里会暂时空着。"
+    },
+    {
+      "type": "end"
+    }
+  ]
+}

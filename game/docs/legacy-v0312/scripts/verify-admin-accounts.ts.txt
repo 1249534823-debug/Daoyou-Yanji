@@ -1,0 +1,733 @@
+/**
+ * 真实账号 API 验收；仅允许独立测试库，数据全部为虚构账号。
+ * 运行前以 schema-only 初始化 admin_ui_test，并为测试及预览复用同一测试 secret。
+ * 不发送邮件，不修改生产实现；失败结果保留在报告中，供区分既有后端问题。
+ */
+import { eq } from 'drizzle-orm';
+import assert from 'node:assert/strict';
+import { randomUUID } from 'node:crypto';
+import { chmod, mkdir } from 'node:fs/promises';
+import type {
+  AdminAccountChangeEmailResponse,
+  AdminAccountListResponse,
+  AdminAccountModerationResponse,
+} from '../src/shared/contracts/adminAccounts';
+
+assert.equal(
+  process.env.NODE_ENV,
+  'test',
+  'Isolated test environment required',
+);
+const database = new URL(process.env.DATABASE_URL ?? '');
+assert.equal(database.hostname, 'admin-test-db');
+assert.equal(database.pathname, '/admin_ui_test');
+assert.equal(new URL(process.env.REDIS_URL ?? '').hostname, 'admin-test-redis');
+const natsServers = (process.env.NATS_SERVERS ?? '')
+  .split(',')
+  .map((value) => value.trim());
+for (const server of natsServers) {
+  assert.equal(new URL(server).hostname, 'admin-test-nats');
+}
+assert.ok(process.env.NATS_USER, 'Isolated NATS user is required');
+assert.ok(process.env.NATS_PASSWORD, 'Isolated NATS password is required');
+const origin = 'http://localhost:38209';
+assert.equal(process.env.BETTER_AUTH_URL, origin);
+assert.ok((process.env.BETTER_AUTH_SECRET?.length ?? 0) >= 32);
+for (const key of ['SMTP_HOST', 'SMTP_USER', 'SMTP_PASS', 'MAIL_FROM']) {
+  delete process.env[key];
+}
+
+type Fixture = {
+  userId: string;
+  name: string;
+  email: string;
+  cookie: string;
+  cultivatorId?: string;
+};
+type ApiResult = { status: number; body: unknown };
+type Check = {
+  name: string;
+  status: 'pass' | 'fail';
+  durationMs: number;
+  error?: string;
+};
+const checks: Check[] = [];
+const startedAt = new Date().toISOString();
+const stamp = randomUUID().slice(0, 8);
+const marker = `admin-ui-${stamp}-`;
+const password = `Test-only-${randomUUID()}`;
+
+await mkdir('output', { recursive: true });
+const { db } = await import('../src/server/lib/drizzle/db');
+const { authUsers, authAccounts, authSessions } =
+  await import('../src/server/lib/auth/schema');
+const [existingAdmin] = await db
+  .select()
+  .from(authUsers)
+  .where(eq(authUsers.email, 'admin-ui@example.invalid'));
+if (existingAdmin) assert.equal(existingAdmin.name, '万界道友•衍极界管理员');
+const adminUserId = existingAdmin?.id ?? randomUUID();
+// Both middleware and Better Auth's admin plugin must see the allowlist at import time.
+process.env.ADMIN_EMAILS = 'admin-ui@example.invalid';
+process.env.ADMIN_USER_IDS = adminUserId;
+const { auth } = await import('../src/server/lib/auth/auth');
+const { default: app } = await import('../src/server/app');
+const passwordHash = await (await auth.$context).password.hash(password);
+let fixtureSequence = 0;
+
+async function signIn(email: string): Promise<string> {
+  const response = await auth.api.signInEmail({
+    body: { email, password },
+    asResponse: true,
+    headers: new Headers({ origin }),
+  });
+  assert.equal(response.status, 200, `Fixture sign-in failed: ${email}`);
+  const cookie = response.headers
+    .getSetCookie()
+    .map((value) => value.split(';')[0])
+    .join('; ');
+  assert.ok(cookie, 'A real Better Auth session cookie is required');
+  return cookie;
+}
+
+async function fixture(
+  key: string,
+  name: string,
+  options: {
+    userId?: string;
+    email?: string;
+    verified?: boolean;
+    banned?: boolean;
+    login?: boolean;
+  } = {},
+): Promise<Fixture> {
+  const userId = options.userId ?? randomUUID();
+  const email = options.email ?? `${marker}${key}@example.invalid`;
+  const verified = options.verified ?? true;
+  const banned = options.banned ?? false;
+  assert.ok(email.endsWith('@example.invalid'));
+  const createdAt = new Date(Date.now() - 60_000 + fixtureSequence++ * 1000);
+  const [existing] = await db
+    .select()
+    .from(authUsers)
+    .where(eq(authUsers.id, userId));
+  if (!existing) {
+    await db.insert(authUsers).values({
+      id: userId,
+      name,
+      email,
+      emailVerified: verified,
+      banned,
+      banReason: banned ? '虚构展示账号：待审核' : null,
+      createdAt,
+      updatedAt: createdAt,
+    });
+  } else {
+    assert.equal(
+      userId,
+      adminUserId,
+      'Only the fixed fictional administrator may be reused',
+    );
+    await db
+      .update(authUsers)
+      .set({
+        emailVerified: true,
+        banned: false,
+        banReason: null,
+        banExpires: null,
+      })
+      .where(eq(authUsers.id, userId));
+  }
+  const [credential] = await db
+    .select()
+    .from(authAccounts)
+    .where(eq(authAccounts.userId, userId));
+  if (credential) {
+    assert.equal(credential.providerId, 'credential');
+    await db
+      .update(authAccounts)
+      .set({ password: passwordHash, updatedAt: new Date() })
+      .where(eq(authAccounts.id, credential.id));
+  } else {
+    await db.insert(authAccounts).values({
+      id: randomUUID(),
+      userId,
+      accountId: userId,
+      providerId: 'credential',
+      password: passwordHash,
+      updatedAt: new Date(),
+    });
+  }
+  // Never try signing in with an unverified account: that flow sends email.
+  const cookie =
+    verified && !banned && options.login !== false ? await signIn(email) : '';
+  return { userId, name, email, cookie };
+}
+
+async function api(
+  path: string,
+  actor: Fixture | null,
+  method = 'GET',
+  body?: unknown,
+): Promise<ApiResult> {
+  const response = await app.request(`${origin}/api${path}`, {
+    method,
+    headers: {
+      origin,
+      'content-type': 'application/json',
+      ...(actor ? { cookie: actor.cookie } : {}),
+    },
+    ...(body === undefined ? {} : { body: JSON.stringify(body) }),
+  });
+  return { status: response.status, body: await response.json() };
+}
+
+function expectStatus(result: ApiResult, status: number) {
+  assert.equal(
+    result.status,
+    status,
+    `Expected HTTP ${status}, received ${result.status}: ${JSON.stringify(result.body)}`,
+  );
+}
+
+function expectCode(result: ApiResult, status: number, code: string) {
+  expectStatus(result, status);
+  assert.equal((result.body as { code?: string }).code, code);
+}
+
+function data<T>(result: ApiResult): T {
+  expectStatus(result, 200);
+  assert.equal((result.body as { success?: boolean }).success, true);
+  return (result.body as { data: T }).data;
+}
+
+async function snapshot(actor: Fixture) {
+  const [user] = await db
+    .select()
+    .from(authUsers)
+    .where(eq(authUsers.id, actor.userId));
+  assert.ok(user);
+  const sessions = await db
+    .select({ id: authSessions.id })
+    .from(authSessions)
+    .where(eq(authSessions.userId, actor.userId));
+  return {
+    email: user.email,
+    verified: user.emailVerified,
+    banned: Boolean(user.banned),
+    banReason: user.banReason,
+    banExpires: user.banExpires?.toISOString() ?? null,
+    sessions: sessions.map((session) => session.id).sort(),
+  };
+}
+
+async function check(name: string, execute: () => Promise<void>) {
+  const started = Date.now();
+  try {
+    await execute();
+    checks.push({ name, status: 'pass', durationMs: Date.now() - started });
+    console.log('PASS', name);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    checks.push({
+      name,
+      status: 'fail',
+      durationMs: Date.now() - started,
+      error: message.slice(0, 2000),
+    });
+    console.error('FAIL', name, message.slice(0, 2000));
+  }
+}
+
+async function main() {
+  const admin = await fixture('admin', '万界道友•衍极界管理员', {
+    userId: adminUserId,
+    email: 'admin-ui@example.invalid',
+  });
+  const normal = await fixture('normal', '普通道友');
+  const browserTarget = await fixture('qingyun', '青云散人');
+  const longName = `万象星河尽入吾袖的长中文昵称验收${stamp}`;
+  const browserEmailTarget = await fixture(
+    'long-address-for-responsive-layout-verification',
+    longName,
+  );
+  const browserRevokeTarget = await fixture('xuanxiao', '玄霄剑客');
+  const emailTarget = await fixture('api-email', '改绑接口验收');
+  const banTarget = await fixture('api-ban', '封禁接口验收');
+  const revokeTarget = await fixture('api-revoke', '会话接口验收');
+  const duplicate = await fixture('duplicate', '重复邮箱验收', {
+    login: false,
+  });
+  const displayBanned = await fixture('display-banned', '碧海剑仙', {
+    banned: true,
+    login: false,
+  });
+  const displayUnverified = await fixture('display-unverified', '闲云道友', {
+    verified: false,
+    login: false,
+  });
+  for (let index = 1; index <= 18; index++) {
+    await fixture(
+      `page-${String(index).padStart(2, '0')}`,
+      `游历道友 ${index}`,
+      { login: false },
+    );
+  }
+  const expectedMatchingCount = 28;
+  const { EnemyGenerator } =
+    await import('../src/shared/engine/enemyGenerator');
+  const { createCultivator } =
+    await import('../src/server/lib/services/cultivator/CultivatorProfileRepository');
+  const draft = new EnemyGenerator().buildDraft({
+    realm: '筑基',
+    realmStage: '中期',
+    race: '人族',
+    difficulty: 35,
+    variantSeed: 'admin-ui-qingyun',
+    name: browserTarget.name,
+  }).cultivator;
+  browserTarget.cultivatorId = (
+    await createCultivator(browserTarget.userId, draft)
+  ).id;
+
+  // Only these untouched fictional actors are handed to the browser. API mutation targets are separate.
+  const fixtures = {
+    testOnly: true,
+    createdAt: startedAt,
+    origin,
+    marker,
+    admin,
+    normal,
+    browserTarget,
+    browserEmailTarget,
+    browserRevokeTarget,
+    displayBanned,
+    displayUnverified,
+  };
+  await Bun.write(
+    'output/admin-ui-fixtures.json',
+    JSON.stringify(fixtures, null, 2),
+  );
+  await chmod('output/admin-ui-fixtures.json', 0o600);
+
+  for (const path of ['/admin/session', '/admin/accounts']) {
+    await check(
+      `${path}: anonymous 401 / normal user 403 / administrator 200`,
+      async () => {
+        expectStatus(await api(path, null), 401);
+        expectStatus(await api(path, normal), 403);
+        expectStatus(await api(path, admin), 200);
+      },
+    );
+  }
+
+  for (const invalid of [
+    'page=0',
+    'page=1.5',
+    'limit=0',
+    'limit=101',
+    'searchField=password',
+    'verified=invalid',
+    `search=${'x'.repeat(201)}`,
+  ]) {
+    await check(
+      `Invalid list query rejected with 400: ${invalid.slice(0, 60)}`,
+      async () => {
+        expectStatus(await api(`/admin/accounts?${invalid}`, admin), 400);
+      },
+    );
+  }
+
+  await check(
+    'Email search and stable pagination return distinct pages with total counts',
+    async () => {
+      const first = data<AdminAccountListResponse['data']>(
+        await api(`/admin/accounts?search=${marker}&limit=20&page=1`, admin),
+      );
+      const second = data<AdminAccountListResponse['data']>(
+        await api(`/admin/accounts?search=${marker}&limit=20&page=2`, admin),
+      );
+      assert.equal(first.total, expectedMatchingCount);
+      assert.equal(second.total, expectedMatchingCount);
+      assert.equal(first.accounts.length, 20);
+      assert.equal(second.accounts.length, 8);
+      assert.equal(first.page, 1);
+      assert.equal(second.page, 2);
+      const merged = [...first.accounts, ...second.accounts];
+      assert.equal(
+        new Set(merged.map((account) => account.userId)).size,
+        expectedMatchingCount,
+      );
+      assert.ok(merged.every((account) => account.email.includes(marker)));
+    },
+  );
+
+  await check(
+    'Name search, verification filter and empty search results',
+    async () => {
+      const named = data<AdminAccountListResponse['data']>(
+        await api(
+          `/admin/accounts?searchField=name&search=${encodeURIComponent(longName)}`,
+          admin,
+        ),
+      );
+      assert.deepEqual(
+        named.accounts.map((account) => account.userId),
+        [browserEmailTarget.userId],
+      );
+      const unverified = data<AdminAccountListResponse['data']>(
+        await api(`/admin/accounts?search=${marker}&verified=false`, admin),
+      );
+      assert.equal(unverified.total, 1);
+      assert.equal(unverified.accounts[0]?.userId, displayUnverified.userId);
+      const empty = data<AdminAccountListResponse['data']>(
+        await api(`/admin/accounts?search=missing-${randomUUID()}`, admin),
+      );
+      assert.equal(empty.total, 0);
+      assert.deepEqual(empty.accounts, []);
+    },
+  );
+
+  await check(
+    'Account detail projection includes real provider, active session and character',
+    async () => {
+      const list = data<AdminAccountListResponse['data']>(
+        await api(`/admin/accounts?search=${browserTarget.email}`, admin),
+      );
+      assert.equal(list.total, 1);
+      const account = list.accounts[0];
+      assert.equal(account.userId, browserTarget.userId);
+      assert.deepEqual(account.providers, ['credential']);
+      assert.ok(account.activeSessionCount >= 1);
+      assert.equal(account.activeCultivator?.id, browserTarget.cultivatorId);
+      assert.equal(account.activeCultivator?.name, '青云散人');
+    },
+  );
+
+  for (const [action, body] of [
+    [
+      'change-email',
+      {
+        expectedCurrentEmail: emailTarget.email,
+        newEmail: `${marker}forged@example.invalid`,
+      },
+    ],
+    ['ban', { reason: '未授权验收请求', duration: '1_day' }],
+    ['unban', undefined],
+    ['revoke-sessions', undefined],
+  ] as const) {
+    await check(
+      `${action}: unauthorized mutations rejected and target state unchanged`,
+      async () => {
+        const before = await snapshot(emailTarget);
+        expectStatus(
+          await api(
+            `/admin/accounts/${emailTarget.userId}/${action}`,
+            null,
+            'POST',
+            body,
+          ),
+          401,
+        );
+        expectStatus(
+          await api(
+            `/admin/accounts/${emailTarget.userId}/${action}`,
+            normal,
+            'POST',
+            body,
+          ),
+          403,
+        );
+        assert.deepEqual(await snapshot(emailTarget), before);
+      },
+    );
+  }
+
+  await check(
+    'Invalid email body rejected with 400 and no mutation',
+    async () => {
+      const before = await snapshot(emailTarget);
+      expectStatus(
+        await api(
+          `/admin/accounts/${emailTarget.userId}/change-email`,
+          admin,
+          'POST',
+          {
+            expectedCurrentEmail: emailTarget.email,
+            newEmail: 'invalid-email',
+          },
+        ),
+        400,
+      );
+      assert.deepEqual(await snapshot(emailTarget), before);
+    },
+  );
+  await check(
+    'Email optimistic precondition and unchanged email return 409',
+    async () => {
+      const before = await snapshot(emailTarget);
+      expectCode(
+        await api(
+          `/admin/accounts/${emailTarget.userId}/change-email`,
+          admin,
+          'POST',
+          {
+            expectedCurrentEmail: `${marker}stale@example.invalid`,
+            newEmail: `${marker}new@example.invalid`,
+          },
+        ),
+        409,
+        'STALE_CURRENT_EMAIL',
+      );
+      expectCode(
+        await api(
+          `/admin/accounts/${emailTarget.userId}/change-email`,
+          admin,
+          'POST',
+          {
+            expectedCurrentEmail: emailTarget.email,
+            newEmail: emailTarget.email,
+          },
+        ),
+        409,
+        'EMAIL_UNCHANGED',
+      );
+      assert.deepEqual(await snapshot(emailTarget), before);
+    },
+  );
+  await check(
+    'Duplicate email is rejected with 409 and leaves both accounts unchanged',
+    async () => {
+      const beforeTarget = await snapshot(emailTarget);
+      const beforeDuplicate = await snapshot(duplicate);
+      expectStatus(
+        await api(
+          `/admin/accounts/${emailTarget.userId}/change-email`,
+          admin,
+          'POST',
+          {
+            expectedCurrentEmail: emailTarget.email,
+            newEmail: duplicate.email,
+          },
+        ),
+        409,
+      );
+      assert.deepEqual(await snapshot(emailTarget), beforeTarget);
+      assert.deepEqual(await snapshot(duplicate), beforeDuplicate);
+    },
+  );
+  await check(
+    'Invalid target ID returns 400; nonexistent account returns 404',
+    async () => {
+      expectStatus(
+        await api('/admin/accounts/not-a-uuid/revoke-sessions', admin, 'POST'),
+        400,
+      );
+      expectStatus(
+        await api(
+          `/admin/accounts/${randomUUID()}/revoke-sessions`,
+          admin,
+          'POST',
+        ),
+        404,
+      );
+    },
+  );
+  await check(
+    'Valid email change normalizes email, clears verification and revokes existing sessions',
+    async () => {
+      const newEmail = `${marker}renamed@example.invalid`;
+      const changed = data<AdminAccountChangeEmailResponse['data']>(
+        await api(
+          `/admin/accounts/${emailTarget.userId}/change-email`,
+          admin,
+          'POST',
+          {
+            expectedCurrentEmail: emailTarget.email,
+            newEmail: `  ${newEmail.toUpperCase()}  `,
+          },
+        ),
+      );
+      assert.equal(changed.email, newEmail);
+      assert.equal(changed.emailVerified, false);
+      assert.equal(changed.sessionsRevoked, true);
+      const after = await snapshot(emailTarget);
+      assert.equal(after.email, newEmail);
+      assert.equal(after.verified, false);
+      assert.equal(after.sessions.length, 0);
+      expectStatus(await api('/admin/session', emailTarget), 401);
+    },
+  );
+  await check('Administrator cannot ban their own account', async () => {
+    expectCode(
+      await api(`/admin/accounts/${admin.userId}/ban`, admin, 'POST', {
+        reason: '自封禁保护验收',
+        duration: 'permanent',
+      }),
+      409,
+      'YOU_CANNOT_BAN_YOURSELF',
+    );
+    assert.equal((await snapshot(admin)).banned, false);
+    expectStatus(await api('/admin/accounts', admin), 200);
+  });
+  await check(
+    'Invalid ban reason/duration is rejected without mutation',
+    async () => {
+      const before = await snapshot(banTarget);
+      for (const body of [
+        { reason: ' ', duration: '1_day' },
+        { reason: '验收', duration: 'forever' },
+      ]) {
+        expectStatus(
+          await api(
+            `/admin/accounts/${banTarget.userId}/ban`,
+            admin,
+            'POST',
+            body,
+          ),
+          400,
+        );
+      }
+      assert.deepEqual(await snapshot(banTarget), before);
+    },
+  );
+  await check(
+    'One-day ban revokes sessions and prevents new sign-in',
+    async () => {
+      const banned = data<AdminAccountModerationResponse['data']>(
+        await api(`/admin/accounts/${banTarget.userId}/ban`, admin, 'POST', {
+          reason: '隔离验收：仅虚构账户',
+          duration: '1_day',
+        }),
+      );
+      assert.equal(banned.banned, true);
+      assert.ok(banned.banExpires);
+      const remainingMs = new Date(banned.banExpires).getTime() - Date.now();
+      assert.ok(
+        remainingMs > 23 * 60 * 60 * 1000 &&
+          remainingMs <= 24 * 60 * 60 * 1000 + 1000,
+      );
+      const after = await snapshot(banTarget);
+      assert.equal(after.banned, true);
+      assert.equal(after.sessions.length, 0);
+      expectStatus(await api('/admin/session', banTarget), 401);
+      const deniedLogin = await auth.api.signInEmail({
+        body: { email: banTarget.email, password },
+        asResponse: true,
+        headers: new Headers({ origin }),
+      });
+      assert.equal(deniedLogin.status, 403);
+    },
+  );
+  await check(
+    'Unban clears restrictions and restores real sign-in',
+    async () => {
+      const unbanned = data<AdminAccountModerationResponse['data']>(
+        await api(`/admin/accounts/${banTarget.userId}/unban`, admin, 'POST'),
+      );
+      assert.equal(unbanned.banned, false);
+      const after = await snapshot(banTarget);
+      assert.equal(after.banned, false);
+      assert.equal(after.banReason, null);
+      assert.equal(after.banExpires, null);
+      banTarget.cookie = await signIn(banTarget.email);
+      expectStatus(await api('/admin/session', banTarget), 403);
+    },
+  );
+  await check(
+    'Permanent ban has no expiry; subsequent unban succeeds',
+    async () => {
+      const banned = data<AdminAccountModerationResponse['data']>(
+        await api(`/admin/accounts/${banTarget.userId}/ban`, admin, 'POST', {
+          reason: '永久封禁选项验收',
+          duration: 'permanent',
+        }),
+      );
+      assert.equal(banned.banned, true);
+      assert.equal(banned.banExpires, null);
+      expectStatus(
+        await api(`/admin/accounts/${banTarget.userId}/unban`, admin, 'POST'),
+        200,
+      );
+    },
+  );
+  await check(
+    'Concurrent repeated session revocation is safe and invalidates the old cookie',
+    async () => {
+      assert.ok((await snapshot(revokeTarget)).sessions.length > 0);
+      const responses = await Promise.all([
+        api(
+          `/admin/accounts/${revokeTarget.userId}/revoke-sessions`,
+          admin,
+          'POST',
+        ),
+        api(
+          `/admin/accounts/${revokeTarget.userId}/revoke-sessions`,
+          admin,
+          'POST',
+        ),
+      ]);
+      for (const response of responses) expectStatus(response, 200);
+      assert.equal((await snapshot(revokeTarget)).sessions.length, 0);
+      expectStatus(await api('/admin/session', revokeTarget), 401);
+      revokeTarget.cookie = await signIn(revokeTarget.email);
+      expectStatus(await api('/admin/session', revokeTarget), 403);
+    },
+  );
+  await check(
+    'Browser fixtures remain active and unchanged after API mutation checks',
+    async () => {
+      expectStatus(await api('/admin/accounts', admin), 200);
+      for (const actor of [
+        browserTarget,
+        browserEmailTarget,
+        browserRevokeTarget,
+      ]) {
+        const after = await snapshot(actor);
+        assert.equal(after.email, actor.email);
+        assert.equal(after.banned, false);
+        assert.equal(after.verified, true);
+        assert.ok(after.sessions.length > 0);
+      }
+    },
+  );
+}
+
+try {
+  await main();
+} catch (error) {
+  const message = error instanceof Error ? error.message : String(error);
+  checks.push({
+    name: 'Fixture setup / verification runner',
+    status: 'fail',
+    durationMs: 0,
+    error: message.slice(0, 2000),
+  });
+  console.error('ADMIN_API_SETUP_FAILED', message.slice(0, 2000));
+} finally {
+  const passed = checks.filter((item) => item.status === 'pass').length;
+  const failed = checks.filter((item) => item.status === 'fail').length;
+  await Bun.write(
+    'output/admin-api-verification.json',
+    JSON.stringify(
+      {
+        testOnly: true,
+        startedAt,
+        completedAt: new Date().toISOString(),
+        origin,
+        database: 'admin_ui_test',
+        fixtures: 'fictional schema-only test environment',
+        passed,
+        failed,
+        checks,
+      },
+      null,
+      2,
+    ),
+  );
+  console.log(
+    'ADMIN_API_VERIFICATION_COMPLETE',
+    JSON.stringify({ passed, failed }),
+  );
+  process.exit(failed ? 1 : 0);
+}

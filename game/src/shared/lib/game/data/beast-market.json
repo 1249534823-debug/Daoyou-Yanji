@@ -1,0 +1,369 @@
+{
+  "formatVersion": 2,
+  "contentRevision": 5,
+  "stock": {
+    "common": {
+      "normalBooks": 4,
+      "advancedBooks": 1,
+      "originDew": 2,
+      "rejuvenationFruit": 0,
+      "superiorOriginDew": 1
+    },
+    "treasure": {
+      "normalBooks": 3,
+      "advancedBooks": 1,
+      "originDew": 3,
+      "rejuvenationFruit": 0,
+      "superiorOriginDew": 1
+    },
+    "heaven": {
+      "normalBooks": 2,
+      "advancedBooks": 2,
+      "originDew": 1,
+      "rejuvenationFruit": 1,
+      "superiorOriginDew": 2
+    }
+  },
+  "prices": {
+    "normalBook": {
+      "min": 300000,
+      "max": 300000
+    },
+    "advancedBook": {
+      "baseByTier": [
+        500000,
+        1000000,
+        1500000,
+        2000000,
+        2500000,
+        3000000,
+        3500000,
+        4000000,
+        4500000,
+        5000000
+      ],
+      "fluctuation": {
+        "min": 0.95,
+        "max": 1.05
+      }
+    },
+    "originDew": 60000,
+    "rejuvenationFruit": {
+      "min": 1700000,
+      "max": 1900000
+    },
+    "superiorOriginDew": 360000
+  },
+  "rarityWeights": {
+    "common": 5,
+    "uncommon": 2,
+    "rare": 1
+  },
+  "books": {
+    "normal": [
+      {
+        "definitionId": "book.beast.spirit-flame",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.combo",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.counter",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.critical",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.spell-critical",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.regeneration",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.meditation",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.agility",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.spell-mastery",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.sluggish",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.thunder",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.falling-rock",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.water-attack",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.lifesteal",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.reflection",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.divine-revival",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.spell-reflection",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.wisdom",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.sneak-attack",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.spell-resistance",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.parry",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.defense",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.strength",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.spell-combo",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.spell-fluctuation",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.stealth",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.perception",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.poison",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.miracle",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.concentration",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.eternity",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.ghost",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.exorcism",
+        "rarity": "common"
+      },
+      {
+        "definitionId": "book.beast.denial",
+        "rarity": "common"
+      }
+    ],
+    "advanced": [
+      {
+        "definitionId": "book.beast.advanced-combo",
+        "rarity": "rare",
+        "priceTier": 9
+      },
+      {
+        "definitionId": "book.beast.advanced-counter",
+        "rarity": "rare",
+        "priceTier": 3
+      },
+      {
+        "definitionId": "book.beast.advanced-critical",
+        "rarity": "rare",
+        "priceTier": 8
+      },
+      {
+        "definitionId": "book.beast.advanced-spell-critical",
+        "rarity": "rare",
+        "priceTier": 7
+      },
+      {
+        "definitionId": "book.beast.advanced-regeneration",
+        "rarity": "rare",
+        "priceTier": 4
+      },
+      {
+        "definitionId": "book.beast.advanced-meditation",
+        "rarity": "rare",
+        "priceTier": 4
+      },
+      {
+        "definitionId": "book.beast.advanced-agility",
+        "rarity": "rare",
+        "priceTier": 9
+      },
+      {
+        "definitionId": "book.beast.advanced-spell-mastery",
+        "rarity": "rare",
+        "priceTier": 7
+      },
+      {
+        "definitionId": "book.beast.advanced-lifesteal",
+        "rarity": "rare",
+        "priceTier": 9
+      },
+      {
+        "definitionId": "book.beast.advanced-reflection",
+        "rarity": "rare",
+        "priceTier": 3
+      },
+      {
+        "definitionId": "book.beast.advanced-divine-revival",
+        "rarity": "rare",
+        "priceTier": 10
+      },
+      {
+        "definitionId": "book.beast.advanced-spell-reflection",
+        "rarity": "rare",
+        "priceTier": 3
+      },
+      {
+        "definitionId": "book.beast.advanced-wisdom",
+        "rarity": "rare",
+        "priceTier": 6
+      },
+      {
+        "definitionId": "book.beast.advanced-sneak-attack",
+        "rarity": "rare",
+        "priceTier": 10
+      },
+      {
+        "definitionId": "book.beast.advanced-spell-resistance",
+        "rarity": "rare",
+        "priceTier": 5
+      },
+      {
+        "definitionId": "book.beast.advanced-parry",
+        "rarity": "rare",
+        "priceTier": 5
+      },
+      {
+        "definitionId": "book.beast.advanced-defense",
+        "rarity": "rare",
+        "priceTier": 5
+      },
+      {
+        "definitionId": "book.beast.advanced-strength",
+        "rarity": "rare",
+        "priceTier": 8
+      },
+      {
+        "definitionId": "book.beast.thunderstorm",
+        "rarity": "rare",
+        "priceTier": 3
+      },
+      {
+        "definitionId": "book.beast.mountain-crush",
+        "rarity": "rare",
+        "priceTier": 3
+      },
+      {
+        "definitionId": "book.beast.flood",
+        "rarity": "rare",
+        "priceTier": 3
+      },
+      {
+        "definitionId": "book.beast.wildfire",
+        "rarity": "rare",
+        "priceTier": 3
+      },
+      {
+        "definitionId": "book.beast.advanced-spell-combo",
+        "rarity": "rare",
+        "priceTier": 8
+      },
+      {
+        "definitionId": "book.beast.advanced-spell-fluctuation",
+        "rarity": "rare",
+        "priceTier": 6
+      },
+      {
+        "definitionId": "book.beast.advanced-stealth",
+        "rarity": "rare",
+        "priceTier": 7
+      },
+      {
+        "definitionId": "book.beast.advanced-perception",
+        "rarity": "rare",
+        "priceTier": 4
+      },
+      {
+        "definitionId": "book.beast.advanced-poison",
+        "rarity": "rare",
+        "priceTier": 6
+      },
+      {
+        "definitionId": "book.beast.advanced-miracle",
+        "rarity": "rare",
+        "priceTier": 6
+      },
+      {
+        "definitionId": "book.beast.advanced-concentration",
+        "rarity": "rare",
+        "priceTier": 1
+      },
+      {
+        "definitionId": "book.beast.advanced-eternity",
+        "rarity": "rare",
+        "priceTier": 2
+      },
+      {
+        "definitionId": "book.beast.advanced-ghost",
+        "rarity": "rare",
+        "priceTier": 4
+      },
+      {
+        "definitionId": "book.beast.advanced-exorcism",
+        "rarity": "rare",
+        "priceTier": 2
+      },
+      {
+        "definitionId": "book.beast.advanced-denial",
+        "rarity": "rare",
+        "priceTier": 1
+      }
+    ]
+  }
+}

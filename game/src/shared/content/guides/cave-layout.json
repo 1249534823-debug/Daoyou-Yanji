@@ -1,0 +1,24 @@
+{
+  "id": "cave-layout",
+  "title": "洞府",
+  "steps": [
+    {
+      "type": "look",
+      "anchor": "cave.inside",
+      "text": "洞府里的各处房间都从这里进去。"
+    },
+    {
+      "type": "look",
+      "anchor": "cave.spring",
+      "text": "灵眼之泉在这里。气血或法力不足时，可以来泉边休养。"
+    },
+    {
+      "type": "look",
+      "anchor": "cave.out",
+      "text": "从这里出洞府，山路、坊市和其他去处都在外面。"
+    },
+    {
+      "type": "end"
+    }
+  ]
+}

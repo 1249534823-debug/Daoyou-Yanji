@@ -1,0 +1,29 @@
+{
+  "id": "alchemy-first-furnace",
+  "title": "丹炉",
+  "steps": [
+    {
+      "type": "look",
+      "anchor": "alchemy.furnace",
+      "text": "丹炉就在房中央。"
+    },
+    {
+      "type": "press",
+      "anchor": "alchemy.furnace",
+      "text": "点丹炉，走近些。"
+    },
+    {
+      "type": "look",
+      "anchor": "alchemy.hearth",
+      "text": "翠芽草放在炉位。若要开炉，还需填写炼制目标。"
+    },
+    {
+      "type": "look",
+      "anchor": "alchemy.fire",
+      "text": "从这里开炉。材料和目标备齐后，随时可以试一炉。"
+    },
+    {
+      "type": "end"
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+{
+  "id": "arrival",
+  "track": "main",
+  "title": "入世",
+  "beats": [
+    {
+      "id": "fall",
+      "kind": "performance",
+      "script": "arrival-fall",
+      "outcome": "entered",
+      "scene": "story",
+      "prompt": "洞府里静得只剩滴水声，案上的玉简边角映着天光。",
+      "href": "/game/story"
+    },
+    {
+      "id": "ember",
+      "kind": "performance",
+      "script": "arrival-ember",
+      "outcome": "hearth",
+      "scene": "story",
+      "prompt": "晨光照着玉简下露出的一截草茎。",
+      "href": "/game/story"
+    },
+    {
+      "id": "hearth",
+      "kind": "practice",
+      "accept": [
+        {
+          "type": "guide",
+          "lesson": "alchemy-first-furnace"
+        },
+        {
+          "type": "fact",
+          "fact": "alchemy_crafted"
+        }
+      ],
+      "scene": "alchemy",
+      "prompt": "丹房就在石室另一侧，翠芽草已经带在身边。",
+      "href": "/game/craft/alchemy?guide=alchemy-first-furnace",
+      "grant": "first-herbs"
+    },
+    {
+      "id": "scent",
+      "kind": "performance",
+      "script": "arrival-scent",
+      "outcome": "stayed",
+      "scene": "story",
+      "prompt": "炉边的风吹动草叶，洞门在远处轻响。",
+      "href": "/game/story"
+    },
+    {
+      "id": "mouth",
+      "kind": "performance",
+      "script": "arrival-mouth",
+      "outcome": "returned",
+      "scene": "story",
+      "prompt": "门外的山路渐暗，石牌只露出两个字。",
+      "href": "/game/story"
+    },
+    {
+      "id": "lodge",
+      "kind": "performance",
+      "script": "arrival-lodge",
+      "outcome": "slept",
+      "scene": "story",
+      "prompt": "夜风碰着洞门，石榻上的旧毯已经铺好。",
+      "href": "/game/story"
+    },
+    {
+      "id": "creek",
+      "kind": "performance",
+      "script": "arrival-creek",
+      "outcome": "slope",
+      "scene": "story",
+      "prompt": "晨光落在石牌上，昨晚没看清的字显出来了。",
+      "href": "/game/story"
+    },
+    {
+      "id": "slope",
+      "kind": "practice",
+      "accept": [
+        {
+          "type": "guide",
+          "lesson": "map-qingxi"
+        }
+      ],
+      "scene": "map",
+      "prompt": "玉简画出的溪坡，在舆图上也许找得到。",
+      "href": "/game/map-v2?guide=map-qingxi"
+    },
+    {
+      "id": "grass",
+      "kind": "performance",
+      "script": "arrival-grass",
+      "outcome": "known",
+      "scene": "story",
+      "prompt": "舆图上的溪水弯进山间，玉简里还有一幅草叶图。",
+      "href": "/game/story"
+    },
+    {
+      "id": "tracks",
+      "kind": "performance",
+      "script": "arrival-tracks",
+      "outcome": "tracks",
+      "scene": "story",
+      "prompt": "路记的边缘，还有几枚匆忙画上的爪印。",
+      "href": "/game/story"
+    },
+    {
+      "id": "seek",
+      "kind": "practice",
+      "accept": [
+        {
+          "type": "fact",
+          "fact": "qingxi_met"
+        }
+      ],
+      "scene": "wild",
+      "prompt": "青溪坡就在前方，草里有生灵走动的痕迹。",
+      "href": "/game/wild?nodeId=SAT_TN_08"
+    },
+    {
+      "id": "prints",
+      "kind": "performance",
+      "script": "arrival-prints",
+      "outcome": "seen",
+      "scene": "story",
+      "prompt": "鞋底的泥还湿着，山坡上的草声仍在耳边。",
+      "href": "/game/story"
+    },
+    {
+      "id": "pouch",
+      "kind": "performance",
+      "script": "arrival-pouch",
+      "outcome": "pouch",
+      "scene": "story",
+      "prompt": "木钉上的旧袋，袋口打着不寻常的绳结。",
+      "href": "/game/story"
+    },
+    {
+      "id": "bag",
+      "kind": "practice",
+      "accept": [
+        {
+          "type": "guide",
+          "lesson": "beast-pouch"
+        }
+      ],
+      "scene": "beasts",
+      "prompt": "木钉上的小袋，与玉简里的图正好相同。",
+      "href": "/game/beasts?guide=beast-pouch"
+    },
+    {
+      "id": "satchel",
+      "kind": "performance",
+      "script": "arrival-satchel",
+      "outcome": "read",
+      "scene": "story",
+      "prompt": "小袋轻碰衣角，内室深处有细细水声。",
+      "href": "/game/story"
+    },
+    {
+      "id": "wound",
+      "kind": "performance",
+      "script": "arrival-spring",
+      "outcome": "spring",
+      "scene": "story",
+      "prompt": "鞋底带回的泥还在，内室的水声却越来越近。",
+      "href": "/game/story"
+    },
+    {
+      "id": "spring",
+      "kind": "practice",
+      "accept": [
+        {
+          "type": "guide",
+          "lesson": "cave-layout"
+        }
+      ],
+      "scene": "cave",
+      "prompt": "转过内室的石壁，泉水正落进一口浅池。",
+      "href": "/game?guide=cave-layout"
+    },
+    {
+      "id": "steady",
+      "kind": "performance",
+      "script": "arrival-steady",
+      "outcome": "steady",
+      "scene": "story",
+      "prompt": "泉边的湿气未散，隔壁有一扇半掩的石门。",
+      "href": "/game/story"
+    },
+    {
+      "id": "empty-hand",
+      "kind": "performance",
+      "script": "arrival-handy",
+      "outcome": "forge",
+      "scene": "story",
+      "prompt": "丹房旁的石门虚掩着，里面有一口旧器炉。",
+      "href": "/game/story"
+    },
+    {
+      "id": "forge",
+      "kind": "practice",
+      "accept": [
+        {
+          "type": "guide",
+          "lesson": "forge-first-weapon"
+        },
+        {
+          "type": "fact",
+          "fact": "weapon_forged"
+        }
+      ],
+      "mode": "all",
+      "grant": "first-weapon",
+      "scene": "refine",
+      "prompt": "图纸摊在器炉旁，青石屑沾了一手。",
+      "href": "/game/craft/refine?guide=forge-first-weapon"
+    },
+    {
+      "id": "grip",
+      "kind": "performance",
+      "script": "arrival-grip",
+      "outcome": "held",
+      "scene": "story",
+      "prompt": "新铸的兵器还热，握柄贴进掌心。",
+      "href": "/game/story"
+    },
+    {
+      "id": "gate",
+      "kind": "performance",
+      "script": "arrival-gate",
+      "outcome": "gate",
+      "scene": "story",
+      "prompt": "玉简末段的山门名字，沿着山脊排向远处。",
+      "href": "/game/story"
+    },
+    {
+      "id": "door",
+      "kind": "practice",
+      "accept": [
+        {
+          "type": "fact",
+          "fact": "sect_joined"
+        }
+      ],
+      "lesson": "sect-door",
+      "scene": "sect",
+      "prompt": "山门就在前面，是否走进去由你决定。",
+      "href": "/game/sect?guide=sect-door"
+    },
+    {
+      "id": "remain",
+      "kind": "performance",
+      "script": "arrival-remain",
+      "outcome": "remained",
+      "scene": "story",
+      "prompt": "旧毯还搭在榻边，洞门外的风仍从山里吹来。",
+      "href": "/game/story"
+    },
+    {
+      "id": "entered",
+      "kind": "life",
+      "scene": "cave",
+      "prompt": "",
+      "href": "/game",
+      "when": {
+        "fact": "sect_joined",
+        "prompt": "山门里还有接下来要走的路。",
+        "href": "/game/sect"
+      }
+    }
+  ]
+}

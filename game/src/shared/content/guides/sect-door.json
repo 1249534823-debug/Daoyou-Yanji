@@ -1,0 +1,19 @@
+{
+  "id": "sect-door",
+  "title": "山门",
+  "steps": [
+    {
+      "type": "look",
+      "anchor": "sect.self",
+      "text": "你现在是散修。这里能看到各宗门的名字和去处。"
+    },
+    {
+      "type": "look",
+      "anchor": "sect.door",
+      "text": "从这里前往诸宗。想拜入哪一处、何时去，由你决定。"
+    },
+    {
+      "type": "end"
+    }
+  ]
+}

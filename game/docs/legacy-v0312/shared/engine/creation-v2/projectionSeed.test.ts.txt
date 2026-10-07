@@ -1,0 +1,58 @@
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { EnemyGenerator } from '../enemyGenerator';
+import { composeProductFromAffixIds } from './composeProductFromAffixIds';
+
+const input = {
+  realm: '金丹',
+  realmStage: '中期',
+  race: '灵族',
+  difficulty: 30,
+  variantSeed: 'worker-plan:金丹:0',
+  name: '天灵巡山卫',
+  isBoss: false,
+} as const;
+afterEach(() => vi.restoreAllMocks());
+
+describe('seeded passive modifier projection', () => {
+  it('keeps the actual accessory-bearing enemy independent of ambient randomness', () => {
+    const random = vi.spyOn(Math, 'random').mockReturnValue(0.1);
+    const first = new EnemyGenerator().buildDraft(input).cultivator;
+    random.mockReturnValue(0.9);
+    const second = new EnemyGenerator().buildDraft(input).cultivator;
+    expect(second).toEqual(first);
+    expect(random).not.toHaveBeenCalled();
+    expect(
+      first.inventory.artifacts.some(
+        (artifact) => artifact.slot === 'accessory',
+      ),
+    ).toBe(true);
+  });
+  it('remains stable after generating a different candidate', () => {
+    const generator = new EnemyGenerator();
+    const first = generator.buildDraft(input).cultivator;
+    generator.buildDraft({
+      ...input,
+      difficulty: 50,
+      variantSeed: 'other-seed',
+    });
+    expect(generator.buildDraft(input).cultivator).toEqual(first);
+  });
+  it('preserves random selection for unseeded creation', () => {
+    const make = () =>
+      composeProductFromAffixIds({
+        productType: 'artifact',
+        element: '金',
+        name: '随机饰品',
+        requestedSlot: 'accessory',
+        affixIds: ['artifact-panel-accessory-utility'],
+      });
+    const random = vi.spyOn(Math, 'random').mockReturnValue(0.1);
+    const first = make();
+    random.mockReturnValue(0.9);
+    const second = make();
+    expect(second.affixes[0].modifierSelections).not.toEqual(
+      first.affixes[0].modifierSelections,
+    );
+    expect(random).toHaveBeenCalled();
+  });
+});

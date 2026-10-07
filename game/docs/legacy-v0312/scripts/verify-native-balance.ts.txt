@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict';
+import { EnemyGenerator } from '../src/shared/engine/enemyGenerator';
+import { matchSecretRealmEncounters, createSecretRealmEnemy, secretRealmBattleFragment } from '../src/server/lib/services/SecretRealmCombat';
+import { executePersistentWorldBattle } from '../src/server/lib/services/BattleStateCoordinator';
+import { SeededBattleRandomSource } from '../src/shared/engine/battle-v5/core/BattleRandom';
+import { getCultivatorDisplayAttributes } from '../src/shared/engine/battle-v5/adapters/CultivatorDisplayAdapter';
+assert.equal(process.env.NODE_ENV, 'test');
+const results = [];
+for (const realm of ['炼气', '金丹', '化神'] as const) {
+  for (const difficulty of [15, 50, 85]) {
+    const player = new EnemyGenerator().buildDraft({ realm, realmStage: '中期', difficulty, race: '人族', variantSeed: `balance:${realm}:${difficulty}` }).cultivator;
+    const started = Date.now();
+    const plan = matchSecretRealmEncounters(player, `plan:${realm}:${difficulty}`);
+    let wins = 0, hp = 0, turns = 0;
+    for (let sample = 0; sample < 12; sample++) {
+      let current = player, cleared = true;
+      for (let round = 0; round < 3; round++) {
+        const encounter = plan.encounters[round];
+        const result = executePersistentWorldBattle({ strategyId: 'persistent_world', player: current, opponent: createSecretRealmEnemy(encounter), opponentFragment: secretRealmBattleFragment(encounter), randomSource: new SeededBattleRandomSource(`holdout:${sample}:${realm}:${difficulty}:${round}`) });
+        turns += result.battleResult.outcome.turns;
+        if (result.didLose) { cleared = false; break; }
+        current = { ...current, condition: result.nextCondition };
+      }
+      if (cleared) { wins++; hp += current.condition!.resources.hp.current / getCultivatorDisplayAttributes(player).maxHp; }
+    }
+    const row = { realm, difficulty, wins, samples: 12, meanRemainingHp: wins ? hp / wins : 0, meanTotalTurns: turns / 12, durationMs: Date.now() - started, scales: plan.encounters.map(x => x.attributeScale) };
+    console.log(JSON.stringify(row)); results.push(row);
+    assert.ok(wins >= 9, '连续通关率偏低');
+    assert.ok(row.meanTotalTurns >= 6, '整体战斗过短');
+  }
+}
+await Bun.write('output/native-realm-balance.json', JSON.stringify(results, null, 2));
+console.log('BALANCE_COMPLETE');
+process.exit(0);
